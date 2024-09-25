@@ -566,3 +566,22 @@ a:hover span {
   animation: continuous 0.6s ease-in-out infinite;
   /* Start animation on hover */
 }
+
+/*  for scroll bar */
+/* Custom scrollbar styles */
+.scrollbar-thick::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the scrollbar */
+}
+
+.scrollbar-thick::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the scrollbar track */
+}
+
+.scrollbar-thick::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded corners */
+}

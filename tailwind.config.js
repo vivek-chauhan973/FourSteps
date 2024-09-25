@@ -13,7 +13,7 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       transitionDuration: {
-        '5000': '5000ms', // Add this custom duration
+        5000: "5000ms", // Add this custom duration
       },
       colors: {
         customColor: "#123456", // Example of adding custom colors
@@ -34,10 +34,9 @@ module.exports = {
         bounceY: "bounceY 1s infinite", // Add your bounce animation
       },
       colors: {
-        primary: '#F36B21',
-        secondary: '#4B4F58',
+        primary: "#F36B21",
+        secondary: "#4B4F58",
       },
-    
     },
   },
   plugins: [],

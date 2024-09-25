@@ -370,7 +370,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
       ],
     },
     {
-      name: "Category 2",
+      name: "Zoho services",
       subcategories: [
         "Subcategory 2.1",
         "Subcategory 2.2",
@@ -378,7 +378,42 @@ const MobileNav = ({ isMobileMenuOpen }) => {
         "Subcategory 2.4",
       ],
     },
-    // Add other categories here...
+    {
+      name: "Zoho Industry Solution",
+      subcategories: [
+        "Subcategory 2.1",
+        "Subcategory 2.2",
+        "Subcategory 2.3",
+        "Subcategory 2.4",
+      ],
+    },
+    {
+      name: "Hubspot Services ",
+      subcategories: [
+        "Subcategory 2.1",
+        "Subcategory 2.2",
+        "Subcategory 2.3",
+        "Subcategory 2.4",
+      ],
+    },
+    {
+      name: "Digital marketing ",
+      subcategories: [
+        "Subcategory 2.1",
+        "Subcategory 2.2",
+        "Subcategory 2.3",
+        "Subcategory 2.4",
+      ],
+    },
+    {
+      name: "Other Crm Services",
+      subcategories: [
+        "Subcategory 2.1",
+        "Subcategory 2.2",
+        "Subcategory 2.3",
+        "Subcategory 2.4",
+      ],
+    },
   ];
 
   // Handle section click and set the active section
@@ -447,6 +482,10 @@ const MobileNav = ({ isMobileMenuOpen }) => {
         isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
+
+
+
+
       <Link href="/">
         <p
           className={`block text-gray-700  hover:text-black px-5 mt-5 text-md font-medium ${
@@ -479,7 +518,9 @@ const MobileNav = ({ isMobileMenuOpen }) => {
         <span>{isCategoriesVisible ? <FaChevronUp /> : <FaChevronDown />}</span>
       </button>
       {isCategoriesVisible && (
-        <div className="mt-2 space-y-2 px-4">{renderCategories()}</div>
+        <div className="mt-2 space-y-2 px-4 max-h-56 overflow-y-auto scrollbar-thick  ">
+          {renderCategories()}
+        </div>
       )}
       <Link href="/Training">
         <p
