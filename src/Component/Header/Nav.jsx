@@ -202,8 +202,8 @@ const Nav = () => {
           </div>
 
           {/* Tablet and Desktop Menu */}
-          <div className="hidden md:flex md:space-x-6 lg:space-x-8 items-center">
-            <ul className="flex space-x-4 cursor-pointer">
+          <div className="hidden  md:flex md:space-x-6 lg:space-x-8 items-center">
+            <ul className="flex  space-x-4 cursor-pointer">
               <li className="relative inline-block">
                 <Link
                   href="/"
@@ -232,7 +232,7 @@ const Nav = () => {
                 >
                   About
                   <span
-                    className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
+                    className={` absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
                       activeLink === "/about" ? "scale-x-100" : "scale-x-0"
                     }`}
                   ></span>

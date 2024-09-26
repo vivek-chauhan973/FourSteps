@@ -18,7 +18,7 @@ import "aos/dist/aos.css";
 import Nav from "./Header/Nav";
 import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
-// import Trail from "./Trail";
+import Trail from "./Trail";
 const Home = () => {
   useEffect(() => {
     AOS.init({
@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {/* <Trail/> */}
+      <Trail/>
       <Nav />
       <HeroSection />
       <Calltoaction />

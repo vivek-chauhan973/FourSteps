@@ -177,151 +177,162 @@
 
 // export default Additional;
 
+// import React from "react";
+// import Link from "next/link";
+
+// const Additional = () => {
+//   return (
+//     <div className="container hidden md:block">
+//       <div className="relative">
+//         <div className="flex flex-col h-[450px]">
+//           <div className="bg-gray-200 flex-1"></div>
+//           <div className="bg-gray-100 flex-1"></div>
+//         </div>
+
+//         <div className="absolute inset-0 flex items-center justify-center">
+//           <div className="container px-4">
+//             <div className="grid grid-cols-1 px-4 md:px-32 md:grid-cols-2 lg:grid-cols-3 gap-3">
+//               <div className="bg-white">
+//                 <img
+//                   src="/image/ab.webp"
+//                   alt="Team About Us"
+//                   className="w-full h-48 object-cover mb-4"
+//                 />
+//                 <Link
+//                   href="/about/about"
+//                   className="flex px-3 py-1 items-center cursor-pointer"
+//                 >
+//                   <img
+//                     src="/image/ser.png" // Replace with the actual path to your PNG icon
+//                     alt="Info Icon"
+//                     className="w-14 h-14 mr-4 mt-1"
+//                   />
+//                   <div>
+//                     <h3 className="text-xl font-bold mb">Learn About Us</h3>
+//                     <p>Move with a great team, it's better.</p>
+//                   </div>
+//                 </Link>
+//               </div>
+
+//               <div className="bg-white">
+//                 <img
+//                   src="/image/ab.webp"
+//                   alt="What We Do"
+//                   className="w-full h-48 object-cover mb-4"
+//                 />
+//                 <Link
+//                   href="/service"
+//                   className="flex items-center cursor-pointer px-4 py-1"
+//                 >
+//                   <img
+//                     src="/image/ser.png" // Replace with the actual path to your PNG icon
+//                     alt="Info Icon"
+//                     className="w-14 h-14 mr-4 mt-1"
+//                   />
+//                   <div>
+//                     <h3 className="text-xl font-bold mb-1">What We Do</h3>
+//                     <p className="italic">
+//                       Move with a great team, it's better.
+//                     </p>
+//                   </div>
+//                 </Link>
+//               </div>
+
+//               <div className="bg-white">
+//                 <img
+//                   src="/image/ab.webp"
+//                   alt="Mission And Vision"
+//                   className="w-full h-48 object-cover mb-4"
+//                 />
+//                 <Link
+//                   href="/mission-and-vision"
+//                   className="flex items-center cursor-pointer px-4 py-1"
+//                 >
+//                   <img
+//                     src="/image/ser.png" // Replace with the actual path to your PNG icon
+//                     alt="Info Icon"
+//                     className="w-14 h-14 mr-4 mt-1"
+//                   />
+//                   <div>
+//                     <h3 className="text-xl font-bold mb-2">
+//                       Mission And Vision
+//                     </h3>
+//                     <p>Move with a great team, it's better.</p>
+//                   </div>
+//                 </Link>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Additional;
+
 import React from "react";
 import Link from "next/link";
+
+const cardData = [
+  {
+    imgSrc: "/image/ab.webp",
+    alt: "Team About Us",
+    link: "/about/about",
+    title: "Learn About Us",
+    description: "Move with a great team, it's better.",
+  },
+  {
+    imgSrc: "/image/ab.webp",
+    alt: "What We Do",
+    link: "/service",
+    title: "What We Do",
+    description: "Move with a great team, it's better.",
+  },
+  {
+    imgSrc: "/image/ab.webp",
+    alt: "Mission And Vision",
+    link: "/mission-and-vision",
+    title: "Mission And Vision",
+    description: "Move with a great team, it's better.",
+  },
+];
+
 const Additional = () => {
   return (
-    <div className="container hidden  md:block">
+    <div className="container hidden md:block">
       <div className="relative">
         <div className="flex flex-col h-[450px]">
           <div className="bg-gray-200 flex-1"></div>
           <div className="bg-gray-100 flex-1"></div>
         </div>
+
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="container px-4">
-            {/* <div className="grid grid-cols-1  px-32 md:grid-cols-3 gap-3">
-              <div className="bg-white ">
-                <img
-                  src="/image/ab.webp"
-                  alt="Team About Us"
-                  className="w-full h-48 object-cover  mb-4"
-                />
-                <div className="flex px-3 py-1 items-center cursor-pointer">
+          <div className="container   px-4">
+            <div className="grid grid-cols-1 px-4 md:px-32 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+              {cardData.map((card, index) => (
+                <div className=" bg-white rounded-lg" key={index}>
                   <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
+                    src={card.imgSrc}
+                    alt={card.alt}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
                   />
-                  <div>
-                    <h3 className="text-xl font-bold mb">Learn About Us</h3>
-                    <p>Move with a great team, it's better.</p>
-                  </div>
+                  <Link
+                    href={card.link}
+                    className="flex items-center cursor-pointer px-4 py-1"
+                  >
+                    <img
+                      src="/image/ser.png" // Replace with the actual path to your PNG icon
+                      alt="Info Icon"
+                      className="w-14 h-14 mr-4 mt-1"
+                    />
+                    <div className="pb-2">
+                      <h3 className="text-xl font-bold mb-1">{card.title}</h3>
+                      <p>{card.description}</p>
+                    </div>
+                  </Link>
                 </div>
-              </div>
-
-              <div className="bg-white">
-                <img
-                  src="/image/ab.webp"
-                  alt="What We Do"
-                  className="w-full h-48 object-cover  mb-4"
-                />
-                <div className="flex items-center cursor-pointer px-4 py-1">
-                  <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">What We Do</h3>
-                    <p className="italic">
-                      Move with a great team, it's better.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white">
-                <img
-                  src="/image/ab.webp"
-                  alt="Mission And Vision"
-                  className="w-full h-48 object-cover  mb-4"
-                />
-                <div className="flex items-center cursor-pointer px-4 py-1">
-                  <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">
-                      Mission And Vision
-                    </h3>
-                    <p>Move with a great team, it's better.</p>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
-            <div className="grid grid-cols-1 px-32 md:grid-cols-3 gap-3">
-              <div className="bg-white">
-                <img
-                  src="/image/ab.webp"
-                  alt="Team About Us"
-                  className="w-full h-48 object-cover mb-4"
-                />
-                <Link
-                  href="/about/about"
-                  className="flex px-3 py-1 items-center cursor-pointer"
-                >
-                  <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold mb">Learn About Us</h3>
-                    <p>Move with a great team, it's better.</p>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="bg-white">
-                <img
-                  src="/image/ab.webp"
-                  alt="What We Do"
-                  className="w-full h-48 object-cover mb-4"
-                />
-                <Link
-                  href="/service"
-                  className="flex items-center cursor-pointer px-4 py-1"
-                >
-                  <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">What We Do</h3>
-                    <p className="italic">
-                      Move with a great team, it's better.
-                    </p>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="bg-white">
-                <img
-                  src="/image/ab.webp"
-                  alt="Mission And Vision"
-                  className="w-full h-48 object-cover mb-4"
-                />
-                <Link
-                  href="/mission-and-vision"
-                  className="flex items-center cursor-pointer px-4 py-1"
-                >
-                  <img
-                    src="/image/ser.png" // Replace with the actual path to your PNG icon
-                    alt="Info Icon"
-                    className="w-14 h-14 mr-4 mt-1"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">
-                      Mission And Vision
-                    </h3>
-                    <p>Move with a great team, it's better.</p>
-                  </div>
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </div>

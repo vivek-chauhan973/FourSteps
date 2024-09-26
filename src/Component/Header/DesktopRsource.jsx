@@ -37,23 +37,24 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
       </button>
 
       {resourceopen && (
-        <div className="absolute left-0 mt-1 w-64 h-auto  rounded-[17px]  bg-white shadow-lg z-10">
-          <ul className="h-full w-full  hover:bg-gray-50 rounded-md">
-            <li className="flex justify-between items-center px-4 py-2 border-b border-gray-200 hover:bg-gray-200 cursor-pointer">
-              <div className="flex gap-1  items-center">
+        <div className="absolute left-0 mt-1 w-64 my-2 h-auto rounded-[17px] bg-white shadow-lg z-10">
+ 
+          <ul className="h-full w-full    ">
+            <li className="flex justify-between items-center  s  px-4 py-3  hover:bg-gray-200   border-b border-gray-200  cursor-pointer">
+              <div className="flex gap-1   items-center">
                 <FontAwesomeIcon icon={faBlog} className=" text-gray-600" />
                 <Link href="https://www.google.com">Blog</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
-            <li className="flex justify-between items-center px-4 py-2 border-b border-gray-200 hover:bg-gray-200 cursor-pointer">
+            <li className="flex justify-between items-center px-4 py-3 border-b border-gray-200 hover:bg-gray-200  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faFile} className=" text-gray-600" />
                 <Link href="#">Case Studies</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
-            <li className="flex justify-between items-center px-4 py-2 border-b border-gray-200 hover:bg-gray-200 cursor-pointer">
+            <li className="flex justify-between items-center px-4 py-3 border-b border-gray-200  hover:bg-gray-200 cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon
                   icon={faYoutubeSquare}
@@ -63,7 +64,7 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
-            <li className="flex justify-between items-center  px-4 py-2 hover:bg-gray-200 cursor-pointer">
+            <li className="flex justify-between items-center  hover:bg-gray-200  px-4 py-3  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faVideo} className=" text-gray-600" />
                 <Link href="#">Webinar</Link>

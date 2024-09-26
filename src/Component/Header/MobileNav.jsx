@@ -344,7 +344,10 @@
 // </div>
 //   );
 // };
-
+//trail
+// className={`fixed  inset-y-0 left-0 z-50 w-64 bg-gray-800 transform ${
+//       isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+//     } transition-transform duration-100 ease-in-out lg:hidden`}
 // export default MobileNav;
 
 // // make hero section and done mobile responsive
@@ -478,14 +481,14 @@ const MobileNav = ({ isMobileMenuOpen }) => {
 
   return (
     <div
-      className={`container md:hidden top-24 mt-2 left-0 h-screen w-full bg-gray-100 shadow-lg transform transition-transform duration-500 ${
-        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
+      // className={`container md:hidden top-24 mt-2 left-0 h-screen w-full bg-gray-100 shadow-lg transform transition-transform duration-500 ${
+      //   isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+      // }`}
+
+      className={`fixed md:hidden top-24 left-0 h-screen w-full bg-gray-100 shadow-lg ${
+    isMobileMenuOpen ? "menu-open" : "menu-close"
+  }`}
     >
-
-
-
-
       <Link href="/">
         <p
           className={`block text-gray-700  hover:text-black px-5 mt-5 text-md font-medium ${

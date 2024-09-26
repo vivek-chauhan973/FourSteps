@@ -585,3 +585,56 @@ a:hover span {
   border-radius: 10px;
   /* Rounded corners */
 }
+
+/* mobile header navbavrs animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.menu-open {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.menu-close {
+  animation: slideOut 2s ease-in-out backwards;
+}
+
+
+/* navbar hover sliders */
+
+.slide span::after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  bottom: 4px;
+
+  width: 0;
+  height: 2px;
+  transition: width 220ms ease-in;
+
+}
+
+.slide span:hover::after {
+  background-color: rgb(249 115 22);
+
+  width: 100%;
+}
+
+/* end */
+

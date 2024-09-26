@@ -511,9 +511,9 @@ const Categories = () => {
               {categoryData.map((category) => (
                 <div
                   key={category.title}
-                  className="border-r border-orange-400 last:border-r-0"
+                  className="border-r border-gray-400 last:border-r-0"
                 >
-                  <h3 className="text-md uppercase font-semibold text-gray-900">
+                  <h3 className="text-md  uppercase font-semibold text-gray-900">
                     {category.title}
                   </h3>
                   <div className="mt-2 1">
@@ -527,18 +527,9 @@ const Categories = () => {
                         className="relative"
                       >
                         <Link href={subcategory.path}>
-                          <p className="text-sm text-gray-600 hover:text-orange-500 transition duration-200 group">
+                          <p className="text-sm slide pb-1 text-gray-600 hover:text-orange-500 transition duration-200 group">
                             <span className="inline-block relative pb-1">
                               {subcategory.name}
-                              {/* Border under the text */}
-                              <span
-                                className={`absolute left-0 bottom-0 h-0.5 bg-orange-500 transition-transform duration-300 transform origin-left ${
-                                  hoveredSubcategory === subcategory.name
-                                    ? "scale-x-100"
-                                    : "scale-x-0"
-                                }`}
-                                style={{ width: "100%" }} // Ensures the border matches the text length
-                              />
                             </span>
                           </p>
                         </Link>

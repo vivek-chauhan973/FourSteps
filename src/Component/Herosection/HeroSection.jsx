@@ -7,7 +7,7 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 const HeroSection = () => {
   const data = [
     { id: 1, images: "/image/ab.webp" },
-    { id: 2, images: "/image/bg.jpg" },
+    { id: 2, images: "/image/ab.webp" },
     { id: 3, images: "/image/ab.webp" },
   ];
 
@@ -59,10 +59,10 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-6">
-            <button className="bg-orange-500 text-white py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-blue-800">
+            <button className="bg-orange-500 text-white py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-blue-800">
               Read More
             </button>
-            <button className="ml-4 border border-orange-500  py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-gray-100">
+            <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">
               Connect Now
             </button>
           </div>
