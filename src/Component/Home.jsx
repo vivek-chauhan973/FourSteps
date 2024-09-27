@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Trail/>
+      <Trail />
       <Nav />
       <HeroSection />
       <Calltoaction />

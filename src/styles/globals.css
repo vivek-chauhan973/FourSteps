@@ -638,3 +638,48 @@ a:hover span {
 
 /* end */
 
+
+/*  footer li hover effect */
+
+.footerHover {
+  position: relative;
+  /* Ensure the ::after element is positioned correctly */
+}
+
+.footerHover a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  /* Adjust bottom position as needed */
+  width: 0;
+  height: 2px;
+  background-color: blue;
+  /* Color of the line */
+  transition: width 220ms ease-in;
+}
+
+.footerHover a:hover::after {
+  width: 100%;
+  /* Full widthon hover */
+}
+
+
+
+
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  /* Adjust size as needed */
+  height: 20px;
+  /* Adjust size as needed */
+  border-radius: 50%;
+  border: 1px solid rgb(190, 145, 59);
+  /* Change color as needed */
+  margin-right: 4px;
+  /* Space between icon and text */
+  border-radius: 100%;
+  color: black;
+}

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Trail = () => {
   // BackToTop.js
+
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,7 +29,7 @@ const Trail = () => {
   };
 
   return (
-    <div className=" z-auto relative">
+    <div className="z-[999] relative">
       {isVisible && (
         <button
           onClick={scrollToTop}
@@ -38,12 +41,12 @@ const Trail = () => {
             backgroundColor: "#F36B21", // Your color
             color: "#ffffff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "100px",
             cursor: "pointer",
             boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
           }}
         >
-          ↑
+          <FontAwesomeIcon icon={faAngleUp} />
         </button>
       )}
     </div>

@@ -1,222 +1,230 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faYoutube,
+  faLinkedinIn,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+
+import { FaQrcode } from "react-icons/fa";
+
+import Link from "next/link";
 export const Footer = () => {
   return (
     <>
-      <div className="">
-        {/* 1st Half */}
-        <div className="bg-zinc-200 p-5">
-          <div className="grid md:grid-cols-4 grid-cols-2 gap-5 md:px-10">
-            <div className="grid md:grid-rows-2 grid-rows-1 gap-3">
-              <div>
-                <h3 className="text-base font-semibold">Zoho Services</h3>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho Setup and Implementation
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho Managed Services
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho Custom Development
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho Training and Consulting
-                </p>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">
-                  Zoho Industry Solution
-                </h3>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho CRM For Real Estate
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Zoho CRM For Travel Agency
-                </p>
-              </div>
-            </div>
-            <div className="grid md:grid-rows-2 grid-rows-1 gap-3">
-              <div>
-                <h3 className="text-babase font-semibold">
-                  Website development
-                </h3>
-                <p className="text-[13px] font-extralight hover:underline">
-                  CMS Web Development
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Custom Web Development
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  E-Commerce Store
-                </p>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">Digital Marketing</h3>
-                <p className="text-[13px] font-extralig hover:underline">
-                  PPC Management
-                </p>
-                <p className="text-[13px] font-extralig hover:underline">
-                  Search Engine Optimization
-                </p>
-                <p className="text-[13px] font-extralig hover:underline">
-                  Social Media Management
-                </p>
-                <p className="text-[13px] font-extralig hover:underline">
-                  Content Marketing
-                </p>
-              </div>
-            </div>
-            <div className="grid md:grid-rows-2 grid-rows-1 gap-3">
-              <div>
-                <h3 className="text-base font-semibold">HubSport Services</h3>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Hubsport Setup and Implementation
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Hubsport Development
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Hubsport Managed Services
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Hubsport Training and Consulting
-                </p>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">Other CRM Services</h3>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Bitrix24 Services
-                </p>
-                <p className="text-[13px] font-extralight hover:underline">
-                  Salesforce Services
-                </p>
-              </div>
-            </div>
-            <div className="">
-              <h3 className="text-base font-semibold">Projects</h3>
-              <p className="text-[13px] font-extralight hover:underline">
-                IBC Super30
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Rescom Solar
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Shop Dubai
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                IBC Super30
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Rescom Solar
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Shop Dubai
-              </p>
-            </div>
-            {/* <div className=''>
-                            <h3 className='text-base font-semibold leading-9'>UseFul Links</h3>
-                            <p className='text-[13px] font-extralight hover:underline'>About Us</p>
-                            <p className='text-[13px] font-extralight hover:underline'>Contact</p>
-                            <p className='text-[13px] font-extralight hover:underline'>Case Study</p>
-                            <p className='text-[13px] font-extralight hover:underline'>Blogs</p>
-                            <p className='text-[13px] font-extralight hover:underline'>Training</p>
-                            <p className='text-[13px] font-extralight hover:underline'>Webinar</p>
-                        </div> */}
-          </div>
-        </div>
-        {/* 2nd Half */}
-        <div className="bg-zinc-300 p-5">
-          <div className="grid md:grid-cols-4 grid-cols-2 gap-5 md:px-10">
-            <div className="">
-              <h3 className="text-base font-semibold leading-9">Company</h3>
-              <p className="text-[13px] font-extralight hover:underline">
-                About Us
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Contact
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Careers
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Testimonials
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Blogs
-              </p>
-            </div>
-            <div className="">
-              <h3 className="text-base font-semibold leading-9">Help</h3>
-              <p className="text-[13px] font-extralight hover:underline">
-                FAQs
-              </p>
+      <div className="  py-10">
+        {/* gpt response */}
 
-              <p className="text-[13px] font-extralight hover:underline">
-                Case Study
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Training
-              </p>
-              <p className="text-[13px] font-extralight hover:underline">
-                Webinar
-              </p>
-            </div>
-            <div className="">
-              <h4 className="text-base font-medium">Write to us</h4>
-              <p className="text-sm leading-6 hover:underline cursor-pointer text-[#0170B9]">
-                <a href="">info@4stepsdigital.com</a>
-              </p>
-              <h4 className="text-base font-medium">Call Us</h4>
-              <p className="text-sm leading-6 hover:underline cursor-pointer text-[#0170B9]">
-                <a href="">+91-9065879989</a>
+        <div className=" text-black bg-gray-100 py-8">
+          {/* Company Info */}
+          <div className="bg-gray-300 text-sm p-6 flex flex-col lg:flex-row items-center justify-between">
+            <div className="lg:w-1/2 text-center lg:text-left mb-4 lg:mb-0">
+              <img
+                src="/image/logo.png"
+                alt="App Store"
+                className="w-24 h-16"
+              />
+              <p>
+                Four Steps Digital Consulting(OPC) Pvt Ltd, an Indian digital
+                consulting agency, prioritizes honesty, hard work, and results
+                for small to medium-sized businesses. Our focus: Transforming
+                Businesses Into Digitally-Driven Organizations with expert teams
+                optimizing digital presence and efficiency.{" "}
               </p>
             </div>
-            <div className="">
-              <h4 className="text-base font-medium">Connect with us</h4>
-              {/* <p className='text-sm'>Reviews, podcasts, blogs and more....</p> */}
-              <p className="text-sm leading-6 hover:underline cursor-pointer text-[#0170B9]">
-                <a href="">
-                  <span className="text-gradient">Social</span> Media{" "}
-                  <span className="text-gradient">Links</span>{" "}
-                </a>
-              </p>
-            </div>
-          </div>
-          <div className="md:px-10 mt-5">
-            <div className="py-1 border-y border-gray-900">
-              <p className="text-[13px] md:leading-5">
-                *
-                <b>
-                  <u>Caution</u>:Beware of Fake Promotions or Offers
-                </b>
-                * Please do not believe or engage with any promotional emails,
-                SMS or Web-link which ask you to click on a link and fill in
-                your details. All Four Steps Digital Consulting Pvt Ltd
-                authorized email communications are delivered from domain
-                @4Stepsdigitalconsulting.com or @4Stepsdigital.in or SMS from
-                FSDCPL or 12345. *Four Steps Digital bears no liability or
-                responsibility whatsoever for any communication which is
-                fraudulent or misleading in nature and not received from
-                registered domain.
-              </p>
+            <div className="flex items-center justify-center lg:justify-end space-x-6">
+              <div className="text-center">
+                <p className="font-bold mb-2">Download EaseMyTrip App</p>
+                <div className="flex space-x-4">
+                  <div className="flex justify-center mt-4">
+                    <img
+                      src="/image/zohologo.jpg"
+                      alt="Logo"
+                      className="h-20 w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="font-bold mb-2">SCAN QR CODE</p>
+                <FaQrcode className="text-6xl" />
+              </div>
             </div>
           </div>
-          <div className="md:px-10">
-            <div className="flex md:justify-start justify-between items-center gap-5 flex-wrap">
-              <p className="text-[13px] leading-6 hover:underline cursor-pointer ">
-                Terms & Conditions
-              </p>
-              <p className="text-[13px] leading-6 hover:underline cursor-pointer">
-                Privacy Policy
-              </p>
-              <p className="text-[13px] leading-6 hover:underline cursor-pointer">
-                Contact
+          <div className="container mx-auto px-4 lg:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 py-4  px-4 lg:grid-cols-5 gap-4">
+              {/* Useful Links */}
+              <div className="border-r border-gray-300">
+                <h3 className="text-lg font-bold mb-4">Useful Links</h3>
+                <ul className="space-y-2 text-sm">
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      About
+                    </a>
+                  </li>
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      Contact
+                    </a>
+                  </li>
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      Case Study
+                    </a>
+                  </li>
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      Blog
+                    </a>
+                  </li>
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      Training
+                    </a>
+                  </li>
+                  <li className="footerHover relative">
+                    <a href="#" className="relative  items-center">
+                      <span className="icon-circle">
+                        <FontAwesomeIcon icon={faAngleRight} />
+                      </span>
+                      Webinar
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="border-r border-gray-300">
+                <h3 className="text-lg font-bold mb-4 ">Our Services</h3>
+                <ul className="space-y-2  text-sm cursor-pointer">
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Website Development
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Zoho Services
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Zoho Industry Solution
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Digital Marketing
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Hubspot Services
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Other Crm Services
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Our Services */}
+              <div className="border-r border-gray-300">
+                <h3 className="text-lg font-bold mb-4">other content bro</h3>
+                <ul className="text-sm  space-y-2">
+                  <li>Zoho Setup and Implementation</li>
+                  <li>Hubspot Setup and Implementation</li>
+                  <li>Bitrix24 Services</li>
+                  <li>Salesforce Services</li>
+                </ul>
+              </div>
+
+              {/* Website Development */}
+              <div className="border-r border-gray-300">
+                <h3 className="text-lg font-bold mb-4">Website Development</h3>
+                <ul className="space-y-2 text-sm  ">
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      CMS Web Development
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      Custom Web Development
+                    </Link>
+                  </li>
+                  <li className="footerHover relative hover:text-primary">
+                    <Link href="#" className=" relative">
+                      E-Commerce Store
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* General Queries & Social Links */}
+              <div>
+                <h3 className="text-lg font-bold mb-4">General Queries</h3>
+                <div className=" text-sm">
+                  <p>Email: info@4stepsdigital.com</p>
+                  <p>Phone: +91-9065879989</p>
+                </div>
+                <h3 className="text-lg font-bold mt-4 mb-2">
+                  Social Media Links
+                </h3>
+
+                <div className="flex space-x-1">
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-7 h-7 rounded-full border-blue-600  border text-blue-600   transition duration-200"
+                  >
+                    <FontAwesomeIcon icon={faFacebookF} />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-7 h-7 rounded-full  border border-red-500 text-red-600 transition duration-200"
+                  >
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-7 h-7 rounded-full border border-blue-400 text-blue-800  transition duration-200"
+                  >
+                    <FontAwesomeIcon icon={faLinkedinIn} />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-7 h-7 rounded-full border border-pink-600 text-pink-600  transition duration-200"
+                  >
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 py-2 text-end text-sm">
+              <p>
+                Copyright © 2024 Four Steps Digital Consulting(OPC) Pvt Ltd. All
+                Rights Reserved.
               </p>
             </div>
-            <p className="text-[13px] mt-1">
-              © 2020 - 24 Four Steps Digital Consulting(OPC) Pvt Ltd. All Rights
-              Reserved.
-            </p>
           </div>
         </div>
       </div>

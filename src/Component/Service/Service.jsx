@@ -40,7 +40,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/websitepage">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>
@@ -66,7 +66,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/zoho">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>
@@ -94,7 +94,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/zohoCrm">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>
@@ -120,7 +120,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/digita">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>
@@ -146,7 +146,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/hubspotIndex">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>
@@ -172,7 +172,7 @@ const Service = () => {
             <div className="mt-6">
               <Link href="/zohoCrm">
                 <button className="border border-orange-500 text-primary py-2 md:py-3 px-4 md:px-5 rounded-lg hover:bg-primary hover:text-white">
-                 Know More
+                  Know More
                 </button>
               </Link>
             </div>

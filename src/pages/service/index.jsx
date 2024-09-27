@@ -1,4 +1,4 @@
-import { Footer } from "@/Component/Footer/Footer";
+import {Footer} from "@/Component/Footer/Footer";
 import Service from "@/Component/Service/Service";
 import React from "react";
 
@@ -7,7 +7,7 @@ const index = () => {
     <div>
       <Service />
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
