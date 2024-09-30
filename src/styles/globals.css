@@ -683,3 +683,32 @@ a:hover span {
   border-radius: 100%;
   color: black;
 }
+/* here is abcktotop animation */
+
+.backtotopanimate{
+  animation: zoomanimate 1s ese infinite;
+}
+
+/* @keyframes zoomanimate {
+  0%{
+    scale: 100%;
+  }
+  50%{
+    scale: 150%;
+  }
+  100%{
+    scale: 100%;
+  }
+} */
+
+@keyframes zoomanimate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
