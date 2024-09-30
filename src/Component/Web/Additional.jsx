@@ -278,7 +278,7 @@ const cardData = [
   {
     imgSrc: "/image/ab.webp",
     alt: "Team About Us",
-    link: "/about/about",
+    link: "/about",
     title: "Learn About Us",
     description: "Move with a great team, it's better.",
   },

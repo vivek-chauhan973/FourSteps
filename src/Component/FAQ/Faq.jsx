@@ -161,8 +161,8 @@ const Faq = () => {
       <div className="container">
         <div className="py-7 ">
           {/* section 1 */}
-          <div className="flex-col justify-center items-center md:py-7 md:pl-10 px-5 py-5 w-full">
-            <p className="text-[12px] text-zinc-500 leading-3 font-bold">FAQ</p>
+          <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+            <p className="text-lg text-zinc-500 leading-3 font-bold">FAQ</p>
             <h3 className="my-5 md:text-2xl text-xl font-bold uppercase">
               general questions
             </h3>
@@ -187,9 +187,15 @@ const Faq = () => {
                 <div key={i} className="mb-3">
                   <div
                     onClick={() => handleToggle(i)}
-                    className="w-full md:h-14 h-16 flex justify-between items-center px-5 py-2 bg-[#f3f3f3] rounded-md hover:bg-gray-200 cursor-pointer"
+                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-[#f3f3f3] rounded-full  hover:bg-gray-200 cursor-pointer"
                   >
-                    <p className="md:text-[15px] text-sm capitalize md:first-line:font-semibold font-medium mr-1">
+                    <p
+                      className={`md:text-[15px] text-sm capitalize md:first-line:font-semibold font-medium mr-1 ${
+                        openIndices.includes(i)
+                          ? "text-orange-500"
+                          : "text-black"
+                      }`}
+                    >
                       {faq.question}
                     </p>
                     <span>{openIndices.includes(i) ? "-" : "+"}</span>
@@ -220,4 +226,3 @@ const Faq = () => {
 };
 
 export default Faq;
-

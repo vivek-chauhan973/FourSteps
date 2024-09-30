@@ -36,7 +36,7 @@ const BackToTop = () => {
             bottom: "30px",
             right: "30px",
             padding: "10px 15px",
-            backgroundColor: "#F36B21", // Your color
+            backgroundColor: "#F36B21", 
             color: "#ffffff",
             border: "none",
             borderRadius: "100px",

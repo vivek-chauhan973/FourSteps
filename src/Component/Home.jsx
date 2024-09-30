@@ -36,7 +36,6 @@ const Home = () => {
       <Nav />
       <BackToTop />
       <HeroSection />
-      <Calltoaction />
       <Additional />
       <AboutSection />
 
@@ -53,6 +52,8 @@ const Home = () => {
       <Case />
       <ContactUs />
       <Testimonial />
+      <Calltoaction />
+
       <Footer />
     </div>
   );

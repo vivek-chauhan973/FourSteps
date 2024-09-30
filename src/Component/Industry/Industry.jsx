@@ -100,13 +100,6 @@
 
 // export default Industry;
 
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 
 const Industry = () => {
@@ -140,7 +133,7 @@ const Industry = () => {
   const displayCount = isSmallScreen ? 9 : businesses.length;
 
   return (
-    <div className="container md:p-10 p-5">
+    <div className="container md:p-10  p-5">
       <div>
         <h2 className="text-3xl font-bold text-center">
           Industries <span className="text-primary">We Serve</span>

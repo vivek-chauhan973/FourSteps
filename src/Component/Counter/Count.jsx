@@ -173,7 +173,7 @@ const Count = () => {
   }, []);
 
   return (
-    <div className="md:pt-10 py-7 container " ref={countRef}>
+    <div className="md:pt-10  container pt-5  " ref={countRef}>
       <div className="text-center">
         <h1 className="md:text-3xl text-lg font-semibold">
           <span>Enhancing Business Experience</span>
@@ -187,15 +187,15 @@ const Count = () => {
       </div>
       <div className="flex  flex-wrap justify-center gap-4 p-4">
         <Counter
-          endValue={1500}
-          label=" Happy Client "
+          endValue={500}
+          label=" Happy Client"
           icon={faPeopleGroup}
           className="bg-white border-r-2 pl-5 border-gray-200"
           isVisible={isVisible}
         />
         <Counter
-          endValue={200}
-          label=" Our Experts Team"
+          endValue={100}
+          label="Our Experts Team"
           icon={faUser}
           className="bg-white border-r-2 border-gray-200"
           isVisible={isVisible}

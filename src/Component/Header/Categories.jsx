@@ -413,31 +413,31 @@ const categoryData = [
     subcategories: [
       {
         name: "Hubspot Setup and Implementation",
-        path: "/servicesDetail/hubspot/hubspot-setup",
+        path: "/servicesDetail/hubspot/setup",
       },
       {
         name: "Hubspot Development",
-        path: "/servicesDetail/hubspot/hubspot-development",
+        path: "/servicesDetail/hubspot/development",
       },
       {
         name: "Hubspot Training & Consulting",
-        path: "/servicesDetail/hubspot/hubspot-training",
+        path: "/servicesDetail/hubspot/training",
       },
       {
         name: "Hubspot Managed Services",
-        path: "/servicesDetail/hubspot/hubspot-managed",
+        path: "/servicesDetail/hubspot/managed",
       },
     ],
   },
   {
     title: "Website Development",
     subcategories: [
-      { name: "CMS Development", path: "/servicesDetail/web/cms-development" },
+      { name: "CMS Development", path: "/servicesDetail/website/cmsdetail" },
       {
         name: "Custom Web Development",
-        path: "/servicesDetail/web/custom-web-development",
+        path: "/servicesDetail/website/customeweb",
       },
-      { name: "E-commerce Store", path: "/servicesDetail/web/ecommerce-store" },
+      { name: "E-commerce Store", path: "/servicesDetail/website/e-commerce" },
     ],
   },
   {
@@ -445,28 +445,43 @@ const categoryData = [
     subcategories: [
       {
         name: "Zoho CRM For Real Estate",
-        path: "/servicesDetail/zoho/real-estate",
+        path: "/servicesDetail/zohoindustry/zoho-real-estate",
       },
       {
         name: "Zoho CRM For Travel Agency",
-        path: "/servicesDetail/zoho/travel-agency",
+        path: "/servicesDetail/zohoindustry/zoho-travel-agency",
       },
     ],
   },
   {
     title: "Other CRM Services",
     subcategories: [
-      { name: "Bitrix24 Services", path: "/servicesDetail/crm/bitrix24" },
-      { name: "Salesforce Service", path: "/servicesDetail/crm/salesforce" },
+      {
+        name: "Bitrix24 Services",
+        path: "/servicesDetail/zohoindustry/bitrix24",
+      },
+      {
+        name: "Salesforce Service",
+        path: "/servicesDetail/zohoindustry/salseforce",
+      },
     ],
   },
   {
     title: "Digital Marketing",
     subcategories: [
-      { name: "SEO Services", path: "/servicesDetail/marketing/seo" },
+      { name: "SEO Services", path: "/servicesDetail/digitalmarketing/seo" },
       {
         name: "Social Media Marketing",
-        path: "/servicesDetail/marketing/social-media",
+        path: "/servicesDetail/digitalmarketing/socialmedia-management",
+      },
+
+      {
+        name: "Content Marketing",
+        path: "/servicesDetail/digitalmarketing/content-marketing",
+      },
+      {
+        name: "PPC Management",
+        path: "/servicesDetail/digitalmarketing/ppc-management",
       },
     ],
   },
@@ -516,7 +531,7 @@ const Categories = () => {
                   <h3 className="text-md  uppercase font-semibold text-gray-900">
                     {category.title}
                   </h3>
-                  <div className="mt-2 1">
+                  <div className="mt-1 ">
                     {category.subcategories.map((subcategory) => (
                       <div
                         key={subcategory.name}
@@ -527,7 +542,7 @@ const Categories = () => {
                         className="relative"
                       >
                         <Link href={subcategory.path}>
-                          <p className="text-sm slide pb-1 text-gray-600 hover:text-orange-500 transition duration-200 group">
+                          <p className="text-sm slide  text-gray-600 hover:text-orange-500 transition duration-200 group">
                             <span className="inline-block relative pb-1">
                               {subcategory.name}
                             </span>

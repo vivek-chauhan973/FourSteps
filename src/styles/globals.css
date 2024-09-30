@@ -650,22 +650,19 @@ a:hover span {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   /* Adjust bottom position as needed */
   width: 0;
   height: 2px;
-  background-color: blue;
+  background-color: #F36B21;
+ 
   /* Color of the line */
   transition: width 220ms ease-in;
 }
-
 .footerHover a:hover::after {
   width: 100%;
   /* Full widthon hover */
 }
-
-
-
 
 .icon-circle {
   display: inline-flex;
@@ -676,37 +673,25 @@ a:hover span {
   height: 20px;
   /* Adjust size as needed */
   border-radius: 50%;
-  border: 1px solid rgb(190, 145, 59);
+  border: 1px solid  #F36B21;
   /* Change color as needed */
   margin-right: 4px;
   /* Space between icon and text */
   border-radius: 100%;
-  color: black;
+  color: #F36B21;
 }
-/* here is abcktotop animation */
+/* here is backtotop animation */
 
 .backtotopanimate{
-  animation: zoomanimate 1s ese infinite;
+  animation: zoomanimate 1s ease infinite;
 }
-
-/* @keyframes zoomanimate {
-  0%{
-    scale: 100%;
-  }
-  50%{
-    scale: 150%;
-  }
-  100%{
-    scale: 100%;
-  }
-} */
 
 @keyframes zoomanimate {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);

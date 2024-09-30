@@ -42,7 +42,7 @@ const HeroSection = () => {
   }, [letterIndex, index, texts]);
 
   return (
-    <div>
+    <div className=" container ">
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 p-6   items-center">
         <div className=" ">
           <h2 className="text-xl md:text-2xl text-orange-500 py-2 font-bold">
@@ -59,7 +59,7 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-6">
-            <button className="bg-orange-500 text-white py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-blue-800">
+            <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-3 px-4 md:px-5 rounded-xl bg-primary text-white">
               Read More
             </button>
             <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">

@@ -172,8 +172,9 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <Link href="/about/about">
-            <button className="bg-orange-600 cursor-pointer border-none rounded-full text-sm text-white px-4 py-2">
+          <Link href="/about">
+            {/* <button className="bg-orange-600  cursor-pointer border-none rounded-full text-sm text-white px-4 py-2"> */}
+            <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
               Know More
             </button>
           </Link>
