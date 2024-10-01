@@ -354,8 +354,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import MobileResource from "./MobileResource";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const MobileNav = ({ isMobileMenuOpen }) => {
   const [isCategoriesVisible, setIsCategoriesVisible] = useState(false);
@@ -375,7 +376,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
     {
       name: "Zoho services",
       subcategories: [
-        "Subcategory 2.1",
+        "vivek chauhan",
         "Subcategory 2.2",
         "Subcategory 2.3",
         "Subcategory 2.4",
@@ -481,13 +482,10 @@ const MobileNav = ({ isMobileMenuOpen }) => {
 
   return (
     <div
-      // className={`container md:hidden top-24 mt-2 left-0 h-screen w-full bg-gray-100 shadow-lg transform transition-transform duration-500 ${
-      //   isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-      // }`}
-
+  
       className={`fixed md:hidden top-24 left-0 h-screen w-full bg-gray-100 shadow-lg ${
-    isMobileMenuOpen ? "menu-open" : "menu-close"
-  }`}
+        isMobileMenuOpen ? "menu-open" : "menu-close"
+      }`}
     >
       <Link href="/">
         <p
@@ -518,7 +516,12 @@ const MobileNav = ({ isMobileMenuOpen }) => {
         onClick={toggleCategories}
       >
         Our Services
-        <span>{isCategoriesVisible ? <FaChevronUp /> : <FaChevronDown />}</span>
+        {/* <span>{isCategoriesVisible ? <FaChevronUp /> : <FaChevronDown />}</span> */}
+        {isCategoriesVisible ? (
+          <FontAwesomeIcon icon={faChevronUp} />
+        ) : (
+          <FontAwesomeIcon icon={faChevronDown} />
+        )}
       </button>
       {isCategoriesVisible && (
         <div className="mt-2 space-y-2 px-4 max-h-56 overflow-y-auto scrollbar-thick  ">

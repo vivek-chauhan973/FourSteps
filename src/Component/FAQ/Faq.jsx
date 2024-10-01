@@ -89,6 +89,9 @@
 
 import React, { useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 const Faq = () => {
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -190,7 +193,7 @@ const Faq = () => {
                     className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-[#f3f3f3] rounded-full  hover:bg-gray-200 cursor-pointer"
                   >
                     <p
-                      className={`md:text-[15px] text-sm capitalize md:first-line:font-semibold font-medium mr-1 ${
+                      className={`md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ${
                         openIndices.includes(i)
                           ? "text-orange-500"
                           : "text-black"
@@ -198,10 +201,17 @@ const Faq = () => {
                     >
                       {faq.question}
                     </p>
-                    <span>{openIndices.includes(i) ? "-" : "+"}</span>
+
+                    <span>
+                      {openIndices.includes(i) ? (
+                        <FontAwesomeIcon icon={faChevronUp} />
+                      ) : (
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      )}
+                    </span>
                   </div>
                   <div
-                    className={`overflow-hidden transition-max-height duration-700 ease-in-out
+                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
                                 ${
                                   openIndices.includes(i)
                                     ? "max-h-[1000px]"
@@ -211,7 +221,7 @@ const Faq = () => {
                       maxHeight: openIndices.includes(i) ? "1000px" : "0px",
                     }}
                   >
-                    <div className="py-4 xl:px-10 px-7  text-sm">
+                    <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
                       {faq.answer}
                     </div>
                   </div>
