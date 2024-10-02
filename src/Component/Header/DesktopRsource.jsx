@@ -60,14 +60,14 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
                   icon={faYoutubeSquare}
                   className=" text-gray-600"
                 />
-                <Link href="#">YouTube</Link>
+                <Link href="#juu">YouTube</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
             <li className="flex justify-between items-center  hover:bg-gray-200  px-4 py-3  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faVideo} className=" text-gray-600" />
-                <Link href="/WebinarCard/Webinarcard">Webinar</Link>
+                <Link href="/webinarpages/recorded">Webinar</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
