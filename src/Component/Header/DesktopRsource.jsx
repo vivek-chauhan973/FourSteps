@@ -67,7 +67,7 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
             <li className="flex justify-between items-center  hover:bg-gray-200  px-4 py-3  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faVideo} className=" text-gray-600" />
-                <Link href="#">Webinar</Link>
+                <Link href="/WebinarCard/Webinarcard">Webinar</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>

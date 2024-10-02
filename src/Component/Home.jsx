@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <div>
       {/* <Trail /> */}
-      <Webinarcard/>
+      {/* <Webinarcard/> */}
       <Nav />
       <BackToTop />
       <HeroSection />
