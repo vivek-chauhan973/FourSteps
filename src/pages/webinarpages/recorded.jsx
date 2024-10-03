@@ -680,6 +680,350 @@
 // };
 
 // export default Recorded;
+// import Webinarcard from "@/Component/WebinarCard/Webinarcard";
+// import React, { useState } from "react";
+// import { Footer } from "@/Component/Footer/Footer";
+
+// const Recorded = () => {
+//   const data = [
+//     {
+//       title: "Ultra HD streaming",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+//     },
+//     {
+//       title: "Smart scheduling",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+//     },
+//     {
+//       title: "Workshops & webinars",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+//     },
+//   ];
+
+//   const [expandedIndex, setExpandedIndex] = useState(null);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [selectedVideo, setSelectedVideo] = useState(null);
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//   });
+//   const [isRegistered, setIsRegistered] = useState(false);
+
+//   const toggleReadMore = (index) => {
+//     setExpandedIndex(expandedIndex === index ? null : index);
+//   };
+
+//   const handleWatchVideo = (video) => {
+//     setSelectedVideo(video);
+//     setModalVisible(true); // Show the modal
+//   };
+
+//   const handleFormSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("User Data:", formData); // Log form data to the console
+//     setIsRegistered(true); // Set registration to true
+//     setModalVisible(false); // Hide the modal after submission
+//   };
+
+//   return (
+//     <div>
+//       <Webinarcard />
+//       <div className="container mx-auto p-4">
+//         <div className="text-center my-6">
+//           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
+//             Unlock knowledge at your own pace with our recorded webinars
+//           </h2>
+
+//           <p className="py-2 px-20 text-sm">
+//             Are you looking to streamline your business operations and boost
+//             productivity? Join us for an insightful webinar led by{" "}
+//             <b>Amarjeet Singh</b>, a seasoned Zoho consultant and automation
+//             expert. In this session, Amarjeet will share his extensive knowledge
+//             of Zoho’s suite of applications and how they can transform your
+//             business.
+//           </p>
+//         </div>
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+//           {data.map((item, index) => (
+//             <div
+//               key={index}
+//               className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+//             >
+//               <div className="w-full h-48 mb-3">
+//                 <iframe
+//                   className="w-full h-full rounded-lg"
+//                   src={isRegistered ? item.video : ""}
+//                   title={item.title}
+//                   frameBorder="0"
+//                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                   allowFullScreen
+//                 ></iframe>
+//               </div>
+
+//               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
+//                 <span className="text-center">{item.title}</span>
+//               </div>
+
+//               <div className="mt-2 text-gray-700 text-center">
+//                 <div className={`text-sm`}>
+//                   {expandedIndex === index
+//                     ? item.description
+//                     : item.description.length > 100
+//                     ? item.description.slice(0, 100) + "..."
+//                     : item.description}
+//                 </div>
+//                 <span
+//                   className="text-blue-500 cursor-pointer mt-2"
+//                   onClick={() => toggleReadMore(index)}
+//                 >
+//                   {expandedIndex === index ? "Read Less" : "Read More"}
+//                 </span>
+//               </div>
+
+//               {!isRegistered && (
+//                 <button
+//                   onClick={() => handleWatchVideo(item.video)}
+//                   className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+//                 >
+//                   Watch Video
+//                 </button>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+
+//         <Footer />
+
+//         {modalVisible && (
+//           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//             <div className="bg-white p-6 rounded-lg shadow-lg">
+//               <h2 className="text-2xl mb-4">Register to Watch</h2>
+//               <form onSubmit={handleFormSubmit}>
+//                 <div className="mb-4">
+//                   <label className="block text-gray-700">Name</label>
+//                   <input
+//                     type="text"
+//                     className="w-full p-2 border rounded"
+//                     value={formData.name}
+//                     onChange={(e) =>
+//                       setFormData({ ...formData, name: e.target.value })
+//                     }
+//                     required
+//                   />
+//                 </div>
+//                 <div className="mb-4">
+//                   <label className="block text-gray-700">Email</label>
+//                   <input
+//                     type="email"
+//                     className="w-full p-2 border rounded"
+//                     value={formData.email}
+//                     onChange={(e) =>
+//                       setFormData({ ...formData, email: e.target.value })
+//                     }
+//                     required
+//                   />
+//                 </div>
+//                 <button
+//                   type="submit"
+//                   className="bg-blue-500 text-white px-4 py-2 rounded"
+//                 >
+//                   Submit
+//                 </button>
+//               </form>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Recorded;
+
+// import Webinarcard from "@/Component/WebinarCard/Webinarcard";
+// import React, { useState } from "react";
+// import { Footer } from "@/Component/Footer/Footer";
+
+// const Recorded = () => {
+//   const data = [
+//     {
+//       title: "Ultra HD streaming",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Add YouTube video URL
+//     },
+//     {
+//       title: "Smart scheduling",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/2Vv-BfVoq4g", // Add YouTube video URL
+//     },
+//     {
+//       title: "Workshops & webinars",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Add YouTube video URL
+//     },
+//   ];
+
+//   const [expandedIndex, setExpandedIndex] = useState(null);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [isRegistered, setIsRegistered] = useState(false);
+
+//   const toggleReadMore = (index) => {
+//     setExpandedIndex(expandedIndex === index ? null : index);
+//   };
+
+//   const openFormModal = () => {
+//     setModalVisible(true);
+//   };
+
+//   const handleSubmitForm = () => {
+//     // Simulate form submission
+//     setIsRegistered(true);
+//     setModalVisible(false);
+//   };
+
+//   return (
+//     <div>
+//       <Webinarcard />
+//       <div className="container mx-auto p-4">
+//         <div className="text-center my-6">
+//           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
+//             Unlock knowledge at your own pace with our recorded webinars
+//           </h2>
+
+//           <p className="py-2 px-20 text-sm">
+//             Are you looking to streamline your business operations and boost
+//             productivity? Join us for an insightful webinar led by <b>Amarjeet Singh</b>, a
+//             seasoned Zoho consultant and automation expert. In this session,
+//             Amarjeet will share his extensive knowledge of Zoho’s suite of
+//             applications and how they can transform your business.
+//           </p>
+//         </div>
+
+//         {/* If the user is not registered, show the registration modal trigger */}
+//         {!isRegistered && (
+//           <div className="text-center mb-6">
+//             <button
+//               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               onClick={openFormModal}
+//             >
+//               Register to Unlock All Videos
+//             </button>
+//           </div>
+//         )}
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+//           {data.map((item, index) => (
+//             <div
+//               key={index}
+//               className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+//             >
+//               {/* Show video if user has registered */}
+//               {isRegistered ? (
+//                 <div className="w-full h-48 mb-3">
+//                   <iframe
+//                     className="w-full h-full rounded-lg"
+//                     src={item.video}
+//                     title={item.title}
+//                     frameBorder="0"
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                     allowFullScreen
+//                   ></iframe>
+//                 </div>
+//               ) : (
+//                 // Show locked message if not registered
+//                 <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center">
+//                   <span className="text-gray-500">Video Locked - Register to Unlock</span>
+//                 </div>
+//               )}
+
+//               {/* Feature Title */}
+//               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
+//                 <span className="text-center">{item.title}</span>
+//               </div>
+
+//               {/* Description with Read More/Less */}
+//               <div className="mt-2 text-gray-700 text-center">
+//                 <div className={`text-sm`}>
+//                   {expandedIndex === index
+//                     ? item.description
+//                     : item.description.length > 100
+//                     ? item.description.slice(0, 100) + "..."
+//                     : item.description}
+//                 </div>
+//                 <span
+//                   className="text-blue-500 cursor-pointer mt-2"
+//                   onClick={() => toggleReadMore(index)}
+//                 >
+//                   {expandedIndex === index ? "Read Less" : "Read More"}
+//                 </span>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Modal for registration form */}
+//       {modalVisible && (
+//         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+//           <div className="bg-white p-6 rounded-lg">
+//             <h3 className="text-xl font-semibold mb-4">Register to Watch All Videos</h3>
+//             <form
+//               onSubmit={(e) => {
+//                 e.preventDefault();
+//                 handleSubmitForm();
+//               }}
+//             >
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Name</label>
+//                 <input
+//                   type="text"
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Email</label>
+//                 <input
+//                   type="email"
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <button
+//                 type="submit"
+//                 className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               >
+//                 Submit
+//               </button>
+//               <button
+//                 type="button"
+//                 className="bg-red-500 text-white px-4 py-2 rounded-lg ml-4"
+//                 onClick={() => setModalVisible(false)}
+//               >
+//                 Cancel
+//               </button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default Recorded;
+
 import Webinarcard from "@/Component/WebinarCard/Webinarcard";
 import React, { useState } from "react";
 import { Footer } from "@/Component/Footer/Footer";
@@ -690,45 +1034,48 @@ const Recorded = () => {
       title: "Ultra HD streaming",
       description:
         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
-      video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Add YouTube video URL
     },
     {
       title: "Smart scheduling",
       description:
         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
-      video: "https://www.youtube.com/embed/2Vv-BfVoq4g",
+      video: "https://www.youtube.com/embed/2Vv-BfVoq4g", // Add YouTube video URL
     },
     {
       title: "Workshops & webinars",
       description:
         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
-      video: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+      video: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Add YouTube video URL
     },
   ];
 
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
   const [isRegistered, setIsRegistered] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "" });
 
   const toggleReadMore = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const handleWatchVideo = (video) => {
-    setSelectedVideo(video);
-    setModalVisible(true); // Show the modal
+  const openFormModal = () => {
+    setModalVisible(true);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log("User Data:", formData); // Log form data to the console
-    setIsRegistered(true); // Set registration to true
-    setModalVisible(false); // Hide the modal after submission
+    console.log("Form Data:", formData); // Print form data to the console
+    setIsRegistered(true);
+    setModalVisible(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -750,22 +1097,39 @@ const Recorded = () => {
           </p>
         </div>
 
+        {!isRegistered && (
+          <div className="text-center mb-6">
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              onClick={openFormModal}
+            >
+              Register to Unlock All Videos
+            </button>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
           {data.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
             >
-              <div className="w-full h-48 mb-3">
-                <iframe
-                  className="w-full h-full rounded-lg"
-                  src={isRegistered ? item.video : ""}
-                  title={item.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
+              {isRegistered ? (
+                <div className="w-full h-48 mb-3">
+                  <iframe
+                    className="w-full h-full rounded-lg"
+                    src={item.video}
+                    title={item.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center">
+                  <span className="text-gray-500">Register to Unlock</span>
+                </div>
+              )}
 
               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
                 <span className="text-center">{item.title}</span>
@@ -786,61 +1150,53 @@ const Recorded = () => {
                   {expandedIndex === index ? "Read Less" : "Read More"}
                 </span>
               </div>
-
-              {!isRegistered && (
-                <button
-                  onClick={() => handleWatchVideo(item.video)}
-                  className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                  Watch Video
-                </button>
-              )}
             </div>
           ))}
         </div>
-
-        <Footer />
-
-        {modalVisible && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h2 className="text-2xl mb-4">Register to Watch</h2>
-              <form onSubmit={handleFormSubmit}>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Name</label>
-                  <input
-                    type="text"
-                    className="w-full p-2 border rounded"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Email</label>
-                  <input
-                    type="email"
-                    className="w-full p-2 border rounded"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Modal for registration form */}
+      {modalVisible && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg">
+            <h3 className="text-xl font-semibold mb-4">
+              Register to Watch All Videos
+            </h3>
+            <form onSubmit={handleSubmitForm}>
+              <div className="mb-4">
+                <label className="block text-gray-700">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <Footer />
     </div>
   );
 };
