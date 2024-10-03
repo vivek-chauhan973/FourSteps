@@ -1024,9 +1024,368 @@
 
 // export default Recorded;
 
+// import Webinarcard from "@/Component/WebinarCard/Webinarcard";
+// import React, { useState } from "react";
+// import { Footer } from "@/Component/Footer/Footer";
+
+// const Recorded = () => {
+//   const data = [
+//     {
+//       title: "Ultra HD streaming",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Add YouTube video URL
+//     },
+//     {
+//       title: "Smart scheduling",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/2Vv-BfVoq4g", // Add YouTube video URL
+//     },
+//     {
+//       title: "Workshops & webinars",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Add YouTube video URL
+//     },
+//   ];
+
+//   const [expandedIndex, setExpandedIndex] = useState(null);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [isRegistered, setIsRegistered] = useState(false);
+//   const [formData, setFormData] = useState({ name: "", email: "" });
+
+//   const toggleReadMore = (index) => {
+//     setExpandedIndex(expandedIndex === index ? null : index);
+//   };
+
+//   const openFormModal = () => {
+//     setModalVisible(true);
+//   };
+
+//   const handleSubmitForm = (e) => {
+//     e.preventDefault();
+//     console.log("Form Data:", formData); // Print form data to the console
+//     setIsRegistered(true);
+//     setModalVisible(false);
+//   };
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <Webinarcard />
+//       <div className="container mx-auto p-4">
+//         <div className="text-center my-6">
+//           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
+//             Unlock knowledge at your own pace with our recorded webinars
+//           </h2>
+
+//           <p className="py-2 px-20 text-sm">
+//             Are you looking to streamline your business operations and boost
+//             productivity? Join us for an insightful webinar led by{" "}
+//             <b>Amarjeet Singh</b>, a seasoned Zoho consultant and automation
+//             expert. In this session, Amarjeet will share his extensive knowledge
+//             of Zoho’s suite of applications and how they can transform your
+//             business.
+//           </p>
+//         </div>
+
+//         {!isRegistered && (
+//           <div className="text-center mb-6">
+//             <button
+//               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               onClick={openFormModal}
+//             >
+//               Register to Unlock All Videos
+//             </button>
+//           </div>
+//         )}
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+//           {data.map((item, index) => (
+//             <div
+//               key={index}
+//               className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+//             >
+//               {isRegistered ? (
+//                 <div className="w-full h-48 mb-3">
+//                   <iframe
+//                     className="w-full h-full rounded-lg"
+//                     src={item.video}
+//                     title={item.title}
+//                     frameBorder="0"
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                     allowFullScreen
+//                   ></iframe>
+//                 </div>
+//               ) : (
+//                 <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center">
+//                   <span className="text-gray-500">Register to Unlock</span>
+//                 </div>
+//               )}
+
+//               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
+//                 <span className="text-center">{item.title}</span>
+//               </div>
+
+//               <div className="mt-2 text-gray-700 text-center">
+//                 <div className={`text-sm`}>
+//                   {expandedIndex === index
+//                     ? item.description
+//                     : item.description.length > 100
+//                     ? item.description.slice(0, 100) + "..."
+//                     : item.description}
+//                 </div>
+//                 <span
+//                   className="text-blue-500 cursor-pointer mt-2"
+//                   onClick={() => toggleReadMore(index)}
+//                 >
+//                   {expandedIndex === index ? "Read Less" : "Read More"}
+//                 </span>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Modal for registration form */}
+//       {modalVisible && (
+//         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+//           <div className="bg-white p-6 rounded-lg">
+//             <h3 className="text-xl font-semibold mb-4">
+//               Register to Watch All Videos
+//             </h3>
+//             <form onSubmit={handleSubmitForm}>
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Name</label>
+//                 <input
+//                   type="text"
+//                   name="name"
+//                   value={formData.name}
+//                   onChange={handleInputChange}
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Email</label>
+//                 <input
+//                   type="email"
+//                   name="email"
+//                   value={formData.email}
+//                   onChange={handleInputChange}
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <button
+//                 type="submit"
+//                 className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               >
+//                 Submit
+//               </button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default Recorded;
+
+// import Webinarcard from "@/Component/WebinarCard/Webinarcard";
+// import React, { useState } from "react";
+// import { Footer } from "@/Component/Footer/Footer";
+
+// const Recorded = () => {
+//   const data = [
+//     {
+//       title: "Ultra HD streaming",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Add YouTube video URL
+//     },
+//     {
+//       title: "Smart scheduling",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/2Vv-BfVoq4g", // Add YouTube video URL
+//     },
+//     {
+//       title: "Workshops & webinars",
+//       description:
+//         "This setup should correctly center your feature titles. If it still doesn't work, it might help to inspect the elements using your browser's developer tools to see how the styles are being applied.",
+//       video: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Add YouTube video URL
+//     },
+//   ];
+
+//   const [expandedIndex, setExpandedIndex] = useState(null);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [isRegistered, setIsRegistered] = useState(false);
+//   const [formData, setFormData] = useState({ name: "", email: "" });
+
+//   const toggleReadMore = (index) => {
+//     setExpandedIndex(expandedIndex === index ? null : index);
+//   };
+
+//   const openFormModal = () => {
+//     setModalVisible(true);
+//   };
+
+//   const handleSubmitForm = (e) => {
+//     e.preventDefault();
+//     console.log("Form Data:", formData); // Print form data to the console
+//     setIsRegistered(true);
+//     setModalVisible(false);
+//   };
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <Webinarcard />
+//       <div className="container mx-auto p-4">
+//         <div className="text-center my-6">
+//           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
+//             Unlock knowledge at your own pace with our recorded webinars
+//           </h2>
+
+//           <p className="py-2 px-20 text-sm">
+//             Are you looking to streamline your business operations and boost
+//             productivity? Join us for an insightful webinar led by{" "}
+//             <b>Amarjeet Singh</b>, a seasoned Zoho consultant and automation
+//             expert. In this session, Amarjeet will share his extensive knowledge
+//             of Zoho’s suite of applications and how they can transform your
+//             business.
+//           </p>
+//         </div>
+
+//         {!isRegistered && (
+//           <div className="text-center mb-6">
+//             <button
+//               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               onClick={openFormModal}
+//             >
+//               Register to Unlock All Videos
+//             </button>
+//           </div>
+//         )}
+
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+//           {data.map((item, index) => (
+//             <div
+//               key={index}
+//               className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+//               onClick={isRegistered ? null : openFormModal} // Trigger modal for unregistered users
+//             >
+//               {isRegistered ? (
+//                 <div className="w-full h-48 mb-3">
+//                   <iframe
+//                     className="w-full h-full rounded-lg"
+//                     src={item.video}
+//                     title={item.title}
+//                     frameBorder="0"
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                     allowFullScreen
+//                   ></iframe>
+//                 </div>
+//               ) : (
+//                 <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center cursor-pointer">
+//                   <span className="text-gray-500">Register to Unlock</span>
+//                 </div>
+//               )}
+
+//               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
+//                 <span className="text-center">{item.title}</span>
+//               </div>
+
+//               <div className="mt-2 text-gray-700 text-center">
+//                 <div className={`text-sm`}>
+//                   {expandedIndex === index
+//                     ? item.description
+//                     : item.description.length > 100
+//                     ? item.description.slice(0, 100) + "..."
+//                     : item.description}
+//                 </div>
+//                 <span
+//                   className="text-blue-500 cursor-pointer mt-2"
+//                   onClick={() => toggleReadMore(index)}
+//                 >
+//                   {expandedIndex === index ? "Read Less" : "Read More"}
+//                 </span>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Modal for registration form */}
+//       {modalVisible && (
+//         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+//           <div className="bg-white p-6 rounded-lg">
+//             <h3 className="text-xl font-semibold mb-4">
+//               Register to Watch All Videos
+//             </h3>
+//             <form onSubmit={handleSubmitForm}>
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Name</label>
+//                 <input
+//                   type="text"
+//                   name="name"
+//                   value={formData.name}
+//                   onChange={handleInputChange}
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <div className="mb-4">
+//                 <label className="block text-gray-700">Email</label>
+//                 <input
+//                   type="email"
+//                   name="email"
+//                   value={formData.email}
+//                   onChange={handleInputChange}
+//                   required
+//                   className="w-full px-4 py-2 border rounded-lg"
+//                 />
+//               </div>
+//               <button
+//                 type="submit"
+//                 className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+//               >
+//                 Submit
+//               </button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default Recorded;
+
 import Webinarcard from "@/Component/WebinarCard/Webinarcard";
-import React, { useState } from "react";
-import { Footer } from "@/Component/Footer/Footer";
+import Image from "next/image";
+import React, { useState, useRef } from "react";
 
 const Recorded = () => {
   const data = [
@@ -1052,22 +1411,26 @@ const Recorded = () => {
 
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false); // Track registration state
   const [formData, setFormData] = useState({ name: "", email: "" });
+
+  const videoRefs = useRef([]); // To hold references of all videos
 
   const toggleReadMore = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const openFormModal = () => {
-    setModalVisible(true);
+  const handleVideoClick = () => {
+    if (!isRegistered) {
+      setModalVisible(true); // Show the form modal if not registered
+    }
   };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData); // Print form data to the console
     setIsRegistered(true);
-    setModalVisible(false);
+    setModalVisible(false); // Close the form after registration
   };
 
   const handleInputChange = (e) => {
@@ -1097,25 +1460,15 @@ const Recorded = () => {
           </p>
         </div>
 
-        {!isRegistered && (
-          <div className="text-center mb-6">
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-              onClick={openFormModal}
-            >
-              Register to Unlock All Videos
-            </button>
-          </div>
-        )}
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
           {data.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center"
+              className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer"
+              // Click event to trigger registration form
             >
-              {isRegistered ? (
-                <div className="w-full h-48 mb-3">
+              <div className="w-full h-48 mb-3" onClick={handleVideoClick}>
+                {isRegistered ? (
                   <iframe
                     className="w-full h-full rounded-lg"
                     src={item.video}
@@ -1124,12 +1477,14 @@ const Recorded = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                </div>
-              ) : (
-                <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center">
-                  <span className="text-gray-500">Register to Unlock</span>
-                </div>
-              )}
+                ) : (
+                  <div className="w-full h-48 mb-3 bg-gray-200 flex justify-center items-center cursor-pointer">
+                    <span className="text-gray-500">
+                      <Image src="/image/card1.png" height={400} width={400} />
+                    </span>
+                  </div>
+                )}
+              </div>
 
               <div className="bg-gray-200 text-black font-semibold rounded-full py-1 px-4 flex justify-center">
                 <span className="text-center">{item.title}</span>
@@ -1160,7 +1515,7 @@ const Recorded = () => {
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">
-              Register to Watch All Videos
+              Register to Continue Watching
             </h3>
             <form onSubmit={handleSubmitForm}>
               <div className="mb-4">
@@ -1195,8 +1550,6 @@ const Recorded = () => {
           </div>
         </div>
       )}
-
-      <Footer />
     </div>
   );
 };

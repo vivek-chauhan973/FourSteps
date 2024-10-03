@@ -38,7 +38,6 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
 
       {resourceopen && (
         <div className="absolute left-0 mt-1 w-64 my-2 h-auto rounded-[17px] bg-white shadow-lg z-10">
- 
           <ul className="h-full w-full    ">
             <li className="flex justify-between items-center  s  px-4 py-3  hover:bg-gray-200   border-b border-gray-200  cursor-pointer">
               <div className="flex gap-1   items-center">
