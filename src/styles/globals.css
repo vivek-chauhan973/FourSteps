@@ -655,10 +655,11 @@ a:hover span {
   width: 0;
   height: 2px;
   background-color: #F36B21;
- 
+
   /* Color of the line */
   transition: width 220ms ease-in;
 }
+
 .footerHover a:hover::after {
   width: 100%;
   /* Full widthon hover */
@@ -673,16 +674,17 @@ a:hover span {
   height: 20px;
   /* Adjust size as needed */
   border-radius: 50%;
-  border: 1px solid  #F36B21;
+  border: 1px solid #F36B21;
   /* Change color as needed */
   margin-right: 4px;
   /* Space between icon and text */
   border-radius: 100%;
   color: #F36B21;
 }
+
 /* here is backtotop animation */
 
-.backtotopanimate{
+.backtotopanimate {
   animation: zoomanimate 1s ease infinite;
 }
 
@@ -690,10 +692,16 @@ a:hover span {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.2);
   }
+
   100% {
     transform: scale(1);
   }
+}
+
+.btn_filter {
+  @apply bg-white border-2 border-black rounded-md py-2 px-4 text-lg cursor-pointer transition-transform transform hover:scale-105 hover:bg-gray-200;
 }

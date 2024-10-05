@@ -1,25 +1,3 @@
-// import React from 'react';
-
-// const Sidebar = () => {
-//   return (
-//     <div className="w-64 h-screen  bg-gray-800 text-white">
-//       <ul className="space-y-4 p-4">
-//         <li>
-//           <a href="/admin" className="hover:bg-gray-700 p-2 rounded">Dashboard</a>
-//         </li>
-//         <li>
-//           <a href="/admin/users" className="hover:bg-gray-700 p-2 rounded">Users</a>
-//         </li>
-//         <li>
-//           <a href="/admin/settings" className="hover:bg-gray-700 p-2 rounded">Settings</a>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
-
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -256,7 +234,8 @@ const Sidebar = () => {
             height={400}
           />
           <span className="text-md tracking-wide leading-5 border-l mt-2 md:mt-0 md:py-1 pl-2 md:pl-4 font-bold bg-gradient-to-r from-primary via-amber-400 to-white inline-block text-transparent bg-clip-text">
-            FourSteps <br />
+            FourSteps
+            <br />
           </span>
         </div>
         {sidebarTabs.map((tab, index) => (

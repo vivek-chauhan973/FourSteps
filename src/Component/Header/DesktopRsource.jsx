@@ -21,7 +21,7 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
       onMouseLeave={handleMouseLeave}
     >
       <button className="focus:outline-none hover:text-orange-500 flex items-center relative">
-        Resources
+        <Link href="/resource">Resources</Link>
         {resourceopen ? (
           <FaChevronUp
             className="ml-1 transition-transform duration-300"
