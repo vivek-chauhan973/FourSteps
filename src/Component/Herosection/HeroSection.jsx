@@ -76,7 +76,7 @@ const HeroSection = () => {
             interval={3000}
             infiniteLoop
             showStatus={false}
-            showArrows={true}
+            showArrows={false}
             showIndicators={false}
             dynamicHeight={true}
             swipeable={true}

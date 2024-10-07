@@ -1,8 +1,31 @@
-import Faq from "@/Component/FAQ/Faq";
-import Nav from "@/Component/Header/Nav";
-import Link from "next/link";
+import react, { useState } from "react";
 
+import Nav from "@/Component/Header/Nav";
+import Pagination from "@/Component/Pagination/Pagination";
+import Link from "next/link";
+import Image from "next/image";
+import { resources } from "@/Component/data/SwitchData";
 export default function Resource() {
+  const [showMoreIndustries, setShowMoreIndustries] = useState(false);
+  const [showMoreDepartments, setShowMoreDepartments] = useState(false);
+
+  // Data for checkboxes (Industries and Departments)
+  const industries = [
+    "Banking and Financial Services",
+    "Customer Experience",
+    "Energy and Utilities",
+    "Healthcare",
+    "Hospitality",
+  ];
+
+  const departments = [
+    "Contact Center",
+    "Finance and Accounting (F&A)",
+    "Human Resources (HR)",
+    "Information Technology (IT)",
+    "other",
+  ];
+
   const cardData = [
     {
       title: "Stat Report 2024",
@@ -23,13 +46,6 @@ export default function Resource() {
       type: "FEATURED | ANALYST REPORT",
       image: "/image/1.png", // Add the image URL
     },
-    {
-      title: "Everest Group Assessment 2024",
-      description:
-        "According to their market impact, vision, and capabilities.",
-      type: "FEATURED | ANALYST REPORT",
-      image: "/image/1.png", // Add the image URL
-    },
   ];
 
   return (
@@ -37,111 +53,103 @@ export default function Resource() {
       <div className="bg-slate-100 ">
         <Nav />
         <div className="container-wrapper">
-          <div className="flex items-center justify-center py-4  bg-gray-100">
+          <div className="flex  items-center justify-center p-6 gap-4 ">
+            <div className="max-w-2xl text-center">
+              <h1 className="text-4xl font-bold ">All Section Here </h1>
+              <p className="mt-4 text-lg ">
+                I hated every minute of training, but I said, 'Don't quit. ...
+              </p>
+            </div>
+            <div className="mt-6">
+              <Image
+                aria-hidden="true"
+                alt="animated character"
+                src="/image/try.jpeg"
+                width={300}
+                height={400}
+              />
+            </div>
+          </div>
+          <div className="flex items-center justify-center py-10 px-5 ">
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/resource/all" className="btn_filter">
-                Show all
-              </Link>
-              <Link href="/resource/webinar" className="btn_filter">
-                Webinar
-              </Link>
-              <Link href="/resource/case-studies" className="btn_filter">
-                Case & studies
-              </Link>
-              <Link href="/resource/training" className="btn_filter">
-                Training
-              </Link>
-              <Link href="/resource/demo-videos" className="btn_filter">
-                Demos & Videos
-              </Link>
+              {resources.map((resource, index) => (
+                <Link key={index} href={resource.href} className="btn_filter">
+                  {resource.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
-        <div className=" container-wrapper  grid grid-cols-1 xl:grid-cols-[320px,2fr] gap-5 relative">
+        <div className=" px-5 grid grid-cols-1 xl:grid-cols-[320px,2fr] gap-5 relative">
           <div className="relative">
-            <div className="hidden xl:block">
+            <div className="">
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
 
+                {/* Industries */}
                 <div className="mb-6">
                   <h3 className="font-semibold text-md mb-2">Industries</h3>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Banking and Financial Services</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Customer Experience</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Energy and Utilities</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Healthcare</span>
-                  </label>
-                  <button className="text-blue-500 mt-2">Show more</button>
+
+                  {/* Display first 3 industries by default */}
+                  {industries
+                    .slice(0, showMoreIndustries ? industries.length : 3)
+                    .map((industry, index) => (
+                      <label className="flex items-center mb-1" key={index}>
+                        <input
+                          type="checkbox"
+                          className="form-checkbox h-4 w-4 text-blue-600"
+                        />
+                        <span className="ml-2">{industry}</span>
+                      </label>
+                    ))}
+
+                  {/* Show More/Less button */}
+                  <button
+                    className="text-blue-500 mt-2"
+                    onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+                  >
+                    {showMoreIndustries ? "Show less" : "Show more"}
+                  </button>
                 </div>
 
+                {/* Departments */}
                 <div className="mb-6">
                   <h3 className="font-semibold text-md mb-2">Departments</h3>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Contact Center</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Finance and Accounting (F&A)</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Human Resources (HR)</span>
-                  </label>
-                  <label className="flex items-center mb-1">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Information Technology (IT)</span>
-                  </label>
-                  <button className="text-blue-500 mt-2">Show more</button>
+
+                  {/* Display first 3 departments by default */}
+                  {departments
+                    .slice(0, showMoreDepartments ? departments.length : 3)
+                    .map((department, index) => (
+                      <label className="flex items-center mb-1" key={index}>
+                        <input
+                          type="checkbox"
+                          className="form-checkbox h-4 w-4 text-blue-600"
+                        />
+                        <span className="ml-2">{department}</span>
+                      </label>
+                    ))}
+
+                  {/* Show More/Less button */}
+                  <button
+                    className="text-blue-500 mt-2"
+                    onClick={() => setShowMoreDepartments(!showMoreDepartments)}
+                  >
+                    {showMoreDepartments ? "Show less" : "Show more"}
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          {/* side main data */}
           <div>
             <div>
-              {/* <SearchCarPagePackageList/> */}
-
-              <div className="grid grid-cols-1 bg-red-500 sm:grid-cols-2 md:grid-cols-3 gap-2 p-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2  lg:grid-cols-3">
                 {cardData.map((item, index) => (
                   <div
                     key={index}
                     className="bg-white rounded-lg shadow-md px-3 py-4 m-2   transition-transform transform hover:scale-105"
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center justify-center ">
                       <img
                         src={item.image}
                         alt={item.type}
@@ -154,7 +162,7 @@ export default function Resource() {
                     <h3 className="text-md md:text-lg font-bold mb-2 break-words">
                       {item.title}
                     </h3>
-                    <p className="text-sm md:text-md text-gray-700">
+                    <p className="text-xs md:text-md text-gray-700">
                       {item.description}
                     </p>
                   </div>
@@ -163,22 +171,10 @@ export default function Resource() {
             </div>
           </div>
         </div>
-        {/* <div className="border-t border">
-                    <div className="w-full md:w-3/4 m-auto px-2 pb-5">
-                        <div className="text-center mt-5 mb-10">
-                            <p className="md:text-[22px] text-[20px] font-semibold mb-2 capitalize">
-                                Frequently Asked Questions (FAQs) <span className='lowercase'>for</span>
-                            </p>
-                            <p className="text-para md:text-base">
-                                We help you prepare for your trip and ensure an effortless and enjoyable travel experience.
-                            </p>
-                        </div>
-                        <Faq/>
-                    </div>
-                </div> */}
-        {/* <div className="border-t border">
-                    <BottomLink/>
-                </div> */}
+
+        <div className="text-end p-10">
+          <Pagination />
+        </div>
       </div>
     </>
   );
