@@ -20,8 +20,7 @@ import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 // import Trail from "./Trail";
 import BackToTop from "./Web/BackToTop";
-import WebinarHero from "./WebinarDetail/WebinarHero";
-// import Webinarcard from "./WebinarCard/Webinarcard";
+// import OverviewToggle from "./WebinarDetail/OverviewToggle";
 
 const Home = () => {
   useEffect(() => {
@@ -35,7 +34,8 @@ const Home = () => {
   return (
     <div>
       {/* <Trail /> */}
-      <WebinarHero />
+
+      {/* <OverviewToggle /> */}
       <Nav />
       <BackToTop />
       <HeroSection />
