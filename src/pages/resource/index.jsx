@@ -1,13 +1,20 @@
 import react, { useState } from "react";
-
 import Nav from "@/Component/Header/Nav";
-import Pagination from "@/Component/Pagination/Pagination";
 import Link from "next/link";
 import Image from "next/image";
-import { resources } from "@/Component/data/SwitchData";
+// import { resources } from "@/Component/data/SwitchData";
 export default function Resource() {
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
+
+  const resources = [
+    { href: "/resource/all", label: "Show all" },
+    { href: "/resource/webinar", label: "Webinar" },
+    { href: "/resource/case-studies", label: "Case & studies" },
+    { href: "/resource/training", label: "Training" },
+    { href: "/resource/demo-videos", label: "Demos & Videos" },
+    { href: "/resource/product", label: "Product" },
+  ];
 
   // Data for checkboxes (Industries and Departments)
   const industries = [
@@ -150,10 +157,12 @@ export default function Resource() {
                     className="bg-white rounded-lg shadow-md px-3 py-4 m-2   transition-transform transform hover:scale-105"
                   >
                     <div className="flex items-center justify-center ">
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.type}
                         className="w-40 h-40"
+                        width={300}
+                        height={400}
                       />
                     </div>
                     <div className="font-semibold text-xs pt-5 pb-1 text-blue-600">
@@ -172,10 +181,14 @@ export default function Resource() {
           </div>
         </div>
 
-        <div className="text-end p-10">
-          <Pagination />
-        </div>
+        <div className="text-end p-10">Pagination page</div>
       </div>
     </>
   );
 }
+
+
+
+
+
+

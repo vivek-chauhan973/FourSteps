@@ -17,7 +17,7 @@ const Routes = () => {
         <Nav />
       </div>
       <div className="">
-        <Hero Heading={Heading}  />
+        <Hero Heading={Heading} />
       </div>
       <div className="py-10">
         <Switch />
