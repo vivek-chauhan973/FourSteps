@@ -44,7 +44,7 @@ const Sidebar = () => {
   const sidebarTabs = useMemo(
     () => [
       {
-        label: "Dashboard",
+        label: "Global",
         icon: () => <FontAwesomeIcon icon={faChartSimple} />,
         href: "/admin",
       },
@@ -53,17 +53,17 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [
           {
-            label: "Upcoming Webinar",
+            label: "Webinar Master",
             // change url according to the bizare expendition
-            href: "/admin/webinar/upcoming-webinar",
+            href: "/admin/webinar/master-webinar",
           },
           {
-            label: "Recorded Webinars",
-            href: "/admin/webinar/recorded-webinar",
+            label: "Create Webinar",
+            href: "/admin/webinar/create-webinar",
           },
           {
-            label: "Logo Management",
-            href: "/admin/website-function/logo-management",
+            label: "Webinar List",
+            href: "/admin/webinar/list-webinar",
           },
         ],
       },
@@ -82,7 +82,7 @@ const Sidebar = () => {
         href: "/admin/header-footer",
       },
       {
-        label: "Package",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faLayerGroup} />,
         subMenu: [
           { label: "Package Master", href: "/admin/package/category" },
@@ -99,7 +99,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Car Rental",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faCar} />,
         subMenu: [
           { label: " Car Package Master", href: "/admin/car-rental" },
@@ -120,7 +120,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Hotels",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faHotel} />,
         subMenu: [
           { label: "Hotel Master", href: "#" },
@@ -129,7 +129,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Blog",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faBlog} />,
         subMenu: [
           { label: "Blog Master", href: "/admin/blog/category" },
@@ -139,7 +139,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Manage Order",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faCartShopping} />,
         subMenu: [
           { label: "Package Order", href: "/admin/manage-order/package" },
@@ -148,7 +148,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Pages ",
+        label: "ABC.....",
         icon: () => <FontAwesomeIcon icon={faFile} />,
         href: "/admin/page-create",
       },
