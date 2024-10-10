@@ -19,6 +19,7 @@ import {
   faRightFromBracket,
   faTag,
   faLayerGroup,
+  faUsers,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -77,12 +78,12 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "Header / Footer",
-        icon: () => <FontAwesomeIcon icon={faSort} />,
-        href: "/admin/header-footer",
+        label: "Our Teams",
+        icon: () => <FontAwesomeIcon icon={faUsers} />,
+        subMenu: [{ label: "Add Team here", href: "/admin/teams/team" }],
       },
       {
-        label: "ABC.....",
+        label: "package master",
         icon: () => <FontAwesomeIcon icon={faLayerGroup} />,
         subMenu: [
           { label: "Package Master", href: "/admin/package/category" },
@@ -99,7 +100,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.....",
+        label: "ABC.",
         icon: () => <FontAwesomeIcon icon={faCar} />,
         subMenu: [
           { label: " Car Package Master", href: "/admin/car-rental" },
@@ -120,7 +121,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.....",
+        label: "ABC..",
         icon: () => <FontAwesomeIcon icon={faHotel} />,
         subMenu: [
           { label: "Hotel Master", href: "#" },
@@ -129,7 +130,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.....",
+        label: "ABC...",
         icon: () => <FontAwesomeIcon icon={faBlog} />,
         subMenu: [
           { label: "Blog Master", href: "/admin/blog/category" },
@@ -148,7 +149,7 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.....",
+        label: "ABC......",
         icon: () => <FontAwesomeIcon icon={faFile} />,
         href: "/admin/page-create",
       },
