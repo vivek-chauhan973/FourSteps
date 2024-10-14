@@ -367,42 +367,82 @@ const MobileNav = ({ isMobileMenuOpen }) => {
     {
       name: "Website Development",
       subcategories: [
-        { name: "Custom website", path: "/servicesDetail/website/cmsdetail" },
-        "Subcategory 1.2",
-        "Subcategory 1.3",
-        "Subcategory 1.4",
+        { name: "CMS", path: "/servicesDetail/website/cmsdetail" },
+        {
+          name: "Custom Web Development",
+          path: "/servicesDetail/website/customeweb",
+        },
+        { name: "E-Commerce", path: "/servicesDetail/website/e-commerce" },
       ],
     },
     {
       name: "Zoho services",
       subcategories: [
-        "vivek chauhan",
-        "Subcategory 2.2",
-        "Subcategory 2.3",
-        "Subcategory 2.4",
+        {
+          name: "Zoho Setup and Implementation",
+          path: "/servicesDetail/zoho/zoho-setup/",
+        },
+        {
+          name: " Zoho Managed Services",
+          path: "/servicesDetail/zoho/zoho-manage/",
+        },
+        {
+          name: "Zoho Custom Development",
+          path: "/servicesDetail/zoho/zoho-custom/",
+        },
+        {
+          name: "Zoho Training and Consulting",
+          path: "/servicesDetail/zoho/zoho-training",
+        },
       ],
     },
     {
+      // Zoho CRM For Real Estate
+
       name: "Zoho Industry Solution",
       subcategories: [
-        "Subcategory 2.1",
-        "Subcategory 2.2",
-        "Subcategory 2.3",
-        "Subcategory 2.4",
+        {
+          name: "Zoho CRM For Real Estate",
+          path: "/servicesDetail/zohoindustry/zoho-real-estate",
+        },
+        {
+          name: "Zoho CRM For Travel Agency",
+          path: "/servicesDetail/zohoindustry/zoho-travel-agency",
+        },
       ],
     },
     {
       name: "Hubspot Services ",
       subcategories: [
-        "Subcategory 2.1",
-        "Subcategory 2.2",
-        "Subcategory 2.3",
-        "Subcategory 2.4",
+        {
+          name: "Hubsport Setup and Implementation",
+          path: "/servicesDetail/hubspot/setup",
+        },
+        {
+          name: "Hubsport Development",
+          path: "/servicesDetail/hubspot/development",
+        },
+        {
+          name: "Hubsport Managed Services",
+          path: "/servicesDetail/hubspot/manage",
+        },
+        {
+          name: "Hubsport Training and Consulting",
+          path: "/servicesDetail/hubspot/training",
+        },
       ],
     },
     {
+//       PPC Management
+// Search Engine Optimization
+// Social Media Management
+// Content Marketing
       name: "Digital marketing ",
       subcategories: [
+        {
+          name: "Hubsport Training and Consulting",
+          path: "/servicesDetail/hubspot/training",
+        },
         "Subcategory 2.1",
         "Subcategory 2.2",
         "Subcategory 2.3",
@@ -412,10 +452,14 @@ const MobileNav = ({ isMobileMenuOpen }) => {
     {
       name: "Other Crm Services",
       subcategories: [
-        "Subcategory 2.1",
-        "Subcategory 2.2",
-        "Subcategory 2.3",
-        "Subcategory 2.4",
+        {
+          name: "Bitrix24 Services",
+          path: "/servicesDetail/zohoindustry/bitrix24",
+        },
+        {
+          name: "Salesforce Services",
+          path: "/servicesDetail/zohoindustry/salseforce",
+        },
       ],
     },
   ];
@@ -482,7 +526,6 @@ const MobileNav = ({ isMobileMenuOpen }) => {
 
   return (
     <div
-  
       className={`fixed md:hidden top-24 left-0 h-screen w-full bg-gray-100 shadow-lg ${
         isMobileMenuOpen ? "menu-open" : "menu-close"
       }`}
