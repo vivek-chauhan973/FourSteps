@@ -553,11 +553,62 @@ console.log("form data ---> ",formData)
     <AdminLayout>
       <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-md mt-10">
         <h1 className="text-center text-2xl font-semibold text-gray-800 mb-6">
-          Add Admin Here
+         Add Team Member Here
         </h1>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+        <div className="col-span-2 flex flex-col ">
+           <label className="block mb-2 text-sm font-medium text-gray-700">
+             Upload Image
+           </label>
+          <input
+              type="file"
+              accept="image/*"
+              onChange={null}
+              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
+            />
+            {formData.imagePreview && (
+              <div className="mt-4 object-cover rounded-md ">
+                <Image
+                  src={formData.imagePreview}
+                  alt={formData.altText || "Image Preview"}
+                  width={200}
+                  height={200}
+                />
+              </div>
+            )}
+          </div> 
+          {/* Alt Text input */}
+           <div className="col-span-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Alt Text
+            </label>
+            <input
+              type="text"
+              name="altText"
+              value={formData.altText}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Describe the image"
+              required
+            />
+          </div>
+          <div className="col-span-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <input
+              type="text"
+              name="altText"
+              value={formData.altText}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Describe the image"
+              required
+            />
+          </div>
           {/* Name input */}
+
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Name
@@ -592,7 +643,7 @@ console.log("form data ---> ",formData)
           {/* Link 1 input */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Link 1
+              LinkedIn
             </label>
             <input
               type="url"
@@ -608,7 +659,7 @@ console.log("form data ---> ",formData)
           {/* Link 2 input */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Link 2
+              Twitter
             </label>
             <input
               type="url"

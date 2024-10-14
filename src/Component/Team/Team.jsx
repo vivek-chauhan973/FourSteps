@@ -166,7 +166,7 @@ const Team = () => {
           welcoming atmosphere.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 md:px-8 lg:px-16 place-items-center">
-          {allTeamMember.map((member) => (
+          {allTeamMember?.map((member) => (
             <div
               key={member._id}
               className="w-full max-w-xs  md:max-w-sm lg:max-w-md h-80 border rounded-lg shadow-lg overflow-hidden"
