@@ -496,16 +496,33 @@
 // export default Teams;
 
 import AdminLayout from "@/Component/admin/AdminLayout";
+import Image from "next/image";
 import React, { useState } from "react";
+import { FaHive } from "react-icons/fa";
 
 const Teams = () => {
   // State to handle form inputs
+  const [imageForm, setImageForm] = useState({
+    image: null,
+    imagePreview: "",
+  });
   const [formData, setFormData] = useState({
     name: "",
     designation: "",
     link1: "",
-    // link2: "",
+    link2: "",
+    altText: "",
   });
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageForm((prevData) => ({
+        ...prevData,
+        image: file,
+        imagePreview: URL.createObjectURL(file),
+      }));
+    }
+  };
 
   // Handle input changes
   const handleChange = (e) => {
@@ -520,7 +537,7 @@ const Teams = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-console.log("form data ---> ",formData)
+    // console.log("form data ---> ",formData)
     // Send the form data to the API
     try {
       const response = await fetch("/api/team", {
@@ -543,6 +560,7 @@ console.log("form data ---> ",formData)
         designation: "",
         link1: "",
         link2: "",
+        altText: "",
       });
     } catch (error) {
       console.error("Error:", error);
@@ -553,33 +571,35 @@ console.log("form data ---> ",formData)
     <AdminLayout>
       <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-md mt-10">
         <h1 className="text-center text-2xl font-semibold text-gray-800 mb-6">
-         Add Team Member Here
+          Add Team Member Here
         </h1>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
-        <div className="col-span-2 flex flex-col ">
-           <label className="block mb-2 text-sm font-medium text-gray-700">
-             Upload Image
-           </label>
-          <input
+          <div className="col-span-2 flex flex-col md:flex-row ">
+            <div>
+            <label className="block mb-2 text-sm font-medium text-gray-700">
+              Upload Image
+            </label>
+            <input
               type="file"
               accept="image/*"
-              onChange={null}
+              onChange={handleImageChange}
               className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
             />
-            {formData.imagePreview && (
-              <div className="mt-4 object-cover rounded-md ">
+            </div>
+            {imageForm.imagePreview && (
+              <div className="mt-4 object-cover rounded-md">
                 <Image
-                  src={formData.imagePreview}
+                  src={imageForm.imagePreview}
                   alt={formData.altText || "Image Preview"}
                   width={200}
                   height={200}
                 />
               </div>
             )}
-          </div> 
+          </div>
           {/* Alt Text input */}
-           <div className="col-span-1">
+          <div className="col-span-1">
             <label className="block text-sm font-medium text-gray-700">
               Alt Text
             </label>
