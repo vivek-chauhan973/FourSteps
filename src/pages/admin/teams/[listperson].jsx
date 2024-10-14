@@ -1,5 +1,3 @@
-
-
 import AdminLayout from "@/Component/admin/AdminLayout";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -81,15 +79,15 @@ const Teams = () => {
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
           <div className="col-span-2 flex flex-col md:flex-row ">
             <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
-            />
+              <label className="block mb-2 text-sm font-medium text-gray-700">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
+              />
             </div>
             {imageForm.imagePreview && (
               <div className="mt-4 object-cover rounded-md">

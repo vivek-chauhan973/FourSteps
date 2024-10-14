@@ -80,7 +80,10 @@ const Sidebar = () => {
       {
         label: "Our Teams",
         icon: () => <FontAwesomeIcon icon={faUsers} />,
-        subMenu: [{ label: "Add Team here", href: "/admin/teams/team" }],
+        subMenu: [
+          { label: "Add Team here", href: "/admin/teams/team" },
+          { label: "List of team", href: "/admin/teams/listofTeam" },
+        ],
       },
       {
         label: "package master",
