@@ -56,7 +56,18 @@ const CircularProgressBar = ({ percentage, color }) => {
 };
 
 const Team = () => {
+  const fetchAllTeamMember = async () => {
+    const response = await fetch("/api/team");
+    return await response.json();
+  };
   // for circle bar
+  const [allTeamMember, setAllTeamMember] = useState([]);
+  useEffect(() => {
+    fetchAllTeamMember().then((res) => {
+      setAllTeamMember(res || []);
+    });
+  }, []);
+  console.log("team members is here --> ", allTeamMember);
 
   const progressData = [
     { title: "Zoho Consulting", percentage: 90, color: "#FF8A50" },
@@ -155,31 +166,31 @@ const Team = () => {
           welcoming atmosphere.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 md:px-8 lg:px-16 place-items-center">
-          {members.map((member) => (
+          {allTeamMember.map((member) => (
             <div
-              key={member.id}
+              key={member._id}
               className="w-full max-w-xs  md:max-w-sm lg:max-w-md h-80 border rounded-lg shadow-lg overflow-hidden"
             >
               <div className="w-full h-3/5 p-4">
                 <img
                   className="w-full h-full rounded-md object-cover"
-                  src={member.img}
-                  alt={member.title}
+                  src={member?.img}
+                  alt={member?.title}
                 />
               </div>
               <div className="w-full h-2/5 px-2">
                 <div className="w-full h-3/5 ">
                   <div className="font-semibold text-center text-md">
-                    {member.title}
+                    {member?.name}
                   </div>
                   <p className="text-gray-700 text-center text-base">
-                    {member.designation}
+                    {member?.designation}
                   </p>
                 </div>
                 <div className="w-full h-auto pt-1 flex justify-center items-center space-x-2">
-                  {member.linkedIn && (
+                  {member?.link1 && (
                     <a
-                      href={member.linkedIn}
+                      href={member?.link1}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-full  text-blue-500 text-3xl flex justify-center items-center"
@@ -187,9 +198,9 @@ const Team = () => {
                       <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                   )}
-                  {member.twitter && (
+                  {member?.link2 && (
                     <a
-                      href={member.twitter}
+                      href={member?.link2}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-full  text-blue-500 text-3xl flex justify-center items-center"
@@ -197,7 +208,7 @@ const Team = () => {
                       <FontAwesomeIcon icon={faTwitter} />
                     </a>
                   )}
-                  {member.instagram && (
+                  {/* {member.instagram && (
                     <a
                       href={member.instagram}
                       target="_blank"
@@ -206,7 +217,7 @@ const Team = () => {
                     >
                       <FontAwesomeIcon icon={faInstagram} />
                     </a>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
