@@ -9,6 +9,18 @@ const teamMemberSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
+  filename:{
+    type: String,
+    required: true,
+  },
+  path:{
+    type: String,
+    required: true,
+  },
   link1: {
     type: String,
     required: true,
@@ -17,6 +29,10 @@ const teamMemberSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  altText:{
+    type:String,
+    required:true
+  }
 });
 
 // Check if the model already exists to avoid overwriting

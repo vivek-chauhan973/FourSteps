@@ -5,14 +5,14 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 let isConnected = false; // Track the connection status
 
-export async function dbConnect() {
+const dbConnect=async ()=> {
   if (isConnected) {
     console.log("Already connected to MongoDB");
     return;
   }
 
   try {
-    const db = await mongoose.connect(MONGODB_URI, {
+    const db = await mongoose.connect("mongodb://localhost:27017/foursteps", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -23,3 +23,4 @@ export async function dbConnect() {
     console.error("Error connecting to MongoDB:", error);
   }
 }
+export default dbConnect;
