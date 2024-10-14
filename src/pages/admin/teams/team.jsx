@@ -13,6 +13,7 @@ const Teams = () => {
   const [formData, setFormData] = useState({
     name: "",
     designation: "",
+    description:"",
     link1: "",
     link2: "",
     altText: "",
@@ -41,15 +42,23 @@ const Teams = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form =new FormData();
+    form.append('file',imageForm?.image);
+    form.append('name',formData?.name);
+    form.append('designation',formData?.designation);
+    form.append('description',formData?.description);
+    form.append('link1',formData?.link1);
+    form.append('link2',formData?.link2);
+    form.append('altText',formData?.altText);
     // console.log("form data ---> ",formData)
     // Send the form data to the API
     try {
       const response = await fetch("/api/team", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        body: form,
       });
 
       if (!response.ok) {
@@ -62,6 +71,7 @@ const Teams = () => {
       setFormData({
         name: "",
         designation: "",
+        description:"",
         link1: "",
         link2: "",
         altText: "",
@@ -86,7 +96,7 @@ const Teams = () => {
             </label>
             <input
               type="file"
-              accept="image/*"
+              // accept="image/*"
               onChange={handleImageChange}
               className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
             />
@@ -123,8 +133,8 @@ const Teams = () => {
             </label>
             <input
               type="text"
-              name="altText"
-              value={formData.altText}
+              name="description"
+              value={formData.description}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Describe the image"
