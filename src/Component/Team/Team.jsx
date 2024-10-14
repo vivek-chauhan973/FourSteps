@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTwitter,
-  faLinkedin,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const CircularProgressBar = ({ percentage, color }) => {
   const radius = 60;
