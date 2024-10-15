@@ -1,5 +1,3 @@
-
-
 import AdminLayout from "@/Component/admin/AdminLayout";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -13,7 +11,7 @@ const Teams = () => {
   const [formData, setFormData] = useState({
     name: "",
     designation: "",
-    description:"",
+    description: "",
     link1: "",
     link2: "",
     altText: "",
@@ -42,15 +40,15 @@ const Teams = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form =new FormData();
-    form.append('file',imageForm?.image);
-    form.append('name',formData?.name);
-    form.append('designation',formData?.designation);
-    form.append('description',formData?.description);
-    form.append('link1',formData?.link1);
-    form.append('link2',formData?.link2);
-    form.append('altText',formData?.altText);
-    // console.log("form data ---> ",formData)
+    const form = new FormData();
+    form.append("file", imageForm?.image);
+    form.append("name", formData?.name);
+    form.append("designation", formData?.designation);
+    form.append("description", formData?.description);
+    form.append("link1", formData?.link1);
+    form.append("link2", formData?.link2);
+    form.append("altText", formData?.altText);
+    console.log("form data ---> ", formData);
     // Send the form data to the API
     try {
       const response = await fetch("/api/team", {
@@ -71,7 +69,7 @@ const Teams = () => {
       setFormData({
         name: "",
         designation: "",
-        description:"",
+        description: "",
         link1: "",
         link2: "",
         altText: "",
@@ -91,15 +89,15 @@ const Teams = () => {
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
           <div className="col-span-2 flex flex-col md:flex-row ">
             <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              // accept="image/*"
-              onChange={handleImageChange}
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
-            />
+              <label className="block mb-2 text-sm font-medium text-gray-700">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                // accept="image/*"
+                onChange={handleImageChange}
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-gray-100 hover:file:bg-gray-200"
+              />
             </div>
             {imageForm.imagePreview && (
               <div className="mt-4 object-cover rounded-md">
@@ -137,7 +135,7 @@ const Teams = () => {
               value={formData.description}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Describe the image"
+              placeholder="add Description"
               required
             />
           </div>
@@ -185,7 +183,7 @@ const Teams = () => {
               value={formData.link1}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Enter first link"
+              placeholder="paste your linkedin url"
               required
             />
           </div>
@@ -201,7 +199,7 @@ const Teams = () => {
               value={formData.link2}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Enter second link"
+              placeholder="paste your Twitter url"
               required
             />
           </div>

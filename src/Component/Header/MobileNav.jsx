@@ -433,10 +433,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
       ],
     },
     {
-//       
-// 
-// 
-// 
+
       name: "Digital marketing ",
       subcategories: [
         {

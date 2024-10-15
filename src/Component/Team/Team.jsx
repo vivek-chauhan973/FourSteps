@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 
 const CircularProgressBar = ({ percentage, color }) => {
   const radius = 60;
@@ -71,83 +72,6 @@ const Team = () => {
     { title: "HubSpot Consulting", percentage: 85, color: "#CE93D8" },
     { title: "Digital Marketing", percentage: 50, color: "#AED581" },
   ];
-  //  for team member
-
-  const members = [
-    {
-      id: 1,
-      img: "/image/ab.webp",
-      title: "Amarjeet Singh",
-      designation: "Founder | Business Automation Expert",
-      linkedIn: "https://linkedin.com/in/divyanka",
-      twitter: "https://twitter.com/divyanka",
-      instagram: "https://instagram.com/divyanka",
-    },
-    {
-      id: 2,
-      img: "/image/ab.webp",
-      title: "Divyanka Mishra",
-      designation: "Chief Technical officer (Technical Head)",
-      linkedIn: "https://linkedin.com/in/divyanka",
-      twitter: "https://twitter.com/divyanka",
-      instagram: "https://instagram.com/divyanka_887",
-    },
-    {
-      id: 3,
-      img: "/image/ab.webp",
-      title: "Vivek Kumar Chauhan",
-      designation: "Employee | Web Developer",
-      linkedIn: "https://linkedin.com/in/divyanka",
-      twitter: "https://twitter.com/di",
-      instagram: "https://instagram.com/vivek_chauhan973",
-    },
-    {
-      id: 4,
-      img: "/image/ab.webp",
-      title: "Rakesh Kumar",
-      designation: "Employee | Web Developer",
-      linkedIn: "https://www.linkedin.com/in/rakesh-kumar-89850b298/",
-      twitter: "https://x.com/Rakesh_Rikki01",
-      instagram: "https://instagram.com/rakeshkumarrikki",
-    },
-    {
-      id: 5,
-      img: "/image/ab.webp",
-      title: "Pradhumn",
-      designation: "Employee | Backend Developer",
-      linkedIn: "https://linkedin.com/in/",
-      twitter: "https://twitter.com/di",
-      instagram: "https://instagram.com/pradhumn689",
-    },
-    {
-      id: 6,
-      img: "/image/ab.webp",
-      title: "Naitik Pratap Singh",
-      designation: "Employee | Zoho Developer",
-      linkedIn: "https://linkedin.com/in/di",
-      twitter: "https://twitter.com/di",
-      instagram: "https://instagram.com/naitik_chauhan01",
-    },
-    {
-      id: 7,
-      img: "/image/ab.webp",
-      title: "Aparna Raj",
-      designation: "Employee | Zoho Developer",
-      linkedIn: "https://linkedin.com/in/di",
-      twitter: "https://twitter.com/di",
-      instagram: "https://instagram.com/aparnaraj7890",
-    },
-    {
-      id: 8,
-      img: "/image/ab.webp",
-      title: "Priya",
-      designation: "Employee | Zoho Developer",
-      linkedIn: "https://linkedin.com/in/di",
-      twitter: "https://twitter.com/di",
-      instagram: "https://instagram.com/priya__04_yadav",
-    },
-  ];
-
   return (
     <div className="container mx-auto bg-gray-50">
       {/* Team Section */}
@@ -168,10 +92,12 @@ const Team = () => {
               className="w-full max-w-xs  md:max-w-sm lg:max-w-md h-80 border rounded-lg shadow-lg overflow-hidden"
             >
               <div className="w-full h-3/5 p-4">
-                <img
+                <Image
                   className="w-full h-full rounded-md object-cover"
                   src={member?.path}
                   alt={member?.title}
+                  width={200}
+                  height={200}
                 />
               </div>
               <div className="w-full h-2/5 px-2">
@@ -179,17 +105,20 @@ const Team = () => {
                   <div className="font-semibold text-center text-md">
                     {member?.name}
                   </div>
-                  <p className="text-gray-700 text-center text-base">
+                  <p className="text-gray-700 text-center text-sm">
                     {member?.designation}
                   </p>
+                  <p className="text-gray-700  line-clamp-2  px-1 py-1  text-[12px]">
+                    {member?.description}
+                  </p>
                 </div>
-                <div className="w-full h-auto pt-1 flex justify-center items-center space-x-2">
+                <div className="w-full h-auto pt-3 flex justify-center items-center space-x-2">
                   {member?.link1 && (
                     <a
                       href={member?.link1}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full  text-blue-500 text-3xl flex justify-center items-center"
+                      className="rounded-full  text-blue-500 text-2xl flex justify-center items-center"
                     >
                       <FontAwesomeIcon icon={faLinkedin} />
                     </a>
@@ -199,21 +128,11 @@ const Team = () => {
                       href={member?.link2}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full  text-blue-500 text-3xl flex justify-center items-center"
+                      className="rounded-full  text-blue-500 text-2xl flex justify-center items-center"
                     >
                       <FontAwesomeIcon icon={faTwitter} />
                     </a>
                   )}
-                  {/* {member.instagram && (
-                    <a
-                      href={member.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full  text-pink-500 text-3xl flex justify-center items-center"
-                    >
-                      <FontAwesomeIcon icon={faInstagram} />
-                    </a>
-                  )} */}
                 </div>
               </div>
             </div>

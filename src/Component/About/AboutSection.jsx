@@ -103,15 +103,15 @@ const AboutSection = () => {
     <div className="container p-4  md:p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Image for larger screens */}
-        <div className="hidden md:flex justify-center">
+        <div className="hidden md:flex  justify-center">
           <Image
-            src="/image/ab.webp"
+            src="/image/about.jpg"
             alt="Tablet Mockup"
-            className="w-full h-auto rounded-lg shadow-lg"
+            // className="w-full h-auto rounded-lg shadow-lg"
             // width={800}
             // height={800}
-            width={0}
-            height={0}
+            width={40}
+            height={100}
             sizes="100vw"
             style={{ width: "100%", height: "auto" }} // optional
           />
