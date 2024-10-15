@@ -1,8 +1,8 @@
 import AdminLayout from "@/Component/admin/AdminLayout";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
-
+import Link from "next/link";
 const initialWebinars = [
   {
     id: "1",
@@ -24,33 +24,47 @@ const initialWebinars = [
   },
   // Adding new static webinars directly into the initialWebinars array
 ];
-
+const fetchAllTeamMember = async () => {
+  const response = await fetch("/api/team");
+  return await response.json();
+};
 const listofTeam = () => {
   const [webinars, setWebinars] = useState(initialWebinars);
-  const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({});
+  const [allTeamMember, setAllTeamMember] = useState([]);
+  useEffect(() => {
+    fetchAllTeamMember().then((res) => {
+      setAllTeamMember(res || []);
+    });
+  }, []);
 
-  const handleEdit = (id) => {
-    const webinar = webinars.find((w) => w.id === id);
-    setFormData(webinar);
-    setEditingId(id);
+  // const handleEdit = (id) => {
+  //   const webinar = webinars.find((w) => w.id === id);
+  //   setFormData(webinar);
+  //   setEditingId(id);
+  // };
+
+  const handleDelete = async (id) => {
+    const res=await fetch(`/api/${id}`,{
+      method:"DELETE"
+    })
+    if(res.ok){
+      setWebinars(webinars.filter((webinar) => webinar._id!== id));
+    }
+    
   };
 
-  const handleDelete = (id) => {
-    setWebinars(webinars.filter((webinar) => webinar.id !== id));
-  };
+  // const handleInputChange = (field, value) => {
+  //   setFormData({ ...formData, [field]: value });
+  // };
 
-  const handleInputChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-
-  const handleBlur = () => {
-    const updatedWebinars = webinars.map((webinar) =>
-      webinar.id === editingId ? formData : webinar
-    );
-    setWebinars(updatedWebinars);
-    setEditingId(null);
-  };
+  // const handleBlur = () => {
+  //   const updatedWebinars = webinars.map((webinar) =>
+  //     webinar.id === editingId ? formData : webinar
+  //   );
+  //   setWebinars(updatedWebinars);
+  //   setEditingId(null);
+  // };
 
   return (
     <AdminLayout>
@@ -73,74 +87,41 @@ const listofTeam = () => {
             </tr>
           </thead>
           <tbody className="bg-white  ">
-            {webinars.map((webinar) => (
-              <tr key={webinar.id} className="border border-black">
+            {allTeamMember?.data?.map((webinar) => (
+              <tr key={webinar._id} className="border border-black">
                 <td className="px-6 py-3 text-center border border-black">
                   <img
-                    src={webinar.image}
-                    alt={webinar.title}
+                    src={webinar?.path}
+                    alt={webinar?.altText}
                     className="h-16 w-16 object-cover rounded"
                   />
                 </td>
-                {editingId === webinar.id ? (
+                
                   <>
                     <td className="px-6 py-3 text-center border border-black">
-                      <input
-                        className="w-full border border-black rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        value={formData.title}
-                        onChange={(e) =>
-                          handleInputChange("title", e.target.value)
-                        }
-                        onBlur={handleBlur}
-                        autoFocus
-                      />
+                      {webinar.name}
                     </td>
                     <td className="px-6 py-3 text-center border border-black">
-                      <input
-                        className="w-full border border-black rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        value={formData.type}
-                        onChange={(e) =>
-                          handleInputChange("type", e.target.value)
-                        }
-                        onBlur={handleBlur}
-                        autoFocus
-                      />
-                    </td>
-                    <td className="px-6 py-3 text-center">
-                      <button
-                        className="text-red-500 hover:text-red-700 transition-colors"
-                        onClick={() => handleDelete(webinar.id)}
-                      >
-                        🗑️ Delete
-                      </button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td className="px-6 py-3 text-center border border-black">
-                      {webinar.Name}
-                    </td>
-                    <td className="px-6 py-3 text-center border border-black">
-                      {webinar.Designation}
+                      {webinar.designation}
                     </td>
                     <td className="px-6 py-3 text-center border border-black">
                       <div className="flex justify-center items-center space-x-2">
-                        <button
+                        <Link
                           className="text-blue-500 hover:text-blue-700 transition-colors"
-                          onClick={() => handleEdit(webinar.id)}
+                          href={"/admin/teams/"+webinar._id+"?type=edit"}
                         >
                           <FontAwesomeIcon icon={faEdit} />
-                        </button>
+                        </Link>
                         <button
                           className="text-red-500 hover:text-red-700 transition-colors"
-                          onClick={() => handleDelete(webinar.id)}
+                          onClick={() => handleDelete(webinar._id)}
                         >
                           <FontAwesomeIcon icon={faTrash} />
                         </button>
                       </div>
                     </td>
                   </>
-                )}
+                
               </tr>
             ))}
           </tbody>

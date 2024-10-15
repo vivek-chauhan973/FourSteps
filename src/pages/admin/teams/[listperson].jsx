@@ -1,8 +1,10 @@
 import AdminLayout from "@/Component/admin/AdminLayout";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-
 const Teams = () => {
+  const router=useRouter();
+  console.log("router ---> ",router?.query?.listperson);
   // State to handle form inputs
   const [imageForm, setImageForm] = useState({
     image: null,
