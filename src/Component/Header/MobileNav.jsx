@@ -433,20 +433,29 @@ const MobileNav = ({ isMobileMenuOpen }) => {
       ],
     },
     {
-//       PPC Management
-// Search Engine Optimization
-// Social Media Management
-// Content Marketing
+//       
+// 
+// 
+// 
       name: "Digital marketing ",
       subcategories: [
         {
-          name: "Hubsport Training and Consulting",
-          path: "/servicesDetail/hubspot/training",
+          name: "PPC Management",
+          path: "/servicesDetail/digitalmarketing/ppc-management",
         },
-        "Subcategory 2.1",
-        "Subcategory 2.2",
-        "Subcategory 2.3",
-        "Subcategory 2.4",
+        {
+          name: "Search Engine Optimization",
+          path: "/servicesDetail/digitalmarketing/seo",
+        },
+        {
+          name: "Social Media Management",
+          path: "/servicesDetail/digitalmarketing/socialmedia-management",
+        },
+        {
+          name: "Content Marketing",
+          path: "/servicesDetail/digitalmarketing/content-marketing",
+        },
+     
       ],
     },
     {
