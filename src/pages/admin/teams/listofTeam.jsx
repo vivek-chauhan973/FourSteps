@@ -1,5 +1,5 @@
 import AdminLayout from "@/Component/admin/AdminLayout";
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -45,13 +45,12 @@ const listofTeam = () => {
   // };
 
   const handleDelete = async (id) => {
-    const res=await fetch(`/api/${id}`,{
-      method:"DELETE"
-    })
-    if(res.ok){
-      setWebinars(webinars.filter((webinar) => webinar._id!== id));
+    const res = await fetch(`/api/${id}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      setWebinars(webinars.filter((webinar) => webinar._id !== id));
     }
-    
   };
 
   // const handleInputChange = (field, value) => {
@@ -86,7 +85,7 @@ const listofTeam = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white  ">
+          <tbody className="bg-white">
             {allTeamMember?.data?.map((webinar) => (
               <tr key={webinar._id} className="border border-black">
                 <td className="px-6 py-3 text-center border border-black">
@@ -96,32 +95,31 @@ const listofTeam = () => {
                     className="h-16 w-16 object-cover rounded"
                   />
                 </td>
-                
-                  <>
-                    <td className="px-6 py-3 text-center border border-black">
-                      {webinar.name}
-                    </td>
-                    <td className="px-6 py-3 text-center border border-black">
-                      {webinar.designation}
-                    </td>
-                    <td className="px-6 py-3 text-center border border-black">
-                      <div className="flex justify-center items-center space-x-2">
-                        <Link
-                          className="text-blue-500 hover:text-blue-700 transition-colors"
-                          href={"/admin/teams/"+webinar._id+"?type=edit"}
-                        >
-                          <FontAwesomeIcon icon={faEdit} />
-                        </Link>
-                        <button
-                          className="text-red-500 hover:text-red-700 transition-colors"
-                          onClick={() => handleDelete(webinar._id)}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      </div>
-                    </td>
-                  </>
-                
+
+                <>
+                  <td className="px-6 py-3 text-center border border-black">
+                    {webinar.name}
+                  </td>
+                  <td className="px-6 py-3 text-center border border-black">
+                    {webinar.designation}
+                  </td>
+                  <td className="px-6 py-3 text-center border border-black">
+                    <div className="flex justify-center items-center space-x-2">
+                      <Link
+                        className="text-blue-500 hover:text-blue-700 transition-colors"
+                        href={"/admin/teams/" + webinar._id + "?type=edit"}
+                      >
+                        <FontAwesomeIcon icon={faEdit} />
+                      </Link>
+                      <button
+                        className="text-red-500 hover:text-red-700 transition-colors"
+                        onClick={() => handleDelete(webinar._id)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  </td>
+                </>
               </tr>
             ))}
           </tbody>

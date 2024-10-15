@@ -54,12 +54,14 @@ const apiRoute = async (req, res) => {
   } else if (req.method === 'GET') {
     const { id } = req.query;
     try {
-      if(id){
-        const files1 = await Teammember.find({_id:id});
-        return res.status(200).json({ data: files1 });
+      if(!id){
+        return res.status(300).json({ message:"id is required to fetch the data" });
       }
-      const files = await Teammember.find({});
-      return res.status(200).json({ data: files });
+      const files1 = await Teammember.findOne({_id:id});
+      if(!files1){
+        return res.status(404).json({ message:"data is not found to the corresponding id" });
+      }
+      return res.status(200).json({ data: files1 });
     } catch (error) {
       console.error('Error fetching files:', error);
       return res.status(500).json({ error: 'Internal Server Error' });

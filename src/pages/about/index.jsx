@@ -305,7 +305,7 @@ import AboutSection from "@/Component/About/AboutSection";
 import { Footer } from "@/Component/Footer/Footer";
 import Team from "@/Component/Team/Team";
 import Testimonial from "@/Component/Testimonial/Testimonial";
-import Breadcrumbs from "@/Component/About/Breadcrumbs";
+// import Breadcrumbs from "@/Component/About/Breadcrumbs";
 
 const About = () => {
   const data = [

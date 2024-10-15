@@ -1,10 +1,25 @@
 import AdminLayout from "@/Component/admin/AdminLayout";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const fetchDataCorresponding = async (id) => {
+  const response = await fetch(`/api/${id}`);
+  return await response.json();
+};
+
 const Teams = () => {
-  const router=useRouter();
-  console.log("router ---> ",router?.query?.listperson);
+  const router = useRouter();
+  console.log("router ---> ", router?.query?.listperson);
+  const [person, setPerson] = useState({});
+  useEffect(() => {
+    if (router?.query?.listperson) {
+      fetchDataCorresponding(router.query.listperson).then((res) => {
+        console.log("res------------> ", res?.data);
+        setPerson(res?.data || {});
+      });
+    }
+  }, []);
   // State to handle form inputs
   const [imageForm, setImageForm] = useState({
     image: null,
@@ -27,6 +42,25 @@ const Teams = () => {
       }));
     }
   };
+
+  // useEffect(() => {}, [person]);
+
+  // useEffect(() => {
+  //   if (person && Object.keys(person)) {
+  //     setFormData({
+  //       name: person.name || "",
+  //       designation: person.designation || "",
+  //       link1: person.link1 || "",
+  //       link2: person.link2 || "",
+  //       altText: person.altText || "",
+  //       description: person.description || "",
+  //     });
+  //     setImageForm((prevData) => ({
+  //       ...prevData,
+  //       imagePreview: person.path ? `/uploads/TeamImages/${person.filename}` : "",
+  //     }));
+  //   }
+  // }, [person]);
 
   // Handle input changes
   const handleChange = (e) => {

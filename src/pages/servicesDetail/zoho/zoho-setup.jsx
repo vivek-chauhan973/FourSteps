@@ -163,7 +163,7 @@ const Zohosetup = () => {
         </div>
       </div>
       {/* second  section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 bg-gray-200 gap-6 p-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 bg-gray-100  gap-6 p-6 ">
         <div className="flex justify-center items-center">
           <img
             src="/image/zoho.jpg"
@@ -232,6 +232,7 @@ const Zohosetup = () => {
           </p>
         </div>
       </div>
+
       {/* Third section */}
       <div class="max-w-6xl my-10 mx-auto p-6  shadow-md rounded-lg relative overflow-hidden">
         <div class="absolute inset-y-0 left-0 w-1 bg-orange-500"></div>
