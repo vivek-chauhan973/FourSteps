@@ -181,7 +181,7 @@ export default function Resource() {
           </div>
         </div>
 
-        <div className="text-end p-10">Pagination page</div>
+        <div className="text-end p-10">Pagination page............</div>
       </div>
     </>
   );

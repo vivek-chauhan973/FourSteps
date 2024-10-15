@@ -21,6 +21,7 @@ import {
   faLayerGroup,
   faUsers,
   faHome,
+  faGlobe
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -103,10 +104,13 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.",
-        icon: () => <FontAwesomeIcon icon={faCar} />,
+        label: "Testimonial",
+        icon: () => <FontAwesomeIcon icon={faGlobe} />,
         subMenu: [
-          { label: " Car Package Master", href: "/admin/car-rental" },
+          {
+            label: "Add Testimonial Here",
+            href: "/admin/testimonial/testimonial",
+          },
           { label: "Add Vehicle", href: "/admin/car-rental/create" },
           {
             label: "Add Car Itinerary",
