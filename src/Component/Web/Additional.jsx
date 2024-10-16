@@ -4,14 +4,14 @@ import Image from "next/image";
 
 const cardData = [
   {
-    imgSrc: "/image/ab.webp",
+    imgSrc: "/image/about.jpg",
     alt: "Team About Us",
     link: "/about",
     title: "Learn About Us",
     description: "Move with a great team, it's better.",
   },
   {
-    imgSrc: "/image/ab.webp",
+    imgSrc: "/image/about.jpg",
     alt: "What We Do",
     link: "/service",
     title: "What We Do",
@@ -51,13 +51,14 @@ const Additional = () => {
                     href={card.link}
                     className="flex items-center cursor-pointer px-4 py-1"
                   >
-                    <Image
-                      src="/image/ser.png" // Replace with the actual path to your PNG icon
-                      alt="Info Icon"
-                      // className="w-14 h-14 mr-4 mt-1"
-                      height={70}
-                      width={70}
-                    />
+                    <div className="w-15 h-15 mr-4 mt-1">
+                      <Image
+                        src="/image/ser.png" // Replace with the actual path to your PNG icon
+                        alt="Info Icon"
+                        height={100}
+                        width={100}
+                      />
+                    </div>
                     <div className="pb-2">
                       <h3 className="text-xl font-bold mb-1">{card.title}</h3>
                       <p>{card.description}</p>
@@ -74,3 +75,7 @@ const Additional = () => {
 };
 
 export default Additional;
+
+
+
+

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import { Footer } from "@/Component/Footer/Footer";
+import Calltoaction from "@/Component/Web/Calltoaction";
+import Case from "@/Component/CaseStudies/Case";
 
 const Zohosetup = () => {
   // for zoho services
@@ -233,27 +235,9 @@ const Zohosetup = () => {
         </div>
       </div>
 
-      {/* Third section */}
-      <div class="max-w-6xl my-10 mx-auto p-6  shadow-md rounded-lg relative overflow-hidden">
-        <div class="absolute inset-y-0 left-0 w-1 bg-orange-500"></div>
-
-        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 p-5 items-center">
-          <div>
-            <h2 class="text-2xl py-6 md:text-3xl font-bold text-gray-800">
-              Onboarding and Unleash the Power of Zoho for{" "}
-              <span class="text-orange-500">Your Business</span>
-            </h2>
-            <p class="py-4 text-sm md:text-base text-gray-600">
-              Transform your business through tailored guidance and training to
-              fully leverage the capabilities of Zoho for growth.
-            </p>
-          </div>
-          <div class="flex justify-center">
-            <button class="mt-6 md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
-              CONNECT WITH US
-            </button>
-          </div>
-        </div>
+      {/* additional section third */}
+      <div>
+        <Calltoaction />
       </div>
       {/* four section */}
       <div className="grid grid-cols-1 md:grid-cols-2 bg-gray-200 gap-6 p-6">
@@ -396,7 +380,12 @@ const Zohosetup = () => {
         </div>
       </div>
       {/* end connection section */}
-      <h1>project section</h1>
+
+      {/* project or casenstudies */}
+
+      <div>
+        <Case />
+      </div>
       {/* here case study section or project section */}
       {/*  start faq section*/}
       <div className="container mx-auto mt-3 py-7  grid grid-cols-1 md:grid-cols-5 gap-4">
