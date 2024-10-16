@@ -11,7 +11,7 @@ const dbConnect = async () => {
     return;
   }
   try {
-    const db = await mongoose.connect("mongodb://localhost:27017/foursteps", {
+    const db = await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
