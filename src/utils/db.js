@@ -10,9 +10,8 @@ const dbConnect = async () => {
     console.log("Already connected to MongoDB");
     return;
   }
-
   try {
-    const db = await mongoose.connect(MONGODB_URI, {
+    const db = await mongoose.connect("mongodb://localhost:27017/foursteps", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

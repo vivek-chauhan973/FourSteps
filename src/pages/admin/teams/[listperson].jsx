@@ -45,22 +45,25 @@ const Teams = () => {
 
   // useEffect(() => {}, [person]);
 
-  // useEffect(() => {
-  //   if (person && Object.keys(person)) {
-  //     setFormData({
-  //       name: person.name || "",
-  //       designation: person.designation || "",
-  //       link1: person.link1 || "",
-  //       link2: person.link2 || "",
-  //       altText: person.altText || "",
-  //       description: person.description || "",
-  //     });
-  //     setImageForm((prevData) => ({
-  //       ...prevData,
-  //       imagePreview: person.path ? `/uploads/TeamImages/${person.filename}` : "",
-  //     }));
-  //   }
-  // }, [person]);
+  useEffect(() => {
+    if (person && Object.keys(person)) {
+      setFormData({
+        name: person.name || "",
+        designation: person.designation || "",
+        link1: person.link1 || "",
+        link2: person.link2 || "",
+        altText: person.altText || "",
+        description: person.description || "",
+      });
+      setImageForm({
+        image:person.path,
+        imagePreview: person.path ,
+      }
+        
+        
+      );
+    }
+  }, [person]);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -76,18 +79,27 @@ const Teams = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log("form data ---> ",formData)
+    const form = new FormData();
+    form.append("file", imageForm?.image);
+    form.append("name", formData?.name);
+    form.append("designation", formData?.designation);
+    form.append("description", formData?.description);
+    form.append("link1", formData?.link1);
+    form.append("link2", formData?.link2);
+    form.append("altText", formData?.altText);
+    console.log("form data ---> ", formData);
     // Send the form data to the API
     try {
-      const response = await fetch("/api/team", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const response = await fetch(`/api/${router?.query?.listperson}`, {
+        method: "PUT",
+        body:form,
       });
 
       if (!response.ok) {
         throw new Error("Failed to create product");
+      }
+      else{
+        router.push('/admin/teams/listofTeam')
       }
 
       const data = await response.json();
@@ -236,7 +248,7 @@ const Teams = () => {
               type="submit"
               className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Submit
+              Update
             </button>
           </div>
         </form>
