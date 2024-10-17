@@ -162,7 +162,7 @@
 
 // export default Testimonial;
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { TbWorldWww } from "react-icons/tb";
@@ -180,34 +180,20 @@ const Testimonial = () => {
     cssEase: "linear",
   };
 
-  // Dynamic data for testimonials (this can come from an API)
-  const testimonials = [
-    {
-      name: "Esmeralda111111",
-      role: "Customer",
-      designation: "ceo",
-      description:
-        "Maecenas interdum, metus vitae tincidunt porttitor, magna quam egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.",
-      image: "/image/try.jpeg",
-    },
-    {
-      name: "John Doe",
-      role: "Client",
-      designation: "Ceo of abc",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.",
-      image: "/image/ab.webp",
-    },
-    {
-      name: "Jane Smith",
-      role: "User",
-      designation: "ceo of abc",
-      description:
-        "Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.",
-      image: "/image/ab.webp",
-    },
-  ];
+  const [testimonial, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const response = await fetch("/api/testimonial/testimonial");
+      const data = await response.json();
+      console.log("-----testimonajnjbcdcvvsdkvkg--->", data);
+      setTestimonials(data);
+      setLoading(false); // Set loading to false after data fetch
+    };
 
+    fetchTestimonials();
+  }, []);
+  if (loading) return <p>Loading testimonials...</p>;
   return (
     <>
       <div className="container">
@@ -217,15 +203,15 @@ const Testimonial = () => {
         >
           <div className="container py-12">
             <Slider {...settings}>
-              {testimonials.map((item) => (
-                <div key={item.id} className="">
+              {testimonial.map((item) => (
+                <div key={item._id} className="">
                   <div className="flex flex-col items-center justify-center py-2 rounded-lg shadow-lg max-w-md mx-auto">
                     <h2 className="md:text-4xl text-lg text-white font-bold tracking-wide mb-3">
                       Testimonial
                     </h2>
                     <img
-                      src={item.image}
-                      alt={item.name}
+                      src={item?.path}
+                      alt={item?.name}
                       className="rounded-full mt-3 object-cover mb-2 h-32 w-32 border-4 border-gray-400"
                     />
                     <div className="flex gap-2">

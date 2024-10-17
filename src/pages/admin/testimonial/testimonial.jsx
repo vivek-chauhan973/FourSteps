@@ -173,12 +173,16 @@
 //     </AdminLayout>
 //   );
 // };
-
 // export default TestimonialForm;
+
+
+
+
 
 import AdminLayout from "@/Component/admin/AdminLayout";
 import React, { useState } from "react";
 import Image from "next/image";
+
 const TestimonialBD = () => {
   const [formdata, setFormData] = useState({
     alt: "",
@@ -188,6 +192,7 @@ const TestimonialBD = () => {
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+
   // Handle image upload and preview
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -214,25 +219,29 @@ const TestimonialBD = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Use FormData to send file data and text data together
+    const formData = new FormData();
+    formData.append("name", formdata.name);
+    formData.append("alt", formdata.alt);
+    formData.append("designation", formdata.designation);
+    formData.append("description", formdata.description);
+    formData.append("image", imageFile); // Append the image file
+
     try {
       const response = await fetch("/api/testimonial/testimonial", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set the content type
-        },
-        body: JSON.stringify(formdata), // Send the form data as JSON
+        body: formData, // Send formData instead of JSON
       });
 
       if (!response.ok) {
-        // Log the response body for more details
         const errorData = await response.json();
         console.error("Response Error Data:", errorData);
         throw new Error("Something went wrong");
       }
 
       const result = await response.json();
-      console.log("Form Data", result); // Log the saved testimonial data
-      alert("testimonial added succeffully"); // Show alert on successful submission
+      console.log("Form Data", result);
+      alert("Testimonial added successfully");
 
       // Clear the form after submission
       setFormData({
@@ -241,8 +250,10 @@ const TestimonialBD = () => {
         designation: "",
         description: "",
       });
+      setImageFile(null);
+      setImagePreview(null);
     } catch (error) {
-      console.error("Error:", error.message); // Log any errors that occur during the submission
+      console.error("Error:", error.message);
     }
   };
 
@@ -281,7 +292,7 @@ const TestimonialBD = () => {
             </div>
           )}
 
-          {/* Alt and Name inline */}
+          {/* Alt and Name */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <label className="block text-gray-700 text-sm font-bold mb-2">

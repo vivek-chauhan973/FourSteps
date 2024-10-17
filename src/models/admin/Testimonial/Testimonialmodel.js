@@ -17,6 +17,14 @@ const testimonialSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  path: {
+    type: String,
+    required: true,
+  },
+  filename: {
+    type: String,
+    required: true,
+  },
 });
 
 const Testimonialmodel =

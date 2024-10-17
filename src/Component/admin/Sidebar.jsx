@@ -21,7 +21,7 @@ import {
   faLayerGroup,
   faUsers,
   faHome,
-  faGlobe
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -111,7 +111,10 @@ const Sidebar = () => {
             label: "Add Testimonial Here",
             href: "/admin/testimonial/testimonial",
           },
-          { label: "Add Vehicle", href: "/admin/car-rental/create" },
+          {
+            label: "List Of Testimonial",
+            href: "/admin/testimonial/list-testimonial",
+          },
           {
             label: "Add Car Itinerary",
             href: "/admin/car-rental/car-itinerary",
