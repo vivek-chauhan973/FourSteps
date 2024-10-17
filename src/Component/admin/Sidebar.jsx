@@ -116,8 +116,8 @@ const Sidebar = () => {
             href: "/admin/testimonial/list-testimonial",
           },
           {
-            label: "Add Car Itinerary",
-            href: "/admin/car-rental/car-itinerary",
+            label: "Testimonial Bg Banner",
+            href: "/admin/testimonial/bg-banner",
           },
           {
             label: " Car Package List",
