@@ -3,27 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const initialWebinars = [
-  {
-    id: "1",
-    image: "https://via.placeholder.com/100",
-    Name: "pradhumn",
-    Designation: "web developer",
-  },
-  {
-    id: "2",
-    image: "https://via.placeholder.com/100",
-    Name: "rakesh",
-    Designation: " web developer",
-  },
-  {
-    id: "3",
-    image: "https://via.placeholder.com/100",
-    Name: "Naitik",
-    Designation: "java developer",
-  },
-  // Adding new static webinars directly into the initialWebinars array
-];
+
 const fetchAllTeamMember = async () => {
   const response = await fetch("/api/team");
   return await response.json();
