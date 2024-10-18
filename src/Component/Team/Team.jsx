@@ -96,8 +96,8 @@ const Team = () => {
                   className="w-full h-full rounded-md object-cover"
                   src={member?.path}
                   alt={member?.title}
-                  width={200}
-                  height={200}
+                  width={500}
+                  height={500}
                 />
               </div>
               <div className="w-full h-2/5 px-2">

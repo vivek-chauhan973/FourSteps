@@ -18,8 +18,8 @@ import "aos/dist/aos.css";
 import Nav from "./Header/Nav";
 import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
-// import Trail from "./Trail";
 import BackToTop from "./Web/BackToTop";
+// import Trail from "./Trail";
 // import OverviewToggle from "./WebinarDetail/OverviewToggle";
 
 const Home = () => {

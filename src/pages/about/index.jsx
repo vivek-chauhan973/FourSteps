@@ -370,13 +370,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      {/* Breadcrumbs Component for trail */}
-      <Breadcrumbs
-        crumbs={[
-          // { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-        ]}
-      />
+   
       {/* Breadcrumbs Component */}
       <div className="w-full py-10 px-10">
         <div className="grid md:grid-cols-2 py-5 gap-8 items-center">

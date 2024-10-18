@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
+const initialWebinars = [];
 const fetchAllTeamMember = async () => {
   const response = await fetch("/api/team");
   return await response.json();

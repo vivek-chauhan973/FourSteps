@@ -177,6 +177,7 @@ import DesktopRsource from "./DesktopRsource";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -189,15 +190,17 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-gray-100 sticky top-0 py-4 z-50 shadow-lg">
+    <nav className="bg-gray-100 sticky top-0 py-3 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img
+            <Image
               src="/image/logo.png"
               alt="Brand Logo"
-              className="h-20 w-full object-cover"
+              className="object-cover"
+              width={100}
+              height={100}
             />
           </div>
 
@@ -286,7 +289,7 @@ const Nav = () => {
               </li>
               <li className="relative inline-block">
                 <Link
-                  href="/#"
+                  href="/contact/contact"
                   onClick={() => handleLinkClick("/contact")}
                   className={`relative inline-block text-base font-medium px-3 py-2 ${
                     activeLink === "/contact"

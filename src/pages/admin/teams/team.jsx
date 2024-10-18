@@ -49,6 +49,7 @@ const Teams = () => {
     form.append("link2", formData?.link2);
     form.append("altText", formData?.altText);
     console.log("form data ---> ", formData);
+    alert("Team Data saved Succefully");
     // Send the form data to the API
     try {
       const response = await fetch("/api/team", {
