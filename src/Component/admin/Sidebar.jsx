@@ -22,6 +22,7 @@ import {
   faUsers,
   faHome,
   faGlobe,
+  faComment
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -29,20 +30,7 @@ const Sidebar = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(null);
   const [selectedSubMenu, setSelectedSubMenu] = useState(null);
-  // const handleLogout = async () => {
-  //   localStorage.removeItem("accessToken");
-  //   const response = await fetch("/api/account/logout", {
-  //     method: "POST",
-  //   });
-
-  //   if (response.ok) {
-  //     console.log("User logged out");
-  //     // Optionally, redirect or perform any other action after logging out
-  //   } else {
-  //     console.error("Failed to log out");
-  //   }
-  //   window.location.href = "/account/login";
-  // };
+  
   const sidebarTabs = useMemo(
     () => [
       {
@@ -105,7 +93,7 @@ const Sidebar = () => {
       },
       {
         label: "Testimonial",
-        icon: () => <FontAwesomeIcon icon={faGlobe} />,
+        icon: () => <FontAwesomeIcon icon={faComment} />,
         subMenu: [
           {
             label: "Add Testimonial Here",
@@ -118,15 +106,6 @@ const Sidebar = () => {
           {
             label: "Testimonial Bg Banner",
             href: "/admin/testimonial/bg-banner",
-          },
-          {
-            label: " Car Package List",
-            href: "/admin/car-rental/package-list",
-          },
-          { label: "Car Promo List", href: "/admin/car-rental/car-promo-list" },
-          {
-            label: "Car Promo Management",
-            href: "/admin/car-rental/promo-management",
           },
         ],
       },

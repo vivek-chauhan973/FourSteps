@@ -238,16 +238,16 @@ const MobileNav = ({ isMobileMenuOpen }) => {
           <MobileResource />
         </div>
       </Link>
-      <Link href="/Career">
+      <Link href="/product">
         <p
           className={`block text-gray-700 hover:text-black px-5 mt-5 text-md font-medium cursor-pointer ${
-            activeSection === "Career"
+            activeSection === "product"
               ? "inline-block border-b-2 border-blue-500"
               : ""
           }`}
-          onClick={() => handleSectionClick("Career")}
+          onClick={() => handleSectionClick("product")}
         >
-          Career
+          Product
         </p>
       </Link>
       <Link href="/contact">

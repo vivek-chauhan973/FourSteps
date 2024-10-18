@@ -272,17 +272,17 @@ const Nav = () => {
               <li className="relative inline-block">
                 <Link
                   href="/#"
-                  onClick={() => handleLinkClick("/career")}
+                  onClick={() => handleLinkClick("/product")}
                   className={`relative inline-block text-base font-medium px-3 py-2 ${
                     activeLink === "/career"
                       ? "text-orange-500"
                       : "text-gray-800"
                   } hover:text-orange-500`}
                 >
-                  Career
+                  Product
                   <span
                     className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
-                      activeLink === "/career" ? "scale-x-100" : "scale-x-0"
+                      activeLink === "/product" ? "scale-x-100" : "scale-x-0"
                     }`}
                   ></span>
                 </Link>
