@@ -1,7 +1,7 @@
 import dbConnect from "@/utils/db"; // Ensure this is correctly importing your db connection
 import multer from "multer";
 import fs from "fs";
-import TestimonialBanner from "@/models/admin/Testimonial/TestimonialBanner";
+import TestimonialBanner from "@/models/admin/Testimonial/TestimonialBanner"; // Import the model
 // Set up storage configuration for multer
 const uploadDirectory = "./public/uploads/Testimonialbanner";
 if (!fs.existsSync(uploadDirectory)) {
@@ -32,6 +32,7 @@ export default async function handler(req, res) {
   const { method } = req;
 
   if (method === "POST") {
+    // Handle file upload and saving
     upload.single("image")(req, res, async (err) => {
       if (err) {
         console.error("Multer Error:", err);
@@ -41,27 +42,22 @@ export default async function handler(req, res) {
       }
 
       try {
-        // Check if req.file exists
         if (!req.file) {
           return res.status(400).json({ error: "No file uploaded" });
         }
 
-        // Destructure alt text from req.body
         const { alt } = req.body;
+        const filename = req.file.filename;
 
-        const filename = req.file.filename; // Use the original filename
-
-        // Create a new testimonial entry
         const newTestimonial = new TestimonialBanner({
-          path: `/uploads/Testimonialbanner/${filename}`, // Save the image filename
+          path: `/uploads/Testimonialbanner/${filename}`,
           filename,
           alt,
         });
 
-        // Save the testimonial to the database
         const savedTestimonial = await newTestimonial.save();
 
-        res.status(201).json(savedTestimonial); // Return the saved testimonial
+        res.status(201).json(savedTestimonial);
       } catch (error) {
         console.error("Error saving testimonial:", error);
         res
@@ -69,6 +65,38 @@ export default async function handler(req, res) {
           .json({ error: "Error saving testimonial", details: error.message });
       }
     });
+  } else if (method === "GET") {
+    // Fetch all testimonials
+    try {
+      const testimonials = await TestimonialBanner.find({});
+      res.status(200).json(testimonials);
+    } catch (error) {
+      console.error("Error fetching testimonials:", error);
+      res.status(500).json({ error: "Error fetching testimonials" });
+    }
+  } else if (method === "DELETE") {
+    // Handle deletion
+    const { id } = req.query;
+    try {
+      const testimonial = await TestimonialBanner.findById(id);
+      if (!testimonial) {
+        return res.status(404).json({ error: "Testimonial not found" });
+      }
+
+      // Delete the image file from the file system
+      const filePath = `./public${testimonial.path}`;
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath); // Remove the image file
+      }
+
+      // Remove testimonial from the database
+      await TestimonialBanner.findByIdAndDelete(id);
+
+      res.status(200).json({ message: "Testimonial deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting testimonial:", error);
+      res.status(500).json({ error: "Error deleting testimonial" });
+    }
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
