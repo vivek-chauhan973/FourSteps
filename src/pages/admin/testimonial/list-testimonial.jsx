@@ -145,7 +145,7 @@ const TestimonialList = () => {
                     <div className="flex justify-center items-center space-x-2">
                       <Link
                         className="text-blue-500 hover:text-blue-700 transition-colors"
-                        href={`/admin/testimonial/list-testimonial.id=${testimonial._id}`} // Correct path to your edit page
+                        href={`/admin/testimonial/${testimonial._id}`} // Correct path to your edit page
                       >
                         <FontAwesomeIcon icon={faEdit} />
                       </Link>
