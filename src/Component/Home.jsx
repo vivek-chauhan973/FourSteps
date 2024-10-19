@@ -19,7 +19,7 @@ import Nav from "./Header/Nav";
 import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
-// import Trail from "./Trail";
+import Trail from "./Trail";
 // import OverviewToggle from "./WebinarDetail/OverviewToggle";
 
 const Home = () => {
@@ -33,7 +33,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {/* <Trail /> */}
+      <Trail />
 
       {/* <OverviewToggle /> */}
       <Nav />

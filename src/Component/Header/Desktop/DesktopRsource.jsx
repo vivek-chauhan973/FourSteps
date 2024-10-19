@@ -6,7 +6,6 @@ import {
   faCaretRight,
   faBlog,
   faVideo,
-  faFile,
 } from "@fortawesome/free-solid-svg-icons";
 import { faYoutubeSquare } from "@fortawesome/free-brands-svg-icons"; // Importing the YouTube icon
 
@@ -35,7 +34,6 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
         )}
         <span className="absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 transform scale-x-0 hover:scale-x-100" />
       </button>
-
       {resourceopen && (
         <div className="absolute left-0 mt-1 w-64 my-2 h-auto rounded-[17px] bg-white shadow-lg z-10">
           <ul className="h-full w-full    ">
@@ -46,20 +44,14 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
-            <li className="flex justify-between items-center px-4 py-3 border-b border-gray-200 hover:bg-gray-200  cursor-pointer">
-              <div className="flex gap-1  items-center">
-                <FontAwesomeIcon icon={faFile} className=" text-gray-600" />
-                <Link href="#">Case Studies</Link>
-              </div>
-              <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
-            </li>
+
             <li className="flex justify-between items-center px-4 py-3 border-b border-gray-200  hover:bg-gray-200 cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon
                   icon={faYoutubeSquare}
                   className=" text-gray-600"
                 />
-                <Link href="#juu">YouTube</Link>
+                <Link href="#juu">Videos & Demos</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>

@@ -1,5 +1,3 @@
-
-
 // import React, { useState } from "react";
 // import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import both icons
 // import Link from "next/link";
@@ -294,7 +292,7 @@ const Categories = () => {
       </div>
 
       {isServiceMenuOpen && (
-        <div className="absolute left-0 right-0 mt-3 bg-white px-7 py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 mx-40">
+        <div className="absolute left-0 right-0 mt-2 bg-white px-7 py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 mx-40">
           <div className="max-w-screen-lg mx-auto p-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
               {categoryData.map((category) => (
