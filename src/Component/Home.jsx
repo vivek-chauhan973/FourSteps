@@ -19,8 +19,8 @@ import Nav from "./Header/Nav";
 import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
-import Trail from "./Trail";
-// import OverviewToggle from "./WebinarDetail/OverviewToggle";
+// import Trail from "./Trail";
+import Detail from "./WebinarDetail/Detail";
 
 const Home = () => {
   useEffect(() => {
@@ -33,10 +33,9 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Trail />
-
-      {/* <OverviewToggle /> */}
-      <Nav />
+      {/* <Trail /> */}
+      <Detail />
+      {/* <Nav /> */}
       <BackToTop />
       <HeroSection />
       <Additional />

@@ -29,9 +29,12 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
         >
           Industry
           {dropDown ? (
-            <FaChevronUp className="ml-1 transition-transform duration-300" />
+            <FaChevronUp className="ml-1 transition-transform duration-300" 
+              size={13}
+            />
           ) : (
-            <FaChevronDown className="ml-1 transition-transform duration-300" />
+            <FaChevronDown className="ml-1 transition-transform duration-300"
+            size={13} />
           )}
           <span
             className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${

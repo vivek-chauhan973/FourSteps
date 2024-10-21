@@ -24,12 +24,12 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
         {resourceopen ? (
           <FaChevronUp
             className="ml-1 transition-transform duration-300"
-            size={15}
+            size={13}
           />
         ) : (
           <FaChevronDown
             className="ml-1 transition-transform duration-300"
-            size={15}
+            size={13}
           />
         )}
         <span className="absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 transform scale-x-0 hover:scale-x-100" />

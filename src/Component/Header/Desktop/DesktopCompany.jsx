@@ -26,9 +26,15 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
           >
             Company
             {dropDown ? (
-              <FaChevronUp className="ml-1 inline-block transition-transform duration-300" />
+              <FaChevronUp
+                className="ml-1 inline-block transition-transform duration-300"
+                size={13}
+              />
             ) : (
-              <FaChevronDown className="ml-1 inline-block transition-transform duration-300" />
+              <FaChevronDown
+                className="ml-1 inline-block transition-transform duration-300"
+                size={13}
+              />
             )}
           </div>
         </Link>
