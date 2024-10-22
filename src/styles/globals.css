@@ -692,3 +692,21 @@ a:hover span {
 .btn_filter {
   @apply bg-white border border-black rounded-md py-2 px-4 text-lg cursor-pointer transition-transform transform hover:scale-105 hover:bg-gray-200;
 }
+
+/* this is basiccally detail page of all section like webinar and others */
+@media (max-width: 768px) {
+
+  /* Adjust the max-width as needed */
+  .scroll-links {
+    display: none;
+    /* Hide the scroll links in mobile view */
+  }
+}
+/* this is basiccally detail page of all section like webinar and others */
+.custom-scroll-detail {
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: rgb(43, 43, 43) rgb(239, 234, 234);
+
+}
+

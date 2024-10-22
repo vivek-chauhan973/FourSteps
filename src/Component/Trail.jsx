@@ -168,3 +168,141 @@ const Trail = () => {
 };
 
 export default Trail;
+
+
+
+// by comonensts swutching the tab
+// mport "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+
+// import { Link as ScrollLink } from "react-scroll";
+// import SideForm from "./SideForm";
+// import WebinarHero from "./WebinarHero";
+// import Overview from "./Overview"; // Import Overview
+// import Features from "./Features"; // Import Features
+// import Implementation from "./Implimentation"; // Import Implementation
+// import Product from "./Product"; // Import Product
+// import React, { useState } from "react";
+
+// const Detail = () => {
+//   const [activeSection, setActiveSection] = useState("Overview"); // Set default section
+
+//   const renderSection = () => {
+//     switch (activeSection) {
+//       case "Overview":
+//         return <Overview />;
+//       case "Features":
+//         return <Features />;
+//       case "Implementation":
+//         return <Implementation />;
+//       case "Product":
+//         return <Product />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <div>
+//         <WebinarHero />
+//       </div>
+
+//       <div className="">
+//         <div
+//           id="OverviewSection"
+//           className="bg-white py-1 shadow-md sticky top-0 z-30"
+//         >
+//           <div className="container-wrapper gap-3 md:gap-12 xs:pb-5 md:pb-0 hide-scrollbar flex justify-start overflow-x-auto ">
+//             <div>
+//               <ScrollLink
+//                 to="Overview"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 onClick={() => setActiveSection("Overview")} // Update state
+//               >
+//                 <p className="text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+//                   Overview
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//             <div>
+//               <ScrollLink
+//                 to="Features"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 onClick={() => setActiveSection("Features")} // Update state
+//               >
+//                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+//                   Features
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//             <div>
+//               <ScrollLink
+//                 to="Implementation"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 onClick={() => setActiveSection("Implementation")} // Update state
+//               >
+//                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+//                   Implementation
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//             <div>
+//               <ScrollLink
+//                 to="Product"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 onClick={() => setActiveSection("Product")} // Update state
+//               >
+//                 <p className="text-center w-[140px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+//                   Product
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="px-5 grid grid-cols-1 xl:grid-cols-[2fr,1fr]">
+//           <div>
+//             <div
+//               id="ItinerarySubSection"
+//               className="flex justify-between mt-5 mb-3"
+//             >
+//               {renderSection()} {/* Render the active section here */}
+//             </div>
+
+//             <div className="mb-7">{/* Other content here */}</div>
+
+//             <div id="Policy&TermsSection" className="pt-7">
+//               {/* Privacy policy Terms */}
+//             </div>
+//           </div>
+
+//           <div className="mt-10">
+//             <div className=" ">
+//               {/* Side registration form */}
+//               <div className="px-5 ">
+//                 <SideForm />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="mt-12 pb-6">{/* Other content here */}</div>
+//     </div>
+//   );
+// };
+
+// export default Detail;

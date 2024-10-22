@@ -33,9 +33,9 @@ const Home = () => {
   }, []);
   return (
     <div>
+      <Nav />
       {/* <Trail /> */}
       <Detail />
-      {/* <Nav /> */}
       <BackToTop />
       <HeroSection />
       <Additional />

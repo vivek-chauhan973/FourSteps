@@ -1,19 +1,19 @@
+
 import React, { useState } from "react";
 
 const SideForm = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    clientType: "Indian",
+    name: "",
     email: "",
+    city: "",
     phone: "",
-    password: "",
+    message: "",
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -22,56 +22,74 @@ const SideForm = () => {
   };
 
   return (
-    <div className="  items-center justify-center ">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-md w-full ">
-        <h2 className="text-2xl font-bold mb-6 text-white">
-          Register for a free account
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+    <div className="max-w-sm mx-auto  top-10 sticky   bg-white p-4 rounded-lg border-solid border-2 border-[#163383]">
+      <h2 className="text-2xl text-center py-3 font-bold">Enquiry Now</h2>
+      <hr />
+      <form onSubmit={handleSubmit}>
+        <div className="my-4">
+          <div className="flex space-x-2">
             <input
               type="text"
-              name="firstName"
-              placeholder="Your first name"
-              value={formData.firstName}
+              name="name"
+              placeholder="Name"
+              value={formData.name}
               onChange={handleChange}
-              className="w-full p-3 rounded bg-gray-700 text-white"
+              className="w-full px-3 py-2 border rounded"
+              required
             />
-          </div>
-          <div className="mb-4">
             <input
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 rounded bg-gray-700 text-white"
+              className="w-full px-3 py-2 border rounded"
+              required
             />
           </div>
-          <div className="mb-4">
-            <input
-              type="text"
-              name="phone"
-              placeholder="Enter your phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full p-3 rounded bg-gray-700 text-white"
-            />
-          </div>
+        </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            value={formData.city}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+            required
+            rows={5}
+          />
+        </div>
+        <div className=" pb-2">
           <button
             type="submit"
-            className="w-full p-3 rounded bg-orange-500 text-white font-bold"
+            className="w-full  bg-[#163383] text-white py-2 px-4 rounded-full hover:bg-[#436ad3]"
           >
-            Register
+            Submit
           </button>
-        </form>
-        <p className="text-white mt-4">
-          Already have an account?{" "}
-          <a href="#" className="text-orange-500">
-            Login
-          </a>
-        </p>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
