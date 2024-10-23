@@ -22,7 +22,7 @@ import {
   faUsers,
   faHome,
   faGlobe,
-  faComment
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -30,7 +30,7 @@ const Sidebar = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(null);
   const [selectedSubMenu, setSelectedSubMenu] = useState(null);
-  
+
   const sidebarTabs = useMemo(
     () => [
       {

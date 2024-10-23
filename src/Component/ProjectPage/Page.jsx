@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-// import '../../app/globals.css'; // Import the custom CSS file
+
 import { IoIosArrowForward } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";

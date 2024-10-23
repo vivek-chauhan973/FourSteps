@@ -33,7 +33,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
       {/* <Trail /> */}
       <Detail />
       <BackToTop />

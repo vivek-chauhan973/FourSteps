@@ -39,7 +39,6 @@ const Testimonial = () => {
     const handleBanner = async () => {
       const response = await fetch("/api/testimonial/banner-testimonial");
       const result = await response.json();
-      console.log("Banner images->>>>>>>>>", result);
       setBanner(result);
     };
 

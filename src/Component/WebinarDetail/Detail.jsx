@@ -1,20 +1,15 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faShareNodes } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
 import { Link as ScrollLink } from "react-scroll";
 import SideForm from "./SideForm";
 import WebinarHero from "./WebinarHero";
 import OverView from "./OverView";
 
 import React from "react";
+import Features from "./Features";
+import Implimentation from "./Implimentation";
+import Product from "./Product";
 
 const Detail = () => {
   return (
@@ -24,7 +19,7 @@ const Detail = () => {
         <WebinarHero />
       </div>
 
-      <div>
+      <div className=" bg-gray-100">
         <div
           id="OverviewSection"
           className="bg-white shadow-lg py-1 sticky top-0 z-30"
@@ -71,7 +66,7 @@ const Detail = () => {
             </div>
             <div>
               <ScrollLink
-                to="informationSection"
+                to="productSection"
                 spy={true}
                 smooth={true}
                 offset={-70}
@@ -91,8 +86,8 @@ const Detail = () => {
               id="OverviewSection"
               className="flex  justify-between mt-5 mb-3"
             >
-              <div className="">
-                <span className=" font-semibold text-xl ">Overiew</span>
+              <div className="px-10">
+                <div className=" font-semibold py-2 text-xl  ">Overiew</div>
                 <OverView />
               </div>
             </div>
@@ -101,50 +96,32 @@ const Detail = () => {
               id="FeatureSection"
               className="flex  justify-between mt-5 mb-3"
             >
-              <div className="">
-                <h4 className=" font-semibold text-xl ">Features section</h4>
-                Features
+              <div className="px-10">
+                <div className=" font-semibold py-2 text-xl  ">Feartures</div>
+                <Features />
               </div>
             </div>
             {/* implimentation section */}
-
             <div
               id="ImplementationSection"
               className="flex  justify-between mt-5 mb-3"
             >
-              <div className="">
-                <h3 className=" font-semibold text-xl ">
-                  ImplementationSection
-                </h3>
-                Implementation content
+              <div className="px-10">
+                <div className=" font-semibold py-2 text-xl  ">
+                  Implimentation
+                </div>
+                <Implimentation />
               </div>
             </div>
             {/* product */}
             <div
-              id="informationSection"
-              className="flex  justify-between mt-5 mb-3"
+              id="productSection"
+              className="flex  justify-between py-5 mb-3"
             >
-              <div className="">
-                <h1 className=" font-semibold text-xl ">information section</h1>
-                information comonents{" "}
+              <div className="px-10">
+                <div className=" font-semibold py-2 text-xl  ">Product</div>
+                <Product />
               </div>
-            </div>
-
-            <div className="pt-7">
-              <h2 className="md:text-lg text-md font-semibold text-graytext">
-                Be Responsible Traveller
-              </h2>
-              <ol className="text-para ml-6 list-disc px-2 pt-3">
-                <li>
-                  <span className="font-semibold">
-                    Plant Trees Whenever Possible :{" "}
-                  </span>{" "}
-                  Participate in local tree-planting initiatives or plant trees
-                  in your own community. Trees absorb carbon dioxide, provide
-                  oxygen, and help support biodiversity, making them vital for a
-                  healthy environment.
-                </li>
-              </ol>
             </div>
           </div>
           <div className=" mt-10">
