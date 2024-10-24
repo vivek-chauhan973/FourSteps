@@ -241,7 +241,7 @@ const Product = () => {
                 src="/image/bg.jpg"
                 alt=""
               />
-              <div className="absolute bottom-0 px-5 py-2">
+              <div className="absolute bottom-10 px-5 py-2">
                 <p className="text-xl text-white">Self Drive welcome</p>
                 <div className="line-clamp-2 text-para text-white rounded-md">
                   <p>
@@ -262,7 +262,7 @@ const Product = () => {
                 src="/image/ab.webp"
                 alt=""
               />
-              <div className="absolute bottom-0 px-5 py-2">
+              <div className="absolute bottom-10 px-5 py-2">
                 <p className="text-xl text-white">Self Drive</p>
                 <div className="line-clamp-2 text-para text-white rounded-md">
                   <p>

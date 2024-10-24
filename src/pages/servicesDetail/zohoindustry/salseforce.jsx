@@ -8,7 +8,7 @@ import Industry from "@/Component/Industry/Industry";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Wework from "@/Component/Web/Wework";
-const salseforce = () => {
+const Salseforce = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
@@ -368,9 +368,9 @@ const salseforce = () => {
             <div className="order-3 md:order-3  ">
               <div className="w-full text-xs hidden md:block sm:text-base  text-gray-600 mx-auto md:px-10 ">
                 <p>
-                  Elevate your team's Salesforce skills effortlessly with our
+                  Elevate your team s Salesforce skills effortlessly with our
                   tailored Training & Support services. From hands-on workshops
-                  to on-demand assistance, we've got your back at every step.
+                  to on-demand assistance, we ve got your back at every step.
                   Empower your workforce, enhance productivity, and unlock the
                   full potential of Salesforce with our expert guidance.
                   Seamless training, reliable support – your Salesforce success
@@ -392,9 +392,9 @@ const salseforce = () => {
               <div className=" w-full mx-auto md:px-0 px-4">
                 <p></p>
               </div>
-              Elevate your team's Salesforce skills effortlessly with our
+              Elevate your team s Salesforce skills effortlessly with our
               tailored Training & Support services. From hands-on workshops to
-              on-demand assistance, we've got your back at every step. Empower
+              on-demand assistance, we ve got your back at every step. Empower
               your workforce, enhance productivity, and unlock the full
               potential of Salesforce with our expert guidance. Seamless
               training, reliable support – your Salesforce success simplified.
@@ -495,4 +495,4 @@ const salseforce = () => {
   );
 };
 
-export default salseforce;
+export default Salseforce;

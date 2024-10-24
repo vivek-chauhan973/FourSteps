@@ -2,7 +2,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import React from "react";
 import { useRouter } from "next/router"; // Import useRouter
 
-const website = () => {
+const Website = () => {
   const router = useRouter();
   const cards = [
     {
@@ -68,11 +68,11 @@ const website = () => {
           <span className=" text-green-500  ">Website Development Area</span>
         </h1>
         <p className="max-w-xl text-sm italic mt-3 items-center ">
-          " Your website is more than just a compilation of web pages. It’s a
-          living, breathing representation of your brand’s ethos and values. My
+           Your website is more than just a compilation of web pages. It s a
+          living, breathing representation of your brand s ethos and values. My
           Website Development expertise understands this intricate balance,
           blending design artistry with technical prowess to create websites
-          that not only look stunning but also function flawlessly."
+          that not only look stunning but also function flawlessly.
         </p>
       </div>
 
@@ -117,4 +117,4 @@ const website = () => {
   );
 };
 
-export default website;
+export default Website;

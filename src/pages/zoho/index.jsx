@@ -78,12 +78,12 @@ const Zoho = () => {
           <span className="text-green-500"> Zoho services Area</span>
         </h1>
         <p className="max-w-xl text-sm italic mt-3 items-center">
-          "Zoho Services delivers a versatile range of cloud-based applications
+          Zoho Services delivers a versatile range of cloud-based applications
           for businesses, including CRM, project management, and accounting
-          tools. Designed to boost efficiency and collaboration, Zoho's
+          tools. Designed to boost efficiency and collaboration, Zoho s
           customizable platform integrates seamlessly with other systems,
           supporting businesses in optimizing their operations and driving
-          growth in a remote and connected world."
+          growth in a remote and connected world.
         </p>
       </div>
 

@@ -6,7 +6,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const zohotraining = () => {
+const Zohotraining = () => {
   useEffect(() => {
     AOS.init({
       once: true,
@@ -442,7 +442,7 @@ const zohotraining = () => {
             custom Zoho solutions.
           </p>
           <button className="bg-blue-500 hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 text-white font-bold py-2 px-5 rounded-full">
-            Let's Connect
+            Lets Connect
           </button>
         </div>
       </div>
@@ -519,4 +519,4 @@ const zohotraining = () => {
   );
 };
 
-export default zohotraining;
+export default Zohotraining;

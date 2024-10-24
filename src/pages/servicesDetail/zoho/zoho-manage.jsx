@@ -4,7 +4,7 @@ import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import { Footer } from "@/Component/Footer/Footer";
 
-const zohomanage = () => {
+const Zohomanage = () => {
   // for zoho services
   const businesses = [
     {
@@ -416,4 +416,4 @@ const zohomanage = () => {
   );
 };
 
-export default zohomanage;
+export default Zohomanage;

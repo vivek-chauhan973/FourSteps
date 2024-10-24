@@ -120,12 +120,12 @@ const Travel = () => {
               className="mx-auto md:mx-0 w-32 mb-6"
             />
             <h1 className="text-4xl font-bold mb-4">
-              "Building an on-demand travel booking platform that lets users
-              secure their dream tours anytime, anywhere."
+              Building an on-demand travel booking platform that lets users
+              secure their dream tours anytime, anywhere
             </h1>
             <p className="text-xl font-medium text-gray-600 mb-6">
-              "Adventure awaits—book your journey today. Let every moment be an
-              unforgettable memory."
+              Adventure awaits—book your journey today. Let every moment be an
+              unforgettable memory
             </p>
           </div>
 
@@ -204,12 +204,12 @@ const Travel = () => {
           Project Case Study with Our Solution
         </h2>
         <p className="text-gray-600 pt-3 px-5 text-center">
-          "With over 4 years of expertise in delivering tailored travel
+          With over 4 years of expertise in delivering tailored travel
           experiences, Foursteps Digital partnered with Bizare Expendtion to
           elevate the customer journey of their travel booking platform. Our
           dedicated team conducted an in-depth analysis of the client's unique
           needs and identified key opportunities for enhancing the overall user
-          experience and optimizing the booking process."
+          experience and optimizing the booking process.
         </p>
       </div>
       {/* section 5 the customer app */}

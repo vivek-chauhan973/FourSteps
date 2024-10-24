@@ -19,7 +19,7 @@ import Choose from "@/Component/Web/Choose";
 import Industry from "@/Component/Industry/Industry";
 import Wework from "@/Component/Web/Wework";
 
-const bitrix = () => {
+const Bitrix = () => {
   // bitrix services ..............
   const businesses = [
     {
@@ -158,8 +158,7 @@ const bitrix = () => {
                 Trust our experts to set up and implement Bitrix24 for your
                 organization. From initial configuration to user access
                 management, we handle the entire setup process, ensuring a
-                smooth transition and optimal utilization of Bitrix24's
-                features.
+                smooth transition and optimal utilization of Bitrix24 features.
               </p>
             </div>
           </div>
@@ -186,7 +185,7 @@ const bitrix = () => {
               <div className="w-full text-xs hidden md:block sm:text-base  text-gray-600 mx-auto md:px-10 ">
                 <p>
                   Tailor Bitrix24 to meet your specific business needs with
-                  custom development and customization services. Whether it's
+                  custom development and customization services. Whether it
                   creating custom modules, workflows, or integrating additional
                   features, our team ensures that Bitrix24 aligns seamlessly
                   with your unique requirements.
@@ -208,7 +207,7 @@ const bitrix = () => {
               <div className=" w-full mx-auto md:px-0 px-4">
                 <p>
                   Tailor Bitrix24 to meet your specific business needs with
-                  custom development and customization services. Whether it's
+                  custom development and customization services. Whether it
                   creating custom modules, workflows, or integrating additional
                   features, our team ensures that Bitrix24 aligns seamlessly
                   with your unique requirements.
@@ -333,7 +332,7 @@ const bitrix = () => {
             {/* List Items */}
             <div className="w-full mx-auto md:px-10 px-0">
               <p>
-                Empower your team with comprehensive training on Bitrix24's
+                Empower your team with comprehensive training on Bitrix24
                 features and functionalities. Our training programs cover
                 everything from basic usage to advanced features, ensuring that
                 your team is proficient in maximizing the benefits of Bitrix24.
@@ -427,7 +426,7 @@ const bitrix = () => {
       </div>
 
       {/* we work page */}
-      <Wework/>
+      <Wework />
       {/* industries we serve  */}
       <div className="">
         <Industry />
@@ -438,4 +437,4 @@ const bitrix = () => {
   );
 };
 
-export default bitrix;
+export default Bitrix;

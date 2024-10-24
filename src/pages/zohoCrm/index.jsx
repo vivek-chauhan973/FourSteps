@@ -209,12 +209,12 @@ const ZohoCrm = () => {
           <span className="text-green-500"> Zoho Industry & CRM area</span>
         </h1>
         <p className="max-w-xl text-sm italic mt-3 items-center">
-          "In today's competitive landscape, Zoho CRM stands out as the ultimate
+          In today s competitive landscape, Zoho CRM stands out as the ultimate
           solution for industry professionals seeking to optimize their customer
           management strategies. Offering a suite of customizable features, Zoho
           CRM enables businesses to automate workflows, gain deeper customer
           insights, and foster long-lasting relationships that propel growth and
-          success."
+          success.
         </p>
       </div>
 

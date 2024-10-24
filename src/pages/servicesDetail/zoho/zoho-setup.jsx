@@ -191,7 +191,7 @@ const Zohosetup = () => {
           </div>
           <p className="mb-1 text-sm">
             Zoho setup and implementation services are provided by professionals
-            who possess deep knowledge and expertise in utilizing Zoho's suite
+            who possess deep knowledge and expertise in utilizing Zoho suite
             of applications effectively.
           </p>
           <div className="flex items-center mb-1">
