@@ -1,76 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-const Filter = () => {
-  return (
-    <div>
-      <div className=" container px-4 w-[320px]  py-4">
-        <div className="bg-white rounded-lg border    shadow-lg p-6">
-          <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
-          <div className="mb-6">
-            <h3 className="font-semibold text-md mb-2">Industries</h3>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Banking and Financial Services</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Customer Experience</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Energy and Utilities</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Healthcare</span>
-            </label>
-            <button className="text-blue-500 mt-2">Show more</button>
-          </div>
 
-          <div className="mb-6">
-            <h3 className="font-semibold text-md mb-2">Departments</h3>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Contact Center</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Finance and Accounting (F&A)</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Human Resources (HR)</span>
-            </label>
-            <label className="flex items-center mb-1">
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2">Information Technology (IT)</span>
-            </label>
-            <button className="text-blue-500 mt-2">Show more</button>
-          </div>
+const Filter = () => {
+  // Data for checkboxes (Industries and Departments)
+  const industries = [
+    "Banking and Financial Services",
+    "Customer Experience",
+    "Energy and Utilities",
+    "Healthcare",
+    "Hospitality",
+  ];
+
+  const departments = [
+    "Contact Center",
+    "Finance and Accounting (F&A)",
+    "Human Resources (HR)",
+    "Information Technology (IT)",
+    "other",
+  ];
+
+  const other = ["Marketing", "Sales", "abc", "abcd", "abcde"];
+  const [showMoreIndustries, setShowMoreIndustries] = useState(false);
+  const [showMoreDepartments, setShowMoreDepartments] = useState(false);
+  const [showOther, setOther] = useState(false);
+  return (
+    <div className="">
+      <div className=" rounded-lg shadow-md          container px-4  mx-10 w-[320px]   py-4">
+        <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
+
+        {/* Industries */}
+        <div className="mb-6 border border-gray-300 rounded p-4">
+          <h3 className="font-semibold text-md mb-2">Industries</h3>
+
+          {/* Display first 3 industries by default */}
+          {industries
+            .slice(0, showMoreIndustries ? industries.length : 3)
+            .map((industry, index) => (
+              <label className="flex items-center mb-1" key={index}>
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-4 w-4 text-blue-600"
+                />
+                <span className="ml-2">{industry}</span>
+              </label>
+            ))}
+
+          {/* Show More/Less button */}
+          <button
+            className="text-blue-500 mt-1"
+            onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+          >
+            {showMoreIndustries ? "Show less" : "Show more"}
+          </button>
+        </div>
+
+        {/* Departments */}
+        <div className="mb-6 border border-gray-300 rounded p-4">
+          <h3 className="font-semibold text-md mb-2">Departments</h3>
+
+          {/* Display first 3 departments by default */}
+          {departments
+            .slice(0, showMoreDepartments ? departments.length : 3)
+            .map((department, index) => (
+              <label className="flex items-center mb-1" key={index}>
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-4 w-4 text-blue-600"
+                />
+                <span className="ml-2">{department}</span>
+              </label>
+            ))}
+
+          {/* Show More/Less button */}
+          <button
+            className="text-blue-500 mt-1"
+            onClick={() => setShowMoreDepartments(!showMoreDepartments)}
+          >
+            {showMoreDepartments ? "Show less" : "Show more"}
+          </button>
+        </div>
+
+        {/* Other filters */}
+        <div className="mb-6 border border-gray-300 rounded p-4">
+          <h3 className="font-semibold text-md mb-2">Other Section</h3>
+          {/* Display other section and show only 3 departments */}
+          {other
+            .slice(0, showOther ? other.length : 3)
+            .map((otherItem, index) => (
+              <label className="flex items-center mb-1" key={index}>
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-4 w-4 text-blue-600"
+                />
+                <span className="ml-2">{otherItem}</span>
+              </label>
+            ))}
+
+          <button
+            className="text-blue-500 mt-1"
+            onClick={() => setOther(!showOther)}
+          >
+            {showOther ? "Show less" : "Show more"}
+          </button>
         </div>
       </div>
     </div>

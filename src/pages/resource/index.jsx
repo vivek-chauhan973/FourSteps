@@ -26,7 +26,7 @@ export default function Resource() {
 
   const departments = [
     "Contact Center",
-    "Finance and Accounting (F&A)",
+    "Finance and Accounting",
     "Human Resources (HR)",
     "Information Technology (IT)",
     "other",
@@ -36,9 +36,12 @@ export default function Resource() {
 
   return (
     <>
-      <div className="bg-slate-100 ">
+      <div>
         <Nav />
-        <div className="container-wrapper">
+      </div>
+
+      <div className=" container">
+        <div className="">
           <div className="flex  items-center justify-center p-6 gap-4 ">
             <div className="max-w-2xl text-center">
               <h1 className="text-4xl font-bold ">All Section Here </h1>
@@ -56,6 +59,7 @@ export default function Resource() {
               />
             </div>
           </div>
+
           <div className="flex items-center justify-center py-10 px-5 ">
             <div className="flex flex-wrap gap-4 justify-center">
               {resources.map((resource, index) => (
@@ -66,14 +70,16 @@ export default function Resource() {
             </div>
           </div>
         </div>
-        <div className=" px-10 grid grid-cols-1 xl:grid-cols-[320px,2fr] gap-10 relative">
+
+        {/* whole struture of side filter and promo page  */}
+        <div className=" px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-2 gap-10 relative">
           <div className="relative">
             <div className="">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white rounded-lg shadow-md p-4">
                 <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
 
                 {/* Industries */}
-                <div className="mb-6 border border-gray-300 rounded p-4">
+                <div className="mb-6 border border-gray-300 rounded p-2">
                   <h3 className="font-semibold text-md mb-2">Industries</h3>
 
                   {/* Display first 3 industries by default */}
@@ -150,13 +156,11 @@ export default function Resource() {
               </div>
             </div>
           </div>
-
           {/* side main data */}
           <div>
-            {/* horizontal cards starts */}
             {/* card 1 */}
 
-            <div className="flex justify-center max-w-3xl pb-8 mx-auto items-center bg-gray-100">
+            <div className="flex justify-center max-w-3xl pb-8 mx-auto items-center">
               <div className="bg-white shadow-lg items-center rounded-lg p-3 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {/* Section 1: Image */}
                 <div className="flex justify-center sm:col-span-2 md:col-span-1">
@@ -200,7 +204,7 @@ export default function Resource() {
             </div>
 
             {/* card-2 upcoming webinar  */}
-            <div className="flex relative justify-center max-w-3xl mx-auto items-center bg-gray-100 pb-8">
+            <div className="flex relative justify-center max-w-3xl mx-auto items-center  pb-8">
               <div className="bg-white shadow-lg items-center rounded-lg p-3 mt-5 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
                 {/* Section 1: "Upcoming Webinars" Badge */}
                 <div className="absolute top-2">
@@ -253,7 +257,6 @@ export default function Resource() {
             {/* horizontal cards ends  */}
           </div>
         </div>
-
         <div className="text-end p-10">Pagination page... main .........</div>
       </div>
     </>

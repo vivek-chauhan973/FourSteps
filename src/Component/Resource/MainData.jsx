@@ -1,9 +1,9 @@
 import React from "react";
-
+import Image from "next/image";
 const MainData = () => {
   const cardData = [
     {
-      title: "Stat Report 2024",
+      title: "Stat Report 20249999999",
       description: "Discovin the UiPath Community industry report.",
       type: "FEATURED | ANALYST REPORT",
       image: "/image/1.png", // Add the image URL
@@ -33,29 +33,99 @@ const MainData = () => {
   return (
     <div className="container px-4 py-4">
       <div>
-        <div>
-          <div className="grid grid-cols-1 bg-gray-100 sm:grid-cols-2  px-5 py-5 gap-5 md:grid-cols-3  lg:grid-cols-3">
-            {cardData.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg  cursor-pointer shadow-md px-3 py-4    transition-transform transform hover:scale-105"
-              >
-                <div className="flex items-center justify-center ">
-                  <img src={item.image} alt={item.type} className="w-40 h-40" />
-                </div>
-                <div className="font-semibold text-xs pt-5 pb-1 text-blue-600">
-                  {item.type}
-                </div>
-                <h3 className="text-md md:text-lg font-bold mb-2 break-words">
-                  {item.title}
-                </h3>
-                <p className="text-xs md:text-md text-gray-700">
-                  {item.description}
-                </p>
+        {/* horizontal cards starts */}
+        {/* card 1 */}
+
+        <div className="flex justify-center max-w-3xl pb-8  items-center ">
+          <div className="bg-white shadow-lg items-center rounded-lg p-3 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {/* Section 1: Image */}
+            <div className="flex justify-center sm:col-span-2 md:col-span-1">
+              <Image
+                src="/image/try.jpeg"
+                alt="Service"
+                height={220}
+                width={220}
+                className="rounded object-cover"
+              />
+            </div>
+
+            {/* Section 2: Text */}
+            <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
+              <h2 className="text-lg font-bold">ABCD</h2>
+              <div className="flex text-gray-500 mt-2">
+                <span className="mr-2">Subtitle</span>
               </div>
-            ))}
+              <p className="mt-1 text-sm md:text-xs line-clamp-3 text-gray-700">
+                A paragraph is defined as “a group of sentences or a single
+                sentence that forms a...
+              </p>
+            </div>
+
+            {/* Section 3:  Button */}
+            <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
+              <div className="text-center md:text-left">
+                <div className="text-green-600 text-lg font-semibold">
+                  Title
+                </div>
+                <div className="text-2xl font-bold text-gray-800">Subtitle</div>
+                <div className="text-sm text-gray-500">Description</div>
+              </div>
+              <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded self-center md:self-start">
+                VIEW DETAILS
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* card-2 upcoming webinar  */}
+        <div className="flex relative justify-center max-w-3xl  items-center  pb-8">
+          <div className="bg-white shadow-lg items-center rounded-lg p-3 mt-5 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
+            {/* Section 1: "Upcoming Webinars" Badge */}
+            <div className="absolute top-2">
+              <div className="rounded-r-sm px-2 bg-black">
+                <p className="py-1 text-xs text-white">Upcoming Webinars</p>
+              </div>
+            </div>
+            {/* Section 2: Image */}
+            <div className="flex justify-center sm:col-span-2 md:col-span-1">
+              <Image
+                src="/image/try.jpeg"
+                alt="Service"
+                height={220}
+                width={220}
+                className="rounded object-cover"
+              />
+            </div>
+
+            {/* Section 3: Text */}
+            <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
+              <h2 className="text-lg font-bold">ABCD</h2>
+              <div className="flex text-gray-500 mt-2">
+                <span className="mr-2">Subtitle</span>
+              </div>
+              <p className="mt-1 text-sm md:text-xs line-clamp-3 text-gray-700">
+                A paragraph is defined as “a group of sentences or a single
+                sentence that forms a...
+              </p>
+            </div>
+
+            {/* Section 4:Button */}
+            <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
+              <div className="text-center md:text-left">
+                <div className="text-green-600 text-lg font-semibold">
+                  Title
+                </div>
+                <div className="text-2xl font-bold text-gray-800">Subtitle</div>
+                <div className="text-sm text-gray-500">Description</div>
+              </div>
+              <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded self-center md:self-start">
+                VIEW DETAILS
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* horizontal cards ends  */}
       </div>
     </div>
   );
