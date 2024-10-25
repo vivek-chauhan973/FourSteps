@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Link from "next/link";
 
 const Filter = () => {
-  // Data for checkboxes (Industries and Departments)
   const industries = [
     "Banking and Financial Services",
     "Customer Experience",
@@ -16,20 +14,22 @@ const Filter = () => {
     "Finance and Accounting (F&A)",
     "Human Resources (HR)",
     "Information Technology (IT)",
-    "other",
+    "Other",
   ];
 
   const other = ["Marketing", "Sales", "abc", "abcd", "abcde"];
+
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
   const [showOther, setOther] = useState(false);
+
   return (
     <div className="">
-      <div className=" rounded-lg shadow-md          container px-4  mx-10 w-[320px]   py-4">
+      <div className="bg-white rounded-lg shadow-md p-4">
         <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
 
         {/* Industries */}
-        <div className="mb-6 border border-gray-300 rounded p-4">
+        <div className="mb-6 border border-gray-300 rounded p-2">
           <h3 className="font-semibold text-md mb-2">Industries</h3>
 
           {/* Display first 3 industries by default */}
@@ -47,7 +47,7 @@ const Filter = () => {
 
           {/* Show More/Less button */}
           <button
-            className="text-blue-500 mt-1"
+            className="text-blue-500 mt-2"
             onClick={() => setShowMoreIndustries(!showMoreIndustries)}
           >
             {showMoreIndustries ? "Show less" : "Show more"}
@@ -73,7 +73,7 @@ const Filter = () => {
 
           {/* Show More/Less button */}
           <button
-            className="text-blue-500 mt-1"
+            className="text-blue-500 mt-2"
             onClick={() => setShowMoreDepartments(!showMoreDepartments)}
           >
             {showMoreDepartments ? "Show less" : "Show more"}
@@ -97,7 +97,7 @@ const Filter = () => {
             ))}
 
           <button
-            className="text-blue-500 mt-1"
+            className="text-blue-500 mt-2"
             onClick={() => setOther(!showOther)}
           >
             {showOther ? "Show less" : "Show more"}

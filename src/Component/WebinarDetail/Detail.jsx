@@ -1,4 +1,3 @@
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -41,40 +40,27 @@ const Detail = () => {
             </div>
             <div>
               <ScrollLink
-                to="FeatureSection"
+                to="agenda"
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
-                  Features
+                  Key & Highlights
                 </p>
               </ScrollLink>
             </div>
             <div>
               <ScrollLink
-                to="ImplementationSection"
+                to="speakerSection"
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
-                  Implementation
-                </p>
-              </ScrollLink>
-            </div>
-            <div>
-              <ScrollLink
-                to="productSection"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                <p className="text-center w-[140px] text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
-                  product information
+                  Speaker
                 </p>
               </ScrollLink>
             </div>
@@ -92,36 +78,23 @@ const Detail = () => {
                 <OverView />
               </div>
             </div>
-            {/* Features section */}
-            <div
-              id="FeatureSection"
-              className="flex  justify-between mt-5 mb-3"
-            >
+            {/* key and highlight section */}
+            <div id="agenda" className="flex  justify-between mt-5 mb-3">
               <div className="px-10">
-                <div className=" font-semibold py-2 text-xl  ">Features</div>
+                <div className=" font-semibold py-2 text-xl  ">
+                  Key & highlights
+                </div>
                 <Features />
               </div>
             </div>
-            {/* Implementation section */}
+            {/* speaker  section */}
             <div
-              id="ImplementationSection"
+              id="speakerSection"
               className="flex  justify-between mt-5 mb-3"
             >
               <div className="px-10">
-                <div className=" font-semibold py-2 text-xl  ">
-                  Implementation
-                </div>
+                <div className=" font-semibold py-2 text-xl  ">Speaker</div>
                 <Implimentation />
-              </div>
-            </div>
-            {/* Product section */}
-            <div
-              id="productSection"
-              className="flex  justify-between py-5 mb-3"
-            >
-              <div className="px-10">
-                <div className=" font-semibold py-2 text-xl  ">Product</div>
-                <Product />
               </div>
             </div>
           </div>

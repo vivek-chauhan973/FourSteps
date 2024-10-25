@@ -1,7 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { resources } from "@/Component/data/SwitchData";
+
 const Switch = () => {
+  const resources = [
+    { href: "/resource/all", label: "Show all" },
+    { href: "/resource/webinar", label: "Webinar" },
+    { href: "/resource/product", label: "Product" },
+    { href: "/resource/case-studies", label: "Case & studies" },
+    { href: "/resource/demo-videos", label: "Demos & Videos" },
+    { href: "/resource/blog", label: "Blog" },
+  ];
+
   return (
     <div>
       <div className="flex items-center justify-center py-4">

@@ -22,9 +22,12 @@ const Routes = () => {
       <div className="py-10">
         <Switch />
       </div>
-      <div className="flex flex-col lg:flex-row">
-        <Filter />
-        <MainData />
+      {/* <div className="flex flex-col lg:flex-row"> */}
+      <div className=" conatiner">
+        <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-2 gap-10 relative">
+          <Filter />
+          <MainData />
+        </div>
       </div>
     </div>
   );
