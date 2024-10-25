@@ -123,7 +123,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
               {services.map((service) => (
                 <div
                   key={service.name}
-                  className="py-2 px-1 font-semibold cursor-pointer hover:bg-gray-300 transition-colors"
+                  className="py-2 px-1 font-normal cursor-pointer hover:bg-gray-300 transition-colors"
                   onMouseEnter={() => setActiveService(service)}
                   onClick={() => setActiveService(service)}
                 >
@@ -134,7 +134,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
             {/* Content Area */}
 
             <div className="flex-1  bg-white pl-10  ">
-              <h2 className="text-2xl font-bold    transition duration-200">
+              <h2 className="text-xl font-semibold    transition duration-200">
                 {activeService.content.heading}
               </h2>
               <p className=" mb-4 text-sm  border-b text-gray-600">

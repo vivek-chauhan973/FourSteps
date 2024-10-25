@@ -2,11 +2,10 @@ import react, { useState } from "react";
 import Nav from "@/Component/Header/Nav";
 import Link from "next/link";
 import Image from "next/image";
-// import { resources } from "@/Component/data/SwitchData";
 export default function Resource() {
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
-
+  const [showOther, setOther] = useState(false);
   const resources = [
     { href: "/resource/all", label: "Show all" },
     { href: "/resource/webinar", label: "Webinar" },
@@ -32,6 +31,8 @@ export default function Resource() {
     "Information Technology (IT)",
     "other",
   ];
+
+  const other = ["Marketing", "Sales", "abc", "abcd", "abcde"];
 
   return (
     <>
@@ -72,7 +73,7 @@ export default function Resource() {
                 <h2 className="text-lg font-semibold mb-4">FILTER BY:</h2>
 
                 {/* Industries */}
-                <div className="mb-6">
+                <div className="mb-6 border border-gray-300 rounded p-4">
                   <h3 className="font-semibold text-md mb-2">Industries</h3>
 
                   {/* Display first 3 industries by default */}
@@ -98,7 +99,7 @@ export default function Resource() {
                 </div>
 
                 {/* Departments */}
-                <div className="mb-6">
+                <div className="mb-6 border border-gray-300 rounded p-4">
                   <h3 className="font-semibold text-md mb-2">Departments</h3>
 
                   {/* Display first 3 departments by default */}
@@ -122,9 +123,34 @@ export default function Resource() {
                     {showMoreDepartments ? "Show less" : "Show more"}
                   </button>
                 </div>
+
+                {/* Other filters */}
+                <div className="mb-6 border border-gray-300 rounded p-4">
+                  <h3 className="font-semibold text-md mb-2">Other Section</h3>
+                  {/* Display other section and show only 3 departments */}
+                  {other
+                    .slice(0, showOther ? other.length : 3)
+                    .map((otherItem, index) => (
+                      <label className="flex items-center mb-1" key={index}>
+                        <input
+                          type="checkbox"
+                          className="form-checkbox h-4 w-4 text-blue-600"
+                        />
+                        <span className="ml-2">{otherItem}</span>
+                      </label>
+                    ))}
+
+                  <button
+                    className="text-blue-500 mt-2"
+                    onClick={() => setOther(!showOther)}
+                  >
+                    {showOther ? "Show less" : "Show more"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
           {/* side main data */}
           <div>
             {/* horizontal cards starts */}

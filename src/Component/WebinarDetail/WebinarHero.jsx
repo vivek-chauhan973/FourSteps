@@ -4,7 +4,7 @@ const WebinarHero = () => {
   return (
     <div className="container">
       <div className="">
-        <div className="container mx-auto flex gap-5 text-white bg-[#10364f] flex-col lg:flex-row items-start justify-between space-y-6 lg:space-y-0">
+        <div className="container mx-auto flex gap-5 h-96 text-white bg-[#10364f] flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0">
           {/* Left section - Course Info */}
           <div className="lg:w-3/5 p-5 order-2 lg:order-1">
             <h1 className="text-3xl py-5 font-bold mb-2">

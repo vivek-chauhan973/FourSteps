@@ -41,7 +41,7 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
 
         {/* dropdown section */}
         {dropDown && (
-          <div className="absolute left-[-15px]  w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+          <div className="absolute left-[-15px] text-[15px]  w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
             <ul className="">
               <li>
                 <Link

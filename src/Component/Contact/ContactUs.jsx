@@ -6,7 +6,7 @@ const ContactUs = () => {
   return (
     <>
       <div className="container md:p-10 p-5">
-        <div class="grid md:grid-cols-2 place-items-center">
+        <div className="grid md:grid-cols-2 place-items-center">
           <div className="">
             <div className="mb-4">
               <h4 className="text-2xl capitalize text-gray-800 font-bold mb-2">
@@ -55,7 +55,6 @@ const ContactUs = () => {
             <form action="" method="post">
               <div className="md:py-3 py-2">
                 <div>
-                  {/* <label htmlFor="name" class="leading-7 py-4 text-base font-medium text-gray-900">Your Name</label> */}
                   <input
                     type="text"
                     id="name"
@@ -68,7 +67,6 @@ const ContactUs = () => {
               </div>
               <div className="md:py-3 py-2">
                 <div>
-                  {/* <label htmlFor="email" class="leading-7 py-4 text-base font-medium text-gray-900">Your Email</label> */}
                   <input
                     type="email"
                     id="email"

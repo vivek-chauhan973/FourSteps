@@ -235,16 +235,17 @@ const Product = () => {
               style={{ scrollSnapAlign: "start" }}
             >
               <Image
-                className="relative object-contain h-96 w-full"
+                className="relative object-cover h-96 w-full"
                 height={200}
                 width={300}
                 src="/image/bg.jpg"
                 alt=""
               />
-              <div className="absolute bottom-10 px-5 py-2">
-                <p className="text-xl text-white">Self Drive welcome</p>
+              <div className="absolute bottom-5 px-5 py-2">
+                <p className="text-xl text-white">Self Drive</p>
                 <div className="line-clamp-2 text-para text-white rounded-md">
                   <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Atque aperiam exercitationem aliquid!
                   </p>

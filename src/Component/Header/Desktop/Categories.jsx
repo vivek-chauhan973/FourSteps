@@ -556,7 +556,7 @@ const Categories = () => {
                 {categoryData.map((category) => (
                   <div
                     key={category.title}
-                    className="py-1  cursor-pointer font-semibold hover:bg-gray-300 transition-colors duration-200"
+                    className="py-1  cursor-pointer font-normal hover:bg-gray-300 transition-colors duration-200"
                     onMouseEnter={() => setActiveCategory(category)}
                     onClick={() => setActiveCategory(category)}
                   >
@@ -567,10 +567,10 @@ const Categories = () => {
 
               {/* Content Area */}
               <div className="flex-1 mt-4 md:mt-0 md:pl-10">
-                <h2 className="text-xl md:text-2xl font-bold transition duration-200">
+                <h2 className="text-xl md:text-xl font-semibold transition duration-200">
                   {activeCategory.content.heading}
                 </h2>
-                <p className="mb-4 text-sm border-b text-gray-600">
+                <p className="mb-3 text-sm border-b text-gray-600">
                   {activeCategory.content.description}
                 </p>
                 <div className="space-y-2">

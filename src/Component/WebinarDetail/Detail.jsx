@@ -1,3 +1,4 @@
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -27,13 +28,13 @@ const Detail = () => {
           <div className="container-wrapper gap-3 md:gap-10 xs:pb-5 md:pb-0 hide-scrollbar flex justify-start overflow-x-auto ">
             <div>
               <ScrollLink
-                to="OverviewSection"
+                to="OverviewContent" // Updated to point to the correct id
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={500}
               >
-                <p className=" text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
+                <p className=" text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
                   Overview
                 </p>
               </ScrollLink>
@@ -83,37 +84,37 @@ const Detail = () => {
           <div>
             {/* Overview section */}
             <div
-              id="OverviewSection"
+              id="OverviewContent" // Changed id here to be unique
               className="flex  justify-between mt-5 mb-3"
             >
               <div className="px-10">
-                <div className=" font-semibold py-2 text-xl  ">Overiew</div>
+                <div className=" font-semibold py-2 text-xl  ">Overview</div>
                 <OverView />
               </div>
             </div>
-            {/* features section */}
+            {/* Features section */}
             <div
               id="FeatureSection"
               className="flex  justify-between mt-5 mb-3"
             >
               <div className="px-10">
-                <div className=" font-semibold py-2 text-xl  ">Feartures</div>
+                <div className=" font-semibold py-2 text-xl  ">Features</div>
                 <Features />
               </div>
             </div>
-            {/* implimentation section */}
+            {/* Implementation section */}
             <div
               id="ImplementationSection"
               className="flex  justify-between mt-5 mb-3"
             >
               <div className="px-10">
                 <div className=" font-semibold py-2 text-xl  ">
-                  Implimentation
+                  Implementation
                 </div>
                 <Implimentation />
               </div>
             </div>
-            {/* product */}
+            {/* Product section */}
             <div
               id="productSection"
               className="flex  justify-between py-5 mb-3"

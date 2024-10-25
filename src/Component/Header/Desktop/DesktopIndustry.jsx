@@ -29,12 +29,15 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
         >
           Industry
           {dropDown ? (
-            <FaChevronUp className="ml-1 transition-transform duration-300" 
+            <FaChevronUp
+              className="ml-1 transition-transform duration-300"
               size={13}
             />
           ) : (
-            <FaChevronDown className="ml-1 transition-transform duration-300"
-            size={13} />
+            <FaChevronDown
+              className="ml-1 transition-transform duration-300"
+              size={13}
+            />
           )}
           <span
             className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
@@ -46,7 +49,7 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
 
       {/* Dropdown Section */}
       {dropDown && (
-        <div className="absolute left-0 mt-1 w-72 bg-white border rounded-lg border-gray-200 shadow-lg z-10">
+        <div className="absolute left-[-20px] text-[15px]    w-72 bg-white border rounded-lg border-gray-200 shadow-lg z-10">
           <ul className="py-2 space-y-1">
             <li>
               <Link

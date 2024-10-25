@@ -178,23 +178,23 @@ const Page = () => {
         </div>
         {/* more project button start  */}
 
-        <div class="flex items-center md:justify-start justify-center  my-10 ">
+        <div className="flex items-center md:justify-start justify-center  my-10 ">
           <Link href="/project">
-            <button class="bg-gray-800  text-white text-sm py-2 px-4 rounded-full inline-flex items-center">
+            <button className="bg-gray-800  text-white text-sm py-2 px-4 rounded-full inline-flex items-center">
               <span className="  p-1">More Projects</span>
 
-              <div class="relative group">
+              <div className="relative group">
                 <svg
-                  class="h-6 w-6 rounded-full bg-white text-black transition-transform duration-300 transform group-hover:translate-x-1"
+                className="h-6 w-6 rounded-full bg-white text-black transition-transform duration-300 transform group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   ></path>
                 </svg>
