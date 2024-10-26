@@ -21,8 +21,8 @@ import {
   faLayerGroup,
   faUsers,
   faHome,
-  faGlobe,
   faComment,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -37,6 +37,11 @@ const Sidebar = () => {
         label: "Global",
         icon: () => <FontAwesomeIcon icon={faChartSimple} />,
         href: "/admin",
+      },
+      {
+        label: "User",
+        icon: () => <FontAwesomeIcon icon={faUser} />,
+        subMenu: [{ label: "User as Speaker", href: "/admin/user/user" }],
       },
       {
         label: "Webinar ",
