@@ -7,8 +7,8 @@ import WebinarHero from "./WebinarHero";
 import OverView from "./OverView";
 
 import React from "react";
-import Features from "./Features";
-import Implimentation from "./Implimentation";
+import Highlights from "./Highlights";
+import SpeakerDetail from "./SpeakerDetail";
 import Product from "./Product";
 
 const Detail = () => {
@@ -84,7 +84,7 @@ const Detail = () => {
                 <div className=" font-semibold py-2 text-xl  ">
                   Key & highlights
                 </div>
-                <Features />
+                <Highlights />
               </div>
             </div>
             {/* speaker  section */}
@@ -94,7 +94,7 @@ const Detail = () => {
             >
               <div className="px-10">
                 <div className=" font-semibold py-2 text-xl  ">Speaker</div>
-                <Implimentation />
+                <SpeakerDetail />
               </div>
             </div>
           </div>

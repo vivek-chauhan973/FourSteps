@@ -2,6 +2,7 @@ import react, { useState } from "react";
 import Nav from "@/Component/Header/Nav";
 import Link from "next/link";
 import Image from "next/image";
+import Hero from "@/Component/Resource/Hero";
 export default function Resource() {
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
@@ -59,6 +60,7 @@ export default function Resource() {
               />
             </div>
           </div>
+          
 
           <div className="flex items-center justify-center py-10 px-5 ">
             <div className="flex flex-wrap gap-4 justify-center">
