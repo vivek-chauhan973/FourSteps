@@ -134,8 +134,8 @@ const AboutSection = () => {
           </p>
           <p className="mb-4 text-sm md:text-base">
             We have high-performing teams that help small businesses achieve
-            objectives like optimizing digital presence and increasing
-            operational efficiency.
+            objectives like a optimizing digital presence and increasing
+            operational efficiency
           </p>
 
           {/* Image for mobile screens */}
