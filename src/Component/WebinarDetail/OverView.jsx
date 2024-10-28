@@ -3,12 +3,12 @@ import React from "react";
 function OverView() {
   return (
     <div className=" conatiner">
-      <div className="   md:border xl:flex flex-col w-full gap-4  p-3 relative bg-white shadow-md h-auto ">
+      <div className="   md:border xl:flex flex-col w-full gap-4  p-3 relative bg-white shadow h-auto ">
         <div className=" px-2  ">
           <h2 className=" text-lg py-3 font-bold">Key overview of Webinars</h2>
           <ul className="  text-sm list-decimal md:px-5">
             <li>
-              Format: Webinars typically include presentations, discussions, and
+              Format:: Webinars typically include presentations, discussions, and
               interactive sessions, often utilizing slides, videos, or
               demonstrations.
             </li>

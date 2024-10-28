@@ -9,14 +9,15 @@ const Implimentation = () => {
       "Passionate about building scalable web applications and working with modern technologies.",
     imageUrl: "/image/try.jpeg", // Replace with your image URL
   };
+
   return (
-    <div className=" conatiner">
-      <div className=" md:border xl:flex flex-col w-full   p-3 relative bg-white shadow-lg h-auto ">
-        <div className="grid grid-cols-1 xl:grid-cols-[200px,2fr] border py-2 gap-5 relative">
+    <div className="container mx-auto ">
+      <div className="border md:flex flex-col w-full p-3 bg-white shadow-md h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[200px,2fr] border px-2 py-2 gap-5">
           {/* Image Side */}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center md:justify-start">
             <Image
-              className="w-40 h-40 rounded-md object-cover"
+              className="rounded-md object-cover"
               src={user.imageUrl}
               alt={user.name}
               height={200}
@@ -25,12 +26,12 @@ const Implimentation = () => {
           </div>
 
           {/* Text Side */}
-          <div className="flex flex-col justify-center space-y-2">
-            <h2 className="text-xl font-semibold text-gray-800">
+          <div className="flex px-2 flex-col justify-center space-y-2">
+            <h2 className="text-lg md:text-xl font-semibold text-gray-800">
               Name: {user.name}
             </h2>
             <p className="text-gray-600">Role: {user.jobRole}</p>
-            <p className="">Des: {user.description}</p>
+            <p className="text-sm ">Des: {user.description}</p>
           </div>
         </div>
       </div>
