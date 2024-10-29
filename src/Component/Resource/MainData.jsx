@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 const MainData = () => {
+  const router=useRouter();
+  // console.log("router---> ",router);
   return (
     <div>
       <div className="flex justify-center max-w-3xl pb-2 mx-auto items-center">
@@ -40,9 +44,9 @@ const MainData = () => {
                 <p className="text-gray-900 text-sm">time: 40min</p>
               </div>
             </div>
-            <button className="mt-4 w-full bg-orange-500 text-white px-4 py-2 rounded self-center md:self-start">
+            <Link href="webinar/pradhumn" className="mt-4 w-full bg-orange-500 text-white px-4 py-2 rounded self-center md:self-start">
               VIEW DETAILS
-            </button>
+            </Link>
           </div>
         </div>
       </div>
