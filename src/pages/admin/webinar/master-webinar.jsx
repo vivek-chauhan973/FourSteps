@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +9,11 @@ import {
   faSave,
 } from "@fortawesome/free-solid-svg-icons";
 
+const fetchWebinarType=async ()=>{
+  const data1=await fetch("/api/webinar/webinartype/getIndustries");
+  return await data1.json();
+}
+
 export default function Masterwebinar() {
   // States for Webinar Types
   const [webinarType, setWebinarType] = useState(""); // Input value state for webinar types
@@ -17,22 +22,32 @@ export default function Masterwebinar() {
   const [editWebinarValue, setEditWebinarValue] = useState(""); // Edited value of the webinar type
 
   // Handle input change for webinar type
+
+ 
   const handleWebinarTypeChange = (e) => {
     setWebinarType(e.target.value);
   };
-
   // Handle form submit to add new webinar type
-  const handleSubmitWebinarType = (e) => {
+  const handleSubmitWebinarType = async(e) => {
     e.preventDefault();
-    if (webinarType.trim()) {
-      const newWebinarType = {
-        _id: Date.now(),
-        type: webinarType,
-      };
-      setWebinarTypesList([...webinarTypesList, newWebinarType]);
-      setWebinarType("");
+    const data1=await fetch("/api/webinar/webinartype/addIndustry",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({name:webinarType}) 
+    })
+    if(data1.ok){
+      alert("data add successfully");
     }
+    else{
+      alert("something went wrong");
+    }
+    fetchWebinarType().then(res=>{setWebinarTypesList(res?.data||[])})
   };
+  useEffect(()=>{
+    fetchWebinarType().then(res=>{setWebinarTypesList(res?.data||[])})
+  },[])
 
   // Edit and delete functions for webinar types
   const toggleEditWebinar = (id) => {
@@ -46,18 +61,34 @@ export default function Masterwebinar() {
     }
   };
 
-  const saveEditWebinar = (id) => {
-    const updatedWebinars = webinarTypesList.map((item) =>
-      item._id === id ? { ...item, type: editWebinarValue } : item
-    );
-    setWebinarTypesList(updatedWebinars);
-    setEditWebinarId(null);
-    setEditWebinarValue("");
+  const saveEditWebinar =async (id) => {
+    const data1=await fetch(`/api/webinar/webinartype/editIndustry?id=${id}`,{
+      method:"PUT",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({name:webinarType}) 
+    })
+    if(data1.ok){
+      alert("data updated successfully");
+    }
+    else{
+      alert("something went wrong");
+    }
+    fetchWebinarType().then(res=>{setWebinarTypesList(res?.data||[])})
   };
 
-  const handleDeleteWebinar = (id) => {
-    const filteredWebinars = webinarTypesList.filter((item) => item._id !== id);
-    setWebinarTypesList(filteredWebinars);
+  const handleDeleteWebinar =async (id) => {
+      const data1=await fetch(`/api/webinar/webinartype/deleteIndustry?id=${id}`,{
+        method:"DELETE"
+      })
+      if(data1.ok){
+        alert("data deleted successfully");
+      }
+      else{
+        alert("something went wrong");
+      }
+      fetchWebinarType().then(res=>{setWebinarTypesList(res?.data||[])})
   };
 
   // States for Departments
@@ -157,11 +188,11 @@ export default function Masterwebinar() {
                       {editWebinarId === item._id ? (
                         <input
                           className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
-                          value={editWebinarValue}
+                          value={item?.name}
                           onChange={(e) => setEditWebinarValue(e.target.value)}
                         />
                       ) : (
-                        item.type
+                        item.name
                       )}
                     </p>
                     <div className="flex gap-2">
