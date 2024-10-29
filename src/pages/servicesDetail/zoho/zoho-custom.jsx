@@ -333,7 +333,7 @@ const Zohocustom = () => {
             custom Zoho solutions.
           </p>
           <button className="bg-blue-500 hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 text-white font-bold py-2 px-5 rounded-full">
-            Let's Connect
+            Let s Connect
           </button>
         </div>
       </div>

@@ -306,7 +306,7 @@ const manage = () => {
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6  px-4  items-center">
           <div>
             <h2 className="text-xl md:py-6 md:text-3xl font-bold text-gray-800">
-              Experience seamless onboarding and unleash HubSpot's potential for
+              Experience seamless onboarding and unleash HubSpot s potential for
               your business with our comprehensive
               <span className="text-orange-500"> Managed Services </span>
             </h2>
@@ -341,7 +341,7 @@ const manage = () => {
             custom Zoho solutions.
           </p>
           <button className="bg-blue-500 hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 text-white font-bold py-2 px-5 rounded-full">
-            Let's Connect
+            Lets Connect
           </button>
         </div>
       </div>

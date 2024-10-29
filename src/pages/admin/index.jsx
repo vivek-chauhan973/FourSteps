@@ -1,5 +1,5 @@
 import AdminLayout from "@/Component/admin/AdminLayout";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -16,25 +16,38 @@ const AdminDashboard = () => {
   const [editIndustryId, setEditIndustryId] = useState(null); // ID of the industry being edited
   const [editIndustryValue, setEditIndustryValue] = useState(""); // Edited value of the industry
 
-  // Handle input change for industries
-  const handleIndustryChange = (e) => {
-    setIndustry(e.target.value);
-  };
+  // Fetch industries on component mount
+  useEffect(() => {
+    const fetchIndustries = async () => {
+      const response = await fetch("/api/global/industries/getIndustries");
+      const data = await response.json();
+      setIndustriesList(data.data);
+    };
 
-  // Handle form submit to add new industry
-  const handleSubmitIndustry = (e) => {
+    fetchIndustries();
+  }, []);
+
+  // Handle input change
+  const handleIndustryChange = (e) => setIndustry(e.target.value);
+
+  // Handle form submission to add new industry
+  const handleSubmitIndustry = async (e) => {
     e.preventDefault();
-    if (industry.trim()) {
-      const newIndustry = {
-        _id: Date.now(),
-        name: industry,
-      };
-      setIndustriesList([...industriesList, newIndustry]);
+    const response = await fetch("/api/global/industries/addIndustry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: industry }),
+    });
+
+    if (response.ok) {
+      const newIndustry = await response.json();
+      setIndustriesList([...industriesList, newIndustry.data]);
       setIndustry("");
+      alert("Industry added successfully!");
     }
   };
 
-  // Edit and delete functions for industries
+  // Toggle edit mode for an industry
   const toggleEditIndustry = (id) => {
     if (editIndustryId === id) {
       setEditIndustryId(null);
@@ -46,20 +59,51 @@ const AdminDashboard = () => {
     }
   };
 
-  const saveEditIndustry = (id) => {
-    const updatedIndustries = industriesList.map((item) =>
-      item._id === id ? { ...item, name: editIndustryValue } : item
+  // Save edited industry
+  const saveEditIndustry = async (id) => {
+    const response = await fetch(
+      `/api/global/industries/updateIndustry?id=${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: editIndustryValue }),
+      }
     );
-    setIndustriesList(updatedIndustries);
-    setEditIndustryId(null);
-    setEditIndustryValue("");
+
+    if (response.ok) {
+      const updatedIndustry = await response.json();
+      const updatedIndustries = industriesList.map((item) =>
+        item._id === id ? updatedIndustry.data : item
+      );
+      setIndustriesList(updatedIndustries);
+      setEditIndustryId(null);
+      setEditIndustryValue("");
+      alert("Industry updated successfully!");
+    } else {
+      const errorResponse = await response.json();
+      alert(`Error updating industry: ${errorResponse.message}`);
+    }
   };
 
-  const handleDeleteIndustry = (id) => {
-    const filteredIndustries = industriesList.filter((item) => item._id !== id);
-    setIndustriesList(filteredIndustries);
+  // Handle industry deletion
+  const handleDeleteIndustry = async (id) => {
+    const response = await fetch(
+      `/api/global/industries/deleteIndustry?id=${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (response.ok) {
+      const filteredIndustries = industriesList.filter(
+        (item) => item._id !== id
+      );
+      setIndustriesList(filteredIndustries);
+      alert("Industry deleted successfully!");
+    }
   };
-  // States for Tools and Software
+
+  // STATES FOR TOOLS
   const [tool, setTool] = useState(""); // Input value state for tools
   const [toolsList, setToolsList] = useState([]); // List of tools
   const [editToolId, setEditToolId] = useState(null); // ID of the tool being edited
@@ -212,41 +256,36 @@ const AdminDashboard = () => {
         {/* This is a department section */}
 
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
-          <form
-            onSubmit={handleSubmitIndustry}
-            className="flex items-end justify-between gap-3"
-          >
-            <div className="grow flex flex-col">
-              <label htmlFor="" className="mb-2 pl-2 text-para font-semibold">
-                Industries
-              </label>
-              <input
-                onChange={handleIndustryChange}
-                value={industry}
-                className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
-                type="text"
-                name="industry"
-                placeholder="Enter Industry"
-              />
-            </div>
-            <button type="submit">
-              <FontAwesomeIcon
-                icon={faCirclePlus}
-                className="text-xl hover:text-primary cursor-pointer mb-1"
-              />
-            </button>
-          </form>
+          <div>
+            <form
+              onSubmit={handleSubmitIndustry}
+              className="flex items-end gap-3"
+            >
+              <div className="grow flex flex-col">
+                <label htmlFor="industry" className="mb-2 pl-2 font-semibold">
+                  Industries
+                </label>
+                <input
+                  id="industry"
+                  value={industry}
+                  onChange={handleIndustryChange}
+                  placeholder="Enter Industry"
+                  className="border rounded-md px-2 h-8"
+                />
+              </div>
+              <button type="submit" className="text-xl cursor-pointer">
+                <FontAwesomeIcon icon={faCirclePlus} />
+              </button>
+            </form>
 
-          {/* Display Industries */}
-          <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
-            {industriesList.map((item, index) => (
-              <div key={item._id} className="even:bg-slate-50">
-                <div className="flex justify-between px-1">
-                  <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
-                    <span>{index + 1}.</span>
+            {/* Display Industries */}
+            <div className="mt-3">
+              {industriesList.map((item) => (
+                <div key={item._id} className="flex justify-between mt-2">
+                  <p>
                     {editIndustryId === item._id ? (
                       <input
-                        className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
+                        className="border rounded-md h-8 px-2"
                         value={editIndustryValue}
                         onChange={(e) => setEditIndustryValue(e.target.value)}
                       />
@@ -256,36 +295,30 @@ const AdminDashboard = () => {
                   </p>
                   <div className="flex gap-2">
                     {editIndustryId === item._id ? (
-                      <span className="flex gap-2">
+                      <button onClick={() => saveEditIndustry(item._id)}>
                         <FontAwesomeIcon
-                          icon={faXmark}
-                          onClick={() => toggleEditIndustry(item._id)}
-                          className="mt-1 hover:text-primary cursor-pointer"
+                          icon={faSave}
+                          className="text-green-600"
                         />
-                        {editIndustryValue && (
-                          <FontAwesomeIcon
-                            icon={faSave}
-                            onClick={() => saveEditIndustry(item._id)}
-                            className="mt-1 hover:text-primary cursor-pointer"
-                          />
-                        )}
-                      </span>
+                      </button>
                     ) : (
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        onClick={() => toggleEditIndustry(item._id)}
-                        className="mt-1 hover:text-primary cursor-pointer"
-                      />
+                      <button onClick={() => toggleEditIndustry(item._id)}>
+                        <FontAwesomeIcon
+                          icon={faEdit}
+                          className="text-blue-600"
+                        />
+                      </button>
                     )}
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      onClick={() => handleDeleteIndustry(item._id)}
-                      className="mt-1 hover:text-primary cursor-pointer"
-                    />
+                    <button onClick={() => handleDeleteIndustry(item._id)}>
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className="text-red-600"
+                      />
+                    </button>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
         {/* tools and software section */}
