@@ -11,10 +11,10 @@ import {
 
 const AdminDashboard = () => {
   // States for Industries
-  const [industry, setIndustry] = useState(""); // Input value state for industries
-  const [industriesList, setIndustriesList] = useState([]); // List of industries
-  const [editIndustryId, setEditIndustryId] = useState(null); // ID of the industry being edited
-  const [editIndustryValue, setEditIndustryValue] = useState(""); // Edited value of the industry
+  const [industry, setIndustry] = useState("");
+  const [industriesList, setIndustriesList] = useState([]);
+  const [editIndustryId, setEditIndustryId] = useState(null);
+  const [editIndustryValue, setEditIndustryValue] = useState("");
 
   // Fetch industries on component mount
   useEffect(() => {
@@ -109,11 +109,10 @@ const AdminDashboard = () => {
   };
 
   // STATES FOR TOOLS
-
-  const [tool, setTool] = useState(""); // Input value state for tools
-  const [toolsList, setToolsList] = useState([]); // List of tools
-  const [editToolId, setEditToolId] = useState(null); // ID of the tool being edited
-  const [editToolValue, setEditToolValue] = useState(""); // Edited value of the tool
+  const [tool, setTool] = useState("");
+  const [toolsList, setToolsList] = useState([]);
+  const [editToolId, setEditToolId] = useState(null);
+  const [editToolValue, setEditToolValue] = useState("");
 
   // Fetch tools on component mount
   useEffect(() => {
@@ -140,8 +139,8 @@ const AdminDashboard = () => {
 
     if (response.ok) {
       const newTool = await response.json();
-      setToolsList([...toolsList, newTool.data]); // Update tools list
-      setTool(""); // Clear input
+      setToolsList([...toolsList, newTool.data]);
+      setTool("");
       alert("Tool added successfully!");
     } else {
       const errorResponse = await response.json();
@@ -204,53 +203,101 @@ const AdminDashboard = () => {
       alert(`Error deleting tool: ${errorResponse.message}`);
     }
   };
+
   //  topic section
   const [topic, setTopic] = useState("");
   const [topicsList, setTopicsList] = useState([]);
   const [editTopicId, setEditTopicId] = useState(null);
   const [editTopicValue, setEditTopicValue] = useState("");
-  // Handle input change for topics
-  const handleTopicChange = (e) => {
-    setTopic(e.target.value);
-  };
 
-  // Handle form submit to add new topic
-  const handleSubmitTopic = (e) => {
-    e.preventDefault();
-    if (topic.trim()) {
-      const newTopic = {
-        _id: Date.now(),
-        name: topic,
-      };
-      setTopicsList([...topicsList, newTopic]);
-      setTopic("");
+  const fetchTopics = async () => {
+    try {
+      const response = await fetch("/api/global/topic/gettopic");
+      if (response.ok) {
+        const result = await response.json();
+        setTopicsList(result.result);
+      } else {
+        console.error("Error fetching topics");
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
     }
   };
 
-  // Edit and delete functions for topics
+  useEffect(() => {
+    fetchTopics(); // Load topics when the component mounts
+  }, []);
+
+  const handleSubmitTopic = async (e) => {
+    e.preventDefault();
+    if (!topic) return;
+
+    try {
+      const response = await fetch("/api/global/topic/addtopic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: topic }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setTopicsList((prev) => [...prev, data.data]);
+        setTopic("");
+        alert("topic added successfully!");
+      } else {
+        console.error("Error adding topic");
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+    }
+  };
+
   const toggleEditTopic = (id) => {
-    if (editTopicId === id) {
-      setEditTopicId(null);
-      setEditTopicValue("");
-    } else {
-      setEditTopicId(id);
+    setEditTopicId(id === editTopicId ? null : id);
+    if (id) {
       const topicToEdit = topicsList.find((item) => item._id === id);
       setEditTopicValue(topicToEdit.name);
+    } else {
+      setEditTopicValue("");
     }
   };
 
-  const saveEditTopic = (id) => {
-    const updatedTopics = topicsList.map((item) =>
-      item._id === id ? { ...item, name: editTopicValue } : item
-    );
-    setTopicsList(updatedTopics);
-    setEditTopicId(null);
-    setEditTopicValue("");
+  const saveEditTopic = async (id) => {
+    try {
+      const response = await fetch(`/api/global/topic/edittopic?id=${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: editTopicValue }),
+      });
+      if (response.ok) {
+        const updatedTopic = await response.json();
+        setTopicsList((prev) =>
+          prev.map((topic) => (topic._id === id ? updatedTopic.data : topic))
+        ); // Update the list with the edited topic
+        setEditTopicId(null);
+        setEditTopicValue("");
+      } else {
+        console.error("Error updating topic");
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+    }
   };
 
-  const handleDeleteTopic = (id) => {
-    const filteredTopics = topicsList.filter((item) => item._id !== id);
-    setTopicsList(filteredTopics);
+  const handleDeleteTopic = async (id) => {
+    try {
+      const response = await fetch(`/api/global/topic/delete?id=${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setTopicsList((prev) => prev.filter((topic) => topic._id !== id));
+
+        alert("DELETED successfully!");
+      } else {
+        console.error("Error deleting topic");
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+    }
   };
 
   // States for Languages
@@ -259,56 +306,78 @@ const AdminDashboard = () => {
   const [editLanguageId, setEditLanguageId] = useState(null);
   const [editLanguageValue, setEditLanguageValue] = useState("");
 
-  // Handle input change for languages
-  const handleLanguageChange = (e) => {
-    setLanguage(e.target.value);
+  const fetchLanguages = async () => {
+    try {
+      const response = await fetch("/api/global/language/getlanguages");
+      if (response.ok) {
+        const result = await response.json();
+        setLanguagesList(result.data);
+      }
+    } catch (error) {
+      console.error("Error fetching languages:", error);
+    }
   };
 
-  // Handle form submit to add new language
-  const handleSubmitLanguage = (e) => {
+  const handleAddLanguage = async (e) => {
     e.preventDefault();
-    if (language.trim()) {
-      const newLanguage = {
-        _id: Date.now(),
-        name: language,
-      };
-      setLanguagesList([...languagesList, newLanguage]);
-      setLanguage("");
+    try {
+      const response = await fetch("/api/global/language/addlanguage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: language }),
+      });
+      if (response.ok) {
+        fetchLanguages();
+        setLanguage("");
+        alert("languages added successfully!");
+      }
+    } catch (error) {
+      console.error("Error adding language:", error);
     }
   };
 
-  // Edit and delete functions for languages
-  const toggleEditLanguage = (id) => {
-    if (editLanguageId === id) {
-      setEditLanguageId(null);
-      setEditLanguageValue("");
-    } else {
-      setEditLanguageId(id);
-      const languageToEdit = languagesList.find((item) => item._id === id);
-      setEditLanguageValue(languageToEdit.name);
+  const handleEditLanguage = async (id) => {
+    try {
+      const response = await fetch("/api/global/language/editlanguage", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, name: editLanguageValue }),
+      });
+      if (response.ok) {
+        fetchLanguages(); // Refresh list
+        setEditLanguageId(null);
+        setEditLanguageValue("");
+      }
+    } catch (error) {
+      console.error("Error editing language:", error);
     }
   };
 
-  const saveEditLanguage = (id) => {
-    const updatedLanguages = languagesList.map((item) =>
-      item._id === id ? { ...item, name: editLanguageValue } : item
-    );
-    setLanguagesList(updatedLanguages);
-    setEditLanguageId(null);
-    setEditLanguageValue("");
+  const handleDeleteLanguage = async (id) => {
+    try {
+      const response = await fetch("/api/global/language/deletelanguage", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (response.ok) {
+        fetchLanguages();
+        alert("LANGUAGES DELETED successfully!");
+      }
+    } catch (error) {
+      console.error("Error deleting language:", error);
+    }
   };
 
-  const handleDeleteLanguage = (id) => {
-    const filteredLanguages = languagesList.filter((item) => item._id !== id);
-    setLanguagesList(filteredLanguages);
-  };
+  useEffect(() => {
+    fetchLanguages();
+  }, []);
   return (
     <AdminLayout>
       <h1 className="text-2xl font-bold">Admin Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 rounded">
-        {/* This is a department section */}
-
-        <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
+        {/* This is a industry section */}
+        <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md   bg-white border-l-2 border-teal-600">
           <div>
             <form
               onSubmit={handleSubmitIndustry}
@@ -332,9 +401,9 @@ const AdminDashboard = () => {
             </form>
 
             {/* Display Industries */}
-            <div className="mt-3">
+            <div className="mt-3  max-h-[300px] overflow-y-auto p-3">
               {industriesList.map((item, index) => (
-                <div key={item._id} className="flex justify-between mt-2">
+                <div key={item._id} className="flex justify-between  mt-2">
                   <p>
                     {editIndustryId === item._id ? (
                       <input
@@ -377,73 +446,78 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-
         {/* tools and software section */}
-
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
-          <form onSubmit={handleSubmitTool} className="flex gap-2">
-            <input
-              className="border rounded-md h-8 px-2"
-              value={tool}
-              onChange={handleToolChange}
-              placeholder="Add Tool"
-            />
-            <button
-              type="submit"
-              className="bg-teal-600 text-white rounded-md px-2"
-            >
-              {editToolId ? "Save" : "Add"}
+          <form onSubmit={handleSubmitTool} className="flex items-end gap-2">
+            <div className=" grow flex flex-col">
+              <label htmlFor="tools" className="mb-2 pl-2 font-semibold">
+                Tools & Software
+              </label>
+              <input
+                id="tools"
+                className="border rounded-md h-8 px-2"
+                value={tool}
+                onChange={handleToolChange}
+                placeholder="Add Tool"
+              />
+            </div>
+            <button type="submit" className=" rounded-md  text-xl ">
+              <FontAwesomeIcon icon={faCirclePlus} />
             </button>
           </form>
-          {toolsList.map((item, index) => (
-            <div key={item._id} className="even:bg-slate-50">
-              <div className="flex justify-between px-1">
-                <p className="capitalize truncate flex gap-2 leading-8 text-[14px]">
-                  <span>{index + 1}.</span>
-                  {editToolId === item._id ? (
-                    <input
-                      className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
-                      value={editToolValue}
-                      onChange={(e) => setEditToolValue(e.target.value)}
-                    />
-                  ) : (
-                    item.name
-                  )}
-                </p>
-                <div className="flex gap-2">
-                  {editToolId === item._id ? (
-                    <span className="flex gap-2">
+
+          <div className=" max-h-[300px] overflow-y-auto p-3">
+            {toolsList.map((item, index) => (
+              <div key={item._id} className="even:bg-slate-50 ">
+                <div className="flex justify-between px-1">
+                  <p className="capitalize truncate flex gap-2 leading-8 text-[14px]">
+                    <span>{index + 1}.</span>
+                    {editToolId === item._id ? (
+                      <input
+                        className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
+                        value={editToolValue}
+                        onChange={(e) => setEditToolValue(e.target.value)}
+                      />
+                    ) : (
+                      item.name
+                    )}
+                  </p>
+                  <div className="flex gap-2">
+                    {editToolId === item._id ? (
+                      <span className="flex gap-2">
+                        <FontAwesomeIcon
+                          icon={faXmark}
+                          onClick={() => toggleEditTool(item._id)}
+                          className="mt-1 hover:text-primary cursor-pointer"
+                        />
+                        {editToolValue && (
+                          <FontAwesomeIcon
+                            icon={faSave}
+                            onClick={() => saveEditTool(item._id)}
+                            className="mt-1 hover:text-primary cursor-pointer"
+                          />
+                        )}
+                      </span>
+                    ) : (
                       <FontAwesomeIcon
-                        icon={faXmark}
+                        icon={faEdit}
                         onClick={() => toggleEditTool(item._id)}
                         className="mt-1 hover:text-primary cursor-pointer"
                       />
-                      {editToolValue && (
-                        <FontAwesomeIcon
-                          icon={faSave}
-                          onClick={() => saveEditTool(item._id)}
-                          className="mt-1 hover:text-primary cursor-pointer"
-                        />
-                      )}
-                    </span>
-                  ) : (
+                    )}
                     <FontAwesomeIcon
-                      icon={faEdit}
-                      onClick={() => toggleEditTool(item._id)}
+                      icon={faTrash}
+                      onClick={() => handleDeleteTool(item._id)}
                       className="mt-1 hover:text-primary cursor-pointer"
                     />
-                  )}
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    onClick={() => handleDeleteTool(item._id)}
-                    className="mt-1 hover:text-primary cursor-pointer"
-                  />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         {/* This is a Topic section */}
+
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
           <form
             onSubmit={handleSubmitTopic}
@@ -454,7 +528,7 @@ const AdminDashboard = () => {
                 Topics
               </label>
               <input
-                onChange={handleTopicChange}
+                onChange={(e) => setTopic(e.target.value)}
                 value={topic}
                 className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
                 type="text"
@@ -472,67 +546,75 @@ const AdminDashboard = () => {
 
           {/* Display Topics */}
           <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
-            {topicsList.map((item, index) => (
-              <div key={item._id} className="even:bg-slate-50">
-                <div className="flex justify-between px-1">
-                  <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
-                    <span>{index + 1}.</span>
-                    {editTopicId === item._id ? (
-                      <input
-                        className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
-                        value={editTopicValue}
-                        onChange={(e) => setEditTopicValue(e.target.value)}
-                      />
-                    ) : (
-                      item.name
-                    )}
-                  </p>
-                  <div className="flex gap-2">
-                    {editTopicId === item._id ? (
-                      <span className="flex gap-2">
+            {topicsList.length > 0 ? (
+              topicsList.map((item, index) => (
+                <div key={item._id} className="even:bg-slate-50">
+                  <div className="flex justify-between px-1">
+                    <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
+                      <span>{index + 1}.</span>
+                      {editTopicId === item._id ? (
+                        <input
+                          className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
+                          value={editTopicValue}
+                          onChange={(e) => setEditTopicValue(e.target.value)}
+                        />
+                      ) : (
+                        item.name
+                      )}
+                    </p>
+                    <div className="flex gap-2">
+                      {editTopicId === item._id ? (
+                        <span className="flex gap-2">
+                          <FontAwesomeIcon
+                            icon={faXmark}
+                            onClick={() => toggleEditTopic(item._id)}
+                            className="mt-1 hover:text-primary cursor-pointer"
+                          />
+                          {editTopicValue && (
+                            <FontAwesomeIcon
+                              icon={faSave}
+                              onClick={() => saveEditTopic(item._id)}
+                              className="mt-1 hover:text-primary cursor-pointer"
+                            />
+                          )}
+                        </span>
+                      ) : (
                         <FontAwesomeIcon
-                          icon={faXmark}
+                          icon={faEdit}
                           onClick={() => toggleEditTopic(item._id)}
                           className="mt-1 hover:text-primary cursor-pointer"
                         />
-                        {editTopicValue && (
-                          <FontAwesomeIcon
-                            icon={faSave}
-                            onClick={() => saveEditTopic(item._id)}
-                            className="mt-1 hover:text-primary cursor-pointer"
-                          />
-                        )}
-                      </span>
-                    ) : (
+                      )}
                       <FontAwesomeIcon
-                        icon={faEdit}
-                        onClick={() => toggleEditTopic(item._id)}
+                        icon={faTrash}
+                        onClick={() => handleDeleteTopic(item._id)}
                         className="mt-1 hover:text-primary cursor-pointer"
                       />
-                    )}
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      onClick={() => handleDeleteTopic(item._id)}
-                      className="mt-1 hover:text-primary cursor-pointer"
-                    />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <div>No topics found</div>
+            )}
           </div>
         </div>
+
         {/* This is a langauges section */}
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
           <form
-            onSubmit={handleSubmitLanguage}
+            onSubmit={handleAddLanguage}
             className="flex items-end justify-between gap-3"
           >
             <div className="grow flex flex-col">
-              <label htmlFor="" className="mb-2 pl-2 text-para font-semibold">
+              <label
+                htmlFor="language"
+                className="mb-2 pl-2 text-para font-semibold"
+              >
                 Languages
               </label>
               <input
-                onChange={handleLanguageChange}
+                onChange={(e) => setLanguage(e.target.value)}
                 value={language}
                 className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
                 type="text"
@@ -548,7 +630,6 @@ const AdminDashboard = () => {
             </button>
           </form>
 
-          {/* Display Languages */}
           <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
             {languagesList.map((item, index) => (
               <div key={item._id} className="even:bg-slate-50">
@@ -570,13 +651,13 @@ const AdminDashboard = () => {
                       <span className="flex gap-2">
                         <FontAwesomeIcon
                           icon={faXmark}
-                          onClick={() => toggleEditLanguage(item._id)}
+                          onClick={() => setEditLanguageId(null)}
                           className="mt-1 hover:text-primary cursor-pointer"
                         />
                         {editLanguageValue && (
                           <FontAwesomeIcon
                             icon={faSave}
-                            onClick={() => saveEditLanguage(item._id)}
+                            onClick={() => handleEditLanguage(item._id)}
                             className="mt-1 hover:text-primary cursor-pointer"
                           />
                         )}
@@ -584,7 +665,10 @@ const AdminDashboard = () => {
                     ) : (
                       <FontAwesomeIcon
                         icon={faEdit}
-                        onClick={() => toggleEditLanguage(item._id)}
+                        onClick={() => {
+                          setEditLanguageId(item._id);
+                          setEditLanguageValue(item.name);
+                        }}
                         className="mt-1 hover:text-primary cursor-pointer"
                       />
                     )}
