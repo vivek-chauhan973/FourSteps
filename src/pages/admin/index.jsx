@@ -61,27 +61,32 @@ const AdminDashboard = () => {
 
   // Save edited industry
   const saveEditIndustry = async (id) => {
-    const response = await fetch(
-      `/api/global/industries/updateIndustry?id=${id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: editIndustryValue }),
-      }
-    );
-
-    if (response.ok) {
-      const updatedIndustry = await response.json();
-      const updatedIndustries = industriesList.map((item) =>
-        item._id === id ? updatedIndustry.data : item
+    try {
+      const response = await fetch(
+        `/api/global/industries/editIndustry?id=${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: editIndustryValue }),
+        }
       );
-      setIndustriesList(updatedIndustries);
-      setEditIndustryId(null);
-      setEditIndustryValue("");
-      alert("Industry updated successfully!");
-    } else {
-      const errorResponse = await response.json();
-      alert(`Error updating industry: ${errorResponse.message}`);
+
+      if (response.ok) {
+        const updatedIndustry = await response.json();
+        const updatedIndustries = industriesList.map(
+          (item) => (item._id === id ? updatedIndustry.data : item) // Update the specific industry
+        );
+        setIndustriesList(updatedIndustries); // Set the updated list
+        setEditIndustryId(null); // Clear edit state
+        setEditIndustryValue(""); // Clear input
+        alert("Industry updated successfully!");
+      } else {
+        const errorResponse = await response.json();
+        alert(`Error updating industry: ${errorResponse.message}`);
+      }
+    } catch (error) {
+      console.error("Error updating industry:", error);
+      alert("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -104,29 +109,47 @@ const AdminDashboard = () => {
   };
 
   // STATES FOR TOOLS
+
   const [tool, setTool] = useState(""); // Input value state for tools
   const [toolsList, setToolsList] = useState([]); // List of tools
   const [editToolId, setEditToolId] = useState(null); // ID of the tool being edited
   const [editToolValue, setEditToolValue] = useState(""); // Edited value of the tool
 
-  // Handle input change for tools
-  const handleToolChange = (e) => {
-    setTool(e.target.value);
-  };
+  // Fetch tools on component mount
+  useEffect(() => {
+    const fetchTools = async () => {
+      const response = await fetch("/api/global/tools/toolsoftware");
+      const data = await response.json();
+      setToolsList(data.data);
+    };
 
-  // Handle form submit to add new tool
-  const handleSubmitTool = (e) => {
+    fetchTools();
+  }, []);
+
+  // Handle input change
+  const handleToolChange = (e) => setTool(e.target.value);
+
+  // Handle form submission to add new tool
+  const handleSubmitTool = async (e) => {
     e.preventDefault();
-    if (tool.trim()) {
-      const newTool = {
-        _id: Date.now(),
-        name: tool,
-      };
-      setToolsList([...toolsList, newTool]);
-      setTool("");
+    const response = await fetch("/api/global/tools/toolsoftware", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: tool }),
+    });
+
+    if (response.ok) {
+      const newTool = await response.json();
+      setToolsList([...toolsList, newTool.data]); // Update tools list
+      setTool(""); // Clear input
+      alert("Tool added successfully!");
+    } else {
+      const errorResponse = await response.json();
+      alert(`Error adding tool: ${errorResponse.message}`);
     }
   };
-  // Edit and delete functions for tools
+
+  // Toggle edit mode for a tool
   const toggleEditTool = (id) => {
     if (editToolId === id) {
       setEditToolId(null);
@@ -137,21 +160,51 @@ const AdminDashboard = () => {
       setEditToolValue(toolToEdit.name);
     }
   };
-  const saveEditTool = (id) => {
-    const updatedTools = toolsList.map((item) =>
-      item._id === id ? { ...item, name: editToolValue } : item
-    );
-    setToolsList(updatedTools);
-    setEditToolId(null);
-    setEditToolValue("");
+
+  // Save edited tool
+  const saveEditTool = async (id) => {
+    try {
+      const response = await fetch(`/api/global/tools/toolsoftware`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, name: editToolValue }), // Send id and name in the body
+      });
+
+      if (response.ok) {
+        const updatedTool = await response.json();
+        const updatedTools = toolsList.map(
+          (item) => (item._id === id ? updatedTool.data : item) // Update the specific tool
+        );
+        setToolsList(updatedTools); // Set the updated list
+        setEditToolId(null); // Clear edit state
+        setEditToolValue(""); // Clear input
+        alert("Tool updated successfully!");
+      } else {
+        const errorResponse = await response.json();
+        alert(`Error updating tool: ${errorResponse.message}`);
+      }
+    } catch (error) {
+      console.error("Error updating tool:", error);
+      alert("An unexpected error occurred. Please try again.");
+    }
   };
 
-  const handleDeleteTool = (id) => {
-    const filteredTools = toolsList.filter((item) => item._id !== id);
-    setToolsList(filteredTools);
-  };
+  // Handle tool deletion
+  const handleDeleteTool = async (id) => {
+    const response = await fetch(`/api/global/tools/toolsoftware?id=${id}`, {
+      method: "DELETE",
+    });
 
-  // States for Topics
+    if (response.ok) {
+      const filteredTools = toolsList.filter((item) => item._id !== id);
+      setToolsList(filteredTools); // Update tools list
+      alert("Tool deleted successfully!");
+    } else {
+      const errorResponse = await response.json();
+      alert(`Error deleting tool: ${errorResponse.message}`);
+    }
+  };
+  //  topic section
   const [topic, setTopic] = useState("");
   const [topicsList, setTopicsList] = useState([]);
   const [editTopicId, setEditTopicId] = useState(null);
@@ -270,7 +323,7 @@ const AdminDashboard = () => {
                   value={industry}
                   onChange={handleIndustryChange}
                   placeholder="Enter Industry"
-                  className="border rounded-md px-2 h-8"
+                  className="border  rounded-md px-2 h-8"
                 />
               </div>
               <button type="submit" className="text-xl cursor-pointer">
@@ -280,19 +333,22 @@ const AdminDashboard = () => {
 
             {/* Display Industries */}
             <div className="mt-3">
-              {industriesList.map((item) => (
+              {industriesList.map((item, index) => (
                 <div key={item._id} className="flex justify-between mt-2">
                   <p>
                     {editIndustryId === item._id ? (
                       <input
-                        className="border rounded-md h-8 px-2"
+                        className="border  rounded-md h-8 px-2"
                         value={editIndustryValue}
                         onChange={(e) => setEditIndustryValue(e.target.value)}
                       />
                     ) : (
-                      item.name
+                      <span>
+                        {index + 1}. {item.name}
+                      </span>
                     )}
                   </p>
+
                   <div className="flex gap-2">
                     {editIndustryId === item._id ? (
                       <button onClick={() => saveEditIndustry(item._id)}>
@@ -321,83 +377,71 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
+
         {/* tools and software section */}
+
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
-          <form
-            onSubmit={handleSubmitTool}
-            className="flex items-end justify-between gap-3"
-          >
-            <div className="grow flex flex-col">
-              <label htmlFor="" className="mb-2 pl-2 text-para font-semibold">
-                Tools and Software
-              </label>
-              <input
-                onChange={handleToolChange}
-                value={tool}
-                className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
-                type="text"
-                name="tool"
-                placeholder="Enter Tool or Software"
-              />
-            </div>
-            <button type="submit">
-              <FontAwesomeIcon
-                icon={faCirclePlus}
-                className="text-xl hover:text-primary cursor-pointer mb-1"
-              />
+          <form onSubmit={handleSubmitTool} className="flex gap-2">
+            <input
+              className="border rounded-md h-8 px-2"
+              value={tool}
+              onChange={handleToolChange}
+              placeholder="Add Tool"
+            />
+            <button
+              type="submit"
+              className="bg-teal-600 text-white rounded-md px-2"
+            >
+              {editToolId ? "Save" : "Add"}
             </button>
           </form>
-
-          {/* Display Tools and Software */}
-          <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
-            {toolsList.map((item, index) => (
-              <div key={item._id} className="even:bg-slate-50">
-                <div className="flex justify-between px-1">
-                  <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
-                    <span>{index + 1}.</span>
-                    {editToolId === item._id ? (
-                      <input
-                        className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
-                        value={editToolValue}
-                        onChange={(e) => setEditToolValue(e.target.value)}
-                      />
-                    ) : (
-                      item.name
-                    )}
-                  </p>
-                  <div className="flex gap-2">
-                    {editToolId === item._id ? (
-                      <span className="flex gap-2">
-                        <FontAwesomeIcon
-                          icon={faXmark}
-                          onClick={() => toggleEditTool(item._id)}
-                          className="mt-1 hover:text-primary cursor-pointer"
-                        />
-                        {editToolValue && (
-                          <FontAwesomeIcon
-                            icon={faSave}
-                            onClick={() => saveEditTool(item._id)}
-                            className="mt-1 hover:text-primary cursor-pointer"
-                          />
-                        )}
-                      </span>
-                    ) : (
+          {toolsList.map((item, index) => (
+            <div key={item._id} className="even:bg-slate-50">
+              <div className="flex justify-between px-1">
+                <p className="capitalize truncate flex gap-2 leading-8 text-[14px]">
+                  <span>{index + 1}.</span>
+                  {editToolId === item._id ? (
+                    <input
+                      className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
+                      value={editToolValue}
+                      onChange={(e) => setEditToolValue(e.target.value)}
+                    />
+                  ) : (
+                    item.name
+                  )}
+                </p>
+                <div className="flex gap-2">
+                  {editToolId === item._id ? (
+                    <span className="flex gap-2">
                       <FontAwesomeIcon
-                        icon={faEdit}
+                        icon={faXmark}
                         onClick={() => toggleEditTool(item._id)}
                         className="mt-1 hover:text-primary cursor-pointer"
                       />
-                    )}
+                      {editToolValue && (
+                        <FontAwesomeIcon
+                          icon={faSave}
+                          onClick={() => saveEditTool(item._id)}
+                          className="mt-1 hover:text-primary cursor-pointer"
+                        />
+                      )}
+                    </span>
+                  ) : (
                     <FontAwesomeIcon
-                      icon={faTrash}
-                      onClick={() => handleDeleteTool(item._id)}
+                      icon={faEdit}
+                      onClick={() => toggleEditTool(item._id)}
                       className="mt-1 hover:text-primary cursor-pointer"
                     />
-                  </div>
+                  )}
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    onClick={() => handleDeleteTool(item._id)}
+                    className="mt-1 hover:text-primary cursor-pointer"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
         {/* This is a Topic section */}
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">

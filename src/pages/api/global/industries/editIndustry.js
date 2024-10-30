@@ -5,14 +5,15 @@ export default async function handler(req, res) {
   await dbConnect();
 
   if (req.method === "PUT") {
-    const { id } = req.query; // Get ID from query parameters
-    const { name } = req.body; // Get the updated name from the request body
-
     try {
+      const { id } = req.query; // Get the ID from the query string
+      const { name } = req.body; // Get the updated name from the body
+
+      // Update the industry
       const updatedIndustry = await Industry.findByIdAndUpdate(
         id,
         { name },
-        { new: true, runValidators: true } // Return the updated document and run validation
+        { new: true, runValidators: true } // Return the updated document
       );
 
       if (!updatedIndustry) {
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
 
       res.status(200).json({ success: true, data: updatedIndustry });
     } catch (error) {
-      res.status(400).json({ success: false, error: error.message });
+      res.status(400).json({ success: false, message: error.message });
     }
   } else {
     res.status(405).json({ success: false, message: "Method not allowed" });
