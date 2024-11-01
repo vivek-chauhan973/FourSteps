@@ -142,7 +142,7 @@ export default function Masterwebinar() {
   };
 
   const handleDeleteDepartment = async (id) => {
-    const res = await fetch("/api/webinar/department/deletedepartment", {
+    const res = await fetch("/api/webinar/departmentcd /deletedepartment", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
