@@ -363,7 +363,7 @@ const About = () => {
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-10 text-center px-4">
-            <p className="text-2xl mb-5">Our Company's About Details.</p>
+            <p className="text-2xl mb-5">Our Companys About Details.</p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold my-2">
               We are a Corporate Business Agency
             </h1>

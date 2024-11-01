@@ -80,11 +80,11 @@ const Digital = () => {
           </span>
         </h1>
         <p className="max-w-xl text-sm italic mt-3 items-center">
-          "Digital marketing is the art of connecting brands with people through
+          Digital marketing is the art of connecting brands with people through
           meaningful content, strategic data, and personalized experiences. In a
           world driven by technology, it’s not just about selling a product, but
           about building trust, engaging communities, and creating lasting
-          relationships that convert leads into loyal customers."
+          relationships that convert leads into loyal customers.
         </p>
       </div>
 

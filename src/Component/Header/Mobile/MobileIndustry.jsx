@@ -15,7 +15,7 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
     { title: "Healthcare & Pharmaceuticals", path: "/industries/healthcare" },
     { title: "Software & Tech", path: "/industries/software" },
     { title: "Manufacturing & Engineering", path: "/industries/manufacturing" },
-    // Add more industries here if needed...
+
   ];
 
   const toggleIndustries = () => {

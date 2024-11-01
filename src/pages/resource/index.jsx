@@ -47,7 +47,7 @@ export default function Resource() {
             <div className="max-w-2xl text-center">
               <h1 className="text-4xl font-bold ">All Section Here </h1>
               <p className="mt-4 text-lg ">
-                I hated every minute of training, but I said, 'Don't quit. ...
+                I hated every minute of training, but I said, Dont quit. ...
               </p>
             </div>
             <div className="mt-6">

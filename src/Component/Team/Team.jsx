@@ -82,7 +82,7 @@ const Team = () => {
         <p className="text-sm md:text-base leading-6  text-center mb-8 mx-4 md:mx-16">
           Our team thrives on collaboration and is fueled by a diverse array of
           talent. We actively engage with the creative community, consistently
-          seeking out what's on the horizon, and always maintain a positive and
+          seeking out what s on the horizon, and always maintain a positive and
           welcoming atmosphere.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 md:px-8 lg:px-16 place-items-center">

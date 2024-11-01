@@ -1,29 +1,4 @@
-// // components/Solution.js
-// import React from "react";
-// import Link from "next/link";
 
-// const DesktopSolution = ({ activeLink, handleLinkClick }) => {
-//   return (
-//     <li className="relative inline-block">
-//       <Link
-//         href="#"
-//         onClick={() => handleLinkClick("/#")}
-//         className={`relative inline-block text-base font-medium px-3 py-2 ${
-//           activeLink === "/about" ? "text-orange-500" : "text-gray-800"
-//         } hover:text-orange-500`}
-//       >
-//         Solution
-//         <span
-//           className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
-//             activeLink === "/about" ? "scale-x-100" : "scale-x-0"
-//           }`}
-//         ></span>
-//       </Link>
-//     </li>
-//   );
-// };
-
-// export default DesktopSolution;
 
 import React, { useState } from "react";
 import Link from "next/link";
