@@ -111,8 +111,8 @@ export default function Masterwebinar() {
     });
 
     if (res.ok) {
-      fetchDepartments(); // Refresh list
-      setDepartment(""); // Reset input
+      fetchDepartments();
+      setDepartment("");
     }
   };
 
@@ -142,7 +142,7 @@ export default function Masterwebinar() {
   };
 
   const handleDeleteDepartment = async (id) => {
-    const res = await fetch("/api/webinar/departmentcd /deletedepartment", {
+    const res = await fetch("/api/webinar/department/deletedepartment", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
