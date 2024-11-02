@@ -74,7 +74,6 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     if (response.ok) {
       const data = await response.json();
       setDepartmentData(data);
-      console.log("Fetched departments:", data);
     } else {
       console.error("Failed to fetch departments:", response.status); // Log an error if the fetch fails
     }
@@ -97,31 +96,6 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
   useEffect(() => {
     fetchWebinarType();
   }, []);
-  // for industry
-  const [industryData, setIndustryData] = useState([]); // Initial state as array
-  const fetchIndustry = async () => {
-    try {
-      const response = await fetch("/api/global/industries/getIndustries");
-      if (response.ok) {
-        const result = await response.json();
-        // Ensure result is an array before setting state
-        if (Array.isArray(result)) {
-          setIndustryData(result);
-        } else {
-          console.error("Expected an array but received:", result);
-          setIndustryData([]); // Reset to empty array if not an array
-        }
-      } else {
-        console.error("Failed to fetch industries:", response.status);
-      }
-    } catch (error) {
-      console.error("Error fetching industries:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchIndustry(); // Fetch industries when the component mounts
-  }, []);
 
   // for the tool section
   const [toolsList, setToolsList] = useState([]); // State to hold tools data
@@ -143,7 +117,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     fetchTools(); // Fetch tools data when component mounts
   }, []);
 
-  // for lang........
+  // for languages listing........
   const [languagesList, setLanguagesList] = useState([]);
 
   const fetchLanguages = async () => {
@@ -152,10 +126,8 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
       const result = await response.json(); // Get the entire response
       if (result.success && Array.isArray(result.data)) {
         setLanguagesList(result.data); // Access the data array
-        console.log("Fetched languages:", result.data);
       } else {
         setLanguagesList([]); // Reset to an empty array if success is false or data is not an array
-        console.warn("Unexpected response structure:", result);
       }
     } else {
       console.error("Failed to fetch languages:", response.status);
@@ -165,6 +137,40 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
 
   useEffect(() => {
     fetchLanguages();
+  }, []);
+  //  for topic listing
+  const [topicsList, setTopicsList] = useState([]);
+
+  const fetchTopic = async () => {
+    const response = await fetch("/api/global/topic/gettopic");
+    if (response.ok) {
+      const result = await response.json();
+      // Set topicsList to the 'result' array
+      setTopicsList(result.result); // Adjusted to access the result array
+    } else {
+      console.error("Failed to fetch topics:", response.status);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopic();
+  }, []);
+  // for industry listing
+  const [industry, setIndustry] = useState([]);
+
+  const fetchIndustry = async () => {
+    const response = await fetch("/api/global/industries/getIndustries");
+    if (response.ok) {
+      const result = await response.json();
+      setIndustry(result.data); // Assuming result.data is an array of industries
+      console.log(".....>>>>>industry", result.data);
+    } else {
+      console.error("Failed to fetch industry:", response.status);
+    }
+  };
+
+  useEffect(() => {
+    fetchIndustry();
   }, []);
 
   return (
@@ -319,10 +325,11 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
                 required
               >
                 <option value="">Select an option</option>
-                <option value="Topic 1">Marketing Automation</option>
-                <option value="Topic 2">Sales Automation</option>
-                <option value="Topic 2">Digital Marketing</option>
-                <option value="Topic 2">Product Overview</option>
+                {topicsList.map((topic) => (
+                  <option key={topic._id} value={topic.name}>
+                    {topic.name}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -360,16 +367,12 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
                 className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
                 required
               >
-                <option value="">Select an option</option>
-                {Array.isArray(industryData) && industryData.length > 0 ? (
-                  industryData.map((item) => (
-                    <option key={item._id} value={item._id}>
-                      {item.name}
-                    </option>
-                  ))
-                ) : (
-                  <option disabled>No industries available</option>
-                )}
+                <option value="">Select an industry</option>
+                {industry.map((item) => (
+                  <option key={item._id} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             </div>
 
