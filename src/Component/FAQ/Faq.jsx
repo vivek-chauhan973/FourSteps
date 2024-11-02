@@ -170,8 +170,8 @@ const Faq = () => {
               general questions
             </h3>
             <p className="text-[15px] leading-6">
-              At Four Steps Digital Consulting Pvt Ltd, we’re dedicated to
-              enhancing your business’s digital capabilities through Zoho and
+              At Four Steps Digital Consulting Pvt Ltd, we are dedicated to
+              enhancing your business digital capabilities through Zoho and
               HubSpot consulting while driving growth with effective digital
               marketing strategies.
             </p>

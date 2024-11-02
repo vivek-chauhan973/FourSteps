@@ -9,8 +9,7 @@ import SideForm from "@/Component/WebinarDetail/SideForm";
 import React from "react";
 import WebinarHero from "@/Component/WebinarDetail/WebinarHero";
 import SpeakerDetail from "@/Component/WebinarDetail/SpeakerDetail";
-
-// import Product from "./Product";
+import WebinarFaqs from "@/Component/WebinarDetail/WebinarFaqs";
 
 const Detail = () => {
   return (
@@ -94,7 +93,7 @@ const Detail = () => {
               className="flex  justify-between mt-5 mb-3"
             >
               <div className="md:px-10">
-                <div className=" font-semibold py-2 text-xl  ">Speaker</div>
+                <div className=" font-semibold py-2 text-xl">Speaker</div>
                 <SpeakerDetail />
               </div>
             </div>
@@ -109,6 +108,10 @@ const Detail = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* webinar detail page FAQ SECTION */}
+      <div className=" ">
+        <WebinarFaqs />
       </div>
     </>
   );

@@ -11,7 +11,7 @@ const Implimentation = () => {
   };
 
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto pb-10">
       <div className="border md:flex flex-col w-full p-3 bg-white shadow-md h-auto">
         <div className="grid grid-cols-1 md:grid-cols-[200px,2fr] border px-2 py-2 gap-5">
           {/* Image Side */}
