@@ -83,7 +83,7 @@
 //   )
 // }
 
-// export default Faq;
+// export default Faq
 
 // =======================Expand All=================================
 
