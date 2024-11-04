@@ -213,13 +213,13 @@ const Categories = () => {
             <div className="flex flex-col md:flex-row">
               {/* Sidebar Menu */}
               <div className="md:w-1/3 md:border-r pr-4">
-                <h2 className="text-lg border-b font-semibold">
+                <h2 className="text-lg px-2 border-b font-semibold">
                   Main Services
                 </h2>
                 {categoryData.map((category) => (
                   <div
                     key={category.title}
-                    className="py-1  cursor-pointer font-normal hover:bg-gray-300 transition-colors duration-200"
+                    className="py-1  px-2  cursor-pointer font-normal hover:bg-gray-200 rounded transition-colors duration-200"
                     onMouseEnter={() => setActiveCategory(category)}
                     onClick={() => setActiveCategory(category)}
                   >

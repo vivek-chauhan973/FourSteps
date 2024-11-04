@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -98,7 +96,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
               {services.map((service) => (
                 <div
                   key={service.name}
-                  className="py-2 px-1 font-normal cursor-pointer hover:bg-gray-300 transition-colors"
+                  className="py-2 px-2 text-md rounded font-normal cursor-pointer hover:bg-gray-200 transition-colors"
                   onMouseEnter={() => setActiveService(service)}
                   onClick={() => setActiveService(service)}
                 >

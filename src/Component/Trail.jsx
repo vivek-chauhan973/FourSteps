@@ -79,15 +79,15 @@ const upcoming = () => {
               </div>
 
               {/* Additional Data Section */}
-              <div className="flex flex-col items-center mb-4">
+              {/* <div className="flex flex-col items-center mb-4">
                 <h2 className="text-lg font-semibold text-gray-900">
-                  Amarjeet Singh
+                  Amarjeet Singhk
                 </h2>
                 <p className="text-gray-700 text-sm">Email: abc12@gmail.com</p>
                 <p className="text-gray-700 text-sm">
                   Phone: +91 4482 1247 8488
                 </p>
-              </div>
+              </div> */}
 
               {/* About Section */}
               <p className="text-gray-600 text-sm text-center px-4 mb-4">
@@ -205,14 +205,3 @@ const upcoming = () => {
 };
 
 export default upcoming;
-// import React from "react";
-
-// const Trail = () => {
-//   return (
-//     <div>
-//       <h2>trail section here</h2>
-//     </div>
-//   );
-// };
-
-// export default Trail;

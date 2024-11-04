@@ -3,7 +3,7 @@ import React from "react";
 const WebinarHero = () => {
   return (
     <div className="container mx-auto ">
-      <div className="flex flex-col lg:flex-row gap-5 h-auto lg:h-96 text-white bg-[#10364f] items-center justify-between py-8 lg:py-0">
+      <div className="flex flex-col lg:flex-row gap-5 h-auto lg:h-96  bg-[#5363e1] items-center justify-between py-8 lg:py-0">
         {/* Left section - Course Info */}
         <div className="w-full lg:w-3/5 p-4 order-1 lg:order-1 text-center lg:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl py-5 font-bold mb-2">
@@ -13,10 +13,10 @@ const WebinarHero = () => {
             Success is not the key to happiness. Happiness is the key to
             success. If you love what you are doing, you will be successful.
           </p>
-          <div className="text-gray-400 py-2">
+          <div className=" py-2">
             <p>
               Created by
-              <span className="text-blue-400 ml-2 hover:underline cursor-pointer">
+              <span className=" ml-2 hover:underline cursor-pointer">
                 Abc...
               </span>
             </p>

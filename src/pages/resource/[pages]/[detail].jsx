@@ -10,6 +10,7 @@ import React from "react";
 import WebinarHero from "@/Component/WebinarDetail/WebinarHero";
 import SpeakerDetail from "@/Component/WebinarDetail/SpeakerDetail";
 import WebinarFaqs from "@/Component/WebinarDetail/WebinarFaqs";
+import { Footer } from "@/Component/Footer/Footer";
 
 const Detail = () => {
   return (
@@ -112,6 +113,10 @@ const Detail = () => {
       {/* webinar detail page FAQ SECTION */}
       <div className=" ">
         <WebinarFaqs />
+      </div>
+      {/* Footer section here */}
+      <div>
+        <Footer/>
       </div>
     </>
   );

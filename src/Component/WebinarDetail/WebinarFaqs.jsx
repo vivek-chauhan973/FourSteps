@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+
 const WebinarFaqs = () => {
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -61,6 +63,109 @@ const WebinarFaqs = () => {
     },
   ];
 
+  // for suggested data
+
+  const profiles = [
+    {
+      id: 1,
+      title: "Title Here",
+      subtitle: "Subtitle Here",
+      description:
+        "Description goes here. A short summary or bio about the person or event.",
+      name: "ABCD.......",
+      date: "2024-11-04",
+      time: "10:00 AM",
+      imageUrl: "/image/try.jpeg",
+      socialLinks: [
+        {
+          platform: "Facebook",
+          url: "https://facebook.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "Twitter",
+          url: "https://twitter.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "LinkedIn",
+          url: "https://linkedin.com",
+          icon: "https://via.placeholder.com/24",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Title Here",
+      subtitle: "Subtitle Here",
+      description:
+        "Description goes here. A short summary or bio about the person or event.",
+      name: "ABCD.......",
+      date: "2024-11-04",
+      time: "10:00 AM",
+      imageUrl: "/image/try.jpeg",
+      socialLinks: [
+        {
+          platform: "Facebook",
+          url: "https://facebook.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "Twitter",
+          url: "https://twitter.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "LinkedIn",
+          url: "https://linkedin.com",
+          icon: "https://via.placeholder.com/24",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Title Here",
+      subtitle: "Subtitle Here",
+      description:
+        "Description goes here. A short summary or bio about the person or event.",
+      name: "AABCD.......",
+      date: "2024-11-04",
+      time: "10:00 AM",
+      imageUrl: "/image/try.jpeg",
+
+      socialLinks: [
+        {
+          platform: "Facebook",
+          url: "https://facebook.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "Twitter",
+          url: "https://twitter.com",
+          icon: "https://via.placeholder.com/24",
+        },
+        {
+          platform: "LinkedIn",
+          url: "https://linkedin.com",
+          icon: "https://via.placeholder.com/24",
+        },
+      ],
+    },
+    // Add more profile objects here if needed
+  ];
+
+  const getIcon = (platform) => {
+    switch (platform) {
+      case "Facebook":
+        return <FaFacebook size={24} />;
+      case "Twitter":
+        return <FaTwitter size={24} />;
+      case "LinkedIn":
+        return <FaLinkedin size={24} />;
+      default:
+        return null;
+    }
+  };
   return (
     <>
       <div className="container">
@@ -117,6 +222,71 @@ const WebinarFaqs = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/*  suggested section of webinar  */}
+
+        {/* Social Links */}
+        <div className="px-7">
+          <div className=" text-2xl pl-5 pb-2 font-semibold">
+            Suggested Webinars
+          </div>
+          <div className="grid grid-cols-1 px-5 sm:grid-cols-2 bg-gray-50 py-3 md:grid-cols-3 gap-6">
+            {profiles.map((profile) => (
+              <div
+                key={profile.id}
+                className="flex flex-col items-center bg-white  px-5 py-5  rounded-lg shadow-md"
+              >
+                {/* Profile Image */}
+                <div className="relative w-full h-48 mb-2 overflow-hidden rounded-lg">
+                  <Image
+                    className="object-cover"
+                    src={profile.imageUrl}
+                    alt="Profile Image"
+                    layout="fill"
+                  />
+                </div>
+
+                {/* Title and Subtitle */}
+                <h2 className="text-lg font-semibold text-gray-900">
+                  {profile.title}
+                </h2>
+                <h3 className="text-sm text-gray-500 mb-2">
+                  {profile.subtitle}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-700 line-clamp-3 text-center text-sm mb-3">
+                  {profile.description}
+                </p>
+
+                {/* Name */}
+                <h4 className="text-lg font-semibold text-gray-900">
+                  {profile.name} optional
+                </h4>
+
+                {/* Time and Date */}
+                <p className="text-gray-500 text-sm mt-2">
+                  Date: {profile.date}, Time: {profile.time}
+                </p>
+
+                {/* Social Links */}
+                <div className="flex space-x-4 mt-4">
+                  {profile.socialLinks.map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-blue-500"
+                    >
+                      {getIcon(link.platform)}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
