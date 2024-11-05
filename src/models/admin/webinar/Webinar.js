@@ -48,6 +48,19 @@ const webinarSchema=new mongoose.Schema({
         type:String,
         required:true
     }
+    ,
+    speaker:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
+    overview:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Overview"
+    },
+    highlights:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"KeyAndHighLights"
+    }
 
 },{timestamps:true});
 
