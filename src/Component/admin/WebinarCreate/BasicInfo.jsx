@@ -1,3 +1,4 @@
+import { useAppContext } from "@/Component/Context/context";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
@@ -5,6 +6,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
   const [formData, setFormData] = useState({
     file: null,
     altText: "",
+    speaker: "",
     title: "",
     link: "",
     subtitle: "",
@@ -16,6 +18,8 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     industry: "",
     language: "",
   });
+
+  const { users } = useAppContext();
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -39,6 +43,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
       file,
       altText,
       title,
+      speaker,
       link,
       subtitle,
       description,
@@ -50,9 +55,6 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
       language,
     } = formData;
     console.log({
-      fileName: file?.name,
-      fileSize: file?.size,
-      fileType: file?.type,
       altText,
       title,
       link,
@@ -61,6 +63,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
       selectType,
       toolsAndSoftware,
       topic,
+      speaker,
       department,
       industry,
       language,
@@ -163,7 +166,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     if (response.ok) {
       const result = await response.json();
       setIndustry(result.data); // Assuming result.data is an array of industries
-      console.log(".....>>>>>industry", result.data);
+      // console.log(".....>>>>>industry", result.data);
     } else {
       console.error("Failed to fetch industry:", response.status);
     }
@@ -290,17 +293,21 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
               <labe className="block text-sm font-semibold text-gray-700">
                 Select speakers
               </labe>
+
               <select
                 className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
                 value={formData.speaker}
-                onChange={handleChange}
+                onChange={(e) =>
+                  setFormData({ ...formData, speaker: e.target.value })
+                }
                 required
               >
-                <option>amit </option>
-                <option>sandeep  </option>
-                <option>ajay </option>
-                <option>vijay</option>
-                <option>rakesh</option>
+                <option value="">Select speaker</option>
+                {users?.map((item) => (
+                  <option key={item?._id} value={item?._id}>
+                    {item?.name}
+                  </option>
+                ))}
               </select>
             </div>
             {/* Tools and Software */}

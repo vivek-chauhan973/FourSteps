@@ -8,9 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartSimple,
   faSliders,
-  faSort,
   faBook,
-  faCar,
   faBlog,
   faHotel,
   faCartShopping,
@@ -41,7 +39,10 @@ const Sidebar = () => {
       {
         label: "User",
         icon: () => <FontAwesomeIcon icon={faUser} />,
-        subMenu: [{ label: "User as Speaker", href: "/admin/user/user" }],
+        subMenu: [
+          { label: "User as Speaker", href: "/admin/user/user" },
+          { label: "List Of User", href: "/admin/user/list-user" },
+        ],
       },
       {
         label: "Webinar ",
