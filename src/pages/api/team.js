@@ -42,7 +42,7 @@ await dbConnect()
         path: `/uploads/TeamImages/${req.file.filename}`,
       }
       console.log("fileData------------------------------------> ",fileData)
-      try {
+      try {   
           const file =await Teammember.create(fileData);
           return res.status(200).json({ data: file });
       } catch (error) {

@@ -285,7 +285,24 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
                 ))}
               </select>
             </div>
-
+            {/* for speaker  */}
+            <div>
+              <labe className="block text-sm font-semibold text-gray-700">
+                Select speakers
+              </labe>
+              <select
+                className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+                value={formData.speaker}
+                onChange={handleChange}
+                required
+              >
+                <option>amit </option>
+                <option>sandeep  </option>
+                <option>ajay </option>
+                <option>vijay</option>
+                <option>rakesh</option>
+              </select>
+            </div>
             {/* Tools and Software */}
             <div>
               <label className="block text-sm font-semibold text-gray-700">
@@ -401,7 +418,7 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
               </select>
             </div>
           </div>
-
+          {/* desription */}
           <div>
             <label className="block text-sm font-semibold text-gray-700">
               Description

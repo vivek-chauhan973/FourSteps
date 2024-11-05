@@ -85,7 +85,7 @@ export default function OverviewAbout({ webinarData, onSubmit }) {
   return (
     <div className="bg-white p-2 px-5 grow rounded-md flex flex-col gap-3">
       <div className="md:mb-0 mb-5">
-        <p className="pb-2 font-semibold text-para">About</p>
+        <p className="pb-2 font-semibold text-para">OverView</p>
         {isEditingAbout ? (
           <div className="w-full h-44">
             <QuillNoSSRWrapper
@@ -108,7 +108,7 @@ export default function OverviewAbout({ webinarData, onSubmit }) {
           </div>
         )}
       </div>
-      <div>
+      {/* <div>
         <label htmlFor="overviewInput" className="pb-2 font-semibold text-para">
           Overview
         </label>
@@ -149,7 +149,7 @@ export default function OverviewAbout({ webinarData, onSubmit }) {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       <button
         type="submit"
         className="bg-black text-white w-full rounded py-2"
