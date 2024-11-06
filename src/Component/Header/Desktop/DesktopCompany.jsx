@@ -45,7 +45,7 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
             <ul className="">
               <li>
                 <Link
-                  href="/about/about"
+                  href="/about"
                   className="block px-5 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
                 >
                   About

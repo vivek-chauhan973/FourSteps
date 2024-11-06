@@ -10,7 +10,7 @@ const Calltoaction = () => {
         <div className="absolute inset-0 bg-gradient-to-t mx-4 from-orange-500 to-transparent"></div>
         <div className="relative text-black py-3">
           <div className="container mx-auto ">
-            <div className="flex flex-col gap-10 md:flex-row items-center justify-between bg-gray-300 p-8 z-10 relative">
+            <div className="flex flex-col gap-10 md:flex-row items-center justify-between bg-gray-100 p-8 z-10 relative">
               <div className="md:w-1/3  mb-4 md:mb-0">
                 <img
                   src="/image/ab.webp"
@@ -39,7 +39,7 @@ const Calltoaction = () => {
 
                   {/* Button centered */}
                   <div className="flex justify-center w-full md:w-auto">
-                    <button className="bg-primary rounded-xl text-white text-lg py-3 px-6 hover:bg-orange-600">
+                    <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-3 px-4 md:px-5 rounded-xl bg-primary text-white">
                       meeting Link
                     </button>
                   </div>

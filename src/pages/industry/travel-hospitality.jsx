@@ -1,5 +1,11 @@
-import React from "react";
-import { FaMapMarkedAlt, FaWifi, FaConciergeBell } from "react-icons/fa"; // Importing icons from react-icons
+import React, { useState } from "react";
+import { FaMapMarkedAlt, FaWifi, FaConciergeBell } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import Case from "@/Component/CaseStudies/Case";
+import Testimonial from "@/Component/Testimonial/Testimonial";
+import Calltoaction from "@/Component/Web/Calltoaction";
+import Image from "next/image";
 const features = [
   {
     id: 1,
@@ -22,8 +28,123 @@ const features = [
       "Vivamus a ligula quam. Ut blandit eu leo non. Duis sed dolor amet laoreet. Lorem ipsum dolor sit amet Ut blandit eu leo.",
     Icon: FaConciergeBell, // Using the imported icon
   },
+  {
+    id: 3,
+    title: "Best Service",
+    description:
+      "Vivamus a ligula quam. Ut blandit eu leo non. Duis sed dolor amet laoreet. Lorem ipsum dolor sit amet Ut blandit eu leo.",
+    Icon: FaConciergeBell, // Using the imported icon
+  },
+  {
+    id: 5,
+    title: "Best Service",
+    description: "Vidolor sit amet Ut blandit eu leo.",
+    Icon: FaConciergeBell, // Using the imported icon
+  },
+  {
+    id: 6,
+    title: "Best Service",
+    description:
+      "Vivamus a ligula quam. Ut blandit eu leo non. Duis sed dolor amet laoreet. Lorem ipsum dolor sit amet Ut blandit eu leo.",
+    Icon: FaConciergeBell, // Using the imported icon
+  },
 ];
+// for key and features
+
 const Travel = () => {
+  const [openIndices, setOpenIndices] = useState([]);
+  const [isAllOpen, setIsAllOpen] = useState(false);
+
+  // Toggle specific section
+  const handleToggle = (i) => {
+    if (openIndices.includes(i)) {
+      setOpenIndices(openIndices.filter((index) => index !== i));
+    } else {
+      setOpenIndices([...openIndices, i]);
+    }
+  };
+
+  // Expand all sections
+  const handleExpandAll = () => {
+    setOpenIndices(faqs.map((_, i) => i));
+    setIsAllOpen(true);
+  };
+
+  // Hide all sections
+  const handleHideAll = () => {
+    setOpenIndices([]);
+    setIsAllOpen(false);
+  };
+
+  const faqs = [
+    {
+      question: "What is this webinar about?",
+      answer:
+        "This webinar covers [describe the main topics and objectives of the webinar briefly].",
+    },
+    {
+      question: "How can I register for the webinar?",
+      answer:
+        "You can register by [provide the registration steps, link, or contact information].",
+    },
+    {
+      question: "Is there a fee to attend the webinar?",
+      answer:
+        "The webinar is [state if free or mention any costs involved and how to pay].",
+    },
+    {
+      question: "Will I receive a certificate after the webinar?",
+      answer:
+        "Yes, participants will receive a certificate upon completion of the webinar.",
+    },
+    {
+      question: "What software do I need to join?",
+      answer:
+        "You will need [mention any specific software or platform required, such as Zoom or Microsoft Teams].",
+    },
+    {
+      question: "Can I access the recording later?",
+      answer:
+        "The recording will be available [mention if and where the recording will be accessible].",
+    },
+  ];
+
+  //  for the key and featuers of the industry
+  const data = [
+    {
+      id: 1,
+      title: "Seamless Booking Experience",
+      description:
+        "The client wished to build a solution that enabled business owners to quickly create an account, enlist their services, and servers to respective services to collect feedback on teams and individuals. They wish to design a feedback mechanism, a restaurant rating & hotel rating app that allows the customers to get directed to the feedback page through a simple scan of the QR assigned to each server.",
+    },
+    {
+      id: 2,
+      title: " Personalized Customer Service",
+      description:
+        "The client required a comprehensive solution for handling their tour and travel services with an easy-to-use interface.",
+    },
+    {
+      id: 3,
+      title: "Mobile-Optimized Solutions",
+      description:
+        "The main challenges in this case study were performance issues and an outdated technology stack.",
+    },
+    {
+      id: 34,
+      title: "Real-Time Availability & Updates",
+      description:
+        "The main challenges in this case study were performance issues and an outdated technology stack.",
+    },
+  ];
+  const [select, setSelect] = useState(data[0].id); // Track selected title by id
+  const [selectedDescription, setSelectedDescription] = useState(
+    data[0].description
+  ); // Initial description
+
+  const handleTitleClick = (id, description) => {
+    setSelect(id); // Set the selected title id
+    setSelectedDescription(description); // Set the new description
+  };
   return (
     <div>
       <div className="font-sans container">
@@ -56,13 +177,13 @@ const Travel = () => {
         {/* Industry-Specific Heading & Tagline Solution  */}
         <div className="max-w-4xl text-center mx-auto px-4 mt-10 py-10">
           <h2 className="text-xl text-center font-bold text-primary mb-4">
-            ABOUT US
+            ABOUT
           </h2>
           <h3 className="text-2xl font-semibold text-secondary mb-2">
             Travel & Hospitality Solutions
           </h3>
-          <p className=" mb-4">
-            At <span className=" font-semibold">Four Steps Digital</span>, we
+          <p className=" text-sm mb-4">
+            At <span className=" font-semibold ">Four Steps Digital</span>, we
             believe that travel is not just about reaching a destination; it's
             about the experiences that shape our lives. With a passion for
             creating unforgettable journeys, our dedicated team is committed to
@@ -78,11 +199,13 @@ const Travel = () => {
             Read More
           </button>
         </div>
-        <div className=" mt-10">
-          <h2 className="text-2xl text-primary py-10 font-semibold text-center">
+
+        {/* over view */}
+        <div className=" py-10 bg-[#F5FFFA]">
+          <h2 className="text-2xl text-primary  font-semibold text-center">
             Industry Overview
           </h2>
-          <div className="container mx-auto p-4">
+          <div className="container mx-auto px-10 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature) => {
                 const IconComponent = feature.Icon; // Get the icon component
@@ -90,79 +213,130 @@ const Travel = () => {
                 return (
                   <div
                     key={feature.id}
-                    className="bg-white p-6 rounded-lg shadow-md"
+                    className="bg-white p-6   rounded-lg shadow-md"
                   >
                     <div className="flex items-center mb-4">
                       <div className="text-orange-500">
                         <IconComponent className="h-6 w-6" />{" "}
                         {/* Use the icon component */}
                       </div>
-                      <h2 className="text-2xl font-bold ml-2">
+                      <h2 className="text-2xl 	 font-bold ml-2">
                         {feature.title}
                       </h2>
                     </div>
-                    <p className="text-gray-700">{feature.description}</p>
-                    <a
-                      href="#"
-                      className="text-orange-500 hover:underline mt-4 block"
-                    >
-                      Read More
-                    </a>
+                    <p className="text-gray-700 tracking-tight  text-lg py-2">
+                      {feature.description}
+                    </p>
+                    <div className="my-4 font-semibold">
+                      <button
+                        href="#"
+                        className=" border-b-2 border-orange-500 hover:text-orange-500  inline-block"
+                      >
+                        Read More
+                      </button>
+                    </div>
                   </div>
                 );
               })}
             </div>
           </div>
         </div>
-        {/* Industry-Specific Solutions */}
-        <section className="py-16 px-4 bg-gray-100">
-          <h2 className="text-2xl font-semibold text-center">
-            Travel & Hospitality Solutions
-          </h2>
-          <ul className="mt-8 space-y-4 max-w-3xl mx-auto">
-            <li>Comprehensive Booking & Reservation Management</li>
-            <li>Personalized Guest Services and Loyalty Programs</li>
-            <li>Advanced Analytics for Customer Insights</li>
-          </ul>
-        </section>
-        {/* Key Features for the Industry */}
-        <section className="py-16 px-4 bg-white">
-          <h2 className="text-2xl font-semibold text-center">Key Features</h2>
-          <ul className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <li className="p-4 bg-gray-100 rounded-lg">24/7 Online Booking</li>
-            <li className="p-4 bg-gray-100 rounded-lg">
-              Guest Experience Optimization
-            </li>
-            <li className="p-4 bg-gray-100 rounded-lg">
-              Real-Time Data Analysis
-            </li>
-          </ul>
-        </section>
-        {/* Success Stories / Case Studies */}
-        <section className="py-16 px-4 bg-gray-100">
-          <h2 className="text-2xl font-semibold text-center">
-            Success Stories
-          </h2>
-          <div className="mt-8 space-y-6 max-w-3xl mx-auto">
-            <article className="bg-white p-6 shadow-md rounded-lg">
-              <h3 className="text-xl font-bold">Increased Bookings by 40%</h3>
-              <p className="mt-2">
-                Our platform boosted bookings for client Y by 40%, enhancing
-                revenue and customer satisfaction.
+
+        {/* trial */}
+
+        <div className="container mx-auto p-8">
+          <div className="text-center">
+            <h1 className="text-orange-500 text-sm font-bold mb-2">
+              SPECIFIC SOLUTIONS
+            </h1>
+            <h2 className="text-2xl font-bold mb-4">
+              Your Expert in Travel Web Design Solutions
+            </h2>
+            <p className="mb-10 px-10 text-md text-gray-700">
+              We are a popular tourism website design company with expertise in
+              creating bespoke, compelling, and high-converting websites to
+              boost online presence. From tour operators and travel agencies to
+              hotel & online ticket booking companies, our user-friendly travel
+              web page design services cater to a broad range of businesses with
+              enhanced digital experience. Whether you want to build a website
+              from scratch or re-design a travel website with custom features &
+              functionalities, our tour and travels website design agency's
+              expert professionals are committed to offering you the best travel
+              website design solutions at affordable prices.
+            </p>
+          </div>
+          <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-5 ">
+            {/* Image Section */}
+            <div className="flex p-2 justify-center">
+              <Image
+                src="/image/bg.jpg"
+                alt="Travel Website Designs"
+                className="w-full h-auto rounded-lg shadow-md"
+                height={400}
+                width={500}
+              />
+            </div>
+
+            {/* Text Section */}
+            <div className="  p-2">
+              <h1 className="text-orange-500 text-sm  font-bold mb-2">
+                TOURISM WEBSITE DESIGN COMPANY
+              </h1>
+              <h2 className="text-2xl font-bold mb-4">
+                Highlighted Features of Our Custom Travel Web Design Solutions
+              </h2>
+              <p className="mb-8 text-md text-gray-700">
+                As a premier travel website design company, we specialize in
+                providing tailored web design solutions exclusively for tour and
+                travel agencies. With a team of skilled professionals, we craft
+                dynamic and engaging online platforms for our clients through
+                our exceptional travel agency website design services. Our
+                tourism website design company meticulously crafts websites that
+                reflect an aesthetic appeal to captivate the target audience.
+                Our experts offer comprehensive travel web page design services,
+                ensuring that they not only increase organic traffic but also
+                enhance customer engagement by integrating the following
+                features into your websites:
               </p>
-            </article>
+            </div>
           </div>
-        </section>
+        </div>
+
+        {/* Industry-Specific key features Solutions */}
+        <div className="text-center text-2xl font-bold text-gray-800 mb-8">
+          Key Features of the Industry
+        </div>
+        <div className="px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-8 gap-10 rounded-lg shadow-lg relative">
+          {/* Left Column: Titles */}
+          <div className="space-y-5">
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className={`font-semibold text-xl cursor-pointer hover:text-orange-600 transition-all duration-300 ease-in-out ${
+                  item.id === select ? "text-orange-500" : "text-black"
+                }`}
+                onClick={() => handleTitleClick(item.id, item.description)}
+              >
+                {item.title}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column: Description */}
+          <div className="border-l-4 border-orange-500 pl-6 space-y-5">
+            <p className="text-lg text-gray-700">{selectedDescription}</p>
+          </div>
+        </div>
+
+        {/* Success Stories / Case Studies */}
+        <div className=" ">
+          <Case />
+        </div>
         {/* Client Logos & Testimonials */}
-        <section className="py-16 px-4 bg-white">
-          <h2 className="text-2xl font-semibold text-center">
-            Client Testimonials
-          </h2>
-          <div className="flex flex-wrap justify-center mt-8 gap-8">
-            <img src="/hotel-logo1.png" alt="Client 1" className="w-24 h-24" />
-            <img src="/hotel-logo2.png" alt="Client 2" className="w-24 h-24" />
-          </div>
-        </section>
+        <div>
+          Testimonials Happy Clients & Feedbacks
+          <Testimonial />
+        </div>
         {/* Custom Solutions */}
         <section className="py-16 px-4 bg-gray-100">
           <h2 className="text-2xl font-semibold text-center">
@@ -174,13 +348,9 @@ const Travel = () => {
           </p>
         </section>
         {/* Call to Action */}
-        <section className="py-16 px-4 bg-indigo-600 text-white text-center">
-          <h2 className="text-3xl font-bold">Talk to a Hospitality Expert</h2>
-          <button className="mt-6 px-6 py-3 bg-orange-500 rounded-full font-semibold hover:bg-orange-600">
-            Request a Demo
-          </button>
-        </section>
+        <Calltoaction />
         {/* Resource Section */}
+
         <section className="py-16 px-4 bg-white">
           <h2 className="text-2xl font-semibold text-center">
             Industry Resources
@@ -201,23 +371,63 @@ const Travel = () => {
             </li>
           </ul>
         </section>
-        {/* FAQs */}
-        <section className="py-16 px-4 bg-gray-100">
-          <h2 className="text-2xl font-semibold text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="mt-8 max-w-2xl mx-auto space-y-6">
-            <article>
-              <h3 className="font-bold">
-                Does this solution support multiple properties?
-              </h3>
-              <p className="mt-2">
-                Yes, our platform supports multi-property management, enabling
-                you to handle bookings across multiple locations.
-              </p>
-            </article>
+      </div>
+
+      {/* this is FQA SECTION  */}
+      <div className="bg-white">
+        {/* section 1 */}
+        <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+          <p className="text-xl  leading-3 font-bold">
+            Frequently Asked Questions (FAQS) for the Webinar
+          </p>
+        </div>
+        <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
+          <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
+            <button
+              className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
+              onClick={isAllOpen ? handleHideAll : handleExpandAll}
+            >
+              {isAllOpen ? "Hide all" : "Expand all"}
+            </button>
           </div>
-        </section>
+          <div className="w-full mx-auto md:px-0 px-5">
+            {faqs.map((faq, i) => (
+              <div key={i} className="mb-3">
+                <div
+                  onClick={() => handleToggle(i)}
+                  className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                >
+                  <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                    {faq.question}
+                  </p>
+
+                  <span>
+                    {openIndices.includes(i) ? (
+                      <FontAwesomeIcon icon={faChevronUp} />
+                    ) : (
+                      <FontAwesomeIcon icon={faChevronDown} />
+                    )}
+                  </span>
+                </div>
+                <div
+                  className={`overflow-hidden transition-max-height   duration-700 ease-in-out
+                                ${
+                                  openIndices.includes(i)
+                                    ? "max-h-[1000px]"
+                                    : "max-h-0"
+                                }`}
+                  style={{
+                    maxHeight: openIndices.includes(i) ? "1000px" : "0px",
+                  }}
+                >
+                  <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
+                    {faq.answer}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

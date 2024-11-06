@@ -35,7 +35,6 @@ const teamMemberSchema = new mongoose.Schema({
   }
 });
 
-// Check if the model already exists to avoid overwriting
 const Teammember =
   mongoose.models.Teammember || mongoose.model("Teammember", teamMemberSchema);
 

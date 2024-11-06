@@ -64,7 +64,6 @@ const Team = () => {
       setAllTeamMember(res || []);
     });
   }, []);
-  console.log("team members is here --> ", allTeamMember);
 
   const progressData = [
     { title: "Zoho Consulting", percentage: 90, color: "#FF8A50" },

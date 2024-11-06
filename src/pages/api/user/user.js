@@ -148,15 +148,54 @@ const userHandler = async (req, res) => {
         return res.status(500).json({ error: "Failed to save user data." });
       }
     });
-  } else if (req.method === "GET") {
+  } 
+  
+  
+  // else if (req.method === "GET") {
+  //   // Handle GET request for fetching user data
+  //   try {
+  //     const users = await User.find({}); // Fetch all users
+  //     return res.status(200).json(users); // Respond with the list of users
+  //   } catch (error) {
+  //     return res.status(500).json({ error: "Failed to fetch users." });
+  //   }
+  // } 
+  
+
+  else if (req.method === "GET") {
     // Handle GET request for fetching user data
+    const { userId } = req.query; // Get userId from the query parameters
+  
     try {
-      const users = await User.find({}); // Fetch all users
-      return res.status(200).json(users); // Respond with the list of users
+      // Check if a specific user ID is provided
+      if (userId) {
+        // Validate that userId is a valid MongoDB ObjectId
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+          return res.status(400).json({ error: "Invalid ID format." });
+        }
+  
+        // Fetch the user by ID
+        const user = await User.findById(userId);
+  
+        if (!user) {
+          return res.status(404).json({ error: "User not found." });
+        }
+  
+        return res.status(200).json(user); // Respond with the specific user data
+      } else {
+        // No userId provided, fetch all users
+        const users = await User.find({});
+        return res.status(200).json(users); // Respond with the list of users
+      }
     } catch (error) {
-      return res.status(500).json({ error: "Failed to fetch users." });
+      return res.status(500).json({ error: "Failed to fetch user(s)." });
     }
-  } else if (req.method === "PUT") {
+  }
+  
+
+  
+  
+  else if (req.method === "PUT") {
     // Handle PUT request for updating user data
     const { userId, name, email, phone, description, role, jobProfile, alt } =
       req.body;
