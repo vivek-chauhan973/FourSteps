@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons for edit and delete
+import { FaEdit, FaTrash } from "react-icons/fa";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import { useAppContext } from "@/Component/Context/context";
+import { useRouter } from "next/router";
 
 const ListingUser = () => {
-const {users}=useAppContext();
-  const handleEdit = (userId) => {
-    // Logic to handle editing a user
-    console.log("Edit user with ID:", userId);
-  };
+  const router = useRouter();
+  const { users, setUsers } = useAppContext();
 
-  const handleDelete = async (userId) => {
-    // Logic to handle deleting a user
-    const response = await fetch(`/api/user/user/${userId}`, {
+  const handleEdit = (id) => {
+    router.push(`/admin/user/${id}`);
+  };
+  const handleDelete = async (id) => {
+    // Send DELETE request with userId as a query parameter
+    const response = await fetch(`/api/user/user?userId=${id}`, {
       method: "DELETE",
     });
 
     if (response.ok) {
-      setUsers(users.filter((user) => user._id !== userId));
+      setUsers(users.filter((user) => user._id !== id));
+      alert("user delete succefully");
     } else {
       console.error("Failed to delete user");
     }
@@ -48,7 +50,7 @@ const {users}=useAppContext();
           <tbody>
             {users.map((user) => (
               <tr key={user._id} className="hover:bg-gray-100 transition">
-                <td className="py-3 px-4 border  border-gray-300">
+                <td className="py-3 px-4 border border-gray-300">
                   {user.image && (
                     <Image
                       src={user.image.path}
