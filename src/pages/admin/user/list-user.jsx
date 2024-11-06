@@ -7,8 +7,16 @@ import { useRouter } from "next/router";
 
 const ListingUser = () => {
   const router = useRouter();
-  const { users, setUsers } = useAppContext();
-
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+      const fetchUsers = async () => {
+        const response = await fetch("/api/user/user");
+        const data = await response.json();
+        setUsers(data);
+      };
+  
+      fetchUsers();
+    }, []);
   const handleEdit = (id) => {
     router.push(`/admin/user/${id}`);
   };
