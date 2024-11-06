@@ -158,13 +158,27 @@ const userHandler = async (req, res) => {
     }
   } else if (req.method === "PUT") {
     // Handle PUT request for updating user data
-    const { userId, name, email, phone, description, role, jobProfile, alt } =
+    handler(req, res, async (err) => {
+      if (err) {
+        return res.status(500).json({ error: "Image upload failed." });
+      }
+    const { name, email, phone, description, role, jobProfile, alt } =
       req.body;
+    const {id}=req.query;
+
+    const data=await User.findOne({_id:id});
+    if(data){
+      fs.unlinkSync(path.join(uploadsDir, data?.image?.filename));
+      }
 
     try {
-      const updatedUser = await User.findByIdAndUpdate(
-        userId,
-        { name, email, phone, description, role, jobProfile, alt },
+      const updatedUser = await User.findOneAndReplace(
+        {_id:id},
+        { name, email, phone, description, role, jobProfile, image: {
+          filename: req.file.filename,
+          path: `/uploads/UserImages/${req.file.filename}`,
+        },
+        alt},
         { new: true }
       );
 
@@ -177,9 +191,14 @@ const userHandler = async (req, res) => {
     } catch (error) {
       return res.status(500).json({ error: "Failed to update user data." });
     }
+  })
   } else if (req.method === "DELETE") {
     // Handle DELETE request for deleting a user
     const { userId } = req.query;
+    const data=await User.findOne({_id:userId});
+    if(data){
+      fs.unlinkSync(path.join(uploadsDir, data?.image?.filename));
+      }
 
     try {
       const deletedUser = await User.findByIdAndDelete(userId);

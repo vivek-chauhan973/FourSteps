@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import Image from "next/image";
+import { useAppContext } from "@/Component/Context/context";
 
 const EditUser = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const EditUser = () => {
     image: null,
     alt: "",
   });
+  const { users, setUsers } = useAppContext();
   const [imagePreview, setImagePreview] = useState(null);
   const router = useRouter();
   const { id } = router.query; // Extract userId from the URL
@@ -25,18 +27,19 @@ const EditUser = () => {
         const response = await fetch(`/api/user/user?id=${id}`);
         if (response.ok) {
           const userData = await response.json();
+          console.log("userData---------->",userData);
           setFormData({
-            name: userData.name,
-            email: userData.email,
-            phone: userData.phone,
-            role: userData.role,
-            description: userData.description,
-            jobProfile: userData.jobProfile,
-            alt: userData.alt,
-            image: userData.image,
+            name: userData?.[0].name,
+            email: userData?.[0].email,
+            phone: userData?.[0].phone,
+            role: userData?.[0].role,
+            description: userData?.[0].description,
+            jobProfile: userData?.[0].jobProfile,
+            alt: userData?.[0].alt,
+            image: userData?.[0].image,
           });
-          if (userData.image) {
-            setImagePreview(userData.image.path); // Set the image preview if it exists
+          if (userData?.[0].image) {
+            setImagePreview(userData?.[0].image.path); // Set the image preview if it exists
           }
         }
       };
@@ -82,7 +85,7 @@ const EditUser = () => {
 
     if (response.ok) {
       alert("User updated successfully!");
-      router.push("/admin/users");
+      router.push("/admin/user/list-user");
     } else {
       alert("Failed to update user.");
     }
