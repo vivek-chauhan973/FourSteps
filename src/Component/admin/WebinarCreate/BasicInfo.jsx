@@ -1,10 +1,14 @@
 import { useAppContext } from "@/Component/Context/context";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+const BasicInfo = ({setActiveTab,webinarData}) => {
 
-const BasicInfo = ({ onSubmit, webinarData }) => {
+  const router=useRouter();
+
+  const [file,setFile]=useState(null)
+  const [preview,setPreview]=useState(null);
   const [formData, setFormData] = useState({
-    file: null,
     altText: "",
     speaker: "",
     title: "",
@@ -19,14 +23,33 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     language: "",
   });
 
+  useEffect(()=>{
+    setFormData({
+      altText:webinarData?.altText|| "",
+      speaker:webinarData?.speaker|| "",
+      title:webinarData?.title|| "",
+      link:webinarData?.link|| "",
+      subtitle:webinarData?.subtitle|| "",
+      description:webinarData?.description|| "",
+      selectType:webinarData?.selectType|| "",
+      toolsAndSoftware:webinarData?.toolsAndSoftware|| "",
+      topic:webinarData?.topic|| "",
+      department:webinarData?.department|| "",
+      industry:webinarData?.industry|| "",
+      language:webinarData?.language|| "",
+    })
+    setPreview(webinarData?.path|| null)
+  },[webinarData])
+
   const { users } = useAppContext();
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
+    setFile(selectedFile);
     if (selectedFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData((prevData) => ({ ...prevData, file: reader.result }));
+        setPreview(reader.result);
       };
       reader.readAsDataURL(selectedFile);
     }
@@ -37,10 +60,9 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const {
-      file,
       altText,
       title,
       speaker,
@@ -54,21 +76,41 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
       industry,
       language,
     } = formData;
-    console.log({
-      altText,
-      title,
-      link,
-      subtitle,
-      description,
-      selectType,
-      toolsAndSoftware,
-      topic,
-      speaker,
-      department,
-      industry,
-      language,
-    });
-    onSubmit();
+   const formData1=new FormData();
+   formData1.append('file',file);
+   formData1.append('altText',altText);
+   formData1.append('title',title);
+   formData1.append('speaker',speaker);
+   formData1.append('link',link);
+   formData1.append('subtitle',subtitle);
+   formData1.append('description',description);
+   formData1.append('selectType',selectType);
+   formData1.append('toolsAndSoftware',toolsAndSoftware);
+   formData1.append('topic',topic);
+   formData1.append('department',department);
+   formData1.append('industry',industry);
+   formData1.append('language',language);
+
+   try {
+    const data=await fetch(`/api/webinar/${webinarData?webinarData?._id:"webinar"}`,{
+      method:webinarData?"PUT":"POST",
+      body:formData1
+    })
+    const data1=await data.json()
+    if(data?.ok){
+      setActiveTab("Tab2")
+      router.push(`/admin/webinar/itinary/${data1?._id}`);
+      alert(webinarData?"data successfully updated":"data successfully saved");
+    }
+    
+   } catch (error) {
+    alert("something went wrong");
+    
+   }
+
+
+
+   
   };
   // for department
   const [departmetaData, setDepartmentData] = useState([]);
@@ -193,13 +235,13 @@ const BasicInfo = ({ onSubmit, webinarData }) => {
                 required
               />
             </div>
-            {formData.file && (
+            {preview && (
               <div className="">
                 <h3 className="text-md font-medium text-gray-700">
                   Preview img:
                 </h3>
                 <Image
-                  src={formData.file}
+                  src={preview}
                   alt="Preview"
                   className="mt-2 rounded-lg shadow-md"
                   height={200}

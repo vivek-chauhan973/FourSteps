@@ -2,26 +2,29 @@ const { default: mongoose } = require("mongoose");
 
 const webinarSchema = new mongoose.Schema(
   {
-    webinarImage: {
+    path: {
       type: String,
       required: true,
     },
-    imgAlt: {
+    filename:{
+      type: String,
+    },
+    altText: {
       type: String,
     },
     title: {
       type: String,
       required: true,
     },
-    videoLink: {
+    link: {
       type: String,
       required: true,
     },
-    sublitile: {
+    subtitle: {
       type: String,
       required: true,
     },
-    webinarType: {
+    selectType: {
       type: String,
       required: true,
     },
@@ -29,7 +32,7 @@ const webinarSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    topics: {
+    topic: {
       type: String,
       required: true,
     },
@@ -41,7 +44,7 @@ const webinarSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    languages: {
+    language: {
       type: String,
       required: true,
     },

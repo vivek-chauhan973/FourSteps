@@ -15,7 +15,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function Highlight({ webinarData }) {
+export default function Highlight({ webinarData,setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState(
     webinarData?.about || ""
   );
@@ -75,6 +75,7 @@ export default function Highlight({ webinarData }) {
       about: aboutEditorHtml,
       highlights: highlights.map((item) => item.text),
     };
+    setActiveTab("Tab1");
     // Calling the provided onSubmit prop function with data
 
     // Switch to the next tab after submitting
@@ -85,7 +86,7 @@ export default function Highlight({ webinarData }) {
     <div className="bg-white p-2 px-5 grow rounded-md flex flex-col gap-3">
       <div className="md:mb-0 mb-5">
         <p className="pb-2 font-semibold text-para">Hightlight</p>
-        {isEditingAbout ? (
+        
           <div className="w-full h-44">
             <QuillNoSSRWrapper
               className="rounded h-32"
@@ -95,17 +96,7 @@ export default function Highlight({ webinarData }) {
               modules={modules}
             />
           </div>
-        ) : (
-          <div className="flex gap-5">
-            <div className="w-20">
-              <FontAwesomeIcon
-                icon={faEdit}
-                className="cursor-pointer hover:text-primary"
-                onClick={() => setIsEditingAbout(true)}
-              />
-            </div>
-          </div>
-        )}
+        
       </div>
       {/* <div>
         <label
