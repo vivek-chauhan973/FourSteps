@@ -16,8 +16,7 @@ const ListItem = ({ text }) => (
   </li>
 );
 
-
-const ppcmanagement = () => {
+const Ppcmanagement = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -27,7 +26,6 @@ const ppcmanagement = () => {
       mirror: false,
     });
   }, []);
-
 
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -503,4 +501,4 @@ const ppcmanagement = () => {
   );
 };
 
-export default ppcmanagement;
+export default Ppcmanagement;

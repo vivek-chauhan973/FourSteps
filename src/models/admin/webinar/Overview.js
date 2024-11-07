@@ -4,6 +4,10 @@ const { default: mongoose } = require("mongoose");
 const overviewSchema=new mongoose.Schema({
     description:{
         type:String
+    },
+    webinar:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Webinar"
     }
 
 },{timestamps:true});

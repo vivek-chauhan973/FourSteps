@@ -15,7 +15,7 @@ const ListItem = ({ text }) => (
   </li>
 );
 
-const contentmarketing = () => {
+const Contentmarketing = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -554,4 +554,4 @@ const contentmarketing = () => {
   );
 };
 
-export default contentmarketing;
+export default Contentmarketing;

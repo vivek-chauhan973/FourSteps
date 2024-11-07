@@ -6,6 +6,7 @@ import Case from "@/Component/CaseStudies/Case";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Calltoaction from "@/Component/Web/Calltoaction";
 import Image from "next/image";
+import { Footer } from "@/Component/Footer/Footer";
 const features = [
   {
     id: 1,
@@ -145,6 +146,41 @@ const Travel = () => {
     setSelect(id); // Set the selected title id
     setSelectedDescription(description); // Set the new description
   };
+
+  //  for custom solution
+  const custom = [
+    {
+      src: "/image/flight.webp",
+      alt: "Plan your Trip",
+      title: "Plan your Trip",
+      description: "Home Flight ",
+    },
+    {
+      src: "/image/hotel.jpg",
+      alt: "Search a Hotels",
+      title: "Search a Hotels",
+      description: "Home Hotel ",
+    },
+    {
+      src: "/image/bg.jpg",
+      alt: "Most Popular Holidays",
+      title: "Plan & Explore",
+      description: "Home Holidays ",
+    },
+    {
+      src: "/image/bg.jpg",
+      alt: "Search Adventures",
+      title: "Search Adventures",
+      description: "Home Activity ",
+    },
+    {
+      src: "/image/bg.jpg",
+      alt: "Travel around the world",
+      title: "Travel around the world",
+      description: "Home All Services ",
+    },
+    // Add more items as needed
+  ];
   return (
     <div>
       <div className="font-sans container">
@@ -184,7 +220,7 @@ const Travel = () => {
           </h3>
           <p className=" text-sm mb-4">
             At <span className=" font-semibold ">Four Steps Digital</span>, we
-            believe that travel is not just about reaching a destination; it's
+            believe that travel is not just about reaching a destination; it
             about the experiences that shape our lives. With a passion for
             creating unforgettable journeys, our dedicated team is committed to
             curating unique travel experiences that connect you with the heart
@@ -260,8 +296,8 @@ const Travel = () => {
               web page design services cater to a broad range of businesses with
               enhanced digital experience. Whether you want to build a website
               from scratch or re-design a travel website with custom features &
-              functionalities, our tour and travels website design agency's
-              expert professionals are committed to offering you the best travel
+              functionalities, our tour and travels website design agency expert
+              professionals are committed to offering you the best travel
               website design solutions at affordable prices.
             </p>
           </div>
@@ -302,11 +338,40 @@ const Travel = () => {
           </div>
         </div>
 
+        {/* Custom Solutions */}
+
+        <div className=" container mx-auto  px-20 py-10  bg-gray-100 ">
+          <h1 className=" text-3xl font-semibold py-4 mb-4 text-center ">
+            Travel Agency Custom Solutions & Industry Resources
+          </h1>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-20 gap-6 justify-items-center">
+            {custom.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-lg overflow-hidden w-64 flex flex-col items-center"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-40 object-cover"
+                  height={200}
+                  width={300}
+                />
+                <div className="p-2 text-center">
+                  <h2 className="text-lg font-semibold">{item.title}</h2>
+                  <p className="text-zinc-600 text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         {/* Industry-Specific key features Solutions */}
         <div className="text-center text-2xl font-bold text-gray-800 mb-8">
           Key Features of the Industry
         </div>
-        <div className="px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-8 gap-10 rounded-lg shadow-lg relative">
+
+        <div className="px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-50 py-8 gap-10 rounded-lg shadow-lg relative">
           {/* Left Column: Titles */}
           <div className="space-y-5">
             {data.map((item) => (
@@ -333,52 +398,36 @@ const Travel = () => {
           <Case />
         </div>
         {/* Client Logos & Testimonials */}
-        <div>
-          Testimonials Happy Clients & Feedbacks
+
+        <div className=" bg-gray-50">
+          <div className=" py-2">
+            <h2 className=" text-xl font-semibold text-primary text-center mb-3">
+              Testimonials
+            </h2>
+            <h3 className="text-2xl pb-3 font-semibold text-center">
+              Happy Clients & Feedbacks
+            </h3>
+          </div>
           <Testimonial />
         </div>
-        {/* Custom Solutions */}
-        <section className="py-16 px-4 bg-gray-100">
-          <h2 className="text-2xl font-semibold text-center">
-            Custom Solutions
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto">
-            We offer custom solutions for unique travel and hospitality needs.
-            Partner with us to tailor services to your brand and customers.
-          </p>
-        </section>
-        {/* Call to Action */}
-        <Calltoaction />
-        {/* Resource Section */}
 
-        <section className="py-16 px-4 bg-white">
-          <h2 className="text-2xl font-semibold text-center">
-            Industry Resources
-          </h2>
-          <ul className="mt-8 space-y-4 max-w-2xl mx-auto">
-            <li>
-              <a
-                href="/resource1.pdf"
-                className="text-blue-500 hover:underline"
-              >
-                Hospitality Market Insights
-              </a>
-            </li>
-            <li>
-              <a href="/blog-post" className="text-blue-500 hover:underline">
-                Customer Retention in Travel & Hospitality
-              </a>
-            </li>
-          </ul>
-        </section>
+        {/* Call to Action */}
+        <div>
+          <Calltoaction />
+        </div>
+        {/* Resource Section */}
       </div>
 
       {/* this is FQA SECTION  */}
       <div className="bg-white">
         {/* section 1 */}
         <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+          <h2 className=" text-xl font-semibold text-primary text-center mb-3">
+            FAQS
+          </h2>
+
           <p className="text-xl  leading-3 font-bold">
-            Frequently Asked Questions (FAQS) for the Webinar
+            Frequently Asked Questions for the Industry
           </p>
         </div>
         <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
@@ -428,6 +477,10 @@ const Travel = () => {
             ))}
           </div>
         </div>
+      </div>
+      {/* footer section */}
+      <div>
+        <Footer />
       </div>
     </div>
   );

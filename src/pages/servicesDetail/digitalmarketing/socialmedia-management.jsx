@@ -15,7 +15,7 @@ const ListItem = ({ text }) => (
   </li>
 );
 
-const socialmedia = () => {
+const Socialmedia = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -334,4 +334,4 @@ const socialmedia = () => {
   );
 };
 
-export default socialmedia;
+export default Socialmedia;

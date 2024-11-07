@@ -1,15 +1,3 @@
-// import React from "react";
-
-// const manage = () => {
-//   return (
-//     <div>
-//       <h1>welcome to hubspot manage page </h1>
-//     </div>
-//   );
-// };
-
-// export default manage;
-
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
@@ -18,7 +6,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const manage = () => {
+const Manage = () => {
   useEffect(() => {
     AOS.init({
       once: true,
@@ -419,4 +407,4 @@ const manage = () => {
   );
 };
 
-export default manage;
+export default Manage;

@@ -8,7 +8,7 @@ const fetchAllTeamMember = async () => {
   const response = await fetch("/api/team");
   return await response.json();
 };
-const listofTeam = () => {
+const ListofTeam = () => {
   const [webinars, setWebinars] = useState(initialWebinars);
   const [formData, setFormData] = useState({});
   const [allTeamMember, setAllTeamMember] = useState([]);
@@ -109,4 +109,4 @@ const listofTeam = () => {
   );
 };
 
-export default listofTeam;
+export default ListofTeam;

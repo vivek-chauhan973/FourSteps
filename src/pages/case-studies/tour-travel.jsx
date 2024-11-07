@@ -207,7 +207,7 @@ const Travel = () => {
           With over 4 years of expertise in delivering tailored travel
           experiences, Foursteps Digital partnered with Bizare Expendtion to
           elevate the customer journey of their travel booking platform. Our
-          dedicated team conducted an in-depth analysis of the client's unique
+          dedicated team conducted an in-depth analysis of the client s unique
           needs and identified key opportunities for enhancing the overall user
           experience and optimizing the booking process.
         </p>
@@ -473,7 +473,7 @@ const Travel = () => {
                 className="text-orange-500 w-5 h-5 mr-2 "
               />
               <div>
-                <h3 className="text-xl  font-semibold">What's next?</h3>
+                <h3 className="text-xl  font-semibold">What s next?</h3>
                 <p className="text-gray-600">
                   One of our account managers will contact you shortly.
                 </p>

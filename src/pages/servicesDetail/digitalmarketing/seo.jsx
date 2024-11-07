@@ -16,7 +16,7 @@ const ListItem = ({ text }) => (
   </li>
 );
 
-const seo = () => {
+const Seo = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -578,4 +578,4 @@ We have a young and expert team. Our single-focused mission is to provide the hi
   );
 };
 
-export default seo;
+export default Seo;

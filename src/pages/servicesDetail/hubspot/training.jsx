@@ -6,7 +6,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const manage = () => {
+const Manage = () => {
   useEffect(() => {
     AOS.init({
       once: true,
@@ -450,4 +450,4 @@ const manage = () => {
   );
 };
 
-export default manage;
+export default Manage;
