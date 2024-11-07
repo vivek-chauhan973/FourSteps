@@ -3,6 +3,8 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import Webinar from "@/models/admin/webinar/Webinar";
+import Overview from "@/models/admin/webinar/Overview";
+import KeyAndHighLights from "@/models/admin/webinar/KeyAndHighLights";
 
 // Set up storage configuration for multer
 const uploadDirectory = "./public/uploads/webinar";
@@ -29,7 +31,7 @@ export default async function handler(req, res) {
   const { webinar } = req.query;
   if (method === "GET") {
     try {
-      const testimonials = await Webinar.find({ _id: webinar });
+      const testimonials = await Webinar.find({ _id: webinar }).populate("overview highlights");
       res.status(200).json(testimonials);
     } catch (error) {
       console.error("Error fetching the testimonials:", error);
@@ -92,10 +94,9 @@ export default async function handler(req, res) {
           fs.unlinkSync(path.join(uploadDirectory, data?.filename));
         }
 
-        const updatedTestimonial = await Webinar.findOneAndReplace(
+        const updatedTestimonial = await Webinar.findOneAndUpdate(
           { _id: webinar },
-          updateData,
-          { new: true }
+          {$set:{updateData}}
         );
 
         if (!updatedTestimonial) {
@@ -116,13 +117,15 @@ export default async function handler(req, res) {
     try {
       const data = await Webinar.findOne({ _id: webinar });
       if (data) {
-        fs.unlinkSync(path.join(uploadDirectory, data?.filename));
+      await Overview.findByIdAndDelete({_id:data?.overview});
+      await KeyAndHighLights.findByIdAndDelete({_id:data?.highlights})
+      fs.unlinkSync(path.join(uploadDirectory, data?.filename));
       }
       const deletedTestimonial = await Webinar.findByIdAndDelete({_id:webinar});
       if (!deletedTestimonial) {
         return res.status(404).json({ error: "Testimonial not found" });
       }
-      res.status(204).send(); // No content
+      res.status(200).json({message:"deleted"}); // No content
     } catch (error) {
       console.error("Error deleting testimonial:", error);
       res.status(500).json({

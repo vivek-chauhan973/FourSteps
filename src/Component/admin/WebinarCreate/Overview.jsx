@@ -15,9 +15,14 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-
 export default function OverviewAbout({ webinarData,setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+  const [webinarId, setWebinarId] = useState(null);
+  useEffect(()=>{
+    setWebinarId(webinarData?._id)
+    setAboutEditorHtml(webinarData?.overview?.description||"");
+  },[webinarData])
+ 
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -38,17 +43,20 @@ export default function OverviewAbout({ webinarData,setActiveTab }) {
 
   const handleSubmit = async () => { 
  // Calling the provided onSubmit prop function with data
-const data =await fetch('/api/overview',{
+const data =await fetch('/api/webinar/overview',{
   method:"POST",
   headers:{
     "Content-Type":"application/json"
   },
-  body:JSON.stringify(aboutEditorHtml)
+  body:JSON.stringify({aboutEditorHtml,webinar:webinarId})
 
 })
 if(data?.ok){
 alert("overview data saved");
 setActiveTab("Tab3")
+}
+else{
+  alert("something went wrong"); 
 }
     // Switch to the next tab after submitting
      

@@ -323,6 +323,9 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
                 className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
                 required
               >
+                <option >
+                    select type
+                  </option>
                 {webinartypeData.map((item) => (
                   <option key={item.id} value={item.name}>
                     {item.name}
