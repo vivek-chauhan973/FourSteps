@@ -14,19 +14,13 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-
 export default function Highlight({ webinarData,setActiveTab }) {
-  const [aboutEditorHtml, setAboutEditorHtml] = useState(
-    webinarData?.about || ""
-  );
-  const [isEditingAbout, setIsEditingAbout] = useState(true);
-  const [inputHighlight, setInputHighlight] = useState("");
-  const [highlights, setHighlights] = useState(webinarData?.highlights || []);
-  const [highlightEdit, setHighlightEdit] = useState({
-    edit: false,
-    index: -1,
-  });
-
+  const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+  const [webinarId, setWebinarId] = useState(null);
+  useEffect(()=>{
+    setWebinarId(webinarData?._id||null)
+    setAboutEditorHtml(webinarData?.highlights?.description||"");
+  },[webinarData])  
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -45,41 +39,24 @@ export default function Highlight({ webinarData,setActiveTab }) {
     setAboutEditorHtml(html);
   };
 
-  const addHighlight = () => {
-    if (!inputHighlight) return;
-
-    if (highlightEdit.edit) {
-      const updatedHighlights = [...highlights];
-      updatedHighlights[highlightEdit.index].text = inputHighlight;
-      setHighlights(updatedHighlights);
-      setHighlightEdit({ edit: false, index: -1 });
-    } else {
-      const newHighlight = { text: inputHighlight };
-      setHighlights([...highlights, newHighlight]);
-    }
-
-    setInputHighlight("");
-  };
-
-  const handleRemoveHighlight = (index) => {
-    setHighlights(highlights.filter((_, i) => i !== index));
-  };
-
-  const handleEditHighlight = (index) => {
-    setInputHighlight(highlights[index].text);
-    setHighlightEdit({ edit: true, index });
-  };
-
-  const handleSubmit = () => {
-    const formData = {
-      about: aboutEditorHtml,
-      highlights: highlights.map((item) => item.text),
-    };
+  const handleSubmit = async() => {
+    const data =await fetch('/api/webinar/highlight',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({aboutEditorHtml,webinar:webinarId})
+    
+    })
+    if(data?.ok){
+    alert("overview data saved");
     setActiveTab("Tab1");
-    // Calling the provided onSubmit prop function with data
+    }
+    else{
+      alert("something went wrong"); 
+    }
+   
 
-    // Switch to the next tab after submitting
-    setIsEditingAbout(false);
   };
 
   return (
@@ -98,51 +75,7 @@ export default function Highlight({ webinarData,setActiveTab }) {
           </div>
         
       </div>
-      {/* <div>
-        <label
-          htmlFor="highlightDeparture"
-          className="pb-2 font-semibold text-para"
-        >
-          Highlight
-        </label>
-        <div className="w-full mt-2 flex gap-5 items-center">
-          <input
-            onChange={(e) => setInputHighlight(e.target.value)}
-            value={inputHighlight}
-            className="w-full border rounded-md h-8 px-2 text-para grow focus:border-primary outline-none"
-            type="text"
-            placeholder="Enter A Highlight"
-          />
-          <FontAwesomeIcon
-            icon={highlightEdit.edit ? faSave : faCirclePlus}
-            className="font1 cursor-pointer hover:text-primary"
-            onClick={addHighlight}
-          />
-        </div>
-        <div className="border h-56 w-full overflow-y-auto py-2 rounded-md mt-2">
-          {highlights.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between even:bg-slate-50 md:px-5 px-2"
-            >
-              <span className="mr-2 font-semibold">{index + 1}.</span>
-              <span className="h-8 px-2 flex-grow">{item.text}</span>
-              <div className="md:flex gap-3">
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  className="cursor-pointer hover:text-primary"
-                  onClick={() => handleEditHighlight(index)}
-                />
-                <FontAwesomeIcon
-                  icon={faTrash}
-                  className="cursor-pointer hover:text-primary"
-                  onClick={() => handleRemoveHighlight(index)}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+
       <button
         type="submit"
         className="bg-black text-white w-full rounded py-2"

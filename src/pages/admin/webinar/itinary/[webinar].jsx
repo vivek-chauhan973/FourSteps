@@ -19,8 +19,8 @@ export default function CreateWebinar() {
       fetchIDWebinar(webinar).then(res=>{setWebinarData(res?.[0]||null)})
     }
     
-  },[webinar])
-  console.log('webinar response is here --> ',webinar)
+  },[webinar,activeTab])
+  console.log('webinar response is here --> ',webinarData)
   // Function to switch to the next tab
   useEffect(()=>{
     if (activeTab === "Tab1") {
@@ -78,7 +78,7 @@ export default function CreateWebinar() {
       <div
         className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
       >
-        <BasicInfo setActiveTab={setActiveTab}  webinarData={webinarData}/>
+        <BasicInfo setActiveTab={setActiveTab}  webinarData={webinarData} />
       </div>
       
         <>
@@ -97,7 +97,7 @@ export default function CreateWebinar() {
               activeTab === "Tab3" ? "block" : "hidden"
             }`}
           >
-            <Highlight webinarData={webinarData} setActiveTab={setActiveTab}/>
+            <Highlight webinarData={webinarData} setActiveTab={setActiveTab} />
           </div>
         </>
     
