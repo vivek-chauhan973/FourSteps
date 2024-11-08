@@ -2,8 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-// import dynamic from 'next/dynamic';
-// import Cookies from 'js-cookie';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartSimple,
@@ -21,9 +20,9 @@ import {
   faHome,
   faComment,
   faUser,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { IoIosArrowDown } from "react-icons/io";
 const Sidebar = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(null);
@@ -249,7 +248,8 @@ const Sidebar = () => {
                   <p className="cursor-pointer">{tab.label}</p>
                 </div>
                 <div>
-                  <IoIosArrowDown
+                  <FontAwesomeIcon
+                    icon={faChevronDown}
                     className={`transition-transform duration-200 ${
                       activeTab === tab.label ? "rotate-180" : ""
                     }`}

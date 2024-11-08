@@ -116,7 +116,7 @@ const Detail = () => {
       </div>
       {/* Footer section here */}
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

@@ -75,10 +75,10 @@ const Team = () => {
     <div className="container mx-auto bg-gray-50">
       {/* Team Section */}
       <div className="px-6 py-4 ">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-5">
+        <h1 className="text-xl md:text-3xl font-bold text-center md:mb-5 mb-2">
           Our Biggest Asset is Our Team
         </h1>
-        <p className="text-sm md:text-base leading-6  text-center mb-8 mx-4 md:mx-16">
+        <p className="text-sm md:text-base leading-6  text-center mb-8 mx-2 md:mx-16">
           Our team thrives on collaboration and is fueled by a diverse array of
           talent. We actively engage with the creative community, consistently
           seeking out what s on the horizon, and always maintain a positive and
@@ -138,6 +138,7 @@ const Team = () => {
           ))}
         </div>
       </div>
+      
 
       {/* Team Skills  start*/}
       <div className="w-full h-auto md:px-5 px-5 py-5">
