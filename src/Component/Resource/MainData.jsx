@@ -97,8 +97,8 @@ useEffect(()=>{
               </div>
 
               <div>
-                <p className="text-gray-900 text-sm">Date: 02-10-2024</p>
-                <p className="text-gray-900 text-sm">time: 40min</p>
+                <p className="text-gray-900 text-sm">Date: {item?.date}</p>
+                <p className="text-gray-900 text-sm">time: {item?.time}min</p>
               </div>
             </div>
             <button className="mt-4 bg-orange-500 w-full text-white px-4 py-2 rounded self-center md:self-start">

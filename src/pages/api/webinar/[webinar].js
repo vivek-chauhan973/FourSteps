@@ -62,12 +62,14 @@ export default async function handler(req, res) {
         department,
         industry,
         language,
+        date,time
       } = req.body;
 
       try {
         const updateData = {
           altText,
           title,
+          date,time,
           link,
           subtitle,
           description,

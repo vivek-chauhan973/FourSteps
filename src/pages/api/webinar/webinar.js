@@ -52,7 +52,7 @@ export default async function handler(req, res) {
             speaker,
             department,
             industry,
-            language } = req?.body;
+            language ,time,date} = req?.body;
         if (!req.file) {
           return res.status(400).json({ error: "No file uploaded" });
         }
@@ -65,6 +65,7 @@ export default async function handler(req, res) {
             title,
             link,
             subtitle,
+            time,date,
             description,
             selectType,
             toolsAndSoftware,

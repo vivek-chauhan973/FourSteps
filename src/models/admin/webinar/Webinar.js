@@ -3,6 +3,14 @@ import "./Overview";
 const { default: mongoose } = require("mongoose");
 const webinarSchema = new mongoose.Schema(
   {
+    date: {
+      type: String,
+      required: true,
+    },
+    time: {
+      type: String,
+      required: true,
+    },
     path: {
       type: String,
       required: true,

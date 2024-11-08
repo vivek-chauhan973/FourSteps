@@ -10,6 +10,8 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
   const [preview,setPreview]=useState(null);
   const [formData, setFormData] = useState({
     altText: "",
+    date:"",
+    time:"",
     speaker: "",
     title: "",
     link: "",
@@ -37,6 +39,8 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
       department:webinarData?.department|| "",
       industry:webinarData?.industry|| "",
       language:webinarData?.language|| "",
+      time:webinarData?.time|| "",
+      date:webinarData?.date|| "",
     })
     setPreview(webinarData?.path|| null)
   },[webinarData])
@@ -75,6 +79,7 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
       department,
       industry,
       language,
+      time,date
     } = formData;
    const formData1=new FormData();
    formData1.append('file',file);
@@ -90,6 +95,8 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
    formData1.append('department',department);
    formData1.append('industry',industry);
    formData1.append('language',language);
+   formData1.append('date',date);
+   formData1.append('time',time);
 
    try {
     const data=await fetch(`/api/webinar/${webinarData?webinarData?._id:"webinar"}`,{
@@ -303,6 +310,33 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
                 type="text"
                 name="subtitle"
                 value={formData.subtitle}
+                onChange={handleChange}
+                className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <label className="block text-sm font-semibold text-gray-700">
+                Date
+              </label>
+              <input
+                type="text"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+                required
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-semibold text-gray-700">
+                Time
+              </label>
+              <input
+                type="text"
+                name="time"
+                value={formData.time}
                 onChange={handleChange}
                 className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               />
