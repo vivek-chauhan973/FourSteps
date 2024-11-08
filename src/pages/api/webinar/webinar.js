@@ -90,7 +90,7 @@ export default async function handler(req, res) {
     });
   } else if (method === "GET") {
     try {
-      const testimonials = await Webinar.find({});
+      const testimonials = await Webinar.find({}).populate("highlights overview speaker") ;
       res.status(200).json(testimonials);
     } catch (error) {
       console.error("Error fetching the testimonials:", error);

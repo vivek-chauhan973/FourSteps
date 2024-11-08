@@ -1,5 +1,6 @@
+import"./KeyAndHighLights";
+import "./Overview";
 const { default: mongoose } = require("mongoose");
-
 const webinarSchema = new mongoose.Schema(
   {
     path: {

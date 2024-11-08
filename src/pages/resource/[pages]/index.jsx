@@ -5,12 +5,14 @@ import Hero from "@/Component/Resource/Hero";
 import Switch from "@/Component/Resource/Switch";
 import Filter from "@/Component/Resource/Filter";
 import MainData from "@/Component/Resource/MainData";
+import { useAppContext } from "@/Component/Context/context";
 
 const Routes = () => {
   const router = useRouter();
-  console.log(router.query.pages);
+  // console.log(router.query.pages);
   const Heading = router.query.pages;
-
+const {filterGlobalData}=useAppContext();
+console.log("filteredData=--------> ",filterGlobalData);
   return (
     <div className="container">
       <div>
@@ -25,8 +27,8 @@ const Routes = () => {
       {/* <div className="flex flex-col lg:flex-row"> */}
       <div className=" conatiner">
         <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-2 gap-10 relative">
-          <Filter />
-          <MainData />
+          <Filter Heading={Heading}filterGlobalData={filterGlobalData} />
+          <MainData Heading={Heading}/>
         </div>
       </div>
     </div>
