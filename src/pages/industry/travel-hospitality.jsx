@@ -7,6 +7,7 @@ import Testimonial from "@/Component/Testimonial/Testimonial";
 import Calltoaction from "@/Component/Web/Calltoaction";
 import Image from "next/image";
 import { Footer } from "@/Component/Footer/Footer";
+import Nav from "@/Component/Header/Nav";
 const features = [
   {
     id: 1,
@@ -183,6 +184,10 @@ const Travel = () => {
   ];
   return (
     <div>
+      {/* headres */}
+      <div className=" sticky top-0 z-20">
+        <Nav />
+      </div>
       <div className="font-sans container">
         {/* hero section */}
         <div className="relative  p-8 md:p-16 lg:p-24">
@@ -191,35 +196,33 @@ const Travel = () => {
             style={{ backgroundImage: "url('/image/fbg.jpg')" }}
           ></div>
           <div className="relative z-10 max-w-2xl">
-            <h2 className="text-sm font-semibold  text-white">
+            <h2 className="md:text-sm  text-[11px]  font-semibold  text-white">
               QUALITY WITH INTEGRITY
             </h2>
-            <h1 className="text-4xl md:text-5xl text-white font-bold mt-2">
+            <h1 className="text-xl md:text-5xl text-white font-bold mt-2">
               Unforgettable Experiences in
               <span className="text-primary"> Travel & Hospitality</span>
             </h1>
-            <p className="mt-4 text-white text-lg ">
+            <p className="mt-4 text-white text-sm  md:text-lg ">
               Explore world-class solutions tailored for the travel industry
             </p>
-            <a
-              href="#"
-              className="inline-block mt-6 bg-secondary text-white hover:bg-secondary/80 px-6 py-3 rounded-lg"
-            >
+
+            <button className=" inline-block mt-6  px-6 py-3 rounded-lg border border-orange-500  hover:text-primary hover:bg-transparent  md:py-3 md:px-5  bg-primary text-white">
               Discover More
-            </a>
+            </button>
           </div>
         </div>
 
         {/* Industry-Specific Heading & Tagline Solution  */}
-        <div className="max-w-4xl text-center mx-auto px-4 mt-10 py-10">
-          <h2 className="text-xl text-center font-bold text-primary mb-4">
+        <div className="max-w-4xl text-center mx-auto px-4 md:mt-10 py-10">
+          <h2 className="text-xl text-center font-bold text-primary md:mb-4">
             ABOUT
           </h2>
           <h3 className="text-2xl font-semibold text-secondary mb-2">
             Travel & Hospitality Solutions
           </h3>
-          <p className=" text-sm mb-4">
-            At <span className=" font-semibold ">Four Steps Digital</span>, we
+          <p className=" md:px-0 text-wra px-3 text-sm mb-4">
+            At <span className="font-semibold ">Four Steps Digital</span>, we
             believe that travel is not just about reaching a destination; it
             about the experiences that shape our lives. With a passion for
             creating unforgettable journeys, our dedicated team is committed to
@@ -241,7 +244,7 @@ const Travel = () => {
           <h2 className="text-2xl text-primary  font-semibold text-center">
             Industry Overview
           </h2>
-          <div className="container mx-auto px-10 p-4">
+          <div className="container mx-auto md:px-10 p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((feature) => {
                 const IconComponent = feature.Icon; // Get the icon component
@@ -285,10 +288,10 @@ const Travel = () => {
             <h1 className="text-orange-500 text-sm font-bold mb-2">
               SPECIFIC SOLUTIONS
             </h1>
-            <h2 className="text-2xl font-bold mb-4">
+            <h2 className="md:text-2xl  text-md font-bold mb-4">
               Your Expert in Travel Web Design Solutions
             </h2>
-            <p className="mb-10 px-10 text-md text-gray-700">
+            <p className="mb-10 md:px-10 text-sm md:text-md text-gray-700">
               We are a popular tourism website design company with expertise in
               creating bespoke, compelling, and high-converting websites to
               boost online presence. From tour operators and travel agencies to
@@ -340,16 +343,15 @@ const Travel = () => {
 
         {/* Custom Solutions */}
 
-        <div className=" container mx-auto  px-20 py-10  bg-gray-100 ">
-          <h1 className=" text-3xl font-semibold py-4 mb-4 text-center ">
+        <div className=" container mx-auto  md:px-20 md:py-10 py-5  bg-gray-100 ">
+          <h1 className=" md:text-3xl text-md font-semibold py-4 mb-4 text-center ">
             Travel Agency Custom Solutions & Industry Resources
           </h1>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-20 gap-6 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 md:px-10 lg:px-20 gap-6 justify-items-center">
             {custom.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden w-64 flex flex-col items-center"
+                className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-xs flex flex-col items-center"
               >
                 <Image
                   src={item.src}
@@ -358,7 +360,7 @@ const Travel = () => {
                   height={200}
                   width={300}
                 />
-                <div className="p-2 text-center">
+                <div className="p-4 text-center">
                   <h2 className="text-lg font-semibold">{item.title}</h2>
                   <p className="text-zinc-600 text-sm">{item.description}</p>
                 </div>
@@ -367,29 +369,34 @@ const Travel = () => {
           </div>
         </div>
         {/* Industry-Specific key features Solutions */}
-        <div className="text-center text-2xl font-bold text-gray-800 mb-8">
-          Key Features of the Industry
-        </div>
 
-        <div className="px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-50 py-8 gap-10 rounded-lg shadow-lg relative">
-          {/* Left Column: Titles */}
-          <div className="space-y-5">
-            {data.map((item) => (
-              <div
-                key={item.id}
-                className={`font-semibold text-xl cursor-pointer hover:text-orange-600 transition-all duration-300 ease-in-out ${
-                  item.id === select ? "text-orange-500" : "text-black"
-                }`}
-                onClick={() => handleTitleClick(item.id, item.description)}
-              >
-                {item.title}
-              </div>
-            ))}
+        <div className="bg-gray-50  py-8">
+          <div className="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-8">
+            Key Features of the Industry
           </div>
 
-          {/* Right Column: Description */}
-          <div className="border-l-4 border-orange-500 pl-6 space-y-5">
-            <p className="text-lg text-gray-700">{selectedDescription}</p>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr,2fr] gap-6 md:gap-10 rounded-lg shadow-lg p-6 md:p-10 bg-white">
+            {/* Left Column: Titles */}
+            <div className="space-y-4 md:space-y-5">
+              {data.map((item) => (
+                <div
+                  key={item.id}
+                  className={`font-semibold text-lg sm:text-xl cursor-pointer hover:text-orange-600 transition-all duration-300 ease-in-out ${
+                    item.id === select ? "text-orange-500" : "text-gray-800"
+                  }`}
+                  onClick={() => handleTitleClick(item.id, item.description)}
+                >
+                  {item.title}
+                </div>
+              ))}
+            </div>
+
+            {/* Right Column: Description */}
+            <div className="border-l-4 border-orange-500 pl-4 sm:pl-6 space-y-4 md:space-y-5">
+              <p className="text-base sm:text-lg text-gray-700">
+                {selectedDescription}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -425,8 +432,7 @@ const Travel = () => {
           <h2 className=" text-xl font-semibold text-primary text-center mb-3">
             FAQS
           </h2>
-
-          <p className="text-xl  leading-3 font-bold">
+          <p className="text-xl  font-bold">
             Frequently Asked Questions for the Industry
           </p>
         </div>
