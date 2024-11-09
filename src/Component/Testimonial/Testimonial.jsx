@@ -23,7 +23,6 @@ const Testimonial = () => {
     const fetchTestimonials = async () => {
       const response = await fetch("/api/testimonial/testimonial");
       const data = await response.json();
-      console.log("-----testimonials--->", data);
       setTestimonials(data);
       setLoading(false);
     };

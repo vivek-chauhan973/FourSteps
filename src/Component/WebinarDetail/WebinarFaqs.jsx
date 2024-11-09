@@ -38,7 +38,7 @@ const WebinarFaqs = () => {
     {
       question: "How can I register for the webinar?",
       answer:
-        "You can register by [provide the registration steps, link, or contact information].",
+        "You can register by provide the registration steps, link, or contact information].",
     },
     {
       question: "Is there a fee to attend the webinar?",

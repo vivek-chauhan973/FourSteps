@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
@@ -15,14 +14,14 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function OverviewAbout({ webinarData,setActiveTab }) {
+export default function OverviewAbout({ webinarData, setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
   const [webinarId, setWebinarId] = useState(null);
-  useEffect(()=>{
-    setWebinarId(webinarData?._id)
-    setAboutEditorHtml(webinarData?.overview?.description||"");
-  },[webinarData])
- 
+  useEffect(() => {
+    setWebinarId(webinarData?._id);
+    setAboutEditorHtml(webinarData?.overview?.description || "");
+  }, [webinarData]);
+
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -33,52 +32,48 @@ export default function OverviewAbout({ webinarData,setActiveTab }) {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link"],
+      ["image", "link"],
     ],
   };
- 
+
   const handleAboutEditorChange = (html) => {
     setAboutEditorHtml(html);
   };
 
-  const handleSubmit = async () => { 
- // Calling the provided onSubmit prop function with data
-const data =await fetch('/api/webinar/overview',{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-  body:JSON.stringify({aboutEditorHtml,webinar:webinarId})
-
-})
-if(data?.ok){
-alert("overview data saved");
-setActiveTab("Tab3")
-}
-else{
-  alert("something went wrong"); 
-}
+  const handleSubmit = async () => {
+    // Calling the provided onSubmit prop function with data
+    const data = await fetch("/api/webinar/overview", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ aboutEditorHtml, webinar: webinarId }),
+    });
+    if (data?.ok) {
+      alert("overview data saved");
+      setActiveTab("Tab3");
+    } else {
+      alert("something went wrong");
+    }
     // Switch to the next tab after submitting
-     
   };
 
   return (
     <div className="bg-white p-2 px-5 grow rounded-md flex flex-col gap-3">
       <div className="md:mb-0 mb-5">
         <p className="pb-2 font-semibold text-para">OverView</p>
-         
-          <div className="w-full h-44">
-            <QuillNoSSRWrapper
-              className="rounded h-32"
-              theme="snow"
-              value={aboutEditorHtml}
-              onChange={handleAboutEditorChange}
-              modules={modules}
-            />
-          </div>
-         
+
+        <div className="w-full h-44">
+          <QuillNoSSRWrapper
+            className="rounded h-32"
+            theme="snow"
+            value={aboutEditorHtml}
+            onChange={handleAboutEditorChange}
+            modules={modules}
+          />
+        </div>
       </div>
-     
+
       <button
         type="submit"
         className="bg-black text-white w-full rounded py-2"

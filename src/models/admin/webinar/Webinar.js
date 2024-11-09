@@ -1,4 +1,4 @@
-import"./KeyAndHighLights";
+import "./KeyAndHighLights";
 import "./Overview";
 const { default: mongoose } = require("mongoose");
 const webinarSchema = new mongoose.Schema(
@@ -15,7 +15,7 @@ const webinarSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    filename:{
+    filename: {
       type: String,
     },
     altText: {
@@ -24,6 +24,7 @@ const webinarSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     link: {
       type: String,
@@ -74,7 +75,7 @@ const webinarSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "KeyAndHighLights",
     },
-  },                                                    
+  },
   { timestamps: true }
 );
 

@@ -11,8 +11,7 @@ const Routes = () => {
   const router = useRouter();
   // console.log(router.query.pages);
   const Heading = router.query.pages;
-const {filterGlobalData}=useAppContext();
-console.log("filteredData=--------> ",filterGlobalData);
+  const { filterGlobalData } = useAppContext();
   return (
     <div className="container">
       <div>
@@ -27,8 +26,8 @@ console.log("filteredData=--------> ",filterGlobalData);
       {/* <div className="flex flex-col lg:flex-row"> */}
       <div className=" conatiner">
         <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-gray-100 py-2 gap-10 relative">
-          <Filter Heading={Heading}filterGlobalData={filterGlobalData} />
-          <MainData Heading={Heading}/>
+          <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
+          <MainData Heading={Heading} />
         </div>
       </div>
     </div>

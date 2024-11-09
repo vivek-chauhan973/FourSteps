@@ -60,7 +60,6 @@ export default function Resource() {
               />
             </div>
           </div>
-          
 
           <div className="flex items-center justify-center py-10 px-5 ">
             <div className="flex flex-wrap gap-4 justify-center">
