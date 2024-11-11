@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Importing both icons
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 
 const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
   const [dropDown, setDropdown] = useState(false);
@@ -29,14 +29,16 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
         >
           Industry
           {dropDown ? (
-            <FaChevronUp
-              className="ml-1 transition-transform duration-300"
-              size={13}
+            <FontAwesomeIcon
+              icon={faChevronUp}
+              className="ml-1  mt-[2px] inline-block transition-transform duration-300"
+              size="sm"
             />
           ) : (
-            <FaChevronDown
-              className="ml-1 transition-transform duration-300"
-              size={13}
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="ml-1  mt-[2px] inline-block transition-transform duration-300"
+              size="sm"
             />
           )}
           <span

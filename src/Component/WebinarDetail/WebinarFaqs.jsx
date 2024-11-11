@@ -167,11 +167,11 @@ const WebinarFaqs = () => {
   };
   return (
     <>
-      <div className="container">
+      <div className="container py-5">
         <div className="bg-white">
           {/* section 1 */}
           <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-            <p className="text-xl  leading-3 font-bold">
+            <p className="md:text-2xl  text-lg font-semibold">
               Frequently Asked Questions (FAQS) for the Webinar
             </p>
           </div>
@@ -191,7 +191,7 @@ const WebinarFaqs = () => {
                     onClick={() => handleToggle(i)}
                     className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
                   >
-                    <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                    <p className="md:text-[15px] text-[14px] capitalize md:first-line:font-semibold font-medium mr-1 ">
                       {faq.question}
                     </p>
 
@@ -227,7 +227,7 @@ const WebinarFaqs = () => {
         {/*  suggested section of webinar  */}
 
         {/* Social Links */}
-        <div className="px-7">
+        <div className="md:px-7">
           <div className=" text-2xl pl-5 pb-2 font-semibold">
             Suggested Webinars
           </div>

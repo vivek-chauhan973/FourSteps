@@ -45,7 +45,7 @@ const Detail = ({ title }) => {
         <WebinarHero Herodata={webinarPackageData} />
       </div>
 
-      <div className=" bg-gray-100 ">
+      <div className=" bg-[#F1F5F9] ">
         <div
           id="OverviewSection"
           className=" shadow-lg py-1 bg-white sticky top-0 z-30 hidden md:block "

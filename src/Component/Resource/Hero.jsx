@@ -51,8 +51,8 @@ const Hero = ({ Heading }) => {
             {Heading === "all" ? "All Section Here" : Heading}
           </h1>
           <p className="mt-4 text-lg md:text-xl text-gray-700 font-light tracking-wide">
-            I hated every minute of training, but I said, Don t quit. Suffer now
-            and live the rest of your life as a champion.
+            I hated every minute of said, Don t quit. Suffer now and live the
+            rest of your life as a champion.
           </p>
           <button className="mt-6 px-6 py-3 bg-orange-500 text-white font-semibold rounded-md shadow hover:bg-orange-600 transition duration-300 ease-in-out">
             Explore Now

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+
 import Link from "next/link";
 
 const categoryData = [
@@ -194,14 +197,16 @@ const Categories = () => {
       <div className="cursor-pointer hover:text-orange-500 flex items-center relative group">
         Our Services
         {isServiceMenuOpen ? (
-          <FaChevronUp
-            className="ml-1 transition-transform duration-300"
-            size={13}
+          <FontAwesomeIcon
+            icon={faChevronUp}
+            className="ml-1  mt-[2px] inline-block transition-transform duration-300"
+            size="sm"
           />
         ) : (
-          <FaChevronDown
-            className="ml-1 transition-transform duration-300"
-            size={13}
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className="ml-1 mt-[2px] inline-block transition-transform duration-300"
+            size="sm"
           />
         )}
         <span className="absolute left-0 bottom-[-6px] h-0.5 w-full bg-orange-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100" />

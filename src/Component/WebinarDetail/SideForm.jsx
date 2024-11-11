@@ -120,7 +120,7 @@ const SideForm = () => {
           <div className="pb-2">
             <button
               type="submit"
-              className="w-full bg-[#163383] text-white py-2 px-4 rounded-full "
+              className="mt-3 block w-full select-none rounded-full bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none"
             >
               Submit
             </button>

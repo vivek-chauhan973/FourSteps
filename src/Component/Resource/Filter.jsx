@@ -12,7 +12,6 @@ const fetchDepartments = async () => {
 };
 
 const Filter = ({ filterGlobalData, Heading }) => {
-  const other = ["Marketing", "Sales", "abc", "abcd", "abcde"];
   const [filterSection1, setFilterSection1] = useState([]);
   const [filterSection2, setFilterSection2] = useState([]);
 
@@ -37,11 +36,13 @@ const Filter = ({ filterGlobalData, Heading }) => {
   return (
     <div className="">
       <div className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-sm font-semibold mb-1">FILTER BY:</h2>
+        <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
 
         {/* Industries */}
         <div className="mb-2 border border-gray-300 rounded p-2">
-          <h3 className="font-semibold text-md ">Industries</h3>
+          <h3 className="md:text-[16px] text-[14px] font-medium ">
+            Industries
+          </h3>
 
           {/* Display first 3 industries by default */}
           {filterGlobalData?.industries
@@ -55,7 +56,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   type="checkbox"
                   className="form-checkbox h-4 w-4 text-blue-600"
                 />
-                <span className="ml-2">{industry?.name}</span>
+                <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                  {industry?.name}
+                </span>
               </label>
             ))}
 
@@ -71,7 +74,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
         {/* Departments */}
 
         <div className="mb-2 border border-gray-300 rounded p-2">
-          <h3 className="font-semibold text-md ">Tools And Softwares</h3>
+          <h3 className="md:text-[16px] text-[14px] font-medium ">
+            Tools And Softwares
+          </h3>
 
           {/* Display first 3 departments by default */}
           {filterGlobalData?.tool
@@ -82,7 +87,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   type="checkbox"
                   className="form-checkbox h-4 w-4 text-blue-600"
                 />
-                <span className="ml-2">{department?.name}</span>
+                <span className="ml-2 capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                  {department?.name}
+                </span>
               </label>
             ))}
 
@@ -107,7 +114,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   type="checkbox"
                   className="form-checkbox h-4 w-4 text-blue-600"
                 />
-                <span className="ml-2">{department?.name}</span>
+                <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                  {department?.name}
+                </span>
               </label>
             ))}
 
@@ -124,7 +133,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
         {(Heading === "webinar" || Heading === "all") && (
           <>
             <div className="mb-2 border border-gray-300 rounded p-2">
-              <h3 className="font-semibold text-md ">Webinar Type</h3>
+              <h3 className="md:text-[16px] text-[14px] font-medium ">
+                Webinar Type
+              </h3>
 
               {/* Display other section and show only 3 departments */}
               {filterSection1
@@ -135,7 +146,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                       type="checkbox"
                       className="form-checkbox h-4 w-4 text-blue-600"
                     />
-                    <span className="ml-2">{otherItem?.name}</span>
+                    <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                      {otherItem?.name}
+                    </span>
                   </label>
                 ))}
 
@@ -148,7 +161,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
             </div>
 
             <div className="mb-2 border border-gray-300 rounded p-2">
-              <h3 className="font-semibold text-md ">Departments</h3>
+              <h3 className="md:text-[16px] text-[14px] font-medium ">
+                Departments
+              </h3>
 
               {/* Display other section and show only 3 departments */}
               {filterSection2
@@ -159,7 +174,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                       type="checkbox"
                       className="form-checkbox h-4 w-4 text-blue-600"
                     />
-                    <span className="ml-2">{otherItem?.name}</span>
+                    <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                      {otherItem?.name}
+                    </span>
                   </label>
                 ))}
 
@@ -174,7 +191,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
         )}
 
         <div className="mb-2 border border-gray-300 rounded p-2">
-          <h3 className="font-semibold text-md ">Languages</h3>
+          <h3 className="md:text-[16px] text-[14px] font-medium ">Languages</h3>
           {/* Display other section and show only 3 departments */}
           {filterGlobalData?.langauge
             ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
@@ -184,7 +201,9 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   type="checkbox"
                   className="form-checkbox h-4 w-4 text-blue-600"
                 />
-                <span className="ml-2">{item?.name}</span>
+                <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                  {item?.name}
+                </span>
               </label>
             ))}
 

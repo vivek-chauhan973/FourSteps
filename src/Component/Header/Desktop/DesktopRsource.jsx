@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import the up icon as well
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretRight,
   faBlog,
   faVideo,
+  faChevronUp,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { faYoutubeSquare } from "@fortawesome/free-brands-svg-icons"; // Importing the YouTube icon
 
@@ -22,14 +23,16 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
       <button className="focus:outline-none hover:text-orange-500 flex items-center relative">
         <Link href="/resource">Resources</Link>
         {resourceopen ? (
-          <FaChevronUp
-            className="ml-1 transition-transform duration-300"
-            size={13}
+          <FontAwesomeIcon
+            icon={faChevronUp}
+            className="ml-1  mt-[2px] inline-block transition-transform duration-300"
+            size="sm"
           />
         ) : (
-          <FaChevronDown
-            className="ml-1 transition-transform duration-300"
-            size={13}
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className="ml-1  mt-[2px] inline-block transition-transform duration-300"
+            size="sm"
           />
         )}
         <span className="absolute left-0 bottom-0 h-0.5 w-full transition-all duration-300 transform scale-x-0 hover:scale-x-100" />
