@@ -14,13 +14,13 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function Highlight({ webinarData,setActiveTab }) {
+export default function Highlight({ webinarData, setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
   const [webinarId, setWebinarId] = useState(null);
-  useEffect(()=>{
-    setWebinarId(webinarData?._id||null)
-    setAboutEditorHtml(webinarData?.highlights?.description||"");
-  },[webinarData])  
+  useEffect(() => {
+    setWebinarId(webinarData?._id || null);
+    setAboutEditorHtml(webinarData?.highlights?.description || "");
+  }, [webinarData]);
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -39,41 +39,36 @@ export default function Highlight({ webinarData,setActiveTab }) {
     setAboutEditorHtml(html);
   };
 
-  const handleSubmit = async() => {
-    const data =await fetch('/api/webinar/highlight',{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
+  const handleSubmit = async () => {
+    const data = await fetch("/api/webinar/highlight", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify({aboutEditorHtml,webinar:webinarId})
-    
-    })
-    if(data?.ok){
-    alert("overview data saved");
-    setActiveTab("Tab1");
+      body: JSON.stringify({ aboutEditorHtml, webinar: webinarId }),
+    });
+    if (data?.ok) {
+      alert("overview data saved");
+      setActiveTab("Tab4");
+    } else {
+      alert("something went wrong");
     }
-    else{
-      alert("something went wrong"); 
-    }
-   
-
   };
 
   return (
     <div className="bg-white p-2 px-5 grow rounded-md flex flex-col gap-3">
       <div className="md:mb-0 mb-5">
         <p className="pb-2 font-semibold text-para">Hightlight</p>
-        
-          <div className="w-full h-44">
-            <QuillNoSSRWrapper
-              className="rounded h-32"
-              theme="snow"
-              value={aboutEditorHtml}
-              onChange={handleAboutEditorChange}
-              modules={modules}
-            />
-          </div>
-        
+
+        <div className="w-full h-44">
+          <QuillNoSSRWrapper
+            className="rounded h-32"
+            theme="snow"
+            value={aboutEditorHtml}
+            onChange={handleAboutEditorChange}
+            modules={modules}
+          />
+        </div>
       </div>
 
       <button

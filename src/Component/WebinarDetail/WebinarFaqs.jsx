@@ -4,7 +4,7 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
-const WebinarFaqs = () => {
+const WebinarFaqs = ( {webinarData, setActiveTab }) => {
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
 
