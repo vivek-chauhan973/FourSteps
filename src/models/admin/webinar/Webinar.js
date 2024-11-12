@@ -75,6 +75,14 @@ const webinarSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "KeyAndHighLights",
     },
+    webinarFaq: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FaqWebinar",
+    },
+    // highlights: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "KeyAndHighLights",
+    // },
   },
   { timestamps: true }
 );
