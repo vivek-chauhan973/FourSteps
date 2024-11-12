@@ -64,8 +64,8 @@ const MainData = ({ Heading }) => {
         #F1F5F9
       </div> */}
         {Heading === "webinar" &&
-          allTypeData?.map((item) => (
-            <div className="flex relative justify-center max-w-3xl mx-auto items-center  pb-3">
+          allTypeData?.map((item,i) => (
+            <div key={i} className="flex relative justify-center max-w-3xl mx-auto items-center  pb-3">
               <div className="bg-white shadow-md items-center rounded-lg p-3 mt-5 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
                 {(item?.selectType === "upcoming" ||
                   item?.selectType === "on-demond") && (

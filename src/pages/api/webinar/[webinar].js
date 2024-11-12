@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   const { webinar } = req.query;
   if (method === "GET") {
     try {
-      const testimonials = await Webinar.find({ _id: webinar }).populate("overview highlights");
+      const testimonials = await Webinar.find({ _id: webinar }).populate("overview highlights webinarFaq webinarSeo");
       res.status(200).json(testimonials);
     } catch (error) {
       console.error("Error fetching the testimonials:", error);

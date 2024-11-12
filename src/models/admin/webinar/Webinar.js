@@ -1,5 +1,8 @@
+import "../user";
+import "./FaqWebinar";
 import "./KeyAndHighLights";
 import "./Overview";
+import "./WebinarSeo";
 const { default: mongoose } = require("mongoose");
 const webinarSchema = new mongoose.Schema(
   {
@@ -79,10 +82,10 @@ const webinarSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "FaqWebinar",
     },
-    // highlights: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "KeyAndHighLights",
-    // },
+    webinarSeo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "WebinarSeo",
+    },
   },
   { timestamps: true }
 );

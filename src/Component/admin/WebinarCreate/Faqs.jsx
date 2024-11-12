@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 // import DeletePop from "../iternaryPopup/DeletePop";
-
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-
 export default function WebinarFaq({ webinarData, setActiveTab }) {
   // console.log("itinerary : ",itinerary);
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
@@ -18,14 +16,12 @@ export default function WebinarFaq({ webinarData, setActiveTab }) {
   const [deletePopup, setDeletePopu] = useState(false);
   const [editorHtml, setEditorHtml] = useState("");
 
-  //   useEffect(() => {
-  //     if (itinerary) {
-  //     //   setItineraryDayWiseDataArray(itinerary?.titles?.days || []);
-  //       if (itinerary?.titles?.days) {
-  //         setFaqDot(true);
-  //       }
-  //     }
-  //   }, [itinerary]);
+    useEffect(() => {
+      if (webinarData) {
+        setItineraryDayWiseDataArray(webinarData?.webinarFaq?.questions || []);
+       
+      }
+    }, [webinarData]);
   const [itineraryDayWise, setItineraryDayWise] = useState({
     title: "",
     information: "",
@@ -96,29 +92,24 @@ export default function WebinarFaq({ webinarData, setActiveTab }) {
     setItineraryDayWiseDataArray(updatedArray);
   };
 
-  // console.log(itineraryDayWise);
+  const handleSave = async () => {
+    try {
+            const response = await fetch(`/api/webinar/webinarfaq`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ questions: itineraryDayWiseDataArray ,webinar:webinarData?._id}),
+            });
+            if (response.ok) {
+              alert(webinarData?"data is updated successfully":"data is saved is successfully")
+              setActiveTab("Tab5");
+            }
+            // console.log("currently data pass", itineraryDayWiseDataArray);
+          } catch (error) {
+            console.error(error);
+          }
 
-  //   const ItineraryFeqPost = async () => {
-  //     try {
-  //       const response = await fetch(`/api/package/faq/${itinerary?._id}`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ days: itineraryDayWiseDataArray }),
-  //       });
-  //       if (response.ok) {
-  //         setFaqDot(true)
-  //         setActiveTab("Tab11");
-  //       }
-  //       // console.log("currently data pass", itineraryDayWiseDataArray);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  const handleSave = () => {
-    setActiveTab("Tab5");
   };
 
   return (

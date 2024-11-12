@@ -3,46 +3,24 @@ import Head from "next/head";
 
 const SeoPage = ({ webinarData, setActiveTab }) => {
   const [isSEOField, setIsSEOField] = useState({
-    title: "",
-    description: "",
+    tags: "",
     canonicalUrl: "",
     keyword: "",
-    priceValid: "",
   });
-
-  // useEffect(() => {
-  //     const fetchSEOData = async () => {
-  //         try {
-  //             const response = await fetch(`/api/package/package-seo/${itinerary?._id}`);
-  //             if (response.ok) {
-  //                 setActiveTab("Tab9")
-  //                 setSeoDot(true);
-  //                 const data = await response.json();
-  //                 setIsSEOField(data || {
-  //                     title: '',
-  //                     description: '',
-  //                     canonicalUrl: '',
-  //                     keyword: '',
-  //                     priceValid: ''
-  //                 });
-  //             } else {
-  //                 throw new Error('Failed to fetch SEO data');
-  //             }
-  //         } catch (error) {
-  //             console.error('Error fetching SEO data:', error);
-  //         }
-  //     };
-
-  //     if (itinerary?._id) {
-  //         fetchSEOData();
-  //     }
-  // }, [itinerary]);
+useEffect(()=>{
+  if(webinarData){
+setIsSEOField({
+  tags:webinarData?.webinarSeo?.tags,
+  canonicalUrl:webinarData?.webinarSeo?.canonicalUrl,
+  keyword:webinarData?.webinarSeo?.keyword,
+})
+  }
+},[webinarData])
 
   const [validationErrors, setValidationErrors] = useState({
-    title: "",
-    description: "",
+    tags: "",
+    canonicalUrl: "",
     keyword: "",
-    priceValid: "",
   });
 
   const handleMetaTag = (e) => {
@@ -52,48 +30,23 @@ const SeoPage = ({ webinarData, setActiveTab }) => {
       [name]: value,
     }));
   };
-
-  // const handleSubmitSeoField = async (e) => {
-  //     e.preventDefault();
-  //     const { title, description, keyword , priceValid } = isSEOField;
-
-  //     if (title.trim() === '') {
-  //         setValidationErrors(prevErrors => ({
-  //             ...prevErrors,
-  //             title: 'Title is required'
-  //         }));
-  //     } else if (description.trim() === '') {
-  //         setValidationErrors(prevErrors => ({
-  //             ...prevErrors,
-  //             description: 'Description is required'
-  //         }));
-  //     } else {
-  //         try {
-  //             const response = await fetch(`/api/package/package-seo/${itinerary._id}`, {
-  //                 method: 'POST',
-  //                 headers: {
-  //                     'Content-Type': 'application/json'
-  //                 },
-  //                 body: JSON.stringify(isSEOField)
-  //             });
-  //             console.log("Rakesh" , isSEOField);
-
-  //             if (!response.ok) {
-  //                 throw new Error('Network response was not ok');
-  //             }
-
-  //             const data = await response.json();
-  //             setActiveTab("Tab9");
-  //             setSeoDot(true);
-  //             console.log('Form submitted successfully:', data);
-  //         } catch (error) {
-  //             console.error('Error submitting form:', error);
-  //         }
-  //     }
-
-  // };
-  const handleSubmitSeoField = () => {
-    setActiveTab("Tab1");
+  const handleSubmitSeoField = async() => {
+    try {
+      const response = await fetch(`/api/webinar/webinarseo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seoData: isSEOField ,webinar:webinarData?._id}),
+      });
+      if (response.ok) {
+        setActiveTab("Tab1");
+        alert(webinarData?"data is updated successfully":"data is saved is successfully")
+      }
+      // console.log("currently data pass", itineraryDayWiseDataArray);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -121,19 +74,19 @@ const SeoPage = ({ webinarData, setActiveTab }) => {
         >
           {/* Title */}
           <div className="flex flex-col mb-2">
-            <label className="text-para font-semibold" htmlFor="title">
+            <label className="text-para font-semibold" htmlFor="tags">
               Tags
             </label>
             <input
-              id="title"
-              name="title"
-              value={isSEOField.title}
+              id="tags"
+              name="tags"
+              value={isSEOField.tags}
               onChange={handleMetaTag}
               className="h-8 px-2 rounded border text-para"
               type="text"
             />
             <span className="text-xs text-red-700">
-              {validationErrors.title}
+              {validationErrors.tags}
             </span>
           </div>
 

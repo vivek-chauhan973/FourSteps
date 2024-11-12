@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const { title } = req.query;
   try {
     const testimonials = await Webinar.findOne({ title: title }).populate(
-      "highlights overview speaker"
+      "overview highlights webinarFaq webinarSeo speaker"
     );
     res.status(200).json(testimonials);
   } catch (error) {
