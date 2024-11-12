@@ -8,6 +8,8 @@ import Industry from "@/Component/Industry/Industry";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Wework from "@/Component/Web/Wework";
+import Nav from "@/Component/Header/Nav";
+
 const Salseforce = () => {
   useEffect(() => {
     AOS.init({
@@ -62,6 +64,9 @@ const Salseforce = () => {
   return (
     <div className="container">
       {/* hero section */}
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"
         style={{

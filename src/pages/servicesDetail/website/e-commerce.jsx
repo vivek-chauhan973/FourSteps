@@ -2,10 +2,15 @@ import React from "react";
 import { Footer } from "@/Component/Footer/Footer";
 import Industry from "@/Component/Industry/Industry";
 import Wework from "@/Component/Web/Wework";
+import Nav from "@/Component/Header/Nav";
 
 const ecommerce = () => {
   return (
     <div className="container">
+          {/* navbar section */}
+          <div className=" sticky top-0">
+        <Nav />
+      </div>
       {/* hero section */}
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"

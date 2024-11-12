@@ -5,6 +5,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import Industry from "@/Component/Industry/Industry";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Nav from "@/Component/Header/Nav";
 
 const ListItem = ({ text }) => (
   <li className="flex ">
@@ -95,6 +96,9 @@ const Ppcmanagement = () => {
 
   return (
     <div className="container">
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       {/* hero section */}
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"

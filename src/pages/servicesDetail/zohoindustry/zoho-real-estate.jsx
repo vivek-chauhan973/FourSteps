@@ -5,11 +5,15 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 // import TechUse from "@/Component/Web/TechUse";
 import { Footer } from "@/Component/Footer/Footer";
 import Testimonial from "@/Component/Testimonial/Testimonial";
+import Nav from "@/Component/Header/Nav";
 
 const realestate = () => {
   return (
     <div className="container">
       {/* hero section */}
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"
         style={{

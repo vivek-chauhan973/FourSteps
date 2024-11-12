@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import { useRouter } from "next/router";
+import Nav from "@/Component/Header/Nav";
 
 const Hubspot = () => {
   const router = useRouter();
@@ -47,6 +48,10 @@ const Hubspot = () => {
 
   return (
     <div className="container">
+      {/* nav bar section  */}
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       <div
         className="relative w-full h-80 sm:h-96 lg:h-[32rem] flex items-center justify-center bg-cover object-cover text-white"
         style={{
@@ -106,9 +111,7 @@ const Hubspot = () => {
                 <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
                 <p className="text-gray-600 line-clamp-3">{card.description}</p>
                 <button
-                  className={`bg-blue-400 mt-5 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                    !card.route ? "cursor-not-allowed opacity-50" : ""
-                  }`}
+                  className=" mt-5 text-sm px-3 py-2 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
                   onClick={() => card.route && handleclick(card.route)}
                   disabled={!card.route}
                 >

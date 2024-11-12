@@ -408,7 +408,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
                       : ""
                   }`}
                 >
-                  {subcategory.name}
+                  {subcategory.name}  
                 </p>
               </Link>
             </li>

@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import { useRouter } from "next/router";
+import Nav from "@/Component/Header/Nav";
 
 const Zoho = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const Zoho = () => {
       title: "Zoho Setup and Implementation",
       description:
         "CMS web development simplifies website management with user-friendly platforms, allowing easy content updates without extensive technical knowledge.",
-      buttonText: "Get Started",
+      buttonText: "Know More",
       route: "/servicesDetail/zoho/zoho-setup",
     },
     {
@@ -21,7 +22,7 @@ const Zoho = () => {
       title: "Zoho Managed Services",
       description:
         "Custom web development tailors websites to specific business needs, offering unique designs, features, and functionality for optimal user experiences.",
-      buttonText: "Get Started",
+      buttonText: "Know More",
       route: "/servicesDetail/zoho/zoho-manage",
     },
     {
@@ -29,7 +30,7 @@ const Zoho = () => {
       title: "Zoho Custom Development",
       description:
         "An e-commerce store allows businesses to sell products online, offering customers convenient shopping, secure payments, and fast delivery services.",
-      buttonText: "Get Started",
+      buttonText: "Know More",
       route: "/servicesDetail/zoho/zoho-custom",
     },
     {
@@ -37,7 +38,7 @@ const Zoho = () => {
       title: "Zoho Training and Consulting",
       description:
         "An e-commerce store allows businesses to sell products online, offering customers convenient shopping, secure payments, and fast delivery services.",
-      buttonText: "Get Started",
+      buttonText: "Know More",
       route: "/servicesDetail/zoho/zoho-training",
     },
   ];
@@ -48,6 +49,10 @@ const Zoho = () => {
 
   return (
     <div className="container">
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
+      
       <div
         className="relative w-full h-80 sm:h-96 lg:h-[32rem] flex items-center justify-center bg-cover object-cover text-white"
         style={{
@@ -70,12 +75,12 @@ const Zoho = () => {
       {/* heading section */}
       <div className="px-5 py-8 sm:px-5 md:px-20">
         <div className="flex pb-2">
-          <div className="w-[2.8px] h-6 bg-green-400 mr-2"></div>
+          <div className="w-[2.8px] h-6 bg-orange-400 mr-2"></div>
           <h2 className="text-md">Case Studies</h2>
         </div>
         <h1 className="text-2xl font-semibold ">
           My Recent
-          <span className="text-green-500"> Zoho services Area</span>
+          <span className="text-orange-500"> Zoho services Area</span>
         </h1>
         <p className="max-w-xl text-sm italic mt-3 items-center">
           Zoho Services delivers a versatile range of cloud-based applications
@@ -103,8 +108,10 @@ const Zoho = () => {
               <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
                 <p className="text-gray-600 line-clamp-3">{card.description}</p>
+
                 <button
-                  className="bg-blue-400 mt-5 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  href="#"
+                  className=" mt-5 text-sm px-3 py-2 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
                   onClick={() => handleButtonClick(card.route)}
                 >
                   {card.buttonText}

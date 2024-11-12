@@ -137,7 +137,7 @@ const Detail = ({ title }) => {
       </div>
       {/* webinar detail page FAQ SECTION */}
       <div className=" ">
-        <WebinarFaqs />
+        <WebinarFaqs faqData={webinarPackageData} />
       </div>
       {/* Footer section here */}
       <div>

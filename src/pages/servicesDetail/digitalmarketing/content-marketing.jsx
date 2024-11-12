@@ -4,6 +4,7 @@ import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Nav from "@/Component/Header/Nav";
 
 const ListItem = ({ text }) => (
   <li className="flex ">
@@ -76,6 +77,9 @@ const Contentmarketing = () => {
 
   return (
     <div className="container">
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       {/* hero section */}
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"

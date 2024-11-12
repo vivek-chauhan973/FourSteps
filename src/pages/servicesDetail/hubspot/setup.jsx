@@ -17,6 +17,7 @@ import Testimonial from "@/Component/Testimonial/Testimonial";
 import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Nav from "@/Component/Header/Nav";
 
 const Hubspotsetup = () => {
   useEffect(() => {
@@ -208,6 +209,10 @@ const Hubspotsetup = () => {
   ];
   return (
     <div className="container">
+      {/* nav bar section  */}
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       {/* hero section  */}
       <div className="flex justify-center items-center w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 p-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">

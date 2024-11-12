@@ -4,6 +4,7 @@ import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Nav from "@/Component/Header/Nav";
 
 const ListItem = ({ text }) => (
   <li className="flex ">
@@ -26,10 +27,12 @@ const Socialmedia = () => {
     });
   }, []);
 
- 
   return (
     <div className="container">
       {/* hero section */}
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       <div
         className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[25rem] flex justify-center bg-cover object-cover text-white"
         style={{
@@ -156,7 +159,12 @@ const Socialmedia = () => {
             <div className="order-3 md:order-3">
               <div className="w-full text-xs hidden md:block sm:text-base text-gray-600 mx-auto md:px-10 ">
                 <p>
-                In Local SEO, Basically you focus to improve your website and also your Google Business profile(GBP) rankings and visibility on Google search results and Google’s Map for local keyword. Our Local SEO services include local keyword search, local SEO content, website optimization, Google business profile optimization, Local link building.​
+                  In Local SEO, Basically you focus to improve your website and
+                  also your Google Business profile(GBP) rankings and visibility
+                  on Google search results and Google’s Map for local keyword.
+                  Our Local SEO services include local keyword search, local SEO
+                  content, website optimization, Google business profile
+                  optimization, Local link building.​
                 </p>
               </div>
             </div>
@@ -175,7 +183,12 @@ const Socialmedia = () => {
               {/* <div className="w-full text-xs sm:text-base md:text-sm text-gray-600 mx-auto md:px-10 px-0"> */}
               <div className=" w-full mx-auto md:px-0 px-4">
                 <p>
-                In Local SEO, Basically you focus to improve your website and also your Google Business profile(GBP) rankings and visibility on Google search results and Google’s Map for local keyword. Our Local SEO services include local keyword search, local SEO content, website optimization, Google business profile optimization, Local link building.​
+                  In Local SEO, Basically you focus to improve your website and
+                  also your Google Business profile(GBP) rankings and visibility
+                  on Google search results and Google’s Map for local keyword.
+                  Our Local SEO services include local keyword search, local SEO
+                  content, website optimization, Google business profile
+                  optimization, Local link building.​
                 </p>
               </div>
             </div>
@@ -190,7 +203,7 @@ const Socialmedia = () => {
             {/* Heading */}
             <div className="md:px-10  mb-5">
               <h2 className="md:text-3xl  text-xl md:text-start text-center font-semibold md:mb-3 capitalize">
-                Community Management 
+                Community Management
               </h2>
             </div>
 
@@ -206,7 +219,11 @@ const Socialmedia = () => {
             {/* List Items */}
             <div className="w-full mx-auto md:px-10 px-0">
               <p>
-              An SEO audit is the process of analysis of website with the help of SEO audit tools to make sure website is performing the best it possibly can in search results. We offer SEO Audit services that include SEO Content audit, On page SEO audit, Technical SEO audit, Local SEO Audit and Backlinks audit.
+                An SEO audit is the process of analysis of website with the help
+                of SEO audit tools to make sure website is performing the best
+                it possibly can in search results. We offer SEO Audit services
+                that include SEO Content audit, On page SEO audit, Technical SEO
+                audit, Local SEO Audit and Backlinks audit.
               </p>
             </div>
           </div>
@@ -229,12 +246,17 @@ const Socialmedia = () => {
         <div className="grid   grid-cols-1 place-items-center md:grid-cols-2 overflow-hidden">
           <div className="order-1 md:order-2  ">
             <h2 className="md:text-3xl my-4  text-xl md:text-start text-center font-semibold md:mb-3 capitalize">
-             MOnthly Reporting 
+              MOnthly Reporting
             </h2>
             <div className="order-3 md:order-3  ">
               <div className="w-full text-xs hidden md:block sm:text-base  text-gray-600 mx-auto md:px-10 ">
                 <p>
-                In Local SEO, Basically you focus to improve your website and also your Google Business profile(GBP) rankings and visibility on Google search results and Google’s Map for local keyword. Our Local SEO services include local keyword search, local SEO content, website optimization, Google business profile optimization, Local link building.
+                  In Local SEO, Basically you focus to improve your website and
+                  also your Google Business profile(GBP) rankings and visibility
+                  on Google search results and Google’s Map for local keyword.
+                  Our Local SEO services include local keyword search, local SEO
+                  content, website optimization, Google business profile
+                  optimization, Local link building.
                 </p>
               </div>
             </div>
@@ -253,7 +275,12 @@ const Socialmedia = () => {
               {/* <div className="w-full text-xs sm:text-base md:text-sm text-gray-600 mx-auto md:px-10 px-0"> */}
               <div className=" w-full mx-auto md:px-0 px-4">
                 <p>
-                In Local SEO, Basically you focus to improve your website and also your Google Business profile(GBP) rankings and visibility on Google search results and Google’s Map for local keyword. Our Local SEO services include local keyword search, local SEO content, website optimization, Google business profile optimization, Local link building.
+                  In Local SEO, Basically you focus to improve your website and
+                  also your Google Business profile(GBP) rankings and visibility
+                  on Google search results and Google’s Map for local keyword.
+                  Our Local SEO services include local keyword search, local SEO
+                  content, website optimization, Google business profile
+                  optimization, Local link building.
                 </p>
               </div>
             </div>

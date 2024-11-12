@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import { useRouter } from "next/router";
+import Nav from "@/Component/Header/Nav";
 
 const Digital = () => {
   const router = useRouter();
@@ -48,6 +49,9 @@ const Digital = () => {
 
   return (
     <div className="container">
+      <div className=" fixed w-full z-[19] top-0">
+        <Nav />
+      </div>
       <div
         className="relative w-full h-80 sm:h-96 lg:h-[32rem] flex items-center justify-center bg-cover object-cover text-white"
         style={{
@@ -70,12 +74,12 @@ const Digital = () => {
       {/* heading section */}
       <div className="px-5 py-8 sm:px-5 md:px-20">
         <div className="flex pb-2">
-          <div className="w-[2.8px] h-6 bg-green-400 mr-2"></div>
+          <div className="w-[2.8px] h-6 bg-orange-400 mr-2"></div>
           <h2 className="text-md">Case Studies</h2>
         </div>
         <h1 className="text-2xl font-semibold ">
           My Recent
-          <span className="text-green-500">
+          <span className="text-orange-500">
             DIgiatl Marketing services Area
           </span>
         </h1>
@@ -106,7 +110,7 @@ const Digital = () => {
                 <p className="text-gray-600 line-clamp-3">{card.description}</p>
 
                 <button
-                  className="bg-blue-400 mt-5 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className=" mt-5 text-sm px-3 py-2 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
                   onClick={() => handleButtonClick(card.route)}
                 >
                   {card.buttonText}

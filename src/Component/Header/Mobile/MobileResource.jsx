@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -22,7 +21,8 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
         onClick={toggleResources}
         className="text-gray-700 hover:text-black text-md  font-semibold cursor-pointer flex items-center justify-between w-full"
       >
-        Resource
+        <Link href="/resource">Resources</Link>
+
         <span>
           {isOpen ? (
             <FaChevronUp className="text-emerald-800" />
