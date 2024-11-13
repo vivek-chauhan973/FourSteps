@@ -27,7 +27,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
 
       {isCompanyDropdownVisible && (
         <div className="mt-2 space-y-2 px-4 max-h-56 overflow-y-auto scrollbar-thick">
-          <ul className="text-gray-700 text-sm">
+          <ul className="text-gray-700 list-none  text-sm">
             <li
               className={`px-1 py-1 hover:bg-gray-200 cursor-pointer ${
                 activeSection === "About Us" ? "border-b-2 border-blue-500" : ""

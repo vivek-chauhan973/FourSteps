@@ -393,7 +393,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
     return categories.map((category) => (
       <div key={category.name}>
         <h3 className="text-lg font-semibold text-gray-900">{category.name}</h3>
-        <ul>
+        <ul className=" list-none">
           {category.subcategories.map((subcategory) => (
             <li
               key={subcategory.name}

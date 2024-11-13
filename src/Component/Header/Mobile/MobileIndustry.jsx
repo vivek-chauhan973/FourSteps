@@ -39,7 +39,7 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
       </button>
       {isOpen && (
         <div className="mt-4 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-          <ul className="space-y-4">
+          <ul className="space-y-4 ">
             {industries.map((industry) => (
               <li key={industry.title}>
                 <Link href={industry.path}>

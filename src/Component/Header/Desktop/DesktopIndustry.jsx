@@ -52,7 +52,7 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
       {/* Dropdown Section */}
       {dropDown && (
         <div className="absolute left-[-20px] text-[15px]    w-72 bg-white border rounded-lg border-gray-200 shadow-lg z-10">
-          <ul className="py-2 space-y-1">
+          <ul className="py-2 space-y-1 list-none">
             <li>
               <Link
                 href="/industry/travel-hospitality"

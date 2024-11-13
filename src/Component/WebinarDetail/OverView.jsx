@@ -7,9 +7,9 @@ function OverView({ overviewdata }) {
     <div className=" conatiner">
       <div className="   md:border xl:flex flex-col w-full gap-4  p-3 relative bg-white shadow h-auto ">
         <div className=" px-2  ">
-          <h2 className=" text-lg py-3 font-bold">Key overview of Webinars</h2>
+          <h2 className=" text-lg py-3 font-semibold">Key overview of Webinars:</h2>
 
-          <div className="overview-content">
+          <div className="rich-text-content">
             <p
               className=""
               dangerouslySetInnerHTML={{

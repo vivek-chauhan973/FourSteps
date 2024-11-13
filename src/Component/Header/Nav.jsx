@@ -178,7 +178,7 @@ const Nav = () => {
 
             {/* Tablet and Desktop Menu */}
             <div className="hidden md:flex md:space-x-6 lg:space-x-8 items-center">
-              <ul className="flex space-x-4 cursor-pointer">
+              <ul className="flex space-x-4 list-none cursor-pointer">
                 <DesktopCompany
                   activeLink={activeLink}
                   handleLinkClick={handleLinkClick}

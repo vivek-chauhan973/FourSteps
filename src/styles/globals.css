@@ -10,10 +10,8 @@
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
-@import 'slick-carousel/slick/slick.css';
-@import 'slick-carousel/slick/slick-theme.css';
-
-
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 /* Additional global styles */
 /* 
@@ -24,9 +22,10 @@ body {
 /* styles/globals.css */
 
 body {
-  font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 }
-
 
 /*  for carousel over flow  */
 .container {
@@ -45,13 +44,11 @@ body {
 
 .slick-dots li button:before:hover {
   color: #000;
-
 }
 
 .slick-dots li.slick-active button:before {
   color: red;
 }
-
 
 /* animations of our clients start */
 @keyframes slideInFromLeft {
@@ -175,7 +172,6 @@ body {
 
 /* Team skills bar animation end */
 
-
 /* carousel project page  component */
 .carousel-container {
   position: relative;
@@ -204,7 +200,6 @@ body {
   /* Add margin between items if needed */
 }
 
-
 /* for service page ___css */
 
 .text-gradient {
@@ -218,7 +213,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 /* Add this to your global CSS or a relevant stylesheet */
 @keyframes pop-up {
@@ -236,8 +230,6 @@ body {
 .card {
   animation: pop-up 0.3s ease-out;
 }
-
-
 
 /* trail version */
 @layer utilities {
@@ -283,25 +275,29 @@ body {
 
   .hover-rotate-card:hover .card {
     transform: rotate3d(1, 1, 0, 30deg);
-    box-shadow: rgba(5, 71, 17, 0.3) 30px 50px 25px -40px, rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
+    box-shadow: rgba(5, 71, 17, 0.3) 30px 50px 25px -40px,
+      rgba(5, 71, 17, 0.1) 0px 25px 30px 0px;
   }
 
   .hover-translate-social:hover .social-button:nth-child(1) {
     transform: translateZ(50px);
     box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
-    transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
+    transition: transform 0.2s ease-in-out 0.4s,
+      box-shadow 0.2s ease-in-out 0.4s;
   }
 
   .hover-translate-social:hover .social-button:nth-child(2) {
     transform: translateZ(50px);
     box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
-    transition: transform 0.2s ease-in-out 0.6s, box-shadow 0.2s ease-in-out 0.6s;
+    transition: transform 0.2s ease-in-out 0.6s,
+      box-shadow 0.2s ease-in-out 0.6s;
   }
 
   .hover-translate-social:hover .social-button:nth-child(3) {
     transform: translateZ(50px);
     box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
-    transition: transform 0.2s ease-in-out 0.8s, box-shadow 0.2s ease-in-out 0.8s;
+    transition: transform 0.2s ease-in-out 0.8s,
+      box-shadow 0.2s ease-in-out 0.8s;
   }
 
   .hover-translate-logo:hover .circle2 {
@@ -328,7 +324,6 @@ body {
     backdrop-filter: blur(1px);
   }
 }
-
 
 .line-clamp-3 {
   display: -webkit-box;
@@ -370,20 +365,17 @@ body {
   /* Add margin between items if needed */
 }
 
-
 .container-wrapper {
   margin: auto;
   min-width: 300px;
 }
 
-
-@media screen and (max-width:639px) {
+@media screen and (max-width: 639px) {
   .container-wrapper {
     width: calc(100% - 35px) !important;
     /* padding: 0 20px; */
     /* background-color: red !important; */
     /* padding:0 540px !important; */
-
   }
 
   .vignette-relative {
@@ -392,12 +384,11 @@ body {
   }
 }
 
-@media screen and (min-width:640px) {
+@media screen and (min-width: 640px) {
   .container-wrapper {
     width: 600px !important;
     /* background-color: red !important; */
     /* padding:0 540px !important; */
-
   }
 
   .vignette-relative {
@@ -411,7 +402,6 @@ body {
     width: 750px !important;
     /* background-color: red !important; */
     /* padding:0 540px !important; */
-
   }
 }
 
@@ -449,14 +439,11 @@ body {
 
 /* carousel section end*/
 
-
-
 /* for about page css */
 .custom-first-line::first-line {
   font-weight: bold;
   font-style: italic;
 }
-
 
 .fade-in {
   opacity: 1;
@@ -469,7 +456,7 @@ body {
 }
 
 .font {
-  color: #EA580C;
+  color: #ea580c;
   font-size: 11px;
 }
 
@@ -480,7 +467,6 @@ body {
 }
 
 /* header section */
-
 
 a:hover span {
   transform: scaleX(1);
@@ -501,7 +487,6 @@ a:hover span {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-
 }
 
 .left-arrow {
@@ -515,7 +500,7 @@ a:hover span {
 }
 
 .arrow-circle:hover {
-  color: #0B3D91;
+  color: #0b3d91;
 }
 
 /* Hide arrows on mobile devices (screen width below 768px) */
@@ -532,7 +517,7 @@ a:hover span {
 }
 
 .AddIcon {
-  font-size: 50px
+  font-size: 50px;
 }
 
 /* for the zoom  out zoom in effect */
@@ -609,11 +594,10 @@ a:hover span {
   animation: slideOut 2s ease-in-out backwards;
 }
 
-
 /* navbar hover sliders */
 
 .slide span::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0px;
   bottom: 4px;
@@ -621,7 +605,6 @@ a:hover span {
   width: 0;
   height: 2px;
   transition: width 220ms ease-in;
-
 }
 
 .slide span:hover::after {
@@ -632,7 +615,6 @@ a:hover span {
 
 /* end */
 
-
 /*  footer li hover effect */
 
 .footerHover {
@@ -641,14 +623,14 @@ a:hover span {
 }
 
 .footerHover a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -6px;
   /* Adjust bottom position as needed */
   width: 0;
   height: 2px;
-  background-color: #F36B21;
+  background-color: #f36b21;
 
   /* Color of the line */
   transition: width 220ms ease-in;
@@ -668,12 +650,12 @@ a:hover span {
   height: 20px;
   /* Adjust size as needed */
   border-radius: 50%;
-  border: 1px solid #F36B21;
+  border: 1px solid #f36b21;
   /* Change color as needed */
   margin-right: 4px;
   /* Space between icon and text */
   border-radius: 100%;
-  color: #F36B21;
+  color: #f36b21;
 }
 
 /* here is backtotop animation */
@@ -698,4 +680,31 @@ a:hover span {
 
 .btn_filter {
   @apply bg-white border border-black rounded-md py-2 px-4 text-lg cursor-pointer transition-transform transform hover:scale-105 hover:bg-gray-200;
+}
+
+/*  specially for ul li becaause of this is not working properllyy start */
+ol {
+  list-style-type: decimal;
+  /* Ensures ordered lists show numbers */
+}
+
+ul {
+  list-style-type: disc;
+  /* Ensures unordered lists show bullets */
+}
+
+/* end */
+/* rich-text-content ul*/
+.rich-text-content ul,
+.rich-text-content ol {
+  padding-left: 25px;
+  /* Indent the list from the left */
+  margin-top: 5px;
+  /* Add space above lists */
+}
+
+.rich-text-content ul li,
+.rich-text-content ol li {
+  margin-bottom: 4px;
+
 }

@@ -69,7 +69,7 @@ const MobileSolutions = ({ activeSection, handleSectionClick }) => {
     return solutions.map((solution) => (
       <div key={solution.name}>
         <h3 className="font-semibold text-gray-900">{solution.name}</h3>
-        <ul>
+        <ul className=" list-none">
           {solution.subcategories.map((subcategory) => (
             <li
               key={subcategory.name}

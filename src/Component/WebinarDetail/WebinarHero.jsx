@@ -61,7 +61,7 @@ const WebinarHero = ({ Herodata }) => {
           </h1>
 
           {description && (
-            <p className="text-sm sm:text-md lg:text-lg md:mb-6 mb-3 capitalize leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-base md:mb-6 mb-3 capitalize leading-relaxed">
               {description}
             </p>
           )}

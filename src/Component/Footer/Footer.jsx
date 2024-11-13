@@ -58,7 +58,7 @@ export const Footer = () => {
             <div className="border-r border-gray-300">
               <h3 className="text-lg font-bold mb-4">Useful Links</h3>
 
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-sm list-none">
                 <li className="footerHover relative">
                   <Link href="/about" className="relative items-center">
                     <span className="icon-circle">
@@ -116,7 +116,7 @@ export const Footer = () => {
             {/* Our Services  */}
             <div className="border-r border-gray-300">
               <h3 className="text-lg font-bold mb-4 ">Our Services</h3>
-              <ul className="space-y-2  text-sm cursor-pointer">
+              <ul className="space-y-2  text-sm cursor-pointer list-none">
                 <li className="footerHover relative hover:text-primary">
                   <Link href="/websitepage" className=" relative">
                     Website Development
@@ -153,7 +153,7 @@ export const Footer = () => {
             {/* Our Services */}
             <div className="border-r border-gray-300">
               <h3 className="text-lg font-bold mb-4">other content ......</h3>
-              <ul className="text-sm  space-y-2">
+              <ul className="text-sm  space-y-2 list-none">
                 <li>Zoho Setup and Implementation</li>
                 <li>Hubspot Setup and Implementation</li>
                 <li>Bitrix24 Services</li>
@@ -164,7 +164,7 @@ export const Footer = () => {
             {/* Website Development */}
             <div className="border-r border-gray-300">
               <h3 className="text-lg font-bold mb-4">Website Development</h3>
-              <ul className="space-y-2 text-sm  ">
+              <ul className="space-y-2 text-sm list-none ">
                 <li className="footerHover relative hover:text-primary">
                   <Link href="#" className=" relative">
                     CMS Web Development

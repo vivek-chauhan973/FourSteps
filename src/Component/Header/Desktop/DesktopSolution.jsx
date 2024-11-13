@@ -66,7 +66,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
   return (
     <li
-      className="relative inline-block"
+      className="relative inline-block "
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
     >

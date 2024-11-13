@@ -32,7 +32,7 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
         </span>
       </button>
       {isOpen && (
-        <ul className="space-y-4 mt-4">
+        <ul className="space-y-4 mt-4 list-none">
           {resources.map((resource) => (
             <li key={resource.title}>
               <Link href={resource.path}>
