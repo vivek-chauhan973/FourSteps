@@ -3,7 +3,7 @@
 // import { useRouter } from "next/router";
 // const Hero = ({ Heading }) => {
 //   const { query } = useRouter();
-//   console.log("query", query);
+
 //   return (
 //     <div className="container">
 //       <div className="flex  items-center  justify-center  gap-4 ">
