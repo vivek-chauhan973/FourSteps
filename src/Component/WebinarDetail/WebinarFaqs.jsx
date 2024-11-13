@@ -398,7 +398,7 @@ const WebinarFaqs = ({ faqData }) => {
   };
 
   if (!faqData?.webinarFaq) {
-    return <div>Loading...</div>; // Show loading if data is not available
+    return <div className=" text-center py-2">FAQS Loading...</div>; // Show loading if data is not available
   }
 
   return (
