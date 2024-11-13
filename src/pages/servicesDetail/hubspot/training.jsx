@@ -6,6 +6,7 @@ import { Footer } from "@/Component/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Nav from "@/Component/Header/Nav";
+import Calltoaction from "@/Component/Web/Calltoaction";
 
 const Manage = () => {
   useEffect(() => {
@@ -145,7 +146,7 @@ const Manage = () => {
       <div className=" sticky w-full z-[19] top-0">
         <Nav />
       </div>
-      <div className="container">
+      <div className="container pt-10 md:pt-0">
         {/* hero section  */}
         <div className="flex justify-center items-center w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 p-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
@@ -160,7 +161,7 @@ const Manage = () => {
 
             {/* Content Div */}
             <div className="order-2 md:order-1  sm:p-6">
-              <h2 className="text-md sm:text-xl md:text-4xl font-bold mb-2 md:mb-3">
+              <h2 className="text-md sm:text-xl md:text-4xl font-semibold mb-2 md:mb-3">
                 HubSpot Training and Consulting Services
               </h2>
               <p className="text-sm py-2 text-orange-400">
@@ -190,7 +191,7 @@ const Manage = () => {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="md:text-2xl text-xl font-bold mb-2">
+            <h2 className="md:text-2xl text-xl font-semibold mb-2">
               Why we need training and consulting services?
             </h2>
             <p className=" text-xs mb-4">
@@ -300,7 +301,7 @@ const Manage = () => {
 
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6  px-4  items-center">
             <div>
-              <h2 className="text-xl md:py-6 md:text-3xl font-bold text-gray-800">
+              <h2 className="text-xl md:py-6 md:text-3xl font-semibold text-gray-800">
                 Empower your business with expert HubSpot training and
                 <span className="text-orange-500">consulting services.</span>
               </h2>
@@ -310,7 +311,7 @@ const Manage = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <button class=" md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
+              <button class=" md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition">
                 CONNECT WITH US
               </button>
             </div>
@@ -365,38 +366,19 @@ const Manage = () => {
           </div>
         </div>
         {/* lets connect  */}
-        <div
-          className="w-full mt-10 sm:px-6 md:max-w-6xl my-5 mx-auto bg-white py-10"
-          style={{
-            boxShadow:
-              "4px 4px 6px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <div className="text-center px-4">
-            <h1 className="  capitalize text-sm md:text-xl  font-bold mb-2">
-              Need Custom hubSpot
-              <span className="text-blue-500"> Solutions?</span>
-            </h1>
-            <p className="text-center mb-4">
-              Connect with our Zoho experts to discuss your requirements and get
-              custom Zoho solutions.
-            </p>
-            <button className="bg-blue-500 hover:bg-transparent hover:border hover:border-blue-400 hover:text-blue-400 text-white font-bold py-2 px-5 rounded-full">
-              Let s Connect
-            </button>
-          </div>
+        <div>
+          <Calltoaction />
         </div>
-
         {/* here case study section or project section */}
 
         {/*  start faq section*/}
         <div className="container mx-auto mt-3 py-7  grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* section 1 */}
           <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center text-center">
-            <p className="text-[12px] text-zinc-500 leading-3 md:self-start pl-10 font-bold">
+            <p className="text-[12px] text-zinc-500 leading-3 md:self-start pl-10 font-semibold">
               FAQ
             </p>
-            <h3 className="my-3 md:text-2xl px-4 md:px-0 text-xl font-bold ">
+            <h3 className="my-3 md:text-2xl px-4 md:px-0 text-xl font-semibold ">
               Some FAQs For HubSpot Consulting and Training
             </h3>
             <p className="text-[15px] px-4 leading-6">

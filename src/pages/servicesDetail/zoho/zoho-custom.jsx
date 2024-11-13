@@ -82,10 +82,10 @@ const Zohocustom = () => {
   return (
     <>
       {/* navbar section */}
-      <div>
+      <div className=" fixed  z-20 w-full top-0">
         <Nav />
       </div>
-      <div className=" container">
+      <div className=" container pt-20">
         {/* section 1 */}
         <div className="flex justify-center items-center w-full ">
           <div className="grid grid-cols-1 p- md:px-10 md:grid-cols-2 bg-gray-100 rounded-lg  overflow-hidden">

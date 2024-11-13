@@ -73,7 +73,7 @@ const Hubspot = () => {
       </div>
 
       {/* heading section */}
-      <div className="py-8 sm:px-5 md:px-20">
+      <div className="py-8 sm:px-5 px-5 md:px-20">
         <div className="flex pb-2">
           <div className="w-[2.8px] h-6 bg-green-400 mr-2"></div>
           <h2 className="text-md">Case Studies</h2>
@@ -93,7 +93,7 @@ const Hubspot = () => {
       </div>
 
       {/* service section */}
-      <div className="container mx-auto">
+      <div className="container px-5 mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-5 md:px-20 py-2 md:grid-cols-3 gap-5">
           {cards.map((card, index) => (
             <div

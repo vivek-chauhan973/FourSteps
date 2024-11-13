@@ -133,15 +133,15 @@ const Zohosetup = () => {
   return (
     <>
       {/* Navbar section */}
-      <div>
+      <div className=" fixed  z-20 w-full top-0">
         <Nav />
       </div>
-      <div className="container">
+      <div className="container pt-20">
         {/* hero section  */}
         <div className="px-1 w-full sm:px-6 md:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidden">
             <div className="md:order-1 p-4 sm:p-6">
-              <h2 className="text-md sm:text-xl md:block hidden   md:text-2xl font-bold mb-2 md:mb-3">
+              <h2 className="text-md sm:text-xl md:block hidden   md:text-2xl font-semibold mb-2 md:mb-3">
                 Zoho Setup and Implementation Services
               </h2>
 
@@ -160,7 +160,7 @@ const Zohosetup = () => {
               </button>
             </div>
             <div className="flex flex-col py-4 justify-center items-center md:flex-row md:order-2 order-first">
-              <h2 className="text-md md:hidden sm:text-xl md:text-2xl font-bold mb-2 md:mb-3">
+              <h2 className="text-md md:hidden sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3">
                 Zoho Setup and Implementation Services
               </h2>
               <img
@@ -181,7 +181,7 @@ const Zohosetup = () => {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="md:text-2xl text-xl font-bold  mb-1">
+            <h2 className="md:text-2xl text-xl font-semibold  mb-1">
               Why We Need Zoho Setup And Implementation Services?
             </h2>
             <p className="mb-4">
@@ -257,7 +257,7 @@ const Zohosetup = () => {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="md:text-4xl text-xl font-bold mb-1">
+            <h2 className="md:text-3xl text-xl font-semibold mb-1">
               Zoho Setup and Implementation Process
             </h2>
             <p className="mb-4">
@@ -338,7 +338,7 @@ const Zohosetup = () => {
         </div>
         {/* Zoho services what we provided */}
         <div className=" bg-gray-200 p-3 mt-10">
-          <h2 className="md:text-3xl  text-lg font-bold mb-2 text-center">
+          <h2 className="md:text-3xl  text-lg font-semibold mb-2 text-center">
             We offer Zoho Services For Following Zoho Products
           </h2>
           <p className="text-gray-600 text-sm  py-1 md:text-lg text-center">
@@ -383,10 +383,10 @@ const Zohosetup = () => {
         <div className="container mx-auto mt-3 py-7  grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* section 1 */}
           <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center text-center">
-            <p className="text-[12px] text-zinc-500 leading-3 self-start pl-10 font-bold">
+            <p className="text-[12px] text-zinc-500 leading-3 self-start pl-10 font-semibold">
               FAQ
             </p>
-            <h3 className="my-3 md:text-2xl text-xl font-bold uppercase">
+            <h3 className="my-3 md:text-2xl text-xl font-semibold uppercase">
               Some FAQs For Zoho Setup and Implementation
             </h3>
             <p className="text-[15px] px-5 leading-6">

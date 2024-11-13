@@ -203,10 +203,10 @@ const Zohotraining = () => {
   return (
     <>
       {/* navbar */}
-      <div>
+      <div className=" fixed  z-20 w-full top-0">
         <Nav />
       </div>
-      <div className="container">
+      <div className="container pt-20">
         {/* hero section  */}
         <div className="flex justify-center items-center w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 p-10 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
@@ -223,7 +223,7 @@ const Zohotraining = () => {
 
             {/* Content Div */}
             <div className="order-2 md:order-1  sm:p-6">
-              <h2 className="text-md sm:text-xl md:text-4xl font-bold mb-2 md:mb-3">
+              <h2 className="text-md sm:text-xl md:text-3xl font-semibold mb-2 md:mb-3">
                 Zoho Training and Consulting Services
               </h2>
               <p className="text-sm py-2 text-orange-400">
@@ -257,7 +257,7 @@ const Zohotraining = () => {
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="text-xl font-bold mb-2 md:text-2xl">
+            <h2 className="text-xl font-semibold mb-2 md:text-2xl">
               Why we need Zoho training and consulting services?
             </h2>
             <p className="mb-4">
@@ -366,7 +366,7 @@ const Zohotraining = () => {
 
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6  px-4  items-center">
             <div>
-              <h2 className="text-xl md:py-6 md:text-3xl font-bold text-gray-800">
+              <h2 className="text-xl md:py-6 md:text-3xl font-semibold text-gray-800">
                 Empower your business with expert Zoho training and consulting
                 services.
                 <span className="text-orange-500"> forZoho</span>
@@ -377,7 +377,7 @@ const Zohotraining = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <button class=" md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
+              <button class=" md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition">
                 CONNECT WITH US
               </button>
             </div>
@@ -444,10 +444,10 @@ const Zohotraining = () => {
         <div className="container mx-auto mt-3 py-7  grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* section 1 */}
           <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center text-center">
-            <p className="text-[12px] text-zinc-500 leading-3 md:self-start pl-10 font-bold">
+            <p className="text-[12px] text-zinc-500 leading-3 md:self-start pl-10 font-semibold">
               FAQ
             </p>
-            <h3 className="my-3 md:text-2xl px-4 md:px-0 text-xl font-bold uppercase">
+            <h3 className="my-3 md:text-2xl px-4 md:px-0 text-xl font-semibold uppercase">
               Some FAQs For Zoho Consulting and Training
             </h3>
             <p className="text-[15px] px-4 leading-6">

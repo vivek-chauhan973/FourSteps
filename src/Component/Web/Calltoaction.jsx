@@ -19,11 +19,11 @@ const Calltoaction = () => {
                 />
               </div>
               <div className="md:w-2/3 text-center md:text-left">
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 w-full md:w-2/3">
+                <h2 className="text-2xl md:text-2xl font-semibold mb-4 w-full md:w-2/3">
                   Get expert insights with a free consultation book today!
                 </h2>
 
-                <p className="md:text-lg mb-6 text-md w-full md:w-2/3">
+                <p className="md:text-md mb-6 text-md w-full md:w-2/3">
                   We help you see the world differently, discover opportunities
                   you may never have imagined.
                 </p>

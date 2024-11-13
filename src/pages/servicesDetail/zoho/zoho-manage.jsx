@@ -174,15 +174,15 @@ const Zohomanage = () => {
   return (
     <>
       {/* Navbar section */}
-      <div>
+      <div className=" fixed top-0 w-full z-20 ">
         <Nav />
       </div>
-      <div className="container">
+      <div className="container pt-20">
         {/* hero section  */}
         <div className="flex justify-center items-center w-full ">
           <div className="grid grid-cols-1 px-4 md:px-10 md:grid-cols-2 bg-gray-100 rounded-lg shadow-lg overflow-hidden">
             <div className="p-4 sm:p-6">
-              <h2 className="text-md sm:text-xl md:text-2xl  font-bold mb-2 md:mb-3">
+              <h2 className="text-md sm:text-xl md:text-2xl  font-semibold mb-2 md:mb-3">
                 Zoho Managed Services
               </h2>
               <p className=" text-sm py-2 text-orange-400">
@@ -226,7 +226,7 @@ const Zohomanage = () => {
             />
           </div>
           <div className="flex flex-col justify-center space-y-">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
+            <h2 className="text-xl md:text-xl lg:text-2xl font-semibold text-gray-800 mb-2">
               Why We Need Zoho Managed Services?
             </h2>
             <p className="text-gray-600 leading-relaxed md:text-lg">
@@ -296,7 +296,7 @@ const Zohomanage = () => {
         </div>
 
         {/* zoho service  */}
-        <h2 className=" md:text-3xl text-xl py-10  text-center font-bold">
+        <h2 className=" md:text-3xl text-xl py-10  text-center font-semibold">
           Our Zoho Managed Services
         </h2>
 
@@ -339,7 +339,7 @@ const Zohomanage = () => {
 
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 p-5 items-center">
             <div>
-              <h2 className="text-xl py-2 md:text-3xl font-bold text-gray-800">
+              <h2 className="text-xl py-2 md:text-3xl font-semibold text-gray-800">
                 Expert management ensures seamless operation, optimization, and
                 growth
                 <span className="text-orange-500"> forZoho</span>
@@ -351,7 +351,7 @@ const Zohomanage = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <button className="mt-6 md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition">
+              <button className="mt-6 md:mt-0 w-56 h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition">
                 CONNECT WITH US
               </button>
             </div>
@@ -365,10 +365,10 @@ const Zohomanage = () => {
         <div className="container mx-auto mt-3 py-7  grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* section 1 */}
           <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center text-center">
-            <p className="text-[12px] text-zinc-500 leading-3 self-start pl-10 font-bold">
+            <p className="text-[12px] text-zinc-500 leading-3 self-start pl-10 font-semibold">
               FAQ
             </p>
-            <h3 className="my-3 md:text-2xl text-xl font-bold uppercase">
+            <h3 className="my-3 md:text-2xl text-xl font-semibold uppercase">
               Some FAQs For Zoho Setup and Implementation
             </h3>
             <p className="text-[15px] px-4 leading-6">

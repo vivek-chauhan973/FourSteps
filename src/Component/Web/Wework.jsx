@@ -29,7 +29,7 @@
 //   return (
 //     <div className=" container bg-red-500 md:px-16">
 //       <div className="py-8 px-10 ">
-//         <h2 className="text-2xl font-bold mb-6">How We Work Best</h2>
+//         <h2 className="text-2xl font-semibold mb-6">How We Work Best</h2>
 
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 //           {cardData.map((card, index) => (
@@ -108,7 +108,7 @@ const Wework = () => {
         <div className="flex  leading-7	py-6 ">
           <div className="w-[2.8px] h-8 bg-orange-500  mr-2"></div>
           <div>
-            <h2 className="text-3xl  font-bold  ">How We Work</h2>
+            <h2 className="text-3xl  font-semibold  ">How We Work</h2>
             <p>Our whole process can be divided into 6 steps are following</p>
           </div>
         </div>
