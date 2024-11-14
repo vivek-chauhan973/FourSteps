@@ -218,13 +218,12 @@ const Trail = () => {
           <li>abcd</li>
           <li>abcde</li>
         </ul>
-        
       </div>
       <ol>
-          <li>xyz</li>
-          <li>xyzz</li>
-          <li>stuvwxyz</li>
-        </ol>
+        <li>xyz</li>
+        <li>xyzz</li>
+        <li>stuvwxyz</li>
+      </ol>
     </div>
   );
 };

@@ -25,14 +25,38 @@ const Routes = () => {
       </div>
       {/* <div className="flex flex-col lg:flex-row"> */}
       <div className=" conatiner">
-        <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
-          <div className="">
-            <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
+        {Heading === "webinar" && (
+          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+            <div className="">
+              <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
+            </div>
+            <div>
+              <MainData Heading={Heading} />
+            </div>
           </div>
-          <div>
-            <MainData Heading={Heading} />
+        )}
+        {/* for the product */}
+        {Heading === "product" && (
+          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+            <div className="">
+              <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
+            </div>
+            <div>
+              <MainData Heading={Heading} />
+            </div>
           </div>
-        </div>
+        )}
+        {/* for case studies  */}
+        {Heading === "case-studies" && (
+          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+            <div className="">
+              <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
+            </div>
+            <div>
+              <MainData Heading={Heading} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
