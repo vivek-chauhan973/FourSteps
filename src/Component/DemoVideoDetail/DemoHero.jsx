@@ -1,8 +1,8 @@
-import Image from "next/image";
 import React from "react";
-import { Link } from "react-scroll";
+import Image from "next/image";
+import Link from "next/link";
 
-const ProductHero = () => {
+const DemoHero = () => {
   return (
     <div>
       <div className="container mx-auto ">
@@ -47,4 +47,4 @@ const ProductHero = () => {
   );
 };
 
-export default ProductHero;
+export default DemoHero;

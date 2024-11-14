@@ -19,6 +19,7 @@ import Nav from "./Header/Nav";
 import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
+import Vdetail from "./DemoVideoDetail/Vdetail";
 // import Trail from "./Trail";
 
 const Home = () => {
@@ -33,7 +34,7 @@ const Home = () => {
   return (
     <div>
       {/* <Trail /> */}
-     
+      <Vdetail />
       <Nav />
       <BackToTop />
       <HeroSection />
