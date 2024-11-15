@@ -222,6 +222,100 @@ const MainData = ({ Heading }) => {
             </div>
           </div>
         )}
+
+        {/*  for the demoes and videos  */}
+        <div>
+          {Heading === "demo-videos" && (
+            <div className="flex justify-center max-w-3xl pb-2 mx-auto items-center">
+              <div className="bg-white shadow-lg items-center rounded-lg p-3 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="flex justify-center sm:col-span-2 md:col-span-1">
+                  <Image
+                    src="/image/try.jpeg"
+                    alt="Service"
+                    height={220}
+                    width={220}
+                    className="rounded object-cover"
+                  />
+                </div>
+
+                <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
+                  <h2 className="text-lg font-bold">Video title</h2>
+                  <div className="flex text-gray-800 font-normal mt-1">
+                    <span className="mr-2">key points...of videos </span>
+                  </div>
+                  <p className="mt-1 text-sm md:text-xs line-clamp-3 text-gray-700">
+                    A paragraph is defined as “a group of sentences or a single
+                    sentence that forms a...
+                  </p>
+                </div>
+
+                <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
+                  <div className="text-center md:text-left">
+                    <div className="text-green-600 text-md py-1 font-semibold">
+                      video maker: xyz
+                    </div>
+
+                    <div>
+                      <p className="text-gray-900 text-sm">Date: 02-10-2024</p>
+                      <p className="text-gray-900 text-sm">time: 40min</p>
+                    </div>
+                  </div>
+                  <Link href="demo-videos/chauhanjeeeeee">
+                    <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
+                      VIEW DETAILS
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        {/*  for the blog section   */}
+        <div>
+          {Heading === "blog" && (
+            <div className="flex justify-center max-w-3xl pb-2 mx-auto items-center">
+              <div className="bg-white shadow-lg items-center rounded-lg p-3 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="flex justify-center sm:col-span-2 md:col-span-1">
+                  <Image
+                    src="/image/try.jpeg"
+                    alt="Service"
+                    height={220}
+                    width={220}
+                    className="rounded object-cover"
+                  />
+                </div>
+
+                <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
+                  <h2 className="text-lg font-bold">Blog  title</h2>
+                  <div className="flex text-gray-800 font-normal mt-1">
+                    <span className="mr-2">key points...of blog </span>
+                  </div>
+                  <p className="mt-1 text-sm md:text-xs line-clamp-3 text-gray-700">
+                    A paragraph is defined as “a group of sentences or a single
+                    sentence that forms a...
+                  </p>
+                </div>
+
+                <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
+                  <div className="text-center md:text-left">
+                    <div className="text-green-600 text-md py-1 font-semibold">
+                      Blog Writer name :xyz
+                    </div>
+
+                    <div>
+                      <p className="text-gray-900 text-sm">Date: 02-10-2024</p>
+                    </div>
+                  </div>
+                  <Link href="blog/chauhanjeeeeee">
+                    <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
+                      VIEW DETAILS 
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

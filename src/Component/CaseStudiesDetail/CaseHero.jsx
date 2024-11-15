@@ -3,8 +3,8 @@ import React from "react";
 
 const CaseHero = () => {
   return (
-    <div>
-      <div className="container mx-auto">
+    <>
+      <div className="container mx-auto md:pt-0  pt-20">
         <div className="flex flex-col lg:flex-row h-auto items-center justify-between bg-gradient-to-r from-blue-100 to-teal-50 rounded-lg overflow-hidden shadow-lg py-8 lg:py-12 gap-8 lg:gap-5">
           {/* Left section - Course Info */}
           <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
@@ -43,7 +43,7 @@ const CaseHero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

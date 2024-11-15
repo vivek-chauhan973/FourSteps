@@ -80,19 +80,14 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "package master",
+        label: "product",
         icon: () => <FontAwesomeIcon icon={faLayerGroup} />,
         subMenu: [
-          { label: "Package Master", href: "/admin/package/category" },
-          { label: "Add Itinerary", href: "/admin/package/itinerary" },
+          { label: "Product master", href: "/admin/product/product-master" },
+          { label: "Create Product", href: "/admin/product/create-product" },
           {
-            label: "Itinerary List",
-            href: "/admin/package/itinerary-detail-list",
-          },
-          { label: "Promo List", href: "/admin/package/itinerary-promo-list" },
-          {
-            label: "Promo Management",
-            href: "/admin/package/promo-management",
+            label: "product Listing",
+            href: "/admin/product/listing-product",
           },
         ],
       },

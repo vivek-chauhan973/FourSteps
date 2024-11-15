@@ -20,6 +20,7 @@ import ClientOverview from "./ClientOverview";
 import Results from "./Results";
 import Visuals from "./Visuals";
 import Challenge from "./Challenge";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Cdetail = () => {
   return (
@@ -153,6 +154,10 @@ const Cdetail = () => {
         </div>
       </div>
 
+      {/* Testimonial  section here */}
+      <div className=" py-5">
+        <Testimonial />
+      </div>
       {/* Footer section here */}
       <div>
         <Footer />

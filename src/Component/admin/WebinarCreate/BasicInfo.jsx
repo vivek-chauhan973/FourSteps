@@ -115,9 +115,6 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
     
    }
 
-
-
-   
   };
   // for department
   const [departmetaData, setDepartmentData] = useState([]);

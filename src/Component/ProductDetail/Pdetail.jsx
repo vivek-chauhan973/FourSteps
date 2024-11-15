@@ -7,6 +7,7 @@ import ProductSideForm from "./ProductSideForm";
 import { Footer } from "../Footer/Footer";
 import ProductHightlight from "./ProductHightlight";
 import ScreenShot from "./ScreenShot";
+import ProductFaqs from "./ProductFaqs";
 
 const Pdetail = () => {
   return (
@@ -132,6 +133,10 @@ const Pdetail = () => {
         </div>
       </div>
 
+      {/* faqs and suggestetd */}
+      <div>
+        <ProductFaqs />
+      </div>
       {/* Footer section here */}
       <div>
         <Footer />

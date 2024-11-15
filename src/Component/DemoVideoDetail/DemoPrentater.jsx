@@ -30,10 +30,10 @@ const DemoPrentater = () => {
 
           <div className="flex px-2 flex-col justify-center md:space-y-2">
             <h2 className="text-lg md:text-xl font-semibold text-gray-800">
-              name
+              video make name
             </h2>
-            <p className="text-gray-600">speaker name</p>
-            <p className="text-sm "> welcome</p>
+            <p className="text-gray-600"> post of personr</p>
+            <p className="text-sm "> Description </p>
           </div>
         </div>
       </div>

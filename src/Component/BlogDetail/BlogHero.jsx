@@ -1,29 +1,33 @@
-import Image from "next/image";
 import React from "react";
-import { Link } from "react-scroll";
-
-const ProductHero = () => {
+import Link from "next/link";
+import Image from "next/image";
+const BlogHero = () => {
   return (
     <div>
-      <div className="container mx-auto md:pt-0  pt-20">
+      <div className=" ">
         <div className="flex flex-col lg:flex-row h-auto items-center justify-between bg-gradient-to-r from-blue-100 to-teal-50 rounded-lg overflow-hidden shadow-lg py-8 lg:py-12 gap-8 lg:gap-5">
           {/* Left section - Course Info */}
           <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
             <h1 className="text-xl sm:text-2xl capitalize md:text-3xl lg:text-4xl font-bold md:mb-4 mb-1">
-              Product 1
+              blog title here ............
             </h1>
 
             <p className="text-sm sm:text-base lg:text-base md:mb-6 mb-3 capitalize leading-relaxed">
-              product description
+              blog description
             </p>
 
             <div className="text-sm sm:text-base lg:text-lg">
               <button></button>
 
-              <div class="flex ">
+              <div class="flex  gap-3">
                 <Link href="/">
                   <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
                     Book A Discovery Meeting
+                  </button>
+                </Link>
+                <Link href="#">
+                  <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
+                    Pdf Download
                   </button>
                 </Link>
               </div>
@@ -47,4 +51,4 @@ const ProductHero = () => {
   );
 };
 
-export default ProductHero;
+export default BlogHero;

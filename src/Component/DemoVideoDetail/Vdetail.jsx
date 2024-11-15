@@ -18,6 +18,7 @@ import DemoHightlight from "./DemoHightlight";
 import DemoPrentater from "./DemoPrentater";
 import DemoSide from "./DemoSide";
 import Link from "next/link";
+import DemoFaqs from "./DemoFaqs";
 
 const Vdetail = () => {
   return (
@@ -68,7 +69,7 @@ const Vdetail = () => {
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
-                  Technology
+                  video presntator
                 </p>
               </ScrollLink>
             </div>
@@ -106,7 +107,9 @@ const Vdetail = () => {
               className="flex justify-between mt-5 mb-3"
             >
               <div className="md:px-10">
-                <div className="font-semibold py-2 text-xl">Technology</div>
+                <div className="font-semibold py-2 text-xl">
+                  Video Presentator
+                </div>
 
                 <DemoPrentater />
               </div>
@@ -124,6 +127,10 @@ const Vdetail = () => {
         </div>
       </div>
 
+      {/* Footer section here */}
+      <div>
+        <DemoFaqs />
+      </div>
       {/* Footer section here */}
       <div>
         <Footer />
