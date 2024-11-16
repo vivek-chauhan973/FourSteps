@@ -2,16 +2,15 @@ import { useAppContext } from "@/Component/Context/context";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-const BasicInfo = ({setActiveTab,webinarData}) => {
+const BasicInfo = ({ setActiveTab, webinarData }) => {
+  const router = useRouter();
 
-  const router=useRouter();
-
-  const [file,setFile]=useState(null)
-  const [preview,setPreview]=useState(null);
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [formData, setFormData] = useState({
     altText: "",
-    date:"",
-    time:"",
+    date: "",
+    time: "",
     speaker: "",
     title: "",
     link: "",
@@ -25,25 +24,25 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
     language: "",
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     setFormData({
-      altText:webinarData?.altText|| "",
-      speaker:webinarData?.speaker|| "",
-      title:webinarData?.title|| "",
-      link:webinarData?.link|| "",
-      subtitle:webinarData?.subtitle|| "",
-      description:webinarData?.description|| "",
-      selectType:webinarData?.selectType|| "",
-      toolsAndSoftware:webinarData?.toolsAndSoftware|| "",
-      topic:webinarData?.topic|| "",
-      department:webinarData?.department|| "",
-      industry:webinarData?.industry|| "",
-      language:webinarData?.language|| "",
-      time:webinarData?.time|| "",
-      date:webinarData?.date|| "",
-    })
-    setPreview(webinarData?.path|| null)
-  },[webinarData])
+      altText: webinarData?.altText || "",
+      speaker: webinarData?.speaker || "",
+      title: webinarData?.title || "",
+      link: webinarData?.link || "",
+      subtitle: webinarData?.subtitle || "",
+      description: webinarData?.description || "",
+      selectType: webinarData?.selectType || "",
+      toolsAndSoftware: webinarData?.toolsAndSoftware || "",
+      topic: webinarData?.topic || "",
+      department: webinarData?.department || "",
+      industry: webinarData?.industry || "",
+      language: webinarData?.language || "",
+      time: webinarData?.time || "",
+      date: webinarData?.date || "",
+    });
+    setPreview(webinarData?.path || null);
+  }, [webinarData]);
 
   const { users } = useAppContext();
 
@@ -79,42 +78,45 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
       department,
       industry,
       language,
-      time,date
+      time,
+      date,
     } = formData;
-   const formData1=new FormData();
-   formData1.append('file',file);
-   formData1.append('altText',altText);
-   formData1.append('title',title);
-   formData1.append('speaker',speaker);
-   formData1.append('link',link);
-   formData1.append('subtitle',subtitle);
-   formData1.append('description',description);
-   formData1.append('selectType',selectType);
-   formData1.append('toolsAndSoftware',toolsAndSoftware);
-   formData1.append('topic',topic);
-   formData1.append('department',department);
-   formData1.append('industry',industry);
-   formData1.append('language',language);
-   formData1.append('date',date);
-   formData1.append('time',time);
+    const formData1 = new FormData();
+    formData1.append("file", file);
+    formData1.append("altText", altText);
+    formData1.append("title", title);
+    formData1.append("speaker", speaker);
+    formData1.append("link", link);
+    formData1.append("subtitle", subtitle);
+    formData1.append("description", description);
+    formData1.append("selectType", selectType);
+    formData1.append("toolsAndSoftware", toolsAndSoftware);
+    formData1.append("topic", topic);
+    formData1.append("department", department);
+    formData1.append("industry", industry);
+    formData1.append("language", language);
+    formData1.append("date", date);
+    formData1.append("time", time);
 
-   try {
-    const data=await fetch(`/api/webinar/${webinarData?webinarData?._id:"webinar"}`,{
-      method:webinarData?"PUT":"POST",
-      body:formData1
-    })
-    const data1=await data.json()
-    if(data?.ok){
-      setActiveTab("Tab2")
-      router.push(`/admin/webinar/itinary/${data1?._id}`);
-      alert(webinarData?"data successfully updated":"data successfully saved");
+    try {
+      const data = await fetch(
+        `/api/webinar/${webinarData ? webinarData?._id : "webinar"}`,
+        {
+          method: webinarData ? "PUT" : "POST",
+          body: formData1,
+        }
+      );
+      const data1 = await data.json();
+      if (data?.ok) {
+        setActiveTab("Tab2");
+        router.push(`/admin/webinar/itinary/${data1?._id}`);
+        alert(
+          webinarData ? "data successfully updated" : "data successfully saved"
+        );
+      }
+    } catch (error) {
+      alert("something went wrong");
     }
-    
-   } catch (error) {
-    alert("something went wrong");
-    
-   }
-
   };
   // for department
   const [departmetaData, setDepartmentData] = useState([]);
@@ -354,9 +356,7 @@ const BasicInfo = ({setActiveTab,webinarData}) => {
                 className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
                 required
               >
-                <option >
-                    select type
-                  </option>
+                <option>select type</option>
                 {webinartypeData.map((item) => (
                   <option key={item.id} value={item.name}>
                     {item.name}

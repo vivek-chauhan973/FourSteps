@@ -1,17 +1,36 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-const BasicInfoPro = () => {
+const BasicInfoPro = ({setActiveTab ,productData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const router=useRouter()
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     subtitle: "",
     service: "",
     industry: "",
+    altText: "",
   });
+useEffect(()=>{
+  console.log("product response is here --> ", productData);
+  if(productData){
+  setFormData({
+    title: productData?.[0]?.title||"",
+    description: productData?.[0]?.description||"",
+    subtitle: productData?.[0]?.subtitle||"",
+    service: productData?.[0]?.service||"",
+    industry: productData?.[0]?.industry||"",
+    altText: productData?.[0]?.altText||"",
+  })
+  setPreview(productData?.[0]?.path||"")}
+},[productData])
+  const [serviceList, setServiceList] = useState([]);
+  const [industryList, setIndustryList] = useState([]);
 
+  // Handle image selection
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -20,23 +39,79 @@ const BasicInfoPro = () => {
     }
   };
 
+  // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  // Fetch services and industries on component mount
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/product/service");
+        const data = await response.json();
+        if (data.success) setServiceList(data.data);
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+      }
+    };
+
+    const fetchIndustries = async () => {
+      try {
+        const response = await fetch("/api/global/industries/getIndustries");
+        const data = await response.json();
+        if (data.success) setIndustryList(data.data);
+      } catch (error) {
+        console.error("Failed to fetch industries:", error);
+      }
+    };
+
+    fetchServices();
+    fetchIndustries();
+  }, []);
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("Uploaded Image:", image);
+
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+
+    if (image) {
+      formDataToSend.append("image", image);
+    }
+
+    try {
+      const response = await fetch("/api/product/product", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const result = await response.json();
+      console.log("result is submitted data is here--> ",result)
+      if (response.ok) {
+        alert("Product created successfully!");
+        router.push(`/admin/product/${result?.newProduct?._id}`);
+        setActiveTab("Tab2")
+        console.log(result);
+      } else {
+        alert("Error: " + result.message);
+        console.error(result);
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    }
   };
 
   return (
-    <div className=" mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
+    <div className="container mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Image Upload */}
         <div>
-          <label className="block text-sm font-semibold  text-gray-700">
+          <label className="block text-sm font-semibold text-gray-700">
             Upload Image
           </label>
           <input
@@ -51,20 +126,32 @@ const BasicInfoPro = () => {
             <div className="mt-4">
               <Image
                 src={preview}
-                alt="Preview"
+                alt={formData.altText || "Preview"}
                 height={200}
                 width={200}
                 className="w-40 h-40 object-cover rounded-xl border border-gray-200 shadow-md"
               />
             </div>
           )}
+          <div className="mt-4">
+            <label className="block text-sm font-semibold text-gray-700">
+              Alt Text
+            </label>
+            <input
+              type="text"
+              name="altText"
+              value={formData.altText}
+              onChange={handleChange}
+              placeholder="Enter image description"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            />
+          </div>
         </div>
 
-        {/* Grid Section */}
+        {/* Other Form Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Title */}
           <div>
-            <label className="block text-sm font-semibold  text-gray-700">
+            <label className="block text-sm font-semibold text-gray-700">
               Title
             </label>
             <input
@@ -73,12 +160,12 @@ const BasicInfoPro = () => {
               value={formData.title}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
             />
           </div>
 
-          {/* Subtitle */}
           <div>
-            <label className="block text-sm font-semibold  text-gray-700">
+            <label className="block text-sm font-semibold text-gray-700">
               Subtitle
             </label>
             <input
@@ -87,12 +174,12 @@ const BasicInfoPro = () => {
               value={formData.subtitle}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
             />
           </div>
 
-          {/* Service */}
           <div>
-            <label className="block text-sm font-semibold  text-gray-700">
+            <label className="block text-sm font-semibold text-gray-700">
               Service
             </label>
             <select
@@ -100,19 +187,19 @@ const BasicInfoPro = () => {
               value={formData.service}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
             >
-              <option value="" disabled>
-                Select Service
-              </option>
-              <option value="webDevelopment">Web Development</option>
-              <option value="design">Design</option>
-              <option value="seo">SEO</option>
+              <option value="">Select a service</option>
+              {serviceList.map((service) => (
+                <option key={service._id} value={service.name}>
+                  {service.name}
+                </option>
+              ))}
             </select>
           </div>
 
-          {/* Industry */}
           <div>
-            <label className="block text-sm font-semibold  text-gray-700">
+            <label className="block text-sm font-semibold text-gray-700">
               Industry
             </label>
             <select
@@ -120,18 +207,18 @@ const BasicInfoPro = () => {
               value={formData.industry}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
             >
-              <option value="" disabled>
-                Select Industry
-              </option>
-              <option value="technology">Technology</option>
-              <option value="healthcare">Healthcare</option>
-              <option value="education">Education</option>
+              <option value="">Select an industry</option>
+              {industryList.map((ind) => (
+                <option key={ind._id} value={ind.name}>
+                  {ind.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
 
-        {/* Description */}
         <div>
           <label className="block text-sm font-semibold text-gray-700">
             Description
@@ -142,10 +229,10 @@ const BasicInfoPro = () => {
             onChange={handleChange}
             rows="4"
             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            required
           ></textarea>
         </div>
 
-        {/* Submit Button */}
         <div>
           <button
             type="submit"
