@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 
 const BasicInfoPro = () => {
@@ -35,7 +36,7 @@ const BasicInfoPro = () => {
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Image Upload */}
         <div>
-          <label className="block text-lg font-semibold mb-3 text-gray-700">
+          <label className="block text-sm font-semibold  text-gray-700">
             Upload Image
           </label>
           <input
@@ -48,9 +49,11 @@ const BasicInfoPro = () => {
           />
           {preview && (
             <div className="mt-4">
-              <img
+              <Image
                 src={preview}
                 alt="Preview"
+                height={200}
+                width={200}
                 className="w-40 h-40 object-cover rounded-xl border border-gray-200 shadow-md"
               />
             </div>
@@ -61,7 +64,7 @@ const BasicInfoPro = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Title */}
           <div>
-            <label className="block text-lg font-semibold mb-3 text-gray-700">
+            <label className="block text-sm font-semibold  text-gray-700">
               Title
             </label>
             <input
@@ -75,7 +78,7 @@ const BasicInfoPro = () => {
 
           {/* Subtitle */}
           <div>
-            <label className="block text-lg font-semibold mb-3 text-gray-700">
+            <label className="block text-sm font-semibold  text-gray-700">
               Subtitle
             </label>
             <input
@@ -89,7 +92,7 @@ const BasicInfoPro = () => {
 
           {/* Service */}
           <div>
-            <label className="block text-lg font-semibold mb-3 text-gray-700">
+            <label className="block text-sm font-semibold  text-gray-700">
               Service
             </label>
             <select
@@ -109,7 +112,7 @@ const BasicInfoPro = () => {
 
           {/* Industry */}
           <div>
-            <label className="block text-lg font-semibold mb-3 text-gray-700">
+            <label className="block text-sm font-semibold  text-gray-700">
               Industry
             </label>
             <select
@@ -130,7 +133,7 @@ const BasicInfoPro = () => {
 
         {/* Description */}
         <div>
-          <label className="block text-lg font-semibold mb-3 text-gray-700">
+          <label className="block text-sm font-semibold text-gray-700">
             Description
           </label>
           <textarea
