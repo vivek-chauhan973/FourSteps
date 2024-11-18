@@ -6,4 +6,3 @@ const productserviceSchema = new mongoose.Schema({
 
 export default mongoose.models.productService ||
   mongoose.model("productService", productserviceSchema);
-

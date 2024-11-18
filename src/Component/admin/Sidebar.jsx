@@ -9,7 +9,6 @@ import {
   faSliders,
   faBook,
   faBlog,
-  faHotel,
   faCartShopping,
   faFile,
   faGear,
@@ -110,16 +109,25 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC..",
-        icon: () => <FontAwesomeIcon icon={faHotel} />,
+        label: "Case Studies",
+        icon: () => <FontAwesomeIcon icon={faBook} />,
         subMenu: [
-          { label: "Hotel Master", href: "#" },
-          { label: "Packages", href: "/admin/hotel/packages-list" },
-          { label: "Hotel Promo Management", href: "/admin/hotel/management" },
+          {
+            label: "Case-study master",
+            href: "/admin/casestudy/case-study-master",
+          },
+          {
+            label: "Create case Study",
+            href: "/admin/casestudy/create-case-study",
+          },
+          {
+            label: "Listing Case Study",
+            href: "/admin/casestudy/listing-case",
+          },
         ],
       },
       {
-        label: "ABC...",
+        label: "Blog",
         icon: () => <FontAwesomeIcon icon={faBlog} />,
         subMenu: [
           { label: "Blog Master", href: "/admin/blog/category" },
@@ -129,12 +137,15 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC.....",
+        label: "Demoes & videos",
         icon: () => <FontAwesomeIcon icon={faCartShopping} />,
         subMenu: [
-          { label: "Package Order", href: "/admin/manage-order/package" },
-          { label: "Hotel Order", href: "/admin/manage-order/hotel" },
-          { label: "Car Order", href: "/admin/manage-order/car" },
+          { label: "Master Video", href: "/admin/demovideo/video-master" },
+          { label: "Create Videos", href: "/admin/demovideo/create-video" },
+          {
+            label: "Listing the Videos",
+            href: "/admin/demovideo/listing-video",
+          },
         ],
       },
       {
