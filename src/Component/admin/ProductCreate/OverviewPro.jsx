@@ -9,7 +9,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function OverviewPro({ setActiveTab }) {
+export default function OverviewPro({ setActiveTab,productData }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
 
   const modules = {

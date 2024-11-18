@@ -6,7 +6,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function HightlightPro({ setActiveTab }) {
+export default function HightlightPro({productData, setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
 
   const modules = {

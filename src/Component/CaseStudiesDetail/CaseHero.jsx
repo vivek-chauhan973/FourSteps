@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Link } from "react-scroll";
 
 const CaseHero = () => {
   return (
@@ -16,17 +17,17 @@ const CaseHero = () => {
               Case-studies description
             </p>
 
-            <div className="text-sm sm:text-base lg:text-lg">
-              <button></button>
-
-              <div class="flex ">
-                <button
-                  href="#"
-                  class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105"
-                >
+            <div class="flex  gap-3">
+              <Link href="/">
+                <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
                   Book A Discovery Meeting
                 </button>
-              </div>
+              </Link>
+              <Link href="#">
+                <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
+                  Pdf Download
+                </button>
+              </Link>
             </div>
           </div>
           {/* 

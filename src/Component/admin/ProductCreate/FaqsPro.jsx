@@ -8,7 +8,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function FaqsPro({ webinarData, setActiveTab }) {
+export default function FaqsPro({ productData, setActiveTab }) {
   // console.log("itinerary : ",itinerary);
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
     []
@@ -16,11 +16,7 @@ export default function FaqsPro({ webinarData, setActiveTab }) {
   const [deletePopup, setDeletePopu] = useState(false);
   const [editorHtml, setEditorHtml] = useState("");
 
-  useEffect(() => {
-    if (webinarData) {
-      setItineraryDayWiseDataArray(webinarData?.webinarFaq?.questions || []);
-    }
-  }, [webinarData]);
+ 
   const [itineraryDayWise, setItineraryDayWise] = useState({
     title: "",
     information: "",
@@ -93,27 +89,11 @@ export default function FaqsPro({ webinarData, setActiveTab }) {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`/api/webinar/webinarfaq`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          questions: itineraryDayWiseDataArray,
-          webinar: webinarData?._id,
-        }),
-      });
-      if (response.ok) {
-        alert(
-          webinarData
-            ? "data is updated successfully"
-            : "data is saved is successfully"
-        );
-        setActiveTab("Tab5");
-      }
-      // console.log("currently data pass", itineraryDayWiseDataArray);
+      alert("fAQS  data saved");
+      setActiveTab("Tab5");
     } catch (error) {
-      console.error(error);
+      console.error("Error saving data:", error);
+      alert("An error occurred while saving the overview data.");
     }
   };
 

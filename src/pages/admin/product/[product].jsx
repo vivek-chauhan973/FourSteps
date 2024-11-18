@@ -6,6 +6,7 @@ import OverviewPro from "@/Component/admin/ProductCreate/OverviewPro";
 import HightlightPro from "@/Component/admin/ProductCreate/HightlightPro";
 import ScreenshotPro from "@/Component/admin/ProductCreate/ScreenshotPro";
 import FaqsPro from "@/Component/admin/ProductCreate/FaqsPro";
+import SeoPro from "@/Component/admin/ProductCreate/SeoPro";
 
 const fetchIDProduct = async (product) => {
   const data = await fetch(`/api/product/${product}`);
@@ -141,6 +142,7 @@ export default function CreateProduct() {
         >
           <FaqsPro setActiveTab={setActiveTab} productData={productData} />
         </div>
+        {/* for the ScreenShot  */}
         <div
           className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
         >
@@ -148,6 +150,12 @@ export default function CreateProduct() {
             setActiveTab={setActiveTab}
             productData={productData}
           />
+        </div>
+        {/* for the seo section */}
+        <div
+          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
+        >
+          <SeoPro setActiveTab={setActiveTab} productData={productData} />
         </div>
       </>
     </AdminLayout>
