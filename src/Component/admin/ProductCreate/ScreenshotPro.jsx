@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function ScreenshotPro({ setActiveTab, productData }) {
   const [entries, setEntries] = useState([]);
@@ -171,13 +173,13 @@ function ScreenshotPro({ setActiveTab, productData }) {
                         onClick={() => handleEditEntry(index)}
                         className="text-blue-500 hover:underline mr-2"
                       >
-                        Edit
+                        <FontAwesomeIcon icon={faEdit} />
                       </button>
                       <button
                         onClick={() => handleDeleteEntry(index)}
                         className="text-red-500 hover:underline"
                       >
-                        Delete
+                         <FontAwesomeIcon icon={faTrash} />
                       </button>
                     </td>
                   </tr>

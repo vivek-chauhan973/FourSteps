@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 // Ensure this component is created
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

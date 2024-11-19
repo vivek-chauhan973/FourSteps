@@ -140,6 +140,14 @@ const Sidebar = () => {
         label: "Demoes & videos",
         icon: () => <FontAwesomeIcon icon={faCartShopping} />,
         subMenu: [
+          {
+            label: "user or video Maker",
+            href: "/admin/demovideo/videomaker/user",
+          },
+          {
+            label: "listing of user",
+            href: "/admin/demovideo/videomaker/listing-user",
+          },
           { label: "Master Video", href: "/admin/demovideo/video-master" },
           { label: "Create Videos", href: "/admin/demovideo/create-video" },
           {

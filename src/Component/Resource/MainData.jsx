@@ -286,7 +286,7 @@ const MainData = ({ Heading }) => {
                 </div>
 
                 <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
-                  <h2 className="text-lg font-bold">Blog  title</h2>
+                  <h2 className="text-lg font-bold">Blog title</h2>
                   <div className="flex text-gray-800 font-normal mt-1">
                     <span className="mr-2">key points...of blog </span>
                   </div>
@@ -308,7 +308,7 @@ const MainData = ({ Heading }) => {
                   </div>
                   <Link href="blog/chauhanjeeeeee">
                     <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
-                      VIEW DETAILS 
+                      VIEW DETAILS
                     </button>
                   </Link>
                 </div>
