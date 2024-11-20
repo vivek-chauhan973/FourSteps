@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const caseStudySchema = new mongoose.Schema(
+const VideoSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -14,7 +14,7 @@ const caseStudySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    service: {
+    user: {
       type: String,
       required: true,
     },
@@ -38,4 +38,4 @@ const caseStudySchema = new mongoose.Schema(
 );
 
 module.exports =
-  mongoose.models.CaseStudy || mongoose.model("CaseStudy", caseStudySchema);
+  mongoose.models.Videos || mongoose.model("Videos", VideoSchema);

@@ -256,8 +256,9 @@ const MainData = ({ Heading }) => {
                     </div>
 
                     <div>
-                      <p className="text-gray-900 text-sm">Date: 02-10-2024</p>
-                      <p className="text-gray-900 text-sm">time: 40min</p>
+                      <p className="text-gre-500  text-base">
+                        Industry:industry
+                      </p>
                     </div>
                   </div>
                   <Link href="demo-videos/chauhanjeeeeee">

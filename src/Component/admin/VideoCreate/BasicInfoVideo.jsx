@@ -1,0 +1,252 @@
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+const BasicInfoVideo = ({ setActiveTab, videoData }) => {
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    subtitle: "",
+    user: "",
+    industry: "",
+    altText: "",
+  });
+  //   useEffect(() => {
+  //     console.log("product response is here --> ", productData);
+  //     if (productData) {
+  //       setFormData({
+  //         title: productData?.[0]?.title || "",
+  //         description: productData?.[0]?.description || "",
+  //         subtitle: productData?.[0]?.subtitle || "",
+  //         user: productData?.[0]?.user || "",
+  //         industry: productData?.[0]?.industry || "",
+  //         altText: productData?.[0]?.altText || "",
+  //       });
+  //       setPreview(productData?.[0]?.path || "");
+  //     }
+  //   }, [productData]);
+  const [userList, setUserList] = useState([]); // State to hold the fetched data
+  const [industryList, setIndustryList] = useState([]);
+
+  // Handle image selection
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  // Handle form field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Fetch users and industries on component mount
+  useEffect(() => {
+    const fetchusers = async () => {
+      try {
+        const response = await fetch("/api/videos"); // Fetch data from the API
+        const data = await response.json(); // Parse the JSON response
+        setUserList(data);
+      } catch (error) {
+        console.error("Failed to fetch users:", error); // Log any errors
+      }
+    };
+
+    const fetchIndustries = async () => {
+      try {
+        const response = await fetch("/api/global/industries/getIndustries");
+        const data = await response.json();
+        if (data.success) setIndustryList(data.data);
+      } catch (error) {
+        console.error("Failed to fetch industries:", error);
+      }
+    };
+
+    fetchusers();
+    fetchIndustries();
+  }, []);
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+
+    if (image) {
+      formDataToSend.append("image", image);
+    }
+
+    try {
+      const response = await fetch("/api/videos/video", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const result = await response.json();
+      if (response?.ok) {
+        console.log(
+          "result is submitted data is here--> ",
+          result?.newProduct?._id
+        );
+
+        alert("Video  created successfully!");
+        router.push(`/admin/demovideo/${result?.newProduct?._id}`);
+
+        setActiveTab("Tab2");
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    }
+  };
+
+  return (
+    <div className="container mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Image Upload */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Upload Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="block w-full text-gray-700 file:mr-4 file:py-2 file:px-4
+              file:rounded-lg file:border-0 file:text-sm file:font-semibold
+              file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200"
+          />
+          {preview && (
+            <div className="mt-4">
+              <Image
+                src={preview}
+                alt={formData.altText || "Preview"}
+                height={200}
+                width={200}
+                className="w-40 h-40 object-cover rounded-xl border border-gray-200 shadow-md"
+              />
+            </div>
+          )}
+          <div className="mt-4">
+            <label className="block text-sm font-semibold text-gray-700">
+              Alt Text
+            </label>
+            <input
+              type="text"
+              name="altText"
+              value={formData.altText}
+              onChange={handleChange}
+              placeholder="Enter image description"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Other Form Fields */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Title
+            </label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Subtitle
+            </label>
+            <input
+              type="text"
+              name="subtitle"
+              value={formData.subtitle}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              User or video maker
+            </label>
+            <select
+              name="user"
+              value={formData.user}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
+            >
+              <option value="">Select a user</option>
+
+              {userList.map((item) => (
+                <option key={item._id} value={item.name}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Industry
+            </label>
+            <select
+              name="industry"
+              value={formData.industry}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              required
+            >
+              <option value="">Select an industry</option>
+              {industryList.map((ind) => (
+                <option key={ind._id} value={ind.name}>
+                  {ind.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Description
+          </label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows="4"
+            className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            required
+          ></textarea>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 shadow-lg"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default BasicInfoVideo;

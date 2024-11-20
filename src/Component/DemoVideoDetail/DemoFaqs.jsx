@@ -168,68 +168,16 @@ const DemoFaqs = () => {
   return (
     <>
       <div className="container py-5">
-        <div className="bg-white">
-          {/* section 1 */}
-          <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-            <p className="md:text-2xl  text-lg font-semibold">
-              Frequently Asked Questions (FAQS) for the Videos
-            </p>
-          </div>
-          <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
-            <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
-              <button
-                className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
-                onClick={isAllOpen ? handleHideAll : handleExpandAll}
-              >
-                {isAllOpen ? "Hide all" : "Expand all"}
-              </button>
-            </div>
-            <div className="w-full mx-auto md:px-0 px-5">
-              {faqs.map((faq, i) => (
-                <div key={i} className="mb-3">
-                  <div
-                    onClick={() => handleToggle(i)}
-                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
-                  >
-                    <p className="md:text-[15px] text-[14px] capitalize md:first-line:font-semibold font-medium mr-1 ">
-                      {faq.question}
-                    </p>
 
-                    <span>
-                      {openIndices.includes(i) ? (
-                        <FontAwesomeIcon icon={faChevronUp} />
-                      ) : (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      )}
-                    </span>
-                  </div>
-                  <div
-                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
-                                ${
-                                  openIndices.includes(i)
-                                    ? "max-h-[1000px]"
-                                    : "max-h-0"
-                                }`}
-                    style={{
-                      maxHeight: openIndices.includes(i) ? "1000px" : "0px",
-                    }}
-                  >
-                    <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
-                      {faq.answer}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
 
-        {/*  suggested section of Videos  */}
+
+
+      {/*  suggested section of Product  */}
 
         {/* Social Links */}
         <div className="md:px-7">
           <div className=" text-2xl pl-5 pb-2 font-semibold">
-            Suggested Videoss
+            Suggested Videos
           </div>
           <div className="grid grid-cols-1 px-5 sm:grid-cols-2 bg-gray-50 py-3 md:grid-cols-3 gap-6">
             {profiles.map((profile) => (
@@ -288,6 +236,66 @@ const DemoFaqs = () => {
             ))}
           </div>
         </div>
+
+        <div className="bg-white">
+          {/* section 1 */}
+          <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+            <p className="md:text-2xl  text-lg font-semibold">
+              Frequently Asked Questions (FAQS) for the Videos
+            </p>
+          </div>
+          <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
+            <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
+              <button
+                className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
+                onClick={isAllOpen ? handleHideAll : handleExpandAll}
+              >
+                {isAllOpen ? "Hide all" : "Expand all"}
+              </button>
+            </div>
+            <div className="w-full mx-auto md:px-0 px-5">
+              {faqs.map((faq, i) => (
+                <div key={i} className="mb-3">
+                  <div
+                    onClick={() => handleToggle(i)}
+                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                  >
+                    <p className="md:text-[15px] text-[14px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                      {faq.question}
+                    </p>
+
+                    <span>
+                      {openIndices.includes(i) ? (
+                        <FontAwesomeIcon icon={faChevronUp} />
+                      ) : (
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      )}
+                    </span>
+                  </div>
+                  <div
+                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
+                                ${
+                                  openIndices.includes(i)
+                                    ? "max-h-[1000px]"
+                                    : "max-h-0"
+                                }`}
+                    style={{
+                      maxHeight: openIndices.includes(i) ? "1000px" : "0px",
+                    }}
+                  >
+                    <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
+                      {faq.answer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/*  suggested section of Videos  */}
+
+      
       </div>
     </>
   );

@@ -10,7 +10,7 @@ const ListingUser = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("/api/videos/videouser");
+      const response = await fetch("/api/videos");
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
