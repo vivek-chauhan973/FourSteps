@@ -295,17 +295,14 @@ const MainData = ({ Heading }) => {
                     A paragraph is defined as “a group of sentences or a single
                     sentence that forms a...
                   </p>
+                  <div>
+                      <p className="text-gray-900 pt-3 text-sm">Date: 02-10-2024</p>
+                    </div>
                 </div>
 
                 <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
                   <div className="text-center md:text-left">
-                    <div className="text-green-600 text-md py-1 font-semibold">
-                      Blog Writer name :xyz
-                    </div>
-
-                    <div>
-                      <p className="text-gray-900 text-sm">Date: 02-10-2024</p>
-                    </div>
+                 
                   </div>
                   <Link href="blog/chauhanjeeeeee">
                     <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">

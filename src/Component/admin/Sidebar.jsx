@@ -126,16 +126,7 @@ const Sidebar = () => {
           },
         ],
       },
-      {
-        label: "Blog",
-        icon: () => <FontAwesomeIcon icon={faBlog} />,
-        subMenu: [
-          { label: "Blog Master", href: "/admin/blog/category" },
-          { label: "All Post", href: "/admin/blog/all-post" },
-          { label: "Create", href: "/admin/blog/post" },
-          { label: "Blog Promo Management", href: "/admin/blog/management" },
-        ],
-      },
+
       {
         label: "Demoes & videos",
         icon: () => <FontAwesomeIcon icon={faCartShopping} />,
@@ -154,6 +145,17 @@ const Sidebar = () => {
             label: "Listing the Videos",
             href: "/admin/demovideo/listing-video",
           },
+        ],
+      },
+      {
+        label: "Blog",
+        icon: () => <FontAwesomeIcon icon={faBlog} />,
+        subMenu: [
+          { label: "Blog Master", href: "/admin/blog/blog-master" },
+          { label: "Create", href: "/admin/blog/blog-create" },
+          { label: "All Post", href: "/admin/blog/blog-listing" },
+
+          { label: "Blog Promo Management", href: "/admin/blog/management" },
         ],
       },
       {
