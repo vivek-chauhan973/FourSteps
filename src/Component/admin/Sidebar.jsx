@@ -153,7 +153,7 @@ const Sidebar = () => {
         subMenu: [
           { label: "Blog Master", href: "/admin/blog/blog-master" },
           { label: "Create", href: "/admin/blog/blog-create" },
-          { label: "All Post", href: "/admin/blog/blog-listing" },
+          { label: "All blog Blog-listing ", href: "/admin/blog/blog-listing" },
 
           { label: "Blog Promo Management", href: "/admin/blog/management" },
         ],

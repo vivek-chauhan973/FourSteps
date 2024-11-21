@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-async function handler(req, res) {
+async function handler(req, res) {  
   await dbConnect();
 
   if (req.method === "POST") {

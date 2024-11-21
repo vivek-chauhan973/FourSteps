@@ -15,7 +15,6 @@ import SeoCase from "@/Component/admin/CaseStudies/SeoCase";
 export default function CreateProduct() {
   const router = useRouter();
   // const { case} = router?.query;
-  console.log("...............", router);
   const [casestudyData, setCasestudyData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 

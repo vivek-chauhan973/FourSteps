@@ -1,30 +1,29 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import { useRouter } from "next/router";
-import FaqCase from "@/Component/admin/CaseStudies/FaqCase";
-import BasicInfoVideo from "@/Component/admin/VideoCreate/BasicInfoVideo";
-import OverviewVideo from "@/Component/admin/VideoCreate/OverviewVideo";
-import HightlightVideo from "@/Component/admin/VideoCreate/HightlightVideo";
-import SeoVideo from "@/Component/admin/VideoCreate/SeoVideo";
+import BasicInfoBlog from "@/Component/admin/Blog/BasicInfoBlog";
+import BlogDetailing from "@/Component/admin/Blog/BlogDetailing";
+import BlogSeo from "@/Component/admin/Blog/BlogSeo";
 
-const fetchIDProduct = async (video) => {
-  const data = await fetch(`/api/video/${video}`);
+const fetchIDProduct = async (blog) => {
+  const data = await fetch(`/api/blog/${blog}`);
   return await data.json();
 };
 export default function CreateProduct() {
   const router = useRouter();
-  const { video } = router?.query;
-  const [videoData, setVideoData] = useState(null);
+  const { blog } = router?.query;
+  console.log("...............", router);
+  const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 
   useEffect(() => {
-    if (video) {
-      fetchIDProduct(video).then((res) => {
+    if (blog) {
+      fetchIDProduct(blog).then((res) => {
         // console.log("res of product data is here ----> ",res)
-        setVideoData(res?.data || null);
+        setBlogData(res?.data || null);
       });
     }
-  }, [video, activeTab]);
+  }, [blog, activeTab]);
 
   // Function to switch to the next tab
   useEffect(() => {
@@ -33,16 +32,14 @@ export default function CreateProduct() {
     } else if (activeTab === "Tab2") {
       setActiveTab("Tab3");
     } else if (activeTab === "Tab3") {
-      setActiveTab("Tab4");
-    } else if (activeTab === "Tab4") {
-      setActiveTab("Tab5");
+      setActiveTab("Tab1");
     }
   }, []);
 
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
-        <p className="md:text-[28px] text-2xl text-black">create a videos</p>
+        <p className="md:text-[28px] text-2xl text-black">create a Blog</p>
       </div>
       <div className="border-b border-slate-300 mb-5">
         <div className="flex gap-2 text-[14px] pt-3 pb-2 flex-wrap">
@@ -66,33 +63,13 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Overviews
+              BlogDetailing
             </button>
+
             <button
               onClick={() => setActiveTab("Tab3")}
               className={`${
                 activeTab === "Tab3"
-                  ? "border-b-2 scale-105 border-black text-black"
-                  : "border-black text-slate-500"
-              } px-3 py-1`}
-            >
-              Highlights
-            </button>
-            <button
-              onClick={() => setActiveTab("Tab4")}
-              className={`${
-                activeTab === "Tab4"
-                  ? "border-b-2 scale-105 border-black text-black"
-                  : "border-black text-slate-500"
-              } px-3 py-1`}
-            >
-              Faqvideo
-            </button>
-
-            <button
-              onClick={() => setActiveTab("Tab5")}
-              className={`${
-                activeTab === "Tab5"
                   ? "border-b-2 scale-105 border-black text-black"
                   : "border-black text-slate-500"
               } px-3 py-1`}
@@ -107,33 +84,19 @@ export default function CreateProduct() {
       <div
         className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
       >
-        <BasicInfoVideo setActiveTab={setActiveTab} videoData={videoData} />
+        <BasicInfoBlog setActiveTab={setActiveTab} blogData={blogData} />
       </div>
-
       <>
         <div
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
-          <OverviewVideo setActiveTab={setActiveTab} videoData={videoData} />
+          <BlogDetailing setActiveTab={setActiveTab} blogData={blogData} />
         </div>
+        {/* for the seo section */}
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
         >
-          <HightlightVideo setActiveTab={setActiveTab} videoData={videoData} />
-        </div>
-        {/* for FAQS */}
-
-        <div
-          className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
-        >
-          <FaqCase setActiveTab={setActiveTab} videoData={videoData} />
-        </div>
-
-        {/* for the seo section */}
-        <div
-          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
-        >
-          <SeoVideo setActiveTab={setActiveTab} videoData={videoData} />
+          <BlogSeo setActiveTab={setActiveTab} blogData={blogData} />
         </div>
       </>
     </AdminLayout>

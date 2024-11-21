@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const caseStudySchema = new mongoose.Schema(
+
+const basicinfoBlogSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -10,14 +11,6 @@ const caseStudySchema = new mongoose.Schema(
       required: true,
     },
     description: {
-      type: String,
-      required: true,
-    },
-    service: {
-      type: String,
-      required: true,
-    },
-    industry: {
       type: String,
       required: true,
     },
@@ -36,5 +29,5 @@ const caseStudySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports =
-  mongoose.models.CaseStudy || mongoose.model("CaseStudy", caseStudySchema);
+export default mongoose.models.Bloginfo ||
+  mongoose.model("Bloginfo", basicinfoBlogSchema);
