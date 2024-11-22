@@ -20,7 +20,7 @@ const Routes = () => {
       <div className="">
         <Hero Heading={Heading} />
       </div>
-      <div className="py-10">
+      <div className="pt-10 pb-0 md:pb-5">
         <Switch />
       </div>
       {/* <div className="flex flex-col lg:flex-row"> */}

@@ -220,11 +220,11 @@
 // };
 
 // export default Filter;
-// main content upper ||||
 
 import language from "@/models/admin/global/language";
 import React, { useState, useEffect } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 // API fetch functions
 const fetchWebinarTypes = async () => {
   const res = await fetch("/api/webinar/webinartype/getwebinar");
@@ -260,10 +260,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
     }
   }, [Heading]);
 
-  // Function to render the filters
   const renderFilters = () => (
-    <div className="bg-white rounded-lg shadow-md p-4">
+    <div className="bg-white rounded-lg overflow-y-auto   shadow-md p-4">
       <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
+      {/* Filter sections */}
 
       {/* Industries */}
       <div className="mb-2 border border-gray-300 rounded p-2">
@@ -279,7 +279,8 @@ const Filter = ({ filterGlobalData, Heading }) => {
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-600"
               />
-              <span className="ml-2 capitalize cursor-pointer text-sm">
+              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
                 {industry?.name}
               </span>
             </label>
@@ -305,7 +306,8 @@ const Filter = ({ filterGlobalData, Heading }) => {
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-600"
               />
-              <span className="ml-2 capitalize cursor-pointer text-sm">
+              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
                 {department?.name}
               </span>
             </label>
@@ -329,7 +331,8 @@ const Filter = ({ filterGlobalData, Heading }) => {
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-blue-600"
               />
-              <span className="ml-2 capitalize cursor-pointer text-sm">
+              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
                 {topic?.name}
               </span>
             </label>
@@ -402,34 +405,47 @@ const Filter = ({ filterGlobalData, Heading }) => {
   return (
     <div>
       {/* Mobile Filter Button */}
+      {/* <button
+        className="md:hidden  bg-red-600 text-white p-3 boredr float-end rounded-lg shadow-lg"
+        onClick={() => setShowModal(true)}
+      > */}
       <button
-        className="md:hidden  bg-red-600 text-white p-3 float-end rounded-lg shadow-lg"
+        className="ml-4 border border-orange-500   float-end  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white"
         onClick={() => setShowModal(true)}
       >
         Filter
       </button>
 
+      {/* <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">
+        Connect Now
+      </button> */}
+
       {/* Modal for Mobile Devices */}
+
       {showModal && (
-        <div className="fixed inset-0 mt-72 items-center flex  justify-center bg-black bg-opacity-50">
-          <div className="bg-white w-11/12 md:w-2/3 lg:w-1/3 p-6 rounded-lg shadow-lg">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">Filter</h2>
+        <div className="fixed top-16 right-0 left-0 bottom-0 bg-black bg-opacity-50 flex justify-center z-20 overflow-y-auto">
+          <div className="relative w-full md:w-2/3 lg:w-1/3    bg-gray-200 p-5 rounded-lg shadow-lg">
+            <div className="flex justify-between items-center mt-5">
+              <div className="flex items-center justify-start">
+                <button
+                  className="px-2 py-1 bg-blue-600 text-white text-sm rounded-lg shadow-md"
+                  onClick={() => setShowModal(false)}
+                >
+                  Apply Filters
+                </button>
+              </div>
+
               <button
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 text-lg"
                 onClick={() => setShowModal(false)}
               >
-                ✕
+                <FontAwesomeIcon icon={faXmarkCircle} />
               </button>
             </div>
-            <div className="space-y-4">{renderFilters()}</div>
-            <div className="flex justify-end mt-6">
-              <button
-                className="px-2 py-1 bg-blue-600 text-white rounded-lg shadow-md"
-                onClick={() => setShowModal(false)}
-              >
-                Apply Filters
-              </button>
+
+            {/* Scrollable Filters */}
+            <div className="space-y-4 max-h-[450px] overflow-y-auto">
+              {renderFilters()}
             </div>
           </div>
         </div>

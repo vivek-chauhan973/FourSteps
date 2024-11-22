@@ -164,15 +164,30 @@ const Nav = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Link href="/">
                 <Image
                   src="/image/logo.png"
                   alt="Brand Logo"
                   className="object-cover"
-                  width={100}
-                  height={100}
+                  width={70}
+                  height={70}
                 />
+              </Link>
+            </div> */}
+
+            <div className="flex items-center">
+              <Link href="/">
+                <div className="w-20 h-14 sm:w-12 sm:h-12 lg:w-24 lg:h-20">
+                  <Image
+                    src="/image/logo.png"
+                    alt="Brand Logo"
+                    className="object-contain"
+                    layout="responsive"
+                    width={100}
+                    height={100}
+                  />
+                </div>
               </Link>
             </div>
 

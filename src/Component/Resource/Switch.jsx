@@ -13,8 +13,8 @@ const Switch = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center py-4">
-        <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex items-center justify-center md:py-4">
+        <div className="flex flex-wrap  gap-4 justify-center">
           {resources.map((resource, index) => (
             <Link key={index} href={resource.href} className="btn_filter">
               {resource.label}
