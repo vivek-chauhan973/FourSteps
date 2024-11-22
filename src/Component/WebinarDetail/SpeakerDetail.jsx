@@ -10,7 +10,7 @@ const Implimentation = ({ speakerdata }) => {
           <div className="flex justify-center md:justify-start">
             {speaker.image && (
               <Image
-                className="rounded-md object-cover"
+                className="rounded object-cover"
                 src={speaker.image.path}
                 alt={speaker.alt || "Speaker Image"}
                 height={300}
@@ -23,7 +23,7 @@ const Implimentation = ({ speakerdata }) => {
             <h2 className="text-lg md:text-xl font-semibold text-gray-800">
               {speaker?.name}
             </h2>
-            <p className="text-gray-600">{speaker?.jobProfile}</p>
+            <p className="text-gray-600 py-2 md:py-0">{speaker?.jobProfile}</p>
             <p className="text-sm "> {speaker?.description}</p>
           </div>
         </div>

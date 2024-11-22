@@ -678,7 +678,7 @@ a:hover span {
 }
 
 .btn_filter {
-  @apply bg-white border border-black rounded-md md:py-2 py-1 md:px-4 px-2 text-lg cursor-pointer transition-transform transform hover:scale-105 hover:bg-gray-200;
+  @apply bg-white border border-black rounded-md md:py-2 py-1 md:px-4 px-2 md:text-lg text-base cursor-pointer transition-transform transform hover:scale-105 hover:bg-gray-200;
 }
 
 /*  specially for ul li becaause of this is not working properllyy start */
@@ -704,5 +704,24 @@ ul {
 
 .rich-text-content ul li,
 .rich-text-content ol li {
-  margin-bottom: 4px;
+  margin-bottom: 1px;
+}
+
+@media (max-width: 768px) {
+  .rich-text-content ul,
+  .rich-text-content ol {
+    padding-left: 15px; /* Reduce padding for smaller screens */
+    margin-top: 3px; /* Adjust spacing above lists */
+  }
+
+   .rich-text-content p{
+    font-size: 14px;
+  }
+
+  .rich-text-content ul li,
+  .rich-text-content ol li {
+    margin-bottom: 2px;
+    font-size: 14px;
+    /* Slightly increase spacing for better readability */
+  }
 }

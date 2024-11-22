@@ -71,7 +71,7 @@ const MainData = ({ Heading }) => {
               key={i}
               className="flex relative justify-center max-w-3xl mx-auto items-center  pb-3"
             >
-              <div className="bg-white shadow-md items-center rounded-lg p-3 mt-5 h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
+              <div className="bg-white shadow-md items-center rounded-lg p-3  h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative">
                 {(item?.selectType === "upcoming" ||
                   item?.selectType === "on-demond") && (
                   <div className="absolute top-2">
@@ -112,14 +112,15 @@ const MainData = ({ Heading }) => {
                       {item?.speaker?.name}
                     </div>
 
-                    <div>
+                    <div className=" ">
                       <p className="text-gray-900 text-sm">
                         Date: {item?.date}
                       </p>
                       <p className="text-gray-900 text-sm">
-                        time: {item?.time}
+                        time: {item?.time}min
                       </p>
                     </div>
+                
                   </div>
                   <Link href={`/resource/${Heading}/${item.title}`}>
                     <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
@@ -296,14 +297,14 @@ const MainData = ({ Heading }) => {
                     sentence that forms a...
                   </p>
                   <div>
-                      <p className="text-gray-900 pt-3 text-sm">Date: 02-10-2024</p>
-                    </div>
+                    <p className="text-gray-900 pt-3 text-sm">
+                      Date: 02-10-2024
+                    </p>
+                  </div>
                 </div>
 
                 <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
-                  <div className="text-center md:text-left">
-                 
-                  </div>
+                  <div className="text-center md:text-left"></div>
                   <Link href="blog/chauhanjeeeeee">
                     <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
                       VIEW DETAILS

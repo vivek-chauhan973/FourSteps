@@ -17,14 +17,14 @@ const CaseHero = () => {
               Case-studies description
             </p>
 
-            <div class="flex  gap-3">
+            <div class="flex  gap-3 justify-center md:justify-start">
               <Link href="/">
-                <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
+                <button class="bg-orange-600 text-white text-xs  py-3 px-3  md:text-lg font-semibold md:py-3 md:px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105 w-full md:w-auto">
                   Book A Discovery Meeting
                 </button>
               </Link>
               <Link href="#">
-                <button class="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105">
+                <button class="bg-orange-600 text-white text-xs  py-3 px-3  md:text-lg font-semibold md:py-3 md:px-6 rounded-full shadow-sm hover:bg-orange-500 transition duration-300 transform hover:scale-105 w-full md:w-auto">
                   Pdf Download
                 </button>
               </Link>

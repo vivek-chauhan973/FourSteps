@@ -23,10 +23,10 @@ const Routes = () => {
       <div className="pt-10 pb-0 md:pb-5">
         <Switch />
       </div>
-      {/* <div className="flex flex-col lg:flex-row"> */}
+      {/* <div className="flex flex-col lg:flex-row">   #F1F5F9 */}
       <div className=" conatiner">
         {Heading === "webinar" && (
-          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+          <div className=" px-7 md:px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] gap-3  md:gap-10 relative">
             <div className="">
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>
@@ -37,7 +37,7 @@ const Routes = () => {
         )}
         {/* for the product */}
         {Heading === "product" && (
-          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+          <div className=" px-7 md:px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] gap-3  md:gap-10 relative">
             <div className="">
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>
@@ -48,7 +48,7 @@ const Routes = () => {
         )}
         {/* for case studies  */}
         {Heading === "case-studies" && (
-          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+          <div className=" px-7 md:px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] gap-3  md:gap-10 relative">
             <div className="">
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>
@@ -60,7 +60,7 @@ const Routes = () => {
 
         {/*  for the video section section   */}
         {Heading === "demo-videos" && (
-          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+          <div className=" px-7 md:px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] gap-3  md:gap-10 relative">
             <div className="">
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>
@@ -71,7 +71,7 @@ const Routes = () => {
         )}
         {/*  for the Blog section   */}
         {Heading === "blog" && (
-          <div className="px-10  grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] py-2 gap-10 relative">
+          <div className=" px-7 md:px-10 grid grid-cols-1 xl:grid-cols-[300px,2fr] bg-[#F1F5F9] gap-3  md:gap-10 relative">
             <div className="">
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>

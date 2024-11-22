@@ -405,20 +405,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
   return (
     <div>
       {/* Mobile Filter Button */}
-      {/* <button
-        className="md:hidden  bg-red-600 text-white p-3 boredr float-end rounded-lg shadow-lg"
-        onClick={() => setShowModal(true)}
-      > */}
-      <button
-        className="ml-4 border border-orange-500   float-end  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white"
-        onClick={() => setShowModal(true)}
-      >
-        Filter
-      </button>
-
-      {/* <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">
-        Connect Now
-      </button> */}
+      <div className=" pt-5 md:pt-0">
+        <button
+          className="md:hidden border border-orange-500     text-white  py-2  px-4  rounded-xl bg-primary "
+          onClick={() => setShowModal(true)}
+        >
+          Filter
+        </button>
+      </div>
 
       {/* Modal for Mobile Devices */}
 
