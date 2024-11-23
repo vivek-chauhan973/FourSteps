@@ -7,15 +7,15 @@ const SeoPro = ({ setActiveTab, productData }) => {
     canonicalUrl: "",
     keyword: "",
   });
-  // useEffect(() => {
-  //   if (webinarData) {
-  //     setIsSEOField({
-  //       tags: webinarData?.webinarSeo?.tags,
-  //       canonicalUrl: webinarData?.webinarSeo?.canonicalUrl,
-  //       keyword: webinarData?.webinarSeo?.keyword,
-  //     });
-  //   }
-  // }, [webinarData]);
+  useEffect(() => {
+    if (productData?.length>0) {
+      setIsSEOField({
+        tags: productData?.[0]?.seo?.tags,
+        canonicalUrl: productData?.[0]?.seo?.canonicalUrl,
+        keyword: productData?.[0]?.seo?.keyword,
+      });
+    }
+  }, [productData]);
 
   const [validationErrors, setValidationErrors] = useState({
     tags: "",
@@ -32,8 +32,20 @@ const SeoPro = ({ setActiveTab, productData }) => {
   };
   const handleSubmitSeoField = async () => {
     try {
-      alert("seo added succefully ");
-      setActiveTab("Tab1");
+      const response = await fetch(`/api/product/productseo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seoData: isSEOField ,product:productData?.[0]?._id}),
+      });
+      if (response.ok) {
+        // setActiveTab("Tab1");
+        alert(productData?" seo data is updated successfully":" seo data is saved is successfully")
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error(error);
     }

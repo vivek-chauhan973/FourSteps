@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-
+import "./Faq";
+import "./Overview";
+import "./Screenshot";
+import "./Highlights";
+import "./Seo";
 const productSchema = new mongoose.Schema(
   {
     title: {
@@ -33,8 +37,29 @@ const productSchema = new mongoose.Schema(
     altText: {
       type: String,
     },
+    faq:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"ProductFaq"
+    },
+    seo:{
+       type:mongoose.Schema.Types.ObjectId,
+      ref:"ProductSeo"
+    },
+    highlight:{
+       type:mongoose.Schema.Types.ObjectId,
+      ref:"ProductHighLights"
+    },
+    overview:{
+      type:mongoose.Schema.Types.ObjectId,
+     ref:"ProductOverview"
+   },
+   screenshot:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"ProductScreenshot"
+   }]
   },
   { timestamps: true }
 );
 
-export default mongoose.models.Product || mongoose.model("Product", productSchema);
+const Product= mongoose.models.Product || mongoose.model("Product", productSchema);
+export default Product;

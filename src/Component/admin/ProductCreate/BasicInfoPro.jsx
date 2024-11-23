@@ -6,6 +6,7 @@ const BasicInfoPro = ({setActiveTab ,productData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const router=useRouter()
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -85,8 +86,8 @@ useEffect(()=>{
     }
 
     try {
-      const response = await fetch("/api/product/product", {
-        method: "POST",
+      const response = await fetch(`/api/product/${productData?.length>0?productData?.[0]?._id:"product"}`, {
+        method: productData?"PUT":"POST",
         body: formDataToSend,
       });
 

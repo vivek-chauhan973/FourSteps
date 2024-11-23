@@ -9,14 +9,11 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 export default function FaqsPro({ productData, setActiveTab }) {
-  // console.log("itinerary : ",itinerary);
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
     []
   );
   const [deletePopup, setDeletePopu] = useState(false);
   const [editorHtml, setEditorHtml] = useState("");
-
- 
   const [itineraryDayWise, setItineraryDayWise] = useState({
     title: "",
     information: "",
@@ -31,6 +28,12 @@ export default function FaqsPro({ productData, setActiveTab }) {
       [name]: value,
     }));
   };
+  useEffect(() => {
+    if (productData?.length>0) {
+      setItineraryDayWiseDataArray(productData?.[0]?.faq?.questions || []);
+     
+    }
+  }, [productData]);
 
   const modules = {
     toolbar: [
@@ -77,9 +80,6 @@ export default function FaqsPro({ productData, setActiveTab }) {
     setEditorHtml(itineraryDayWiseDataArray[index].information);
   };
 
-  // written by code
-  // console.log("package id show is here ", itinerary?._id);
-
   const removeItem = (index) => {
     const updatedArray = itineraryDayWiseDataArray?.filter(
       (_, i) => i !== index
@@ -89,8 +89,20 @@ export default function FaqsPro({ productData, setActiveTab }) {
 
   const handleSave = async () => {
     try {
-      alert("fAQS  data saved");
-      setActiveTab("Tab5");
+      const response = await fetch(`/api/product/productfaq`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions: itineraryDayWiseDataArray ,product:productData?.[0]?._id}),
+      });
+      if (response?.ok) {
+        alert(productData?" faq data is updated successfully":" faq data is saved is successfully")
+        setActiveTab("Tab5");
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");
@@ -162,9 +174,10 @@ export default function FaqsPro({ productData, setActiveTab }) {
                             className="font1 cursor-pointer hover:text-primary"
                             onClick={() => editItem(index)}
                           />
-                          {editingIndex !== index && deletePopup && (
+                          {editingIndex !== index && (
                             <FontAwesomeIcon
                               icon={faTrash}
+                              onClick={() => removeItem(index)}
                               className="font1 cursor-pointer hover:text-red-500"
                             />
                           )}

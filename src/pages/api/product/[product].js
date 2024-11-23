@@ -1,39 +1,122 @@
 import dbConnect from "@/utils/db";
 import Product from "@/models/admin/product/product";
+import multer from "multer";
+import fs from "fs";
+import path from "path";
 
+// Ensure the upload directory exists
+const uploadDirectory = "./public/uploads/product";
+if (!fs.existsSync(uploadDirectory)) {
+  fs.mkdirSync(uploadDirectory, { recursive: true });
+}
 
+// Configure Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadDirectory);
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Generate unique filename
+  },
+});
 
+const upload = multer({ storage });
 
 async function handler(req, res) {
+  await dbConnect();
+  const { product } = req.query; // Extracting product ID from query
 
-const {product}=req.query;
+  // Handle PUT request for updating product
   if (req.method === "PUT") {
-    
-  } else if (req.method === "DELETE") {
-    
-  } else {
-    try {
-        const products = await Product.find({_id:product});
-  
-        if (!products) {
-          return res.status(404).json({
-            success: false,
-            message: "No products found",
-          });
-        }
-  
-        res.status(200).json({ success: true, data: products });
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        res.status(500).json({
-          success: false,
-          message: "Internal server error",
-        });
+    // Using Multer middleware with async handling
+    upload.single("image")(req, {}, async (err) => {
+      if (err) {
+        console.error("File upload error:", err);
+        return res.status(500).json({ success: false, message: "File upload failed" });
       }
+
+      try {
+        const { title, subtitle, description, service, industry, altText } = req.body;
+
+        // Validate the required fields
+        if (!title || !subtitle || !description || !service || !industry || !req.file) {
+          return res.status(400).json({ success: false, message: "All fields are required" });
+        }
+
+        const data = await Product.findById(product); // Find product by ID
+        if (!data) {
+          return res.status(400).json({ success: false, message: "Product not found" });
+        }
+
+        // Remove old file if it exists
+        if (data.filename) {
+          fs.unlinkSync(path.join(uploadDirectory, data.filename));
+        }
+
+        // Update the product with new data and file path
+        const updatedProduct = await Product.findByIdAndUpdate(
+          product, 
+          {
+            $set: {
+              title,
+              subtitle,
+              description,
+              service,
+              industry,
+              path: `/uploads/product/${req.file.filename}`, // Updated image path
+              filename: req.file.filename, // Updated filename
+              altText,
+            }
+          },
+          { new: true } // Return the updated product
+        );
+
+        res.status(200).json({ success: true, message: "Product updated successfully",newProduct: updatedProduct });
+      } catch (error) {
+        console.error("Error updating product:", error);
+        res.status(500).json({ success: false, message: "Internal server error", error });
+      }
+    });
+  }
+  // Handle DELETE request for deleting product
+  else if (req.method === "DELETE") {
+    try {
+      const data = await Product.findByIdAndDelete(product); // Delete the product by ID
+      if (!data) {
+        return res.status(404).json({ success: false, message: "Product not found" });
+      }
+
+      // Remove the associated image file if it exists
+      if (data.filename) {
+        fs.unlinkSync(path.join(uploadDirectory, data.filename));
+      }
+
+      res.status(200).json({ success: true, message: "Product deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      res.status(500).json({ success: false, message: "Internal server error", error });
+    }
+  }
+  // Handle GET request for retrieving a product
+  else if (req.method === "GET") {
+    try {
+      const products = await Product.find({ _id: product }).populate("seo faq highlight overview screenshot");
+      if (!products || products.length === 0) {
+        return res.status(404).json({ success: false, message: "Product not found" });
+      }
+
+      res.status(200).json({ success: true, data: products });
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      res.status(500).json({ success: false, message: "Internal server error", error });
+    }
+  } else {
+    res.status(405).json({ success: false, message: "Method Not Allowed" });
   }
 }
 
 export default handler;
+
 export const config = {
-  api: { bodyParser: false }, // Disable Next.js default body parsing
+  api: { bodyParser: false }, // Disable Next.js default body parsing for handling file uploads
 };

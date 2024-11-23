@@ -8,7 +8,13 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 export default function HightlightPro({productData, setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+  useEffect(()=>{
+   
+    if(productData?.length>0){
+      setAboutEditorHtml(productData?.[0]?.highlight?.description)
+    }
 
+  },[productData])
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -29,8 +35,20 @@ export default function HightlightPro({productData, setActiveTab }) {
 
   const handleSubmit = async () => {
     try {
-      alert("overview data saved");
-      setActiveTab("Tab4");
+      const data=await fetch('/api/product/highlight',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({aboutEditorHtml,product:productData?.[0]?._id})
+       })
+       if(data?.ok){
+        alert("highlight data saved!");
+        setActiveTab("Tab4"); 
+       }
+       else{
+        alert("something went wrong");
+       }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");

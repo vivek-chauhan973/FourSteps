@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
+const fetchAllProducts=async ()=>{
+  return await((await fetch('/api/product/product',{method:"GET"})).json());
+}
 const initialProducts = [
   {
     id: "1",
@@ -31,34 +33,13 @@ const initialProducts = [
 // };
 
 const ListingProduct = () => {
-  // const [webinars, setWebinars] = useState([]);
-  // const [editingId, setEditingId] = useState(null);
-  // const [formData, setFormData] = useState({});
 
-  // const handleEdit = (id) => {
-  //   const webinar = webinars.find((w) => w.id === id);
-  //   setFormData(webinar);
-  //   setEditingId(id);
-  // };
-
-  // useEffect(() => {
-  //   fetchWebinars().then((res) => {
-  //     setWebinars(res || []);
-  //   });
-  // }, []);
-
-  // const handleDelete = async (id) => {
-  //     const data=await fetch(`/api/webinar/${id}`,{
-  //       method:"DELETE"
-  //     })
-  //     if(data?.ok){
-  //       alert("webinar deleted successfully");
-  //       fetchWebinars().then(res=>{setWebinars(res||[])})
-  //     }
-  //     else{
-  //       alert("something went wrong");
-  //     }
-  // };
+  const [products,setProducts]=useState([]);
+useEffect(()=>{
+  fetchAllProducts().then(res=>{console.log("res of products is here -----> ",res?.data);
+    setProducts(res?.data||[])
+  });
+},[])
 
   return (
     <AdminLayout>
@@ -73,7 +54,7 @@ const ListingProduct = () => {
                 Title
               </th>
               <th className="px-6 py-3 text-center border border-black">
-                Webinar Type
+                Service
               </th>
               <th className="px-6 py-3 text-center border border-black">
                 Action
@@ -81,7 +62,7 @@ const ListingProduct = () => {
             </tr>
           </thead>
           <tbody className="bg-white  ">
-            {initialProducts.map((webinar) => (
+            {products.map((webinar) => (
               <tr key={webinar.id} className="border border-black">
                 <td className="px-6 py-3 text-center border border-black">
                   <img
@@ -94,14 +75,13 @@ const ListingProduct = () => {
                   {webinar.title}
                 </td>
                 <td className="px-6 py-3 text-center border border-black">
-                  {webinar.selectType}
+                  {webinar.service}
                 </td>
                 <td className="px-6 py-3 text-center border border-black">
                   <div className="flex justify-center items-center space-x-2">
-                    <Link href="#">
+                    <Link href={`/admin/product/${webinar?._id}`}>
                       <button
                         className="text-blue-500 hover:text-blue-700 transition-colors"
-                        // onClick={() => handleEdit(webinar.id)}
                       >
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
