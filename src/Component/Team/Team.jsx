@@ -74,50 +74,53 @@ const Team = () => {
   return (
     <div className="container mx-auto bg-gray-50">
       {/* Team Section */}
-      <div className="px-6 py-4 ">
-        <h1 className="text-xl md:text-3xl font-bold text-center md:mb-5 mb-2">
+      <div className="px-6 py-8 bg-gray-50">
+        <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">
           Our Biggest Asset is Our Team
         </h1>
-        <p className="text-sm md:text-base leading-6  text-center mb-8 mx-2 md:mx-16">
+        <p className="text-sm md:text-lg leading-6 text-center mb-12 mx-4 md:mx-24 text-gray-600">
           Our team thrives on collaboration and is fueled by a diverse array of
           talent. We actively engage with the creative community, consistently
-          seeking out what s on the horizon, and always maintain a positive and
+          seeking out what’s on the horizon, and always maintain a positive and
           welcoming atmosphere.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 md:px-8 lg:px-16 place-items-center">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:px-8 lg:px-16">
           {allTeamMember?.data?.map((member) => (
             <div
               key={member._id}
-              className="w-full max-w-xs  md:max-w-sm lg:max-w-md h-80 border rounded-lg shadow-lg overflow-hidden"
+              className="w-full max-w-xs h-auto border rounded-lg shadow-lg overflow-hidden bg-white"
             >
-              <div className="w-full h-3/5 p-4">
+              {/* Image Section */}
+              <div className="w-full h-56 p-2 ">
                 <Image
-                  className="w-full h-full rounded-md object-cover"
+                  className="w-full h-full rounded object-cover"
                   src={member?.path}
                   alt={member?.title}
                   width={500}
                   height={500}
                 />
               </div>
-              <div className="w-full h-2/5 px-2">
-                <div className="w-full h-3/5 ">
-                  <div className="font-semibold text-center text-md">
-                    {member?.name}
-                  </div>
-                  <p className="text-gray-700 text-center text-sm">
-                    {member?.designation}
-                  </p>
-                  <p className="text-gray-700  line-clamp-2  px-1 py-1  text-[12px]">
-                    {member?.description}
-                  </p>
-                </div>
-                <div className="w-full h-auto pt-3 flex justify-center items-center space-x-2">
+
+              {/* Info Section */}
+              <div className="px-2 pb-2">
+                <h3 className="font-semibold text-center text-lg">
+                  {member?.name}
+                </h3>
+                <p className="text-gray-500 text-center text-sm mb-2">
+                  {member?.designation}
+                </p>
+                <p className="text-gray-600 text-center text-sm line-clamp-2">
+                  {member?.description}
+                </p>
+                {/* Social Links */}
+                <div className="flex justify-center items-center space-x-3 mt-4">
                   {member?.link1 && (
                     <a
                       href={member?.link1}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full  text-blue-500 text-2xl flex justify-center items-center"
+                      className="text-blue-500 hover:text-blue-600 text-2xl"
                     >
                       <FontAwesomeIcon icon={faLinkedin} />
                     </a>
@@ -127,7 +130,7 @@ const Team = () => {
                       href={member?.link2}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full  text-blue-500 text-2xl flex justify-center items-center"
+                      className="text-blue-400 hover:text-blue-500 text-2xl"
                     >
                       <FontAwesomeIcon icon={faTwitter} />
                     </a>
@@ -138,7 +141,6 @@ const Team = () => {
           ))}
         </div>
       </div>
-      
 
       {/* Team Skills  start*/}
       <div className="w-full h-auto md:px-5 px-5 py-5">

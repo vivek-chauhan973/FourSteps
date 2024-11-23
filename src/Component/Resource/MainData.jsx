@@ -120,7 +120,6 @@ const MainData = ({ Heading }) => {
                         time: {item?.time}min
                       </p>
                     </div>
-                
                   </div>
                   <Link href={`/resource/${Heading}/${item.title}`}>
                     <button className="mt-3 block w-full select-none rounded-lg bg-gradient-to-r from-orange-500 to-red-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none">
@@ -147,7 +146,9 @@ const MainData = ({ Heading }) => {
               </div>
 
               <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
-                <h2 className="text-lg font-bold">Product Title</h2>
+                <h2 className="md:text-lg text-base font-bold">
+                  Product Title
+                </h2>
                 <div className="flex text-gray-800 font-normal mt-1">
                   <span className="mr-2">key points...of Product</span>
                 </div>
@@ -159,12 +160,14 @@ const MainData = ({ Heading }) => {
 
               <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-4">
                 <div className="text-center md:text-left">
-                  <div className="text-primary  text-lg base-1 py-2 font-semibold">
+                  <div className="text-primary  md:text-lg text-base base-1 py-2 font-semibold">
                     services: zoho consulting
                   </div>
 
                   <div>
-                    <p className="text-gre-500  text-base">Industry:industry</p>
+                    <p className="text-gre-500   text-base">
+                      Industry:industry
+                    </p>
                   </div>
                 </div>
 

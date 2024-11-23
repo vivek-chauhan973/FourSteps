@@ -162,7 +162,7 @@ const Nav = () => {
     <>
       <nav className="bg-gray-100 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}
             {/* <div className="flex items-center">
               <Link href="/">
@@ -178,7 +178,7 @@ const Nav = () => {
 
             <div className="flex items-center">
               <Link href="/">
-                <div className="w-20 h-14 sm:w-12 sm:h-12 lg:w-24 lg:h-20">
+                <div className="w-20 h-14 sm:w-20 sm:h-12 lg:w-24 lg:h-20">
                   <Image
                     src="/image/logo.png"
                     alt="Brand Logo"
@@ -256,7 +256,7 @@ const Nav = () => {
                 </li>
               </ul>
 
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
+              <button className="bg-orange-500  hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
                 Talk to Us
               </button>
             </div>
@@ -265,7 +265,7 @@ const Nav = () => {
             <div className="flex md:hidden">
               <button
                 type="button"
-                className="w-full text-left text-gray-700 hover:text-black px-4 py-2 text-sm font-medium flex items-center justify-between"
+                className="w-full text-left text-gray-700 hover:text-black px-1 md:px-0 py-2 text-sm font-medium flex items-center justify-between"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? (
