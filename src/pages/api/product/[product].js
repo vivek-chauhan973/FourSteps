@@ -7,7 +7,8 @@ import ProductOverview from "@/models/admin/product/Overview";
 import ProductHighLights from "@/models/admin/product/Highlights";
 import ProductFaq from "@/models/admin/product/Faq";
 import ProductSeo from "@/models/admin/product/Seo";
-
+import ProductScreenshot from "@/models/admin/product/Screenshot";
+const uploadDirectory1 = "./public/uploads/product/screenshot";
 // Ensure the upload directory exists
 const uploadDirectory = "./public/uploads/product";
 if (!fs.existsSync(uploadDirectory)) {
@@ -36,20 +37,34 @@ async function handler(req, res) {
     upload.single("image")(req, {}, async (err) => {
       if (err) {
         console.error("File upload error:", err);
-        return res.status(500).json({ success: false, message: "File upload failed" });
+        return res
+          .status(500)
+          .json({ success: false, message: "File upload failed" });
       }
 
       try {
-        const { title, subtitle, description, service, industry, altText } = req.body;
+        const { title, subtitle, description, service, industry, altText } =
+          req.body;
 
         // Validate the required fields
-        if (!title || !subtitle || !description || !service || !industry || !req.file) {
-          return res.status(400).json({ success: false, message: "All fields are required" });
+        if (
+          !title ||
+          !subtitle ||
+          !description ||
+          !service ||
+          !industry ||
+          !req.file
+        ) {
+          return res
+            .status(400)
+            .json({ success: false, message: "All fields are required" });
         }
 
         const data = await Product.findById(product); // Find product by ID
         if (!data) {
-          return res.status(400).json({ success: false, message: "Product not found" });
+          return res
+            .status(400)
+            .json({ success: false, message: "Product not found" });
         }
 
         // Remove old file if it exists
@@ -59,7 +74,7 @@ async function handler(req, res) {
 
         // Update the product with new data and file path
         const updatedProduct = await Product.findByIdAndUpdate(
-          product, 
+          product,
           {
             $set: {
               title,
@@ -70,72 +85,116 @@ async function handler(req, res) {
               path: `/uploads/product/${req.file.filename}`, // Updated image path
               filename: req.file.filename, // Updated filename
               altText,
-            }
+            },
           },
           { new: true } // Return the updated product
         );
 
-        res.status(200).json({ success: true, message: "Product updated successfully",newProduct: updatedProduct });
+        res
+          .status(200)
+          .json({
+            success: true,
+            message: "Product updated successfully",
+            newProduct: updatedProduct,
+          });
       } catch (error) {
         console.error("Error updating product:", error);
-        res.status(500).json({ success: false, message: "Internal server error", error });
+        res
+          .status(500)
+          .json({ success: false, message: "Internal server error", error });
       }
     });
   }
   // Handle DELETE request for deleting product
   else if (req.method === "DELETE") {
     try {
-      const data = await Product.findOne({_id:product}); // Delete the product by ID
+      if (!product) {
+        return res.status(400).json({ success: false, message: "Product ID is required" });
+      }
+  
+      const data = await Product.findOne({ _id: product }); // Find product by ID
       if (!data) {
         return res.status(404).json({ success: false, message: "Product not found" });
       }
-      // Remove the associated image file if it exists
+  
       if (data?.filename) {
         fs.unlinkSync(path.join(uploadDirectory, data.filename));
       }
-      if(data?.hasOwnProperty("overview")&&data?.overview){
-           const overviewData=await ProductOverview.findOneAndDelete({_id:data?.overview});
-           if(!overviewData){
-            return res.status(304).json({ success: false, message: "Something went wrong" });
-           }
-      }
-      if(data?.hasOwnProperty("highlight")&&data?.highlight){
-        const highlightData=await ProductHighLights.findOneAndDelete({_id:data?.highlight});
-        if(!highlightData){
-         return res.status(304).json({ success: false, message: "Something went wrong" });
+  
+      if (data?.overview) {
+        const overviewData = await ProductOverview.findOneAndDelete({ _id: data?.overview });
+        if (!overviewData) {
+          return res.status(500).json({ success: false, message: "Failed to delete product overview" });
         }
-   }
-   if(data?.hasOwnProperty("faq")&& data?.faq){
-    const faqData=await ProductFaq.findOneAndDelete({_id:data?.faq});
-    if(!faqData){
-     return res.status(304).json({ success: false, message: "Something went wrong" });
-    }
-}
-if(data?.hasOwnProperty("seo")&& data?.seo){
-  const seoData=await ProductSeo.findOneAndDelete({_id:data?.seo});
-  if(!seoData){
-   return res.status(304).json({ success: false, message: "Something went wrong" });
-  }
-}
+      }
+  
+      if (data?.highlight) {
+        const highlightData = await ProductHighLights.findOneAndDelete({ _id: data?.highlight });
+        if (!highlightData) {
+          return res.status(500).json({ success: false, message: "Failed to delete product highlight" });
+        }
+      }
+  
+      if (data?.faq) {
+        const faqData = await ProductFaq.findOneAndDelete({ _id: data?.faq });
+        if (!faqData) {
+          return res.status(500).json({ success: false, message: "Failed to delete product FAQ" });
+        }
+      }
+  
+      if (data?.seo) {
+        const seoData = await ProductSeo.findOneAndDelete({ _id: data?.seo });
+        if (!seoData) {
+          return res.status(500).json({ success: false, message: "Failed to delete product SEO data" });
+        }
+      }
+  
+      if (data?.screenshot) {
 
-      res.status(200).json({ success: true, message: "Product deleted successfully" });
+        for(const item of data?.screenshot ){
+          const screenshotData = await ProductScreenshot.findOne({ _id: item });
+          if (!screenshotData) {
+            return res.status(500).json({ success: false, message: "Failed to found product screenshot" });
+          }
+          if (screenshotData?.filename) {
+            fs.unlinkSync(path.join(uploadDirectory1, screenshotData?.filename));
+          }
+
+           await ProductScreenshot.findOneAndDelete({ _id: item });
+        
+        }
+        console.log("Product screenshot deleted successfully",data?.screenshot);
+      }
+  
+      // Finally, delete the product itself
+      await Product.deleteOne({ _id: product });
+  
+      res.status(200).json({ success: true, message: "Product and related data deleted successfully" });
+      
     } catch (error) {
       console.error("Error deleting product:", error);
       res.status(500).json({ success: false, message: "Internal server error", error });
     }
   }
+  
   // Handle GET request for retrieving a product
   else if (req.method === "GET") {
     try {
-      const products = await Product.find({ _id: product }).populate("seo faq highlight overview screenshot");
+      const products = await Product.find({ _id: product }).populate(
+        "seo faq highlight overview screenshot"
+      );
       if (!products || products.length === 0) {
-        return res.status(404).json({ success: false, message: "Product not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Product not found" });
       }
 
       res.status(200).json({ success: true, data: products });
     } catch (error) {
       console.error("Error fetching product:", error);
-      res.status(500).json({ success: false, message: "Internal server error", error });
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error", error });
     }
   } else {
     res.status(405).json({ success: false, message: "Method Not Allowed" });

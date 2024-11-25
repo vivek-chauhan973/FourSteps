@@ -16,7 +16,18 @@ useEffect(()=>{
   });
 },[])
 const handleDelete=async (id)=>{
+  const data=await fetch(`/api/product/${id}`,{
+    method:"DELETE"
+  })
   console.log("handle deleted ----> ",id);
+  if(data?.ok){
+    alert("data deleted successfully")
+    fetchAllProducts().then(res=>{
+      setProducts(res?.data||[])
+    });
+  }else{
+    alert("something went wrong")
+  }
 }
 
 
