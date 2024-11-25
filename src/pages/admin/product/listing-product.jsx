@@ -6,40 +6,19 @@ import Link from "next/link";
 const fetchAllProducts=async ()=>{
   return await((await fetch('/api/product/product',{method:"GET"})).json());
 }
-const initialProducts = [
-  {
-    id: "1",
-    image: "https://via.placeholder.com/100",
-    title: "zoho Webinar",
-    type: "upcoming",
-  },
-  {
-    id: "2",
-    image: "https://via.placeholder.com/100",
-    title: "hubspot",
-    type: "recorded",
-  },
-  {
-    id: "3",
-    image: "https://via.placeholder.com/100",
-    title: "werty",
-    type: "xcvbnm,",
-  },
-  // Adding new static webinars directly into the initialWebinars array
-];
-
-// const fetchWebinars = async () => {
-//   return await (await fetch("/api/webinar/webinar")).json();
-// };
 
 const ListingProduct = () => {
 
   const [products,setProducts]=useState([]);
 useEffect(()=>{
-  fetchAllProducts().then(res=>{console.log("res of products is here -----> ",res?.data);
+  fetchAllProducts().then(res=>{
     setProducts(res?.data||[])
   });
 },[])
+const handleDelete=async (id)=>{
+  console.log("handle deleted ----> ",id);
+}
+
 
   return (
     <AdminLayout>
@@ -88,7 +67,7 @@ useEffect(()=>{
                     </Link>
                     <button
                       className="text-red-500 hover:text-red-700 transition-colors"
-                      // onClick={() => handleDelete(webinar._id)}
+                      onClick={() => handleDelete(webinar._id)}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </button>

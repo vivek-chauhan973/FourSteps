@@ -3,6 +3,10 @@ import Product from "@/models/admin/product/product";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
+import ProductOverview from "@/models/admin/product/Overview";
+import ProductHighLights from "@/models/admin/product/Highlights";
+import ProductFaq from "@/models/admin/product/Faq";
+import ProductSeo from "@/models/admin/product/Seo";
 
 // Ensure the upload directory exists
 const uploadDirectory = "./public/uploads/product";
@@ -81,15 +85,38 @@ async function handler(req, res) {
   // Handle DELETE request for deleting product
   else if (req.method === "DELETE") {
     try {
-      const data = await Product.findByIdAndDelete(product); // Delete the product by ID
+      const data = await Product.findOne({_id:product}); // Delete the product by ID
       if (!data) {
         return res.status(404).json({ success: false, message: "Product not found" });
       }
-
       // Remove the associated image file if it exists
-      if (data.filename) {
+      if (data?.filename) {
         fs.unlinkSync(path.join(uploadDirectory, data.filename));
       }
+      if(data?.hasOwnProperty("overview")&&data?.overview){
+           const overviewData=await ProductOverview.findOneAndDelete({_id:data?.overview});
+           if(!overviewData){
+            return res.status(304).json({ success: false, message: "Something went wrong" });
+           }
+      }
+      if(data?.hasOwnProperty("highlight")&&data?.highlight){
+        const highlightData=await ProductHighLights.findOneAndDelete({_id:data?.highlight});
+        if(!highlightData){
+         return res.status(304).json({ success: false, message: "Something went wrong" });
+        }
+   }
+   if(data?.hasOwnProperty("faq")&& data?.faq){
+    const faqData=await ProductFaq.findOneAndDelete({_id:data?.faq});
+    if(!faqData){
+     return res.status(304).json({ success: false, message: "Something went wrong" });
+    }
+}
+if(data?.hasOwnProperty("seo")&& data?.seo){
+  const seoData=await ProductSeo.findOneAndDelete({_id:data?.seo});
+  if(!seoData){
+   return res.status(304).json({ success: false, message: "Something went wrong" });
+  }
+}
 
       res.status(200).json({ success: true, message: "Product deleted successfully" });
     } catch (error) {

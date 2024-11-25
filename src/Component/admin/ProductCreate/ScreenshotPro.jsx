@@ -171,7 +171,7 @@ function ScreenshotPro({ setActiveTab, productData }) {
         {/* Listing Entries */}
         <div>
           <h3 className="text-lg font-bold mb-4">Entries</h3>
-          {entries.length === 0 ? (
+          {entries?.length === 0 ? (
             <p className="text-sm text-gray-500">No entries added yet.</p>
           ) : (
             <table className="w-full border border-gray-300 text-sm text-gray-700">
@@ -184,7 +184,7 @@ function ScreenshotPro({ setActiveTab, productData }) {
                 </tr>
               </thead>
               <tbody>
-                {entries.map((entry, index) => (
+                {entries?.map((entry, index) => (
                   <tr key={index} className="text-center">
                     <td className="p-2 border">
                       <Image
