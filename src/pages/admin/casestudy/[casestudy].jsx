@@ -7,25 +7,26 @@ import HightlightCase from "@/Component/admin/CaseStudies/HightlightCase";
 import FaqCase from "@/Component/admin/CaseStudies/FaqCase";
 import Visuals from "@/Component/admin/CaseStudies/Visuals";
 import SeoCase from "@/Component/admin/CaseStudies/SeoCase";
+import ResultMatrix from "@/Component/admin/CaseStudies/ResultMatrix";
 
-// const fetchIDProduct = async (product) => {
-//   const data = await fetch(`/api/product/${product}`);
-//   return await data.json();
-// };
+const fetchIDProduct = async (product) => {
+  const data = await fetch(`/api/casestudy/${product}`);
+  return await data.json();
+};
 export default function CreateProduct() {
   const router = useRouter();
-  // const { case} = router?.query;
+  const { casestudy} = router?.query;
   const [casestudyData, setCasestudyData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 
-  // useEffect(() => {
-  //   if (product) {
-  //     fetchIDProduct(product).then((res) => {
-  //       // console.log("res of product data is here ----> ",res)
-  //       setcasestudyData(res?.data || null);
-  //     });
-  //   }
-  // }, [product, activeTab]);
+  useEffect(() => {
+    if (casestudy) {
+      fetchIDProduct(casestudy).then((res) => {
+        // console.log("res of product data is here ----> ",res)
+        setCasestudyData(res?.data || null);
+      });
+    }
+  }, [casestudy, activeTab]);
 
   // Function to switch to the next tab
   useEffect(() => {
@@ -39,6 +40,9 @@ export default function CreateProduct() {
       setActiveTab("Tab5");
     } else if (activeTab === "Tab5") {
       setActiveTab("Tab6");
+    }
+    else if (activeTab === "Tab6") {
+      setActiveTab("Tab7");
     }
   }, []);
 
@@ -81,7 +85,7 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Highlights
+              challenge & Solution
             </button>
             <button
               onClick={() => setActiveTab("Tab4")}
@@ -91,7 +95,7 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              visuals
+              Rsults & Matrix
             </button>
             <button
               onClick={() => setActiveTab("Tab5")}
@@ -101,12 +105,22 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              FaqCase
+              visuals
             </button>
             <button
               onClick={() => setActiveTab("Tab6")}
               className={`${
                 activeTab === "Tab6"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              FaqCase
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab7")}
+              className={`${
+                activeTab === "Tab7"
                   ? "border-b-2 scale-105 border-black text-black"
                   : "border-black text-slate-500"
               } px-3 py-1`}
@@ -144,23 +158,31 @@ export default function CreateProduct() {
             casestudyData={casestudyData}
           />
         </div>
+        <div
+          className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
+        >
+          <ResultMatrix
+            setActiveTab={setActiveTab}
+            casestudyData={casestudyData}
+          />
+        </div>
         {/* for FAQS */}
 
         <div
-          className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
         >
           <Visuals setActiveTab={setActiveTab} casestudyData={casestudyData} />
         </div>
 
         {/* for the ScreenShot  */}
         <div
-          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
         >
           <FaqCase setActiveTab={setActiveTab} casestudyData={casestudyData} />
         </div>
         {/* for the seo section */}
         <div
-          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab7" ? "block" : "hidden"}`}
         >
           <SeoCase setActiveTab={setActiveTab} casestudyData={casestudyData} />
         </div>

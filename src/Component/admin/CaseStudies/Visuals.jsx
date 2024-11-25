@@ -1,74 +1,114 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-
-function Visuals({ setActiveTab, productData }) {
+const fetchallScreenshotData = async (id) => {
+  const data = await fetch(`/api/casestudy/visuals?id=${id}`, {
+    method: "GET",
+  });
+  return await data.json();
+};
+// const fetchScreenShotById = async (id) => {
+//   const data = await fetch(`/api/product/screenshot1/${id}`);
+//   return await data.json();
+// };
+function Visuals({ setActiveTab, casestudyData }) {
   const [entries, setEntries] = useState([]);
   const [image, setImage] = useState(null);
+  const [fileData, setFileData] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
+  // const [screenId,setScreenId]=useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setFileData(file || null);
       const reader = new FileReader();
       reader.onload = () => setImage(reader.result);
       reader.readAsDataURL(file);
     }
   };
 
-  const handleAddEntry = () => {
-    if (image && title && description) {
-      const newEntry = { image, title, description };
+  useEffect(() => {
+    if (casestudyData?.length > 0) {
+      fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
+        // console.log("res of images====> ",res)
+        setEntries(res?.data);
+      });
+    }
+  }, [casestudyData]);
 
-      if (editingIndex !== null) {
-        // Update existing entry
-        const updatedEntries = [...entries];
-        updatedEntries[editingIndex] = newEntry;
-        setEntries(updatedEntries);
-        setEditingIndex(null);
+  const handleAddEntry = async () => {
+    try {
+      if (fileData && title && description) {
+        const newEntry = { image, title, description };
+        const formData = new FormData();
+        formData.append("file", fileData);
+        formData.append("title", title);
+        formData.append("description", description);
+        if (casestudyData.length > 0) {
+          formData.append("casestudy", casestudyData?.[0]?._id || null);
+        }
+        const data = await fetch(`/api/casestudy/visuals`, {
+          method: "POST",
+          body: formData,
+        });
+        if (data?.ok) {
+          alert(
+            editingIndex !== null
+              ? "data updated successfully"
+              : "data saved successfully"
+          );
+          if (casestudyData?.length > 0) {
+            fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
+              setEntries(res?.data);
+            });
+          }
+        } else {
+          alert("data has not saved");
+        }
       } else {
-        // Add new entry
-        setEntries([...entries, newEntry]);
+        alert("Please fill all fields before adding.");
       }
-
-      // Reset form
-      setImage(null);
-      setTitle("");
-      setDescription("");
-    } else {
-      alert("Please fill all fields before adding.");
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
-  const handleEditEntry = (index) => {
-    const entryToEdit = entries[index];
-    setImage(entryToEdit.image);
-    setTitle(entryToEdit.title);
-    setDescription(entryToEdit.description);
-    setEditingIndex(index);
-  };
+  // const handleEditEntry = (id) => {
 
-  const handleDeleteEntry = (index) => {
-    const updatedEntries = entries.filter((_, i) => i !== index);
-    setEntries(updatedEntries);
+  //   fetchScreenShotById(id).then(res=>{
+  //     setImage(res?.data?.path);
+  //   setTitle(res?.data?.title);
+  //   setDescription(res?.data?.description);
+  //   setScreenId(res?.data?._id||null)
+  //   setEditingIndex(res?.data)
+  //   })
+
+  // };
+  const handleDeleteEntry = async (id) => {
+    const data = await fetch(`/api/casestudy/visuals?id=${id}`, {
+      method: "DELETE",
+    });
+    if (data?.ok) {
+      alert("item is successfully deleted");
+      if (casestudyData?.length > 0) {
+        fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
+          setEntries(res?.data);
+        });
+      }
+    } else {
+      alert("something went wrong to delete the item");
+    }
   };
 
   const handleSubmitAll = () => {
-    if (entries.length === 0) {
-      alert("No entries added yet. Please add entries before submitting.");
-      return;
-    }
-
-    console.log("Submitted Entries:", entries);
-
-    // Clear entries after submission
-    setEntries([]);
-    alert("Screenshot saved successfully!");
-    setActiveTab("Tab5");
+    setActiveTab("Tab6");
   };
+
+  // console.log("editing index  ,..........",editingIndex)
 
   return (
     <>
@@ -141,7 +181,7 @@ function Visuals({ setActiveTab, productData }) {
         {/* Listing Entries */}
         <div>
           <h3 className="text-lg font-bold mb-4">Entries</h3>
-          {entries.length === 0 ? (
+          {entries?.length === 0 ? (
             <p className="text-sm text-gray-500">No entries added yet.</p>
           ) : (
             <table className="w-full border border-gray-300 text-sm text-gray-700">
@@ -154,11 +194,11 @@ function Visuals({ setActiveTab, productData }) {
                 </tr>
               </thead>
               <tbody>
-                {entries.map((entry, index) => (
+                {entries?.map((entry, index) => (
                   <tr key={index} className="text-center">
                     <td className="p-2 border">
                       <Image
-                        src={entry.image}
+                        src={entry.path}
                         alt={entry.title}
                         className="w-20 h-20 object-cover"
                         height={100}
@@ -168,14 +208,14 @@ function Visuals({ setActiveTab, productData }) {
                     <td className="p-2 border">{entry.title}</td>
                     <td className="p-2 border">{entry.description}</td>
                     <td className="p-2 border">
-                      <button
-                        onClick={() => handleEditEntry(index)}
+                      {/* <button
+                        onClick={() => handleEditEntry(entry?._id)}
                         className="text-blue-500 hover:underline mr-2"
                       >
                         <FontAwesomeIcon icon={faEdit} />
-                      </button>
+                      </button> */}
                       <button
-                        onClick={() => handleDeleteEntry(index)}
+                        onClick={() => handleDeleteEntry(entry?._id)}
                         className="text-red-500 hover:underline"
                       >
                         <FontAwesomeIcon icon={faTrash} />

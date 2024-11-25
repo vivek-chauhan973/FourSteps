@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-
 // Dynamically load React-Quill for SSR compatibility
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
 
-export default function OverviewCase({ setActiveTab, casestudyData }) {
+export default function OverviewCase({ setActiveTab,casestudyData }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+
+  useEffect(()=>{
+   
+    if(casestudyData?.length>0){
+      setAboutEditorHtml(casestudyData?.[0]?.overview?.description)
+    }
+
+  },[casestudyData])
 
   const modules = {
     toolbar: [
@@ -30,10 +37,25 @@ export default function OverviewCase({ setActiveTab, casestudyData }) {
   };
 
   const handleSubmit = async () => {
+ 
+
     try {
       // Simulate saving data
-      alert("Overview data saved!");
-      setActiveTab("Tab3"); // Switch to the next tab
+      const data=await fetch('/api/casestudy/overview',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({aboutEditorHtml,casestudy:casestudyData?.[0]?._id})
+       })
+       if(data?.ok){
+        alert("Overview data saved!");
+        setActiveTab("Tab3"); 
+       }
+       else{
+        alert("something went wrong");
+       }
+      // Switch to the next tab
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");

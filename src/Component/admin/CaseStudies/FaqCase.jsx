@@ -8,14 +8,12 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function FaqCase({ productData, setActiveTab }) {
-  // console.log("itinerary : ",itinerary);
+export default function FaqCase({ casestudyData, setActiveTab }) {
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
     []
   );
   const [deletePopup, setDeletePopu] = useState(false);
   const [editorHtml, setEditorHtml] = useState("");
-
   const [itineraryDayWise, setItineraryDayWise] = useState({
     title: "",
     information: "",
@@ -30,6 +28,12 @@ export default function FaqCase({ productData, setActiveTab }) {
       [name]: value,
     }));
   };
+  useEffect(() => {
+    if (casestudyData?.length>0) {
+      setItineraryDayWiseDataArray(casestudyData?.[0]?.faq?.questions || []);
+     
+    }
+  }, [casestudyData]);
 
   const modules = {
     toolbar: [
@@ -76,9 +80,6 @@ export default function FaqCase({ productData, setActiveTab }) {
     setEditorHtml(itineraryDayWiseDataArray[index].information);
   };
 
-  // written by code
-  // console.log("package id show is here ", itinerary?._id);
-
   const removeItem = (index) => {
     const updatedArray = itineraryDayWiseDataArray?.filter(
       (_, i) => i !== index
@@ -88,8 +89,20 @@ export default function FaqCase({ productData, setActiveTab }) {
 
   const handleSave = async () => {
     try {
-      alert("fAQS  data saved");
-      setActiveTab("Tab6");
+      const response = await fetch(`/api/casestudy/casefaq`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions: itineraryDayWiseDataArray ,casestudy:casestudyData?.[0]?._id}),
+      });
+      if (response?.ok) {
+        alert(casestudyData?" faq data is updated successfully":" faq data is saved is successfully")
+        setActiveTab("Tab7");
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");
@@ -161,9 +174,10 @@ export default function FaqCase({ productData, setActiveTab }) {
                             className="font1 cursor-pointer hover:text-primary"
                             onClick={() => editItem(index)}
                           />
-                          {editingIndex !== index && deletePopup && (
+                          {editingIndex !== index && (
                             <FontAwesomeIcon
                               icon={faTrash}
+                              onClick={() => removeItem(index)}
                               className="font1 cursor-pointer hover:text-red-500"
                             />
                           )}

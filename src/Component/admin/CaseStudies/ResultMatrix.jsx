@@ -6,12 +6,12 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function HightlightCase({casestudyData, setActiveTab }) {
+const ResultMatrix=({casestudyData, setActiveTab })=> {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
   useEffect(()=>{
    
     if(casestudyData?.length>0){
-      setAboutEditorHtml(casestudyData?.[0]?.chalenges?.description)
+      setAboutEditorHtml(casestudyData?.[0]?.result?.description)
     }
 
   },[casestudyData])
@@ -35,7 +35,7 @@ export default function HightlightCase({casestudyData, setActiveTab }) {
 
   const handleSubmit = async () => {
     try {
-      const data=await fetch('/api/casestudy/chalenges',{
+      const data=await fetch('/api/casestudy/result',{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -43,8 +43,8 @@ export default function HightlightCase({casestudyData, setActiveTab }) {
         body:JSON.stringify({aboutEditorHtml,casestudy:casestudyData?.[0]?._id})
        })
        if(data?.ok){
-        alert("challenge & Solution data saved!");
-        setActiveTab("Tab4"); 
+        alert("Rsults & Matrix data saved!");
+        setActiveTab("Tab5"); 
        }
        else{
         alert("something went wrong");
@@ -81,3 +81,4 @@ export default function HightlightCase({casestudyData, setActiveTab }) {
     </div>
   );
 }
+export default ResultMatrix

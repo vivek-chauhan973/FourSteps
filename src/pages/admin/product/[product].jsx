@@ -41,6 +41,8 @@ export default function CreateProduct() {
     } else if (activeTab === "Tab5") {
       setActiveTab("Tab6");
     }
+   
+    
   }, []);
 
   return (

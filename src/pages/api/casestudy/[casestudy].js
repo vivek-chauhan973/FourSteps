@@ -8,6 +8,7 @@ import CaseChalenge from "@/models/admin/casestudy/Chalenges";
 import CaseFaq from "@/models/admin/casestudy/Faq";
 import CaseSeo from "@/models/admin/casestudy/Seo";
 import CaseVisual from "@/models/admin/casestudy/Visuals";
+import ResultMatrix from "@/models/admin/casestudy/ResultMatrix";
 
 const uploadDirectory1 = "./public/uploads/casestudy/visuals";
 // Ensure the upload directory exists
@@ -83,7 +84,7 @@ async function handler(req, res) {
               description,
               service,
               industry,
-              path: `/uploads/product/${req.file.filename}`, // Updated image path
+              path: `/uploads/casestudy/${req.file.filename}`, // Updated image path
               filename: req.file.filename, // Updated filename
               altText,
             },
@@ -135,6 +136,13 @@ async function handler(req, res) {
           return res.status(500).json({ success: false, message: "Failed to delete product highlight" });
         }
       }
+      
+      if (data?.result) {
+        const highlightData = await ResultMatrix.findOneAndDelete({ _id: data?.result });
+        if (!highlightData) {
+          return res.status(500).json({ success: false, message: "Failed to delete product highlight" });
+        }
+      }
   
       if (data?.faq) {
         const faqData = await CaseFaq.findOneAndDelete({ _id: data?.faq });
@@ -182,7 +190,7 @@ async function handler(req, res) {
   else if (req.method === "GET") {
     try {
       const products = await CaseStudy.find({ _id: casestudy }).populate(
-        "seo faq chalenges overview visuals"
+        "seo faq chalenges overview visuals result"
       );
       if (!products || products.length === 0) {
         return res

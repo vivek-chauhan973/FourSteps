@@ -35,16 +35,10 @@ async function handler(req, res) {
       }
 
       try {
-        const { title, description ,casestudy} =
-          req.body;
+        const { title, description, casestudy } = req.body;
 
         // Validate the required fields
-        if (
-          !title ||
-          !description ||
-          !req.file||
-          !casestudy
-        ) {
+        if (!title || !description || !req.file || !casestudy) {
           return res
             .status(400)
             .json({ success: false, message: "All fields are required" });
@@ -57,68 +51,73 @@ async function handler(req, res) {
           path: `/uploads/casestudy/visuals/${req.file.filename}`,
           filename: req.file.filename,
         });
-        if(!newProduct){
-            return res
+        if (!newProduct) {
+          return res
             .status(301)
             .json({ success: true, message: "something went wrong" });
         }
-        await CaseStudy.findByIdAndUpdate({_id:casestudy},{$push:{visuals:newProduct?._id}})
+        await CaseStudy.findByIdAndUpdate(
+          { _id: casestudy },
+          { $push: { visuals: newProduct?._id } }
+        );
         res
           .status(201)
-          .json({ success: true, message: "Product created successfully" ,newProduct});
+          .json({
+            success: true,
+            message: "Product created successfully",
+            newProduct,
+          });
       } catch (error) {
         res
           .status(500)
-          .json({ success: false, message: "Internal server error" ,error});
+          .json({ success: false, message: "Internal server error", error });
       }
     });
-  }
-  else if(req.method === "DELETE"){
-    const {id}=req.query;
+  } else if (req.method === "DELETE") {
+    const { id } = req.query;
     try {
-      const data=await CaseVisual.findOne({_id:id});
-      if(!data){
-        return res.status(404).json({message:"data not found"});
+      const data = await CaseVisual.findOne({ _id: id });
+      if (!data) {
+        return res.status(404).json({ message: "data not found" });
       }
       if (data.filename) {
         fs.unlinkSync(path.join(uploadDirectory, data.filename));
       }
-      const productData=await CaseStudy.findOne({_id:data?.casestudy});
-      if(!productData){
-        return res.status(404).json({message:"data not found"});
+      const productData = await CaseStudy.findOne({ _id: data?.casestudy });
+      if (!productData) {
+        return res.status(404).json({ message: "data not found" });
       }
-      const screenshot1=productData?.visuals;
-      const newscreen=screenshot1.filter(item=>item!==data?._id);
-      if(newscreen?.length>0){
-      await CaseStudy.findOneAndUpdate({_id:data?.casestudy},{$set:{visuals:newscreen}})
+      const screenshot1 = productData?.visuals;
+      const newscreen = screenshot1.filter((item) => item !== data?._id);
+      if (newscreen?.length > 0) {
+        await CaseStudy.findOneAndUpdate(
+          { _id: data?.casestudy },
+          { $set: { visuals: newscreen } }
+        );
       }
 
-      const deletedItem=await CaseVisual.findOneAndDelete({_id:id});
-      if(!deletedItem){
-        return res.status(404).json({message:"data not deleted"});
+      const deletedItem = await CaseVisual.findOneAndDelete({ _id: id });
+      if (!deletedItem) {
+        return res.status(404).json({ message: "data not deleted" });
       }
-      return res.status(200).json({message:"data  deleted successfully"});
-
-      
+      return res.status(200).json({ message: "data  deleted successfully" });
     } catch (error) {
       res
-          .status(500)
-          .json({ success: false, message: "Internal server error" ,error});
+        .status(500)
+        .json({ success: false, message: "Internal server error", error });
     }
-
-  }
-  else if (req.method === "GET") {
-    const {id}=req.query;
+  } else if (req.method === "GET") {
+    const { id } = req.query;
     try {
-      const products = await ProductScreenshot.find({casestudy:id}).sort({ createdAt: -1 });
-
+      const products = await CaseVisual.find({ casestudy: id }).sort({
+        createdAt: -1,
+      });
       if (!products || products.length === 0) {
         return res.status(404).json({
           success: false,
           message: "No products found",
         });
       }
-
       res.status(200).json({ success: true, data: products });
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -134,5 +133,5 @@ async function handler(req, res) {
 
 export default handler;
 export const config = {
-  api: { bodyParser: false }, // Disable Next.js default body parsing
+  api: { bodyParser: false },
 };

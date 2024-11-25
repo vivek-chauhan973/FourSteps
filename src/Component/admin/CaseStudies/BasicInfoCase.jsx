@@ -2,10 +2,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
+const BasicInfoCase = ({setActiveTab ,casestudyData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const router = useRouter();
+  const router=useRouter()
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -14,20 +15,19 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
     industry: "",
     altText: "",
   });
-  //   useEffect(() => {
-  //     console.log("product response is here --> ", productData);
-  //     if (productData) {
-  //       setFormData({
-  //         title: productData?.[0]?.title || "",
-  //         description: productData?.[0]?.description || "",
-  //         subtitle: productData?.[0]?.subtitle || "",
-  //         service: productData?.[0]?.service || "",
-  //         industry: productData?.[0]?.industry || "",
-  //         altText: productData?.[0]?.altText || "",
-  //       });
-  //       setPreview(productData?.[0]?.path || "");
-  //     }
-  //   }, [productData]);
+useEffect(()=>{
+  console.log("product response is here --> ", casestudyData);
+  if(casestudyData){
+  setFormData({
+    title: casestudyData?.[0]?.title||"",
+    description: casestudyData?.[0]?.description||"",
+    subtitle: casestudyData?.[0]?.subtitle||"",
+    service: casestudyData?.[0]?.service||"",
+    industry: casestudyData?.[0]?.industry||"",
+    altText: casestudyData?.[0]?.altText||"",
+  })
+  setPreview(casestudyData?.[0]?.path||"")}
+},[casestudyData])
   const [serviceList, setServiceList] = useState([]);
   const [industryList, setIndustryList] = useState([]);
 
@@ -86,18 +86,21 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
     }
 
     try {
-      const response = await fetch("/api/casestudy/casestudy", {
-        method: "POST",
+      const response = await fetch(`/api/casestudy/${casestudyData?.length>0?casestudyData?.[0]?._id:"casestudy"}`, {
+        method: casestudyData?"PUT":"POST",
         body: formDataToSend,
       });
 
       const result = await response.json();
-      if (response?.ok) {
-        // console.log("result is submitted data is here--> ", result?.newProduct?._id);
-
-        alert("Case study  created successfully!");
+      // console.log("result is submitted data is here--> ",result)
+      if (response.ok) {
+        alert("Product created successfully!");
         router.push(`/admin/casestudy/${result?.newProduct?._id}`);
-        setActiveTab("Tab2");
+        setActiveTab("Tab2")
+        console.log(result);
+      } else {
+        alert("Error: " + result.message);
+        console.error(result);
       }
     } catch (error) {
       console.error("Unexpected error:", error);

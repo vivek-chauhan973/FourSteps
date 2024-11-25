@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
-const SeoCase = ({ setActiveTab, productData }) => {
+const SeoCase = ({ setActiveTab, casestudyData }) => {
   const [isSEOField, setIsSEOField] = useState({
     tags: "",
     canonicalUrl: "",
     keyword: "",
   });
-  // useEffect(() => {
-  //   if (webinarData) {
-  //     setIsSEOField({
-  //       tags: webinarData?.webinarSeo?.tags,
-  //       canonicalUrl: webinarData?.webinarSeo?.canonicalUrl,
-  //       keyword: webinarData?.webinarSeo?.keyword,
-  //     });
-  //   }
-  // }, [webinarData]);
+  useEffect(() => {
+    if (casestudyData?.length>0) {
+      setIsSEOField({
+        tags: casestudyData?.[0]?.seo?.tags,
+        canonicalUrl: casestudyData?.[0]?.seo?.canonicalUrl,
+        keyword: casestudyData?.[0]?.seo?.keyword,
+      });
+    }
+  }, [casestudyData]);
 
   const [validationErrors, setValidationErrors] = useState({
     tags: "",
@@ -32,8 +32,20 @@ const SeoCase = ({ setActiveTab, productData }) => {
   };
   const handleSubmitSeoField = async () => {
     try {
-      alert("seo added succefully ");
-      setActiveTab("Tab1");
+      const response = await fetch(`/api/casestudy/caseseo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seoData: isSEOField ,casestudy:casestudyData?.[0]?._id}),
+      });
+      if (response.ok) {
+        // setActiveTab("Tab1");
+        alert(casestudyData?" seo data is updated successfully":" seo data is saved is successfully")
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error(error);
     }

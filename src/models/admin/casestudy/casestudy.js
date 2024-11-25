@@ -4,7 +4,7 @@ import "./Seo";
 import "./Chalenges";
 import "./Overview";
 import "./Visuals";
-
+import "./ResultMatrix";
 const productSchema = new mongoose.Schema(
   {
     title: {
@@ -49,6 +49,10 @@ const productSchema = new mongoose.Schema(
     chalenges: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "CaseChalenge",
+    },
+    result: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ResultMatrix",
     },
     overview: {
       type: mongoose.Schema.Types.ObjectId,

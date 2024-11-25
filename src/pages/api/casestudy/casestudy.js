@@ -58,7 +58,7 @@ async function handler(req, res) {
           description,
           service,
           industry,
-          path: `/uploads/product/${req.file.filename}`,
+          path: `/uploads/casestudy/${req.file.filename}`,
           filename: req.file.filename,
           altText,
         });
