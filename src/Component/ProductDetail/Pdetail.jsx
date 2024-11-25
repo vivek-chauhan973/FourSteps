@@ -1,5 +1,5 @@
 import { Link as ScrollLink } from "react-scroll";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductHero from "./ProductHero";
 import ProductOverview from "./ProductOverview";
 import ProductTechnology from "./ProductTechnology";
@@ -10,6 +10,19 @@ import ScreenShot from "./ScreenShot";
 import ProductFaqs from "./ProductFaqs";
 
 const Pdetail = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch("/api/product/product");
+      const data = await response.json();
+      console.log("=========================>>>>>>>>>>>>>>>>", data); 
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <>
       {/* hero section */}

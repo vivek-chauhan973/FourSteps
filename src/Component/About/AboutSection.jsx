@@ -5,7 +5,7 @@
 //   faComputer,
 //   faHandshake,
 // } from "@fortawesome/free-solid-svg-icons";
-//                   <FontAwesomeIcon icon={faComputer} className="font" />
+//<FontAwesomeIcon icon={faComputer} className="font" />
 
 // import Link from "next/link";
 

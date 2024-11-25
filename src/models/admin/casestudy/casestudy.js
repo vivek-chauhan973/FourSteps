@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import "./Faq";
-import "./Overview";
-import "./Screenshot";
-import "./Highlights";
 import "./Seo";
+import "./Chalenges";
+import "./Overview";
+import "./Visuals";
+
 const productSchema = new mongoose.Schema(
   {
     title: {
@@ -37,29 +38,33 @@ const productSchema = new mongoose.Schema(
     altText: {
       type: String,
     },
-    faq:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"CaseFaq"
+    faq: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CaseFaq",
     },
-    seo:{
-       type:mongoose.Schema.Types.ObjectId,
-      ref:"CaseSeo"
+    seo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CaseSeo",
     },
-    chalenges:{
-       type:mongoose.Schema.Types.ObjectId,
-      ref:"CaseChalenge"
+    chalenges: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CaseChalenge",
     },
-    overview:{
-      type:mongoose.Schema.Types.ObjectId,
-     ref:"CaseOverview"
-   },
-   visuals:[{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"CaseVisuals"
-   }]
+    overview: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CaseOverview",
+    },
+
+    visuals: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "CaseVisual",
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const CaseStudy= mongoose.models.CaseStudy || mongoose.model("CaseStudy", productSchema);
+const CaseStudy =
+  mongoose.models.CaseStudy || mongoose.model("CaseStudy", productSchema);
 export default CaseStudy;
