@@ -98,7 +98,7 @@ export default function FaqsPro({ productData, setActiveTab }) {
       });
       if (response?.ok) {
         alert(productData?" faq data is updated successfully":" faq data is saved is successfully")
-        setActiveTab("Tab5");
+        setActiveTab("Tab6");
       }
       else{
         alert("something went wrong")

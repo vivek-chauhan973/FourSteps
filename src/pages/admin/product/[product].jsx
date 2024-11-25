@@ -7,6 +7,7 @@ import HightlightPro from "@/Component/admin/ProductCreate/HightlightPro";
 import ScreenshotPro from "@/Component/admin/ProductCreate/ScreenshotPro";
 import FaqsPro from "@/Component/admin/ProductCreate/FaqsPro";
 import SeoPro from "@/Component/admin/ProductCreate/SeoPro";
+import TechPro from "@/Component/admin/ProductCreate/TechPro";
 
 const fetchIDProduct = async (product) => {
   const data = await fetch(`/api/product/${product}`);
@@ -89,7 +90,7 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              FAQS
+              Technology
             </button>
             <button
               onClick={() => setActiveTab("Tab5")}
@@ -99,12 +100,22 @@ export default function CreateProduct() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              ScrreenShot
+              FAQS
             </button>
             <button
               onClick={() => setActiveTab("Tab6")}
               className={`${
                 activeTab === "Tab6"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              ScrreenShot
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab7")}
+              className={`${
+                activeTab === "Tab7"
                   ? "border-b-2 scale-105 border-black text-black"
                   : "border-black text-slate-500"
               } px-3 py-1`}
@@ -136,15 +147,21 @@ export default function CreateProduct() {
             productData={productData}
           />
         </div>
-        {/* for FAQS */}
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
+        >
+          <TechPro setActiveTab={setActiveTab} productData={productData} />
+        </div>
+
+        {/* for FAQS */}
+        <div
+          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
         >
           <FaqsPro setActiveTab={setActiveTab} productData={productData} />
         </div>
         {/* for the ScreenShot  */}
         <div
-          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
         >
           <ScreenshotPro
             setActiveTab={setActiveTab}
@@ -153,7 +170,7 @@ export default function CreateProduct() {
         </div>
         {/* for the seo section */}
         <div
-          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab7" ? "block" : "hidden"}`}
         >
           <SeoPro setActiveTab={setActiveTab} productData={productData} />
         </div>

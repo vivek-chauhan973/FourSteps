@@ -4,6 +4,8 @@ import "./Overview";
 import "./Screenshot";
 import "./Highlights";
 import "./Seo";
+import "./Technology";
+
 const productSchema = new mongoose.Schema(
   {
     title: {
@@ -37,29 +39,37 @@ const productSchema = new mongoose.Schema(
     altText: {
       type: String,
     },
-    faq:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"ProductFaq"
+    faq: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductFaq",
     },
-    seo:{
-       type:mongoose.Schema.Types.ObjectId,
-      ref:"ProductSeo"
+    seo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductSeo",
     },
-    highlight:{
-       type:mongoose.Schema.Types.ObjectId,
-      ref:"ProductHighLights"
+    highlight: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductHighLights",
     },
-    overview:{
-      type:mongoose.Schema.Types.ObjectId,
-     ref:"ProductOverview"
-   },
-   screenshot:[{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"ProductScreenshot"
-   }]
+    overview: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductOverview",
+    },
+    technology: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductTechnology",
+    },
+
+    screenshot: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ProductScreenshot",
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const Product= mongoose.models.Product || mongoose.model("Product", productSchema);
+const Product =
+  mongoose.models.Product || mongoose.model("Product", productSchema);
 export default Product;

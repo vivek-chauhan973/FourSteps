@@ -2,14 +2,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-const fetchallScreenshotData=async (id)=>{
-  const data=await fetch(`/api/product/screenshot?id=${id}`,{method:"GET"});
+const fetchallScreenshotData = async (id) => {
+  const data = await fetch(`/api/product/screenshot?id=${id}`, {
+    method: "GET",
+  });
   return await data.json();
-}
-const fetchScreenShotById=async (id)=>{
-  const data=await fetch(`/api/product/screenshot1/${id}`);
+};
+const fetchScreenShotById = async (id) => {
+  const data = await fetch(`/api/product/screenshot1/${id}`);
   return await data.json();
-}
+};
 function ScreenshotPro({ setActiveTab, productData }) {
   const [entries, setEntries] = useState([]);
   const [image, setImage] = useState(null);
@@ -29,31 +31,39 @@ function ScreenshotPro({ setActiveTab, productData }) {
     }
   };
 
-  useEffect(()=>{
-    if(productData?.length>0){
-      fetchallScreenshotData(productData?.[0]?._id).then(res=>{setEntries(res?.data)})
+  useEffect(() => {
+    if (productData?.length > 0) {
+      fetchallScreenshotData(productData?.[0]?._id).then((res) => {
+        setEntries(res?.data);
+      });
     }
-  },[productData])
+  }, [productData]);
 
   const handleAddEntry = async () => {
     try {
-      if (fileData&&title && description) {
+      if (fileData && title && description) {
         const newEntry = { image, title, description };
         const formData = new FormData();
         formData.append("file", fileData);
         formData.append("title", title);
         formData.append("description", description);
-        if(productData.length>0){
-          formData.append("product", productData?.[0]?._id||null);
-        }  
+        if (productData.length > 0) {
+          formData.append("product", productData?.[0]?._id || null);
+        }
         const data = await fetch(`/api/product/screenshot`, {
           method: "POST",
           body: formData,
         });
         if (data?.ok) {
-          alert(editingIndex!==null?"data updated successfully":"data saved successfully");
-          if(productData?.length>0){
-            fetchallScreenshotData(productData?.[0]?._id).then(res=>{setEntries(res?.data)})
+          alert(
+            editingIndex !== null
+              ? "data updated successfully"
+              : "data saved successfully"
+          );
+          if (productData?.length > 0) {
+            fetchallScreenshotData(productData?.[0]?._id).then((res) => {
+              setEntries(res?.data);
+            });
           }
         } else {
           alert("data has not saved");
@@ -75,27 +85,26 @@ function ScreenshotPro({ setActiveTab, productData }) {
   //   setScreenId(res?.data?._id||null)
   //   setEditingIndex(res?.data)
   //   })
-  
 
   // };
   const handleDeleteEntry = async (id) => {
-    
-    const data=await fetch(`/api/product/screenshot?id=${id}`,{
-      method:"DELETE"
-    })
-    if(data?.ok){
-      alert("item is successfully deleted")
-      if(productData?.length>0){
-        fetchallScreenshotData(productData?.[0]?._id).then(res=>{setEntries(res?.data)})
+    const data = await fetch(`/api/product/screenshot?id=${id}`, {
+      method: "DELETE",
+    });
+    if (data?.ok) {
+      alert("item is successfully deleted");
+      if (productData?.length > 0) {
+        fetchallScreenshotData(productData?.[0]?._id).then((res) => {
+          setEntries(res?.data);
+        });
       }
-    }
-    else{
-      alert("something went wrong to delete the item")
+    } else {
+      alert("something went wrong to delete the item");
     }
   };
 
   const handleSubmitAll = () => {
-    setActiveTab("Tab6");
+    setActiveTab("Tab7");
   };
 
   // console.log("editing index  ,..........",editingIndex)

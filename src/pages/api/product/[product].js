@@ -181,7 +181,7 @@ async function handler(req, res) {
   else if (req.method === "GET") {
     try {
       const products = await Product.find({ _id: product }).populate(
-        "seo faq highlight overview screenshot"
+        "seo faq highlight overview screenshot technology"
       );
       if (!products || products.length === 0) {
         return res

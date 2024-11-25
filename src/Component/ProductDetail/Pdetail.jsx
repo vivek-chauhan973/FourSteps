@@ -16,7 +16,7 @@ const Pdetail = () => {
     const fetchProducts = async () => {
       const response = await fetch("/api/product/product");
       const data = await response.json();
-      console.log("=========================>>>>>>>>>>>>>>>>", data); 
+      console.log("=========================>>>>>>>>>>>>>>>>", data);
       setProducts(data);
     };
 
@@ -120,7 +120,9 @@ const Pdetail = () => {
               className="flex justify-between mt-5 mb-3"
             >
               <div className="md:px-10">
-                <div className="font-semibold py-2 text-xl">Technology</div>
+                <div className="font-semibold py-2 text-xl">
+                  Technology
+                </div>
                 <ProductTechnology />
               </div>
             </div>
