@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      trim:true
     },
     subtitle: {
       type: String,

@@ -1,12 +1,14 @@
 import React from "react";
 
-const ProductOverview = () => {
+const ProductOverview = ({ ProductOverview }) => {
+  const overview = ProductOverview?.overview || {};
+
   return (
     <div className=" conatiner">
       <div className="   md:border xl:flex flex-col w-full gap-4  p-3 relative bg-white shadow h-auto ">
         <div className=" px-2  ">
           <h2 className=" text-lg py-3 font-bold">Key overview of Products</h2>
-          <ul className="  text-sm list-decimal md:px-5">
+          {/* <ul className="  text-sm list-decimal md:px-5">
             <li>
               Format:: Products typically include presentations, discussions,
               and interactive sessions, often utilizing slides, videos, or
@@ -34,8 +36,8 @@ const ProductOverview = () => {
               Audience Reach: They enable organizations to reach a global
               audience without the limitations of physical space.
             </li>
-          </ul>
-          <div className=" font-semibold py-3">Benefits of Products</div>
+          </ul> */}
+          {/* <div className=" font-semibold py-3">Benefits of Products</div>
 
           <ul className="  text-sm list-disc md:px-5">
             <li>
@@ -59,7 +61,15 @@ const ProductOverview = () => {
               Audience Reach: They enable organizations to reach a global
               audience without the limitations of physical space.
             </li>
-          </ul>
+          </ul> */}
+          <div className="rich-text-content">
+            <p
+              className=""
+              dangerouslySetInnerHTML={{
+                __html: overview?.description || "No description available",
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

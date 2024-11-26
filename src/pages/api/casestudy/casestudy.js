@@ -64,11 +64,15 @@ async function handler(req, res) {
         });
         res
           .status(201)
-          .json({ success: true, message: "Product created successfully" ,newProduct});
+          .json({
+            success: true,
+            message: "case study created successfully",
+            newProduct,
+          });
       } catch (error) {
         res
           .status(500)
-          .json({ success: false, message: "Internal server error" ,error});
+          .json({ success: false, message: "Internal server error", error });
       }
     });
   } else if (req.method === "GET") {

@@ -9,25 +9,34 @@ import ProductHightlight from "./ProductHightlight";
 import ScreenShot from "./ScreenShot";
 import ProductFaqs from "./ProductFaqs";
 
-const Pdetail = () => {
-  const [products, setProducts] = useState([]);
+const getproductPackageData = async (title) => {
+  const res = await fetch(`/api/product/getproduct?title=${title}`);
+  return await res.json();
+};
 
+const Pdetail = ({ title }) => {
+  const [productsPackageData, setProductsPackageData] = useState({});
+
+  // Fetch data when 'title' changes
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch("/api/product/product");
-      const data = await response.json();
-      console.log("=========================>>>>>>>>>>>>>>>>", data);
-      setProducts(data);
-    };
+    if (title) {
+      getproductPackageData(title).then((res) => {
+        console.log("Product package data fetched --->", res);
+        setProductsPackageData(res);
+      });
+    }
+  }, [title]);
 
-    fetchProducts();
-  }, []);
+  // Log the updated data when it changes
+  useEffect(() => {
+    console.log("Updated product package data ----->", productsPackageData);
+  }, [productsPackageData]);
 
   return (
     <>
       {/* hero section */}
       <div>
-        <ProductHero />
+        <ProductHero Herodata={productsPackageData} />
       </div>
 
       <div className="bg-[#F1F5F9]">
@@ -99,7 +108,7 @@ const Pdetail = () => {
             >
               <div className="md:px-10">
                 <div className="font-semibold py-2 text-xl">Overview</div>
-                <ProductOverview />
+                <ProductOverview ProductOverview={productsPackageData} />
               </div>
             </div>
             {/* key and highlight section */}
@@ -111,7 +120,7 @@ const Pdetail = () => {
                 <div className="font-semibold py-2 text-xl">
                   Key & Highlights
                 </div>
-                <ProductHightlight />
+                <ProductHightlight Productdata={productsPackageData} />
               </div>
             </div>
             {/* technology section */}
@@ -120,10 +129,8 @@ const Pdetail = () => {
               className="flex justify-between mt-5 mb-3"
             >
               <div className="md:px-10">
-                <div className="font-semibold py-2 text-xl">
-                  Technology
-                </div>
-                <ProductTechnology />
+                <div className="font-semibold py-2 text-xl">Technology</div>
+                <ProductTechnology technologydata={productsPackageData} />
               </div>
             </div>
             <div
@@ -132,7 +139,7 @@ const Pdetail = () => {
             >
               <div className="md:px-10">
                 <div className="font-semibold py-2 text-xl">SrceenShot</div>
-                <ScreenShot />
+                <ScreenShot screenshotdata={productsPackageData} />
               </div>
             </div>
           </div>
@@ -150,7 +157,7 @@ const Pdetail = () => {
 
       {/* faqs and suggestetd */}
       <div>
-        <ProductFaqs />
+        <ProductFaqs productfaqData={productsPackageData} />
       </div>
       {/* Footer section here */}
       <div>

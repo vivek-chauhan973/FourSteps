@@ -236,7 +236,7 @@ const Nav = () => {
                     ></span>
                   </Link>
                 </li>
-                <li className="relative inline-block">
+                <li className="relative  inline-block">
                   <Link
                     href="/contact/contact"
                     onClick={() => handleLinkClick("/contact")}

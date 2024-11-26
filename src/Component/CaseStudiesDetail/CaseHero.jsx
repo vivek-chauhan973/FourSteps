@@ -2,7 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { Link } from "react-scroll";
 
-const CaseHero = () => {
+const CaseHero = ({ caseHero }) => {
+  const { title, altText, description, path } = caseHero || {};
   return (
     <>
       <div className="container mx-auto md:pt-0  pt-20">
@@ -10,11 +11,11 @@ const CaseHero = () => {
           {/* Left section - Course Info */}
           <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
             <h1 className="text-xl sm:text-2xl capitalize md:text-3xl lg:text-4xl font-bold md:mb-4 mb-1">
-              Case-studies 1
+              {title}
             </h1>
 
             <p className="text-sm sm:text-base lg:text-base md:mb-6 mb-3 capitalize leading-relaxed">
-              Case-studies description
+              {description}
             </p>
 
             <div class="flex  gap-3 justify-center md:justify-start">
@@ -34,12 +35,7 @@ const CaseHero = () => {
         {/* Right section - Video */}
           <div className="w-full lg:w-2/5 flex justify-center overflow-hidden items-center">
             <div className="w-full px-2 h-48 sm:h-64 md:h-80 lg:h-64 xl:h-80 2xl:h-96 rounded-lg md:overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
-              <Image
-                src="/image/ab.webp"
-                width={500}
-                height={500}
-                alt="Picture of the author"
-              />
+              <Image src={path} width={500} height={500} alt={altText} />
             </div>
           </div>
         </div>

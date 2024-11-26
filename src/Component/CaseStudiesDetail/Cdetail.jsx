@@ -1,16 +1,5 @@
-// import React from "react";
-
-// const Cdetail = () => {
-//   return (
-//     <div>
-//       <h1>welcome</h1>
-//     </div>
-//   );
-// };
-
-// export default Cdetail;
 import { Link as ScrollLink } from "react-scroll";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Footer } from "../Footer/Footer";
 // import ProductHightlight from "./ProductHightlight";
@@ -21,13 +10,43 @@ import Results from "./Results";
 import Visuals from "./Visuals";
 import Challenge from "./Challenge";
 import Testimonial from "../Testimonial/Testimonial";
+import { useRouter } from "next/router";
+import CaseFaq from "./CaseFaq";
 
-const Cdetail = () => {
+const getCaseStudyData = async (title) => {
+  const res = await fetch(`/api/casestudy/getCaseStudy?title=${title}`);
+  return await res.json();
+};
+
+const Cdetail = ({ title }) => {
+  const [casePackageData, setCasePackageData] = useState({});
+  const router = useRouter();
+  console.log(
+    "case study data is here------> ",
+    router?.query?.detail?.split("-")?.join(" ")
+  );
+  // Fetch data when 'title' changes
+  useEffect(() => {
+    if (router?.query?.detail) {
+      getCaseStudyData(router?.query?.detail?.split("-")?.join(" ")).then(
+        (res) => {
+          console.log("CaseStudy  data fetched --->", res);
+          setCasePackageData(res);
+        }
+      );
+    }
+  }, [router?.query?.detail]);
+
+  // Log the updated data when it changes
+  useEffect(() => {
+    console.log(" CaseStudy data ----->", casePackageData);
+  }, [casePackageData]);
+
   return (
     <>
       {/* hero section */}
       <div>
-        <CaseHero />
+        <CaseHero caseHero={casePackageData} />
       </div>
 
       <div className="bg-[#F1F5F9]">
@@ -102,7 +121,7 @@ const Cdetail = () => {
                   {" "}
                   Client Overview
                 </div>
-                <ClientOverview />
+                <ClientOverview clientData={casePackageData} />
               </div>
             </div>
             {/* key and highlight section */}
@@ -115,7 +134,7 @@ const Cdetail = () => {
                   Challenges & Solution
                 </div>
 
-                <Challenge />
+                <Challenge ChallengeData={casePackageData} />
               </div>
             </div>
             {/* technology section */}
@@ -127,7 +146,7 @@ const Cdetail = () => {
                 <div className="font-semibold py-2 text-xl">
                   Results & Matrix
                 </div>
-                <Results />
+                <Results resultData={casePackageData} />
               </div>
             </div>
             <div
@@ -138,7 +157,7 @@ const Cdetail = () => {
                 <div className="font-semibold py-2 text-xl">
                   Visual and ScreenShot
                 </div>
-                <Visuals />
+                <Visuals visualData={casePackageData} />
               </div>
             </div>
           </div>
@@ -153,7 +172,10 @@ const Cdetail = () => {
           </div>
         </div>
       </div>
-
+      {/* faqs and suggestetd */}
+      <div>
+        <CaseFaq casefaqData={casePackageData} />
+      </div>
       {/* Testimonial  section here */}
       <div className=" py-5">
         <Testimonial />
