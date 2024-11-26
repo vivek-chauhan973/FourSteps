@@ -65,9 +65,7 @@ export default function Management() {
       return;
     }
     // console.log("select type-submitted  ",selectType)
-    if (!selectType) {
-      return alert("select type is required");
-    }
+    
     if (file && title) {
       formData.append("file", file);
       formData.append("title", title);
@@ -165,7 +163,7 @@ export default function Management() {
             </div>
             <div className="flex md:flex-row flex-col md:gap-5 gap-3">
               <button
-                className="bg-navyblack text-white px-3 py-2 w-full md:w-auto rounded"
+                className=" bg-black text-white px-3 py-2 w-full md:w-auto rounded"
                 onClick={handleUpload}
               >
                 {isUpdating ? "Update Image" : "Upload Image"}

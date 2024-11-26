@@ -117,7 +117,7 @@ const BlogPromoSeo = ({selectedPromoId}) => {
                 <div className="flex justify-end items-center">
                     <button
                         onClick={handleSaveCarSeoData}
-                        className="px-5 py-1.5 bg-navyblack text-white rounded my-3"
+                        className="px-5 py-1.5 bg-black text-white rounded my-3"
                     >
                         Add
                     </button>

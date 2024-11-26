@@ -41,11 +41,12 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: 'File upload failed' });
       }
 
-      const { title, description, subTitle, contentsummary,time } = req.body;
+      const { title, description, subTitle, contentsummary,time , selectTopic,selectDepartment,selectIndustry,selectTools} = req.body;
       const fileData = req.file && {
         title,
         time,
         subTitle,
+        selectTopic,selectDepartment,selectIndustry,selectTools,
         contentsummary,
         description,
         filename: req.file.filename,

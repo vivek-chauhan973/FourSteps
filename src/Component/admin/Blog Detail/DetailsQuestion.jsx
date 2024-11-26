@@ -62,21 +62,21 @@ const DetailsQuestion = ({ setActiveTab, blogData }) => {
   };
 
 
-  const handleDelete = async (id) => {
-    const data = await fetch(`/api/blog/blogquestion/delete?quesId=${id}`, {
-      method: "DELETE",
-    });
-    if (data?.ok) {
-      alert("question successfully Deleted");
-      if (blogData) {
-        questionsData(blogData?._id).then((res) => {
-          setItineraryDayWiseDataArray(res?.data1);
-        });
-      }
-    } else {
-      alert("something went wrong");
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   const data = await fetch(`/api/blog/blogquestion/delete?quesId=${id}`, {
+  //     method: "DELETE",
+  //   });
+  //   if (data?.ok) {
+  //     alert("question successfully Deleted");
+  //     if (blogData) {
+  //       questionsData(blogData?._id).then((res) => {
+  //         setItineraryDayWiseDataArray(res?.data1);
+  //       });
+  //     }
+  //   } else {
+  //     alert("something went wrong");
+  //   }
+  // };
 
   useEffect(() => {
     if (subQueID) {

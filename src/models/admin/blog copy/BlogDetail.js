@@ -2,13 +2,28 @@ import mongoose from "mongoose";
 import "./BlogQuestion";
 import "./BlogSeoDetail";
 import "./SubQuestions";
-
 const BlogDetailSchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
       trim:true
+    },
+    selectTopic:{
+      type: String,
+      required: true,
+    },
+    selectDepartment:{
+      type: String,
+      required: true,
+    },
+    selectIndustry:{
+      type: String,
+      required: true,
+    },
+    selectTools:{
+      type: String,
+      required: true,
     },
     subTitle:{
       type: String,
