@@ -151,11 +151,10 @@ const Sidebar = () => {
         label: "Blog",
         icon: () => <FontAwesomeIcon icon={faBlog} />,
         subMenu: [
-          { label: "Blog Master", href: "/admin/blog/blog-master" },
+          {label:"Blog Promo",href:"/admin/blog/blogpromo"},
           { label: "Create", href: "/admin/blog/blog-create" },
-          { label: "All blog Blog-listing ", href: "/admin/blog/blog-listing" },
+          { label: " Blog-lists ", href: "/admin/blog/blog-listing" },
 
-          { label: "Blog Promo Management", href: "/admin/blog/management" },
         ],
       },
       {
