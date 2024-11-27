@@ -161,7 +161,7 @@ const Nav = () => {
   return (
     <>
       <nav className="bg-gray-100 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}
             {/* <div className="flex items-center">
@@ -240,7 +240,7 @@ const Nav = () => {
                   <Link
                     href="/contact/contact"
                     onClick={() => handleLinkClick("/contact")}
-                    className={`relative inline-block text-base font-medium px-3 py-2 ${
+                    className={`relative inline-block text-base md:hidden lg:block  font-medium px-3 py-2 ${
                       activeLink === "/contact"
                         ? "text-orange-500"
                         : "text-gray-800"
@@ -256,7 +256,7 @@ const Nav = () => {
                 </li>
               </ul>
 
-              <button className="bg-orange-500  hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
+              <button className="bg-orange-500   hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
                 Talk to Us
               </button>
             </div>
