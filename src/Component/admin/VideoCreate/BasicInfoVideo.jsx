@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const BasicInfoVideo = ({ setActiveTab, videoData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [videoLink,setVideoLink]=useState("")
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
@@ -14,20 +15,21 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     industry: "",
     altText: "",
   });
-  //   useEffect(() => {
-  //     console.log("product response is here --> ", productData);
-  //     if (productData) {
-  //       setFormData({
-  //         title: productData?.[0]?.title || "",
-  //         description: productData?.[0]?.description || "",
-  //         subtitle: productData?.[0]?.subtitle || "",
-  //         user: productData?.[0]?.user || "",
-  //         industry: productData?.[0]?.industry || "",
-  //         altText: productData?.[0]?.altText || "",
-  //       });
-  //       setPreview(productData?.[0]?.path || "");
-  //     }
-  //   }, [productData]);
+    useEffect(() => {
+      console.log("product response is here --> ", videoData);
+      if (videoData) {
+        setFormData({
+          title: videoData?.title || "",
+          description: videoData?.description || "",
+          subtitle: videoData?.subtitle || "",
+          user: videoData?.user || "",
+          industry: videoData?.industry || "",
+          altText: videoData?.altText || "",
+        });
+        setPreview(videoData?.path || "");
+        setVideoLink(videoData?.videoLink||"");
+      }
+    }, [videoData]);
   const [userList, setUserList] = useState([]); // State to hold the fetched data
   const [industryList, setIndustryList] = useState([]);
 
@@ -84,10 +86,13 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     if (image) {
       formDataToSend.append("image", image);
     }
+    if(videoLink){
+      formDataToSend.append("videoLink", videoLink);
+    }
 
     try {
-      const response = await fetch("/api/videos/video", {
-        method: "POST",
+      const response = await fetch(`/api/videos/${videoData?videoData?._id:"video"}`, {
+        method:videoData?"PUT":"POST",
         body: formDataToSend,
       });
 
@@ -98,7 +103,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
           result?.newProduct?._id
         );
 
-        alert("Video  created successfully!");
+        alert(videoData?"Video  updated successfully!":"Video  created successfully!");
         router.push(`/admin/demovideo/${result?.newProduct?._id}`);
 
         setActiveTab("Tab2");
@@ -135,7 +140,12 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               />
             </div>
           )}
-          <div className="mt-4">
+          
+        </div>
+
+        {/* Other Form Fields */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div >
             <label className="block text-sm font-semibold text-gray-700">
               Alt Text
             </label>
@@ -148,10 +158,19 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </div>
-        </div>
-
-        {/* Other Form Fields */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div >
+            <label className="block text-sm font-semibold text-gray-700">
+              Video Link
+            </label>
+            <input
+              type="text"
+              name="videoLink"
+              value={videoLink}
+              onChange={(e)=>setVideoLink(e.target.value)}
+              placeholder="Enter video link here"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            />
+          </div>
           <div>
             <label className="block text-sm font-semibold text-gray-700">
               Title

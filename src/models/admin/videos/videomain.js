@@ -1,3 +1,7 @@
+import "./Faq";
+import "./HighLights";
+import "./Overview";
+import "./Seo";
 const mongoose = require("mongoose");
 
 const VideoSchema = new mongoose.Schema(
@@ -5,6 +9,10 @@ const VideoSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      trim:true,unique:true
+    },
+    videoLink:{
+      type:String,
     },
     subtitle: {
       type: String,
@@ -33,6 +41,21 @@ const VideoSchema = new mongoose.Schema(
     altText: {
       type: String,
     },
+    faq:{
+      type:mongoose.Schema.Types.ObjectId,
+        ref:"VideoFaq"
+    },seo:{
+      type:mongoose.Schema.Types.ObjectId,
+        ref:"VideoSeo"
+    },
+    overview:{
+ type:mongoose.Schema.Types.ObjectId,
+        ref:"VideoOverview"
+    },
+    highlight:{
+      type:mongoose.Schema.Types.ObjectId,
+        ref:"VideoHighLights"
+    }
   },
   { timestamps: true }
 );

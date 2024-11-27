@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import { useRouter } from "next/router";
-import FaqCase from "@/Component/admin/CaseStudies/FaqCase";
 import BasicInfoVideo from "@/Component/admin/VideoCreate/BasicInfoVideo";
 import OverviewVideo from "@/Component/admin/VideoCreate/OverviewVideo";
 import HightlightVideo from "@/Component/admin/VideoCreate/HightlightVideo";
 import SeoVideo from "@/Component/admin/VideoCreate/SeoVideo";
+import FaqVideo from "@/Component/admin/VideoCreate/FaqVideo";
 
 const fetchIDProduct = async (video) => {
   const data = await fetch(`/api/videos/${video}`);
@@ -125,7 +125,7 @@ export default function CreateProduct() {
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
         >
-          <FaqCase setActiveTab={setActiveTab} videoData={videoData} />
+          <FaqVideo setActiveTab={setActiveTab} videoData={videoData} />
         </div>
 
         {/* for the seo section */}

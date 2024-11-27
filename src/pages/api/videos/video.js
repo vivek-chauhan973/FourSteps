@@ -35,7 +35,7 @@ async function handler(req, res) {
       }
 
       try {
-        const { title, subtitle, description, user, industry, altText } =
+        const { title, subtitle, description, user, industry, altText,videoLink } =
           req.body;
 
         // Validate the required fields
@@ -45,6 +45,7 @@ async function handler(req, res) {
           !description ||
           !user ||
           !industry ||
+          !videoLink||
           !req.file
         ) {
           return res
@@ -56,9 +57,10 @@ async function handler(req, res) {
           title,
           subtitle,
           description,
+          videoLink,
           user,
           industry,
-          path: `/uploads/product/${req.file.filename}`,
+          path: `/uploads/demovideo/${req.file.filename}`,
           filename: req.file.filename,
           altText,
         });

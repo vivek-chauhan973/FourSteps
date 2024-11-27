@@ -1,15 +1,3 @@
-// import React from "react";
-
-// const HightlightVideo = () => {
-//   return (
-//     <div>
-//       <h4>HightlightVodeos</h4>
-//     </div>
-//   );
-// };
-
-// export default HightlightVideo;
-
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
@@ -18,9 +6,15 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function HightlightVideo({ productData, setActiveTab }) {
+export default function HightlightVideo({videoData, setActiveTab }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+  useEffect(()=>{
+   
+    if(videoData){
+      setAboutEditorHtml(videoData?.highlight?.description)
+    }
 
+  },[videoData])
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -41,8 +35,20 @@ export default function HightlightVideo({ productData, setActiveTab }) {
 
   const handleSubmit = async () => {
     try {
-      alert("overview data saved");
-      setActiveTab("Tab4");
+      const data=await fetch('/api/videos/highlight',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({aboutEditorHtml,video:videoData?._id})
+       })
+       if(data?.ok){
+        alert(videoData?"highlight data updated!":"highlight data saved!");
+        setActiveTab("Tab4"); 
+       }
+       else{
+        alert("something went wrong");
+       }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
@@ -8,8 +9,16 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function OverviewVideo({ setActiveTab, videoData }) {
+export default function OverviewVideo({ setActiveTab,videoData }) {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
+
+  useEffect(()=>{
+   
+    if(videoData){
+      setAboutEditorHtml(videoData?.overview?.description)
+    }
+
+  },[videoData])
 
   const modules = {
     toolbar: [
@@ -30,10 +39,25 @@ export default function OverviewVideo({ setActiveTab, videoData }) {
   };
 
   const handleSubmit = async () => {
+ 
+
     try {
       // Simulate saving data
-      alert("Overview data saved!");
-      setActiveTab("Tab3"); // Switch to the next tab
+      const data=await fetch('/api/videos/overview',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({aboutEditorHtml,video:videoData?._id})
+       })
+       if(data?.ok){
+        alert(videoData?"Overview data saved!":"Overview data saved!");
+        setActiveTab("Tab3"); 
+       }
+       else{
+        alert("something went wrong");
+       }
+      // Switch to the next tab
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");

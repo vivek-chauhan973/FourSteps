@@ -8,14 +8,12 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function FaqVideo({ productData, setActiveTab }) {
-  // console.log("itinerary : ",itinerary);
+const   FaqVideo=({ videoData, setActiveTab })=> {
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
     []
   );
   const [deletePopup, setDeletePopu] = useState(false);
   const [editorHtml, setEditorHtml] = useState("");
-
   const [itineraryDayWise, setItineraryDayWise] = useState({
     title: "",
     information: "",
@@ -30,6 +28,12 @@ export default function FaqVideo({ productData, setActiveTab }) {
       [name]: value,
     }));
   };
+  useEffect(() => {
+    if (videoData) {
+      setItineraryDayWiseDataArray(videoData?.faq?.questions || []);
+     
+    }
+  }, [videoData]);
 
   const modules = {
     toolbar: [
@@ -76,9 +80,6 @@ export default function FaqVideo({ productData, setActiveTab }) {
     setEditorHtml(itineraryDayWiseDataArray[index].information);
   };
 
-  // written by code
-  // console.log("package id show is here ", itinerary?._id);
-
   const removeItem = (index) => {
     const updatedArray = itineraryDayWiseDataArray?.filter(
       (_, i) => i !== index
@@ -88,8 +89,20 @@ export default function FaqVideo({ productData, setActiveTab }) {
 
   const handleSave = async () => {
     try {
-      alert("fAQS  data saved");
-      setActiveTab("Tab5");
+      const response = await fetch(`/api/videos/videofaq`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions: itineraryDayWiseDataArray ,video:videoData?._id}),
+      });
+      if (response?.ok) {
+        alert(videoData?" faq data is updated successfully":" faq data is saved is successfully")
+        setActiveTab("Tab5");
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error("Error saving data:", error);
       alert("An error occurred while saving the overview data.");
@@ -161,9 +174,10 @@ export default function FaqVideo({ productData, setActiveTab }) {
                             className="font1 cursor-pointer hover:text-primary"
                             onClick={() => editItem(index)}
                           />
-                          {editingIndex !== index && deletePopup && (
+                          {editingIndex !== index && (
                             <FontAwesomeIcon
                               icon={faTrash}
+                              onClick={() => removeItem(index)}
                               className="font1 cursor-pointer hover:text-red-500"
                             />
                           )}
@@ -191,3 +205,4 @@ export default function FaqVideo({ productData, setActiveTab }) {
     </div>
   );
 }
+export default FaqVideo

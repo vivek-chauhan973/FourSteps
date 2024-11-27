@@ -7,15 +7,15 @@ const SeoVideo = ({ setActiveTab, videoData }) => {
     canonicalUrl: "",
     keyword: "",
   });
-  // useEffect(() => {
-  //   if (webinarData) {
-  //     setIsSEOField({
-  //       tags: webinarData?.webinarSeo?.tags,
-  //       canonicalUrl: webinarData?.webinarSeo?.canonicalUrl,
-  //       keyword: webinarData?.webinarSeo?.keyword,
-  //     });
-  //   }
-  // }, [webinarData]);
+  useEffect(() => {
+    if (videoData) {
+      setIsSEOField({
+        tags: videoData?.seo?.tags,
+        canonicalUrl: videoData?.seo?.canonicalUrl,
+        keyword: videoData?.seo?.keyword,
+      });
+    }
+  }, [videoData]);
 
   const [validationErrors, setValidationErrors] = useState({
     tags: "",
@@ -32,8 +32,20 @@ const SeoVideo = ({ setActiveTab, videoData }) => {
   };
   const handleSubmitSeoField = async () => {
     try {
-      alert("seo added succefully ");
-      setActiveTab("Tab1");
+      const response = await fetch(`/api/videos/videoseo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ seoData: isSEOField ,video:videoData?._id}),
+      });
+      if (response.ok) {
+        setActiveTab("Tab1");
+        alert(videoData?" seo data is updated successfully":" seo data is saved is successfully")
+      }
+      else{
+        alert("something went wrong")
+      }
     } catch (error) {
       console.error(error);
     }

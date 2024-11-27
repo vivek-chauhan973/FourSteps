@@ -14,23 +14,23 @@ const ListingVideo = () => {
   useEffect(() => {
     fetchAllVideos().then((res) => {
       setVideos(res?.data || []);
-      console.log(" __________---------------..........", videos);
+      // console.log(" __________---------------..........", videos);
     });
   }, []);
-  // const handleDelete = async (id) => {
-  //   const data = await fetch(`/api/videos/${id}`, {
-  //     method: "DELETE",
-  //   });
-  //   console.log("handle deleted ----> ", id);
-  //   if (data?.ok) {
-  //     alert("data deleted successfully");
-  //     fetchAllVideos().then((res) => {
-  //       setProducts(res?.data || []);
-  //     });
-  //   } else {
-  //     alert("something went wrong");
-  //   }
-  // };
+  const handleDelete = async (id) => {
+    const data = await fetch(`/api/videos/${id}`, {
+      method: "DELETE",
+    });
+    // console.log("handle deleted ----> ", id);
+    if (data?.ok) {
+      alert("data deleted successfully");
+      fetchAllVideos().then((res) => {
+        setVideos(res?.data || []);
+      });
+    } else {
+      alert("something went wrong");
+    }
+  };
 
   return (
     <AdminLayout>
