@@ -27,7 +27,7 @@ const fetchAllCaseStudies = async () => {
   try {
     const response = await fetch("/api/casestudy/casestudy", { method: "GET" });
     const data = await response.json();
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+    // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
     return data;
   } catch (error) {
     console.error("error fetching the case study data", error);
@@ -50,7 +50,7 @@ const MainData = ({ Heading }) => {
 
   useEffect(() => {
     fetchAllProduct().then((res) => {
-      console.log("API Response:", res);
+      // console.log("API Response:", res);
       setAllProductData(res.data || res); // Adjust based on API response structure
     });
   }, []);
@@ -60,7 +60,7 @@ const MainData = ({ Heading }) => {
 
   useEffect(() => {
     fetchAllCaseStudies().then((res) => {
-      console.log("API Response:", res);
+      // console.log("API Response:", res);
       setAllCaseStudy(res.data || res);
     });
   }, []);
@@ -136,7 +136,7 @@ const MainData = ({ Heading }) => {
           ))}
 
         {/* for the product section  */}
-        {Heading === "product" &&
+        {Heading === "product" &&allProductData?.length>0&&
           allProductData?.map((product, i) => (
             <div
               key={i}
@@ -194,7 +194,7 @@ const MainData = ({ Heading }) => {
 
         {/*  for the Case-studies section */}
 
-        {Heading === "case-studies" &&
+        {Heading === "case-studies" && allCaseStudy?.length>0 &&
           allCaseStudy?.map((casestudy, i) => (
             <div
               key={i}

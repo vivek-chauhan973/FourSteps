@@ -72,7 +72,7 @@ const ListingVideo = () => {
                 </td>
                 <td className="px-6 py-3 text-center border border-black">
                   <div className="flex justify-center items-center space-x-2">
-                    <Link href={`/admin/product/ade`}>
+                    <Link href={`/admin/demovideo/${video?._id}`}>
                       <button className="text-blue-500 hover:text-blue-700 transition-colors">
                         <FontAwesomeIcon icon={faEdit} />
                       </button>

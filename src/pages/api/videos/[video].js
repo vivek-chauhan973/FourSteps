@@ -5,10 +5,11 @@ import Videos from "@/models/admin/videos/videomain";
 async function handler(req, res) {
   const { video } = req.query;
   if (req.method === "PUT") {
+
   } else if (req.method === "DELETE") {
   } else {
     try {
-      const videos = await Videos.find({ _id: video });
+      const videos = await Videos.findOne({ _id: video });
 
       if (!videos) {
         return res.status(404).json({

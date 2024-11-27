@@ -8,24 +8,23 @@ import HightlightVideo from "@/Component/admin/VideoCreate/HightlightVideo";
 import SeoVideo from "@/Component/admin/VideoCreate/SeoVideo";
 
 const fetchIDProduct = async (video) => {
-  const data = await fetch(`/api/video/${video}`);
+  const data = await fetch(`/api/videos/${video}`);
   return await data.json();
 };
 export default function CreateProduct() {
   const router = useRouter();
-  const { video } = router?.query;
+  const { demoes } = router?.query;
   const [videoData, setVideoData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 
   useEffect(() => {
-    if (video) {
-      fetchIDProduct(video).then((res) => {
-        // console.log("res of product data is here ----> ",res)
+    if (demoes) {
+      fetchIDProduct(demoes).then((res) => {
         setVideoData(res?.data || null);
       });
     }
-  }, [video, activeTab]);
-
+  }, [demoes, activeTab]);
+  console.log("res of video product data is here ----> ",videoData)
   // Function to switch to the next tab
   useEffect(() => {
     if (activeTab === "Tab1") {
