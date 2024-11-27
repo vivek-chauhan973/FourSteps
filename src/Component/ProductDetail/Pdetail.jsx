@@ -27,11 +27,6 @@ const Pdetail = ({ title }) => {
     }
   }, [title]);
 
-  // Log the updated data when it changes
-  useEffect(() => {
-    console.log("Updated product package data ----->", productsPackageData);
-  }, [productsPackageData]);
-
   return (
     <>
       {/* hero section */}
