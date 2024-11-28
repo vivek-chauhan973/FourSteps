@@ -43,7 +43,7 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
             <li className="flex justify-between items-center    px-4 py-3  hover:bg-gray-200   border-b border-gray-200  cursor-pointer">
               <div className="flex gap-1   items-center">
                 <FontAwesomeIcon icon={faBlog} className=" text-gray-600" />
-                <Link href="https://www.google.com">Blog</Link>
+                <Link href="/resource/blog">Blog</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
@@ -54,14 +54,14 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
                   icon={faYoutubeSquare}
                   className=" text-gray-600"
                 />
-                <Link href="#juu">Videos & Demos</Link>
+                <Link href="/resource/demo-videos">Videos & Demos</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
             <li className="flex justify-between items-center  hover:bg-gray-200  px-4 py-3  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faVideo} className=" text-gray-600" />
-                <Link href="/webinarpages/recorded">Webinar</Link>
+                <Link href="/resource/webinar">Webinar</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>

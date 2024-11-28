@@ -220,162 +220,604 @@
 // };
 
 // export default Filter;
-
-import language from "@/models/admin/global/language";
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
-// API fetch functions
-const fetchWebinarTypes = async () => {
-  const res = await fetch("/api/webinar/webinartype/getwebinar");
-  const data = await res.json();
-  return data;
-};
-
-const fetchDepartments = async () => {
-  const res = await fetch("/api/global/department/getdepartment");
-  const data = await res.json();
-  return data;
-};
-
 const Filter = ({ filterGlobalData, Heading }) => {
-  const [filterSection1, setFilterSection1] = useState([]);
-  const [filterSection2, setFilterSection2] = useState([]);
   const [showModal, setShowModal] = useState(false); // Modal state for mobile
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
-  const [showSection1, setShowSection1] = useState(false);
-  const [showSection2, setShowSection2] = useState(false);
   const [showTopics, setShowTopics] = useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
-
-  useEffect(() => {
-    if (Heading === "webinar") {
-      fetchWebinarTypes().then((res) => {
-        setFilterSection1(res || []);
-      });
-      fetchDepartments().then((res) => {
-        setFilterSection2(res || []);
-      });
-    }
-  }, [Heading]);
-
+  const [showService, setShowService] = useState(false);
+  const [showWebinarType, setShowWebinarType] = useState(false);
+  const [showTool, setShowTool] = useState(false);
   const renderFilters = () => (
     <div className="bg-white rounded-lg overflow-y-auto   shadow-md p-4">
       <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
-      {/* Filter sections */}
-
-      {/* Industries */}
-      <div className="mb-2 border border-gray-300 rounded p-2">
-        <h3 className="md:text-[16px] text-[14px] font-medium">Industries</h3>
-        {filterGlobalData?.industries
-          .slice(
-            0,
-            showMoreIndustries ? filterGlobalData?.industries?.length : 3
-          )
-          .map((industry, index) => (
-            <label className="flex items-center" key={index}>
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
-              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                {industry?.name}
-              </span>
-            </label>
-          ))}
-        <button
-          className="text-blue-500 mt-1"
-          onClick={() => setShowMoreIndustries(!showMoreIndustries)}
-        >
-          {showMoreIndustries ? "Show less" : "Show more"}
-        </button>
-      </div>
-
-      {/* Departments */}
-      <div className="mb-2 border border-gray-300 rounded p-2">
-        <h3 className="md:text-[16px] text-[14px] font-medium">
-          Tools And Softwares
-        </h3>
-        {filterGlobalData?.tool
-          .slice(0, showMoreDepartments ? filterGlobalData?.tool?.length : 3)
-          .map((department, index) => (
-            <label className="flex items-center" key={index}>
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
-              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                {department?.name}
-              </span>
-            </label>
-          ))}
-        <button
-          className="text-blue-500 mt-1"
-          onClick={() => setShowMoreDepartments(!showMoreDepartments)}
-        >
-          {showMoreDepartments ? "Show less" : "Show more"}
-        </button>
-      </div>
-
-      {/* Topics */}
-      <div className="mb-2 border border-gray-300 rounded p-2">
-        <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
-        {filterGlobalData?.topic
-          .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
-          .map((topic, index) => (
-            <label className="flex items-center" key={index}>
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
-              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                {topic?.name}
-              </span>
-            </label>
-          ))}
-        <button
-          className="text-blue-500 mt-1"
-          onClick={() => setShowTopics(!showTopics)}
-        >
-          {showTopics ? "Show less" : "Show more"}
-        </button>
-      </div>
-
-      {/* Webinar Types */}
       {Heading === "webinar" && (
-        <div className="mb-2 border border-gray-300 rounded p-2">
-          <h3 className="md:text-[16px] text-[14px] font-medium">
-            Webinar Type
-          </h3>
-          {filterSection1
-            .slice(0, showSection1 ? filterSection1?.length : 3)
-            .map((webinarType, index) => (
-              <label className="flex items-center" key={index}>
-                <input
-                  type="checkbox"
-                  className="form-checkbox h-4 w-4 text-blue-600"
-                />
-                <span className="ml-2 capitalize cursor-pointer text-sm">
-                  {webinarType?.name}
-                </span>
-              </label>
-            ))}
-          <button
-            className="text-blue-500 mt-1"
-            onClick={() => setShowSection1(!showSection1)}
-          >
-            {showSection1 ? "Show less" : "Show more"}
-          </button>
+        <div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Industries
+            </h3>
+            {filterGlobalData?.industries
+              .slice(
+                0,
+                showMoreIndustries ? filterGlobalData?.industries?.length : 3
+              )
+              .map((industry, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {industry?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+            >
+              {showMoreIndustries ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Tools And Softwares
+            </h3>
+            {filterGlobalData?.tool
+              .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
+              .map((department, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {department?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTool(!showTool)}
+            >
+              {showTool ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+            {filterGlobalData?.topic
+              .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTopics(!showTopics)}
+            >
+              {showTopics ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Departments
+            </h3>
+            {filterGlobalData?.department
+              .slice(
+                0,
+                showMoreDepartments ? filterGlobalData?.department?.length : 3
+              )
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreDepartments(!showMoreDepartments)}
+            >
+              {showMoreDepartments ? "Show less" : "Show more"}
+            </button>
+          </div>
+
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Webinar Type
+            </h3>
+            {filterGlobalData?.webinarType
+              ?.slice(
+                0,
+                showWebinarType ? filterGlobalData?.webinarType?.length : 3
+              )
+              .map((webinarType, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="ml-2 capitalize cursor-pointer text-sm">
+                    {webinarType?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowWebinarType(!showWebinarType)}
+            >
+              {showWebinarType ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Languages
+            </h3>
+            {filterGlobalData?.langauge
+              ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
+              .map((webinarType, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="ml-2 capitalize cursor-pointer text-sm">
+                    {webinarType?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowLanguage(!showLanguage)}
+            >
+              {showLanguage ? "Show less" : "Show more"}
+            </button>
+          </div>
+        </div>
+      )}
+      {Heading === "product" && (
+        <div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Industries
+            </h3>
+            {filterGlobalData?.industries
+              .slice(
+                0,
+                showMoreIndustries ? filterGlobalData?.industries?.length : 3
+              )
+              .map((industry, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {industry?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+            >
+              {showMoreIndustries ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Tools And Softwares
+            </h3>
+            {filterGlobalData?.tool
+              .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
+              .map((department, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {department?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTool(!showTool)}
+            >
+              {showTool ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+            {filterGlobalData?.topic
+              .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTopics(!showTopics)}
+            >
+              {showTopics ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Services
+            </h3>
+            {filterGlobalData?.service
+              ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
+              .map((webinarType, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="ml-2 capitalize cursor-pointer text-sm">
+                    {webinarType?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowService(!showService)}
+            >
+              {showService ? "Show less" : "Show more"}
+            </button>
+          </div>
+        </div>
+      )}
+      {Heading === "case-studies" && (
+        <div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Industries
+            </h3>
+            {filterGlobalData?.industries
+              .slice(
+                0,
+                showMoreIndustries ? filterGlobalData?.industries?.length : 3
+              )
+              .map((industry, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {industry?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+            >
+              {showMoreIndustries ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Tools And Softwares
+            </h3>
+            {filterGlobalData?.tool
+              .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
+              .map((department, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {department?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTool(!showTool)}
+            >
+              {showTool ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+            {filterGlobalData?.topic
+              .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTopics(!showTopics)}
+            >
+              {showTopics ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Services
+            </h3>
+            {filterGlobalData?.service
+              ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
+              .map((webinarType, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="ml-2 capitalize cursor-pointer text-sm">
+                    {webinarType?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowService(!showService)}
+            >
+              {showService ? "Show less" : "Show more"}
+            </button>
+          </div>
+        </div>
+      )}
+       {Heading === "demo-videos" && (
+        <div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Industries
+            </h3>
+            {filterGlobalData?.industries
+              .slice(
+                0,
+                showMoreIndustries ? filterGlobalData?.industries?.length : 3
+              )
+              .map((industry, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {industry?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+            >
+              {showMoreIndustries ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Tools And Softwares
+            </h3>
+            {filterGlobalData?.tool
+              .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
+              .map((department, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {department?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTool(!showTool)}
+            >
+              {showTool ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+            {filterGlobalData?.topic
+              .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTopics(!showTopics)}
+            >
+              {showTopics ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Languages
+            </h3>
+            {filterGlobalData?.langauge
+              ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
+              .map((webinarType, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  <span className="ml-2 capitalize cursor-pointer text-sm">
+                    {webinarType?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowLanguage(!showLanguage)}
+            >
+              {showLanguage ? "Show less" : "Show more"}
+            </button>
+          </div>
+        </div>
+      )}
+       {Heading === "blog" && (
+        <div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Industries
+            </h3>
+            {filterGlobalData?.industries
+              .slice(
+                0,
+                showMoreIndustries ? filterGlobalData?.industries?.length : 3
+              )
+              .map((industry, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {industry?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreIndustries(!showMoreIndustries)}
+            >
+              {showMoreIndustries ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Tools And Softwares
+            </h3>
+            {filterGlobalData?.tool
+              .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
+              .map((department, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {department?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTool(!showTool)}
+            >
+              {showTool ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+            {filterGlobalData?.topic
+              .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowTopics(!showTopics)}
+            >
+              {showTopics ? "Show less" : "Show more"}
+            </button>
+          </div>
+          <div className="mb-2 border border-gray-300 rounded p-2">
+            <h3 className="md:text-[16px] text-[14px] font-medium">
+              Departments
+            </h3>
+            {filterGlobalData?.department
+              .slice(
+                0,
+                showMoreDepartments ? filterGlobalData?.department?.length : 3
+              )
+              .map((topic, index) => (
+                <label className="flex items-center" key={index}>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600"
+                  />
+                  {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
+                  <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
+                    {topic?.name}
+                  </span>
+                </label>
+              ))}
+            <button
+              className="text-blue-500 mt-1"
+              onClick={() => setShowMoreDepartments(!showMoreDepartments)}
+            >
+              {showMoreDepartments ? "Show less" : "Show more"}
+            </button>
+          </div>
+
         </div>
       )}
 
       {/* langauges */}
-
-      
     </div>
   );
 
