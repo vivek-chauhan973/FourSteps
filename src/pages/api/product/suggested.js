@@ -1,4 +1,4 @@
-import CaseStudy from "@/models/admin/casestudy/casestudy";
+import Product from "@/models/admin/product/product";
 const suggestedApi = async (req, res) => {
     const { industry, service } = req.query;
     let pipeline = [];
@@ -20,7 +20,7 @@ const suggestedApi = async (req, res) => {
 
     try {
         // Use exec() instead of toArray()
-        const data = await CaseStudy.aggregate(pipeline);
+        const data = await Product.aggregate(pipeline);
         
         if (!data || data?.length === 0) {
             return res.status(404).json({ message: "No products found" });
@@ -35,4 +35,4 @@ const suggestedApi = async (req, res) => {
 
 export default suggestedApi;
 
-//localhost:3000/api/casestudy/suggested?industry=xyz&service=xyz
+//localhost:3000/api/product/suggested?industry=xyz&service=xyz

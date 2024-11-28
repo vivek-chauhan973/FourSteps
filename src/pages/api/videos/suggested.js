@@ -1,6 +1,6 @@
-import CaseStudy from "@/models/admin/casestudy/casestudy";
+import Videos from "@/models/admin/videos/videomain";
 const suggestedApi = async (req, res) => {
-    const { industry, service } = req.query;
+    const { industry, topics } = req.query;
     let pipeline = [];
 
     if (industry) {
@@ -13,14 +13,14 @@ const suggestedApi = async (req, res) => {
     if (department) {
         pipeline.push({
             $match: {
-                service: service
+                topics: topics
             }
         });
     }
 
     try {
         // Use exec() instead of toArray()
-        const data = await CaseStudy.aggregate(pipeline);
+        const data = await Videos.aggregate(pipeline);
         
         if (!data || data?.length === 0) {
             return res.status(404).json({ message: "No products found" });
@@ -35,4 +35,4 @@ const suggestedApi = async (req, res) => {
 
 export default suggestedApi;
 
-//localhost:3000/api/casestudy/suggested?industry=xyz&service=xyz
+//localhost:3000/api/videos/suggested?industry=xyz&topics=xyz

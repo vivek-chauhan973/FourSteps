@@ -14,20 +14,24 @@ const getWebinarPackageData = async (title) => {
   const res = await fetch(`/api/webinar/getwebinar?title=${title}`);
   return await res.json();
 };
+const getSuggestedWebinarPackageData = async (industry,department) => {
+  const res = await fetch(`/api/webinar/suggested?industry=${industry}&department=${department}`);
+  return await res.json();
+};
 const Detail = ({ title }) => {
   const [webinarPackageData, setWebinarPackageData] = useState({});
-  //   useEffect(() => {
-  //     if (title) {
-  //       getWebinarPackageData(title).then((res) =>
-  //         console.log("webinar package data ------> ", res)
-  //       );
-  //     }
-  //   }, [title]);
+    useEffect(() => {
+      if (webinarPackageData) {
+        getSuggestedWebinarPackageData(webinarPackageData?.industry,webinarPackageData?.department).then((res) =>
+          console.log("webinar suggested package data ------> ", res)
+        );
+      }
+    }, [webinarPackageData]);
 
   useEffect(() => {
     if (title) {
       getWebinarPackageData(title).then((res) => {
-        console.log("webinar package data ------> ", res);
+        // console.log("webinar package data ------> ", res);
         setWebinarPackageData(res);
       });
     }

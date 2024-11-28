@@ -3,14 +3,11 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import Videos from "@/models/admin/videos/videomain";
-
 //  for the uploading  directories exits
-
 const uploadDirectory = "./public/uploads/demovideo";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
-
 // Configure Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -33,11 +30,9 @@ async function handler(req, res) {
           .status(500)
           .json({ success: false, message: "File upload failed" });
       }
-
       try {
         const { title, subtitle, description, user, industry, altText,videoLink, topics,tools,language } =
           req.body;
-
         // Validate the required fields
         if (
           !title ||
@@ -55,7 +50,6 @@ async function handler(req, res) {
             .status(400)
             .json({ success: false, message: "All fields are required" });
         }
-
         const newProduct = await Videos.create({
           title,
           subtitle,
