@@ -67,7 +67,7 @@ export default function Masterwebinar() {
       setEditWebinarValue(""); // Reset input
     }
   };
-
+  
   const handleDeleteWebinar = async (id) => {
     const res = await fetch("/api/webinar/webinartype/deletewebinar", {
       method: "DELETE",
@@ -79,79 +79,8 @@ export default function Masterwebinar() {
       fetchWebinarTypes(); // Refresh list
     }
   };
-  // States for Departments
-  const [department, setDepartment] = useState("");
-  const [departmentsList, setDepartmentsList] = useState([]);
-  const [editDepartmentId, setEditDepartmentId] = useState(null);
-  const [editDepartmentValue, setEditDepartmentValue] = useState("");
 
-  // Fetch departments
-  const fetchDepartments = async () => {
-    const res = await fetch("/api/webinar/department/getdepartment");
-    const data = await res.json();
-    setDepartmentsList(data);
-  };
-
-  useEffect(() => {
-    fetchDepartments();
-  }, []);
-
-  const handleDepartmentChange = (e) => {
-    setDepartment(e.target.value);
-  };
-
-  const handleSubmitDepartment = async (e) => {
-    e.preventDefault();
-    if (!department.trim()) return;
-
-    const res = await fetch("/api/webinar/department/adddepartment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: department }),
-    });
-
-    if (res.ok) {
-      fetchDepartments();
-      setDepartment("");
-    }
-  };
-
-  const toggleEditDepartment = (id) => {
-    if (editDepartmentId === id) {
-      setEditDepartmentId(null);
-      setEditDepartmentValue("");
-    } else {
-      setEditDepartmentId(id);
-      const departmentToEdit = departmentsList.find((item) => item._id === id);
-      setEditDepartmentValue(departmentToEdit.name);
-    }
-  };
-
-  const saveEditDepartment = async (id) => {
-    const res = await fetch("/api/webinar/department/editdepartment", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, name: editDepartmentValue }),
-    });
-
-    if (res.ok) {
-      fetchDepartments(); // Refresh list
-      setEditDepartmentId(null); // Reset edit mode
-      setEditDepartmentValue(""); // Reset input
-    }
-  };
-
-  const handleDeleteDepartment = async (id) => {
-    const res = await fetch("/api/webinar/department/deletedepartment", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
-
-    if (res.ok) {
-      fetchDepartments(); // Refresh list
-    }
-  };
+  
   return (
     <AdminLayout>
       <div>
@@ -230,86 +159,6 @@ export default function Masterwebinar() {
                       <FontAwesomeIcon
                         icon={faTrash}
                         onClick={() => handleDeleteWebinar(item._id)}
-                        className="mt-1 hover:text-primary cursor-pointer"
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* department section  */}
-          <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
-            <form
-              onSubmit={handleSubmitDepartment}
-              className="flex items-end justify-between gap-3"
-            >
-              <div className="grow flex flex-col">
-                <label htmlFor="" className="mb-2 pl-2 text-para font-semibold">
-                  Department
-                </label>
-                <input
-                  onChange={handleDepartmentChange}
-                  value={department}
-                  className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
-                  type="text"
-                  name="department"
-                  placeholder="Enter Department"
-                />
-              </div>
-              <button type="submit">
-                <FontAwesomeIcon
-                  icon={faCirclePlus}
-                  className="text-xl hover:text-primary cursor-pointer mb-1"
-                />
-              </button>
-            </form>
-
-            {/* Display Departments */}
-            <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
-              {departmentsList.map((item, index) => (
-                <div key={item._id} className="even:bg-slate-50">
-                  <div className="flex justify-between px-1">
-                    <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
-                      <span>{index + 1}.</span>
-                      {editDepartmentId === item._id ? (
-                        <input
-                          className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
-                          value={editDepartmentValue}
-                          onChange={(e) =>
-                            setEditDepartmentValue(e.target.value)
-                          }
-                        />
-                      ) : (
-                        item.name // Display the department name
-                      )}
-                    </p>
-                    <div className="flex gap-2">
-                      {editDepartmentId === item._id ? (
-                        <span className="flex gap-2">
-                          <FontAwesomeIcon
-                            icon={faXmark}
-                            onClick={() => toggleEditDepartment(item._id)}
-                            className="mt-1 hover:text-primary cursor-pointer"
-                          />
-                          {editDepartmentValue && (
-                            <FontAwesomeIcon
-                              icon={faSave}
-                              onClick={() => saveEditDepartment(item._id)}
-                              className="mt-1 hover:text-primary cursor-pointer"
-                            />
-                          )}
-                        </span>
-                      ) : (
-                        <FontAwesomeIcon
-                          icon={faEdit}
-                          onClick={() => toggleEditDepartment(item._id)}
-                          className="mt-1 hover:text-primary cursor-pointer"
-                        />
-                      )}
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        onClick={() => handleDeleteDepartment(item._id)}
                         className="mt-1 hover:text-primary cursor-pointer"
                       />
                     </div>

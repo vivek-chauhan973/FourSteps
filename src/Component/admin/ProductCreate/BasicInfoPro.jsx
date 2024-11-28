@@ -55,7 +55,7 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/product/service");
+        const response = await fetch("/api/global/service");
         const data = await response.json();
         if (data.success) setServiceList(data.data);
       } catch (error) {

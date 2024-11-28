@@ -55,7 +55,7 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/casestudy/service");
+        const response = await fetch("/api/global/service");
         const data = await response.json();
         if (data.success) setServiceList(data.data);
       } catch (error) {

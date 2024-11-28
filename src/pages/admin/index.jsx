@@ -372,6 +372,170 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchLanguages();
   }, []);
+ 
+  // States for Departments
+  const [department, setDepartment] = useState("");
+  const [departmentsList, setDepartmentsList] = useState([]);
+  const [editDepartmentId, setEditDepartmentId] = useState(null);
+  const [editDepartmentValue, setEditDepartmentValue] = useState("");
+
+  // Fetch departments
+  const fetchDepartments = async () => {
+    const res = await fetch("/api/global/department/getdepartment");
+    const data = await res.json();
+    setDepartmentsList(data);
+  };
+
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
+
+  const handleDepartmentChange = (e) => {
+    setDepartment(e.target.value);
+  };
+
+  const handleSubmitDepartment = async (e) => {
+    e.preventDefault();
+    if (!department.trim()) return;
+
+    const res = await fetch("/api/global/department/adddepartment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: department }),
+    });
+
+    if (res.ok) {
+      fetchDepartments();
+      setDepartment("");
+    }
+  };
+
+  const toggleEditDepartment = (id) => {
+    if (editDepartmentId === id) {
+      setEditDepartmentId(null);
+      setEditDepartmentValue("");
+    } else {
+      setEditDepartmentId(id);
+      const departmentToEdit = departmentsList.find((item) => item._id === id);
+      setEditDepartmentValue(departmentToEdit.name);
+    }
+  };
+
+  const saveEditDepartment = async (id) => {
+    const res = await fetch("/api/global/department/editdepartment", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, name: editDepartmentValue }),
+    });
+
+    if (res.ok) {
+      fetchDepartments(); // Refresh list
+      setEditDepartmentId(null); // Reset edit mode
+      setEditDepartmentValue(""); // Reset input
+    }
+  };
+
+  const handleDeleteDepartment = async (id) => {
+    const res = await fetch("/api/global/department/deletedepartment", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+
+    if (res.ok) {
+      fetchDepartments(); // Refresh list
+    }
+  };
+// services is here--->
+
+const [service, setService] = useState("");
+const [servicesList, setServicesList] = useState([]);
+const [editServiceId, setEditServiceId] = useState(null);
+const [editServiceValue, setEditServiceValue] = useState("");
+
+// Fetch services on mount
+useEffect(() => {
+  const loadServices = async () => {
+    const response = await fetch("/api/global/service");
+    const data = await response.json();
+    if (data.success) {
+      setServicesList(data.data);
+    }
+  };
+  loadServices();
+}, []);
+
+// Add Service
+const handleSubmitService = async (e) => {
+  e.preventDefault();
+  if (!service.trim()) return;
+
+  const response = await fetch("/api/global/service", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: service.trim() }),
+  });
+
+  const data = await response.json();
+  if (data.success) {
+    setServicesList([...servicesList, data.data]);
+    setService("");
+    alert("services added ");
+  }
+};
+
+// Toggle Edit Mode
+const toggleEditService = (id) => {
+  if (editServiceId === id) {
+    setEditServiceId(null);
+    setEditServiceValue("");
+  } else {
+    setEditServiceId(id);
+    const serviceItem = servicesList.find((item) => item._id === id);
+    setEditServiceValue(serviceItem.name);
+  }
+};
+
+// Save Edited Service
+const saveEditService = async (id) => {
+  const response = await fetch("/api/global/service", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, name: editServiceValue }),
+  });
+
+  const data = await response.json();
+  if (data.success) {
+    setServicesList(
+      servicesList.map((item) =>
+        item._id === id ? { ...item, name: editServiceValue } : item
+      )
+    );
+    setEditServiceId(null);
+    setEditServiceValue("");
+  }
+};
+
+// Delete Service
+const handleDeleteService = async (id) => {
+  const response = await fetch("/api/global/service", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  });
+
+  const data = await response.json();
+  if (data.success) {
+    setServicesList(servicesList.filter((item) => item._id !== id));
+  }
+};
+
   return (
     <AdminLayout>
       <h1 className="text-2xl font-bold">Admin Dashboard</h1>
@@ -683,6 +847,163 @@ const AdminDashboard = () => {
             ))}
           </div>
         </div>
+        {/*deparment is here */}
+        <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
+            <form
+              onSubmit={handleSubmitDepartment}
+              className="flex items-end justify-between gap-3"
+            >
+              <div className="grow flex flex-col">
+                <label htmlFor="" className="mb-2 pl-2 text-para font-semibold">
+                  Department
+                </label>
+                <input
+                  onChange={handleDepartmentChange}
+                  value={department}
+                  className="border rounded-md h-8 px-2 text-para grow focus:border-black font-sans outline-none"
+                  type="text"
+                  name="department"
+                  placeholder="Enter Department"
+                />
+              </div>
+              <button type="submit">
+                <FontAwesomeIcon
+                  icon={faCirclePlus}
+                  className="text-xl hover:text-primary cursor-pointer mb-1"
+                />
+              </button>
+            </form>
+
+            {/* Display Departments */}
+            <div className="text-[15px] border p-2 h-60 overflow-y-auto rounded mt-3">
+              {departmentsList.map((item, index) => (
+                <div key={item._id} className="even:bg-slate-50">
+                  <div className="flex justify-between px-1">
+                    <p className="capitalize truncate hover:text-clip flex gap-2 leading-8 text-[14px]">
+                      <span>{index + 1}.</span>
+                      {editDepartmentId === item._id ? (
+                        <input
+                          className="border ml-2 rounded-md h-8 px-2 capitalize focus:border-black font-sans outline-none"
+                          value={editDepartmentValue}
+                          onChange={(e) =>
+                            setEditDepartmentValue(e.target.value)
+                          }
+                        />
+                      ) : (
+                        item.name // Display the department name
+                      )}
+                    </p>
+                    <div className="flex gap-2">
+                      {editDepartmentId === item._id ? (
+                        <span className="flex gap-2">
+                          <FontAwesomeIcon
+                            icon={faXmark}
+                            onClick={() => toggleEditDepartment(item._id)}
+                            className="mt-1 hover:text-primary cursor-pointer"
+                          />
+                          {editDepartmentValue && (
+                            <FontAwesomeIcon
+                              icon={faSave}
+                              onClick={() => saveEditDepartment(item._id)}
+                              className="mt-1 hover:text-primary cursor-pointer"
+                            />
+                          )}
+                        </span>
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faEdit}
+                          onClick={() => toggleEditDepartment(item._id)}
+                          className="mt-1 hover:text-primary cursor-pointer"
+                        />
+                      )}
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        onClick={() => handleDeleteDepartment(item._id)}
+                        className="mt-1 hover:text-primary cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/*services is here */}
+          <div className=" shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
+            <form
+              onSubmit={handleSubmitService}
+              className="flex items-end gap-3 mb-4"
+            >
+              <div className="flex flex-col flex-grow">
+                <label htmlFor="service" className="mb-2 font-semibold">
+                  Service
+                </label>
+                <input
+                  id="service"
+                  value={service}
+                  onChange={(e) => setService(e.target.value)}
+                  className="border rounded-md h-8 px-2 w-full"
+                  placeholder="Enter Service"
+                />
+              </div>
+              <button type="submit" className="text-xl">
+                <FontAwesomeIcon icon={faCirclePlus} />
+              </button>
+            </form>
+
+            <div className="border overflow-y-scroll p-3 h-60 rounded-md">
+              {servicesList.length > 0 ? (
+                servicesList.map((item, index) => (
+                  <div
+                    key={item._id}
+                    className="flex justify-between items-center mb-2"
+                  >
+                    <div className="flex-grow">
+                      <span className="mr-2">{index + 1}.</span>
+                      {editServiceId === item._id ? (
+                        <input
+                          value={editServiceValue}
+                          onChange={(e) => setEditServiceValue(e.target.value)}
+                          className="border rounded-md px-2 h-8 w-full"
+                        />
+                      ) : (
+                        <span>{item.name}</span>
+                      )}
+                    </div>
+                    <div className="flex gap-2">
+                      {editServiceId === item._id ? (
+                        <>
+                          <FontAwesomeIcon
+                            icon={faXmark}
+                            className="cursor-pointer"
+                            onClick={() => toggleEditService(item._id)}
+                          />
+                          <FontAwesomeIcon
+                            icon={faSave}
+                            className="cursor-pointer"
+                            onClick={() => saveEditService(item._id)}
+                          />
+                        </>
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faEdit}
+                          className="cursor-pointer"
+                          onClick={() => toggleEditService(item._id)}
+                        />
+                      )}
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className="cursor-pointer"
+                        onClick={() => handleDeleteService(item._id)}
+                      />
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>No services added yet.</p>
+              )}
+            </div>
+          </div>
+
       </div>
     </AdminLayout>
   );

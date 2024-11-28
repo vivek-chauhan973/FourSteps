@@ -121,7 +121,7 @@ const BasicInfo = ({ setActiveTab, webinarData }) => {
   // for department
   const [departmetaData, setDepartmentData] = useState([]);
   const fetchDepartment = async () => {
-    const response = await fetch("/api/webinar/department/getdepartment");
+    const response = await fetch("/api/global/department/getdepartment");
     if (response.ok) {
       const data = await response.json();
       setDepartmentData(data);
