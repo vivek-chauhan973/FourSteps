@@ -233,7 +233,7 @@ const fetchWebinarTypes = async () => {
 };
 
 const fetchDepartments = async () => {
-  const res = await fetch("/api/webinar/department/getdepartment");
+  const res = await fetch("/api/global/department/getdepartment");
   const data = await res.json();
   return data;
 };
@@ -375,30 +375,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
 
       {/* langauges */}
 
-      <div className="mb-2 border border-gray-300 rounded p-2">
-        <h3 className="md:text-[16px] text-[14px] font-medium ">Languages</h3>
-        {/* Display other section and show only 3 departments */}
-        {filterGlobalData?.langauge
-          ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
-          .map((item, index) => (
-            <label className="flex items-center" key={index}>
-              <input
-                type="checkbox"
-                className="form-checkbox h-4 w-4 text-blue-600"
-              />
-              <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                {item?.name}
-              </span>
-            </label>
-          ))}
-
-        <button
-          className="text-blue-500 mt-2"
-          onClick={() => setShowLanguage(!showLanguage)}
-        >
-          {showLanguage ? "Show less" : "Show more"}
-        </button>
-      </div>
+      
     </div>
   );
 

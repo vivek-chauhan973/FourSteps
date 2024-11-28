@@ -17,15 +17,11 @@ const fetchTopics = async () => {
       return result;   
 };
 
-const fetchLanguages = async () => {
-    const response = await fetch("/api/global/language/getlanguages");
-      const result = await response.json();
-      return result;
-};
+
 
 const AppProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  const [langauge,setLanguage]=useState([]);
+
   const [topic,setTopic]=useState([]);
   const [tool,setTool]=useState([]);
   const [industries,setIndustries]=useState([]);
@@ -37,7 +33,7 @@ const AppProvider = ({ children }) => {
     };
 
     fetchUsers();
-    fetchLanguages().then(res=>{setLanguage(res?.data||[])});
+    
     fetchTopics().then(res=>{setTopic(res?.result||[])});
 
     fetchTools().then(res=>{setTool(res?.data||[])});
@@ -46,7 +42,7 @@ const AppProvider = ({ children }) => {
 
   }, []);
 
-  const filterGlobalData={tool,langauge,industries,topic};
+  const filterGlobalData={tool,industries,topic};
 
   const contextFun = { users, setUsers,filterGlobalData };
 
