@@ -35,7 +35,7 @@ async function handler(req, res) {
       }
 
       try {
-        const { title, subtitle, description, user, industry, altText,videoLink } =
+        const { title, subtitle, description, user, industry, altText,videoLink, topics,tools,language } =
           req.body;
 
         // Validate the required fields
@@ -44,8 +44,11 @@ async function handler(req, res) {
           !subtitle ||
           !description ||
           !user ||
+          !topics ||
+          !tools ||
+          !language ||
           !industry ||
-          !videoLink||
+          !videoLink ||
           !req.file
         ) {
           return res
@@ -63,6 +66,7 @@ async function handler(req, res) {
           path: `/uploads/demovideo/${req.file.filename}`,
           filename: req.file.filename,
           altText,
+          topics,tools,language
         });
         res.status(201).json({
           success: true,

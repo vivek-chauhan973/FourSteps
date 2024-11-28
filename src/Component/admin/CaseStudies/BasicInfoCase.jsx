@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [topics,setTopics]=useState("");
+  const [tools,setTools]=useState("");
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -27,6 +29,8 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
         altText: casestudyData?.[0]?.altText || "",
       });
       setPreview(casestudyData?.[0]?.path || "");
+      setTopics(casestudyData?.[0]?.topics || "");
+      setTools(casestudyData?.[0]?.tools || "");
     }
   }, [casestudyData]);
   const [serviceList, setServiceList] = useState([]);
@@ -84,6 +88,14 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
 
     if (image) {
       formDataToSend.append("image", image);
+    }
+    if(topics && tools){
+      formDataToSend.append("topics", topics);
+      formDataToSend.append("tools", tools);
+    }
+    else{
+      alert("topics and tools is required");
+      return;
     }
 
     try {
@@ -273,8 +285,8 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
             </label>
             <select
               name="topic"
-              value={formData.topic}
-              onChange={handleChange}
+              value={topics}
+              onChange={(e)=>setTopics(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >
@@ -294,8 +306,8 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
             </label>
             <select
               name="toolsAndSoftware"
-              value={formData.toolsAndSoftware}
-              onChange={handleChange}
+              value={tools}
+              onChange={(e)=>setTools(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >

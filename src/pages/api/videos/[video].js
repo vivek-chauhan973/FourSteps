@@ -46,6 +46,7 @@ async function handler(req, res) {
           industry,
           altText,
           videoLink,
+          topics,tools,language
         } = req.body;
 
         // Validate the required fields
@@ -54,6 +55,9 @@ async function handler(req, res) {
           !subtitle ||
           !description ||
           !user ||
+          !topics ||
+          !tools ||
+          !language ||
           !industry ||
           !videoLink ||
           !req.file
@@ -89,6 +93,7 @@ async function handler(req, res) {
               path: `/uploads/demovideo/${req.file.filename}`,
               filename: req.file.filename,
               altText,
+              topics,tools,language
             },
           },
           { new: true } // Return the updated product

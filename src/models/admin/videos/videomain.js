@@ -26,6 +26,18 @@ const VideoSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    topics: {
+      type: String,
+      required: true,
+    },
+    tools: {
+      type: String,
+      required: true,
+    },
+    language: {
+      type: String,
+      required: true,
+    },
     industry: {
       type: String,
       required: true,

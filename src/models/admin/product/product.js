@@ -38,6 +38,14 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    topics: {
+      type: String,
+      required: true,
+    },
+    tools: {
+      type: String,
+      required: true,
+    },
     altText: {
       type: String,
     },

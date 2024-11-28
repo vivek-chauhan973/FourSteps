@@ -35,7 +35,7 @@ async function handler(req, res) {
       }
 
       try {
-        const { title, subtitle, description, service, industry, altText } =
+        const { title, subtitle, description, service, industry, altText,topics,tools } =
           req.body;
 
         // Validate the required fields
@@ -45,6 +45,8 @@ async function handler(req, res) {
           !description ||
           !service ||
           !industry ||
+          !topics||
+          !tools||
           !req.file
         ) {
           return res
@@ -61,6 +63,7 @@ async function handler(req, res) {
           path: `/uploads/product/${req.file.filename}`,
           filename: req.file.filename,
           altText,
+          topics,tools
         });
         res.status(201).json({
           success: true,

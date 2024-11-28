@@ -43,7 +43,7 @@ async function handler(req, res) {
       }
 
       try {
-        const { title, subtitle, description, service, industry, altText } =
+        const { title, subtitle, description, service, industry, altText,topics,tools } =
           req.body;
 
         // Validate the required fields
@@ -53,6 +53,8 @@ async function handler(req, res) {
           !description ||
           !service ||
           !industry ||
+          !tools||
+          !topics||
           !req.file
         ) {
           return res
@@ -81,6 +83,7 @@ async function handler(req, res) {
               subtitle,
               description,
               service,
+              topics,tools,
               industry,
               path: `/uploads/product/${req.file.filename}`, // Updated image path
               filename: req.file.filename, // Updated filename

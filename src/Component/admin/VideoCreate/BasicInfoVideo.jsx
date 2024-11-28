@@ -6,6 +6,9 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [videoLink, setVideoLink] = useState("");
+  const [topics,setTopics]=useState("");
+  const [tools,setTools]=useState("");
+  const [language,setLanguage]=useState("");
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
@@ -28,6 +31,9 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
       });
       setPreview(videoData?.path || "");
       setVideoLink(videoData?.videoLink || "");
+      setTopics(videoData?.topics || "");
+      setTools(videoData?.tools || "");
+      setLanguage(videoData?.language || "");
     }
   }, [videoData]);
   const [userList, setUserList] = useState([]); // State to hold the fetched data
@@ -88,6 +94,15 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     }
     if (videoLink) {
       formDataToSend.append("videoLink", videoLink);
+    }
+    if(topics && tools && language){
+      formDataToSend.append("topics", topics);
+      formDataToSend.append("tools", tools);
+      formDataToSend.append("language", language);
+    }
+    else{
+      alert("topics and tools is required");
+      return;
     }
 
     try {
@@ -311,8 +326,8 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
             </label>
             <select
               name="topic"
-              value={formData.topic}
-              onChange={handleChange}
+              value={topics}
+              onChange={(e)=>setTopics(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >
@@ -332,8 +347,8 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
             </label>
             <select
               name="toolsAndSoftware"
-              value={formData.toolsAndSoftware}
-              onChange={handleChange}
+              value={tools}
+              onChange={(e)=>setTools(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >
@@ -358,8 +373,8 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
           </label>
           <select
             name="language"
-            value={formData.language}
-            onChange={handleChange}
+            value={language}
+            onChange={(e)=>setLanguage(e.target.value)}
             className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
             required
           >
