@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const BasicInfoVideo = ({ setActiveTab, videoData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const [videoLink,setVideoLink]=useState("")
+  const [videoLink, setVideoLink] = useState("");
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
@@ -15,21 +15,21 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     industry: "",
     altText: "",
   });
-    useEffect(() => {
-      console.log("product response is here --> ", videoData);
-      if (videoData) {
-        setFormData({
-          title: videoData?.title || "",
-          description: videoData?.description || "",
-          subtitle: videoData?.subtitle || "",
-          user: videoData?.user || "",
-          industry: videoData?.industry || "",
-          altText: videoData?.altText || "",
-        });
-        setPreview(videoData?.path || "");
-        setVideoLink(videoData?.videoLink||"");
-      }
-    }, [videoData]);
+  useEffect(() => {
+    console.log("product response is here --> ", videoData);
+    if (videoData) {
+      setFormData({
+        title: videoData?.title || "",
+        description: videoData?.description || "",
+        subtitle: videoData?.subtitle || "",
+        user: videoData?.user || "",
+        industry: videoData?.industry || "",
+        altText: videoData?.altText || "",
+      });
+      setPreview(videoData?.path || "");
+      setVideoLink(videoData?.videoLink || "");
+    }
+  }, [videoData]);
   const [userList, setUserList] = useState([]); // State to hold the fetched data
   const [industryList, setIndustryList] = useState([]);
 
@@ -86,15 +86,18 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     if (image) {
       formDataToSend.append("image", image);
     }
-    if(videoLink){
+    if (videoLink) {
       formDataToSend.append("videoLink", videoLink);
     }
 
     try {
-      const response = await fetch(`/api/videos/${videoData?videoData?._id:"video"}`, {
-        method:videoData?"PUT":"POST",
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        `/api/videos/${videoData ? videoData?._id : "video"}`,
+        {
+          method: videoData ? "PUT" : "POST",
+          body: formDataToSend,
+        }
+      );
 
       const result = await response.json();
       if (response?.ok) {
@@ -103,7 +106,11 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
           result?.newProduct?._id
         );
 
-        alert(videoData?"Video  updated successfully!":"Video  created successfully!");
+        alert(
+          videoData
+            ? "Video  updated successfully!"
+            : "Video  created successfully!"
+        );
         router.push(`/admin/demovideo/${result?.newProduct?._id}`);
 
         setActiveTab("Tab2");
@@ -112,7 +119,62 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
       console.error("Unexpected error:", error);
     }
   };
+  //  for topic listing
+  const [topicsList, setTopicsList] = useState([]);
 
+  const fetchTopic = async () => {
+    const response = await fetch("/api/global/topic/gettopic");
+    if (response.ok) {
+      const result = await response.json();
+      // Set topicsList to the 'result' array
+      setTopicsList(result.result); // Adjusted to access the result array
+    } else {
+      console.error("Failed to fetch topics:", response.status);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopic();
+  }, []);
+  // for the tool section
+  const [toolsList, setToolsList] = useState([]); // State to hold tools data
+
+  const fetchTools = async () => {
+    try {
+      const response = await fetch("/api/global/tools/toolsoftware");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setToolsList(data.data); // Update state with fetched tools data
+    } catch (error) {
+      console.error("Error fetching tools:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTools(); // Fetch tools data when component mounts
+  }, []);
+  const [languagesList, setLanguagesList] = useState([]);
+
+  const fetchLanguages = async () => {
+    const response = await fetch("/api/global/language/getlanguages");
+    if (response.ok) {
+      const result = await response.json(); // Get the entire response
+      if (result.success && Array.isArray(result.data)) {
+        setLanguagesList(result.data); // Access the data array
+      } else {
+        setLanguagesList([]); // Reset to an empty array if success is false or data is not an array
+      }
+    } else {
+      console.error("Failed to fetch languages:", response.status);
+      setLanguagesList([]); // Optional: reset to empty array on error
+    }
+  };
+
+  useEffect(() => {
+    fetchLanguages();
+  }, []);
   return (
     <div className="container mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
       <form onSubmit={handleSubmit} className="space-y-8">
@@ -140,12 +202,11 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               />
             </div>
           )}
-          
         </div>
 
         {/* Other Form Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div >
+          <div>
             <label className="block text-sm font-semibold text-gray-700">
               Alt Text
             </label>
@@ -158,7 +219,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
           </div>
-          <div >
+          <div>
             <label className="block text-sm font-semibold text-gray-700">
               Video Link
             </label>
@@ -166,7 +227,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               type="text"
               name="videoLink"
               value={videoLink}
-              onChange={(e)=>setVideoLink(e.target.value)}
+              onChange={(e) => setVideoLink(e.target.value)}
               placeholder="Enter video link here"
               className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
             />
@@ -240,7 +301,80 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
             </select>
           </div>
         </div>
+        {/* Topic */}
 
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+          {/* Topics Section */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Topics
+            </label>
+            <select
+              name="topic"
+              value={formData.topic}
+              onChange={handleChange}
+              className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              required
+            >
+              <option value="">Select an option</option>
+              {topicsList.map((topic) => (
+                <option key={topic._id} value={topic.name}>
+                  {topic.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Tools and Software Section */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Tools and Software
+            </label>
+            <select
+              name="toolsAndSoftware"
+              value={formData.toolsAndSoftware}
+              onChange={handleChange}
+              className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              required
+            >
+              <option value="">Select an option</option>
+              {toolsList.length > 0 ? (
+                toolsList.map((tool) => (
+                  <option key={tool._id} value={tool.name}>
+                    {tool.name}
+                  </option>
+                ))
+              ) : (
+                <option disabled>No tools available</option>
+              )}
+            </select>
+          </div>
+        </div>
+
+        {/* Languages */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Languages
+          </label>
+          <select
+            name="language"
+            value={formData.language}
+            onChange={handleChange}
+            className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+            required
+          >
+            <option value="">Select an option</option>
+            {languagesList.length > 0 ? (
+              languagesList.map((language) => (
+                <option key={language._id} value={language.name}>
+                  {language.name}
+                </option>
+              ))
+            ) : (
+              <option>No languages available</option> // Message when there are no languages
+            )}
+          </select>
+        </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700">
             Description

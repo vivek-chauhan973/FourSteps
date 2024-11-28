@@ -2,10 +2,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const BasicInfoCase = ({setActiveTab ,casestudyData }) => {
+const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const router=useRouter()
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -15,19 +15,20 @@ const BasicInfoCase = ({setActiveTab ,casestudyData }) => {
     industry: "",
     altText: "",
   });
-useEffect(()=>{
-  console.log("product response is here --> ", casestudyData);
-  if(casestudyData){
-  setFormData({
-    title: casestudyData?.[0]?.title||"",
-    description: casestudyData?.[0]?.description||"",
-    subtitle: casestudyData?.[0]?.subtitle||"",
-    service: casestudyData?.[0]?.service||"",
-    industry: casestudyData?.[0]?.industry||"",
-    altText: casestudyData?.[0]?.altText||"",
-  })
-  setPreview(casestudyData?.[0]?.path||"")}
-},[casestudyData])
+  useEffect(() => {
+    console.log("product response is here --> ", casestudyData);
+    if (casestudyData) {
+      setFormData({
+        title: casestudyData?.[0]?.title || "",
+        description: casestudyData?.[0]?.description || "",
+        subtitle: casestudyData?.[0]?.subtitle || "",
+        service: casestudyData?.[0]?.service || "",
+        industry: casestudyData?.[0]?.industry || "",
+        altText: casestudyData?.[0]?.altText || "",
+      });
+      setPreview(casestudyData?.[0]?.path || "");
+    }
+  }, [casestudyData]);
   const [serviceList, setServiceList] = useState([]);
   const [industryList, setIndustryList] = useState([]);
 
@@ -86,17 +87,22 @@ useEffect(()=>{
     }
 
     try {
-      const response = await fetch(`/api/casestudy/${casestudyData?.length>0?casestudyData?.[0]?._id:"casestudy"}`, {
-        method: casestudyData?"PUT":"POST",
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        `/api/casestudy/${
+          casestudyData?.length > 0 ? casestudyData?.[0]?._id : "casestudy"
+        }`,
+        {
+          method: casestudyData ? "PUT" : "POST",
+          body: formDataToSend,
+        }
+      );
 
       const result = await response.json();
       // console.log("result is submitted data is here--> ",result)
       if (response.ok) {
         alert("Product created successfully!");
         router.push(`/admin/casestudy/${result?.newProduct?._id}`);
-        setActiveTab("Tab2")
+        setActiveTab("Tab2");
         console.log(result);
       } else {
         alert("Error: " + result.message);
@@ -106,6 +112,43 @@ useEffect(()=>{
       console.error("Unexpected error:", error);
     }
   };
+
+  //  for topic listing
+  const [topicsList, setTopicsList] = useState([]);
+
+  const fetchTopic = async () => {
+    const response = await fetch("/api/global/topic/gettopic");
+    if (response.ok) {
+      const result = await response.json();
+      // Set topicsList to the 'result' array
+      setTopicsList(result.result); // Adjusted to access the result array
+    } else {
+      console.error("Failed to fetch topics:", response.status);
+    }
+  };
+
+  useEffect(() => {
+    fetchTopic();
+  }, []);
+  // for the tool section
+  const [toolsList, setToolsList] = useState([]); // State to hold tools data
+
+  const fetchTools = async () => {
+    try {
+      const response = await fetch("/api/global/tools/toolsoftware");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setToolsList(data.data); // Update state with fetched tools data
+    } catch (error) {
+      console.error("Error fetching tools:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTools(); // Fetch tools data when component mounts
+  }, []);
 
   return (
     <div className="container mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
@@ -220,6 +263,55 @@ useEffect(()=>{
           </div>
         </div>
 
+        {/* Topic */}
+
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+          {/* Topics Section */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Topics
+            </label>
+            <select
+              name="topic"
+              value={formData.topic}
+              onChange={handleChange}
+              className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              required
+            >
+              <option value="">Select an option</option>
+              {topicsList.map((topic) => (
+                <option key={topic._id} value={topic.name}>
+                  {topic.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Tools and Software Section */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">
+              Tools and Software
+            </label>
+            <select
+              name="toolsAndSoftware"
+              value={formData.toolsAndSoftware}
+              onChange={handleChange}
+              className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
+              required
+            >
+              <option value="">Select an option</option>
+              {toolsList.length > 0 ? (
+                toolsList.map((tool) => (
+                  <option key={tool._id} value={tool.name}>
+                    {tool.name}
+                  </option>
+                ))
+              ) : (
+                <option disabled>No tools available</option>
+              )}
+            </select>
+          </div>
+        </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700">
             Description

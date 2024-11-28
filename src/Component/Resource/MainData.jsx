@@ -342,13 +342,18 @@ const MainData = ({ Heading }) => {
                   </div>
 
                   <div className="flex flex-col border-t sm:border-t-0 md:border-l border-gray-300 px-3">
-                    <h2 className="text-lg font-bold">{blog?.title}</h2>
+                    <h2 className="text-md capitalize font-semibold">
+                      {blog?.title}
+                    </h2>
                     <div className="flex text-gray-800 font-normal mt-1">
-                      <span className="mr-2"> {blog?.subTitle}</span>
+                      <span className="mr-1 capitalize py-1 text-[14px] line-clamp-2">
+                        {blog?.subTitle}
+                      </span>
                     </div>
                     <p className="mt-1 text-sm md:text-xs line-clamp-3 text-gray-700">
                       {blog?.description}
                     </p>
+
                     <div>
                       <p className="text-gray-900 pt-3 text-sm">
                         Date: 02-10-2024
