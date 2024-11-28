@@ -8,10 +8,10 @@ export default async function handler(req, res) {
     const testimonials = await Videos.findOne({ title: title }).populate(
       "overview  user faq seo highlight"
     );
-    if(!testimonials){
-        res.status(400).json({
-            error: "not found",
-          });
+    if (!testimonials) {
+      res.status(400).json({
+        error: "not found",
+      });
     }
     res.status(200).json(testimonials);
   } catch (error) {

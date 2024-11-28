@@ -76,7 +76,7 @@ async function handler(req, res) {
         });
         res.status(201).json({
           success: true,
-          message: "Product created successfully",
+          message: "video  created successfully",
           newProduct,
         });
       } catch (error) {
@@ -104,6 +104,7 @@ async function handler(req, res) {
       res.status(500).json({
         success: false,
         message: "Internal server error",
+        error
       });
     }
   } else {

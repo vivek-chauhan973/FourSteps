@@ -10,7 +10,9 @@ import Link from "next/link";
 import DemoFaqs from "./DemoFaqs";
 
 const videoData = async (title) => {
-  const response = await fetch(`/api/videos/getallvideo?title=${title.split("-")?.join(" ")}`);
+  const response = await fetch(
+    `/api/videos/getallvideo?title=${title.split("-")?.join(" ")}`
+  );
 
   return await response.json();
 };
@@ -32,7 +34,7 @@ const Vdetail = ({ title }) => {
     <>
       {/* hero section */}
       <div>
-        <DemoHero   videoPackageData={videoPackageData}/>
+        <DemoHero videoPackageData={videoPackageData} />
       </div>
 
       <div className="bg-[#F1F5F9]">
@@ -92,7 +94,7 @@ const Vdetail = ({ title }) => {
               <div className="md:px-10">
                 <div className="font-semibold py-2 text-xl">Overview</div>
 
-                <DemoOverview />
+                <DemoOverview videoPackageData={videoPackageData} />
               </div>
             </div>
             {/* key and highlight section */}
@@ -105,7 +107,7 @@ const Vdetail = ({ title }) => {
                   Key & Highlights
                 </div>
 
-                <DemoHightlight />
+                <DemoHightlight videoPackageData={videoPackageData} />
               </div>
             </div>
             {/* technology section */}
@@ -118,7 +120,7 @@ const Vdetail = ({ title }) => {
                   Video Presentator
                 </div>
 
-                <DemoPrentater />
+                <DemoPrentater videoPackageData={videoPackageData} />
               </div>
             </div>
           </div>
@@ -136,7 +138,7 @@ const Vdetail = ({ title }) => {
 
       {/* Footer section here */}
       <div>
-        <DemoFaqs />
+        <DemoFaqs videoPackageData={videoPackageData} />
       </div>
       {/* Footer section here */}
       <div>

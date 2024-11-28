@@ -299,20 +299,18 @@
 
 // export default DemoFaqs;
 
-
-import React, { useRef,useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 // import React, { useState } from "react";
- import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const DemoFaqs = () => {
-
-
-
-
+const DemoFaqs = ({ videoPackageData }) => {
+  const faq = videoPackageData?.faq;
+  const questions = faq?.questions || [];
+  console.log("))))))))))))))))))ttttt", questions);
 
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -445,143 +443,144 @@ const DemoFaqs = () => {
     };
   }, []);
 
-  return (<>
-
-    <div className="md:mt-9 mt-4 bg-slate-100">
-      {suggestedBlog?.length > 0 && (
-        <div className="container-wrapper py-7">
-          <p className="md:text-[25px] text-xl font-medium mb-1 capitalize">
-            Suggested demos & Videos
-          </p>
-        </div>
-      )}
-      <div className="carousel-container relative container-wrapper ">
-        <div className="carousel gap-5" ref={carouselRef}>
-          {suggestedBlog?.length > 0 &&
-            suggestedBlog?.map((items, i) => {
-              return (
-                <div
-                  key={i}
-                  className="carousel-item w-60 md:w-80 mb-11  rounded-md"
-                >
-                  <div className="shadow-md rounded-lg overflow-hidden">
-                    <div className="relative">
-                      <div className=" w-full h-52">
-                        <Image
-                          className=" relative  object-cover "
-                          layout="fill"
-                          src={items?.img}
-                          alt="images"
-                        />
+  return (
+    <>
+      <div className="md:mt-9 mt-4 bg-slate-100">
+        {suggestedBlog?.length > 0 && (
+          <div className="container-wrapper py-7">
+            <p className="md:text-[25px] text-xl font-medium mb-1 capitalize">
+              Suggested demos & Videos
+            </p>
+          </div>
+        )}
+        <div className="carousel-container relative container-wrapper ">
+          <div className="carousel gap-5" ref={carouselRef}>
+            {suggestedBlog?.length > 0 &&
+              suggestedBlog?.map((items, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="carousel-item w-60 md:w-80 mb-11  rounded-md"
+                  >
+                    <div className="shadow-md rounded-lg overflow-hidden">
+                      <div className="relative">
+                        <div className=" w-full h-52">
+                          <Image
+                            className=" relative  object-cover "
+                            layout="fill"
+                            src={items?.img}
+                            alt="images"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className=" flex flex-col gap-3 px-3 pt-3 pb-5 bg-white">
-                      <div className="w-full md:h-7 h-8">
-                        <p className="md:text-lg text-base font-semibold">
-                          {items?.title}
+                      <div className=" flex flex-col gap-3 px-3 pt-3 pb-5 bg-white">
+                        <div className="w-full md:h-7 h-8">
+                          <p className="md:text-lg text-base font-semibold">
+                            {items?.title}
+                          </p>
+                        </div>
+                        <div className="flex gap-3 w-full justify-between">
+                          <p className="font-semibold md:text-base text-sm text-black">
+                            industry: {items?.industry}
+                          </p>
+                          {/* <p className="font-semibold md:text-base text-sm text-black w-[80%]">Started From</p> */}
+                        </div>
+                        <p className="text-para line-clamp-3 mb-4">
+                          {items?.desc}
                         </p>
-                      </div>
-                      <div className="flex gap-3 w-full justify-between">
-                        <p className="font-semibold md:text-base text-sm text-black">
-                         industry: {items?.industry}
-                        </p>
-                        {/* <p className="font-semibold md:text-base text-sm text-black w-[80%]">Started From</p> */}
-                      </div>
-                      <p className="text-para line-clamp-3 mb-4">
-                        {items?.desc}
-                      </p>
-                      <div>
-                        <div className="flex items-center justify-center">
-                          <a
-                            href="#"
-                            className="badge text-sm px-3 py-1.5 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
-                          >
-                            Know More
-                          </a>
+                        <div>
+                          <div className="flex items-center justify-center">
+                            <a
+                              href="#"
+                              className="badge text-sm px-3 py-1.5 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
+                            >
+                              Know More
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          {/* end is here code */}
+                );
+              })}
+            {/* end is here code */}
+          </div>
+          {suggestedBlog?.length > 0 && (
+            <div className=" hidden md:block absolute top-2/4 -translate-y-[80px] justify-between w-full">
+              <div className=" justify-between flex pl-2 ">
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  onClick={scrollPrev}
+                  className="h-5 w-5 p-2 rounded-full  bg-black/50 hover:bg-black text-white rotate-180"
+                />
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  onClick={scrollNext}
+                  className="h-5 w-5 p-2 rounded-full bg-black/50 hover:bg-black text-white"
+                />
+              </div>
+            </div>
+          )}
         </div>
-        {suggestedBlog?.length > 0 && (
-          <div className=" hidden md:block absolute top-2/4 -translate-y-[80px] justify-between w-full">
-            <div className=" justify-between flex pl-2 ">
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                onClick={scrollPrev}
-                className="h-5 w-5 p-2 rounded-full  bg-black/50 hover:bg-black text-white rotate-180"
-              />
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                onClick={scrollNext}
-                className="h-5 w-5 p-2 rounded-full bg-black/50 hover:bg-black text-white"
-              />
-            </div>
-          </div>
-        )}
       </div>
-    </div>
-{/*  faq sections here */}
-    <div className="bg-white">
-          {/* section 1 */}
-          <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-            <p className="md:text-2xl  text-lg font-semibold">
-              Frequently Asked Questions (FAQS) for the Videos
-            </p>
+      {/*  faq sections here */}
+      <div className="bg-white">
+        {/* section 1 */}
+        <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+          <p className="md:text-2xl  text-lg font-semibold">
+            Frequently Asked Questions (FAQS) for the Videos
+          </p>
+        </div>
+        <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
+          <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
+            <button
+              className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
+              onClick={isAllOpen ? handleHideAll : handleExpandAll}
+            >
+              {isAllOpen ? "Hide all" : "Expand all"}
+            </button>
           </div>
-          <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
-            <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
-              <button
-                className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
-                onClick={isAllOpen ? handleHideAll : handleExpandAll}
-              >
-                {isAllOpen ? "Hide all" : "Expand all"}
-              </button>
-            </div>
-            <div className="w-full mx-auto md:px-0 px-5">
-              {faqs.map((faq, i) => (
-                <div key={i} className="mb-3">
-                  <div
-                    onClick={() => handleToggle(i)}
-                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
-                  >
-                    <p className="md:text-[15px] text-[14px] capitalize md:first-line:font-semibold font-medium mr-1 ">
-                      {faq.question}
-                    </p>
+          <div className="w-full mx-auto md:px-0 px-5">
+            {questions?.map((faq, i) => (
+              <div key={faq._id || i} className="mb-3">
+                <div
+                  onClick={() => handleToggle(i)}
+                  className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                >
+                  <p className="md:text-[15px] text-[14px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                    {faq?.title}
+                  </p>
 
-                    <span>
-                      {openIndices.includes(i) ? (
-                        <FontAwesomeIcon icon={faChevronUp} />
-                      ) : (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      )}
-                    </span>
-                  </div>
-                  <div
-                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
+                  <span>
+                    {openIndices.includes(i) ? (
+                      <FontAwesomeIcon icon={faChevronUp} />
+                    ) : (
+                      <FontAwesomeIcon icon={faChevronDown} />
+                    )}
+                  </span>
+                </div>
+                <p
+                  className={`overflow-hidden transition-max-height   duration-700 ease-in-out
                                 ${
                                   openIndices.includes(i)
                                     ? "max-h-[1000px]"
                                     : "max-h-0"
                                 }`}
-                    style={{
-                      maxHeight: openIndices.includes(i) ? "1000px" : "0px",
-                    }}
-                  >
-                    <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
-                      {faq.answer}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  style={{
+                    maxHeight: openIndices.includes(i) ? "1000px" : "0px",
+                  }}
+                >
+                  <p
+                    className="py-4 xl:px-10 px-7 text-xs md:text-sm"
+                    dangerouslySetInnerHTML={{ __html: faq.information }}
+                  />
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-  </>
+      </div>
+    </>
   );
 };
 

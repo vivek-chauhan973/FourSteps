@@ -2,6 +2,7 @@ import "./Faq";
 import "./HighLights";
 import "./Overview";
 import "./Seo";
+import  "./videouser";
 const mongoose = require("mongoose");
 
 const VideoSchema = new mongoose.Schema(
