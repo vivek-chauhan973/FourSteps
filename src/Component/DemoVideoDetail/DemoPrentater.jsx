@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const DemoPrentater = ({ videoPackageData }) => {
   const user = videoPackageData?.user || {};
-  const userImagePath = videoPackageData?.user.image.path;
+  const userImagePath = videoPackageData?.user?.image?.path;
 
   console.log("User Image Path:", userImagePath);
 

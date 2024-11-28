@@ -27,7 +27,7 @@ const Vdetail = ({ title }) => {
       });
     }
 
-    console.log("++++++++++++++++++++++++>>>>video", videoPackageData);
+    // console.log("++++++++++++++++++++++++>>>>video", videoPackageData);
   }, [title]);
 
   return (
