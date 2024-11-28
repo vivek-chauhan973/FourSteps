@@ -31,8 +31,18 @@ async function handler(req, res) {
           .json({ success: false, message: "File upload failed" });
       }
       try {
-        const { title, subtitle, description, user, industry, altText,videoLink, topics,tools,language } =
-          req.body;
+        const {
+          title,
+          subtitle,
+          description,
+          user,
+          industry,
+          altText,
+          videoLink,
+          topics,
+          tools,
+          language,
+        } = req.body;
         // Validate the required fields
         if (
           !title ||
@@ -60,7 +70,9 @@ async function handler(req, res) {
           path: `/uploads/demovideo/${req.file.filename}`,
           filename: req.file.filename,
           altText,
-          topics,tools,language
+          topics,
+          tools,
+          language,
         });
         res.status(201).json({
           success: true,
@@ -75,7 +87,9 @@ async function handler(req, res) {
     });
   } else if (req.method === "GET") {
     try {
-      const products = await Videos.find().sort({ createdAt: -1 });
+      const products = await Videos.find()
+        .populate("user")
+        .sort({ createdAt: -1 });
 
       if (!products || products.length === 0) {
         return res.status(404).json({

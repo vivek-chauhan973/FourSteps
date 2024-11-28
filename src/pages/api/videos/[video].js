@@ -46,7 +46,9 @@ async function handler(req, res) {
           industry,
           altText,
           videoLink,
-          topics,tools,language
+          topics,
+          tools,
+          language,
         } = req.body;
 
         // Validate the required fields
@@ -93,7 +95,9 @@ async function handler(req, res) {
               path: `/uploads/demovideo/${req.file.filename}`,
               filename: req.file.filename,
               altText,
-              topics,tools,language
+              topics,
+              tools,
+              language,
             },
           },
           { new: true } // Return the updated product
@@ -114,57 +118,82 @@ async function handler(req, res) {
   } else if (req.method === "DELETE") {
     try {
       if (!video) {
-        return res.status(400).json({ success: false, message: "Video ID is required" });
+        return res
+          .status(400)
+          .json({ success: false, message: "Video ID is required" });
       }
-  
+
       const data = await Videos.findOne({ _id: video }); // Find product by ID
       if (!data) {
-        return res.status(404).json({ success: false, message: "Video not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Video not found" });
       }
-  
+
       if (data?.filename) {
         fs.unlinkSync(path.join(uploadDirectory, data.filename));
       }
-  
+
       if (data?.overview) {
-        const overviewData = await VideoOverview.findOneAndDelete({ _id: data?.overview });
+        const overviewData = await VideoOverview.findOneAndDelete({
+          _id: data?.overview,
+        });
         if (!overviewData) {
-          return res.status(500).json({ success: false, message: "Failed to delete video overview" });
+          return res.status(500).json({
+            success: false,
+            message: "Failed to delete video overview",
+          });
         }
       }
-  
+
       if (data?.highlight) {
-        const highlightData = await VideoHighLights.findOneAndDelete({ _id: data?.highlight });
+        const highlightData = await VideoHighLights.findOneAndDelete({
+          _id: data?.highlight,
+        });
         if (!highlightData) {
-          return res.status(500).json({ success: false, message: "Failed to delete video highlight" });
+          return res.status(500).json({
+            success: false,
+            message: "Failed to delete video highlight",
+          });
         }
       }
-  
+
       if (data?.faq) {
         const faqData = await VideoFaq.findOneAndDelete({ _id: data?.faq });
         if (!faqData) {
-          return res.status(500).json({ success: false, message: "Failed to delete video FAQ" });
+          return res
+            .status(500)
+            .json({ success: false, message: "Failed to delete video FAQ" });
         }
       }
-  
+
       if (data?.seo) {
         const seoData = await VideoSeo.findOneAndDelete({ _id: data?.seo });
         if (!seoData) {
-          return res.status(500).json({ success: false, message: "Failed to delete video SEO data" });
+          return res.status(500).json({
+            success: false,
+            message: "Failed to delete video SEO data",
+          });
         }
       }
       // Finally, delete the product itself
       await Videos.deleteOne({ _id: video });
-  
-      res.status(200).json({ success: true, message: "Video and related data deleted successfully" });
-      
+
+      res.status(200).json({
+        success: true,
+        message: "Video and related data deleted successfully",
+      });
     } catch (error) {
       console.error("Error deleting product:", error);
-      res.status(500).json({ success: false, message: "Internal server error", error });
+      res
+        .status(500)
+        .json({ success: false, message: "Internal server error", error });
     }
   } else {
     try {
-      const videos = await Videos.findOne({ _id: video }).populate("overview faq seo highlight");
+      const videos = await Videos.findOne({ _id: video }).populate(
+        "overview faq user seo highlight"
+      );
 
       if (!videos) {
         return res.status(404).json({

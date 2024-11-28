@@ -24,7 +24,7 @@ const BlogDescription = ({ blogPackageData }) => {
               ></p>
             </div>
             {blogPackageData?.blogQuestions?.map((item, i) => (
-              <div className="pt-3" id={`${item?._id}`}>
+              <div key={i} className="pt-3" id={`${item?._id}`}>
                 <h3 className="text-[25px] font-medium mb-2">{item?.title}</h3>
                 <p className="text-base leading-relaxed">
                   <p

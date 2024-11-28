@@ -14,7 +14,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
     title: "",
     description: "",
     subtitle: "",
-    user: "",
+    user: null,
     industry: "",
     altText: "",
   });
@@ -25,7 +25,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
         title: videoData?.title || "",
         description: videoData?.description || "",
         subtitle: videoData?.subtitle || "",
-        user: videoData?.user || "",
+        user: videoData?.user || null,
         industry: videoData?.industry || "",
         altText: videoData?.altText || "",
       });
@@ -289,7 +289,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               <option value="">Select a user</option>
 
               {userList.map((item) => (
-                <option key={item._id} value={item.name}>
+                <option key={item._id} value={item._id}>
                   {item.name}
                 </option>
               ))}

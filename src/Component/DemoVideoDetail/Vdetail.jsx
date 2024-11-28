@@ -1,16 +1,5 @@
-// import React from "react";
-
-// const Vdetail = () => {
-//   return (
-//     <div>
-//       <h1>alll details page here</h1>
-//     </div>
-//   );
-// };
-
-// export default Vdetail;
 import { Link as ScrollLink } from "react-scroll";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Footer } from "../Footer/Footer";
 import DemoHero from "./DemoHero";
 import DemoOverview from "./DemoOverview";
@@ -20,12 +9,30 @@ import DemoSide from "./DemoSide";
 import Link from "next/link";
 import DemoFaqs from "./DemoFaqs";
 
-const Vdetail = () => {
+const videoData = async (title) => {
+  const response = await fetch(`/api/videos/getallvideo?title=${title.split("-")?.join(" ")}`);
+
+  return await response.json();
+};
+
+const Vdetail = ({ title }) => {
+  const [videoPackageData, setvideoPackageData] = useState(null);
+
+  useEffect(() => {
+    if (title) {
+      videoData(title).then((res) => {
+        setvideoPackageData(res);
+      });
+    }
+
+    console.log("++++++++++++++++++++++++>>>>video", videoPackageData);
+  }, [title]);
+
   return (
     <>
       {/* hero section */}
       <div>
-        <DemoHero />
+        <DemoHero   videoPackageData={videoPackageData}/>
       </div>
 
       <div className="bg-[#F1F5F9]">

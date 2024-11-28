@@ -1,14 +1,4 @@
-// import React from "react";
 
-// const DemoPrentater = () => {
-//   return (
-//     <div>
-//       <h2>DemoPrentater</h2>
-//     </div>
-//   );
-// };
-
-// export default DemoPrentater;
 
 import React from "react";
 import Image from "next/image";

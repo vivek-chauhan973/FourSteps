@@ -9,10 +9,11 @@ const VideoSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      trim:true,unique:true
+      trim: true,
+      unique: true,
     },
-    videoLink:{
-      type:String,
+    videoLink: {
+      type: String,
     },
     subtitle: {
       type: String,
@@ -23,8 +24,8 @@ const VideoSchema = new mongoose.Schema(
       required: true,
     },
     user: {
-      type: String,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "VideoUser",
     },
     topics: {
       type: String,
@@ -53,25 +54,25 @@ const VideoSchema = new mongoose.Schema(
     altText: {
       type: String,
     },
-    faq:{
-      type:mongoose.Schema.Types.ObjectId,
-        ref:"VideoFaq"
-    },seo:{
-      type:mongoose.Schema.Types.ObjectId,
-        ref:"VideoSeo"
+    faq: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "VideoFaq",
     },
-    overview:{
- type:mongoose.Schema.Types.ObjectId,
-        ref:"VideoOverview"
+    seo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "VideoSeo",
     },
-    highlight:{
-      type:mongoose.Schema.Types.ObjectId,
-        ref:"VideoHighLights"
-    }
+    overview: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "VideoOverview",
+    },
+    highlight: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "VideoHighLights",
+    },
   },
   { timestamps: true }
 );
 
-const Videos=
-  mongoose.models.Videos || mongoose.model("Videos", VideoSchema);
-  export default Videos
+const Videos = mongoose.models.Videos || mongoose.model("Videos", VideoSchema);
+export default Videos;
