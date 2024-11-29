@@ -52,6 +52,11 @@ const Sidebar = () => {
             href: "/admin/webinar/master-webinar",
           },
           {
+            label: "Webinar Promo",
+            // change url according to the bizare expendition
+            href: "/admin/webinar/webinar-promo",
+          },
+          {
             label: "Create Webinar",
             href: "/admin/webinar/create-webinar",
           },
@@ -82,7 +87,7 @@ const Sidebar = () => {
         label: "product",
         icon: () => <FontAwesomeIcon icon={faLayerGroup} />,
         subMenu: [
-          { label: "Product master", href: "/admin/product/product-master" },
+          { label: "Product Promo", href: "/admin/product/product-master" },
           { label: "Create Product", href: "/admin/product/create-product" },
           {
             label: "product Listing",
@@ -113,7 +118,7 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faBook} />,
         subMenu: [
           {
-            label: "Case-study master",
+            label: "Case-study Promo",
             href: "/admin/casestudy/case-study-master",
           },
           {
@@ -139,7 +144,7 @@ const Sidebar = () => {
             label: "listing of user",
             href: "/admin/demovideo/videomaker/listing-user",
           },
-          { label: "Master Video", href: "/admin/demovideo/video-master" },
+          { label: "Video Promo", href: "/admin/demovideo/video-master" },
           { label: "Create Videos", href: "/admin/demovideo/create-video" },
           {
             label: "Listing the Videos",
