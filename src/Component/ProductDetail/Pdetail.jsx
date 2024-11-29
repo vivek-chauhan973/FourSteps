@@ -19,20 +19,36 @@ const getSuggestedProductPackageData = async (industry, service) => {
   const res = await fetch(
     `/api/product/suggested?industry=${industry}&service=${service}`
   );
+  return await res.json();
 };
 
 const Pdetail = ({ title }) => {
   const [productsPackageData, setProductsPackageData] = useState({});
+ const [suggestedPackage,setSuggestedPackage]=useState([]);
+ const [filterSuggestedPackage,setFilterSuggestedPackage]=useState([]);
 
   // Fetch data when 'title' changes
   useEffect(() => {
     if (title) {
       getproductPackageData(title).then((res) => {
-        console.log("Product package data fetched --->", res);
         setProductsPackageData(res);
       });
     }
   }, [title]);
+  useEffect(() => {
+    if (productsPackageData) {
+      getSuggestedProductPackageData(productsPackageData?.industry,productsPackageData?.service).then((res) => {
+        // console.log("suggested res--> ",res?.data)
+        setSuggestedPackage(res?.data||[])
+      });
+    }
+  }, [productsPackageData]);
+  useEffect(() => {
+    if (suggestedPackage?.length>0) {
+     const data=suggestedPackage?.filter(item=>item?._id!==productsPackageData?._id);
+     setFilterSuggestedPackage(data||[])
+    }
+  }, [suggestedPackage,productsPackageData]);
 
   return (
     <>
@@ -158,7 +174,7 @@ const Pdetail = ({ title }) => {
       </div>
       {/* ProductSuggest  */}
       <div>
-        <ProductSuggest />
+        <ProductSuggest filterSuggestedPackage={filterSuggestedPackage}/>
       </div>
       {/* faqs and suggestetd */}
       <div>

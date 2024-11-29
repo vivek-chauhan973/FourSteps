@@ -17,9 +17,17 @@ const videoData = async (title) => {
 
   return await response.json();
 };
+const getSuggestedVideoPackageData = async (industry, topics) => {
+  const res = await fetch(
+    `/api/videos/suggested?industry=${industry}&topics=${topics}`
+  );
+  return await res.json();
+};
 
 const Vdetail = ({ title }) => {
   const [videoPackageData, setvideoPackageData] = useState(null);
+  const [suggestedVideoPackage,setSuggestedVideoPackage]=useState([]);
+  const [filterSuggestedVideoPackage,setFilterSuggestedVideoPackage]=useState([]);
 
   useEffect(() => {
     if (title) {
@@ -27,9 +35,22 @@ const Vdetail = ({ title }) => {
         setvideoPackageData(res);
       });
     }
-
-    // console.log("++++++++++++++++++++++++>>>>video", videoPackageData);
   }, [title]);
+  useEffect(()=>{
+    if(videoPackageData){
+      getSuggestedVideoPackageData(videoPackageData?.industry,videoPackageData?.topics).then(res=>{
+        setSuggestedVideoPackage(res?.data||[])
+      })
+    }
+   
+  },[videoPackageData])
+  useEffect(()=>{
+    if(suggestedVideoPackage?.length>0){
+      const data=suggestedVideoPackage?.filter(item=>item?._id!==videoPackageData?._id);
+      setFilterSuggestedVideoPackage(data||[]);
+    }
+
+  },[suggestedVideoPackage,videoPackageData])
 
   return (
     <>
@@ -139,7 +160,7 @@ const Vdetail = ({ title }) => {
 
       {/* suggested  */}
       <div>
-        <DemoSuggest />
+        <DemoSuggest filterSuggestedVideoPackage={filterSuggestedVideoPackage} />
       </div>
       {/* FAQ section here */}
       <div>

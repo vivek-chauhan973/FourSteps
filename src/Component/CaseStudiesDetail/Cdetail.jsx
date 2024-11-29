@@ -18,20 +18,23 @@ const getCaseStudyData = async (title) => {
   const res = await fetch(`/api/casestudy/getCaseStudy?title=${title}`);
   return await res.json();
 };
-
+const getSuggestedCaseStudyPackageData = async (industry, service) => {
+  const res = await fetch(
+    `/api/casestudy/suggested?industry=${industry}&service=${service}`
+  );
+  return await res.json();
+};
 const Cdetail = ({ title }) => {
   const [casePackageData, setCasePackageData] = useState({});
+  const [suggestedCasePackage,setSuggestedCasePackage]=useState([]);
+  const [filterSuggestedCasePackage,setFilterSuggestedCasePackage]=useState([]);
   const router = useRouter();
-  console.log(
-    "case study data is here------> ",
-    router?.query?.detail?.split("-")?.join(" ")
-  );
   // Fetch data when 'title' changes
   useEffect(() => {
     if (router?.query?.detail) {
       getCaseStudyData(router?.query?.detail?.split("-")?.join(" ")).then(
         (res) => {
-          console.log("CaseStudy  data fetched --->", res);
+          // console.log("CaseStudy  data fetched --->", res);
           setCasePackageData(res);
         }
       );
@@ -40,8 +43,18 @@ const Cdetail = ({ title }) => {
 
   // Log the updated data when it changes
   useEffect(() => {
-    console.log(" CaseStudy data ----->", casePackageData);
+    if(casePackageData){
+      getSuggestedCaseStudyPackageData(casePackageData?.service,casePackageData?.industry).then(res=>{
+        setSuggestedCasePackage(res?.data||[])
+      })
+    }
   }, [casePackageData]);
+  useEffect(() => {
+    if(suggestedCasePackage?.length>0){
+    const data=suggestedCasePackage?.filter(item=>item?._id!==casePackageData?._id)
+    setFilterSuggestedCasePackage(data||[])
+    }
+  }, [suggestedCasePackage,casePackageData]);
 
   return (
     <>
@@ -176,7 +189,7 @@ const Cdetail = ({ title }) => {
 
       {/* case suggested */}
       <div>
-        <CaseSuggest />
+        <CaseSuggest filterSuggestedCasePackage={filterSuggestedCasePackage} />
       </div>
 
       {/* faqs and suggestetd */}

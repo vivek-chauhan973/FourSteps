@@ -52,13 +52,7 @@ const Detail = ({ title }) => {
     }
   }, [title]);
 
-  //   trial
-  // useEffect(() => {
-  console.log(
-    "Updated suggested webinar package data -----> ",
-    filterSuggestedPackage
-  );
-  // }, [webinarPackageData]);
+
 
   return (
     <>

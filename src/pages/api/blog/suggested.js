@@ -3,21 +3,15 @@ const suggestedApi = async (req, res) => {
     const { industry,topics } = req.query;
     let pipeline = [];
 
-    if (industry) {
+    if (industry&&topics) {
         pipeline.push({
             $match: {
-                industry: industry
+                $or:[{selectIndustry: industry},{selectTopic:topics}]
+                
             }
         });
     }
-    if (department) {
-        pipeline.push({
-            $match: {
-                topics: topics
-            }
-        });
-    }
-
+ 
     try {
         // Use exec() instead of toArray()
         const data = await BlogDetail.aggregate(pipeline);

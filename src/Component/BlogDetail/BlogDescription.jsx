@@ -4,12 +4,7 @@ import Image from "next/image";
 import SuggestedBlog from "./SuggestedBlog";
 import { Link as ScrollLink } from "react-scroll";
 import BlogSideForm from "./BlogSideForm";
-
-const BlogDescription = ({ blogPackageData }) => {
-  console.log(
-    "content summary------> ",
-    blogPackageData?.blogQuestions?.[1]?.blogSubQuestion?.questions
-  );
+const BlogDescription = ({ blogPackageData,filterSuggestedBlogData }) => {
   return (
     <div>
       {/* Blog BlogDescription section start*/}
@@ -139,7 +134,7 @@ const BlogDescription = ({ blogPackageData }) => {
       </div>
       {/*  Suggested Blog here*/}
       <div>
-        <SuggestedBlog />
+        <SuggestedBlog filterSuggestedBlogData={filterSuggestedBlogData}/>
       </div>
       {/* Blog BlogDescription section end*/}
     </div>

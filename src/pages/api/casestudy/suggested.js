@@ -3,21 +3,13 @@ const suggestedApi = async (req, res) => {
     const { industry, service } = req.query;
     let pipeline = [];
 
-    if (industry) {
+    if (industry&&service) {
         pipeline.push({
             $match: {
-                industry: industry
+                $or:[{ industry: industry},{ service: service}]  
             }
         });
     }
-    if (department) {
-        pipeline.push({
-            $match: {
-                service: service
-            }
-        });
-    }
-
     try {
         // Use exec() instead of toArray()
         const data = await CaseStudy.aggregate(pipeline);

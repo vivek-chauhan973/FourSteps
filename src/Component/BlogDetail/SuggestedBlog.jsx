@@ -3,44 +3,8 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const SuggestedBlog = () => {
-  const suggestedBlog = [
-    {
-      img: "/image/ab.webp",
-      date: "04/10/24",
-      title: "Best app for business & consulting",
-      desc: `From dedicated customer support to itinerary tracking to spend management tools, 
-            today’s corporate travel tools take the hard work out of the business planning process.`,
-    },
-    {
-      img: "/image/ab.webp",
-      date: "04/10/24",
-      title: "Best app for business & consulting",
-      desc: `From dedicated customer support to itinerary tracking to spend management tools, 
-            today’s corporate travel tools take the hard work out of the business planning process.`,
-    },
-    {
-      img: "/image/ab.webp",
-      date: "04/10/24",
-      title: "Best app for business & consulting",
-      desc: `From dedicated customer support to itinerary tracking to spend management tools, 
-            today’s corporate travel tools take the hard work out of the business planning process.`,
-    },
-    {
-      img: "/image/ab.webp",
-      date: "04/10/24",
-      title: "Best app for business & consulting",
-      desc: `From dedicated customer support to itinerary tracking to spend management tools, 
-            today’s corporate travel tools take the hard work out of the business planning process.`,
-    },
-    {
-      img: "/image/ab.webp",
-      date: "04/10/24",
-      title: "Best app for business & consulting",
-      desc: `From dedicated customer support to itinerary tracking to spend management tools, 
-            today’s corporate travel tools take the hard work out of the business planning process.`,
-    },
-  ];
+const SuggestedBlog = ({filterSuggestedBlogData}) => {
+  
   const carouselRef = useRef(null);
 
   const scrollNext = () => {
@@ -80,7 +44,7 @@ const SuggestedBlog = () => {
 
   return (
     <div className="md:mt-9 mt-4 bg-slate-100">
-      {suggestedBlog?.length > 0 && (
+      {filterSuggestedBlogData?.length > 0 && (
         <div className="container-wrapper py-7">
           <p className="md:text-[25px] text-xl font-medium mb-1 capitalize">
             Suggested Blogs
@@ -89,8 +53,8 @@ const SuggestedBlog = () => {
       )}
       <div className="carousel-container relative container-wrapper ">
         <div className="carousel gap-5" ref={carouselRef}>
-          {suggestedBlog?.length > 0 &&
-            suggestedBlog?.map((items, i) => {
+          {filterSuggestedBlogData?.length > 0 &&
+            filterSuggestedBlogData?.map((items, i) => {
               return (
                 <div
                   key={i}
@@ -102,7 +66,7 @@ const SuggestedBlog = () => {
                         <Image
                           className=" relative  object-cover "
                           layout="fill"
-                          src={items?.img}
+                          src={items?.path}
                           alt="images"
                         />
                       </div>
@@ -112,6 +76,9 @@ const SuggestedBlog = () => {
                         <p className="font-semibold md:text-base text-sm text-black w-[20%]">
                           {items?.date}
                         </p>
+                        <p className="font-semibold md:text-base text-sm text-black w-[20%]">
+                          {items?.time}
+                        </p>
                         {/* <p className="font-semibold md:text-base text-sm text-black w-[80%]">Started From</p> */}
                       </div>
                       <div className="w-full md:h-7 h-8">
@@ -120,16 +87,16 @@ const SuggestedBlog = () => {
                         </p>
                       </div>
                       <p className="text-para line-clamp-3 mb-4">
-                        {items?.desc}
+                        {items?.description}
                       </p>
                       <div>
                         <div className="flex gap-5 items-center justify-between pr-4 pt-1">
-                          <a
-                            href="#"
+                          <Link
+                            href={`/resource/blog/${items?.title}`}
                             className="badge text-sm px-3 py-1.5 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
                           >
                             Know More
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -139,7 +106,7 @@ const SuggestedBlog = () => {
             })}
           {/* end is here code */}
         </div>
-        {suggestedBlog?.length > 0 && (
+        {filterSuggestedBlogData?.length > 0 && (
           <div className=" hidden md:block absolute top-2/4 -translate-y-[80px] justify-between w-full">
             <div className=" justify-between flex pl-2 ">
               <FontAwesomeIcon

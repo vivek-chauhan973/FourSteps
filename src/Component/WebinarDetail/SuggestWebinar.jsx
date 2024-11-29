@@ -13,7 +13,7 @@ const SuggestWebinar = ({ filterSuggestedPackage }) => {
 
   useEffect(() => {
     fetchAllWebinar().then((res) => {
-      console.log("all type data -----> ", res);
+      // console.log("all type data -----> ", res);
       setAllTypeData(res || []);
     });
   }, []);
@@ -101,9 +101,7 @@ const SuggestWebinar = ({ filterSuggestedPackage }) => {
                       <div>
                         <div className="flex gap-5 items-center justify-between pr-4 pt-1">
                           <Link
-                            href={`/resource/webinar/${items?.title
-                              .split(" ")
-                              ?.join("-")}`}
+                            href={`/resource/webinar/${items?.title}`}
                             className="badge text-sm px-3 py-1.5 rounded-full text-white bg-gradient-to-r from-orange-500 to-red-500"
                           >
                             Know More

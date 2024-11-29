@@ -9,10 +9,17 @@ const getBlogData = async (title) => {
   );
   return await response.json();
 };
+const getSuggestedBlogPackageData = async (industry, topics) => {
+  const res = await fetch(
+    `/api/blog/suggested?industry=${industry}&topics=${topics}`
+  );
+  return await res.json();
+};
 
 const Bdetail = ({ title }) => {
   const [blogPackageData, setBlogPackageData] = useState(null);
-
+const [suggestedBlogData,setSuggestedBlogData]=useState([]);
+const [filterSuggestedBlogData,setFilterSuggestedBlogData]=useState([]);
   useEffect(() => {
     if (title) {
       getBlogData(title).then((res) => {
@@ -23,6 +30,21 @@ const Bdetail = ({ title }) => {
     
   }, [title]);
 
+  useEffect(()=>{
+    if(blogPackageData){
+      getSuggestedBlogPackageData(blogPackageData?.selectIndustry,blogPackageData?.selectTopic).then(res=>{
+        setSuggestedBlogData(res?.data||[]);
+      })
+    }
+  },[blogPackageData])
+
+  useEffect(()=>{
+    if(suggestedBlogData?.length>0){
+    const data=suggestedBlogData?.filter(item=>item?._id!==blogPackageData?._id);
+    setFilterSuggestedBlogData(data||[])
+    }
+  },[suggestedBlogData,blogPackageData])
+
   return (
     <>
       <div>
@@ -31,7 +53,7 @@ const Bdetail = ({ title }) => {
       </div>
       {/* for the blog post content or description  */}
       <div>
-        <BlogDescription  blogPackageData={blogPackageData}/>
+        <BlogDescription  blogPackageData={blogPackageData} filterSuggestedBlogData={filterSuggestedBlogData}/>
       </div>
       {/* for the footer section  */}
       <div>
