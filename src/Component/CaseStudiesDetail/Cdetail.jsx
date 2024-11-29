@@ -12,6 +12,7 @@ import Challenge from "./Challenge";
 import Testimonial from "../Testimonial/Testimonial";
 import { useRouter } from "next/router";
 import CaseFaq from "./CaseFaq";
+import CaseSuggest from "./CaseSuggest";
 
 const getCaseStudyData = async (title) => {
   const res = await fetch(`/api/casestudy/getCaseStudy?title=${title}`);
@@ -172,6 +173,12 @@ const Cdetail = ({ title }) => {
           </div>
         </div>
       </div>
+
+      {/* case suggested */}
+      <div>
+        <CaseSuggest />
+      </div>
+
       {/* faqs and suggestetd */}
       <div>
         <CaseFaq casefaqData={casePackageData} />

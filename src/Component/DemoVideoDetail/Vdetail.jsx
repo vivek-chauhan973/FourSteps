@@ -8,6 +8,7 @@ import DemoPrentater from "./DemoPrentater";
 import DemoSide from "./DemoSide";
 import Link from "next/link";
 import DemoFaqs from "./DemoFaqs";
+import DemoSuggest from "./DemoSuggest";
 
 const videoData = async (title) => {
   const response = await fetch(
@@ -136,7 +137,11 @@ const Vdetail = ({ title }) => {
         </div>
       </div>
 
-      {/* Footer section here */}
+      {/* suggested  */}
+      <div>
+        <DemoSuggest />
+      </div>
+      {/* FAQ section here */}
       <div>
         <DemoFaqs videoPackageData={videoPackageData} />
       </div>

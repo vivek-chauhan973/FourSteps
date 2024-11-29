@@ -10,6 +10,7 @@ import WebinarHero from "@/Component/WebinarDetail/WebinarHero";
 import SpeakerDetail from "@/Component/WebinarDetail/SpeakerDetail";
 import WebinarFaqs from "@/Component/WebinarDetail/WebinarFaqs";
 import { Footer } from "@/Component/Footer/Footer";
+import SuggestWebinar from "./SuggestWebinar";
 const getWebinarPackageData = async (title) => {
   const res = await fetch(`/api/webinar/getwebinar?title=${title}`);
   return await res.json();
@@ -138,6 +139,10 @@ const Detail = ({ title }) => {
             </div>
           </div>
         </div>
+      </div>
+      {/* Suggest webinar  */}
+      <div className=" ">
+        <SuggestWebinar faqData={webinarPackageData} />
       </div>
       {/* webinar detail page FAQ SECTION */}
       <div className=" ">

@@ -8,6 +8,7 @@ import { Footer } from "../Footer/Footer";
 import ProductHightlight from "./ProductHightlight";
 import ScreenShot from "./ScreenShot";
 import ProductFaqs from "./ProductFaqs";
+import ProductSuggest from "./ProductSuggest";
 
 const getproductPackageData = async (title) => {
   const res = await fetch(`/api/product/getproduct?title=${title}`);
@@ -149,7 +150,10 @@ const Pdetail = ({ title }) => {
           </div>
         </div>
       </div>
-
+      {/* ProductSuggest  */}
+      <div>
+        <ProductSuggest />
+      </div>
       {/* faqs and suggestetd */}
       <div>
         <ProductFaqs productfaqData={productsPackageData} />
