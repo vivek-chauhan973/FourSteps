@@ -4,7 +4,11 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong, faCube } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
+import BlogPromoSeo from "@/Component/admin/Blog Detail/BlogPromoSeo";
+import CaseStudySeoPromo from "@/Component/admin/CaseStudies/CaseStudySeoPromo";
+import ProductSeoPromo from "@/Component/admin/ProductCreate/ProductSeoPromo";
 import VideoSeoPromo from "@/Component/admin/VideoCreate/VideoSeoPromo";
+import WebinarSeoPromo from "@/Component/admin/WebinarCreate/WebinarSeoPromo";
 
 export default function Management() {
   const [file, setFile] = useState(null);
@@ -103,7 +107,7 @@ export default function Management() {
         <div className="flex items-center gap-5 text-primary xl:mt-5 mb-10">
           <FontAwesomeIcon icon={faCube} className="text-2xl" />
           <p className="md:text-[28px] text-xl text-black">
-            Demo & Videos Promo Management
+            Webinar Promo Management
           </p>
           <FontAwesomeIcon
             icon={faArrowRightLong}
@@ -111,7 +115,7 @@ export default function Management() {
           />
         </div>
         <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)]  border-l-2 border-teal-600">
-          <p className="text-base font-semibold mb-2"> Demo & Videos Promo Banner</p>
+          <p className="text-base font-semibold mb-2">Webinar Promo Banner</p>
           <div className="p-4">
             <div className="flex xl:flex-row flex-col md:gap-10 gap-5 items-center xl:pl-5">
               <div className=" flex flex-1 my-7">
@@ -172,7 +176,7 @@ export default function Management() {
           </div>
         </div>
         <div className=" grid grid-cols-1 xl:grid-cols-2 gap-5 rounded">
-          {isUpdating&&<VideoSeoPromo selectedPromoId={selectedPromoId} />}
+          {isUpdating&&<WebinarSeoPromo selectedPromoId={selectedPromoId} />}
         </div>
       </AdminLayout>
   
