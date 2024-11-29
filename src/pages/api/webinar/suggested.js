@@ -4,27 +4,28 @@ const suggestedApi = async (req, res) => {
     const { industry, department } = req.query;
     let pipeline = [];
 
-    if (industry) {
+    if (industry&&department) {
         pipeline.push({
             $match: {
-                industry: industry
+                $or:[
+                    {industry: industry},
+                    {
+                        department: department
+                    }
+                ]  
             }
         });
     }
-    if (department) {
-        pipeline.push({
-            $match: {
-                department: department
-            }
-        });
-    }
-
+    pipeline.push({
+        $limit:7
+    })
+    
     try {
         // Use exec() instead of toArray()
         const data = await Webinar.aggregate(pipeline);
         
         if (!data || data?.length === 0) {
-            return res.status(404).json({ message: "No products found" });
+            return res.status(404).json({ message: "No webinar  found" });
         }
         
         return res.status(200).json({ message: "Found successfully", data });

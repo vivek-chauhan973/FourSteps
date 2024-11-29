@@ -15,19 +15,33 @@ const getWebinarPackageData = async (title) => {
   const res = await fetch(`/api/webinar/getwebinar?title=${title}`);
   return await res.json();
 };
-const getSuggestedWebinarPackageData = async (industry,department) => {
-  const res = await fetch(`/api/webinar/suggested?industry=${industry}&department=${department}`);
+const getSuggestedWebinarPackageData = async (industry, department) => {
+  const res = await fetch(
+    `/api/webinar/suggested?industry=${industry}&department=${department}`
+  );
   return await res.json();
 };
 const Detail = ({ title }) => {
   const [webinarPackageData, setWebinarPackageData] = useState({});
-    useEffect(() => {
-      if (webinarPackageData) {
-        getSuggestedWebinarPackageData(webinarPackageData?.industry,webinarPackageData?.department).then((res) =>
-          console.log("webinar suggested package data ------> ", res)
-        );
-      }
-    }, [webinarPackageData]);
+  const [suggestedPackage, setSuggestedPackage] = useState([]);
+  const [filterSuggestedPackage, setFilterSuggestedPackage] = useState([]);
+  useEffect(() => {
+    if (webinarPackageData) {
+      getSuggestedWebinarPackageData(
+        webinarPackageData?.industry,
+        webinarPackageData?.department
+      ).then((res) => setSuggestedPackage(res?.data || []));
+    }
+  }, [webinarPackageData]);
+
+  useEffect(() => {
+    if (suggestedPackage?.length > 0) {
+      const data = suggestedPackage?.filter(
+        (item) => item?._id !== webinarPackageData?._id
+      );
+      setFilterSuggestedPackage(data || []);
+    }
+  }, [suggestedPackage, webinarPackageData]);
 
   useEffect(() => {
     if (title) {
@@ -39,9 +53,12 @@ const Detail = ({ title }) => {
   }, [title]);
 
   //   trial
-  useEffect(() => {
-    console.log("Updated webinar package data -----> ", webinarPackageData);
-  }, [webinarPackageData]);
+  // useEffect(() => {
+  console.log(
+    "Updated suggested webinar package data -----> ",
+    filterSuggestedPackage
+  );
+  // }, [webinarPackageData]);
 
   return (
     <>
@@ -142,7 +159,7 @@ const Detail = ({ title }) => {
       </div>
       {/* Suggest webinar  */}
       <div className=" ">
-        <SuggestWebinar faqData={webinarPackageData} />
+        <SuggestWebinar filterSuggestedPackage={filterSuggestedPackage} />
       </div>
       {/* webinar detail page FAQ SECTION */}
       <div className=" ">

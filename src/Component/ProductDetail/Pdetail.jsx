@@ -9,10 +9,18 @@ import ProductHightlight from "./ProductHightlight";
 import ScreenShot from "./ScreenShot";
 import ProductFaqs from "./ProductFaqs";
 import ProductSuggest from "./ProductSuggest";
+import Industry from "../Industry/Industry";
+import departments from "@/models/admin/webinar/departments";
 
 const getproductPackageData = async (title) => {
   const res = await fetch(`/api/product/getproduct?title=${title}`);
   return await res.json();
+};
+
+const getSuggestedProductPackageData = async (industry, service) => {
+  const res = await fetch(
+    `/api/product/suggested?industry=${industry}&service=${service}`
+  );
 };
 
 const Pdetail = ({ title }) => {
