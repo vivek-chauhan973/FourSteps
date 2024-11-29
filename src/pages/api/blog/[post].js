@@ -2,8 +2,6 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import dbConnect from '@/utils/db';
-
-import mongoose from 'mongoose';
 import BlogDetail from '@/models/admin/blog copy/BlogDetail';
 
 const uploadDirectory = './public/uploads/blogdetail';
