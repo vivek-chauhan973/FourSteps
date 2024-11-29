@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 const fetchCarHomeData = async (id) => {
-    const data = await fetch(`/api/blog/blogpromo?promo=${id}`);
+    const data = await fetch(`/api/webinar/webinarseopromo?promo=${id}`);
     return await data.json();
 };
 
@@ -40,7 +40,7 @@ const WebinarSeoPromo = ({selectedPromoId}) => {
         const seoData = { title, canonicalUrl, description, keyword,promoId };
         // console.log("seo data -----> ", seoData);
         try {
-            const data = await fetch("/api/blog/blogpromo", {
+            const data = await fetch("/api/webinar/webinarseopromo", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

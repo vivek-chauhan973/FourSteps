@@ -4,8 +4,6 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong, faCube } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
-import BlogPromoSeo from "@/Component/admin/Blog Detail/BlogPromoSeo";
-import CaseStudySeoPromo from "@/Component/admin/CaseStudies/CaseStudySeoPromo";
 import ProductSeoPromo from "@/Component/admin/ProductCreate/ProductSeoPromo";
 
 export default function Management() {
@@ -19,7 +17,7 @@ export default function Management() {
   // Function to fetch existing image
   async function fetchImage() {
     try {
-      const res = await fetch(`/api/blog`);
+      const res = await fetch(`/api/product`);
       const data = await res.json();
 
       // console.log("data is here ---- of blog promo =======>  ",data?.data);
@@ -74,7 +72,7 @@ export default function Management() {
       formData.append("description", description);
     }
     try {
-      const res = await fetch("/api/blog", {
+      const res = await fetch("/api/product", {
         method: "POST",
         body: formData,
       });

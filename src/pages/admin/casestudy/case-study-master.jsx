@@ -18,7 +18,7 @@ export default function Management() {
   // Function to fetch existing image
   async function fetchImage() {
     try {
-      const res = await fetch(`/api/blog`);
+      const res = await fetch(`/api/casestudy`);
       const data = await res.json();
 
       // console.log("data is here ---- of blog promo =======>  ",data?.data);
@@ -73,7 +73,7 @@ export default function Management() {
       formData.append("description", description);
     }
     try {
-      const res = await fetch("/api/blog", {
+      const res = await fetch("/api/casestudy", {
         method: "POST",
         body: formData,
       });
