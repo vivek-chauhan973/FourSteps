@@ -9,8 +9,6 @@ import ProductHightlight from "./ProductHightlight";
 import ScreenShot from "./ScreenShot";
 import ProductFaqs from "./ProductFaqs";
 import ProductSuggest from "./ProductSuggest";
-import Industry from "../Industry/Industry";
-import departments from "@/models/admin/webinar/departments";
 
 const getproductPackageData = async (title) => {
   const res = await fetch(`/api/product/getproduct?title=${title}`);
