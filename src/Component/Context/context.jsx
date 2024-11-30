@@ -49,6 +49,7 @@ const AppProvider = ({ children }) => {
   const [department,setDepartment]=useState([]);
   const [service,setService]=useState([]);
   const [langauge,setLanguage]=useState([]);
+  const [data,setData]=useState([])
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch("/api/user/user");
@@ -72,7 +73,7 @@ const AppProvider = ({ children }) => {
 
   const filterGlobalData={tool,industries,topic,webinarType,department,service,langauge};
 
-  const contextFun = { users, setUsers,filterGlobalData };
+  const contextFun = { users, setUsers,filterGlobalData,data,setData };
 
   return <Context.Provider value={contextFun}>{children}</Context.Provider>;
 };

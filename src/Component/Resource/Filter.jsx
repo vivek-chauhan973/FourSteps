@@ -1,229 +1,48 @@
-// import language from "@/models/admin/global/language";
-// import React, { useState, useEffect } from "react";
-// const fetchWebinarTypes = async () => {
-//   const res = await fetch("/api/webinar/webinartype/getwebinar");
-//   const data = await res.json();
-//   return data;
-// };
-// const fetchDepartments = async () => {
-//   const res = await fetch("/api/webinar/department/getdepartment");
-//   const data = await res.json();
-//   return data;
-// };
-
-// const Filter = ({ filterGlobalData, Heading }) => {
-//   const [filterSection1, setFilterSection1] = useState([]);
-//   const [filterSection2, setFilterSection2] = useState([]);
-
-//   useEffect(() => {
-//     if (Heading === "webinar") {
-//       fetchWebinarTypes().then((res) => {
-//         setFilterSection1(res || []);
-//       });
-//       fetchDepartments().then((res) => {
-//         setFilterSection2(res || []);
-//       });
-//     }
-//   }, [Heading]);
-
-//   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
-//   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
-//   const [showSection1, setShowSection1] = useState(false);
-//   const [showSection2, setShowSection2] = useState(false);
-//   const [showTopics, setShowTopics] = useState(false);
-//   const [showLanguage, setShowLanguage] = useState(false);
-
-//   return (
-//     <div className="">
-//       <div className="bg-white rounded-lg shadow-md p-4">
-//         <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
-
-//         {/* Industries */}
-//         <div className="mb-2 border border-gray-300 rounded p-2">
-//           <h3 className="md:text-[16px] text-[14px] font-medium ">
-//             Industries
-//           </h3>
-
-//           {/* Display first 3 industries by default */}
-//           {filterGlobalData?.industries
-//             .slice(
-//               0,
-//               showMoreIndustries ? filterGlobalData?.industries?.length : 3
-//             )
-//             .map((industry, index) => (
-//               <label className="flex items-center " key={index}>
-//                 <input
-//                   type="checkbox"
-//                   className="form-checkbox h-4 w-4 text-blue-600"
-//                 />
-//                 <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                   {industry?.name}
-//                 </span>
-//               </label>
-//             ))}
-
-//           {/* Show More/Less button */}
-//           <button
-//             className="text-blue-500 mt-1"
-//             onClick={() => setShowMoreIndustries(!showMoreIndustries)}
-//           >
-//             {showMoreIndustries ? "Show less" : "Show more"}
-//           </button>
-//         </div>
-
-//         {/* Departments */}
-
-//         <div className="mb-2 border border-gray-300 rounded p-2">
-//           <h3 className="md:text-[16px] text-[14px] font-medium ">
-//             Tools And Softwares
-//           </h3>
-
-//           {/* Display first 3 departments by default */}
-//           {filterGlobalData?.tool
-//             .slice(0, showMoreDepartments ? filterGlobalData?.tool?.length : 3)
-//             .map((department, index) => (
-//               <label className="flex items-center " key={index}>
-//                 <input
-//                   type="checkbox"
-//                   className="form-checkbox h-4 w-4 text-blue-600"
-//                 />
-//                 <span className="ml-2 capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                   {department?.name}
-//                 </span>
-//               </label>
-//             ))}
-
-//           {/* Show More/Less button */}
-//           <button
-//             className="text-blue-500 mt-2"
-//             onClick={() => setShowMoreDepartments(!showMoreDepartments)}
-//           >
-//             {showMoreDepartments ? "Show less" : "Show more"}
-//           </button>
-//         </div>
-
-//         <div className="mb-2 border border-gray-300 rounded p-2">
-//           <h3 className="font-semibold text-md ">Topics</h3>
-
-//           {/* Display first 3 departments by default */}
-//           {filterGlobalData?.topic
-//             .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
-//             .map((department, index) => (
-//               <label className="flex items-center" key={index}>
-//                 <input
-//                   type="checkbox"
-//                   className="form-checkbox h-4 w-4 text-blue-600"
-//                 />
-//                 <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                   {department?.name}
-//                 </span>
-//               </label>
-//             ))}
-
-//           {/* Show More/Less button */}
-//           <button
-//             className="text-blue-500 mt-2"
-//             onClick={() => setShowTopics(!showTopics)}
-//           >
-//             {showTopics ? "Show less" : "Show more"}
-//           </button>
-//         </div>
-
-//         {/* Other filters */}
-//         {(Heading === "webinar" || Heading === "all") && (
-//           <>
-//             <div className="mb-2 border border-gray-300 rounded p-2">
-//               <h3 className="md:text-[16px] text-[14px] font-medium ">
-//                 Webinar Type
-//               </h3>
-
-//               {/* Display other section and show only 3 departments */}
-//               {filterSection1
-//                 ?.slice(0, showSection1 ? filterSection1?.length : 3)
-//                 .map((otherItem, index) => (
-//                   <label className="flex items-center" key={index}>
-//                     <input
-//                       type="checkbox"
-//                       className="form-checkbox h-4 w-4 text-blue-600"
-//                     />
-//                     <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                       {otherItem?.name}
-//                     </span>
-//                   </label>
-//                 ))}
-
-//               <button
-//                 className="text-blue-500 mt-2"
-//                 onClick={() => setShowSection1(!showSection1)}
-//               >
-//                 {showSection1 ? "Show less" : "Show more"}
-//               </button>
-//             </div>
-
-//             <div className="mb-2 border border-gray-300 rounded p-2">
-//               <h3 className="md:text-[16px] text-[14px] font-medium ">
-//                 Departments
-//               </h3>
-
-//               {/* Display other section and show only 3 departments */}
-//               {filterSection2
-//                 ?.slice(0, showSection2 ? filterSection2?.length : 3)
-//                 .map((otherItem, index) => (
-//                   <label className="flex items-center" key={index}>
-//                     <input
-//                       type="checkbox"
-//                       className="form-checkbox h-4 w-4 text-blue-600"
-//                     />
-//                     <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                       {otherItem?.name}
-//                     </span>
-//                   </label>
-//                 ))}
-
-//               <button
-//                 className="text-blue-500 mt-2"
-//                 onClick={() => setShowSection2(!showSection2)}
-//               >
-//                 {showSection2 ? "Show less" : "Show more"}
-//               </button>
-//             </div>
-//           </>
-//         )}
-
-//         <div className="mb-2 border border-gray-300 rounded p-2">
-//           <h3 className="md:text-[16px] text-[14px] font-medium ">Languages</h3>
-//           {/* Display other section and show only 3 departments */}
-//           {filterGlobalData?.langauge
-//             ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
-//             .map((item, index) => (
-//               <label className="flex items-center" key={index}>
-//                 <input
-//                   type="checkbox"
-//                   className="form-checkbox h-4 w-4 text-blue-600"
-//                 />
-//                 <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-//                   {item?.name}
-//                 </span>
-//               </label>
-//             ))}
-
-//           <button
-//             className="text-blue-500 mt-2"
-//             onClick={() => setShowLanguage(!showLanguage)}
-//           >
-//             {showLanguage ? "Show less" : "Show more"}
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Filter;
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
-const Filter = ({ filterGlobalData, Heading }) => {
+import { useAppContext } from "../Context/context";
+
+const filterWebinarData = async (
+  industry,
+  department,
+  tools,
+  topics,
+  languages,
+  webinarType
+) => {
+  const data = await fetch(
+    `/api/webinar/filterapi?industry=${industry}&department=${department}&tools=${tools}&topics=${topics}&languages=${languages}&webinarType=${webinarType}`
+  );
+  return await data.json();
+};
+const filterProductData = async (industry, tools, topics, services) => {
+  const data = await fetch(
+    `/api/product/filterapi?industry=${industry}&tools=${tools}&topics=${topics}&services=${services}`
+  );
+  return await data.json();
+};
+const filterCaseStudyData = async (industry, tools, topics, services) => {
+  const data = await fetch(
+    `/api/casestudy/filterapi?industry=${industry}&tools=${tools}&topics=${topics}&services=${services}`
+  );
+  return await data.json();
+};
+const filterVideosCaseStudyData = async (industry, tools, topics, languages) => {
+  const data = await fetch(
+    `/api/videos/filterapi?industry=${industry}&tools=${tools}&topics=${topics}&languages=${languages}`
+  );
+  return await data.json();
+};
+const filterBlogData = async (industry, tools, topics, department) => {
+  const data = await fetch(
+    `/api/blog/filterapi?industry=${industry}&tools=${tools}&topics=${topics}&department=${department}`
+  );
+  return await data.json();
+};
+
+const Filter = ({ filterGlobalData, Heading, }) => {
+  const {setData}=useAppContext();
   const [showModal, setShowModal] = useState(false); // Modal state for mobile
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
@@ -232,6 +51,190 @@ const Filter = ({ filterGlobalData, Heading }) => {
   const [showService, setShowService] = useState(false);
   const [showWebinarType, setShowWebinarType] = useState(false);
   const [showTool, setShowTool] = useState(false);
+  const [selectedIndustries, setSelectedIndustries] = useState([]);
+  const [selectedDepartments, setSelectedDepartments] = useState([]);
+  const [selectedService, setSelectedService] = useState([]);
+  const [selectedWebinarType, setSelectedWebinarType] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState([]);
+  const [selectedTool, setSelectedTool] = useState([]);
+  const [selectedTopics, setSelectedTopics] = useState([]);
+  const handleIndustryChange = (industryName, isChecked) => {
+    setSelectedIndustries((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleToolChange = (industryName, isChecked) => {
+    setSelectedTool((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleTopicChange = (industryName, isChecked) => {
+    setSelectedTopics((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleDepartmentChange = (industryName, isChecked) => {
+    setSelectedDepartments((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleWebinarTypeChange = (industryName, isChecked) => {
+    setSelectedWebinarType((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleLanguageChange = (industryName, isChecked) => {
+    setSelectedLanguage((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+  const handleServiceChange = (industryName, isChecked) => {
+    setSelectedService((prevSelectedIndustries) => {
+      if (isChecked) {
+        return [...prevSelectedIndustries, industryName];
+      } else {
+        return prevSelectedIndustries.filter(
+          (industry) => industry !== industryName
+        );
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (Heading === "webinar") {
+      filterWebinarData(
+        selectedIndustries,
+        selectedDepartments,
+        selectedTool,
+        selectedTopics,
+        selectedLanguage,
+        selectedWebinarType
+      ).then((res) => {
+        
+        if(res?.message==="No webinars found"){
+          setData(["No webinars found"])
+       }
+       else{
+
+         setData(res?.data || []);
+       }
+      });
+    }
+    if (Heading === "product") {
+      filterProductData(
+        selectedIndustries,
+        selectedTool,
+        selectedTopics,
+        selectedService
+      ).then(res=>{
+        if(res?.message==="No products found"){
+          setData(["No products found"])
+       }
+       else{
+
+         setData(res?.data || []);
+       }
+      });
+    }
+    if (Heading === "case-studies") {
+      filterCaseStudyData(
+        selectedIndustries,
+        selectedTool,
+        selectedTopics,
+        selectedService
+      ).then(res=>{
+        console.log("fetchAllCaseStudies filtered data is here-----> ",res);
+        if(res?.message==="No products found"){
+          setData(["No products found"])
+       }
+       else{
+
+         setData(res?.data || []);
+       }
+      });
+    }
+    if (Heading === "demo-videos") {
+      filterVideosCaseStudyData(
+        selectedIndustries,
+        selectedTool,
+        selectedTopics,
+        selectedLanguage
+      ).then(res=>{
+        // console.log("demo-videos filtered data is here-----> ",res);
+        if(res?.message==="No products found"){
+          setData(["No products found"])
+       }
+       else{
+
+         setData(res?.data || []);
+       }
+      });
+    }
+    if (Heading === "blog") {
+      filterBlogData(
+        selectedIndustries,
+        selectedTool,
+        selectedTopics,
+        selectedDepartments
+      ).then(res=>{
+        console.log("blog filtered data is here-----> ",res);
+        if(res?.message==="No products found"){
+           setData(["No products found"])
+        }
+        else{
+
+          setData(res?.data || []);
+        }
+        
+      });
+    }
+  }, [
+    selectedIndustries?.length,
+    selectedDepartments?.length,
+    selectedLanguage?.length,
+    selectedService?.length,
+    selectedTopics?.length,
+    selectedTool?.length,
+    selectedWebinarType?.length,
+    Heading,
+  ]);
+
   const renderFilters = () => (
     <div className="bg-white rounded-lg overflow-y-auto   shadow-md p-4">
       <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
@@ -251,6 +254,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedIndustries.includes(industry?.name)}
+                    onChange={(e) =>
+                      handleIndustryChange(industry?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -276,6 +283,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTool.includes(department?.name)}
+                    onChange={(e) =>
+                      handleToolChange(department?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -299,6 +310,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTopics.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleTopicChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -327,6 +342,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedDepartments.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleDepartmentChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -356,6 +375,13 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedWebinarType?.includes(webinarType?.name)}
+                    onChange={(e) =>
+                      handleWebinarTypeChange(
+                        webinarType?.name,
+                        e.target.checked
+                      )
+                    }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
                     {webinarType?.name}
@@ -380,6 +406,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedLanguage?.includes(webinarType?.name)}
+                    onChange={(e) =>
+                      handleLanguageChange(webinarType?.name, e.target.checked)
+                    }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
                     {webinarType?.name}
@@ -411,6 +441,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedIndustries.includes(industry?.name)}
+                    onChange={(e) =>
+                      handleIndustryChange(industry?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -436,6 +470,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTool.includes(department?.name)}
+                    onChange={(e) =>
+                      handleToolChange(department?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -459,6 +497,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTopics.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleTopicChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -474,9 +516,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
             </button>
           </div>
           <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Services
-            </h3>
+            <h3 className="md:text-[16px] text-[14px] font-medium">Services</h3>
             {filterGlobalData?.service
               ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
               .map((webinarType, index) => (
@@ -484,6 +524,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedService?.includes(webinarType?.name)}
+                    onChange={(e) =>
+                      handleServiceChange(webinarType?.name, e.target.checked)
+                    }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
                     {webinarType?.name}
@@ -515,6 +559,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedIndustries.includes(industry?.name)}
+                    onChange={(e) =>
+                      handleIndustryChange(industry?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -540,6 +588,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTool.includes(department?.name)}
+                    onChange={(e) =>
+                      handleToolChange(department?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -563,6 +615,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTopics.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleTopicChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -578,9 +634,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
             </button>
           </div>
           <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Services
-            </h3>
+            <h3 className="md:text-[16px] text-[14px] font-medium">Services</h3>
             {filterGlobalData?.service
               ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
               .map((webinarType, index) => (
@@ -588,6 +642,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedService?.includes(webinarType?.name)}
+                    onChange={(e) =>
+                      handleServiceChange(webinarType?.name, e.target.checked)
+                    }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
                     {webinarType?.name}
@@ -603,7 +661,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
           </div>
         </div>
       )}
-       {Heading === "demo-videos" && (
+      {Heading === "demo-videos" && (
         <div>
           <div className="mb-2 border border-gray-300 rounded p-2">
             <h3 className="md:text-[16px] text-[14px] font-medium">
@@ -619,6 +677,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedIndustries.includes(industry?.name)}
+                    onChange={(e) =>
+                      handleIndustryChange(industry?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -644,6 +706,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTool.includes(department?.name)}
+                    onChange={(e) =>
+                      handleToolChange(department?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -667,6 +733,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTopics.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleTopicChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -692,6 +762,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedLanguage?.includes(webinarType?.name)}
+                    onChange={(e) =>
+                      handleLanguageChange(webinarType?.name, e.target.checked)
+                    }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
                     {webinarType?.name}
@@ -707,7 +781,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
           </div>
         </div>
       )}
-       {Heading === "blog" && (
+      {Heading === "blog" && (
         <div>
           <div className="mb-2 border border-gray-300 rounded p-2">
             <h3 className="md:text-[16px] text-[14px] font-medium">
@@ -723,6 +797,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedIndustries.includes(industry?.name)}
+                    onChange={(e) =>
+                      handleIndustryChange(industry?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -748,6 +826,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTool.includes(department?.name)}
+                    onChange={(e) =>
+                      handleToolChange(department?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -771,6 +853,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedTopics.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleTopicChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -799,6 +885,10 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-4 w-4 text-blue-600"
+                    checked={selectedDepartments.includes(topic?.name)}
+                    onChange={(e) =>
+                      handleDepartmentChange(topic?.name, e.target.checked)
+                    }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
@@ -813,7 +903,6 @@ const Filter = ({ filterGlobalData, Heading }) => {
               {showMoreDepartments ? "Show less" : "Show more"}
             </button>
           </div>
-
         </div>
       )}
 

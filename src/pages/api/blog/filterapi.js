@@ -3,39 +3,26 @@ import BlogDetail from "@/models/admin/blog copy/BlogDetail";
 
 const filterapi = async (req, res) => {
     const { industry, tools,topics,department } = req.query;
+    
     let pipeline = [];
+    const addMatchCondition = (field, valueArray) => {
+        if (valueArray?.length > 0 && valueArray?.[0]!=='') {
+            pipeline.push({
+                $match: {
+                    [field]: { $in: valueArray }
+                }
+            });
+        }
+    };
 
-    if (industry) {
-        pipeline.push({
-            $match: {
-                selectIndustry: {$in:industry}
-            }
-        });
-    }
-
-    if (tools) {
-        pipeline.push({
-            $match: {
-                selectTools: {$in:tools}
-            }
-        });
-    }
-    if (topics) {
-        pipeline.push({
-            $match: {
-                selectTopic: {$in:topics}
-            }
-        });
-    }
-    if (department) {
-        pipeline.push({
-            $match: {
-                selectDepartment: {$in:department}
-            }
-        });
-    }
-   
-
+    const industry1 = industry?.split(",")||[];
+    const language1 = department?.split(",")||[];
+    const tools1 = tools?.split(",")||[];
+    const topics1 = topics?.split(",")||[];
+    addMatchCondition("selectIndustry", industry1);
+    addMatchCondition("selectDepartment", language1);
+    addMatchCondition("selectTools", tools1);
+    addMatchCondition("selectTopic", topics1);
 
     try {
         // Use exec() instead of toArray()

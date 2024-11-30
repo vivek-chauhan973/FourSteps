@@ -1,67 +1,42 @@
 import Webinar from "@/models/admin/webinar/Webinar";
+
 const filterapi = async (req, res) => {
-    const { industry, department,tools,topics,languages,webinarType } = req.query;
+    const { industry, department, tools, topics, languages, webinarType } = req.query;
     let pipeline = [];
+    const addMatchCondition = (field, valueArray) => {
+        if (valueArray?.length > 0 && valueArray?.[0]!=='') {
+            pipeline.push({
+                $match: {
+                    [field]: { $in: valueArray }
+                }
+            });
+        }
+    };
 
-    if (industry) {
-        pipeline.push({
-            $match: {
-                industry: {$in:industry}
-            }
-        });
-    }
-    if (department) {
-        pipeline.push({
-            $match: {
-                department: {$in:department}
-            }
-        });
-    }
-    if (tools) {
-        pipeline.push({
-            $match: {
-                toolsAndSoftware: {$in:tools}
-            }
-        });
-    }
-    if (topics) {
-        pipeline.push({
-            $match: {
-                topic: {$in:topics}
-            }
-        });
-    }
-    if (languages) {
-        pipeline.push({
-            $match: {
-                language: {$in:languages}
-            }
-        });
-    }
-    if (webinarType) {
-        pipeline.push({
-            $match: {
-                selectType: {$in:webinarType}
-            }
-        });
-    }
-
-
+    const industry1 = industry?.split(",")||[];
+    const department1 = department?.split(",")||[];
+    const tools1 = tools?.split(",")||[];
+    const topics1 = topics?.split(",")||[];
+    const languages1 = languages?.split(",")||[];
+    const webinarType1 = webinarType?.split(",")||[];
+    addMatchCondition("industry", industry1);
+    addMatchCondition("department", department1);
+    addMatchCondition("toolsAndSoftware", tools1);
+    addMatchCondition("topic", topics1);
+    addMatchCondition("language", languages1);
+    addMatchCondition("selectType", webinarType1);
     try {
-        // Use exec() instead of toArray()
-        const data = await Webinar.aggregate(pipeline);
         
-        if (!data || data?.length === 0) {
-            return res.status(404).json({ message: "No products found" });
+         const data = await Webinar.aggregate(pipeline).exec();
+        if (!data || data.length === 0) {
+            return res.status(404).json({ message: "No webinars found" });
         }
         
         return res.status(200).json({ message: "Found successfully", data });
     } catch (error) {
-        console.error(error); // Log the error for debugging
+        console.error(error);
         return res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
-}
+};
 
 export default filterapi;
-
-//localhost:3000/api/webinar/filterapi?industry=xyz&department=xyz&tools=xyz&topics=xyz&languages=xyz&webinarType=xyz 

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "@/Component/Header/Nav";
 import Hero from "@/Component/Resource/Hero";
 import Switch from "@/Component/Resource/Switch";
@@ -9,7 +9,6 @@ import { useAppContext } from "@/Component/Context/context";
 
 const Routes = () => {
   const router = useRouter();
-  // console.log(router.query.pages);
   const Heading = router.query.pages;
   const { filterGlobalData } = useAppContext();
   return (
@@ -31,7 +30,7 @@ const Routes = () => {
               <Filter Heading={Heading} filterGlobalData={filterGlobalData} />
             </div>
             <div>
-              <MainData Heading={Heading} />
+              <MainData Heading={Heading}/>
             </div>
           </div>
         )}
