@@ -8,7 +8,6 @@ export default function Resource() {
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
   const [showOther, setOther] = useState(false);
   const resources = [
-    { href: "/resource/all", label: "Show all" },
     { href: "/resource/webinar", label: "Webinar" },
     { href: "/resource/product", label: "Product" },
     { href: "/resource/case-studies", label: "Case & studies" },

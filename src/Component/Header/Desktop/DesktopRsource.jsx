@@ -21,7 +21,7 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
       onMouseLeave={handleMouseLeave}
     >
       <button className="focus:outline-none hover:text-orange-500 flex items-center relative">
-        <Link href="/resource">Resources</Link>
+        <p>Resources</p>
         {resourceopen ? (
           <FontAwesomeIcon
             icon={faChevronUp}

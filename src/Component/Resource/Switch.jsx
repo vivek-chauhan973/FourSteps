@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const Switch = () => {
   const resources = [
-    { href: "/resource/all", label: "Show all" },
     { href: "/resource/webinar", label: "Webinar" },
     { href: "/resource/product", label: "Product" },
     { href: "/resource/case-studies", label: "Case & studies" },

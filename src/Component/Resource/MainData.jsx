@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../Context/context";
+import Pagination from "react-js-pagination";
 
 //  for the webinar section api calling
 const fetchAllWebinar = async () => {
@@ -143,6 +144,27 @@ const MainData = ({ Heading }) => {
       }
     }
   }, [data?.length, Heading]);
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(6);
+
+
+  
+
+ 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    const windowHeight = window.innerHeight;
+    const middleOfWindow = windowHeight / 2;
+    window.scrollTo({ top: middleOfWindow, behavior: "smooth" });
+  };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = allBlog?.slice(indexOfFirstItem, indexOfLastItem);
+  const totalItems = allBlog?.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
   return (
     <>
       <div>
@@ -348,6 +370,7 @@ const MainData = ({ Heading }) => {
                   </div>
                 </div>
               ))}
+          
           </div>
         )}
       
@@ -416,7 +439,7 @@ const MainData = ({ Heading }) => {
 
         {/*  for the blog section   */}
 
-        {allBlog?.[0] === "No products found" ? (
+        {currentItems?.[0] === "No products found" ? (
           <p className=" text-center font-bold mt-10">No records founds</p>
         ) : (
           <div>
@@ -474,6 +497,21 @@ const MainData = ({ Heading }) => {
               ))}
           </div>
         )}
+            <div className="flex justify-end my-5 list-none">
+        <Pagination
+          activePage={currentPage}
+          itemsCountPerPage={itemsPerPage}
+          totalItemsCount={allBlog?.length}
+          onChange={handlePageChange}
+          itemClass="pagination-item"
+          linkClass="pagination-link"
+          prevPageText="Previous"
+          nextPageText="Next"
+          firstPageText="1"
+          lastPageText={`...${totalPages}`}
+          innerClass="pagination"
+        />
+      </div>
       </div>
     </>
   );

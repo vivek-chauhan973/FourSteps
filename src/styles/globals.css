@@ -176,6 +176,32 @@ body {
 .carousel-container {
   position: relative;
 }
+.pagination {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.pagination-item {
+  padding: 2px 8px;
+  border: 1px solid rgb(203, 213, 225, var(--tw-border-opacity));
+  border-radius: 5px;
+  background-color: #FFFBF5;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+.pagination-item {
+  list-style: none;
+  /* Removes bullets/numbers */
+}
+.pagination-item:hover {
+  background-color: rgb(211, 211, 211);
+}
+
+.pagination-item.active {
+  background-color: black;
+  color: white;
+}
+
 
 .carousel {
   display: flex;

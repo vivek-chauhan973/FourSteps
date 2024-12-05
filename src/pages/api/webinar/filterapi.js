@@ -1,5 +1,4 @@
 import Webinar from "@/models/admin/webinar/Webinar";
-
 const filterapi = async (req, res) => {
     const { industry, department, tools, topics, languages, webinarType } = req.query;
     let pipeline = [];
@@ -26,12 +25,10 @@ const filterapi = async (req, res) => {
     addMatchCondition("language", languages1);
     addMatchCondition("selectType", webinarType1);
     try {
-        
          const data = await Webinar.aggregate(pipeline).exec();
         if (!data || data.length === 0) {
             return res.status(404).json({ message: "No webinars found" });
         }
-        
         return res.status(200).json({ message: "Found successfully", data });
     } catch (error) {
         console.error(error);
