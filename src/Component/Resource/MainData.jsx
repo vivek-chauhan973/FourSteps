@@ -75,6 +75,7 @@ const MainData = ({ Heading }) => {
   }, []);
 
   const [allCaseStudy, setAllCaseStudy] = useState([]);
+  const [paginationPackages,setPaginationPackages]=useState([]);
 
   useEffect(() => {
     fetchAllCaseStudies().then((res) => {
@@ -86,6 +87,7 @@ const MainData = ({ Heading }) => {
   useEffect(() => {
     fetchBlog().then((res) => {
       setAllBlog(res.data || []);
+      
     });
   }, []);
 
@@ -100,18 +102,22 @@ const MainData = ({ Heading }) => {
     if (Heading === "webinar") {
       if (data?.length > 0) {
         setAllTypeData(data);
+        setPaginationPackages(data);
       } else {
         fetchAllWebinar().then((res) => {
           setAllTypeData(res || []);
+          setPaginationPackages(res|| []);
         });
       }
     }
     if (Heading === "product") {
       if (data?.length > 0) {
         setAllProductData(data);
+        setPaginationPackages(data);
       } else {
         fetchAllProduct().then((res) => {
           setAllProductData(res.data || []);
+          setPaginationPackages(res?.data|| []);
         });
       }
     }
@@ -119,27 +125,33 @@ const MainData = ({ Heading }) => {
     if (Heading === "case-studies") {
       if (data?.length > 0) {
         setAllCaseStudy(data);
+        setPaginationPackages(data);
       } else {
         fetchAllCaseStudies().then((res) => {
           setAllCaseStudy(res.data || []);
+          setPaginationPackages(res?.data|| []);
         });
       }
     }
     if (Heading === "demo-videos") {
       if (data?.length > 0) {
         setAllVideos(data);
+        setPaginationPackages(data);
       } else {
         fetchDemoAndVideos().then((res) => {
           setAllVideos(res.data || []);
+          setPaginationPackages(res?.data|| []);
         });
       }
     }
     if (Heading === "blog") {
       if (data?.length > 0) {
         setAllBlog(data);
+        setPaginationPackages(data);
       } else {
         fetchBlog().then((res) => {
           setAllBlog(res.data || []);
+          setPaginationPackages(res?.data|| []);
         });
       }
     }
@@ -147,7 +159,7 @@ const MainData = ({ Heading }) => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
+  const [itemsPerPage] = useState(4);
 
 
   
@@ -161,8 +173,8 @@ const MainData = ({ Heading }) => {
   };
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = allBlog?.slice(indexOfFirstItem, indexOfLastItem);
-  const totalItems = allBlog?.length;
+  const currentItems = paginationPackages?.slice(indexOfFirstItem, indexOfLastItem);
+  const totalItems = paginationPackages?.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
@@ -174,7 +186,7 @@ const MainData = ({ Heading }) => {
         ) : (
           <div>
             {Heading === "webinar" &&
-              allTypeData?.map((item, i) => (
+              currentItems?.map((item, i) => (
                 <div
                   key={i}
                   className="flex relative justify-center max-w-3xl mx-auto items-center  pb-3"
@@ -196,7 +208,7 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={400}
                         width={400}
-                        className="rounded object-cover"
+                        className="rounded object-cover max-w-[200px] max-h-[100px]"
                       />
                     </div>
 
@@ -247,8 +259,8 @@ const MainData = ({ Heading }) => {
         ) : (
           <div>
             {Heading === "product" &&
-              allProductData?.length > 0 &&
-              allProductData?.map((product, i) => (
+              currentItems?.length > 0 &&
+              currentItems?.map((product, i) => (
                 <div
                   key={i}
                   className="flex justify-center max-w-3xl pb-3 mx-auto items-center"
@@ -260,7 +272,7 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={400}
                         width={400}
-                        className="rounded object-cover"
+                        className="rounded object-cover max-w-[200px] max-h-[100px]"
                       />
                     </div>
 
@@ -312,8 +324,8 @@ const MainData = ({ Heading }) => {
         ) : (
           <div>
             {Heading === "case-studies" &&
-              allCaseStudy?.length > 0 &&
-              allCaseStudy?.map((casestudy, i) => (
+              currentItems?.length > 0 &&
+              currentItems?.map((casestudy, i) => (
                 <div
                   key={i}
                   className="flex justify-center max-w-3xl pb-3 mx-auto items-center"
@@ -325,7 +337,7 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={400}
                         width={400}
-                        className="rounded object-cover"
+                        className="rounded object-cover max-w-[200px] max-h-[100px]"
                       />
                     </div>
 
@@ -381,7 +393,7 @@ const MainData = ({ Heading }) => {
           <div>
             {/* demoes and videos */}
             {Heading === "demo-videos" &&
-              allvideo?.map((video, i) => (
+              currentItems?.map((video, i) => (
                 <div
                   key={i}
                   className="flex justify-center max-w-3xl pb-3 mx-auto items-center"
@@ -393,7 +405,7 @@ const MainData = ({ Heading }) => {
                         alt={video?.altText}
                         height={400}
                         width={400}
-                        className="rounded object-cover"
+                        className="rounded object-cover max-w-[200px] max-h-[100px]"
                       />
                     </div>
 
@@ -444,7 +456,7 @@ const MainData = ({ Heading }) => {
         ) : (
           <div>
             {Heading === "blog" &&
-              allBlog?.map((blog, i) => (
+              currentItems?.map((blog, i) => (
                 <div
                   key={i}
                   className="flex justify-center max-w-3xl pb-2 mx-auto items-center"
@@ -456,7 +468,7 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={220}
                         width={220}
-                        className="rounded object-cover"
+                        className="rounded object-cover max-w-[200px] max-h-[100px]"
                       />
                     </div>
 
@@ -501,7 +513,7 @@ const MainData = ({ Heading }) => {
         <Pagination
           activePage={currentPage}
           itemsCountPerPage={itemsPerPage}
-          totalItemsCount={allBlog?.length}
+          totalItemsCount={paginationPackages?.length}
           onChange={handlePageChange}
           itemClass="pagination-item"
           linkClass="pagination-link"
