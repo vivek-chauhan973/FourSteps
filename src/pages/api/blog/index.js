@@ -1,12 +1,11 @@
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
-import dbConnect from '@/utils/db';
-import BlogPromoBanner from '@/models/admin/blog copy/BlogPromoBanner';
-
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+import dbConnect from "@/utils/db";
+import BlogPromoBanner from "@/models/admin/blog copy/BlogPromoBanner";
 
 // Set up the upload directory
-const uploadDirectory = './public/uploads/blogpromo';
+const uploadDirectory = "./public/uploads/blogpromo";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -27,30 +26,31 @@ const upload = multer({ storage });
 const apiRoute = async (req, res) => {
   await dbConnect();
 
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     // Use multer middleware to handle the file upload
-    upload.single('file')(req, res, async (err) => {
+    upload.single("file")(req, res, async (err) => {
       if (err instanceof multer.MulterError) {
-        console.error('Multer error:', err);
-        return res.status(500).json({ error: 'File upload failed' });
+        console.error("Multer error:", err);
+        return res.status(500).json({ error: "File upload failed" });
       } else if (err) {
-        console.error('Unknown error during file upload:', err);
-        return res.status(500).json({ error: 'File upload failed' });
+        console.error("Unknown error during file upload:", err);
+        return res.status(500).json({ error: "File upload failed" });
       }
 
       // Check if the file exists and extract form data
       const { title, description } = req.body;
-      if ( !title || !description) {
-        return res.status(400).json({ error: 'Missing required fields' });
+      if (!title || !description) {
+        return res.status(400).json({ error: "Missing required fields" });
       }
 
-      const fileData = req.file ? {
-      
-        title,
-        description,
-        filename: req.file.filename,
-        videoPath: `/uploads/blogpromo/${req.file.filename}`,
-      } : null;
+      const fileData = req.file
+        ? {
+            title,
+            description,
+            filename: req.file.filename,
+            videoPath: `/uploads/blogpromo/${req.file.filename}`,
+          }
+        : null;
 
       if (fileData) {
         try {
@@ -77,24 +77,23 @@ const apiRoute = async (req, res) => {
             return res.status(200).json({ data: file });
           }
         } catch (error) {
-          console.error('Error updating or saving file:', error);
-          return res.status(500).json({ error: 'Internal Server Error' });
+          console.error("Error updating or saving file:", error);
+          return res.status(500).json({ error: "Internal Server Error" });
         }
       } else {
-        return res.status(400).json({ error: 'File upload failed' });
+        return res.status(400).json({ error: "File upload failed" });
       }
     });
-  } else if (req.method === 'GET') {
+  } else if (req.method === "GET") {
     try {
-      
       const files = await BlogPromoBanner.findOne().populate("seo");
       return res.status(200).json({ data: files });
     } catch (error) {
-      console.error('Error fetching files:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
+      console.error("Error fetching files:", error);
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   } else {
-    res.setHeader('Allow', ['POST', 'GET']);
+    res.setHeader("Allow", ["POST", "GET"]);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 };

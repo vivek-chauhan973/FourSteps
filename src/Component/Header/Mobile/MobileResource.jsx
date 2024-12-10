@@ -66,8 +66,10 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
 
   const resources = [
     { title: "Blog", path: "/resource/blog" },
-    { title: "YouTube Video & Demo", path: "/resource/demo-videos" },
+    { title: "Video & Demo", path: "/resource/demo-videos" },
     { title: "Webinar", path: "/resource/webinar" },
+    { title: "Product", path: "/resource/product" },
+    { title: "Case-studies", path: "/resource/case-studies" },
   ];
 
   const toggleResources = () => {

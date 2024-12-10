@@ -167,7 +167,7 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
               </li>
               <li>
                 <Link
-                  href="/case-studies"
+                  href="resource/case-studies"
                   className="block px-5 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
                 >
                   Case Studies

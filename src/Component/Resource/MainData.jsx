@@ -75,7 +75,7 @@ const MainData = ({ Heading }) => {
   }, []);
 
   const [allCaseStudy, setAllCaseStudy] = useState([]);
-  const [paginationPackages,setPaginationPackages]=useState([]);
+  const [paginationPackages, setPaginationPackages] = useState([]);
 
   useEffect(() => {
     fetchAllCaseStudies().then((res) => {
@@ -87,7 +87,6 @@ const MainData = ({ Heading }) => {
   useEffect(() => {
     fetchBlog().then((res) => {
       setAllBlog(res.data || []);
-      
     });
   }, []);
 
@@ -106,7 +105,7 @@ const MainData = ({ Heading }) => {
       } else {
         fetchAllWebinar().then((res) => {
           setAllTypeData(res || []);
-          setPaginationPackages(res|| []);
+          setPaginationPackages(res || []);
         });
       }
     }
@@ -117,7 +116,7 @@ const MainData = ({ Heading }) => {
       } else {
         fetchAllProduct().then((res) => {
           setAllProductData(res.data || []);
-          setPaginationPackages(res?.data|| []);
+          setPaginationPackages(res?.data || []);
         });
       }
     }
@@ -129,7 +128,7 @@ const MainData = ({ Heading }) => {
       } else {
         fetchAllCaseStudies().then((res) => {
           setAllCaseStudy(res.data || []);
-          setPaginationPackages(res?.data|| []);
+          setPaginationPackages(res?.data || []);
         });
       }
     }
@@ -140,7 +139,7 @@ const MainData = ({ Heading }) => {
       } else {
         fetchDemoAndVideos().then((res) => {
           setAllVideos(res.data || []);
-          setPaginationPackages(res?.data|| []);
+          setPaginationPackages(res?.data || []);
         });
       }
     }
@@ -151,20 +150,15 @@ const MainData = ({ Heading }) => {
       } else {
         fetchBlog().then((res) => {
           setAllBlog(res.data || []);
-          setPaginationPackages(res?.data|| []);
+          setPaginationPackages(res?.data || []);
         });
       }
     }
   }, [data?.length, Heading]);
 
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
 
-
-  
-
- 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     const windowHeight = window.innerHeight;
@@ -173,7 +167,10 @@ const MainData = ({ Heading }) => {
   };
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = paginationPackages?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = paginationPackages?.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
   const totalItems = paginationPackages?.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -206,9 +203,9 @@ const MainData = ({ Heading }) => {
                       <Image
                         src={item?.path}
                         alt="Service"
-                        height={400}
-                        width={400}
-                        className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        height={500}
+                        width={500}
+                        className="rounded object-cover max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -272,7 +269,8 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={400}
                         width={400}
-                        className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        // className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        className="rounded object-cover max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -319,7 +317,7 @@ const MainData = ({ Heading }) => {
 
         {/*  for the Case-studies section */}
 
-        {allCaseStudy?.[0] === "No products found" ? (
+        {allCaseStudy?.[0] === "No Case-studies" ? (
           <p className=" text-center font-bold mt-10">No records founds</p>
         ) : (
           <div>
@@ -337,7 +335,8 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={400}
                         width={400}
-                        className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        // className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        className="rounded object-cover max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -382,10 +381,8 @@ const MainData = ({ Heading }) => {
                   </div>
                 </div>
               ))}
-          
           </div>
         )}
-      
 
         {allvideo?.[0] === "No products found" ? (
           <p className=" text-center font-bold mt-10">No records founds</p>
@@ -405,7 +402,8 @@ const MainData = ({ Heading }) => {
                         alt={video?.altText}
                         height={400}
                         width={400}
-                        className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        // className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        className="rounded object-cover max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -468,7 +466,8 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={220}
                         width={220}
-                        className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        // className="rounded object-cover max-w-[200px] max-h-[100px]"
+                        className="rounded object-cover max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -509,21 +508,21 @@ const MainData = ({ Heading }) => {
               ))}
           </div>
         )}
-            <div className="flex justify-end my-5 list-none">
-        <Pagination
-          activePage={currentPage}
-          itemsCountPerPage={itemsPerPage}
-          totalItemsCount={paginationPackages?.length}
-          onChange={handlePageChange}
-          itemClass="pagination-item"
-          linkClass="pagination-link"
-          prevPageText="Previous"
-          nextPageText="Next"
-          firstPageText="1"
-          lastPageText={`...${totalPages}`}
-          innerClass="pagination"
-        />
-      </div>
+        <div className="flex justify-end my-5 list-none">
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={paginationPackages?.length}
+            onChange={handlePageChange}
+            itemClass="pagination-item"
+            linkClass="pagination-link"
+            prevPageText="Previous"
+            nextPageText="Next"
+            firstPageText="1"
+            lastPageText={`...${totalPages}`}
+            innerClass="pagination"
+          />
+        </div>
       </div>
     </>
   );

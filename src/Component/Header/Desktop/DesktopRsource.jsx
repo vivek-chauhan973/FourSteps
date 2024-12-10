@@ -7,6 +7,8 @@ import {
   faVideo,
   faChevronUp,
   faChevronDown,
+  faLeaf,
+  faFolderOpen
 } from "@fortawesome/free-solid-svg-icons";
 import { faYoutubeSquare } from "@fortawesome/free-brands-svg-icons"; // Importing the YouTube icon
 
@@ -58,10 +60,24 @@ const DesktopResource = ({ resourceopen, setResourceopen }) => {
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>
-            <li className="flex justify-between items-center  hover:bg-gray-200  px-4 py-3  cursor-pointer">
+            <li className="flex justify-between items-center  border-b  hover:bg-gray-200  px-4 py-3  cursor-pointer">
               <div className="flex gap-1  items-center">
                 <FontAwesomeIcon icon={faVideo} className=" text-gray-600" />
                 <Link href="/resource/webinar">Webinar</Link>
+              </div>
+              <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
+            </li>
+            <li className="flex justify-between items-center px-4 py-3 border-b  border-gray-200  hover:bg-gray-200 cursor-pointer">
+              <div className="flex gap-1  items-center">
+                <FontAwesomeIcon icon={faLeaf} className=" text-gray-600" />
+                <Link href="/resource/product">Product</Link>
+              </div>
+              <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
+            </li>
+            <li className="flex justify-between items-center px-4 py-3  border-gray-200  hover:bg-gray-200 cursor-pointer">
+              <div className="flex gap-1  items-center">
+                <FontAwesomeIcon icon={faFolderOpen} className=" text-gray-600" />
+                <Link href="/resource/case-studies">case-studies</Link>
               </div>
               <FontAwesomeIcon icon={faCaretRight} className=" text-gray-600" />
             </li>

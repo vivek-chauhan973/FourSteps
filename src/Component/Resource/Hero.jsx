@@ -86,7 +86,7 @@ const [promoData,setPromoData]=useState({})
             src={promoData?.videoPath||"https://images.unsplash.com/photo-1621763540919-1a0477861102?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViaW5hcnxlbnwwfHwwfHx8MA%3D%3D"}
             width={400}
             height={500}
-            className="rounded-lg shadow-lg object-cover transform hover:scale-105 transition duration-300 ease-in-out"
+            className="rounded-lg shadow object-cover transform hover:scale-105 transition duration-300 ease-in-out"
           />
         </div>
       </div>

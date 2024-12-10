@@ -3,11 +3,16 @@ import BlogQuestion from "@/models/admin/blog copy/BlogQuestion";
 
 const blogquestionApi = async (req, res) => {
   if (req.method === "POST") {
-    const { questions, blog ,filename} = req.body;
+    const { questions, blog, filename } = req.body;
     const { title, information } = questions;
 
     try {
-      const data = await BlogQuestion.create({ title, information, blog ,filename});
+      const data = await BlogQuestion.create({
+        title,
+        information,
+        blog,
+        filename,
+      });
       if (!data) {
         return res.status(300).json({ message: "somthing went wrong" });
       }

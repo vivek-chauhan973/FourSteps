@@ -1,92 +1,4 @@
-// import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faPen,
-//   faComputer,
-//   faHandshake,
-// } from "@fortawesome/free-solid-svg-icons";
-//<FontAwesomeIcon icon={faComputer} className="font" />
 
-// import Link from "next/link";
-
-// const AboutSection = () => {
-//   return (
-//     <>
-//       <div className="container md:p-10 p-0">
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-//           <div className=" px-4 py-4 hidden md:block justify-center">
-//             <img
-//               src="/image/ab.webp"
-//               alt="Tablet Mockup"
-//               className="w-full h-auto rounded-lg shadow-lg"
-//             />
-//           </div>
-
-//           <div>
-//             <div className="text-left mb-6">
-//               <span className="text-[#BC4242] bg-[#FFF4FA] rounded-md px-3 py-1 text-xs">
-//                 4steps Digital
-//               </span>
-//             </div>
-//             <h2 className="text-3xl font-bold mb-4">
-//               About <span className="text-gradient">4Steps Digital</span>
-//             </h2>
-//             <p className="mb-4 text-sm">
-//               Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
-//               agency in India. We are dedicated to honesty, hard work, and
-//               results we serve small-medium size businesses. Our primary focus
-//               is to Transform Businesses Into Digitally-Driven Organizations.
-//             </p>
-//             <p className="mb-4 text-sm">
-//               We have high-performing teams that help small businesses to
-//               achieve business objectives like optimization of digital presence,
-//               increase operational efficiency, guide to choose the right
-//               technology, etc..
-//             </p>
-//             <div className=" px-4 py-4 md:hidden block justify-center">
-//             <img
-//               src="/image/ab.webp"
-//               alt="Tablet Mockup"
-//               className="w-full h-auto rounded-lg shadow-lg"
-//             />
-//           </div>
-//             <div className="space-y-4 mb-8">
-//               <div className="flex items-center mb-2 space-x-2">
-//                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-//                   <FontAwesomeIcon icon={faPen} className="font" />
-//                 </div>
-//                 <p className="text-xs text-gray-700">Digital Consulting</p>
-//               </div>
-//               <div className="flex items-center space-x-2">
-//                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-//                   <FontAwesomeIcon icon={faComputer} className="font" />
-//                 </div>
-//                 <p className="text-xs text-gray-700">
-//                   Expertise across the Spectrum
-//                 </p>
-//               </div>
-//               <div className="flex items-center space-x-2">
-//                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-//                   <FontAwesomeIcon icon={faHandshake} className="font" />
-//                 </div>
-//                 <p className="text-xs text-gray-700">
-//                   Proven Results and Partnership
-//                 </p>
-//               </div>
-//             </div>
-//             <Link href="/about/about">
-//               <button className="bg-red-600 cursor-pointer  border-none rounded-full text-sm text-white px-4 py-2">
-//                 Know More
-//               </button>
-//             </Link>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default AboutSection;
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -105,13 +17,13 @@ const AboutSection = () => {
         {/* Image for larger screens */}
         <div className="hidden md:flex  justify-center">
           <Image
-            src="/image/about.jpg"
+            src="/image/yyy.png"
             alt="Tablet Mockup"
             // className="w-full h-auto rounded-lg shadow-lg"
             // width={800}
             // height={800}
-            width={40}
-            height={100}
+            width={500}
+            height={500}
             sizes="100vw"
             style={{ width: "100%", height: "auto" }} // optional
           />
