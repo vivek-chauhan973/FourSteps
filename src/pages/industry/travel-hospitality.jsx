@@ -8,6 +8,7 @@ import Calltoaction from "@/Component/Web/Calltoaction";
 import Image from "next/image";
 import { Footer } from "@/Component/Footer/Footer";
 import Nav from "@/Component/Header/Nav";
+import TableOfContent from "@/Component/Industry/TableOfContent";
 const features = [
   {
     id: 1,
@@ -185,34 +186,51 @@ const Travel = () => {
   return (
     <div>
       {/* headres */}
-      <div className=" sticky top-0 z-20">
+      <div className=" z-10">
         <Nav />
       </div>
-      <div className="font-sans container">
-        {/* hero section */}
-        <div className="relative  p-8 md:p-16 lg:p-24">
-          <div
-            className="absolute inset-0 w-full h-full bg-cover "
-            style={{ backgroundImage: "url('/image/fbg.jpg')" }}
-          ></div>
-          <div className="relative z-10 max-w-2xl">
-            <h2 className="md:text-sm  text-[11px]  font-semibold  text-white">
-              QUALITY WITH INTEGRITY
-            </h2>
-            <h1 className="text-xl md:text-5xl text-white font-bold mt-2">
-              Unforgettable Experiences in
-              <span className="text-primary"> Travel & Hospitality</span>
-            </h1>
-            <p className="mt-4 text-white text-sm  md:text-lg ">
-              Explore world-class solutions tailored for the travel industry
-            </p>
 
-            <button className=" inline-block mt-6  px-6 py-3 rounded-lg border border-orange-500  hover:text-primary hover:bg-transparent  md:py-3 md:px-5  bg-primary text-white">
-              Discover More
-            </button>
+      <div className="font-sans">
+        {/* hero section */}
+        <div className="flex justify-center items-center w-full bg-[#F8FAFC]">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:mt-0 mt-20 gap-8 px-6 sm:px-10   shadow-lg">
+            {/* Content Section */}
+            <div className="flex flex-col justify-center   text-center md:text-left">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+                IT Solution for Oil Other companies
+              </h2>
+              <p className="text-gray-600 mt-2 text-sm sm:text-base leading-relaxed">
+                Since 2020, ScienceSoft has been building IT solutions for the
+                oil and gas industry by employing cloud, IIoT, big data,
+                advanced analysis, virtual and augmented reality. We will gladly
+                provide you with a tailored IT solution for improved petroleum
+                exploration and production processes and data-driven
+                decision-making.
+              </p>
+              <div className="flex justify-center mt-10 md:justify-start">
+                <button className="bg-orange-500 text-white text-sm md:text-base font-medium py-2 px-4 rounded-md shadow-md hover:bg-orange-600 transition-all">
+                  Request expert help
+                </button>
+              </div>
+            </div>
+
+            {/* Image Section */}
+            <div className="flex justify-center md:justify-end items-center ">
+              <Image
+                src="/image/yyy.png"
+                alt="About Us"
+                className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
+                height={400}
+                width={400}
+              />
+            </div>
           </div>
         </div>
 
+        {/* tabel of content section */}
+        <div>
+          <TableOfContent />
+        </div>
         {/* Industry-Specific Heading & Tagline Solution  */}
         <div className="max-w-4xl text-center mx-auto px-4 md:mt-10 py-10">
           <h2 className="text-xl text-center font-bold text-primary md:mb-4">
@@ -424,7 +442,9 @@ const Travel = () => {
         </div>
         {/* Resource Section */}
       </div>
-
+      <div>
+        <TableOfContent />
+      </div>
       {/* this is FQA SECTION  */}
       <div className="bg-white">
         {/* section 1 */}

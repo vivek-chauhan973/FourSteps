@@ -16,7 +16,7 @@ import Case from "./CaseStudies/Case";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Nav from "./Header/Nav";
-import Additional from "./Web/Additional";
+// import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
 // import Trail from "./Trail";
@@ -37,7 +37,7 @@ const Home = () => {
       <Nav />
       <BackToTop />
       <HeroSection />
-      <Additional />
+      {/* <Additional /> */}
       <AboutSection />
       <Count />
       <Service />
