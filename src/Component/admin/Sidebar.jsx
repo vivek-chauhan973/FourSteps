@@ -67,6 +67,21 @@ const Sidebar = () => {
         ],
       },
       {
+        label: "Industry ",
+        icon: () => <FontAwesomeIcon icon={faSliders} />,
+        subMenu: [
+          {
+            label: "Create-industry",
+            // change url according to the bizare expendition
+            href: "/admin/Industry/industry-create",
+          },
+          {
+            label: "Industry-list",
+            // change url according to the bizare expendition
+            href: "/admin/Industry/industry-list",
+          },
+        ]},
+      {
         label: "Home Page",
         icon: () => <FontAwesomeIcon icon={faHome} />,
 
