@@ -23,7 +23,7 @@ const  IndustryHeroSection=({ setActiveTab, blogData })=> {
   useEffect(() => {
     setTitle(blogData?.title || "");
     setDescription(blogData?.description || "");
-    setPreview(blogData?.videoPath || "");
+    setPreview(blogData?.path || "");
     setEditorHtmlDescription(blogData?.contentsummary || "");
   }, [blogData]);
   // Function to handle file input change

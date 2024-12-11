@@ -6,7 +6,7 @@ import DetailsQuestion from "@/Component/admin/Blog Detail/DetailsQuestion";
 import BlogDetailBanner from "@/Component/admin/Blog Detail/BlogDetailBanner";
 import IndustryHeroSection from "@/Component/admin/Industry/IndustryHeroSection";
 const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/blog/${id}`)).json();
+  return await (await fetch(`/api/industry/${id}`)).json();
 };
 export default function CreateWebinar() {
   const router = useRouter();

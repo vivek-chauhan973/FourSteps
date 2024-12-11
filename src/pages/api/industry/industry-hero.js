@@ -43,19 +43,19 @@ const apiRoute = async (req, res) => {
       // console.log("req.body ---------> ",`/uploads/industry/herosection/${req.file.filename}`);
       const fileData = req.file && {
         title,
-        contentsummary,
-        description,
         filename: req.file.filename,
+        description,
+        contentsummary,
         path:`/uploads/industry/herosection/${req.file.filename}`,
       };
 
-      console.log("file data that it stores in mongodb databse ---------> ",fileData)
+      // console.log("file data that it stores in mongodb databse ---------> ",fileData)
 
       try {
         const updatedFile = await Industry.create(fileData);
         return res.status(200).json({ data: updatedFile });
       } catch (error) {
-        console.error("Error updating or saving file:", error);
+        // console.error("Error updating or saving file:", error);
         return res.status(500).json({ message: "Internal Server Error 1",error });
       }
     });

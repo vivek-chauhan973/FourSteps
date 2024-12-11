@@ -27,6 +27,6 @@ const IndustrySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Industry = mongoose.models.Industry || mongoose.model("Industry", IndustrySchema);
+const Industry1 = mongoose.models.Industry1 || mongoose.model("Industry1", IndustrySchema);
 
-export default Industry;
+export default Industry1;
