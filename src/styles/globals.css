@@ -754,3 +754,10 @@ ul {
     /* Slightly increase spacing for better readability */
   }
 }
+.custom-list {
+  list-style-type: square;
+}
+.custom-list ::marker{
+color: #f36b21;
+font-size: 20px;
+}

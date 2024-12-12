@@ -2,7 +2,7 @@ import React from "react";
 
 const IndustryAbout = () => {
   return (
-    <div>
+    <div className=" p-">
       {/* industry about */}
       <div className=" text-xl font-semibold pb-5">industry about</div>
       <p>

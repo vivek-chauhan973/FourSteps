@@ -442,9 +442,7 @@ const Travel = () => {
         </div>
         {/* Resource Section */}
       </div>
-      <div>
-        <TableOfContent />
-      </div>
+    
       {/* this is FQA SECTION  */}
       <div className="bg-white">
         {/* section 1 */}

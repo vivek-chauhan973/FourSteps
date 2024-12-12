@@ -229,3 +229,246 @@ const Trail = () => {
 };
 
 export default Trail;
+
+// import React, { useState } from "react";
+// import { Link as ScrollLink } from "react-scroll";
+// import Section1 from "./Section1";
+// import Section2 from "./Section2";
+// import Industry from "./Industry";
+
+// const TableOfContent = () => {
+//   const [activeSection, setActiveSection] = useState("OverviewContent");
+//   return (
+//     <div className=" conatiner-wrapper">
+//       <div className="bg-[#F1F5F9]">
+//         <div className="grid grid-cols-[1fr,200px] gap-5">
+//           {/* Main Content */}
+//           <div className="px-5 grid grid-cols-1 bg-red-400">
+//             {/* Overview Section */}
+//             <div
+//               id="OverviewContent"
+//               className="flex flex-col justify-between mt-5 mb-3"
+//             >
+//               <div className="md:px-10">
+//                 <div className="font-semibold py-2 text-xl">Overview</div>
+//                 <Section1 />
+//               </div>
+//             </div>
+
+//             {/* Key & Highlights Section */}
+//             <div
+//               id="agenda"
+//               className="flex flex-col justify-between mt-5 mb-3"
+//             >
+//               <div className="md:px-10">
+//                 <div className="font-semibold py-2 text-xl">
+//                   Key & Highlights
+//                 </div>
+//                 <Section2 />
+//               </div>
+//             </div>
+
+//             {/* Speaker Section */}
+//             <div
+//               id="speakerSection"
+//               className="flex flex-col justify-between mt-5 mb-3"
+//             >
+//               <div className="md:px-10">
+//                 <div className="font-semibold py-2 text-xl">Speaker</div>
+//                 <Industry />
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Left Sidebar with ScrollLinks */}
+//           {/* <div className=" sticky top-0 z-30 h-40  px-3 py-5 ">
+
+//             <div className="flex flex-col gap-4">
+//               <ScrollLink
+//                 to="OverviewContent"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//               >
+//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
+//                   Overview
+//                 </p>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="agenda"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//               >
+//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
+//                   Key & Highlights
+//                 </p>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="speakerSection"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//               >
+//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
+//                   Speaker
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//           </div> */}
+
+//           {/* <div className="sticky top-0 z-30 h-40 px-3 py-5">
+//             <div className="flex flex-col gap-4">
+//               <ScrollLink
+//                 to="OverviewContent"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <p className="text-para cursor-pointer pl-2 relative group">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
+//                   Overview
+//                 </p>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="agenda"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <p className="text-para cursor-pointer pl-2 relative group">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
+//                   Key & Highlights
+//                 </p>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="speakerSection"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <p className="text-para cursor-pointer pl-2 relative group">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
+//                   Speaker
+//                 </p>
+//               </ScrollLink>
+//             </div>
+//           </div> */}
+
+//           {/* <div className="sticky top-0 z-30 h-auto px-3 py-5">
+//             <h2 className="font-bold text-lg mb-4">Table of contents</h2>
+//             <div className="flex flex-col gap-4">
+//               <ScrollLink
+//                 to="OverviewContent"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <div className="relative pl-4">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Overview
+//                   </p>
+//                 </div>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="agenda"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <div className="relative pl-4">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Key & Highlights
+//                   </p>
+//                 </div>
+//               </ScrollLink>
+//               <ScrollLink
+//                 to="speakerSection"
+//                 spy={true}
+//                 smooth={true}
+//                 offset={-70}
+//                 duration={500}
+//                 activeClass="active"
+//               >
+//                 <div className="relative pl-4">
+//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Speaker
+//                   </p>
+//                 </div>
+//               </ScrollLink>
+//             </div>
+//           </div> */}
+//           <div className="sticky top-0 z-30 h-auto px-3 py-5">
+//             <h2 className="font-bold text-lg mb-4">Table of contents</h2>
+//             <div className="relative">
+//               {/* Vertical Line */}
+//               <span className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></span>
+
+//               {/* Table of Content Items */}
+//               <div className="flex flex-col gap-4 pl-4">
+
+//                 <ScrollLink
+//                   to="OverviewContent"
+//                   spy={true}
+//                   smooth={true}
+//                   offset={-70}
+//                   duration={500}
+//                   activeClass="active"
+//                 >
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Overview
+//                   </p>
+//                 </ScrollLink>
+
+//                 <ScrollLink
+//                   to="agenda"
+//                   spy={true}
+//                   smooth={true}
+//                   offset={-70}
+//                   duration={500}
+//                   activeClass="active"
+//                 >
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Key & Highlights
+//                   </p>
+//                 </ScrollLink>
+
+//                 <ScrollLink
+//                   to="speakerSection"
+//                   spy={true}
+//                   smooth={true}
+//                   offset={-70}
+//                   duration={500}
+//                   activeClass="active"
+//                 >
+//                   <p className="text-gray-700 hover:text-black cursor-pointer">
+//                     Speaker
+//                   </p>
+//                 </ScrollLink>
+//               </div>
+
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TableOfContent;
