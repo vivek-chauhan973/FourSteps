@@ -86,11 +86,11 @@ const apiRoute = async (req, res) => {
   } else if (req.method === "GET") {
     // Handle GET request
     try {
-      const files = await Industry.findOne({ _id: industry })
+      const files = await Industry.findOne({ _id: industry }).populate('why4step')
       return res.status(200).json({ data: files });
     } catch (error) {
-      console.error("Error fetching files:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
+      // console.error("Error fetching files:", error);
+      return res.status(500).json({ message: "Internal Server Error",error });
     }
   } else {
     // Handle other methods (e.g., POST, DELETE)

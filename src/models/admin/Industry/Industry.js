@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./Why4Steps";
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -23,6 +24,10 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    why4step:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Why4Steps"
+    }
   },
   { timestamps: true }
 );
