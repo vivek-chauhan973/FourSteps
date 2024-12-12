@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react'
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEdit,
-  faTrash,
-  faCirclePlus,
-  faSave,
-} from "@fortawesome/free-solid-svg-icons";
-
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
-export default function OverviewAbout({ webinarData, setActiveTab }) {
+const IndustryWhy4steps = () => {
   const [aboutEditorHtml, setAboutEditorHtml] = useState("");
-  const [webinarId, setWebinarId] = useState(null);
-  useEffect(() => {
-    setWebinarId(webinarData?._id);
-    setAboutEditorHtml(webinarData?.overview?.description || "");
-  }, [webinarData]);
-
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -33,34 +18,18 @@ export default function OverviewAbout({ webinarData, setActiveTab }) {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["image", "link"],
+      ["link"],
     ],
   };
-
   const handleAboutEditorChange = (html) => {
     setAboutEditorHtml(html);
   };
-
-  const handleSubmit = async () => {
-    // Calling the provided onSubmit prop function with data
-    const data = await fetch("/api/webinar/overview", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ aboutEditorHtml, webinar: webinarId }),
-    });
-    if (data?.ok) {
-      alert("overview data saved");
-      setActiveTab("Tab3");
-    } else {
-      alert("something went wrong");
-    }
-    // Switch to the next tab after submitting
-  };
-
   return (
     <div className="bg-white p-2 px-5 grow rounded-md flex flex-col gap-3">
+      <div>
+        <p className='my-2'>Heading</p>
+        <input type="text"  className='w-full outline-none border py-1 px-3'/>
+      </div>
       <div className="md:mb-0 mb-5">
         <p className="pb-2 font-semibold text-para">OverView</p>
 
@@ -78,10 +47,12 @@ export default function OverviewAbout({ webinarData, setActiveTab }) {
       <button
         type="submit"
         className="bg-black text-white w-full rounded py-2"
-        onClick={handleSubmit}
+        // onClick={handleSubmit}
       >
         Save
       </button>
     </div>
-  );
+  )
 }
+
+export default IndustryWhy4steps

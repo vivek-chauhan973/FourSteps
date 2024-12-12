@@ -23,7 +23,7 @@ export default function CreateWebinar() {
       });
     }
   }, [webinar, activeTab]);
-  console.log("webinar response is here --> ", webinarData);
+  // console.log("webinar response is here --> ", webinarData);
   // Function to switch to the next tab
   useEffect(() => {
     if (activeTab === "Tab1") {

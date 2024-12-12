@@ -712,6 +712,9 @@ ol {
   list-style-type: decimal;
   /* Ensures ordered lists show numbers */
 }
+.ql-editor ul {
+  list-style-type: square;
+}
 
 ul {
   list-style-type: disc;

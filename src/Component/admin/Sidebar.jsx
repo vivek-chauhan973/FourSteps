@@ -80,6 +80,11 @@ const Sidebar = () => {
             // change url according to the bizare expendition
             href: "/admin/Industry/industry-list",
           },
+          {
+            label: "Partners",
+            // change url according to the bizare expendition
+            href: "/admin/Industry/industry-partner",
+          },
         ]},
       {
         label: "Home Page",

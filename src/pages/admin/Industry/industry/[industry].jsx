@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/Component/admin/AdminLayout";
-import BlogDetailSeo from "@/Component/admin/Blog Detail/BlogDetailSeo";
-import DetailsQuestion from "@/Component/admin/Blog Detail/DetailsQuestion";
-import BlogDetailBanner from "@/Component/admin/Blog Detail/BlogDetailBanner";
 import IndustryHeroSection from "@/Component/admin/Industry/IndustryHeroSection";
+import IndustryWhy4steps from "@/Component/admin/Industry/IndustryWhy4steps";
+import IndustrySuccessStories from "@/Component/admin/Industry/IndustrySuccessStories";
+import IndustrySolutions from "@/Component/admin/Industry/IndustrySolutions";
+import IndustryProducts from "@/Component/admin/Industry/IndustryProducts";
+import IndusServices from "@/Component/admin/Industry/IndusServices";
+import IndusApproach from "@/Component/admin/Industry/IndusApproach";
+import IndusBenefits from "@/Component/admin/Industry/IndusBenefits";
 const postDataAccordingId = async (id) => {
   return await (await fetch(`/api/industry/${id}`)).json();
 };
@@ -32,7 +36,7 @@ export default function CreateWebinar() {
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
-        <p className="md:text-[28px] text-2xl text-black">Create Post</p>
+        <p className="md:text-[28px] text-2xl text-black">Create Industry</p>
       </div>
       <div className="border-b border-slate-300 mb-5">
         <div className="flex gap-2 text-[14px] pt-3 pb-2 flex-wrap">
@@ -44,7 +48,7 @@ export default function CreateWebinar() {
                 : "border-black text-slate-500"
             } px-3 py-1`}
           >
-            Basic Information
+            Hero Section
           </button>
           <>
             <button
@@ -55,7 +59,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Blog Questions
+              Why 4steps
             </button>
             <button
               onClick={() => setActiveTab("Tab3")}
@@ -65,22 +69,103 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Seo Field
+              Success stories
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab4")}
+              className={`${
+                activeTab === "Tab4"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              Solutions we deliver
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab5")}
+              className={`${
+                activeTab === "Tab5"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              our products
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab6")}
+              className={`${
+                activeTab === "Tab6"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              Our services
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab7")}
+              className={`${
+                activeTab === "Tab7"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              Our approach
+            </button>
+            <button
+              onClick={() => setActiveTab("Tab8")}
+              className={`${
+                activeTab === "Tab8"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              Benefits/Results
             </button>
           </>
         </div>
       </div>
-      <div className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}>
+      <div
+        className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
+      >
         <IndustryHeroSection setActiveTab={setActiveTab} blogData={blogData} />
       </div>
 
       <>
-        <div className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}>
-          <DetailsQuestion blogData={blogData} setActiveTab={setActiveTab} />
+        <div
+          className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
+        >
+          <IndustryWhy4steps blogData={blogData} setActiveTab={setActiveTab} />
         </div>
-        <div className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}>
-          <BlogDetailSeo blogData={blogData} setActiveTab={setActiveTab} />
-        </div> 
+        <div
+          className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
+        >
+          <IndustrySuccessStories blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
+        >
+          <IndustrySolutions blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}
+        >
+          <IndustryProducts blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab6" ? "block" : "hidden"}`}
+        >
+          <IndusServices blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab7" ? "block" : "hidden"}`}
+        >
+          <IndusApproach blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
+        >
+          <IndusBenefits blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
       </>
     </AdminLayout>
   );
