@@ -88,7 +88,7 @@ const SolutionIndustry = () => {
         <div>
           <div className="grid grid-cols-2 gap-8 pt-5">
             {services.map((service, index) => (
-              <div key={index} className="bg-white border p-6 rounded-lg">
+              <div key={index} className="bg-white border p-4 rounded-lg">
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
                     <Image
@@ -99,7 +99,7 @@ const SolutionIndustry = () => {
                       width={200}
                     />
                   </div>
-                  <h2 className="text-xl py-2 decoration-primary underline font-semibold text-center">
+                  <h2 className="text-[22px] py-2 decoration-primary underline font-semibold text-center">
                     {service.title}
                   </h2>
                 </div>

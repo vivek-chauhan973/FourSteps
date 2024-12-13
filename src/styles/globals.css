@@ -186,7 +186,7 @@ body {
   padding: 2px 8px;
   border: 1px solid rgb(203, 213, 225, var(--tw-border-opacity));
   border-radius: 5px;
-  background-color: #FFFBF5;
+  background-color: #fffbf5;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 .pagination-item {
@@ -201,7 +201,6 @@ body {
   background-color: black;
   color: white;
 }
-
 
 .carousel {
   display: flex;
@@ -743,7 +742,7 @@ ul {
     margin-top: 3px; /* Adjust spacing above lists */
   }
 
-   .rich-text-content p{
+  .rich-text-content p {
     font-size: 14px;
   }
 
@@ -757,7 +756,7 @@ ul {
 .custom-list {
   list-style-type: square;
 }
-.custom-list ::marker{
-color: #f36b21;
-font-size: 20px;
+.custom-list ::marker {
+  color: #f36b21;
+  font-size: 20px;
 }

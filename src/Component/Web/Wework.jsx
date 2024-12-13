@@ -1,65 +1,3 @@
-// import React from "react";
-
-// const Wework = () => {
-//   const cardData = [
-//     {
-//       imgSrc: "/icons/marketing-icon.png",
-//       title: "Marketing",
-//       description:
-//         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-//       link: "#",
-//     },
-//     {
-//       imgSrc: "/icons/operations-icon.png",
-//       title: "Operations",
-//       description:
-//         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-//       link: "#",
-//     },
-//     {
-//       imgSrc: "/icons/operations-icon.png",
-//       title: "Operations",
-//       description:
-//         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-//       link: "#",
-//     },
-//     // Add more card data here as needed
-//   ];
-
-//   return (
-//     <div className=" container bg-red-500 md:px-16">
-//       <div className="py-8 px-10 ">
-//         <h2 className="text-2xl font-semibold mb-6">How We Work Best</h2>
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {cardData.map((card, index) => (
-//             <div
-//               key={index}
-//               className=" border-[1px] bg-transparent p-2 rounded-lg shadow hover:shadow-md"
-//             >
-//               <img
-//                 src={card.imgSrc}
-//                 alt={`${card.title} Icon`}
-//                 className="mx-auto mb-4"
-//               />
-//               <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-//               <p className="text-gray-600 mb-4">{card.description}</p>
-//               <a
-//                 href={card.link}
-//                 className="text-orange-500 hover:text-orange-700 font-semibold"
-//               >
-//                 LEARN MORE
-//               </a>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Wework;
-
 import React from "react";
 
 const Wework = () => {
@@ -109,7 +47,9 @@ const Wework = () => {
           <div className="w-[2.8px] h-8 bg-orange-500  mr-2"></div>
           <div>
             <h2 className="text-3xl  font-semibold  ">How We Work</h2>
-            <p>Our whole process can be divided into 6 steps are following</p>
+            <p>
+              Our whole process can be divided into 6 steps are following....
+            </p>
           </div>
         </div>
 
@@ -119,7 +59,7 @@ const Wework = () => {
               key={index}
               className="flex  border-[1px] bg-transparent p-4 rounded-lg shadow hover:shadow-md"
             >
-              <img
+              <image
                 src={card.imgSrc}
                 alt={`${card.title} Icon`}
                 className="w-16 h-16 mr-4"
