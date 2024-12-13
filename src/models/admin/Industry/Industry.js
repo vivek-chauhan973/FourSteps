@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import "./Why4Steps";
+import "./Success";
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -28,6 +29,15 @@ const IndustrySchema = new mongoose.Schema(
       type:mongoose.Schema.Types.ObjectId,
       ref:"Why4Steps"
     }
+    ,
+    success:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Success"
+    }],
+    solution:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"IndustrySolution"
+    }]
   },
   { timestamps: true }
 );
