@@ -4,8 +4,7 @@ import fs from "fs";
 import dbConnect from "@/utils/db";
 import Success from "@/models/admin/Industry/Success";
 import Industry1 from "@/models/admin/Industry/Industry";
-import IndustrySolution from "@/models/admin/Industry/IndustrySolution";
-const uploadDirectory = "./public/uploads/industry/industrysolution";
+const uploadDirectory = "./public/uploads/industry/industrysuccess";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -35,24 +34,28 @@ const apiRoute = async (req, res) => {
       }
       const {
         title,
+        description,
         heading,
         link,
-        editorHtmlDescription,
+        backgroundColor,
+        keyword,
         industry,
       } = req.body;
 
       const fileData = req.file && {
         title,
         filename: req.file.filename,
-        editorHtmlDescription,
+        description,
         heading,
         link,
+        backgroundColor,
+        keyword,
         industry,
-        path: `/uploads/industry/industrysolution/${req.file.filename}`,
+        path: `/uploads/industry/industrysuccess/${req.file.filename}`,
       };
 
       try {
-        const updatedFile = await IndustrySolution.create(fileData);
+        const updatedFile = await Success.create(fileData);
 
         if (!updatedFile) {
           return res.status(400).json({ message: "Something went wrong" });
@@ -60,7 +63,7 @@ const apiRoute = async (req, res) => {
 
         await Industry1.findOneAndUpdate(
           { _id: industry },
-          { $push: { solution: updatedFile._id } }
+          { $push: { success: updatedFile._id } }
         );
 
         return res.status(200).json({ data: updatedFile });
@@ -71,46 +74,50 @@ const apiRoute = async (req, res) => {
     });
   } else if (req.method === "DELETE") {
     const { id } = req.query;
-
+  
     try {
-      const file = await IndustrySolution.findById(id);
-      if (file) {
-        // Delete the file from the filesystem
-        fs.unlinkSync(path.join(uploadDirectory, file.filename));
-
-        // Remove the file reference from the associated industry's success array
-        const industry = await Industry1.findById(file?.industry);
-        if (!industry) {
-          return res.status(404).json({ error: "Associated industry not found" });
-        }
-
-        const updatedSolution = industry?.solution?.filter(
-          (itemId) => itemId?.toString() !== id
-        );
-
-        await Industry1.findByIdAndUpdate(file?.industry, {
-            solution: updatedSolution,
-        });
-
-        // Delete the file document from the database
-        await IndustrySolution.findByIdAndDelete(id);
-
-        return res.status(200).json({ message: "File removed successfully" });
-      } else {
+      // Fetch the file document from the database
+      const file = await Success.findById(id);
+      if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
+  
+      // Delete the file from the filesystem
+      const filePath = path.join(uploadDirectory, file.filename);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      } else {
+        console.warn(`File not found on the server: ${filePath}`);
+      }
+  
+      // Remove the file reference from the associated industry
+      const industry = await Industry1.findById(file.industry);
+      if (!industry) {
+        return res.status(404).json({ error: "Associated industry not found" });
+      }
+  
+      const updatedSuccess = industry.success.filter(
+        (itemId) => itemId.toString() !== id
+      );
+  
+      await Industry1.findByIdAndUpdate(file.industry, { success: updatedSuccess });
+  
+      // Delete the file document from the database
+      await Success.findByIdAndDelete(id);
+  
+      return res.status(200).json({ message: "File and associated references deleted successfully" });
     } catch (error) {
-      // console.error("Error deleting file:", error);
+      console.error("Error deleting file:", error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   } else if (req.method === "GET") {
     const { id } = req.query;
     try {
-      const files = await IndustrySolution.find({industry:id});
+      const files = await Success.find({industry:id});
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);
-      return res.status(500).json({error:"Internal Server Error" });
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   } else {
     res.setHeader("Allow", ["POST", "GET", "DELETE"]);

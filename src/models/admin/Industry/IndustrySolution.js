@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 import "./Why4Steps";
+const miniSchema=new mongoose.Schema({
+  content:{
+    type:String
+  }
+})
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -16,10 +21,7 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    editorHtmlDescription: {
-      type: String,
-      required: true,
-    },
+    editorHtmlDescription:[miniSchema],
 
     link: {
       type: String,
