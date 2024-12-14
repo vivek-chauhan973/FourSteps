@@ -122,7 +122,7 @@ const OurServicesIndustry = () => {
     <>
       <div className=" ">
         <h3 className="font-semibold text-primary text-3xl pb-7">
-          IT Services for Insurance Companies
+          IT Services 
         </h3>
       </div>
 
