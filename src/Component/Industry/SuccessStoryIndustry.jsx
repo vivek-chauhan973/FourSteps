@@ -1,95 +1,172 @@
-import React from "react";
+// import React from 'react';
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faArrowRight,
+// } from "@fortawesome/free-solid-svg-icons";
+// import Image from 'next/image';
+
+// const SuccessStoryIndustry = () => {
+//   return (
+//     <section className="relative w-full mb-20 mt-5 bg-gray-100">
+//       {/* Background Image */}
+//       <div className="absolute inset-0">
+//         <Image
+//           src="/image/bg.jpg" // Replace with your image path
+//           alt="Background"
+//           className="w-[75%] h-[450px] object-cover"
+//           height={500}
+//           width={500}
+//         />
+//       </div>
+
+//       {/* Content */}
+//       <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-end max-w-7xl mx-auto ">
+//         {/* Left Placeholder (Keeps layout consistent) */}
+//         <div className="hidden md:block md:w-1/2"></div>
+
+//         {/* Right Content */}
+//         <div className="bg-[#FFF0F5] shadow-lg  p-6 md:p-8 h-auto md:w-1/2 z-10">
+//           <div className="flex items-center space-x-2 mb-4">
+//             <span className="bg-white  text-black text-sm px-2 py-2 rounded">Insurance</span>
+//             <span className="bg-white  text-black text-sm px-2 py-2 rounded">BFSI</span>
+//             <span className="bg-white  text-black text-sm px-2 py-2 rounded">Software products</span>
+//           </div>
+//           <h2 className="text-xl md:text-xl font-semibold text-gray-800 mb-4">
+//             Underwriting Automation Software for a Global Aviation Insurer with $30B in Assets
+//           </h2>
+//           <p className="text-gray-600 text-sm md:text-base mb-6">
+//             A custom underwriting system automates risk assessment, insurance pricing, policy administration,
+//             task management, and compliance control. The new software helped increase underwriter productivity,...
+//           </p>
+//           <div className="mt-6 flex justify-center">
+//                   <button className=" bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6  inline-flex items-center transition-transform duration-300">
+//                     Request details
+//                     <FontAwesomeIcon
+//                       icon={faArrowRight}
+//                       className="ml-2 transform hover:translate-x-1"
+//                     />
+//                   </button>
+//             </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default SuccessStoryIndustry;
+
+
+
+
+
+
+
+
+
+
+import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Image from 'next/image';
 
 const SuccessStoryIndustry = () => {
   return (
-    <div>
-      <h4>Pending this section</h4>
-      <div class="flex flex-col md:flex-row bg-background p-6">
-        <div class="md:w-1/3 bg-blue-100 p-4 rounded-lg shadow-md">
-          <h2 class="text-lg font-semibold">Risk Details</h2>
-          <ul class="mt-4">
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Insurance Data
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Setup
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Policyholder Info
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Limits
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Original Conditions
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Jurisdiction
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Booking Info
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Endorsements
-              </a>
-            </li>
-            <li class="py-2">
-              <a href="#" class="text-primary hover:underline">
-                Audit Log
-              </a>
-            </li>
-          </ul>
-          <div class="mt-4">
-            <button class="bg-secondary text-secondary-foreground p-2 rounded">
-              Settings
-            </button>
-            <button class="bg-secondary text-secondary-foreground p-2 rounded">
-              Help
-            </button>
-            <button class="bg-secondary text-secondary-foreground p-2 rounded">
-              Log Out
-            </button>
-          </div>
+    <>
+
+      {/* section 1 */}
+      <div className="relative w-full mb-20 mt-5 bg-gray-100">
+        {/* Background Image */}
+        <div className="relative w-full md:absolute md:inset-0 md:w-[75%] h-[250px] md:h-[450px]">
+          <Image
+            src="/image/bg.jpg" // Replace with your image path
+            alt="Background"
+            className="w-full h-full object-cover"
+            height={500}
+            width={500}
+          />
         </div>
 
-        <div class="md:w-2/3 md:ml-4 bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold">
-            Underwriting Automation Software for a Global Aviation Insurer with
-            $30B in Assets
-          </h3>
-          <p class="mt-2 text-muted-foreground">
-            A custom underwriting system automates risk assessment, insurance
-            pricing, policy administration, task management, and compliance
-            control. The new software helped increase underwriter
-            productivity...
-          </p>
-          <div class="mt-4">
-            <a
-              href="#"
-              class="bg-primary text-primary-foreground p-2 rounded hover:bg-primary/80"
-            >
-              See project details →
-            </a>
+        {/* Content */}
+        <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-end max-w-7xl mx-auto">
+          {/* Left Placeholder (Keeps layout consistent on desktop) */}
+          <div className="hidden md:block md:w-1/2"></div>
+
+          {/* Right Content */}
+          <div className="bg-[#FFF0F5] shadow-lg p-6 md:p-8 h-auto md:w-1/2 z-10">
+            <div className="flex items-center space-x-2 mb-4">
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">Insurance</span>
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">BFSI</span>
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">Software products</span>
+            </div>
+            <h2 className="text-xl md:text-xl font-semibold text-gray-800 mb-4">
+              Underwriting Automation Software for a Global Aviation Insurer with $30B in Assets
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base mb-6">
+              A custom underwriting system automates risk assessment, insurance pricing, policy administration,
+              task management, and compliance control. The new software helped increase underwriter productivity,...
+            </p>
+            <div className="mt-6 flex justify-center">
+              <button className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300">
+                Request details
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="ml-2 transform hover:translate-x-1"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      22222222222
+      {/* section2  */}
+
+      <div className="relative w-full mb-20 bg-gray-100">
+        {/* Background Image */}
+        <div className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[75%] h-[250px] md:h-[450px]">
+          <Image
+            src="/image/bg.jpg" // Replace with your image path
+            alt="Background"
+            className="w-full h-full object-cover"
+            height={500}
+            width={500}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative flex flex-col md:flex-row-reverse items-center justify-center md:justify-between max-w-7xl mx-auto">
+          {/* Left Placeholder (Keeps layout consistent on desktop) */}
+          <div className="hidden md:block md:w-1/2"></div>
+
+          {/* Right Content */}
+          <div className="bg-[#FFF0F5] shadow-lg p-6 md:p-8 h-auto md:w-1/2 z-10">
+            <div className="flex items-center space-x-2 mb-4">
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">Insurance</span>
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">vivek</span>
+              <span className="bg-white text-black text-sm px-2 py-2 rounded">Software products</span>
+            </div>
+            <h2 className="text-xl md:text-xl font-semibold text-gray-800 mb-4">
+              Underwriting Automation Software for a Global Aviation Insurer with $30B in Assets
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base mb-6">
+              A custom underwriting system automates risk assessment, insurance pricing, policy administration,
+              task management, and compliance control. The new software helped increase underwriter productivity,...
+            </p>
+            <div className="mt-6 flex justify-center">
+              <button className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300">
+                Request details
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="ml-2 transform hover:translate-x-1"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </>
   );
 };
 
 export default SuccessStoryIndustry;
+

@@ -90,7 +90,7 @@ const ProductIndustry = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white border p-4 rounded-lg transform transition-transform duration-300 hover:scale-100 hover:shadow-md"
+                className="bg-white border cursor-pointer p-4 rounded-lg transform transition-transform duration-300 hover:scale-100 hover:shadow-md"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
@@ -102,7 +102,7 @@ const ProductIndustry = () => {
                       width={200}
                     />
                   </div>
-                  <h2 className="text-[22px] py-2 decoration-primary underline font-semibold text-center">
+                  <h2 className="text-[22px]  py-2 hover:text-primary decoration-primary underline font-semibold text-center">
                     {service.title}
                   </h2>
                 </div>
