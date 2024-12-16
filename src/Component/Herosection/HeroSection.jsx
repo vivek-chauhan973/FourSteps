@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const HeroSection = () => {
   const data = [
@@ -106,10 +107,12 @@ const HeroSection = () => {
           >
             {data.map((item) => (
               <div key={item.id}>
-                <img
+                <Image
                   src={item.images}
                   alt={`Image ${item.id}`}
                   className="w-full h-auto rounded-lg"
+                  height={500}
+                  width={500}
                 />
               </div>
             ))}
