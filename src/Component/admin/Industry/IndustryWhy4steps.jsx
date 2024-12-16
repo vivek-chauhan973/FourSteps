@@ -106,7 +106,11 @@ const IndustryWhy4steps = ({ blogData, setActiveTab }) => {
       body: JSON.stringify(data),
     });
     if (res?.ok) {
-      alert(blogData?.why4step ? "Data updated successfully" : "Data added successfully");
+      alert(
+        blogData?.why4step
+          ? "Data updated successfully"
+          : "Data added successfully"
+      );
       setActiveTab("Tab3");
     } else {
       alert("Something went wrong");
@@ -114,95 +118,101 @@ const IndustryWhy4steps = ({ blogData, setActiveTab }) => {
   };
 
   return (
-    <div className="bg-white p-5 rounded-md flex flex-col gap-4">
-      <div>
-        <label htmlFor="heading" className="block text-sm font-semibold text-gray-700">
-          Heading
-        </label>
-        <input
-          type="text"
-          id="heading"
-          className="w-full outline-none border py-2 rounded-md px-3 mt-1"
-          onChange={(e) => setHeading(e.target.value)}
-          value={heading}
-        />
-      </div>
-
-      <div className="my-4">
-        <label
-          htmlFor="reliablePartners"
-          className="block text-sm font-semibold text-gray-700 mb-2"
-        >
-          Reliable Partners:
-        </label>
-        <MultipleSelectCheckmarks
-          packageCategories={partnersData}
-          onSelectedCategoryIdsChange={handleCategory}
-          selectedCategories1={SelectedPartnersData}
-        />
-      </div>
-
-      <div>
-        <p className="text-sm font-semibold text-gray-700 mb-2">Overview</p>
-        <div className="w-full h-44 mb-4">
-          <QuillNoSSRWrapper
-            className="rounded-md"
-            theme="snow"
-            value={aboutEditorHtml}
-            onChange={handleAboutEditorChange}
-            modules={modules}
+    <div>
+      <p className="text-base font-semibold">Why 4Steps</p>
+      <div className="bg-white p-5 rounded-md flex flex-col gap-4">
+        <div>
+          <label
+            htmlFor="heading"
+            className="block text-sm font-semibold text-gray-700"
+          >
+            Heading
+          </label>
+          <input
+            type="text"
+            id="heading"
+            className="w-full outline-none border py-2 rounded-md px-3 mt-1"
+            onChange={(e) => setHeading(e.target.value)}
+            value={heading}
           />
         </div>
 
-        <button
-          className="bg-black text-white w-24 rounded-md py-2"
-          onClick={handleAdd}
-        >
-          {editIndex !== null ? "Update" : "Add"}
-        </button>
-
-        <div className="mt-5">
-          <p className="font-semibold text-gray-700">All Points:</p>
-          <ul className="space-y-3 mt-2">
-            {overviewData.map((item, index) => (
-              <li
-                key={item.id}
-                className="flex justify-between items-start p-4 bg-gray-50 border border-gray-300 rounded-md shadow-sm"
-              >
-                <div className="flex items-center space-x-2">
-                  <p className="text-gray-600 font-medium">{index + 1}</p>
-                  <div
-                    className="flex-grow text-sm text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: item.content }}
-                  ></div>
-                </div>
-                <div className="flex gap-3">
-                  <button
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => handleEdit(index)}
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    className="text-red-500 hover:text-red-700"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <div className="my-4">
+          <label
+            htmlFor="reliablePartners"
+            className="block text-sm font-semibold text-gray-700 mb-2"
+          >
+            Reliable Partners:
+          </label>
+          <MultipleSelectCheckmarks
+            packageCategories={partnersData}
+            onSelectedCategoryIdsChange={handleCategory}
+            selectedCategories1={SelectedPartnersData}
+          />
         </div>
-      </div>
 
-      <button
-        type="submit"
-        className="bg-black text-white w-full rounded-md py-2 mt-4"
-        onClick={handleSaveData}
-      >
-        Save
-      </button>
+        <div>
+          <p className="text-sm font-semibold text-gray-700 mb-2">Overview</p>
+          <div className="w-full h-44 mb-4">
+            <QuillNoSSRWrapper
+              className="rounded-md"
+              theme="snow"
+              value={aboutEditorHtml}
+              onChange={handleAboutEditorChange}
+              modules={modules}
+            />
+          </div>
+
+          <button
+            className="bg-black text-white w-24 rounded-md py-2"
+            onClick={handleAdd}
+          >
+            {editIndex !== null ? "Update" : "Add"}
+          </button>
+
+          <div className="mt-5">
+            <p className="font-semibold text-gray-700">All Points:</p>
+            <ul className="space-y-3 mt-2">
+              {overviewData.map((item, index) => (
+                <li
+                  key={item.id}
+                  className="flex justify-between items-start p-4 bg-gray-50 border border-gray-300 rounded-md shadow-sm"
+                >
+                  <div className="flex items-center space-x-2">
+                    <p className="text-gray-600 font-medium">{index + 1}</p>
+                    <div
+                      className="flex-grow text-sm text-gray-700"
+                      dangerouslySetInnerHTML={{ __html: item.content }}
+                    ></div>
+                  </div>
+                  <div className="flex gap-3">
+                    <button
+                      className="text-blue-500 hover:text-blue-700"
+                      onClick={() => handleEdit(index)}
+                    >
+                      <FaEdit />
+                    </button>
+                    <button
+                      className="text-red-500 hover:text-red-700"
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="bg-black text-white w-full rounded-md py-2 mt-4"
+          onClick={handleSaveData}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

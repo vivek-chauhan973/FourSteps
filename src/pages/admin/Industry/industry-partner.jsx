@@ -173,8 +173,8 @@ export default function IconManagement() {
                         className=" shadow-md"
                         src={item?.path}
                         alt="Preview"
-                        width={32}
-                        height={32}
+                        width={120}
+                        height={120}
                       />
                     </td>
                     <td className="border-l border-r px-2 py-2 capitalize overflow-hidden border-gray-300">

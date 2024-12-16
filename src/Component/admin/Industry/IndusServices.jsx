@@ -50,13 +50,7 @@ const IndusServices = ({ setActiveTab, blogData }) => {
     }
 
     const formData = new FormData();
-    if (
-      !file &&
-      !title &&
-      !editorHtmlDescription &&
-      !heading &&
-      !link
-    ) {
+    if (!file && !title && !editorHtmlDescription && !heading && !link) {
       alert("Please upload file and  write title");
       return;
     }
@@ -66,12 +60,12 @@ const IndusServices = ({ setActiveTab, blogData }) => {
       formData.append("title", title);
       formData.append("heading", heading);
       formData.append("link", link);
-      formData.append("editorHtmlDescription",editorHtmlDescription);
+      formData.append("editorHtmlDescription", editorHtmlDescription);
       formData.append("industry", blogData?._id);
     }
     try {
       const res = await fetch(`/api/industry/solution`, {
-        method:"POST",
+        method: "POST",
         body: formData,
       });
       const data1 = await res.json();
@@ -85,7 +79,6 @@ const IndusServices = ({ setActiveTab, blogData }) => {
             blogData?.success?.length > 0 ? "updated" : "uploaded"
           } successfully`
         );
-       
       } else {
         alert(
           `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
@@ -115,9 +108,7 @@ const IndusServices = ({ setActiveTab, blogData }) => {
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)]  border-l-2 border-teal-600">
-        <p className="text-base font-semibold mb-2">
-          Industry Hero Section Detail
-        </p>
+        <p className="text-base font-semibold mb-2">Industry Service section</p>
         <div className="p-4">
           <div className="flex  flex-col md:gap-10 gap-5  xl:pl-5">
             <div>
@@ -179,17 +170,16 @@ const IndusServices = ({ setActiveTab, blogData }) => {
                 />
               </div>
               <div className="w-full">
-            <h3 className=" font-semibold mb-2">Industry Summary</h3>
-            <QuillNoSSRWrapper
-              className="rounded h-48 mb-16"
-              theme="snow"
-              value={editorHtmlDescription}
-              onChange={setEditorHtmlDescription}
-              placeholder="Enter Your Answer"
-              modules={modules}
-            />
-          </div>
-             
+                <h3 className=" font-semibold mb-2">Industry Summary</h3>
+                <QuillNoSSRWrapper
+                  className="rounded h-48 mb-16"
+                  theme="snow"
+                  value={editorHtmlDescription}
+                  onChange={setEditorHtmlDescription}
+                  placeholder="Enter Your Answer"
+                  modules={modules}
+                />
+              </div>
             </div>
             {currentItems?.map((itinerary) => (
               <tr className="border-b" key={itinerary?._id}>

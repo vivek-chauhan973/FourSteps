@@ -172,7 +172,7 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
         <p className="text-base font-semibold mb-2">
-          Industry Hero Section Detail
+          Industry Solutions we deliver
         </p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">

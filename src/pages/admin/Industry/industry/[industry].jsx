@@ -7,8 +7,8 @@ import IndustrySuccessStories from "@/Component/admin/Industry/IndustrySuccessSt
 import IndustrySolutions from "@/Component/admin/Industry/IndustrySolutions";
 import IndustryProducts from "@/Component/admin/Industry/IndustryProducts";
 import IndusServices from "@/Component/admin/Industry/IndusServices";
-import IndusApproach from "@/Component/admin/Industry/IndusApproach";
 import IndusBenefits from "@/Component/admin/Industry/IndusBenefits";
+import IndusFaq from "@/Component/admin/Industry/IndusFaq";
 const postDataAccordingId = async (id) => {
   return await (await fetch(`/api/industry/${id}`)).json();
 };
@@ -24,6 +24,14 @@ export default function CreateWebinar() {
       setActiveTab("Tab3");
     } else if (activeTab === "Tab3") {
       setActiveTab("Tab4");
+    } else if (activeTab === "Tab4") {
+      setActiveTab("Tab5");
+    } else if (activeTab === "Tab5") {
+      setActiveTab("Tab6");
+    } else if (activeTab === "Tab6") {
+      setActiveTab("Tab7");
+    } else if (activeTab === "Tab7") {
+      setActiveTab("Tab8");
     }
   }, []);
   useEffect(() => {
@@ -109,7 +117,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Our approach
+              Benefits/Results
             </button>
             <button
               onClick={() => setActiveTab("Tab8")}
@@ -119,7 +127,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Benefits/Results
+              Faq Section
             </button>
           </>
         </div>
@@ -139,7 +147,10 @@ export default function CreateWebinar() {
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
         >
-          <IndustrySuccessStories blogData={blogData} setActiveTab={setActiveTab} />
+          <IndustrySuccessStories
+            blogData={blogData}
+            setActiveTab={setActiveTab}
+          />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
@@ -159,12 +170,12 @@ export default function CreateWebinar() {
         <div
           className={`tab-content ${activeTab === "Tab7" ? "block" : "hidden"}`}
         >
-          <IndusApproach blogData={blogData} setActiveTab={setActiveTab} />
+          <IndusBenefits blogData={blogData} setActiveTab={setActiveTab} />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
         >
-          <IndusBenefits blogData={blogData} setActiveTab={setActiveTab} />
+          <IndusFaq blogData={blogData} setActiveTab={setActiveTab} />
         </div>
       </>
     </AdminLayout>
