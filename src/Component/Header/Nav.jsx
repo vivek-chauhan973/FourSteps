@@ -160,7 +160,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-gray-100 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg">
+      <nav className= " bg-gray-50 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg ">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}

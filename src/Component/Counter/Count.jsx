@@ -190,21 +190,21 @@ const Count = () => {
           endValue={500}
           label=" Happy Client"
           icon={faPeopleGroup}
-          className="bg-white border-r-2 pl-5 border-gray-200"
+          className="bg-white border-l-2 pl-5 border-gray-200"
           isVisible={isVisible}
         />
         <Counter
           endValue={100}
           label="Our Experts Team"
           icon={faUser}
-          className="bg-white border-r-2 border-gray-200"
+          className="bg-white border-l-2 border-gray-200"
           isVisible={isVisible}
         />
         <Counter
           endValue={150}
           label="Successful Projects"
           icon={faBriefcase}
-          className="bg-white border-r-2 border-gray-200"
+          className="bg-white border-l-2 border-gray-200"
           isVisible={isVisible}
         />
 
@@ -212,7 +212,7 @@ const Count = () => {
           endValue={6}
           label="Year Of experience"
           icon={faThumbsUp}
-          className="bg-white border-r-2 md:border-r-0 border-gray-200"
+          className="bg-white border-l-2 md:border-r-0 border-gray-200"
           isVisible={isVisible}
         />
       </div>
