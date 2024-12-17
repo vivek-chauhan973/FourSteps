@@ -594,14 +594,14 @@ const handleDeleteService = async (id) => {
                       <button onClick={() => toggleEditIndustry(item._id)}>
                         <FontAwesomeIcon
                           icon={faEdit}
-                          className="text-blue-600"
+                          className="hover:text-primary"
                         />
                       </button>
                     )}
                     <button onClick={() => handleDeleteIndustry(item._id)}>
                       <FontAwesomeIcon
                         icon={faTrash}
-                        className="text-red-600"
+                        className="hover:text-primary"
                       />
                     </button>
                   </div>
@@ -986,13 +986,13 @@ const handleDeleteService = async (id) => {
                       ) : (
                         <FontAwesomeIcon
                           icon={faEdit}
-                          className="cursor-pointer"
+                          className="cursor-pointer hover:text-primary"
                           onClick={() => toggleEditService(item._id)}
                         />
                       )}
                       <FontAwesomeIcon
                         icon={faTrash}
-                        className="cursor-pointer"
+                        className="cursor-pointer hover:text-primary"
                         onClick={() => handleDeleteService(item._id)}
                       />
                     </div>
