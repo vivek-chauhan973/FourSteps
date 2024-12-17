@@ -37,9 +37,8 @@ const Home = () => {
       <Nav />
       <BackToTop />
       <HeroSection />
-      {/* <Additional /> */}
-      <AboutSection />
       <Count />
+      <AboutSection />
       <Service />
       <ChooseUs />
       <Industry />
