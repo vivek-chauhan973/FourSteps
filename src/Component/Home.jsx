@@ -20,7 +20,7 @@ import Nav from "./Header/Nav";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
 import Partners from "./Web/Partners";
-// import Trail from "./Trail";
+import Trail from "./Trail";
 
 const Home = () => {
   useEffect(() => {
@@ -33,7 +33,6 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {/* <Trail /> */}
 
       <Nav />
       <BackToTop />
@@ -54,6 +53,7 @@ const Home = () => {
       <ContactUs />
       <Calltoaction />
       <Testimonial />
+      <Trail />
       <Footer />
     </div>
   );

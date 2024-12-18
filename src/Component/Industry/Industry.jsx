@@ -180,7 +180,7 @@ const Industry = () => {
   ];
 
   return (
-    <div className="container-wrapper md:my-10 my-5">
+    <div className="container-wrapper md:my-10 px-4 md:px-0 my-5">
       <div className="flex py-2">
         <div>
           <h2 className="text-3xl text-primary font-semibold pb-5">
@@ -199,7 +199,7 @@ const Industry = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className="flex flex-col items-center cursor-pointer bg-white border border-gray-300 p-6 shadow group transition-transform hover:scale-105 hover:shadow-md relative"
+            className="flex flex-col items-center cursor-pointer bg-white border border-gray-300 p-4 shadow group transition-transform hover:scale-105 hover:shadow-md relative"
           >
               {/* Icon Background with dynamic color */}
               <div
