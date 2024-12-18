@@ -19,6 +19,7 @@ import Nav from "./Header/Nav";
 // import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
+import Partners from "./Web/Partners";
 // import Trail from "./Trail";
 
 const Home = () => {
@@ -38,6 +39,7 @@ const Home = () => {
       <BackToTop />
       <HeroSection />
       <Count />
+      <Partners />
       <AboutSection />
       <Service />
       <ChooseUs />

@@ -205,7 +205,7 @@ const Carousel = () => {
     const handleResize = () => {
       if (carouselRef.current) {
         if (window.innerWidth <= 768) {
-          carouselRef.current.style.overflowX = "scroll";
+          carouselRef.current.style.overflowX = "hidden";
         } else {
           carouselRef.current.style.overflowX = "hidden";
         }

@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,9 +17,6 @@ const AboutSection = () => {
           <Image
             src="/image/yyy.png"
             alt="Tablet Mockup"
-            // className="w-full h-auto rounded-lg shadow-lg"
-            // width={800}
-            // height={800}
             width={500}
             height={500}
             sizes="100vw"
@@ -52,10 +47,13 @@ const AboutSection = () => {
 
           {/* Image for mobile screens */}
           <div className="md:hidden flex justify-center mb-4">
-            <img
-              src="/image/ab.webp"
+            <Image
+              src="/image/yyy.png"
               alt="Tablet Mockup"
-              className="w-full h-auto rounded-lg shadow-lg"
+              width={500}
+              height={500}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }} // optional
             />
           </div>
 
@@ -86,7 +84,7 @@ const AboutSection = () => {
 
           <Link href="/about">
             {/* <button className="bg-orange-600  cursor-pointer border-none rounded-full text-sm text-white px-4 py-2"> */}
-            <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
+            <button className=" border text-sm md:text-lg border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
               Know More
             </button>
           </Link>
