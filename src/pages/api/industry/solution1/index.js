@@ -2,10 +2,9 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import Success from "@/models/admin/Industry/Success";
-import Industry1 from "@/models/admin/Industry/Industry";
-import IndustrySolution from "@/models/admin/Industry/IndustrySolution";
+import SubIndustrySolution from "@/models/admin/Industry/IndustrySolution";
 
+// Define upload directory
 const uploadDirectory = "./public/uploads/industry/industrysolution";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
@@ -33,38 +32,35 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: "Unknown error during file upload" });
       }
 
-      const { title, heading, link, editorHtmlDescription, industry } = req.body;
-
+      const { title, link, editorHtmlDescription: editorHtmlDescriptionRaw, industry } = req.body;
+      console.log("req------body----------------> ",req.body)
       // Validate required fields
-      if (!title || !heading || !industry) {
+      if (!title || !industry) {
         return res.status(400).json({ error: "Missing required fields" });
       }
 
-      const fileData = req.file
-        ? {
-            title,
-            filename: req.file.filename,
-            editorHtmlDescription,
-            heading,
-            link,
-            industry,
-            path: `/uploads/industry/industrysolution/${req.file.filename}`,
-          }
-        : null;
+      // Parse editorHtmlDescription safely
+      let editorHtmlDescription;
+      try {
+        editorHtmlDescription = JSON.parse(editorHtmlDescriptionRaw);
+      } catch (error) {
+        return res.status(400).json({ error: "Invalid JSON format for editorHtmlDescription" });
+      }
+
+      // Prepare file data for saving
+      const fileData = {
+        title,
+        link,
+        editorHtmlDescription,
+        industry,
+        filename: req.file?.filename || null,
+        path: req.file ? `/uploads/industry/industrysolution/${req.file.filename}` : null,
+      };
+      
 
       try {
-        const newFile = await IndustrySolution.create(fileData);
-
-        if (!newFile) {
-          return res.status(400).json({ message: "Failed to create file entry" });
-        }
-
-        await Industry1.findByIdAndUpdate(
-          industry,
-          { $push: { solution: newFile._id } },
-          { new: true }
-        );
-
+        // Save data to the database
+        const newFile = await SubIndustrySolution.create(fileData);
         return res.status(200).json({ message: "File uploaded successfully", data: newFile });
       } catch (error) {
         console.error("Error creating file:", error);
@@ -79,25 +75,19 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const file = await IndustrySolution.findById(id);
+      const file = await SubIndustrySolution.findById(id);
       if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
 
-      // Delete file from filesystem if it exists
+      // Delete file from filesystem
       const filePath = path.join(uploadDirectory, file.filename);
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
       }
 
-      // Remove reference from Industry model
-      await Industry1.findByIdAndUpdate(file.industry, {
-        $pull: { solution: id },
-      });
-
-      // Remove file from IndustrySolution collection
-      await IndustrySolution.findByIdAndDelete(id);
-
+      // Delete document from the database
+      await SubIndustrySolution.findByIdAndDelete(id);
       return res.status(200).json({ message: "File deleted successfully" });
     } catch (error) {
       console.error("Error deleting file:", error);
@@ -111,7 +101,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const files = await IndustrySolution.find({ industry: id });
+      const files = await SubIndustrySolution.find({ industry: id });
       return res.status(200).json({ data: files });
     } catch (error) {
       console.error("Error fetching files:", error);
@@ -127,6 +117,6 @@ export default apiRoute;
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // Disable default body parsing for Multer
   },
 };

@@ -13,10 +13,6 @@ const IndustrySchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
-    heading: {
-      type: String,
-      required: true,
-    },
     filename: {
       type: String,
       required: true,
@@ -38,7 +34,7 @@ const IndustrySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const IndustrySolution =
-  mongoose.models.IndustrySolution || mongoose.model("IndustrySolution", IndustrySchema);
+const SubIndustrySolution =
+  mongoose.models.SubIndustrySolution || mongoose.model("SubIndustrySolution", IndustrySchema);
 
-export default IndustrySolution;
+export default SubIndustrySolution;
