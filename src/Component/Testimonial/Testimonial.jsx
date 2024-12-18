@@ -61,7 +61,7 @@ const Testimonial = () => {
               <div key={item._id}>
                 <div className="flex flex-col items-center justify-center py-2   max-w-md mx-auto">
                   <h2 className="md:text-4xl text-lg text-white font-bold tracking-wide mb-3">
-                    Testimonial
+                    Testimonial Vivek 
                   </h2>
                   <img
                     src={item?.path}

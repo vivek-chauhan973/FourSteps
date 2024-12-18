@@ -21,6 +21,7 @@ import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
 import Partners from "./Web/Partners";
 import Trail from "./Trail";
+import Solution from "./Web/Solution";
 
 const Home = () => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const Home = () => {
       <Service />
       <ChooseUs />
       <Industry />
+      <Solution/>
       <div data-aos="fade-up">
         <Team />
       </div>
