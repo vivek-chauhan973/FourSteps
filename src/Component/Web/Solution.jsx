@@ -24,7 +24,7 @@ const Solution = () => {
           <p className="text-base md:text-lg pb-3">
             We have excelled our experience in a wide range of industries to
             bring valuable insights and provide our clients with truly
-            beneficial solutions.
+            beneficial solutionsss.
           </p>
         </div>
       </div>
