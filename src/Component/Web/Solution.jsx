@@ -1,178 +1,73 @@
-// import React from "react";
-
-// const Solution = () => {
-//   const data = [
-//     {
-//       title: "Dividers",
-//       description: "A divider is a thin, lightweight rule th...",
-//     },
-//     {
-//       title: "Another Title",
-//       description: "Another description here...",
-//     },
-//     // add more data as needed
-//   ];
-
-//   return (
-//     <div className=" container-wrapper pt-5">
-//       <div className="flex py-2">
-//         <div>
-//           <h2 className="text-3xl text-primary font-semibold pb-5">
-//             <span className="bg-orange-50 px-2 py-2">Our </span>
-//             Industry Expertise
-//           </h2>
-//           <p className="text-base md:text-lg pb-3">
-//             We have excelled our experience in a wide range of industries to
-//             bring valuable insights and provide our clients with truly
-//             beneficial solutionsss```javascript
-// import React from "react";
-
-// const Card = ({ icon, title, description, link }) => {
-//   return (
-//     <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 m-2">
-//       <div className="flex items-center mb-4">
-//         <div className="h-12 w-12 bg-red-500 rounded-full flex items-center justify-center text-white">
-//           <img src={icon} alt={title} className="h-8 w-8"/>
-//         </div>
-//         <div className="ml-4">
-//           <div className="font-bold text-xl">{title}</div>
-//           <p className="text-gray-600">{description}</p>
-//         </div>
-//       </div>
-//       <a href={link} className="text-blue-500">Related article</a>
-//     </div>
-//   );
-// }
-
-// const data = [
-//   {
-//     icon: 'path/to/icon1.png',
-//     title: 'Dividers',
-//     description: 'A divider is a thin, lightweight rule th...',
-//     link: '#'
-//   },
-//   {
-//     icon: 'path/to/icon2.png',
-//     title: 'Another Title',
-//     description: 'Another description here...',
-//     link: '#'
-//   }
-//   // add more data as needed
-// ];
-
-// const Solution = () => {
-//   return (
-//     <div className="container-wrapper pt-5">
-//       <div className="flex py-2">
-//         <div>
-//           <h2 className="text-3xl text-primary font-semibold pb-5">
-//             <span className="bg-orange-50 px-2 py-2">Our </span>
-//             Industry Expertise
-//           </h2>
-//           <p className="text-base md:text-lg pb-3">
-//             We have excelled our experience in a wide range of industries to
-//             bring valuable insights and provide our clients with truly
-//             beneficial solutionsss.
-//           </p>
-//         </div>
-//       </div>
-
-//       <div className="flex flex-wrap justify-center">
-//         {data.map((item, index) => (
-//           <Card
-//             key={index}
-//             icon={item.icon}
-//             title={item.title}
-//             description={item.description}
-//             link={item.link}
-//           />
-//         ))}
-//       </div>
-//     </div
-//           </p>
-//         </div>
-//       </div>
-
-//       <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 m-2">
-//         <div className="flex items-center mb-4">
-//           <div className="ml-4">
-//             <div className="font-bold text-xl">{data.title}</div>
-//             <p className="text-gray-600">{data.description}</p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Solution;
-
-// // import React from 'react';
-
-// // const Card = ({ icon, title, description, link }) => {
-//   return (
-// <div className="max-w-sm rounded overflow-hidden shadow-lg p-4 m-2">
-//   <div className="flex items-center mb-4">
-//     <div className="h-12 w-12 bg-red-500 rounded-full flex items-center justify-center text-white">
-//       <img src={icon} alt={title} className="h-8 w-8"/>
-//     </div>
-//     <div className="ml-4">
-//       <div className="font-bold text-xl">{title}</div>
-//       <p className="text-gray-600">{description}</p>
-//     </div>
-//   </div>
-//   <a href={link} className="text-blue-500">Related article</a>
-// </div>
-//   );
-// }
-
-// export default Card;
-
-// import React from 'react';
-// import Card from './Card';
-
-// const data = [
-//   {
-//     icon: 'path/to/icon1.png',
-//     title: 'Dividers',
-//     description: 'A divider is a thin, lightweight rule th...',
-//     link: '#'
-//   },
-//   {
-//     icon: 'path/to/icon2.png',
-//     title: 'Another Title',
-//     description: 'Another description here...',
-//     link: '#'
-//   }
-//   // add more data as needed
-// ];
-
-// const CardList = () => {
-//   return (
-//     <div className="flex flex-wrap justify-center">
-//       {data.map((item, index) => (
-//         <Card
-//           key={index}
-//           icon={item.icon}
-//           title={item.title}
-//           description={item.description}
-//           link={item.link}
-//         />
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default CardList;
-
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-const Solution = () => {
+const spineConditions = [
+  "Prolaped Intervertebal disc",
+  "Slip disc & Sciatica",
+  "Degenerative Spine Conditions",
+  "Spinal Canal Stenosis Decompression",
+  "Spondylolisthesis",
+  "Adult Degenerative Deformities",
+  "Spinal Fusion Surgery",
+  "Craniovertebral Junction Instability",
+  "Pediatric Congenital Spine Deformities",
+  "Osteoporosis",
+  "Spinal Deformities",
+  "Kyphoscoliosis",
+  "Tuberculosis of Spine",
+  "Post Infectious Spine Deformities",
+  "Correction",
+  "Spinal Infections",
+  "Spine Tumors",
+  "Spine Trauma",
+  "Facet arthritis",
+  "Geriatric Spine Disorders",
+];
+
+const App = () => {
   return (
-    <div>
-      <h2>solution section</h2>
+    // [#BFECFF]
+    <div className="min-h-screen bg-blue-50">
+      <div className="container-wrapper py-10">
+        <div>
+          <h2 className="md:text-3xl text-lg text-primary font-semibold pb-5">
+            <span className="bg-orange-200 px-2 py-2">Our </span>
+            Industry Expertise
+          </h2>
+          <p className="text-sm md:text-lg pb-3">
+            We have excelled in our experience across a wide range of industries
+            to bring valuable insights and provide our clients with truly
+            beneficial solutions.
+          </p>
+        </div>
+        <div className="grid pl-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  mx-auto">
+          {spineConditions.map((condition, index) => (
+            <Link href="#" key={index}>
+              <div
+                key={index}
+                className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <span className="text-white bg-blue-500 px-3 py-2 rounded-full">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-gray-800 font-medium text-center flex-1 ml-2">
+                  {condition}
+                </span>
+                <div className="right-2 bottom-1 absolute transform rotate-[50deg] group-hover:rotate-0 transition-transform duration-300">
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="text-blue-500"
+                  />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Solution;
+export default App;
