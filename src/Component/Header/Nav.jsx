@@ -160,7 +160,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className= " bg-gray-50 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg ">
+      <nav className=" bg-gray-50 md:sticky fixed top-0 w-full   py-3 z-50 shadow-lg ">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}
@@ -256,7 +256,7 @@ const Nav = () => {
                 </li>
               </ul>
 
-              <button className="bg-orange-500   hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
+              <button className="bg-orange-500   text-[13px] hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
                 Talk to Us
               </button>
             </div>
