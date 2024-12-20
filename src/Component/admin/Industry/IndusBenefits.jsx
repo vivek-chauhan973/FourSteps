@@ -61,7 +61,7 @@ const IndusBenefits = () => {
 
   return (
     <>
-      <div className="mx-auto px-3 bg-white shadow-lg rounded-lg">
+      <div className="mx-auto px-3 p-3 bg-white shadow-lg rounded-lg">
         <p className="text-base font-semibold">Results And benefits</p>
         <div className="mx-auto p-4 bg-white ">
           {/* Heading Input */}
