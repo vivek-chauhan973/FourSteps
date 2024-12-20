@@ -33,17 +33,20 @@ const AboutSection = () => {
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             About <span className="text-gradient"> 4Steps Digital </span>
           </h2>
-          <p className="mb-4 text-sm md:text-base">
-            Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
-            agency in India. We are dedicated to honesty, hard work, and
-            results, serving small to medium-sized businesses. Our primary focus
-            is to transform businesses into digitally-driven organizations.
-          </p>
-          <p className="mb-4 text-sm md:text-base">
-            We have high-performing teams that help small businesses achieve
-            objectives like a optimizing digital presence and increasing
-            operational efficiency
-          </p>
+          <div className="text-[12px] md:text-base ">
+            <p className="mb-4 ">
+              Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
+              agency in India. We are dedicated to honesty, hard work, and
+              results, serving small to medium-sized businesses. Our primary
+              focus is to transform businesses into digitally-driven
+              organizations.
+            </p>
+            <p className="mb-4">
+              We have high-performing teams that help small businesses achieve
+              objectives like a optimizing digital presence and increasing
+              operational efficiency
+            </p>
+          </div>
 
           {/* Image for mobile screens */}
           <div className="md:hidden flex justify-center mb-4">

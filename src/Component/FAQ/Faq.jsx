@@ -151,23 +151,23 @@ const IndustryFaq = () => {
 
   return (
     <div>
-      <div className="bg-white md:py-10 py-5 container-wrapper">
+      <div className="bg-gray-50 md:py-10 py-5 container-wrapper">
         {/* section 1 */}
-        <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+        <div className="flex-col  text-center md:mt-10 md:pb-2  w-full">
           <h2 className=" text-xl font-semibold text-primary text-center mb-3">
             FAQS
           </h2>
-          <h3 className="my-5 md:text-2xl text-xl font-bold uppercase">
+          <h3 className="py-2 md:text-xl text-lg font-bold uppercase">
             general questions
           </h3>
-          <p className="text-[15px] leading-6">
+          <p className="text-[15px] pb-5 leading-6">
             At Four Steps Digital Consulting Pvt Ltd, we are dedicated to
             enhancing your business digital capabilities through Zoho and
             HubSpot consulting while driving growth with effective digital
             marketing strategies.
           </p>
         </div>
-        <div className=" max-w-4xl mx-auto pb-5">
+        <div className=" max-w-5xl mx-auto pb-5">
           <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
             <button
               className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
@@ -187,7 +187,7 @@ const IndustryFaq = () => {
                     {faq.question}
                   </p>
 
-                  <span>
+                  <span className=" md:text-base text-xs">
                     {openIndices.includes(i) ? (
                       <FontAwesomeIcon icon={faChevronUp} />
                     ) : (

@@ -72,20 +72,20 @@ const Team = () => {
     { title: "Digital Marketing", percentage: 50, color: "#AED581" },
   ];
   return (
-    <div className="container mx-auto bg-gray-50">
+    <div className="container-wrapper mx-auto bg-gray-50">
       {/* Team Section */}
-      <div className="px-6 py-8 bg-gray-50">
-        <h1 className="text-2xl md:text-4xl font-bold text-center mb-6">
+      <div className=" py-8 bg-gray-50">
+        <h1 className="text-2xl text-primary md:text-4xl font-semibold text-center md:pb-5 pb-3">
           Our Biggest Asset is Our Team
         </h1>
-        <p className="text-sm md:text-lg leading-6 text-center mb-12 mx-4 md:mx-24 text-gray-600">
+        <p className="text-sm md:pb-5 md:text-base leading-6 text-center pb-5 px-2 md:px-0 text-gray-600">
           Our team thrives on collaboration and is fueled by a diverse array of
           talent. We actively engage with the creative community, consistently
-          seeking out what’s on the horizon, and always maintain a positive and
+          seeking out whats on the horizon, and always maintain a positive and
           welcoming atmosphere.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:px-8 lg:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 md:px-0">
           {allTeamMember?.data?.map((member) => (
             <div
               key={member._id}
@@ -143,30 +143,30 @@ const Team = () => {
       </div>
 
       {/* Team Skills  start*/}
-      <div className="w-full h-auto md:px-5 px-5 py-5">
+      <div className="  py-5">
         <div className="md:flex block justify-center items-start">
-          <div className="flex-col md:py-10 md:pl-10 p-5 md:w-1/2 w-full">
-            <p className="text-[12px] text-zinc-500 leading-3 font-bold uppercase">
+          <div className="flex-col sm:px-4 md:px-0 px-2 md:py-10 py-6">
+            <p className="text-xs sm:text-sm md:text-[12px] text-zinc-500 leading-3 font-bold uppercase">
               Team Skills
             </p>
-            <h2 className="mt-4 mb-3 text-2xl font-bold capitalize">
+            <h2 className=" mb-3 text-xl sm:text-2xl md:text-2xl font-semibold capitalize">
               Digital Consulting Experts
             </h2>
-            <h4 className="text-xl text-[#FF7A53] font-semibold capitalize">
+            <h4 className="text-lg sm:text-xl text-[#FF7A53] font-semibold capitalize">
               Real people for better results
             </h4>
-            <p className="text-[15px] leading-6">
+            <p className="text-sm sm:text-[15px] md:text-base leading-6">
               We have high performing teams for Zoho consulting, HubSpot
               consulting, web development, digital marketing & CRM Expert
             </p>
 
-            <button className="  border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-3 px-4 md:px-5 rounded-2xl bg-primary my-5 text-white">
+            <button className="border border-orange-500 hover:text-primary hover:bg-white py-2 md:py-3 px-4 md:px-5 rounded-md bg-primary my-5 text-white">
               Meet our team
             </button>
           </div>
 
           {/* Circular Progress Bar Section */}
-          <div className="md:w-1/2 w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-10 gap-3 md:p-5">
+          <div className="  grid grid-cols-2 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 md:gap-10 gap-3 md:p-5">
             {progressData.map((item, index) => (
               <div key={index} className="flex flex-col items-center">
                 <CircularProgressBar

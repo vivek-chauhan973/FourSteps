@@ -22,6 +22,7 @@ import BackToTop from "./Web/BackToTop";
 import Partners from "./Web/Partners";
 import Trail from "./Trail";
 import Solution from "./Web/Solution";
+import ServicesScienceSoft from "./Service/ServicesScienceSoft";
 
 const Home = () => {
   useEffect(() => {
@@ -34,17 +35,17 @@ const Home = () => {
   }, []);
   return (
     <div>
-
       <Nav />
       <BackToTop />
       <HeroSection />
       <Count />
       <Partners />
       <AboutSection />
+      <ServicesScienceSoft />
       <Service />
       <ChooseUs />
       <Industry />
-      <Solution/>
+      <Solution />
       <div data-aos="fade-up">
         <Team />
       </div>

@@ -183,11 +183,11 @@ const Industry = () => {
     <div className="container-wrapper md:my-10 px-4 md:px-0 my-5">
       <div className="flex py-2">
         <div>
-          <h2 className="text-3xl text-primary font-semibold pb-5">
+          <h2 className="md:text-3xl text-xl  text-primary font-semibold pb-5">
             <span className="bg-orange-50 px-2 py-2">Our </span>
             Industry Expertise
           </h2>
-          <p className="text-base md:text-lg pb-3">
+          <p className="text-sm md:text-lg pb-3">
             We have excelled our experience in a wide range of industries to
             bring valuable insights and provide our clients with truly
             beneficial solutions.
