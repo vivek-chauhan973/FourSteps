@@ -148,7 +148,7 @@ const Trail = () => {
 
           {/* Text Content Section */}
           <div
-            className="w-full md:w-1/2 p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left  border-white"
+            className="w-full md:w-1/2 h-[50vh] sm:h-[60vh] md:h-[70vh] p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left  border-white"
             data-aos="fade-up"
             data-aos-delay="500"
           >
