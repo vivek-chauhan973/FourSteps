@@ -203,8 +203,8 @@ const Trail = () => {
             >
               <div className="relative overflow-hidden cursor-pointer hover:rounded w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw]">
                 <Image
-                  src={currentItem.path}
-                  alt={currentItem.alt}
+                  src={currentItem?.path}
+                  alt={currentItem?.alt}
                   className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
                   height={200}
                   width={200}
@@ -220,7 +220,7 @@ const Trail = () => {
             >
               {/* Title */}
               <h3 className="text-2xl md:text-3xl mb-4">
-                {currentItem.title} Company name
+                {currentItem?.company}
               </h3>
 
               {/* Rating Section */}
@@ -243,13 +243,13 @@ const Trail = () => {
                 className="mb-4 text-sm md:text-base font-semibold"
                 data-aos="fade-up"
               >
-                {currentItem.description}
+                {currentItem?.description}
               </p>
 
               {/* Author Details */}
-              <p className="font-semibold">{currentItem.name}</p>
-              <p className="text-gray-400 font-semibold">
-                {currentItem.designation}
+              <p className="font-semibold">{currentItem?.name}</p>
+              <p className="text-gray-400 italic font-semibold">
+                {currentItem?.designation}
               </p>
             </div>
           </div>

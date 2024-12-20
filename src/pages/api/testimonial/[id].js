@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
   const { method } = req;
 
-   if (method === "POST") {
+  if (method === "POST") {
     // Handle update (edit) requests
     upload.single("image")(req, res, async (err) => {
       if (err) {
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
       }
 
       const { id } = req.query; // Get testimonial ID from the query
-      const { name, alt, designation, description } = req.body;
+      const { name, alt, designation, description, company } = req.body;
 
       try {
         const updateData = {
@@ -54,6 +54,7 @@ export default async function handler(req, res) {
           alt,
           designation,
           description,
+          company,
         };
 
         // Check if a new image file is uploaded
@@ -66,13 +67,13 @@ export default async function handler(req, res) {
         let file;
         if (files1) {
           fs.unlinkSync(path.join(uploadDirectory, files1.filename));
-           file = await Testimonial.findOneAndReplace({ _id: id }, updateData);
+          file = await Testimonial.findOneAndReplace({ _id: id }, updateData);
           return res.status(200).json({ data: file });
         }
-           // Update the testimonial in the database
+        // Update the testimonial in the database
         if (!files1) {
           return res.status(404).json({ error: "Testimonial not found" });
-        } 
+        }
       } catch (error) {
         console.error("Error updating testimonial:", error);
         res.status(500).json({
@@ -81,31 +82,28 @@ export default async function handler(req, res) {
         });
       }
     });
-  }else if(method === "GET") {
+  } else if (method === "GET") {
     const { id } = req.query;
 
     try {
+      const data = await Testimonial.findOne({ _id: id });
+      if (!data) {
+        return res.status(404).json({
+          error: " testimonial data is not found",
+        });
+      }
 
-        const data=await Testimonial.findOne({_id:id});
-        if(!data){
-            return res.status(404).json({
-                error: " testimonial data is not found",
-              });
-        }
-
-        return res.status(200).json({
-            error: "testimonial data is found successfully",
-            data,
-          });
-        
+      return res.status(200).json({
+        error: "testimonial data is found successfully",
+        data,
+      });
     } catch (error) {
-        return res.status(500).json({
-            error: "Error updating testimonial",
-            details: error.message,
-          });
+      return res.status(500).json({
+        error: "Error updating testimonial",
+        details: error.message,
+      });
     }
-  }
-  else{
+  } else {
     res.status(405).json({ error: "Method not allowed" });
   }
 }

@@ -1,5 +1,3 @@
-
-
 import Testimonial from "@/models/admin/Testimonial/Testimonialmodel";
 import dbConnect from "@/utils/db";
 import multer from "multer";
@@ -46,7 +44,8 @@ export default async function handler(req, res) {
 
       try {
         // Destructure the fields from req.body
-        const { name, alt, designation, description } = req.body;
+
+        const { name, alt, designation, description, company } = req.body;
 
         // Check if req.file exists
         if (!req.file) {
@@ -62,6 +61,7 @@ export default async function handler(req, res) {
           designation,
           description,
           filename,
+          company,
           path: `/uploads/Testimonial/${filename}`, // Save the image filename
         });
 
@@ -98,7 +98,7 @@ export default async function handler(req, res) {
       }
 
       const { id } = req.query; // Get testimonial ID from the query
-      const { name, alt, designation, description } = req.body;
+      const { name, alt, designation, description, company } = req.body;
 
       try {
         const updateData = {
@@ -106,6 +106,7 @@ export default async function handler(req, res) {
           alt,
           designation,
           description,
+          company,
         };
 
         // Check if a new image file is uploaded
