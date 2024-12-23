@@ -104,7 +104,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+import {
+  faChevronDown,
+  faChevronUp,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 
 const DesktopCompany = ({ activeLink, handleLinkClick }) => {
   const [dropDown, setDorpdown] = useState(false);
@@ -147,7 +151,68 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
 
         {/* dropdown section */}
         {dropDown && (
-          <div className="absolute left-[-15px] text-[15px] w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+          <div className="absolute left-[-15px] text-[15px] w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+            <ul className="list-none">
+              <li>
+                <Link
+                  href="/about"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  About
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/client-testimonial"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  Client & Testimonial
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="resource/case-studies"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  Case Studies
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/alliance"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  Alliances
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Referral"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  Referral Partners
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/career"
+                  className=" px-5 py-2 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300 flex justify-between items-center"
+                >
+                  Career
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+        )}
+      </div>
+      {/* <div className="absolute left-[-15px] text-[15px] w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-20">
             <ul className=" list-none">
               <li>
                 <Link
@@ -198,9 +263,7 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
                 </Link>
               </li>
             </ul>
-          </div>
-        )}
-      </div>
+          </div> */}
     </div>
   );
 };
