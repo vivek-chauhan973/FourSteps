@@ -235,15 +235,15 @@ const Carousel = () => {
 
   return (
     <>
-      <div className="my-5 container mx-auto">
-        <h2 className="font-semibold text-primary text-3xl pb-5">
+      <div className="my container mx-auto">
+        <h2 className="font-semibold text-primary text-lg md:text-3xl pb-5">
           What Makes 4 Steps Reliable Partner
         </h2>
         <div className="relative flex items-center">
           {/* Left Arrow */}
           <button
             onClick={scrollPrev}
-            className=" hidden md:block rounded-full h-10 w-12 bg-black/50 p-2 text-white  items-center justify-center "
+            className=" hidden md:block rounded-full h-9 px-2 py-1 w-12 bg-black/50  text-white  items-center justify-center "
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -272,7 +272,7 @@ const Carousel = () => {
           {/* Right Arrow */}
           <button
             onClick={scrollNext}
-            className="rounded-full hidden md:block h-10 w-12 bg-black/50 p-2 text-white  items-center justify-center ml-4"
+            className="rounded-full hidden md:block h-9 px-2 py-1 w-12 bg-black/50  text-white  items-center justify-center ml-4"
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>

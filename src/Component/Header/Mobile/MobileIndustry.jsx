@@ -7,7 +7,7 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const industries = [
-    { title: "Travel and Hospitality", path: "/industries/travel" },
+    { title: "Travel and Hospitality", path: "/industry/travel-hospitality" },
     { title: "Construction & Real Estate", path: "/industries/construction" },
     { title: "Financial Management", path: "/industries/finance" },
     { title: "Education & eLearning", path: "/industries/education" },
