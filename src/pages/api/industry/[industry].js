@@ -86,7 +86,7 @@ const apiRoute = async (req, res) => {
   } else if (req.method === "GET") {
     // Handle GET request
     try {
-      const files = await Industry.findOne({ _id: industry }).populate('why4step success').populate({
+      const files = await Industry.findOne({ _id: industry }).populate('why4step success benefit').populate({
         path: 'solution', 
         populate: {
           path: 'solutionItem', 

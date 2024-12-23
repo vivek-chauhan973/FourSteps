@@ -428,7 +428,7 @@
 
 // export default IndusBenefits;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -436,13 +436,22 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 // Dynamically import QuillNoSSRWrapper (to avoid SSR issues in Next.js)
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), { ssr: false });
 
-const IndusBenefits = () => {
+const IndusBenefits = ({blogData,setActiveTab}) => {
   const [heading, setHeading] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [editorHtmlDescription, setEditorHtmlDescription] = useState(""); // For React Quill content
   const [items, setItems] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+
+  useEffect(()=>{
+    if(blogData){
+
+      setHeading(blogData?.benefit?.heading||"");
+      setEditorHtmlDescription(blogData?.benefit?.description||"");
+      setItems(blogData?.benefit?.items||[]);
+    }
+  },[blogData])
 
   // Quill modules
   const modules = {
@@ -493,7 +502,7 @@ const IndusBenefits = () => {
   };
 
   // Save all data
-  const handleSave = () => {
+  const handleSave =async () => {
     if (!heading || !editorHtmlDescription) {
       alert("Please provide both heading and rich description");
       return;
@@ -502,20 +511,36 @@ const IndusBenefits = () => {
     // Save heading + rich description (together as one unit)
     const data = {
       heading,
-      richDescription: editorHtmlDescription, // Save Quill content here
+      description: editorHtmlDescription, // Save Quill content here
       items: items.map((item) => ({
         title: item.title,
         description: item.description,
       })),
+      industry:blogData?._id
     };
 
-    console.log("Saved Data:", data);
-    alert("Data saved successfully!");
+    const res=await fetch(`/api/industry/benefits`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)
+    })
+    if(res?.ok){
+      alert(blogData?.benefit?"Data updated successfully!":"Data saved successfully!");
+      setHeading("");
+      setEditorHtmlDescription(""); // Reset Quill content
+      setItems([]);
+      setActiveTab("Tab8")
+    }
+    else{
+      alert("something went wrong")
+    }
+
+   
 
     // Reset the form after saving
-    setHeading("");
-    setEditorHtmlDescription(""); // Reset Quill content
-    setItems([]);
+   
   };
 
   return (
@@ -560,7 +585,7 @@ const IndusBenefits = () => {
           </div>
 
           {/* Title Input */}
-          <div>
+          <div className="border p-4">
             <div className="mb-4">
               <label
                 htmlFor="title"
