@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { useRouter } from "next/navigation";
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
 
@@ -51,6 +52,10 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
       // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
+    if(blogData){
+      setHeading(blogData?.solution?.heading||"");
+      setMainEditorHtmlDescription(blogData?.solution?.mainEditorHtmlDescription||"")
+    }
   }, [blogData]);
 
   // Handle file input change
@@ -218,10 +223,27 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
     }
   }
 
+  // console.log("blog data is here ----> ",blogData)
+
   const handleSave=async ()=>{
     const data={heading,mainEditorHtmlDescription,solutionItem};
-    console.log("save data is here -----------> ",data);
+   const res=await fetch(`/api/industry/solution1/solution?industry=${blogData?._id}`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+   })
+
+   if(res?.ok){
+    setActiveTab("Tab5")
+    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
+   }
+   else{
+    alert("something went wrong on frontend side");
+   }
   }
+
 
   return (
     <>

@@ -2,10 +2,10 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SubIndustrySolution from "@/models/admin/Industry/IndustrySolution";
+import SubIndustryProduct from "@/models/admin/Industry/Product/IndustrySolution";
 
 // Define upload directory
-const uploadDirectory = "./public/uploads/industry/industrysolution";
+const uploadDirectory = "./public/uploads/industry/industryProducts";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -33,7 +33,7 @@ const apiRoute = async (req, res) => {
       }
 
       const { title, link, editorHtmlDescription: editorHtmlDescriptionRaw, industry } = req.body;
-      console.log("req------body----------------> ",req.body)
+      // console.log("req------body----------------> ",req.body)
       // Validate required fields
       if (!title || !industry) {
         return res.status(400).json({ error: "Missing required fields" });
@@ -54,13 +54,13 @@ const apiRoute = async (req, res) => {
         editorHtmlDescription,
         industry,
         filename: req.file?.filename || null,
-        path: req.file ? `/uploads/industry/industrysolution/${req.file.filename}` : null,
+        path: req.file ? `/uploads/industry/industryProducts/${req.file.filename}` : null,
       };
       
 
       try {
         // Save data to the database
-        const newFile = await SubIndustrySolution.create(fileData);
+        const newFile = await SubIndustryProduct.create(fileData);
         return res.status(200).json({ message: "File uploaded successfully", data: newFile });
       } catch (error) {
         console.error("Error creating file:", error);
@@ -75,7 +75,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const file = await SubIndustrySolution.findById(id);
+      const file = await SubIndustryProduct.findById(id);
       if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
@@ -87,7 +87,7 @@ const apiRoute = async (req, res) => {
       }
 
       // Delete document from the database
-      await SubIndustrySolution.findByIdAndDelete(id);
+      await SubIndustryProduct.findByIdAndDelete(id);
       return res.status(200).json({ message: "File deleted successfully" });
     } catch (error) {
       console.error("Error deleting file:", error);
@@ -101,7 +101,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const files = await SubIndustrySolution.find({ industry: id });
+      const files = await SubIndustryProduct.find({ industry: id });
       return res.status(200).json({ data: files });
     } catch (error) {
       console.error("Error fetching files:", error);

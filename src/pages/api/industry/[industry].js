@@ -86,7 +86,22 @@ const apiRoute = async (req, res) => {
   } else if (req.method === "GET") {
     // Handle GET request
     try {
-      const files = await Industry.findOne({ _id: industry }).populate('why4step')
+      const files = await Industry.findOne({ _id: industry }).populate('why4step success').populate({
+        path: 'solution', 
+        populate: {
+          path: 'solutionItem', 
+        },
+      }).populate({
+        path: 'product', 
+        populate: {
+          path: 'productItem', 
+        },
+      }).populate({
+        path: 'service', 
+        populate: {
+          path: 'serviceItem', 
+        },
+      })
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);

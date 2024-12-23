@@ -33,7 +33,7 @@ const IndustrySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const SubIndustrySolution =
-  mongoose.models.SubIndustrySolution || mongoose.model("SubIndustrySolution", IndustrySchema);
+const SubIndustryProduct =
+  mongoose.models.SubIndustryProduct || mongoose.model("SubIndustryProduct", IndustrySchema);
 
-export default SubIndustrySolution;
+export default SubIndustryProduct;

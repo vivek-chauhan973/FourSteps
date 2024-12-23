@@ -8,25 +8,98 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+
+import { useRouter } from "next/navigation";
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
+const fetchAllSuccessStories = async (id) => {
+  const res = await fetch(`/api/industry/products?id=${id}`, {
+    method: "GET",
+  });
+  return await res.json();
+};
 
-const IndustryProducts = () => {
-  const [heading, setHeading] = useState(""); // For heading
-  const [editorHtmlDescription, setEditorHtmlDescription] = useState(""); // For description
-  const [imagePreview, setImagePreview] = useState(null); // For image preview
-  const [imageFile, setImageFile] = useState(null); // For storing image file
-  const [industryTitle, setIndustryTitle] = useState(""); // For industry title
-  const [industryLink, setIndustryLink] = useState(""); // For industry link
-  const [industryDescription, setIndustryDescription] = useState(""); // For industry description (Quill)
-  const [items, setItems] = useState([]); // List of saved items
+const IndustryProducts = ({ setActiveTab, blogData }) => {
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+  const [currentItems, setCurrentItems] = useState([]);
+  const [heading, setHeading] = useState("");
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
+  const [solutionItem, setSolutionItem] = useState([]);
+  const [itineraryDayWise, setItineraryDayWise] = useState({
+    content: "",
+  }); // To track the item being edited
   const [currentPage, setCurrentPage] = useState(1); // Pagination state
-  const itemsPerPage = 3; // Number of items per page
-  const [editingIndex, setEditingIndex] = useState(null); // Track which item is being edited
+  const itemsPerPage = 2; // Number of items per page
+
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchAllSuccessStories(blogData?._id).then((res) => {
+      setCurrentItems(res?.data || []);
+      const data = res?.data?.map((item) => item?._id);
+      // console.log("res---- item-----> ", data);
+      setSolutionItem(data || []);
+    });
+    if(blogData){
+      setHeading(blogData?.product?.heading||"");
+      setMainEditorHtmlDescription(blogData?.product?.mainEditorHtmlDescription||"")
+    }
+  }, [blogData]);
+
+  // Handle file input change
+  function handleChange(e) {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    setPreview(URL.createObjectURL(selectedFile));
+  }
+  const addItem = () => {
+    if (!itineraryDayWise?.content) {
+      return;
+    }
+    if (editingIndex !== null) {
+      const updatedArray = [...editorData];
+      updatedArray[editingIndex] = itineraryDayWise;
+      setEditorData(updatedArray);
+      setEditingIndex(null);
+    } else {
+      setEditorData((prev) => [...prev, itineraryDayWise]);
+    }
+    setItineraryDayWise({ content: "" });
+    setEditorHtmlDescription("");
+  };
+  const editItem = (index) => {
+    setEditingIndex(index);
+    setItineraryDayWise(editorData[index]);
+    setEditorHtmlDescription(editorData[index]?.content);
+  };
+
+  const removeItem = (index) => {
+    const updatedArray = editorData?.filter((_, i) => i !== index);
+    setEditorData(updatedArray);
+  };
+
+  const handleEditorChange = (html) => {
+    setEditorHtmlDescription(html);
+    setItineraryDayWise((prevState) => ({
+      ...prevState,
+      content: html,
+    }));
+  };
+  const handleEditorChange1 = (html) => {
+    setMainEditorHtmlDescription(html);
+  };
 
   const modules = {
     toolbar: [
@@ -36,105 +109,74 @@ const IndustryProducts = () => {
     ],
   };
 
-  // Handle image selection and preview
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
-    if (file) reader.readAsDataURL(file);
-  };
-
-  // Add industry details (image, title, link, description) to the list
-  const handleAddIndustry = () => {
-    if (!industryTitle || !industryLink || !industryDescription || !imageFile) {
-      alert("Please fill in all fields, including uploading an image.");
+  // Handle image upload or update
+  async function handleUpload() {
+    if (!file && !isUpdating) {
+      alert("Please select a file to upload.");
       return;
     }
 
-    const newItem = {
-      title: industryTitle,
-      link: industryLink,
-      description: industryDescription,
-      image: imagePreview,
-    };
-
-    if (editingIndex !== null) {
-      // Edit existing item
-      const updatedItems = [...items];
-      updatedItems[editingIndex] = newItem;
-      setItems(updatedItems);
-      setEditingIndex(null); // Reset editing state
-    } else {
-      // Add new item
-      setItems([...items, newItem]);
-    }
-
-    resetIndustryFields();
-  };
-
-  // Reset the industry fields after adding or editing
-  const resetIndustryFields = () => {
-    setIndustryTitle("");
-    setIndustryLink("");
-    setIndustryDescription("");
-    setImagePreview(null);
-    setImageFile(null);
-  };
-
-  // Delete an industry item
-  const handleDelete = (index) => {
-    const updatedItems = items.filter((_, i) => i !== index);
-    setItems(updatedItems);
-  };
-
-  // Edit an industry item
-  const handleEdit = (index) => {
-    const itemToEdit = items[index];
-    setIndustryTitle(itemToEdit.title);
-    setIndustryLink(itemToEdit.link);
-    setIndustryDescription(itemToEdit.description);
-    setImagePreview(itemToEdit.image);
-    setEditingIndex(index); // Set the item as being edited
-  };
-
-  // Save all fields when the final save button is clicked
-  const handleFinalSave = () => {
-    if (!heading || !editorHtmlDescription || items.length === 0) {
-      alert("Please fill in all fields and add at least one industry.");
+    const formData = new FormData();
+    if (!file && !title && !editorHtmlDescription && !link) {
+      alert("Please upload file and write title");
       return;
     }
 
-    const finalData = {
-      heading,
-      description: editorHtmlDescription,
-      industries: items,
-    };
-    alert("data saved successfully and print into the console ");
-    console.log("Saved Data: ", finalData); // Print data in console
-
-    // Reset all fields after final save
-    resetFields();
-  };
-
-  // Reset all fields after final save
-  const resetFields = () => {
-    setHeading("");
-    setEditorHtmlDescription("");
-    resetIndustryFields();
-  };
-
-  // Pagination logic
+    if (file && title) {
+      formData.append("file", file);
+      formData.append("title", title);
+      formData.append("link", link);
+      formData.append("editorHtmlDescription", JSON.stringify(editorData));
+      formData.append("industry", blogData?._id);
+    }
+    try {
+      const url = isUpdating
+        ? `/api/industry/products/${editItemId}`
+        : `/api/industry/products`;
+      const method = isUpdating ? "PUT" : "POST";
+      const res = await fetch(url, { method, body: formData });
+      if (res?.ok) {
+        fetchAllSuccessStories(blogData?._id).then((res) => {
+          setCurrentItems(res?.data || []);
+          const data = res?.data?.map((item) => item?._id);
+          // console.log("res---- item-----> ", data);
+          setSolutionItem(data || []);
+        });
+        setIsUpdating(false);
+        setEditorData([]);
+        setTitle("");
+        setLink("");
+        setPreview(null);
+        alert(
+          `File ${
+            blogData?.success?.length > 0 ? "updated" : "uploaded"
+          } successfully`
+        );
+      } else {
+        alert(
+          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
+        );
+      }
+    } catch (error) {
+      console.error(
+        `Error ${
+          blogData?.success?.length > 0 ? "updating" : "uploading"
+        } file:`,
+        error
+      );
+    }
+  }
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItemsToShow = items.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItemsToShow = currentItems.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(items.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -145,206 +187,304 @@ const IndustryProducts = () => {
     }
   };
 
+  const cancelEdit = () => {
+    setEditItemId(null);
+    setEditorData([]);
+    setTitle("");
+    setLink("");
+    setPreview(null);
+    setIsUpdating(false);
+  };
+
+  const edit1Item = (item) => {
+    // console.log("item of list item is here ---->  ", item);
+    setEditItemId(item?._id);
+    setEditorData(item?.editorHtmlDescription);
+    setTitle(item?.title);
+    setLink(item?.link);
+    setPreview(item?.path);
+    setIsUpdating(true);
+  };
+
+  const deleteItem=async (id)=>{
+    const res=await fetch(`/api/industry/products?id=${id}`,{method:"DELETE"});
+    if(res?.ok){
+      fetchAllSuccessStories(blogData?._id).then((res) => {
+        setCurrentItems(res?.data || []);
+        const data = res?.data?.map((item) => item?._id);
+        // console.log("res---- item-----> ", data);
+        setSolutionItem(data || []);
+      });
+      alert("item is successfully deleted");
+
+    }
+    else{
+      alert("item is something went wrong");
+    }
+  }
+
+  // console.log("blog data is here ----> ",blogData)
+
+  const handleSave=async ()=>{
+    const data={heading,mainEditorHtmlDescription,solutionItem};
+   const res=await fetch(`/api/industry/products/product?industry=${blogData?._id}`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+   })
+
+   if(res?.ok){
+    setActiveTab("Tab6")
+    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
+   }
+   else{
+    alert("something went wrong on frontend side");
+   }
+  }
+
+
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
         <p className="text-base font-semibold mb-2">
-          Industry Products Section
+          Industry Product Section
         </p>
-
-        {/* Form for heading and description */}
         <div className="p-4">
-          <div>
-            <label htmlFor="heading" className="font-semibold">
-              Heading
-            </label>
-            <input
-              className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
-              type="text"
-              id="heading"
-              value={heading}
-              placeholder="Enter Heading Here"
-              onChange={(e) => setHeading(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="description" className="font-semibold">
-              Description
-            </label>
-            <QuillNoSSRWrapper
-              className="rounded h-48 mb-16"
-              theme="snow"
-              value={editorHtmlDescription}
-              onChange={setEditorHtmlDescription}
-              placeholder="Enter Your Description"
-              modules={modules}
-            />
-          </div>
+          <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
+            <div>
+              <label htmlFor="heading" className="font-semibold">
+                Heading
+              </label>
+              <input
+                className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
+                type="text"
+                id="heading"
+                value={heading}
+                placeholder="Enter Heading Here"
+                onChange={(e) => setHeading(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="heading" className="font-semibold">
+                Description
+              </label>
+              <QuillNoSSRWrapper
+                className="rounded h-48 mb-16"
+                theme="snow"
+                value={mainEditorHtmlDescription}
+                onChange={handleEditorChange1}
+                placeholder="Enter Your Description"
+                modules={modules}
+              />
+            </div>
 
-          {/* Industry Summary Fields */}
-          <div>
-            <label htmlFor="image" className="font-semibold">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="mb-4"
-            />
-            {imagePreview && (
-              <div className="mb-4">
-                <p>Image Preview:</p>
-                <Image
-                  src={imagePreview}
-                  alt="Image Preview"
-                  width={100}
-                  height={100}
-                  className="rounded"
+            <div className="border py-3 px-4">
+              <h1 className=" text-xl font-semibold">create solution Item</h1>
+              <div className="flex flex-col md:flex-row  my-7">
+                <input
+                  type="file"
+                  className="mb-4 ml-3"
+                  onChange={handleChange}
                 />
-              </div>
-            )}
-          </div>
-          <div>
-            <label htmlFor="industryTitle" className="font-semibold">
-              Industry Title
-            </label>
-            <input
-              className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
-              type="text"
-              id="industryTitle"
-              value={industryTitle}
-              placeholder="Enter Industry Title"
-              onChange={(e) => setIndustryTitle(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="industryLink" className="font-semibold">
-              Industry Link
-            </label>
-            <input
-              className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
-              type="text"
-              id="industryLink"
-              value={industryLink}
-              placeholder="Enter Industry Link"
-              onChange={(e) => setIndustryLink(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="industryDescription" className="font-semibold">
-              Industry Description
-            </label>
-            <QuillNoSSRWrapper
-              className="rounded h-48 mb-16"
-              theme="snow"
-              value={industryDescription}
-              onChange={setIndustryDescription}
-              placeholder="Enter Industry Description"
-              modules={modules}
-            />
-          </div>
-
-          <button
-            className="bg-teal-600 text-white px-3 py-2 rounded mb-4"
-            onClick={handleAddIndustry}
-          >
-            {editingIndex !== null ? "Save Changes" : "Add Industry"}
-          </button>
-        </div>
-
-        {/* Listing of added industry details */}
-        <div className="my-8">
-          <table className="table-auto w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 py-2 px-4 md:px-8 md:text-start">
-                  Image
-                </th>
-                <th className="border border-gray-300 py-2 px-4">Title</th>
-
-                <th className="border border-gray-300 py-2 px-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItemsToShow.map((item, index) => (
-                <tr key={index} className="border-b">
-                  <td className="py-2 px-4">
+                <div className="mx-auto md:mx-0 lg:mx-5">
+                  {preview && (
                     <Image
-                      src={item.image}
-                      alt="Image"
-                      width={50}
-                      height={50}
-                      className="rounded"
+                      className="md:w-36 w-auto h-auto shadow-md mb-4"
+                      src={preview}
+                      alt="Preview"
+                      width={150}
+                      height={200}
                     />
-                  </td>
-                  <td className="py-2 px-4">{item.title}</td>
+                  )}
+                </div>
+              </div>
+              <div className="my-5">
+                <div>
+                  <label htmlFor="title" className="font-semibold">
+                    Title
+                  </label>
+                  <input
+                    className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
+                    type="text"
+                    id="title"
+                    value={title}
+                    placeholder="Enter Title Here"
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="link" className="font-semibold">
+                    Link
+                  </label>
+                  <input
+                    className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
+                    type="text"
+                    id="link"
+                    value={link}
+                    placeholder="Enter Link Here"
+                    onChange={(e) => setLink(e.target.value)}
+                  />
+                </div>
+                <div className="w-full">
+                  <h3 className="font-semibold mb-2">Industry Summary</h3>
+                  <QuillNoSSRWrapper
+                    className="rounded h-48 mb-16"
+                    theme="snow"
+                    value={editorHtmlDescription}
+                    onChange={handleEditorChange}
+                    placeholder="Enter Your Description"
+                    modules={modules}
+                  />
+                  <button
+                    className="bg-black text-white px-3 my-9 md:my-1 py-2 rounded"
+                    onClick={addItem}
+                  >
+                    {editingIndex !== null ? "Update Des" : "Add Des"}
+                  </button>
+                  <div className="border mt-2">
+                    {editorData.map((item, index) => (
+                      <div
+                        key={item?.id}
+                        className="my-4 w-full flex justify-between"
+                      >
+                        <div className="flex">
+                          <p className="pl-2 pr-1">{index + 1}.</p>
+                          <p
+                            dangerouslySetInnerHTML={{ __html: item?.content }}
+                          ></p>
+                        </div>
+                        <div className="flex gap-3 mr-4">
+                          <button
+                            className="text-blue-500"
+                            onClick={() => editItem(index)}
+                          >
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
+                          <button
+                            className="text-red-500"
+                            onClick={() => removeItem(index)}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="flex md:flex-row flex-col md:gap-5 gap-3 mb-5">
+                <button
+                  className="bg-black text-white px-3 py-2 w-full rounded"
+                  onClick={handleUpload}
+                >
+                  {editItemId ? "Update" : "Add"}
+                </button>
+                {isUpdating && (
+                  <button
+                    className="bg-gray-500 text-white px-3 py-2 w-full rounded"
+                    onClick={cancelEdit}
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
 
-                  <td className="py-2 px-4">
-                    <button onClick={() => handleEdit(index)}>
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        className="text-blue-500 cursor-pointer mr-2"
-                      />
+              {/* List of items */}
+              <div className="overflow-x-auto">
+                <table className="table-auto w-full border-collapse border border-gray-200">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="border border-gray-300 py-2 px-4 md:px-8 md:text-start">
+                        Image
+                      </th>
+                      <th className="border border-gray-300 py-2 px-4">
+                        Title
+                      </th>
+                      <th className="border border-gray-300 py-2 px-4">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentItemsToShow.map((item) => (
+                      <tr key={item._id} className="border-b">
+                        <td className="py-2 px-4">
+                          <Image
+                            className="w-40 h-16 object-cover rounded"
+                            src={item?.path || "/logo.png"}
+                            alt="Item Image"
+                            width={150}
+                            height={100}
+                          />
+                        </td>
+                        <td className="py-4 px-4 text-start border-x capitalize">
+                          {item?.title}
+                        </td>
+                        <td className="py-4 px-4 text-center">
+                          <button onClick={() => edit1Item(item)}>
+                            <FontAwesomeIcon
+                              icon={faEdit}
+                              className="text-blue-500 cursor-pointer mx-2"
+                            />
+                          </button>
+                          <button onClick={() => deleteItem(item._id)}>
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="text-red-500 cursor-pointer"
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              <div className="flex justify-center mt-5 gap-3">
+                <button
+                  onClick={prevPage}
+                  className="px-4 py-2 bg-gray-300 rounded"
+                  disabled={currentPage === 1}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+
+                {Array.from(
+                  { length: Math.ceil(currentItems.length / itemsPerPage) },
+                  (_, index) => (
+                    <button
+                      key={index + 1}
+                      onClick={() => paginate(index + 1)}
+                      className={`px-4 py-2 rounded ${
+                        currentPage === index + 1
+                          ? "bg-primary text-white"
+                          : "bg-gray-300"
+                      }`}
+                    >
+                      {index + 1}
                     </button>
-                    <button onClick={() => handleDelete(index)}>
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        className="text-red-500 cursor-pointer"
-                      />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  )
+                )}
 
-        {/* Pagination */}
-        <div className="flex justify-center mt-5 gap-3">
-          <button
-            onClick={prevPage}
-            className="px-4 py-2 bg-gray-300 rounded"
-            disabled={currentPage === 1}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-
-          {Array.from(
-            { length: Math.ceil(items.length / itemsPerPage) },
-            (_, index) => (
-              <button
-                key={index + 1}
-                onClick={() => paginate(index + 1)}
-                className={`px-4 py-2 rounded ${
-                  currentPage === index + 1
-                    ? "bg-primary text-white"
-                    : "bg-gray-300"
-                }`}
-              >
-                {index + 1}
-              </button>
-            )
-          )}
-
-          <button
-            onClick={nextPage}
-            className="px-4 py-2 bg-gray-300 rounded"
-            disabled={currentPage === Math.ceil(items.length / itemsPerPage)}
-          >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
-        </div>
-
-        {/* Final Save Button */}
-        <div className="mt-6">
-          <button
-            className="bg-black text-white px-4 py-2 w-full rounded"
-            onClick={handleFinalSave}
-          >
-            Final Save
-          </button>
+                <button
+                  onClick={nextPage}
+                  className="px-4 py-2 bg-gray-300 rounded"
+                  disabled={
+                    currentPage ===
+                    Math.ceil(currentItems.length / itemsPerPage)
+                  }
+                >
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
+            </div>
+            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </>
