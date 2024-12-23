@@ -5,6 +5,10 @@ const testimonialSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  company: {
+    type: String,
+    required: true,
+  },
   alt: {
     type: String,
     required: true,

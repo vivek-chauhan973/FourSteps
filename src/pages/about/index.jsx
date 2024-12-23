@@ -87,11 +87,6 @@ const About = () => {
                 partners in transforming ideas into impactful results. Lets turn
                 challenges into opportunities together.
               </p>
-              <div className="flex justify-center md:justify-start">
-                <button className="bg-orange-500 text-white text-sm md:text-base font-medium py-2 px-4 rounded-md shadow-md hover:bg-orange-600 transition-all">
-                  Learn More
-                </button>
-              </div>
             </div>
           </div>
         </div>

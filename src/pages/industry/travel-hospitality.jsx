@@ -19,10 +19,10 @@ const Travel = () => {
       <div className="font-sans">
         {/* hero section */}
         <div className="flex justify-center items-center w-full bg-[#F8FAFC]">
-          <div className="grid grid-cols-1 md:grid-cols-2 mt-20  gap-8 px-6 sm:px-10 shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:mt-5  mt-24 gap-8 px-6 sm:px-10 shadow-lg">
             {/* Content Section */}
             <div className="flex flex-col justify-center text-center md:text-left">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
                 IT Solution for Oil & Gas Companies
               </h2>
               <p className="text-gray-600 mt-2 text-sm sm:text-base leading-relaxed">
@@ -33,11 +33,6 @@ const Travel = () => {
                 exploration and production processes and data-driven
                 decision-making.
               </p>
-              <div className="flex justify-center mt-10 md:justify-start">
-                <button className="bg-orange-500 text-white text-sm md:text-base font-medium py-2 px-4 rounded-md shadow-md hover:bg-orange-600 transition-all">
-                  Request expert help
-                </button>
-              </div>
             </div>
 
             {/* Image Section */}
@@ -60,10 +55,9 @@ const Travel = () => {
 
         {/* Client & Testimonials */}
 
-        {/* <div>
-          <Testimonial/>
-        </div> */}
-        <Testimonial />
+        <div>
+          <Testimonial />
+        </div>
 
         {/* Resource Section */}
       </div>

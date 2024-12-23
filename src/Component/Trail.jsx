@@ -1,474 +1,193 @@
-// import React from "react";
-// import Image from "next/image";
-
-// const upcoming = () => {
-//   return (
-//     <div className=" container">
-//       <div className=" mx-auto p-4">
-//         <div className="text-center ">
-//           <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
-//             Elevate your skills with expert insights at our upcoming webinar
-//           </h2>
-
-//           <p className=" py-2 px-20  text-sm">
-//             Unlock the secrets of successful content creation in our upcoming
-//             webinar. Learn how to engage your audience effectively and create
-//             compelling content that resonates. This session is designed for
-//             content creators and marketers eager to enhance their skills and
-//             drive meaningful engagement in the digital age.
-//           </p>
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-5   gap-6 p-6">
-//             {/* <!-- Card 1 --> */}
-//             <div className=" bg-white  shadow-md  p-4  border-[1px] rounded-md flex flex-col items-center">
-//               {/* Title Image Section */}
-//               <div className="relative w-full  h-48">
-//                 <Image
-//                   className="absolute  rounded- object-cover"
-//                   src="/image/try.jpeg"
-//                   alt="Image Here"
-//                   layout="fill"
-//                 />
-//               </div>
-
-//               {/* Additional Data Section */}
-//               <div className="mt-2 flex  justify-around items-center w-full">
-//                 <div className="flex-shrink-0">
-//                   {/* <Image
-//                 src="/image/try.jpeg"
-//                 alt="Profile Pic"
-//                 className="w-20 h-20 rounded-full object-cover"
-//                 height={300}
-//                 width={300}
-//               /> */}
-//                   <h2 className="text-sm font-bold text-black mb-1">
-//                     Amarjeet Singh
-//                   </h2>
-//                 </div>
-//                 <div>
-//                   <p className="text-gray-900 text-sm">Email:abc12@gmail.com</p>
-//                   <p className="text-gray-900 text-sm">
-//                     phone:+91 44821247 8488
-//                   </p>
-//                 </div>
-//               </div>
-
-//               <p className="text-black text-xs py-1">
-//                 <span className="font-semibold">About</span>
-//                 Description goes here. This can be a summary or some additional
-//                 information. Description goes here. This can be a summary or
-//                 some additional information. Description goes here. This can be
-//                 a summary or some additional information.
-//               </p>
-//               <div>
-//                 <h2>role: software developer</h2>
-//                 <h3>Job profile:assistent manger</h3>
-//               </div>
-//             </div>
-
-//             {/* ejfiwfew */}
-
-//             <div className="bg-white shadow-lg p-6 border rounded-lg flex flex-col items-center max-w-sm transition-transform transform hover:scale-105">
-//               {/* Title Image Section */}
-//               <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
-//                 <Image
-//                   className="object-cover"
-//                   src="/image/try.jpeg"
-//                   alt="Image Here"
-//                   layout="fill"
-//                 />
-//               </div>
-
-//               {/* Additional Data Section */}
-//               {/* <div className="flex flex-col items-center mb-4">
-//                 <h2 className="text-lg font-semibold text-gray-900">
-//                   Amarjeet Singhk
-//                 </h2>
-//                 <p className="text-gray-700 text-sm">Email: abc12@gmail.com</p>
-//                 <p className="text-gray-700 text-sm">
-//                   Phone: +91 4482 1247 8488
-//                 </p>
-//               </div> */}
-
-//               {/* About Section */}
-//               <p className="text-gray-600 text-sm text-center px-4 mb-4">
-//                 <span className="font-semibold">About:</span> Description goes
-//                 here. This can be a summary or some additional information.
-//                 Description goes here. This can be a summary or some additional
-//                 information. Description goes here. This can be a summary or
-//                 some additional information.
-//               </p>
-
-//               {/* Role and Job Profile */}
-//               <div className="w-full text-center">
-//                 <h2 className="text-gray-800 font-medium">
-//                   Role: Software Developer
-//                 </h2>
-//                 <h3 className="text-gray-700">
-//                   Job Profile: Assistant Manager
-//                 </h3>
-//               </div>
-//             </div>
-
-//             {/* <!-- Card 2--> */}
-//             <div className=" bg-white  shadow-md  p-4  border-[1px] rounded-md flex flex-col items-center">
-//               {/* Title Image Section */}
-//               <div className="relative w-full  h-48">
-//                 <Image
-//                   className="absolute  rounded- object-cover"
-//                   src="/image/try.jpeg"
-//                   alt="Image Here"
-//                   layout="fill"
-//                 />
-//                 <div className="absolute bottom-0 left-0 right-0 px-3 py-2 rounded-b- bg-black bg-opacity-50">
-//                   <h2 className="text-xl font-bold text-white mb-1">
-//                     Zoho Api Integration and Zoho implementation
-//                   </h2>
-//                 </div>
-//               </div>
-
-//               {/* Additional Data Section */}
-//               <div className="mt-2 flex  justify-around items-center w-full">
-//                 <div className="flex-shrink-0">
-//                   <Image
-//                     src="/image/try.jpeg"
-//                     alt="Profile Pic"
-//                     className="w-20 h-20 rounded-full object-cover"
-//                     height={300}
-//                     width={300}
-//                   />
-//                   <h2 className="text-sm font-bold text-black mb-1">
-//                     Amarjeet Singh
-//                   </h2>
-//                 </div>
-//                 <div>
-//                   <p className="text-gray-900 text-sm">Date: 2024-10-02</p>
-//                   <p className="text-gray-900 text-sm">time: 40min</p>
-//                 </div>
-//               </div>
-//               <p className="text-black text-xs py-2">
-//                 Description goes here. This can be a summary or some additional
-//                 information. Description goes here. This can be a summary or
-//                 some additional information. Description goes here. This can be
-//                 a summary or some additional information.
-//               </p>
-//             </div>
-//             {/* <!-- Card 3 --> */}
-//             <div className=" bg-white  shadow-md  p-4  border-[1px] rounded-md flex flex-col items-center">
-//               {/* Title Image Section */}
-//               <div className="relative w-full  h-48">
-//                 <Image
-//                   className="absolute  rounded- object-cover"
-//                   src="/image/try.jpeg"
-//                   alt="Image Here"
-//                   layout="fill"
-//                 />
-//                 <div className="absolute bottom-0 left-0 right-0 px-3 py-2 rounded-b- bg-black bg-opacity-50">
-//                   <h2 className="text-xl font-bold text-white mb-1">
-//                     Zoho Api Integration and Zoho implementation
-//                   </h2>
-//                 </div>
-//               </div>
-
-//               {/* Additional Data Section */}
-//               <div className="mt-2 flex  justify-around items-center w-full">
-//                 <div className="flex-shrink-0">
-//                   <Image
-//                     src="/image/try.jpeg"
-//                     alt="Profile Pic"
-//                     className="w-20 h-20 rounded-full object-cover"
-//                     height={300}
-//                     width={300}
-//                   />
-//                   <h2 className="text-sm font-bold text-black mb-1">
-//                     Amarjeet Singh
-//                   </h2>
-//                 </div>
-//                 <div>
-//                   <p className="text-gray-900 text-sm">Date: 2024-10-02</p>
-//                   <p className="text-gray-900 text-sm">time: 40min</p>
-//                 </div>
-//               </div>
-//               <p className="text-black text-xs py-2">
-//                 Description goes here. This can be a summary or some additional
-//                 information. Description goes here. This can be a summary or
-//                 some additional information. Description goes here. This can be
-//                 a summary or some additional information.
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div></div>
-//     </div>
-//   );
-// };
-
-// export default upcoming;
-
-import React from "react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Trail = () => {
+  const [zoomOut, setZoomOut] = useState(false); // Track the zoom-out state
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: true, // Animation occurs only once when element comes into view
+    });
+  }, []);
+
+  // Dynamic data
+  const data = [
+    {
+      title: "Zoconut",
+      content: `"What really turned things around for our brand was when we started working with Zaptiv. Their SEO and Creative Design expertise really helped to keep our online visibility and engagement at strong multipliers. Their team is creative, responsive, and always goes overboard. We've seen great development since partnering with them and can't be happier with the results."`,
+      imageUrl: "/image/m1.avif",
+      name: "Paras Garg",
+      designation: "Co-Founder Zoconut",
+    },
+    {
+      title: "ParleG",
+      content: `"Thanks a lot! What really   turned things around for our brand was when we started working with Zaptiv. Their SEO and Creative Design expertise really helped to keep our online visibility and engagement at strong multipliers. Their team is creative, responsive, and always goes overboard. We've seen great development since partnering with them and can't be happier with the results."`,
+      imageUrl: "/image/m2.avif",
+      name: "Rakesh",
+      designation: "CEO ParleG",
+    },
+    {
+      title: "Xyz",
+      content: `"Thanks a lot! What really   turned things around for our brand was when we started working with Zaptiv. Their SEO and Creative Design expertise really helped to keep our online visibility and engagement at strong multipliers. Their team is creative, responsive, and always goes overboard. We've seen great development since partnering with them and can't be happier with the results."`,
+      imageUrl: "/image/m3.avif",
+      name: "Rakesh",
+      designation: "CEO Abcd ",
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0); // Track which data item is displayed
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length); // Cycle through the data array
+      setZoomOut(false); // Reset zoom-out effect before starting the next one
+      setTimeout(() => {
+        setZoomOut(true); // Trigger the zoom-out effect after 2 seconds
+      }, 2000); // Start zoom-out after 2 seconds
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [data.length]);
+
+  useEffect(() => {
+    AOS.refresh(); // Refresh AOS when the content changes
+  }, [currentIndex]);
+
+  const currentItem = data[currentIndex]; // Get the currently displayed item
+
   return (
-    <div className=" p-10">
-      <h3>Cheacking the ui li</h3>
-      <div className=" p-10">
-        <ul>
-          <li>abc</li>
-          <li>abcd</li>
-          <li>abcde</li>
-        </ul>
+    // <div className=" container h-full">
+    //   <div className="flex mx-auto flex-col items-center justify-center  bg-gray-900 text-white">
+    //     <h2 className="md:text-4xl text-lg text-white font-bold tracking-wide mb-3">
+    //       Testimonial
+    //     </h2>
+
+    //     <div className="flex flex-col md:flex-row items-center justify-center w-full p-4 md:p-8">
+    //       {/* Image Section */}
+    //       <div
+    //         className={`md:w-1/2 flex justify-center md:justify-end mb-4 md:mb-0 ${
+    //           zoomOut ? "zoom-out" : ""
+    //         }`}
+    //       >
+    //         <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw] relative overflow-hidden">
+    //           <Image
+    //             src={currentItem.imageUrl}
+    //             alt={currentItem.name}
+    //             className="object-cover hover:rounded-lg rounded-lg w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-105"
+    //             height={200}
+    //             width={200}
+    //           />
+    //         </div>
+    //       </div>
+
+    //       {/* Content Section */}
+    //       <div
+    //         className="w-full md:w-1/2 text-center md:text-left border-t border-r border-b  p-4 md:p-6 bg-gray-800 rounded-lg shadow-lg"
+    //         data-aos="fade-up" // Fade-up effect for content
+    //         data-aos-delay="500" // Add a slight delay before the content fades in
+    //       >
+    //         <h3 className="text-2xl md:text-3xl  mb-4">{currentItem.title}</h3>
+    //         <div className="flex justify-center md:justify-start mb-4">
+    //           <span className="flex">
+    //             {[...Array(5)].map((_, i) => (
+    //               <svg
+    //                 key={i}
+    //                 xmlns="http://www.w3.org/2000/svg"
+    //                 fill="currentColor"
+    //                 viewBox="0 0 24 24"
+    //                 className="w-6 h-6 text-yellow-500"
+    //               >
+    //                 <path d="M12 .587l3.668 7.568L24 9.423l-6 5.843L19.335 24 12 20.254 4.665 24 6 15.266 0 9.423l8.332-1.268z" />
+    //               </svg>
+    //             ))}
+    //           </span>
+    //         </div>
+    //         <p
+    //           data-aos="fade-up"
+    //           className="mb-4 font-semibold text-sm md:text-base"
+    //         >
+    //           {currentItem.content}
+    //         </p>
+    //         <p className="font-semibold">{currentItem.name}</p>
+    //         <p className="font-semibold text-gray-400">
+    //           {currentItem.designation}
+    //         </p>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="container h-full">
+      <div className="flex flex-col py-5 items-center justify-center bg-gray-900 text-white mx-auto">
+        {/* Section Title */}
+        <h2 className="text-lg md:text-4xl font-bold tracking-wide mb-3 text-white">
+          Testimonials
+        </h2>
+
+        {/* Content Wrapper */}
+        <div className="flex flex-col md:flex-row items-center justify-center w-full p-4 md:p-8">
+          {/* Image Section */}
+          <div
+            className={`md:w-1/2 flex justify-center md:justify-end mb-4 md:mb-0 ${
+              zoomOut ? "zoom-out" : ""
+            }`}
+          >
+            <div className="relative overflow-hidden w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw]">
+              <Image
+                src={currentItem.imageUrl}
+                alt={currentItem.name}
+                className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
+                height={200}
+                width={200}
+              />
+            </div>
+          </div>
+
+          {/* Text Content Section */}
+          <div
+            className="w-full md:w-1/2 h-[50vh] sm:h-[60vh] md:h-[70vh] p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left  border-white"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            {/* Title */}
+            <h3 className="text-2xl md:text-3xl mb-4">{currentItem.title}</h3>
+
+            {/* Rating Section */}
+            <div className="flex justify-center md:justify-start mb-4">
+              {[...Array(5)].map((_, i) => (
+                <svg
+                  key={i}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 text-yellow-500"
+                >
+                  <path d="M12 .587l3.668 7.568L24 9.423l-6 5.843L19.335 24 12 20.254 4.665 24 6 15.266 0 9.423l8.332-1.268z" />
+                </svg>
+              ))}
+            </div>
+
+            {/* Testimonial Content */}
+            <p
+              className="mb-4 text-sm md:text-base font-semibold"
+              data-aos="fade-up"
+            >
+              {currentItem.content}
+            </p>
+
+            {/* Author Details */}
+            <p className="font-semibold">{currentItem.name}</p>
+            <p className="text-gray-400 font-semibold">
+              {currentItem.designation}
+            </p>
+          </div>
+        </div>
       </div>
-      <ol>
-        <li>xyz</li>
-        <li>xyzz</li>
-        <li>stuvwxyz</li>
-      </ol>
     </div>
   );
 };
 
 export default Trail;
-
-// import React, { useState } from "react";
-// import { Link as ScrollLink } from "react-scroll";
-// import Section1 from "./Section1";
-// import Section2 from "./Section2";
-// import Industry from "./Industry";
-
-// const TableOfContent = () => {
-//   const [activeSection, setActiveSection] = useState("OverviewContent");
-//   return (
-//     <div className=" conatiner-wrapper">
-//       <div className="bg-[#F1F5F9]">
-//         <div className="grid grid-cols-[1fr,200px] gap-5">
-//           {/* Main Content */}
-//           <div className="px-5 grid grid-cols-1 bg-red-400">
-//             {/* Overview Section */}
-//             <div
-//               id="OverviewContent"
-//               className="flex flex-col justify-between mt-5 mb-3"
-//             >
-//               <div className="md:px-10">
-//                 <div className="font-semibold py-2 text-xl">Overview</div>
-//                 <Section1 />
-//               </div>
-//             </div>
-
-//             {/* Key & Highlights Section */}
-//             <div
-//               id="agenda"
-//               className="flex flex-col justify-between mt-5 mb-3"
-//             >
-//               <div className="md:px-10">
-//                 <div className="font-semibold py-2 text-xl">
-//                   Key & Highlights
-//                 </div>
-//                 <Section2 />
-//               </div>
-//             </div>
-
-//             {/* Speaker Section */}
-//             <div
-//               id="speakerSection"
-//               className="flex flex-col justify-between mt-5 mb-3"
-//             >
-//               <div className="md:px-10">
-//                 <div className="font-semibold py-2 text-xl">Speaker</div>
-//                 <Industry />
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* Left Sidebar with ScrollLinks */}
-//           {/* <div className=" sticky top-0 z-30 h-40  px-3 py-5 ">
-
-//             <div className="flex flex-col gap-4">
-//               <ScrollLink
-//                 to="OverviewContent"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//               >
-//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
-//                   Overview
-//                 </p>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="agenda"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//               >
-//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
-//                   Key & Highlights
-//                 </p>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="speakerSection"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//               >
-//                 <p className="text-para cursor-pointer hover:border-l-4 border-amber-600 pl-2 hover:text-orange-800">
-//                   Speaker
-//                 </p>
-//               </ScrollLink>
-//             </div>
-//           </div> */}
-
-//           {/* <div className="sticky top-0 z-30 h-40 px-3 py-5">
-//             <div className="flex flex-col gap-4">
-//               <ScrollLink
-//                 to="OverviewContent"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <p className="text-para cursor-pointer pl-2 relative group">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
-//                   Overview
-//                 </p>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="agenda"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <p className="text-para cursor-pointer pl-2 relative group">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
-//                   Key & Highlights
-//                 </p>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="speakerSection"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <p className="text-para cursor-pointer pl-2 relative group">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-amber-600 transition-all"></span>
-//                   Speaker
-//                 </p>
-//               </ScrollLink>
-//             </div>
-//           </div> */}
-
-//           {/* <div className="sticky top-0 z-30 h-auto px-3 py-5">
-//             <h2 className="font-bold text-lg mb-4">Table of contents</h2>
-//             <div className="flex flex-col gap-4">
-//               <ScrollLink
-//                 to="OverviewContent"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <div className="relative pl-4">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Overview
-//                   </p>
-//                 </div>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="agenda"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <div className="relative pl-4">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Key & Highlights
-//                   </p>
-//                 </div>
-//               </ScrollLink>
-//               <ScrollLink
-//                 to="speakerSection"
-//                 spy={true}
-//                 smooth={true}
-//                 offset={-70}
-//                 duration={500}
-//                 activeClass="active"
-//               >
-//                 <div className="relative pl-4">
-//                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-transparent transition-all duration-300 group-hover:bg-blue-500"></span>
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Speaker
-//                   </p>
-//                 </div>
-//               </ScrollLink>
-//             </div>
-//           </div> */}
-//           <div className="sticky top-0 z-30 h-auto px-3 py-5">
-//             <h2 className="font-bold text-lg mb-4">Table of contents</h2>
-//             <div className="relative">
-//               {/* Vertical Line */}
-//               <span className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></span>
-
-//               {/* Table of Content Items */}
-//               <div className="flex flex-col gap-4 pl-4">
-
-//                 <ScrollLink
-//                   to="OverviewContent"
-//                   spy={true}
-//                   smooth={true}
-//                   offset={-70}
-//                   duration={500}
-//                   activeClass="active"
-//                 >
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Overview
-//                   </p>
-//                 </ScrollLink>
-
-//                 <ScrollLink
-//                   to="agenda"
-//                   spy={true}
-//                   smooth={true}
-//                   offset={-70}
-//                   duration={500}
-//                   activeClass="active"
-//                 >
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Key & Highlights
-//                   </p>
-//                 </ScrollLink>
-
-//                 <ScrollLink
-//                   to="speakerSection"
-//                   spy={true}
-//                   smooth={true}
-//                   offset={-70}
-//                   duration={500}
-//                   activeClass="active"
-//                 >
-//                   <p className="text-gray-700 hover:text-black cursor-pointer">
-//                     Speaker
-//                   </p>
-//                 </ScrollLink>
-//               </div>
-
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default TableOfContent;

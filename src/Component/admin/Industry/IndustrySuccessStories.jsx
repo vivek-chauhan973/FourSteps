@@ -77,6 +77,7 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
   async function handleUpload() {
     if (!file && !isUpdating) {
       alert("Please select a file to upload.");
+      setActiveTab("Tab4");
       return;
     }
 
@@ -159,7 +160,9 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
   };
 
   const totalPages = Math.ceil(allItems.length / itemsPerPage);
-
+  const handleSaveAllData = () => {
+    setActiveTab("Tab4");
+  };
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
@@ -380,6 +383,14 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={handleSaveAllData}
+            className="bg-black text-white px-3 py-2 w-full rounded"
+          >
+            Save all data
+          </button>
         </div>
       </div>
     </>

@@ -10,6 +10,7 @@ const TestimonialBD = () => {
     name: "",
     designation: "",
     description: "",
+    company: "",
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
@@ -44,6 +45,7 @@ const TestimonialBD = () => {
     const formData = new FormData();
     formData.append("name", formdata.name);
     formData.append("alt", formdata.alt);
+    formData.append("company", formdata.company);
     formData.append("designation", formdata.designation);
     formData.append("description", formdata.description);
     formData.append("image", imageFile); // Append the image file
@@ -71,6 +73,7 @@ const TestimonialBD = () => {
         name: "",
         designation: "",
         description: "",
+        company: "",
       });
       setImageFile(null);
       setImagePreview(null);
@@ -126,6 +129,19 @@ const TestimonialBD = () => {
                 value={formdata.alt}
                 onChange={handleInputChange}
                 placeholder="Enter alt text"
+                className="w-full px-4 py-2 border rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                company
+              </label>
+              <input
+                type="text"
+                name="company"
+                value={formdata.company}
+                onChange={handleInputChange}
+                placeholder="Enter company"
                 className="w-full px-4 py-2 border rounded-lg"
               />
             </div>

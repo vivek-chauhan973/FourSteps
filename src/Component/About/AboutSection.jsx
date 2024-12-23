@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,9 +17,6 @@ const AboutSection = () => {
           <Image
             src="/image/yyy.png"
             alt="Tablet Mockup"
-            // className="w-full h-auto rounded-lg shadow-lg"
-            // width={800}
-            // height={800}
             width={500}
             height={500}
             sizes="100vw"
@@ -38,24 +33,30 @@ const AboutSection = () => {
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             About <span className="text-gradient"> 4Steps Digital </span>
           </h2>
-          <p className="mb-4 text-sm md:text-base">
-            Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
-            agency in India. We are dedicated to honesty, hard work, and
-            results, serving small to medium-sized businesses. Our primary focus
-            is to transform businesses into digitally-driven organizations.
-          </p>
-          <p className="mb-4 text-sm md:text-base">
-            We have high-performing teams that help small businesses achieve
-            objectives like a optimizing digital presence and increasing
-            operational efficiency
-          </p>
+          <div className="text-[12px] md:text-base ">
+            <p className="mb-4 ">
+              Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
+              agency in India. We are dedicated to honesty, hard work, and
+              results, serving small to medium-sized businesses. Our primary
+              focus is to transform businesses into digitally-driven
+              organizations.
+            </p>
+            <p className="mb-4">
+              We have high-performing teams that help small businesses achieve
+              objectives like a optimizing digital presence and increasing
+              operational efficiency
+            </p>
+          </div>
 
           {/* Image for mobile screens */}
           <div className="md:hidden flex justify-center mb-4">
-            <img
-              src="/image/ab.webp"
+            <Image
+              src="/image/yyy.png"
               alt="Tablet Mockup"
-              className="w-full h-auto rounded-lg shadow-lg"
+              width={500}
+              height={500}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }} // optional
             />
           </div>
 
@@ -86,7 +87,7 @@ const AboutSection = () => {
 
           <Link href="/about">
             {/* <button className="bg-orange-600  cursor-pointer border-none rounded-full text-sm text-white px-4 py-2"> */}
-            <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
+            <button className=" border text-sm md:text-lg border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
               Know More
             </button>
           </Link>

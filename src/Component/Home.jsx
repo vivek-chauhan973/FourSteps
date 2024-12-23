@@ -19,7 +19,10 @@ import Nav from "./Header/Nav";
 // import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
-// import Trail from "./Trail";
+import Partners from "./Web/Partners";
+import Trail from "./Trail";
+import Solution from "./Web/Solution";
+import ServicesScienceSoft from "./Service/ServicesScienceSoft";
 
 const Home = () => {
   useEffect(() => {
@@ -32,16 +35,17 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {/* <Trail /> */}
-
       <Nav />
       <BackToTop />
       <HeroSection />
       <Count />
+      <Partners />
       <AboutSection />
+      <ServicesScienceSoft />
       <Service />
       <ChooseUs />
       <Industry />
+      <Solution />
       <div data-aos="fade-up">
         <Team />
       </div>
@@ -52,6 +56,7 @@ const Home = () => {
       <ContactUs />
       <Calltoaction />
       <Testimonial />
+      <Trail />
       <Footer />
     </div>
   );
