@@ -28,7 +28,12 @@ const filterCaseStudyData = async (industry, tools, topics, services) => {
   );
   return await data.json();
 };
-const filterVideosCaseStudyData = async (industry, tools, topics, languages) => {
+const filterVideosCaseStudyData = async (
+  industry,
+  tools,
+  topics,
+  languages
+) => {
   const data = await fetch(
     `/api/videos/filterapi?industry=${industry}&tools=${tools}&topics=${topics}&languages=${languages}`
   );
@@ -41,8 +46,8 @@ const filterBlogData = async (industry, tools, topics, department) => {
   return await data.json();
 };
 
-const Filter = ({ filterGlobalData, Heading, }) => {
-  const {setData}=useAppContext();
+const Filter = ({ filterGlobalData, Heading }) => {
+  const { setData } = useAppContext();
   const [showModal, setShowModal] = useState(false); // Modal state for mobile
   const [showMoreIndustries, setShowMoreIndustries] = useState(false);
   const [showMoreDepartments, setShowMoreDepartments] = useState(false);
@@ -146,14 +151,11 @@ const Filter = ({ filterGlobalData, Heading, }) => {
         selectedLanguage,
         selectedWebinarType
       ).then((res) => {
-        
-        if(res?.message==="No webinars found"){
-          setData(["No webinars found"])
-       }
-       else{
-
-         setData(res?.data || []);
-       }
+        if (res?.message === "No webinars found") {
+          setData(["No webinars found"]);
+        } else {
+          setData(res?.data || []);
+        }
       });
     }
     if (Heading === "product") {
@@ -162,14 +164,12 @@ const Filter = ({ filterGlobalData, Heading, }) => {
         selectedTool,
         selectedTopics,
         selectedService
-      ).then(res=>{
-        if(res?.message==="No products found"){
-          setData(["No products found"])
-       }
-       else{
-
-         setData(res?.data || []);
-       }
+      ).then((res) => {
+        if (res?.message === "No products found") {
+          setData(["No products found"]);
+        } else {
+          setData(res?.data || []);
+        }
       });
     }
     if (Heading === "case-studies") {
@@ -178,15 +178,13 @@ const Filter = ({ filterGlobalData, Heading, }) => {
         selectedTool,
         selectedTopics,
         selectedService
-      ).then(res=>{
-        console.log("fetchAllCaseStudies filtered data is here-----> ",res);
-        if(res?.message==="No products found"){
-          setData(["No products found"])
-       }
-       else{
-
-         setData(res?.data || []);
-       }
+      ).then((res) => {
+        console.log("fetchAllCaseStudies filtered data is here-----> ", res);
+        if (res?.message === "No products found") {
+          setData(["No products found"]);
+        } else {
+          setData(res?.data || []);
+        }
       });
     }
     if (Heading === "demo-videos") {
@@ -195,15 +193,13 @@ const Filter = ({ filterGlobalData, Heading, }) => {
         selectedTool,
         selectedTopics,
         selectedLanguage
-      ).then(res=>{
+      ).then((res) => {
         // console.log("demo-videos filtered data is here-----> ",res);
-        if(res?.message==="No products found"){
-          setData(["No products found"])
-       }
-       else{
-
-         setData(res?.data || []);
-       }
+        if (res?.message === "No products found") {
+          setData(["No products found"]);
+        } else {
+          setData(res?.data || []);
+        }
       });
     }
     if (Heading === "blog") {
@@ -212,16 +208,13 @@ const Filter = ({ filterGlobalData, Heading, }) => {
         selectedTool,
         selectedTopics,
         selectedDepartments
-      ).then(res=>{
-        console.log("blog filtered data is here-----> ",res);
-        if(res?.message==="No products found"){
-           setData(["No products found"])
-        }
-        else{
-
+      ).then((res) => {
+        console.log("blog filtered data is here-----> ", res);
+        if (res?.message === "No products found") {
+          setData(["No products found"]);
+        } else {
           setData(res?.data || []);
         }
-        
       });
     }
   }, [
@@ -240,10 +233,8 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
       {Heading === "webinar" && (
         <div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Industries
-            </h3>
+          <div className="mb-2 border-b border-t border-gray-300   rounded p-2">
+            <h3 className="  py-1 text-[14px] font-medium">Industries</h3>
             {filterGlobalData?.industries
               .slice(
                 0,
@@ -253,7 +244,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedIndustries.includes(industry?.name)}
                     onChange={(e) =>
                       handleIndustryChange(industry?.name, e.target.checked)
@@ -266,14 +257,14 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreIndustries(!showMoreIndustries)}
             >
               {showMoreIndustries ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] py-1 font-medium">
               Tools And Softwares
             </h3>
             {filterGlobalData?.tool
@@ -282,7 +273,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTool.includes(department?.name)}
                     onChange={(e) =>
                       handleToolChange(department?.name, e.target.checked)
@@ -295,21 +286,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTool(!showTool)}
             >
               {showTool ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] py-1 font-medium">Topics</h3>
             {filterGlobalData?.topic
               .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
               .map((topic, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTopics.includes(topic?.name)}
                     onChange={(e) =>
                       handleTopicChange(topic?.name, e.target.checked)
@@ -322,16 +313,14 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm  mt-1"
               onClick={() => setShowTopics(!showTopics)}
             >
               {showTopics ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Departments
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] py-1 font-medium">Departments</h3>
             {filterGlobalData?.department
               .slice(
                 0,
@@ -341,7 +330,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedDepartments.includes(topic?.name)}
                     onChange={(e) =>
                       handleDepartmentChange(topic?.name, e.target.checked)
@@ -354,17 +343,15 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 last:text-sm mt-1"
               onClick={() => setShowMoreDepartments(!showMoreDepartments)}
             >
               {showMoreDepartments ? "Show less" : "Show more"}
             </button>
           </div>
 
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Webinar Type
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] py-1 font-medium">Webinar Type</h3>
             {filterGlobalData?.webinarType
               ?.slice(
                 0,
@@ -374,7 +361,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedWebinarType?.includes(webinarType?.name)}
                     onChange={(e) =>
                       handleWebinarTypeChange(
@@ -389,23 +376,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowWebinarType(!showWebinarType)}
             >
               {showWebinarType ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Languages
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] py-1 font-medium">Languages</h3>
             {filterGlobalData?.langauge
               ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
               .map((webinarType, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedLanguage?.includes(webinarType?.name)}
                     onChange={(e) =>
                       handleLanguageChange(webinarType?.name, e.target.checked)
@@ -417,7 +402,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowLanguage(!showLanguage)}
             >
               {showLanguage ? "Show less" : "Show more"}
@@ -427,10 +412,8 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       )}
       {Heading === "product" && (
         <div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Industries
-            </h3>
+          <div className="mb-2 border-b border-t border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Industries</h3>
             {filterGlobalData?.industries
               .slice(
                 0,
@@ -440,7 +423,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedIndustries.includes(industry?.name)}
                     onChange={(e) =>
                       handleIndustryChange(industry?.name, e.target.checked)
@@ -453,23 +436,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreIndustries(!showMoreIndustries)}
             >
               {showMoreIndustries ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Tools And Softwares
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Tools And Softwares</h3>
             {filterGlobalData?.tool
               .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
               .map((department, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTool.includes(department?.name)}
                     onChange={(e) =>
                       handleToolChange(department?.name, e.target.checked)
@@ -482,21 +463,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTool(!showTool)}
             >
               {showTool ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Topics</h3>
             {filterGlobalData?.topic
               .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
               .map((topic, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTopics.includes(topic?.name)}
                     onChange={(e) =>
                       handleTopicChange(topic?.name, e.target.checked)
@@ -509,21 +490,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTopics(!showTopics)}
             >
               {showTopics ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Services</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Services</h3>
             {filterGlobalData?.service
               ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
               .map((webinarType, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedService?.includes(webinarType?.name)}
                     onChange={(e) =>
                       handleServiceChange(webinarType?.name, e.target.checked)
@@ -535,7 +516,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowService(!showService)}
             >
               {showService ? "Show less" : "Show more"}
@@ -545,10 +526,8 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       )}
       {Heading === "case-studies" && (
         <div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Industries
-            </h3>
+          <div className="mb-2 border-b border-t border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Industries</h3>
             {filterGlobalData?.industries
               .slice(
                 0,
@@ -558,7 +537,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedIndustries.includes(industry?.name)}
                     onChange={(e) =>
                       handleIndustryChange(industry?.name, e.target.checked)
@@ -571,23 +550,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreIndustries(!showMoreIndustries)}
             >
               {showMoreIndustries ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Tools And Softwares
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Tools And Softwares</h3>
             {filterGlobalData?.tool
               .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
               .map((department, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTool.includes(department?.name)}
                     onChange={(e) =>
                       handleToolChange(department?.name, e.target.checked)
@@ -600,21 +577,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTool(!showTool)}
             >
               {showTool ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Topics</h3>
             {filterGlobalData?.topic
               .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
               .map((topic, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTopics.includes(topic?.name)}
                     onChange={(e) =>
                       handleTopicChange(topic?.name, e.target.checked)
@@ -627,21 +604,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTopics(!showTopics)}
             >
               {showTopics ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Services</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Services</h3>
             {filterGlobalData?.service
               ?.slice(0, showService ? filterGlobalData?.service?.length : 3)
               .map((webinarType, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedService?.includes(webinarType?.name)}
                     onChange={(e) =>
                       handleServiceChange(webinarType?.name, e.target.checked)
@@ -653,7 +630,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowService(!showService)}
             >
               {showService ? "Show less" : "Show more"}
@@ -663,10 +640,8 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       )}
       {Heading === "demo-videos" && (
         <div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Industries
-            </h3>
+          <div className="mb-2 border-b border-t border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Industries</h3>
             {filterGlobalData?.industries
               .slice(
                 0,
@@ -676,7 +651,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedIndustries.includes(industry?.name)}
                     onChange={(e) =>
                       handleIndustryChange(industry?.name, e.target.checked)
@@ -689,23 +664,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreIndustries(!showMoreIndustries)}
             >
               {showMoreIndustries ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Tools And Softwares
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Tools And Softwares</h3>
             {filterGlobalData?.tool
               .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
               .map((department, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTool.includes(department?.name)}
                     onChange={(e) =>
                       handleToolChange(department?.name, e.target.checked)
@@ -718,21 +691,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTool(!showTool)}
             >
               {showTool ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Topics</h3>
             {filterGlobalData?.topic
               .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
               .map((topic, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTopics.includes(topic?.name)}
                     onChange={(e) =>
                       handleTopicChange(topic?.name, e.target.checked)
@@ -745,23 +718,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTopics(!showTopics)}
             >
               {showTopics ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Languages
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Languages</h3>
             {filterGlobalData?.langauge
               ?.slice(0, showLanguage ? filterGlobalData?.langauge?.length : 3)
               .map((webinarType, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedLanguage?.includes(webinarType?.name)}
                     onChange={(e) =>
                       handleLanguageChange(webinarType?.name, e.target.checked)
@@ -773,7 +744,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowLanguage(!showLanguage)}
             >
               {showLanguage ? "Show less" : "Show more"}
@@ -783,10 +754,8 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       )}
       {Heading === "blog" && (
         <div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Industries
-            </h3>
+          <div className="mb-2 border-b border-t  border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Industries</h3>
             {filterGlobalData?.industries
               .slice(
                 0,
@@ -796,7 +765,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedIndustries.includes(industry?.name)}
                     onChange={(e) =>
                       handleIndustryChange(industry?.name, e.target.checked)
@@ -809,23 +778,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreIndustries(!showMoreIndustries)}
             >
               {showMoreIndustries ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Tools And Softwares
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Tools And Softwares</h3>
             {filterGlobalData?.tool
               .slice(0, showTool ? filterGlobalData?.tool?.length : 3)
               .map((department, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTool.includes(department?.name)}
                     onChange={(e) =>
                       handleToolChange(department?.name, e.target.checked)
@@ -838,21 +805,21 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTool(!showTool)}
             >
               {showTool ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">Topics</h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Topics</h3>
             {filterGlobalData?.topic
               .slice(0, showTopics ? filterGlobalData?.topic?.length : 3)
               .map((topic, index) => (
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedTopics.includes(topic?.name)}
                     onChange={(e) =>
                       handleTopicChange(topic?.name, e.target.checked)
@@ -865,16 +832,14 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowTopics(!showTopics)}
             >
               {showTopics ? "Show less" : "Show more"}
             </button>
           </div>
-          <div className="mb-2 border border-gray-300 rounded p-2">
-            <h3 className="md:text-[16px] text-[14px] font-medium">
-              Departments
-            </h3>
+          <div className="mb-2 border-b border-gray-300 rounded p-2">
+            <h3 className="  text-[14px] font-medium">Departments</h3>
             {filterGlobalData?.department
               .slice(
                 0,
@@ -884,7 +849,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 <label className="flex items-center" key={index}>
                   <input
                     type="checkbox"
-                    className="form-checkbox h-4 w-4 text-blue-600"
+                    className="form-checkbox h-3 w-3 text-blue-600"
                     checked={selectedDepartments.includes(topic?.name)}
                     onChange={(e) =>
                       handleDepartmentChange(topic?.name, e.target.checked)
@@ -897,7 +862,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
                 </label>
               ))}
             <button
-              className="text-blue-500 mt-1"
+              className="text-blue-500 text-sm mt-1"
               onClick={() => setShowMoreDepartments(!showMoreDepartments)}
             >
               {showMoreDepartments ? "Show less" : "Show more"}
@@ -915,7 +880,7 @@ const Filter = ({ filterGlobalData, Heading, }) => {
       {/* Mobile Filter Button */}
       <div className=" pt-5 md:pt-0">
         <button
-          className="md:hidden border border-orange-500     text-white  py-2  px-4  rounded-xl bg-primary "
+          className="md:hidden border border-orange-500 float-right    text-white  py-1  px-3  text-sm rounded-xl bg-primary "
           onClick={() => setShowModal(true)}
         >
           Filter

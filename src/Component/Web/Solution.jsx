@@ -34,7 +34,7 @@ const App = () => {
         <div>
           <h2 className="md:text-3xl text-lg text-primary font-semibold pb-5">
             <span className="bg-orange-200 px-2 py-2">Our </span>
-            Industry Expertise
+            Solutions
           </h2>
           <p className="text-sm md:text-lg pb-3">
             We have excelled in our experience across a wide range of industries

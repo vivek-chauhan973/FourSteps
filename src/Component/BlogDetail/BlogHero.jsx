@@ -10,7 +10,7 @@ const BlogHero = ({ blogPackageData }) => {
         <div className="flex flex-col lg:flex-row h-auto items-center justify-between bg-gradient-to-r from-blue-100 to-teal-50 rounded-lg overflow-hidden shadow-lg py-8 lg:py-12 gap-8 lg:gap-5">
           {/* Left section - Course Info */}
           <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
-            <h1 className="text-xl sm:text-2xl capitalize md:text-3xl lg:text-4xl font-bold md:mb-4 mb-1">
+            <h1 className="text-xl sm:text-2xl capitalize md:text-3xl lg:text-3xl font-semibold md:mb-4 mb-1">
               {title}
             </h1>
 
@@ -34,7 +34,7 @@ const BlogHero = ({ blogPackageData }) => {
                 src={videoPath}
                 width={500}
                 height={500}
-                alt="Picture of the author"
+                alt={altText || "image text"}
               />
             </div>
           </div>
