@@ -52,7 +52,6 @@ const apiRoute = async (req, res) => {
         title,
         link,
         editorHtmlDescription,
-        industry,
         filename: req.file?.filename || null,
         path: req.file ? `/uploads/industry/industrysolution/${req.file.filename}` : null,
       };

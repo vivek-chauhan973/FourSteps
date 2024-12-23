@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import "./Why4Steps";
 import "./Success";
+import "./IndustrySolution";
 const IndustrySchema = new mongoose.Schema(
   {
     title: {

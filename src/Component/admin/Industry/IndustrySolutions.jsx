@@ -31,6 +31,7 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
   const [heading, setHeading] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
   const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -47,7 +48,7 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
       const data = res?.data?.map((item) => item?._id);
-      console.log("res---- item-----> ", data);
+      // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
   }, [blogData]);
@@ -91,6 +92,9 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
       content: html,
     }));
   };
+  const handleEditorChange1 = (html) => {
+    setMainEditorHtmlDescription(html);
+  };
 
   const modules = {
     toolbar: [
@@ -129,6 +133,9 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
       if (res?.ok) {
         fetchAllSuccessStories(blogData?._id).then((res) => {
           setCurrentItems(res?.data || []);
+          const data = res?.data?.map((item) => item?._id);
+          // console.log("res---- item-----> ", data);
+          setSolutionItem(data || []);
         });
         setIsUpdating(false);
         setEditorData([]);
@@ -199,6 +206,9 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
     if(res?.ok){
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
+        const data = res?.data?.map((item) => item?._id);
+        // console.log("res---- item-----> ", data);
+        setSolutionItem(data || []);
       });
       alert("item is successfully deleted");
 
@@ -206,6 +216,11 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
     else{
       alert("item is something went wrong");
     }
+  }
+
+  const handleSave=async ()=>{
+    const data={heading,mainEditorHtmlDescription,solutionItem};
+    console.log("save data is here -----------> ",data);
   }
 
   return (
@@ -236,8 +251,8 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
               <QuillNoSSRWrapper
                 className="rounded h-48 mb-16"
                 theme="snow"
-                value={editorHtmlDescription}
-                onChange={handleEditorChange}
+                value={mainEditorHtmlDescription}
+                onChange={handleEditorChange1}
                 placeholder="Enter Your Description"
                 modules={modules}
               />
@@ -444,7 +459,7 @@ const IndustrySolutions = ({ setActiveTab, blogData }) => {
                 </button>
               </div>
             </div>
-            <button className="bg-black text-white px-3 py-2 w-full rounded">
+            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
               Save
             </button>
           </div>
