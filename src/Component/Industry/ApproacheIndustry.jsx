@@ -34,7 +34,7 @@ const ApproacheIndustry = () => {
       <div>
         <div className="flex ">
           <div>
-            <h2 className="text-3xl text-primary font-semibold pb-5">
+            <h2 className="md:text-2xl  text-lg text-primary font-semibold pb-5">
               Every successful strategy starts with an insightful conversation
             </h2>
             <p className=" pb-3">
@@ -58,7 +58,7 @@ const ApproacheIndustry = () => {
                 height={100}
                 width={100}
               />
-              <h3 className="text-lg font-medium ml-4 md:ml-0 md:pb-1 text-center">
+              <h3 className=" md:text-lg text-base font-medium ml-4 md:ml-0 md:pb-1 text-center">
                 {card.title}
               </h3>
               <div className="absolute bottom-0 left-0 w-0 h-[4px] bg-orange-500 group-hover:w-full transition-all duration-500"></div>

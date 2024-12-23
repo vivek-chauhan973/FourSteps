@@ -353,7 +353,7 @@ const TableOfContent = () => {
   return (
     <div className=" ">
       <div className="bg-[#F1F5F9] py-7">
-        <div className="px-5 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
+        <div className="md:px-5 px-2 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
             {/* Industry About section */}
@@ -378,8 +378,8 @@ const TableOfContent = () => {
               id="agenda"
               className="flex flex-col justify-between mt-5 mb-3"
             >
-              <div className="md:px-2">
-                <div className="font-semibold py-2 text-xl">Success Story</div>
+              <div>
+                <div className="font-semibold text-xl">Success Story</div>
                 <SuccessStoryIndustry />
               </div>
             </div>
@@ -389,7 +389,7 @@ const TableOfContent = () => {
               id="speakerSection"
               className="flex flex-col justify-between mt-5 mb-3"
             >
-              <div className="md:px-2">
+              <div>
                 <div className="font-semibold py-2 text-xl">
                   Solution We Deliver
                 </div>
@@ -402,7 +402,7 @@ const TableOfContent = () => {
               id="ourServices"
               className="flex flex-col justify-between mt-5 mb-3"
             >
-              <div className="md:px-2">
+              <div>
                 <div className="font-semibold py-2 text-xl">Our Services</div>
                 <OurServicesIndustry />
               </div>
@@ -413,7 +413,7 @@ const TableOfContent = () => {
               id="product"
               className="flex flex-col justify-between mt-5 mb-3"
             >
-              <div className="md:px-2">
+              <div>
                 <div className="font-semibold py-2 text-xl">Product</div>
                 <ProductIndustry />
               </div>
@@ -424,7 +424,7 @@ const TableOfContent = () => {
               id="approaches"
               className="flex flex-col justify-between mt-5 mb-3"
             >
-              <div className="md:px-2">
+              <div>
                 <div className="font-semibold py-2 text-xl">Approaches</div>
                 <ApproacheIndustry />
               </div>

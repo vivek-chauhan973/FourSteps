@@ -69,24 +69,21 @@ const ProductIndustry = () => {
     <>
       <div>
         <div>
-          <h3 className="font-semibold text-primary text-3xl pb-5">
+          <h3 className="font-semibold text-primary text-lg md:text-3xl pb-5">
             Here is Render Our Product with link and to navigation
           </h3>
           <p>
             IT solutions ScienceSoft creates help insurance companies improve
-            overall business{" "}
-            <span className=" underline">
-              efficiency and introduce excellent
-            </span>{" "}
-            customer experience. We can engineer one or several of these
-            targeted insurance solutions, as well as build a full-featured
-            insurance business automation system:
+            overall business efficiency and introduce excellent customer
+            experience. We can engineer one or several of these targeted
+            insurance solutions, as well as build a full-featured insurance
+            business automation system:
           </p>
         </div>
         {/* card section  */}
 
         <div>
-          <div className="grid grid-cols-2 gap-8 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2   gap-8 pt-5">
             {services.map((service, index) => (
               <div
                 key={index}
