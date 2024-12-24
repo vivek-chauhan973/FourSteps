@@ -7,7 +7,7 @@ import "./Product/InSolution";
 import  "./Services/InSolution";
 import "./Benefits/Benefits";
 import  "./Faq/IndustryFaq";
-
+import "./InSuccess";
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -37,10 +37,10 @@ const IndustrySchema = new mongoose.Schema(
       ref:"Why4Steps"
     }
     ,
-    success:[{
+    success:{
       type:mongoose.Schema.Types.ObjectId,
-      ref:"Success"
-    }],
+      ref:"InSuccess"
+    },
     solution:{
       type:mongoose.Schema.Types.ObjectId,
       ref:"InSolution"

@@ -37,7 +37,6 @@ const apiRoute = async (req, res) => {
       const {
         title,
         description,
-        heading,
         link,
         backgroundColor,
         keyword,
@@ -69,7 +68,6 @@ const apiRoute = async (req, res) => {
         const updatedData = {
           title,
           description,
-          heading,
           link,
           backgroundColor,
           keyword,

@@ -35,7 +35,6 @@ const apiRoute = async (req, res) => {
       const {
         title,
         description,
-        heading,
         link,
         backgroundColor,
         keyword,
@@ -46,7 +45,6 @@ const apiRoute = async (req, res) => {
         title,
         filename: req.file.filename,
         description,
-        heading,
         link,
         backgroundColor,
         keyword,
@@ -60,12 +58,6 @@ const apiRoute = async (req, res) => {
         if (!updatedFile) {
           return res.status(400).json({ message: "Something went wrong" });
         }
-
-        await Industry1.findOneAndUpdate(
-          { _id: industry },
-          { $push: { success: updatedFile._id } }
-        );
-
         return res.status(200).json({ data: updatedFile });
       } catch (error) {
         console.error("Error creating file:", error);
@@ -89,19 +81,6 @@ const apiRoute = async (req, res) => {
       } else {
         console.warn(`File not found on the server: ${filePath}`);
       }
-  
-      // Remove the file reference from the associated industry
-      const industry = await Industry1.findById(file.industry);
-      if (!industry) {
-        return res.status(404).json({ error: "Associated industry not found" });
-      }
-  
-      const updatedSuccess = industry.success.filter(
-        (itemId) => itemId.toString() !== id
-      );
-  
-      await Industry1.findByIdAndUpdate(file.industry, { success: updatedSuccess });
-  
       // Delete the file document from the database
       await Success.findByIdAndDelete(id);
   

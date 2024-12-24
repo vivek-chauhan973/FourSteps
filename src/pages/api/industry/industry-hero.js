@@ -13,6 +13,7 @@ import SubIndustrySolution from "@/models/admin/Industry/IndustrySolution";
 import InSolution from "@/models/admin/Industry/InSolution";
 import IndustryFaq from "@/models/admin/Industry/Faq/IndustryFaq";
 import Benefits from "@/models/admin/Industry/Benefits/Benefits";
+import InSuccess from "@/models/admin/Industry/InSuccess";
 
 // Define upload directories
 const uploadDirectories = {
@@ -79,8 +80,9 @@ const apiRoute = async (req, res) => {
 
     try {
       const data = await Industry.findById(id)
-        .populate("why4step success benefit faq")
+        .populate("why4step benefit faq")
         .populate({ path: "solution", populate: { path: "solutionItem" } })
+        .populate({ path: "success", populate: { path: "successItem" } })
         .populate({ path: "product", populate: { path: "productItem" } })
         .populate({ path: "service", populate: { path: "serviceItem" } });
 
@@ -98,11 +100,18 @@ const apiRoute = async (req, res) => {
       // Delete associated documents and files
       if (data?.why4step) await Why4Steps.findByIdAndDelete(data.why4step._id);
 
+      // if (data?.success) {
+      //   for (const item of data?.success) {
+      //     deleteFile(path.join(uploadDirectories.success, item.filename));
+      //     await Success.findByIdAndDelete(item._id);
+      //   }
+      // }
       if (data?.success) {
-        for (const item of data?.success) {
+        for (const item of data.success?.successItem || []) {
           deleteFile(path.join(uploadDirectories.success, item.filename));
           await Success.findByIdAndDelete(item._id);
         }
+        await InSuccess.findByIdAndDelete(data.success._id);
       }
 
       if (data?.product) {

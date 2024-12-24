@@ -8,10 +8,6 @@ const IndustrySchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
-    heading: {
-      type: String,
-      required: true,
-    },
     filename: {
       type: String,
       required: true,

@@ -103,7 +103,7 @@ export default function IndusFaq({blogData,setActiveTab}) {
         body:JSON.stringify(data)
       })
       if(res?.ok){
-        setActiveTab("Tab1/9")
+        setActiveTab("Tab1")
         alert(blogData?.faq?"FAQs updated successfully!":"FAQs saved successfully!");
       }
       
