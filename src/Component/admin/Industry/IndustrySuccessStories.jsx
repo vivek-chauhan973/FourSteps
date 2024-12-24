@@ -122,6 +122,8 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
     }
   }
 
+  console.log("blog data is here -----> ",blogData)
+
   const deleteItem = async (id) => {
     const data = await fetch(`/api/industry/success1?id=${id}`, {
       method: "DELETE",
