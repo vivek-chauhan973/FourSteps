@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Testimonial from "@/Component/Testimonial/Testimonial";
@@ -7,8 +7,31 @@ import { Footer } from "@/Component/Footer/Footer";
 import Nav from "@/Component/Header/Nav";
 import TableOfContent from "@/Component/Industry/TableOfContent";
 import IndustryFaq from "@/Component/Industry/IndustryFaq";
-
+import { useRouter } from "next/router";
+const getIndustry = async (item) => {
+  return await (
+    await fetch(`/api/industry/get-industry?industryName=${item?.split("-")?.join(" ")}`, { method: "GET" })
+  ).json();
+};
 const Travel = () => {
+
+  const router=useRouter();
+
+  const {industry}=router?.query;
+  const [industryName,setIndustryName]=useState({});
+
+  useEffect(()=>{
+    if(industry){
+      getIndustry(industry).then(
+        res=>{
+          setIndustryName(res?.data||{})
+        }
+      )
+    }
+   
+  },[industry])
+
+  // console.log("itineary industry ---==> ",industryName)
   return (
     <div>
       {/* headres */}
@@ -23,22 +46,17 @@ const Travel = () => {
             {/* Content Section */}
             <div className="flex flex-col justify-center text-center md:text-left">
               <h2 className="text-xl sm:text-2xl  md:text-3xl font-semibold text-gray-800">
-                IT Solution for Oil & Gas Companies
+                {industryName?.title||"IT Solution for Oil & Gas Companies"}
               </h2>
               <p className="text-gray-600  my-4 text-sm sm:text-base leading-relaxed">
-                Since 2020, ScienceSoft has been building IT solutions for the
-                oil and gas industry by employing cloud, IIoT, big data,
-                advanced analysis, virtual and augmented reality. We will gladly
-                provide you with a tailored IT solution for improved petroleum
-                exploration and production processes and data-driven
-                decision-making.
+               {industryName?.description}
               </p>
             </div>
 
             {/* Image Section */}
             <div className="flex justify-center md:justify-end items-center">
               <Image
-                src="/image/yyy.png"
+                src={industryName?.path||"/image/yyy.png"}
                 alt="About Us"
                 className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded object-cover"
                 height={300} // Reduce height for smaller devices
@@ -50,7 +68,7 @@ const Travel = () => {
 
         {/* tabel of content section */}
         <div>
-          <TableOfContent />
+          <TableOfContent industryName={industryName}/>
         </div>
 
         {/* Client & Testimonials */}
@@ -64,12 +82,12 @@ const Travel = () => {
 
       {/* this is FQA SECTION  */}
       <div>
-        <IndustryFaq />
+        <IndustryFaq faqData={industryName?.faq?.faq} />
       </div>
 
       {/* footer section */}
       <div>
-        <Footer />
+        <Footer  />
       </div>
     </div>
   );

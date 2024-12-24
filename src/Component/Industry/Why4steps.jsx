@@ -158,7 +158,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-const Carousel = () => {
+const Carousel = ({why4step}) => {
   const data = [
     { image: "/image/1.png", alt: "Project 1" },
     { image: "/image/bg.jpg", alt: "Project 2" },
@@ -237,7 +237,7 @@ const Carousel = () => {
     <>
       <div className="my container mx-auto">
         <h2 className="font-semibold text-primary text-lg md:text-3xl pb-5">
-          What Makes 4 Steps Reliable Partner
+          {why4step?.heading||"What Makes 4 Steps Reliable Partner"}
         </h2>
         <div className="relative flex items-center">
           {/* Left Arrow */}
@@ -253,7 +253,7 @@ const Carousel = () => {
             ref={carouselRef}
             className="flex gap-6 overflow-hidden scroll-smooth"
           >
-            {data.map((item, index) => (
+            {why4step?.partnersData?.length>0&&why4step?.partnersData?.map((item, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-28 h-28 flex justify-center items-center"
@@ -261,7 +261,7 @@ const Carousel = () => {
                 <Image
                   height={200}
                   width={200}
-                  src={item.image}
+                  src={item}
                   alt={item.alt}
                   className="w-full h-32 rounded sm:w-24 sm:h-20 md:h-24 object-cover"
                 />
@@ -280,30 +280,10 @@ const Carousel = () => {
       </div>
       <div className="pl-2 py-5">
         <ul className="custom-list">
-          <li>
-            <b>Since 1989</b> in software consulting and engineering.
-          </li>
-          <li>Since 2012 in IT for insurance.</li>
-          <li>Experience in delivering B2B and B2C insurance solutions.</li>
-          <li>
-            Since 2003 in cybersecurity to ensure world-class protection of
-            insurance software.
-          </li>
-          <li>
-            In-house compliance experts with 5 20 years of experience to
-            guarantee insurance software compliance with FIO, NAIC, SOX, CCPA,
-            NYDFS, GDPR, SAMA, IA, and other required legal standards.
-          </li>
-          <li>
-            For the third year in a row, IAOP features ScienceSoft in its Global
-            Outsourcing 100, the list of the most trusted outsourcing service
-            providers.
-          </li>
-          <li>
-            For the third year in a row, IAOP features ScienceSoft in its Global
-            Outsourcing 100, the list of the most trusted outsourcing service
-            providers.
-          </li>
+         {why4step?.overviewData?.length>0&&why4step?.overviewData?.map((item,i)=> <li key={i}>
+            <p dangerouslySetInnerHTML={{__html:item?.content}}/>
+          </li>)}
+          
         </ul>
       </div>
     </>

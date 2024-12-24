@@ -1,10 +1,16 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+const getAllPost = async () => {
+  return await (
+    await fetch("/api/industry/industry-hero", { method: "GET" })
+  ).json();
+};
 
 const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
   const [dropDown, setDropdown] = useState(false);
+  const [industry, setIndustry] = useState([]);
 
   const handleMouseEnter = () => {
     setDropdown(true);
@@ -13,6 +19,11 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
   const handleMouseLeave = () => {
     setDropdown(false);
   };
+  useEffect(() => {
+    getAllPost().then((res) => {
+      setIndustry(res?.data || []);
+    });
+  }, []);
 
   return (
     <li
@@ -20,7 +31,7 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href="/industry">
+      
         <div
           onClick={() => handleLinkClick("/industry")}
           className={`relative inline-flex items-center text-base font-medium px-3 py-2 ${
@@ -47,21 +58,21 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
             }`}
           ></span>
         </div>
-      </Link>
+     
 
       {/* Dropdown Section */}
       {dropDown && (
         <div className="absolute left-[-20px] text-[15px]    w-72 bg-white border rounded-lg border-gray-200 shadow-lg z-10">
           <ul className="py-2 space-y-1 list-none">
-            <li>
+           {industry?.length>0&&industry?.map((item,i)=><li key={i}>
               <Link
-                href="/industry/travel-hospitality"
-                className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+                href={`/industry/${item?.industryName?.split(" ")?.join("-")}`}
+                className="block px-4 py-1 text-gray-800 capitalize hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
               >
-                Travel and Hospitality
+                {item?.industryName}
               </Link>
-            </li>
-            <li>
+            </li>)}
+            {/* <li>
               <Link
                 href="/industry/construction-realestate"
                 className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
@@ -116,7 +127,7 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
               >
                 Manufacturing & Engineering
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       )}

@@ -349,7 +349,7 @@ import OurServicesIndustry from "./OurServicesIndustry";
 import IndustrySideForm from "./IndustrySideForm";
 import IndustryAbout from "./IndustryAbout";
 
-const TableOfContent = () => {
+const TableOfContent = ({industryName}) => {
   return (
     <div className=" ">
       <div className="bg-[#F1F5F9] py-7">
@@ -358,7 +358,7 @@ const TableOfContent = () => {
           <div className="px-5 grid grid-cols-1 bg-white">
             {/* Industry About section */}
             <div>
-              <IndustryAbout />
+              {industryName?.contentsummary&&<IndustryAbout about={industryName?.contentsummary}/>}
             </div>
             {/* Overview Section */}
             <div
@@ -368,7 +368,7 @@ const TableOfContent = () => {
               <div className="md:px-2">
                 <div className="font-semibold py-2 text-xl">Why 4Steps</div>
                 <div>
-                  <Why4steps />
+                  {industryName?.why4step&&<Why4steps why4step={industryName?.why4step} />}
                 </div>
               </div>
             </div>
@@ -379,8 +379,11 @@ const TableOfContent = () => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-xl">Success Story</div>
-                <SuccessStoryIndustry />
+                <div className="font-semibold text-xl">{industryName?.success?.heading||"Success Story"}</div>
+                <div>
+                  <p dangerouslySetInnerHTML={{__html:industryName?.success?.mainEditorHtmlDescription}}/>
+                </div>
+                {industryName?.success&&<SuccessStoryIndustry stories={industryName?.success} />}
               </div>
             </div>
 

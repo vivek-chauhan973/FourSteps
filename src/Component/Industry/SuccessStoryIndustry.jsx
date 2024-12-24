@@ -60,7 +60,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
-const SuccessStoryIndustry = () => {
+const SuccessStoryIndustry = ({stories}) => {
+
+  console.log("stories is here ----> ",stories)
   return (
     <>
       {/* section 1 */}

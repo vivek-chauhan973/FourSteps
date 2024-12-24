@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 
-const IndustryFaq = () => {
+const IndustryFaq = ({faqData}) => {
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
 
@@ -27,40 +27,6 @@ const IndustryFaq = () => {
     setOpenIndices([]);
     setIsAllOpen(false);
   };
-
-  const faqs = [
-    {
-      question: "What is this webinar about?",
-      answer:
-        "This webinar covers [describe the main topics and objectives of the webinar briefly].",
-    },
-    {
-      question: "How can I register for the webinar?",
-      answer:
-        "You can register by [provide the registration steps, link, or contact information].",
-    },
-    {
-      question: "Is there a fee to attend the webinar?",
-      answer:
-        "The webinar is [state if free or mention any costs involved and how to pay].",
-    },
-    {
-      question: "Will I receive a certificate after the webinar?",
-      answer:
-        "Yes, participants will receive a certificate upon completion of the webinar.",
-    },
-    {
-      question: "What software do I need to join?",
-      answer:
-        "You will need [mention any specific software or platform required, such as Zoom or Microsoft Teams].",
-    },
-    {
-      question: "Can I access the recording later?",
-      answer:
-        "The recording will be available [mention if and where the recording will be accessible].",
-    },
-  ];
-
   return (
     <div>
       <div className="bg-white">
@@ -83,14 +49,14 @@ const IndustryFaq = () => {
             </button>
           </div>
           <div className="w-full mx-auto md:px-0 px-5">
-            {faqs.map((faq, i) => (
+            {faqData?.length>0&&faqData?.map((faq, i) => (
               <div key={i} className="mb-3">
                 <div
                   onClick={() => handleToggle(i)}
                   className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
                 >
                   <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
-                    {faq.question}
+                    {faq.title}
                   </p>
 
                   <span>
@@ -113,6 +79,7 @@ const IndustryFaq = () => {
                   }}
                 >
                   <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
+                    <p dangerouslySetInnerHTML={{__html: faq?.information}}/>
                     {faq.answer}
                   </div>
                 </div>
