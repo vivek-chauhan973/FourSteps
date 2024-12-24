@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "react-quill/dist/quill.snow.css"; // Import Quill styles
@@ -9,7 +9,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function IndusFaq() {
+export default function IndusFaq({blogData,setActiveTab}) {
   // Initialize with an empty array
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
     []  
@@ -29,6 +29,12 @@ export default function IndusFaq() {
       [name]: value,
     }));
   };
+
+  useEffect(()=>{
+    if(blogData){
+      setItineraryDayWiseDataArray(blogData?.faq?.faq||[]);
+    }
+  },[blogData])
 
   const modules = {
     toolbar: [
@@ -83,9 +89,28 @@ export default function IndusFaq() {
     setItineraryDayWiseDataArray(updatedArray);
   };
 
-  const handleSave = () => {
-    console.log("Saved FAQs:", itineraryDayWiseDataArray);
-    alert("FAQs saved successfully!");
+  const handleSave = async () => {
+    try {
+ const data={ 
+  faq:itineraryDayWiseDataArray,
+  industry:blogData?._id
+ }
+      const res=await fetch(`/api/industry/faqs`,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      })
+      if(res?.ok){
+        setActiveTab("Tab1/9")
+        alert(blogData?.faq?"FAQs updated successfully!":"FAQs saved successfully!");
+      }
+      
+    } catch (error) {
+      console.log("something went wrong")
+    }
+    
   };
 
   return (

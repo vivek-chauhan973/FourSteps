@@ -6,6 +6,8 @@ import "./IndustrySolution"
 import "./Product/InSolution";
 import  "./Services/InSolution";
 import "./Benefits/Benefits";
+import  "./Faq/IndustryFaq";
+
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -54,6 +56,10 @@ const IndustrySchema = new mongoose.Schema(
     benefit:{
       type:mongoose.Schema.Types.ObjectId,
       ref:"Benefits"
+    },
+    faq:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"IndustryFaq"
     }
 
   },
