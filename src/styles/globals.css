@@ -757,8 +757,8 @@ ul {
   list-style-type: square;
 }
 .custom-list ::marker {
-  /* color: #f36b21; */
-  color: rgb(73, 73, 244);
+  color: #f36b21;
+  /* color: rgb(73, 73, 244); */
   font-size: 20px;
 }
 

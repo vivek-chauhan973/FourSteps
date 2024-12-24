@@ -1,88 +1,61 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const ChooseUs = () => {
+  const data = [
+    "Customer-centric approach in business.",
+    "Boost ROI and Brand Awareness.",
+    "End-to-end support for services.",
+    "Build and Improve Brand reputation.",
+    "Track results through performance tracking.",
+    "Technology-driven services.",
+    "Technology-driven services.",
+    "Affordable pricing & maintenance .",
+  ];
   return (
-    <>
-      {/* ====================================== */}
-      <div className="container ">
-        <div className="md:flex md:px-10 py-5 px-5 md:mt-5">
-          <div className="md:w-1/2 rounded-md md:pl-5 md:block">
-            <img
-              src="https://t4.ftcdn.net/jpg/01/41/52/31/360_F_141523101_8umyxdkpKIqFgVImRhcWNwH9Gg5TBu29.jpg"
-              alt=""
-              className="w-full h-auto rounded-md object-cover"
-            />
-          </div>
-          <div className="md:w-1/2 w-full h-auto md:pl-5 md:p-0 py-5 md:mt-0 mt-5">
-            <div className="md:px-10 mb-5">
-              <h2 className="text-3xl font-semibold mb-3 capitalize">
-                <span className="">Why choose us</span>?
-              </h2>
-              <p>
-                Trying to win over your customers with result driven digital
-                strategies, choose{" "}
-                <span className="text-primary">Four Steps Digital</span>
-              </p>
-            </div>
-            <div className="w-full  mx-auto md:px-10 px-0">
-              <ul>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Customer-centric approach in business.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Boost ROI and Brand Awareness.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  End-to-end support for services.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Build and Improve Brand reputation.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Track results through performance tracking.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Technology-driven services.
-                </li>
-                <li className="mb-2 flex items-start gap-3">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className=" mt-1 text-primary"
-                  />
-                  Affordable pricing.
-                </li>
-              </ul>
-            </div>
-          </div>
+    <div className="container mx-auto py-10 px-5 md:px-10">
+      <div className="text-center mb-8">
+        <h2 className="md:text-3xl  text-xl font-semibold capitalize mb-3">
+          Why choose <span className="text-primary">Four Steps Digital</span>?
+        </h2>
+        <p className="md:text-lg text-sm text-gray-700">
+          Win over your customers with result-driven digital strategies. Choose
+          <span className="text-primary"> Four Steps Digital</span> to elevate
+          your business.
+        </p>
+      </div>
+
+      <div className="md:flex items-center gap-8">
+        <div className="md:w-1/2 rounded-md overflow-hidden">
+          <Image
+            src="/image/yyy.png"
+            alt="Four Steps Digital"
+            className="w-full h-auto object-cover"
+            height={500}
+            width={500}
+          />
+        </div>
+
+        <div className="md:w-1/2  md:mt-0">
+          <ul className="space-y-4">
+            {data.map((item, index) => (
+              <li
+                key={index}
+                className="flex md:text-lg text-sm items-start gap-3"
+              >
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="text-primary mt-1"
+                />
+                <span className="text-gray-800">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

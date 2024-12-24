@@ -11,6 +11,16 @@ import Link from "next/link";
 const AboutSection = () => {
   return (
     <div className="container p-4  md:p-10">
+      <div className=" text-center mx-auto pb-3 ">
+        <div className="">
+          <span className="text-[#BC4242] bg-[#FFF4FA] rounded-md px-3 py-1 text-xs">
+            About us 4steps Digital
+          </span>
+        </div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          About <span className="text-gradient"> 4Steps Digital </span>
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Image for larger screens */}
         <div className="hidden md:flex  justify-center">
@@ -25,14 +35,6 @@ const AboutSection = () => {
         </div>
 
         <div className="flex flex-col  justify-center">
-          <div className="text-left mb-6">
-            <span className="text-[#BC4242] bg-[#FFF4FA] rounded-md px-3 py-1 text-xs">
-              About us 4steps Digital
-            </span>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            About <span className="text-gradient"> 4Steps Digital </span>
-          </h2>
           <div className="text-[12px] md:text-base ">
             <p className="mb-4 ">
               Four Steps Digital Consulting(OPC) Pvt Ltd is a digital consulting
@@ -87,7 +89,7 @@ const AboutSection = () => {
 
           <Link href="/about">
             {/* <button className="bg-orange-600  cursor-pointer border-none rounded-full text-sm text-white px-4 py-2"> */}
-            <button className=" border text-sm md:text-lg border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
+            <button className=" border text-sm md:text-base border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
               Know More
             </button>
           </Link>
