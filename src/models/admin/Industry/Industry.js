@@ -10,6 +10,12 @@ import  "./Faq/IndustryFaq";
 import "./InSuccess";
 const IndustrySchema = new mongoose.Schema(
   {
+    industryName: {
+      type: String,
+      required: true,
+      trim:true,
+      unique:true
+    },
     title: {
       type: String,
       required: true,

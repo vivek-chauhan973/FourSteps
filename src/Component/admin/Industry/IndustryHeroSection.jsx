@@ -14,6 +14,7 @@ const  IndustryHeroSection=({ setActiveTab, blogData })=> {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState("");
+  const [industryName, setIndustryName] = useState("");
   const [description, setDescription] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
@@ -22,6 +23,7 @@ const  IndustryHeroSection=({ setActiveTab, blogData })=> {
   const router = useRouter();
   useEffect(() => {
     setTitle(blogData?.title || "");
+    setIndustryName(blogData?.industryName || "");
     setDescription(blogData?.description || "");
     setPreview(blogData?.path || "");
     setEditorHtmlDescription(blogData?.contentsummary || "");
@@ -66,6 +68,7 @@ const  IndustryHeroSection=({ setActiveTab, blogData })=> {
 
     if (file && title) {
       formData.append("file", file);
+      formData.append("industryName", industryName);
       formData.append("title", title);
       formData.append("description", description);
       formData.append("contentsummary", editorHtmlDescription);
@@ -119,6 +122,19 @@ const  IndustryHeroSection=({ setActiveTab, blogData })=> {
               </div>
             </div>
             <div className="flex-1 my-5">
+            <div>
+                <label htmlFor="title" className=" font-semibold">
+                  Industry Name
+                </label>
+                <input
+                  className="py-0.5 mb-2 w-full  border rounded h-8 px-2 focus:border-primary outline-none"
+                  type="text"
+                  id="industryName"
+                  value={industryName}
+                  placeholder="Enter Industry Here"
+                  onChange={(e) => setIndustryName(e.target.value)}
+                />
+              </div>
               <div>
                 <label htmlFor="title" className=" font-semibold">
                   Title

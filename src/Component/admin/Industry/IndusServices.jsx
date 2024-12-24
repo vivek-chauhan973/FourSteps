@@ -320,7 +320,7 @@ const IndusServices = ({ setActiveTab, blogData }) => {
                 </div>
                 <div>
                   <label htmlFor="SubTitle" className="font-semibold">
-                    Title
+                    SubTitle
                   </label>
                   <input
                     className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"

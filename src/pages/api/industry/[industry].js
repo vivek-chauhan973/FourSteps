@@ -41,11 +41,13 @@ const apiRoute = async (req, res) => {
       const {
         title,
         description,
+        industryName,
         contentsummary,
       } = req.body;
       const fileData = req.file && {
         title,
         contentsummary,
+        industryName,
         description,
         filename: req.file.filename,
         path: `/uploads/industry/herosection/${req.file.filename}`,
