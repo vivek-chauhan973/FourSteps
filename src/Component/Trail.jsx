@@ -73,13 +73,13 @@ const Trail = () => {
     //         }`}
     //       >
     //         <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw] relative overflow-hidden">
-    //           <Image
-    //             src={currentItem.imageUrl}
-    //             alt={currentItem.name}
-    //             className="object-cover hover:rounded-lg rounded-lg w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-105"
-    //             height={200}
-    //             width={200}
-    //           />
+              // <Image
+              //   src={currentItem.imageUrl}
+              //   alt={currentItem.name}
+              //   className="object-cover hover:rounded-lg rounded-lg w-full h-full transition-transform duration-300 ease-in-out transform hover:scale-105"
+              //   height={200}
+              //   width={200}
+              // />
     //         </div>
     //       </div>
 
