@@ -5,6 +5,7 @@ import {
   faComputer,
   faHandshake,
 } from "@fortawesome/free-solid-svg-icons";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,8 +18,8 @@ const AboutSection = () => {
             About us 4steps Digital
           </span>
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">
-          About <span className="text-gradient"> 4Steps Digital </span>
+        <h2 className="text-xl md:text-3xl font-semibold mb-3">
+          About <span className="text-gradient">4Steps Digital</span>
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
