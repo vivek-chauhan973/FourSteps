@@ -189,8 +189,8 @@ const Trail = () => {
         {/* Testimonials Section */}
         <div className="flex flex-col py-5 items-center justify-center  text-white mx-auto">
           {/* Section Title */}
-          <h2 className="text-lg md:text-4xl font-bold tracking-wide mb-3 text-white">
-            Testimonials
+          <h2 className="text-xl md:text-4xl font-bold tracking-wide mb-3 text-white">
+            Our Testimonials
           </h2>
 
           {/* Content Wrapper */}

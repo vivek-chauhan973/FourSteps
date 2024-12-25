@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Image from "next/image";
 export const Footer = () => {
   return (
     <>
@@ -17,36 +18,46 @@ export const Footer = () => {
 
         {/* Company Info */}
         <div className=" bg-gray-100  text-sm p-6 flex flex-col lg:flex-row items-center justify-between">
-          <div className="lg:w-1/2 text-center lg:text-left mb-4 lg:mb-0">
-            <img src="/image/logo.png" alt="App Store" className="w-24 h-16" />
-            <p>
+          <div className="lg:w-1/2  mb-4 lg:mb-0">
+            <Image
+              src="/image/logo.png"
+              alt="App Store"
+              height={200}
+              width={200}
+              className="w-20 h-16"
+            />
+            <p className=" md:text-sm text-[13px]">
               Four Steps Digital Consulting(OPC) Pvt Ltd, an Indian digital
               consulting agency, prioritizes honesty, hard work, and results for
               small to medium-sized businesses. Our focus: Transforming
               Businesses Into Digitally-Driven Organizations with expert teams
-              optimizing digital presence and efficiency.{" "}
+              optimizing digital presence and efficiency.
             </p>
           </div>
           <div className="flex items-center justify-center lg:justify-end space-x-6">
             <div className="text-center">
-              <p className="font-bold ">Our Zoho Partners</p>
+              <p className="font-semibold ">Zoho Partners</p>
               <div className="flex space-x-4">
-                <div className="flex justify-center mt-4">
-                  <img
-                    src="/image/zohologo.jpg"
+                <div className="flex justify-center mt-2">
+                  <Image
+                    src="/image/zoohoo.png"
                     alt="Logo"
-                    className="h-20 w-auto"
+                    className="h-[65px] w-full"
+                    height={500}
+                    width={500}
                   />
                 </div>
               </div>
             </div>
             <div className="text-center">
-              <p className="font-bold mb-2">HubSpot Partners</p>
-              <div className="flex justify-center mt-4">
-                <img
-                  src="/image/zohologo.jpg"
+              <p className="font-semibold mb-2">HubSpot Partners</p>
+              <div className="flex justify-center mt-2">
+                <Image
+                  src="/image/zoohoo.png"
                   alt="Logo"
-                  className="h-20 w-auto"
+                  className="h-[65px] w-full"
+                  height={500}
+                  width={500}
                 />
               </div>
             </div>
@@ -56,7 +67,7 @@ export const Footer = () => {
           <div className="bg-white grid grid-cols-1 md:grid-cols-2 py-4  px-4 lg:grid-cols-5 gap-4">
             {/* Useful Links */}
             <div className="border-r border-gray-300">
-              <h3 className="text-lg font-bold mb-4">Useful Links</h3>
+              <h3 className="text-base  font-semibold mb-2">Useful Links</h3>
 
               <ul className="space-y-2 text-sm list-none">
                 <li className="footerHover relative">
@@ -115,7 +126,7 @@ export const Footer = () => {
             </div>
             {/* Our Services  */}
             <div className="border-r border-gray-300">
-              <h3 className="text-lg font-bold mb-4 ">Our Services</h3>
+              <h3 className="text-base  font-semibold mb-2 ">Our Services</h3>
               <ul className="space-y-2  text-sm cursor-pointer list-none">
                 <li className="footerHover relative hover:text-primary">
                   <Link href="/websitepage" className=" relative">
@@ -152,7 +163,9 @@ export const Footer = () => {
 
             {/* Our Services */}
             <div className="border-r border-gray-300">
-              <h3 className="text-lg font-bold mb-4">other content ......</h3>
+              <h3 className="text-base  font-semibold mb-2">
+                other content ......
+              </h3>
               <ul className="text-sm  space-y-2 list-none">
                 <li>Zoho Setup and Implementation</li>
                 <li>Hubspot Setup and Implementation</li>
@@ -163,7 +176,9 @@ export const Footer = () => {
 
             {/* Website Development */}
             <div className="border-r border-gray-300">
-              <h3 className="text-lg font-bold mb-4">Website Development</h3>
+              <h3 className="text-base  font-semibold mb-2">
+                Website Development
+              </h3>
               <ul className="space-y-2 text-sm list-none ">
                 <li className="footerHover relative hover:text-primary">
                   <Link href="#" className=" relative">
@@ -185,12 +200,12 @@ export const Footer = () => {
 
             {/* General Queries & Social Links */}
             <div>
-              <h3 className="text-lg font-bold mb-4">General Queries</h3>
+              <h3 className="text-base  font-semibold mb-2">General Queries</h3>
               <div className=" text-sm">
                 <p>Email: info@4stepsdigital.com</p>
                 <p>Phone: +91-9065879989</p>
               </div>
-              <h3 className="text-lg font-bold mt-4 mb-2">
+              <h3 className="text-base  font-semibold mt-4 mb-2">
                 Social Media Links
               </h3>
 
@@ -223,7 +238,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-700 py-4 text-end text-sm">
+          <div className="border-t border-gray-700 py-4 text-end text-xs md:text-sm">
             <p>
               Copyright © 2024 Four Steps Digital Consulting(OPC) Pvt Ltd. All
               Rights Reserved.
