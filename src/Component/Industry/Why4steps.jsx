@@ -158,18 +158,18 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-const Carousel = ({why4step}) => {
-  const data = [
-    { image: "/image/1.png", alt: "Project 1" },
-    { image: "/image/bg.jpg", alt: "Project 2" },
-    { image: "/image/5.png", alt: "Project 3" },
-    { image: "/image/bg.jpg", alt: "Project 4" },
-    { image: "/image/ab.webp", alt: "Project 5" },
-    { image: "/image/bg.jpg", alt: "Project 6" },
-    { image: "/image/about.jpg", alt: "Project 7" },
-    { image: "/image/bit.jpg", alt: "Project 8" },
-    { image: "/image/bg.jpg", alt: "Project 9" },
-  ];
+const Carousel = ({ why4step }) => {
+  // const data = [
+  //   { image: "/image/1.png", alt: "Project 1" },
+  //   { image: "/image/bg.jpg", alt: "Project 2" },
+  //   { image: "/image/5.png", alt: "Project 3" },
+  //   { image: "/image/bg.jpg", alt: "Project 4" },
+  //   { image: "/image/ab.webp", alt: "Project 5" },
+  //   { image: "/image/bg.jpg", alt: "Project 6" },
+  //   { image: "/image/about.jpg", alt: "Project 7" },
+  //   { image: "/image/bit.jpg", alt: "Project 8" },
+  //   { image: "/image/bg.jpg", alt: "Project 9" },
+  // ];
 
   const carouselRef = useRef(null);
 
@@ -237,7 +237,7 @@ const Carousel = ({why4step}) => {
     <>
       <div className="my container mx-auto">
         <h2 className="font-semibold text-primary text-lg md:text-3xl pb-5">
-          {why4step?.heading||"What Makes 4 Steps Reliable Partner"}
+          {why4step?.heading || "What Makes 4 Steps Reliable Partner"}
         </h2>
         <div className="relative flex items-center">
           {/* Left Arrow */}
@@ -253,20 +253,21 @@ const Carousel = ({why4step}) => {
             ref={carouselRef}
             className="flex gap-6 overflow-hidden scroll-smooth"
           >
-            {why4step?.partnersData?.length>0&&why4step?.partnersData?.map((item, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-28 h-28 flex justify-center items-center"
-              >
-                <Image
-                  height={200}
-                  width={200}
-                  src={item}
-                  alt={item.alt}
-                  className="w-full h-32 rounded sm:w-24 sm:h-20 md:h-24 object-cover"
-                />
-              </div>
-            ))}
+            {why4step?.partnersData?.length > 0 &&
+              why4step?.partnersData?.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-28 h-28 flex justify-center items-center"
+                >
+                  <Image
+                    height={200}
+                    width={200}
+                    src={item}
+                    alt={item.alt || "alt section"}
+                    className="w-full h-32 rounded sm:w-24 sm:h-20 md:h-24 object-cover"
+                  />
+                </div>
+              ))}
           </div>
 
           {/* Right Arrow */}
@@ -280,10 +281,12 @@ const Carousel = ({why4step}) => {
       </div>
       <div className="pl-2 py-5">
         <ul className="custom-list">
-         {why4step?.overviewData?.length>0&&why4step?.overviewData?.map((item,i)=> <li key={i}>
-            <p dangerouslySetInnerHTML={{__html:item?.content}}/>
-          </li>)}
-          
+          {why4step?.overviewData?.length > 0 &&
+            why4step?.overviewData?.map((item, i) => (
+              <li key={i}>
+                <p dangerouslySetInnerHTML={{ __html: item?.content }} />
+              </li>
+            ))}
         </ul>
       </div>
     </>

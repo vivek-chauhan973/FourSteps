@@ -1,102 +1,13 @@
-// import React from "react";
-
-// const BenifitsIndustry = () => {
-//   const statistics = [
-//     {
-//       value: "20–50%",
-//       description:
-//         "reduction in application launch time due to mature processes",
-//     },
-//     {
-//       value: "5–35%",
-//       description:
-//         "decrease in IT operating costs due to gaining access to professional expertise",
-//     },
-//     {
-//       value: "99.99%",
-//       description:
-//         "IT service availability due to proactive IT maintenance and 24/7 support",
-//     },
-//     {
-//       value: "50%",
-//       description: "faster claim processing due to workflow automation",
-//     },
-//     {
-//       value: "80–90%",
-//       description:
-//         "increase in the accuracy of insurance processes due to eliminated manual errors",
-//     },
-//     {
-//       value: "100%",
-//       description: "regulatory compliance due to robust security features",
-//     },
-//   ];
-
-//   return (
-//     <div>
-//       <h2 className="text-3xl text-primary font-semibold pb-5">
-//         Every successful strategy starts with an insightful conversation some
-//         pending cheak the science soft
-//       </h2>
-//       <div className="">welcome to night worls</div>
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-//         {statistics.map((stat, index) => (
-//           <div key={index} className="border-l-[3px] p-6 ">
-//             <div className="text-primary text-4xl  font-semibold">
-//               {stat.value}
-//             </div>
-//             <div className="text-gray-700  mt-2">{stat.description}</div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default BenifitsIndustry;
-
 import React, { useState } from "react";
 import Calltoaction from "../Web/Calltoaction";
 
 const BenifitsIndustry = ({ benefits }) => {
-  const statistics = [
-    {
-      value: "20–50%",
-      description:
-        "reduction in application launch time due to mature processes",
-    },
-    {
-      value: "5–35%",
-      description:
-        "decrease in IT operating costs due to gaining access to professional expertise",
-    },
-    {
-      value: "99.99%",
-      description:
-        "IT service availability due to proactive IT maintenance and 24/7 support",
-    },
-    {
-      value: "50%",
-      description: "faster claim processing due to workflow automation",
-    },
-    {
-      value: "80–90%",
-      description:
-        "increase in the accuracy of insurance processes due to eliminated manual errors",
-    },
-    {
-      value: "100%",
-      description: "regulatory compliance due to robust security features",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentIndex(index);
   };
-  console.log("here is all the benifits data ", benefits);
+  // console.log("here is all the benifits data ", benefits);
   return (
     <>
       <div className="">
