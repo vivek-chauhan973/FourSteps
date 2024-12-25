@@ -59,7 +59,7 @@
 import React, { useState } from "react";
 import Calltoaction from "../Web/Calltoaction";
 
-const BenifitsIndustry = () => {
+const BenifitsIndustry = ({ benefits }) => {
   const statistics = [
     {
       value: "20–50%",
@@ -96,27 +96,27 @@ const BenifitsIndustry = () => {
   const handleSlideChange = (index) => {
     setCurrentIndex(index);
   };
-
+  console.log("here is all the benifits data ", benefits);
   return (
     <>
       <div className="">
-        <h2 className=" md:text-3xl text-lg text-primary font-semibold pb-5">
-          Every successful strategy starts with an insightful conversation some
-          pending cheak the science soft
-        </h2>
+        <h2
+          className="text-base pb-5"
+          dangerouslySetInnerHTML={{ __html: benefits?.description }}
+        ></h2>
 
         {/* Mobile view with slider */}
         <div className="block md:hidden text-center">
           <div className="border-l-[3px] p-6 inline-block">
             <div className="text-primary text-4xl font-semibold">
-              {statistics[currentIndex].value}
+              {benefits?.items[currentIndex]?.title}
             </div>
             <div className="text-gray-700 mt-2">
-              {statistics[currentIndex].description}
+              {benefits?.items[currentIndex]?.description}
             </div>
           </div>
           <div className="flex justify-center mt-4 space-x-2">
-            {statistics.map((_, index) => (
+            {benefits?.items?.map((_, index) => (
               <button
                 key={index}
                 className={`h-1 w-8 ${
@@ -130,12 +130,12 @@ const BenifitsIndustry = () => {
 
         {/* Desktop view with grid */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-          {statistics.map((stat, index) => (
+          {benefits?.items?.map((stat, index) => (
             <div key={index} className="border-l-[3px] p-6">
               <div className="text-primary text-4xl font-semibold">
-                {stat.value}
+                {stat?.title}
               </div>
-              <div className="text-gray-700 mt-2">{stat.description}</div>
+              <div className="text-gray-700 mt-2">{stat?.description}</div>
             </div>
           ))}
         </div>

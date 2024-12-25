@@ -3,8 +3,9 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-const OurServicesIndustry = () => {
+const OurServicesIndustry = ({ services }) => {
   const data = [
     {
       imageSrc: "/image/1.png",
@@ -54,18 +55,21 @@ const OurServicesIndustry = () => {
     },
     // You can add more objects here
   ];
-
+  // console.log("all service present here ", services);
   return (
     <>
-      <div className=" ">
-        <h3 className="font-semibold text-primary text-lg md:text-3xl md:pb-7">
-          IT Services
-        </h3>
+      <div className="">
+        <p
+          className=" text-sm md:text-base"
+          dangerouslySetInnerHTML={{
+            __html: services?.mainEditorHtmlDescription,
+          }}
+        />
       </div>
 
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-          {data.map((item, index) => (
+          {services?.serviceItem?.map((item, index) => (
             <div
               key={index}
               className="bg-white shadow-md rounded-lg border-t-[8px] border-primary hover:shadow-lg transition-all duration-300 mx-auto w-full max-w-md h-auto  border-b-[1px] border-l-[1px] border-r-[1px] border-b-gray-300 border-l-gray-300 border-r-gray-300"
@@ -74,8 +78,8 @@ const OurServicesIndustry = () => {
                 <div className="flex justify-center items-center mb-6">
                   <div className="w-24 h-24 overflow-hidden flex items-center justify-center">
                     <Image
-                      src={item.imageSrc}
-                      alt={item.imageAlt}
+                      src={item?.path || "/image/2.png"}
+                      alt="services"
                       className="object-cover"
                       height={100}
                       width={100}
@@ -85,22 +89,26 @@ const OurServicesIndustry = () => {
 
                 <div className="text-center">
                   <h2 className="md:text-2xl text-lg font-semibold mb-2">
-                    {item.title}
+                    {item?.title}
                   </h2>
                   <p className="text-gray-600 text-sm md:text-base  font-medium">
-                    {item.description}
+                    {item?.subTitle}
                   </p>
                 </div>
 
                 <ul className="mt-4 text-gray-600 custom-list  px-4">
-                  {item.points?.map((point, idx) => (
-                    <li key={idx} className="mb-[2px] text-sm md:text-base">
-                      {point}
-                    </li>
+                  {item?.editorHtmlDescription?.map((point, idx) => (
+                    <li
+                      key={idx}
+                      className="mb-[2px] text-sm md:text-base"
+                      dangerouslySetInnerHTML={{
+                        __html: point.content, // Render HTML content inside list item
+                      }}
+                    ></li>
                   ))}
                 </ul>
 
-                <div className="mt-6 flex justify-center">
+                {/* <div className="mt-6 flex justify-center">
                   <button className=" bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6  inline-flex items-center transition-transform duration-300">
                     Request details
                     <FontAwesomeIcon
@@ -108,6 +116,21 @@ const OurServicesIndustry = () => {
                       className="ml-2 transform hover:translate-x-1"
                     />
                   </button>
+                </div> */}
+
+                <div className="mt-6 flex justify-center">
+                  <Link
+                    href={item?.link || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300"
+                  >
+                    Request details
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="ml-2 transform hover:translate-x-1"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>

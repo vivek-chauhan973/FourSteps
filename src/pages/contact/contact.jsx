@@ -328,35 +328,35 @@ const Contact = () => {
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faHouse}
-                  className="text-3xl text-blue-500 "
+                  className="text-2xl text-blue-500 "
                 />
               </p>
-              <span className="md:text-lg text-base font-semibold text-gray-700 hover:text-blue-500 transition">
+              <span className="md:text-base text-base font-semibold text-gray-700 hover:text-blue-500 transition">
                 info@4stepsdigital.com
               </span>
             </div>
             <div className="hidden md:block border-l-2 h-10 mx-4"></div>
-            <div className="flex flex-col items-center text-center mt-6 md:mt-0">
+            <div className="flex flex-col items-center text-center mt-4 md:mt-0">
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faLocationDot}
-                  className="text-3xl text-blue-500 "
+                  className="text-2xl text-blue-500"
                 />
               </p>
-              <span className="md:text-lg text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
+              <span className="md:text-base text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
                 T-3 A-1113, NX Byte, NX One Plot No. - 17, <br />
                 Sector - Tech Zone IV, Greater Noida West, 201310
               </span>
             </div>
             <div className="hidden md:block border-l-2 h-10 mx-4"></div>
-            <div className="flex flex-col items-center text-center mt-6 md:mt-0">
+            <div className="flex flex-col items-center text-center mt-4 md:mt-0">
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faPhoneSquare}
-                  className="text-3xl text-blue-500 "
+                  className="text-2xl text-blue-500 "
                 />
               </p>
-              <span className="md:text-lg text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
+              <span className="md:text-base  text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
                 +91-9065879989
               </span>
             </div>

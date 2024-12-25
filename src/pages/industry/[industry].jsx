@@ -31,7 +31,7 @@ const Travel = () => {
    
   },[industry])
 
-  // console.log("itineary industry ---==> ",industryName)
+  console.log("itineary all data one by one industry ---==> ",industryName)
   return (
     <div>
       {/* headres */}
