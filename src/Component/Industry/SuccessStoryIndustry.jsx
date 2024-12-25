@@ -62,7 +62,7 @@ import Image from "next/image";
 
 const SuccessStoryIndustry = ({stories}) => {
 
-  // console.log("stories is here ----> ",stories)
+  console.log("stories is here ----> ",stories)
   return (
     <>
       {/* section 1 */}
