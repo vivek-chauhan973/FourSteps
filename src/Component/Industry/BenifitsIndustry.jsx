@@ -12,13 +12,13 @@ const BenifitsIndustry = ({ benefits }) => {
     <>
       <div className="">
         <h2
-          className="text-base pb-5"
+          className="md:text-base py-2 text-sm"
           dangerouslySetInnerHTML={{ __html: benefits?.description }}
         ></h2>
 
         {/* Mobile view with slider */}
         <div className="block md:hidden text-center">
-          <div className="border-l-[3px] p-6 inline-block">
+          <div className="border-l-[3px] py-4 px-2 inline-block">
             <div className="text-primary text-4xl font-semibold">
               {benefits?.items[currentIndex]?.title}
             </div>
@@ -40,7 +40,7 @@ const BenifitsIndustry = ({ benefits }) => {
         </div>
 
         {/* Desktop view with grid */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
           {benefits?.items?.map((stat, index) => (
             <div key={index} className="border-l-[3px] p-6">
               <div className="text-primary text-4xl font-semibold">
@@ -50,7 +50,9 @@ const BenifitsIndustry = ({ benefits }) => {
             </div>
           ))}
         </div>
-
+        {/*  call to action section */}
+      </div>
+      <div>
         <Calltoaction />
       </div>
     </>

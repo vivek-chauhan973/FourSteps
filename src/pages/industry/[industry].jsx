@@ -40,26 +40,28 @@ const Travel = () => {
 
       <div className="font-sans">
         {/* hero section */}
-        <div className="flex   h-[90vh] justify-center items-center w-full bg-[#F8FAFC]">
-          <div className="grid grid-cols-1 md:grid-cols-2 md:mt-0  mt-24 gap-8 px-6 sm:px-10 shadow-lg">
-            {/* Content Section */}
-            <div className="flex flex-col justify-center text-center md:text-left">
-              <h2 className="text-xl sm:text-2xl  md:text-3xl font-semibold text-gray-800">
+
+        <div className="bg-gradient-to-r md:mt-0 mt-10 from-blue-50 to-purple-50 shadow-lg py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
+            {/* Left Content */}
+            <div className=" md:w-1/2">
+              <h1 className="text-2xl md:text-[36px] font-semibold leading-tight mb-5">
                 {industryName?.title || "IT Solution for Oil & Gas Companies"}
-              </h2>
-              <p className="text-gray-600  my-4 text-sm sm:text-base leading-relaxed">
-                {industryName?.description}
+              </h1>
+              <p className="text-sm md:text-lg ">
+                {industryName?.description ||
+                  "IT Solution for Oil & Gas Companies description....."}
               </p>
             </div>
 
-            {/* Image Section */}
-            <div className=" flex w-44 justify-center items-center">
+            {/* Right Image */}
+            <div className="md:w-1/2 flex justify-center mt-6 md:mt-0">
               <Image
                 src={industryName?.path || "/image/yyy.png"}
-                alt="About Us"
-                className="w-full md:w-[40] rounded object-cover"
-                height={500} // Reduce height for smaller devices
-                width={500} // Adjust width for responsiveness
+                alt="Hero Section"
+                className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
+                height={500}
+                width={500}
               />
             </div>
           </div>
@@ -94,28 +96,30 @@ const Travel = () => {
 
 export default Travel;
 
-// <div className="flex justify-center items-center w-full bg-[#F8FAFC] py-12">
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full px-4 sm:px-8 md:px-12 shadow-lg rounded-lg bg-white">
-//             {/* Content Section */}
-//             <div className="flex flex-col justify-center text-center md:text-left space-y-4">
-//               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">
-//                 {industryName?.title || "IT Solution for Oil & Gas Companies"}
-//               </h2>
-//               <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
-//                 {industryName?.description ||
-//                   "Your trusted partner for innovative and scalable IT solutions tailored to the Oil & Gas industry."}
-//               </p>
-//             </div>
+{
+  /* <div className="flex   h-[90vh] justify-center items-center w-full bg-[#F8FAFC]">
+<div className="grid grid-cols-1 md:grid-cols-2 md:mt-0  mt-24 gap-8 px-6 sm:px-10 shadow-lg">
+  {/* Content Section */
+}
+//   <div className="flex flex-col justify-center text-center md:text-left">
+//     <h2 className="text-xl sm:text-2xl  md:text-3xl font-semibold text-gray-800">
+//       {industryName?.title || "IT Solution for Oil & Gas Companies"}
+//     </h2>
+//     <p className="text-gray-600  my-4 text-sm sm:text-base leading-relaxed">
+//       {industryName?.description ||
+//         "IT Solution for Oil & Gas Companies"}
+//     </p>
+//   </div>
 
-//             {/* Image Section */}
-//             <div className="flex justify-center md:justify-end items-center">
-//               <Image
-//                 src={industryName?.path || "/image/yyy.png"}
-//                 alt="About Us"
-//                 className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-md object-cover"
-//                 height={300}
-//                 width={300}
-//               />
-//             </div>
-//           </div>
-//         </div>
+//   {/* Image Section */}
+//   <div className=" flex w-44 justify-center items-center">
+//     <Image
+//       src={industryName?.path || "/image/yyy.png"}
+//       alt="About Us"
+//       className="w-full md:w-[40] rounded object-cover"
+//       height={500} // Reduce height for smaller devices
+//       width={500} // Adjust width for responsiveness
+//     />
+//   </div>
+// </div>
+// </div> */}

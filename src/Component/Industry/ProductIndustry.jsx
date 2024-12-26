@@ -74,6 +74,7 @@ const ProductIndustry = ({ products }) => {
             Here is Render Our Product with link and to navigation
           </h3> */}
           <p
+            className="md:text-base py-2 text-sm"
             dangerouslySetInnerHTML={{
               __html: products?.mainEditorHtmlDescription,
             }}
@@ -97,21 +98,23 @@ const ProductIndustry = ({ products }) => {
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
                     <Image
-                      src={item?.path}
-                      alt="product section"
-                      className="w-20 h-20"
-                      height={200}
-                      width={200}
+                      src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
+                      alt="welcome"
+                      className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      height={500}
+                      width={500}
                     />
                   </div>
+
                   <h2 className="text-[22px]  py-2 hover:text-primary decoration-primary underline font-semibold text-center">
                     {item?.title}
                   </h2>
                 </div>
 
-                <ul className="custom-list pl-5 space-y-1">
+                <ul className="custom-list pl-5 ">
                   {item?.editorHtmlDescription?.map((item, itemIndex) => (
                     <li
+                      className=" py-[1px] md:text-base text-sm hover:text-primary"
                       key={itemIndex}
                       dangerouslySetInnerHTML={{ __html: item?.content }}
                     ></li>
@@ -127,3 +130,13 @@ const ProductIndustry = ({ products }) => {
 };
 
 export default ProductIndustry;
+
+// <div className="mb-4">
+//             <Image
+//               src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
+//               alt="welcome"
+//               className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+//               height={500}
+//               width={500}
+//             />
+//           </div>

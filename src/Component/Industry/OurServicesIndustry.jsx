@@ -60,7 +60,7 @@ const OurServicesIndustry = ({ services }) => {
     <>
       <div className="">
         <p
-          className=" text-sm md:text-base"
+          className="md:text-base py-3 text-sm"
           dangerouslySetInnerHTML={{
             __html: services?.mainEditorHtmlDescription,
           }}
@@ -76,13 +76,13 @@ const OurServicesIndustry = ({ services }) => {
             >
               <div className="md:px-6 px-3 py-6">
                 <div className="flex justify-center items-center mb-6">
-                  <div className="w-24 h-24 overflow-hidden flex items-center justify-center">
+                  <div className="mb-4">
                     <Image
-                      src={item?.path || "/image/2.png"}
-                      alt="services"
-                      className="object-cover"
-                      height={100}
-                      width={100}
+                      src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
+                      alt="welcome"
+                      className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      height={500}
+                      width={500}
                     />
                   </div>
                 </div>

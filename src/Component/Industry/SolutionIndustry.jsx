@@ -142,7 +142,7 @@ const SolutionIndustry = ({ solution }) => {
             business automation system:
           </p> */}
           <p
-            className=" text-sm md:text-base"
+            className="md:text-base py-2 text-sm"
             dangerouslySetInnerHTML={{
               __html: solution?.mainEditorHtmlDescription,
             }}
@@ -155,30 +155,31 @@ const SolutionIndustry = ({ solution }) => {
             {solution?.solutionItem.map((item, index) => (
               <div
                 key={index}
-                className="bg-white border p-6 rounded-lg  transform transition-transform duration-300 hover:scale-95 cursor-pointer hover:shadow"
+                className="bg-white border p-6 rounded-lg  transform transition-transform duration-300 hover:scale-105  hover:shadow"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
                     <Image
-                      src={item.pat || "/image/bg.jpg"} // Assuming the filename is a path to an image
+                      src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
                       alt="welcome"
-                      className="w-20 h-20 rounded-full"
-                      height={80}
-                      width={80}
+                      className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      height={500}
+                      width={500}
                     />
                   </div>
-                  <h2 className="text-[20px] sm:text-[22px] py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl">
+
+                  <h2 className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl">
                     {item?.title}
                   </h2>
                 </div>
                 {/* listing ul li  */}
-                <ul className="custom-list space-y-2 pl-5">
+                <ul className="custom-list  pl-5">
                   {item?.editorHtmlDescription?.map((descItem, itemIndex) => (
                     <li
                       key={itemIndex}
-                      className="text-sm sm:text-base text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-blue-500"
                       dangerouslySetInnerHTML={{
-                        __html: descItem.content, // Render HTML content inside list item
+                        __html: descItem?.content, // Render HTML content inside list item
                       }}
                     />
                   ))}

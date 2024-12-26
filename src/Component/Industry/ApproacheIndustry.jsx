@@ -34,10 +34,10 @@ const ApproacheIndustry = () => {
       <div>
         <div className="flex ">
           <div>
-            <h2 className="md:text-2xl  text-lg text-primary font-semibold pb-5">
+            <h2 className="md:text-3xl  text-lg text-primary font-semibold pb-3">
               Every successful strategy starts with an insightful conversation
             </h2>
-            <p className=" pb-3">
+            <p className=" pb-3 md:text-base   text-sm">
               Click on the cards below to explore the perks of our mature
               approach to service delivery and understand the benefits of
               trusting your insurance IT initiative to us
@@ -52,14 +52,14 @@ const ApproacheIndustry = () => {
               className="flex flex-row  md:flex-col hover:text-primary items-center cursor-pointer border-[1px] bg-transparent p-4 shadow-md group relative"
             >
               <Image
-                src={card.imgSrc}
-                alt={`${card.title} Icon`}
+                src={card?.imgSrc}
+                alt={`${card?.title} Icon`}
                 className="w-16 h-16 md:mb-4 md:w-20 md:h-20"
                 height={100}
                 width={100}
               />
               <h3 className=" md:text-lg text-base font-medium ml-4 md:ml-0 md:pb-1 text-center">
-                {card.title}
+                {card?.title}
               </h3>
               <div className="absolute bottom-0 left-0 w-0 h-[4px] bg-orange-500 group-hover:w-full transition-all duration-500"></div>
             </div>

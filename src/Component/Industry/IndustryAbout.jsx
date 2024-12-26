@@ -5,7 +5,7 @@ const IndustryAbout = ({ about }) => {
     <div className=" p-">
       {/* industry about */}
       {/* <div className=" text-xl font-semibold pb-5">About</div> */}
-      <div className="  px-4 pt-5">
+      <div className="  md:px-4 md:text-base text-sm pt-5">
         <p dangerouslySetInnerHTML={{ __html: about }} />
       </div>
     </div>
