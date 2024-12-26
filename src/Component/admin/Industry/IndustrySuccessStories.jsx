@@ -34,7 +34,8 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
   const [description, setDescription] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
-  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
+    useState("");
   const [successItem, setSuccessItem] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
@@ -44,9 +45,11 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
       const data = res?.data?.map((item) => item?._id);
       setSuccessItem(data || []);
     });
-    if(blogData){
-      setHeading(blogData?.success?.heading||"");
-      setMainEditorHtmlDescription(blogData?.success?.mainEditorHtmlDescription||"");
+    if (blogData) {
+      setHeading(blogData?.success?.heading || "");
+      setMainEditorHtmlDescription(
+        blogData?.success?.mainEditorHtmlDescription || ""
+      );
     }
   }, [blogData]);
 
@@ -174,24 +177,30 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
   //   setActiveTab("Tab4");
   // };
 
-  const handleSaveAllData=async ()=>{
-    const data={heading,mainEditorHtmlDescription,successItem};
-   const res=await fetch(`/api/industry/success1/success?industry=${blogData?._id}`,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-   })
+  const handleSaveAllData = async () => {
+    const data = { heading, mainEditorHtmlDescription, successItem };
+    const res = await fetch(
+      `/api/industry/success1/success?industry=${blogData?._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-   if(res?.ok){
-    setActiveTab("Tab4")
-    alert(blogData?._id?"Success Data updated successfully":"Success Data saved successfully");
-   }
-   else{
-    alert("something went wrong on frontend side");
-   }
-  }
+    if (res?.ok) {
+      setActiveTab("Tab4");
+      alert(
+        blogData?._id
+          ? "Success Data updated successfully"
+          : "Success Data saved successfully"
+      );
+    } else {
+      alert("something went wrong on frontend side");
+    }
+  };
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
@@ -225,6 +234,7 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
               />
             </div>
             <div className="border p-5">
+              <span className=" font-semibold">Upload a image</span>
               <div className="flex my-7">
                 <input
                   type="file"

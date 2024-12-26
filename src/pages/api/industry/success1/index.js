@@ -27,7 +27,7 @@ const apiRoute = async (req, res) => {
     upload.single("file")(req, res, async (err) => {
       if (err instanceof multer.MulterError) {
         // console.error("Multer error:", err);
-        return res.status(500).json({ error: "File upload failed" });
+        return res.status(500).json({ error: "File upload failedu" });
       } else if (err) {
         // console.error("Unknown error during file upload:", err);
         return res.status(500).json({ error: "File upload failed" });
