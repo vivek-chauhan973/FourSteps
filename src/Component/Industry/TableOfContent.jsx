@@ -740,7 +740,7 @@ const TableOfContent = ({ industryName }) => {
               <div className="md:px-2">
                 <div>
                   <h2 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.benefit?.heading}
+                    {industryName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>
                 {industryName?.benefit && (

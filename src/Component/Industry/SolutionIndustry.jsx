@@ -125,6 +125,7 @@
 // export default SolutionIndustry;
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const SolutionIndustry = ({ solution }) => {
@@ -168,9 +169,12 @@ const SolutionIndustry = ({ solution }) => {
                     />
                   </div>
 
-                  <h2 className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl">
+                  <Link
+                    href={item?.link || "#"}
+                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl"
+                  >
                     {item?.title}
-                  </h2>
+                  </Link>
                 </div>
                 {/* listing ul li  */}
                 <ul className="custom-list  pl-5">

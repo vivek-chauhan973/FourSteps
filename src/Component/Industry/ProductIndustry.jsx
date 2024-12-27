@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ProductIndustry = ({ products }) => {
@@ -64,7 +65,7 @@ const ProductIndustry = ({ products }) => {
       ],
     },
   ];
-  // console.log("here is all the products data ", products);
+  console.log("here is all the products data ", products);
 
   return (
     <>
@@ -106,9 +107,12 @@ const ProductIndustry = ({ products }) => {
                     />
                   </div>
 
-                  <h2 className="text-[22px]  py-2 hover:text-primary decoration-primary underline font-semibold text-center">
+                  <Link
+                    href={item?.link || "#"}
+                    className="text-[22px]  py-2 hover:text-primary decoration-primary underline font-semibold text-center"
+                  >
                     {item?.title}
-                  </h2>
+                  </Link>
                 </div>
 
                 <ul className="custom-list pl-5 ">

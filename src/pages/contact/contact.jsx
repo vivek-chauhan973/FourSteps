@@ -137,8 +137,8 @@ const Contact = () => {
               <div>
                 <h3 className="text-[15px] font-semibold">No pressure</h3>
                 <p className="text-sm text-gray-700">
-                  We're here to explore your needs and provide guidance —
-                  whenever you're ready to move forward.
+                  We are here to explore your needs and provide guidance —
+                  whenever you are ready to move forward.
                 </p>
               </div>
             </div>
@@ -147,7 +147,7 @@ const Contact = () => {
           <div className="bg-white md:p-6 p-3">
             <div>
               <h2 className="md:text-2xl text-lg font-semibold mb-4">
-                Let's discuss your needs!
+                Lets discuss your needs!
               </h2>
               <p className="mb-4 md:text-base text-sm">
                 Do you have a question for our specialists, want to discuss your

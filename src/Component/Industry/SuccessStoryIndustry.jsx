@@ -59,9 +59,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import Link from "next/link";
 
 const SuccessStoryIndustry = ({ stories }) => {
-  // console.log("stories is here ----> ",stories)
+  // console.log("stories is here ----> ", stories);
   return (
     <>
       {/* section 1 */}
@@ -87,25 +88,28 @@ const SuccessStoryIndustry = ({ stories }) => {
 
                 {/* Right Content */}
                 <div
-                  className={`bg-[#FFF0F5] shadow-lg   p-4 md:p-8 h-auto md:w-1/2 z-10`}
+                  className={`bg-[#FFF0F5] shadow-lg p-4 md:p-8 h-auto md:w-1/2 `}
+                  style={{
+                    backgroundColor: item?.backgroundColor || "#FFF0F5",
+                  }}
                 >
                   <div className="flex items-center space-x-2 mb-4">
                     {item?.keyword?.split(",")?.map((item, i) => (
                       <span
                         key={i}
-                        className="bg-white text-black text-sm px-2 py-2 rounded"
+                        className="bg-white text-black text-xs px-2 py-2 rounded"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-lg md:text-[22px] font-semibold text-gray-800 mb-4">
+                  <h2 className="text-lg md:text-[20px] font-semibold text-gray-800 mb-4">
                     {item?.title}
                   </h2>
-                  <p className="text-gray-600 text-sm md:text-base mb-6">
+                  <p className="text-gray-600 line-clamp-3 text-sm md:text-base mb-6">
                     {item?.description}
                   </p>
-                  <div className="mt-6 flex justify-center">
+                  {/* <div className="mt-6 flex justify-center">
                     <button className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300">
                       Request details
                       <FontAwesomeIcon
@@ -113,6 +117,21 @@ const SuccessStoryIndustry = ({ stories }) => {
                         className="ml-2 transform hover:translate-x-1"
                       />
                     </button>
+                  </div> */}
+
+                  <div className="mt-6 flex justify-center">
+                    <Link
+                      href={item?.link || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300"
+                    >
+                      Request details
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className="ml-2 transform hover:translate-x-1"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -134,24 +153,29 @@ const SuccessStoryIndustry = ({ stories }) => {
                 <div className="hidden md:block md:w-1/2"></div>
 
                 {/* Right Content */}
-                <div className="bg-[#FFF0F5] shadow-lg p-4 md:p-8 h-auto md:w-1/2 ">
+                <div
+                  className={`bg-[#FFF0F5] shadow-lg p-4 md:p-8 h-auto md:w-1/2 `}
+                  style={{
+                    backgroundColor: item?.backgroundColor || "#FFF0F5",
+                  }}
+                >
                   <div className="flex items-center space-x-2 mb-4">
                     {item?.keyword?.split(",")?.map((item, i) => (
                       <span
                         key={i}
-                        className="bg-white text-black text-sm px-2 py-2 rounded"
+                        className="bg-white text-black text-xs px-2 py-2 rounded"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-lg md:text-[22px] font-semibold text-gray-800 mb-4">
+                  <h2 className="text-lg md:text-[20px] font-semibold text-gray-800 mb-4">
                     {item?.title}
                   </h2>
-                  <p className="text-gray-600 text-sm md:text-base mb-6">
+                  <p className="text-gray-600 text-sm line-clamp-3 md:text-base mb-6">
                     {item?.description}
                   </p>
-                  <div className="mt-6 flex justify-center">
+                  {/* <div className="mt-6 flex justify-center">
                     <button className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300">
                       Request details
                       <FontAwesomeIcon
@@ -159,6 +183,21 @@ const SuccessStoryIndustry = ({ stories }) => {
                         className="ml-2 transform hover:translate-x-1"
                       />
                     </button>
+                  </div> */}
+
+                  <div className="mt-6 flex justify-center">
+                    <Link
+                      href={item?.link || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6 inline-flex items-center transition-transform duration-300"
+                    >
+                      Request details
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className="ml-2 transform hover:translate-x-1"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>

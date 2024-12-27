@@ -198,7 +198,7 @@ const IndustrySuccessStories = ({ setActiveTab, blogData }) => {
           : "Success Data saved successfully"
       );
     } else {
-      alert("something went wrong on frontend side");
+      alert("something went wrong on frontend siderrr");
     }
   };
   return (

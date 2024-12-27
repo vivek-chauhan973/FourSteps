@@ -238,7 +238,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-gray-700 py-4 text-end text-xs md:text-sm">
+          <div className="border-t border-gray-700 py-4 pl-2 text-xs md:text-sm">
             <p>
               Copyright © 2024 Four Steps Digital Consulting(OPC) Pvt Ltd. All
               Rights Reserved.
