@@ -143,7 +143,7 @@ const SuccessStoryIndustry = ({ stories }) => {
                 <Image
                   src={item?.path}
                   alt="Background"
-                  className="w-full h-full md:h-[70vh] md:w-[70vw] object-cover"
+                  className="w-full h-full md:h-[70vh] md:w-[70vw] sm:h-[50vh] sm-w- object-cover"
                   height={500}
                   width={500}
                 />
