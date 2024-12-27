@@ -53,7 +53,7 @@ export const Footer = () => {
               <p className="font-semibold mb-2">HubSpot Partners</p>
               <div className="flex justify-center mt-2">
                 <Image
-                  src="/image/zoohoo.png"
+                  src="/image/hh.png"
                   alt="Logo"
                   className="h-[65px] w-full"
                   height={500}
