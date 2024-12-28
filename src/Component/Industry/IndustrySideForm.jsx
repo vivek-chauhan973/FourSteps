@@ -1,69 +1,57 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import ContactForm from "./ContactForm";
 
 const IndustrySideForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const [show, SetShow] = useState(false);
+  const HandleClick = () => {
+    SetShow(!show);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
-
   return (
-    <div className="container  pb-4 flex justify-center items-center ">
-      <div className="max-w-sm w-full bg-white p-3 rounded-lg shadow-md border border-blue-400">
-        <h2 className="text-center text-2xl font-semibold text-blue-600 mb-2">
-          Get in Touch
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2 relative">
-            <FontAwesomeIcon
-              icon={faUser}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 text-lg"
-            />
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full pl-10 py-2 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
+    <>
+      <div
+        onClick={HandleClick}
+        className="w-full justify-center h-auto bg-yellow-50"
+      >
+        <div className="flex items-center space-x-4 bg-yellow-100 p-4 rounded-md shadow-md group hover:cursor-pointer">
+          {/* Calendar Icon */}
+          <div className="relative">
+            <div className="flex items-center justify-center w-20 h-16 bg-yellow-300 rounded-md ">
+              <FontAwesomeIcon
+                icon={faCalendarDays}
+                className="text-[40px] group-hover:animate-bounce"
+              />
+            </div>
+            {/* Inner Icon */}
+            <div className="absolute top-2 right-2 w-4 h-4 bg-yellow-600 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
           </div>
-          <div className="mb-4 relative">
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-400 text-lg"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full pl-10 py-2 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full mt-2 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out"
-          >
-            Submit
-          </button>
-        </form>
+          {/* Text */}
+          <div className="text-yellow-900 font-bold">Schedule a call</div>
+        </div>
       </div>
-    </div>
+
+      {show && (
+        <div>
+          <ContactForm />
+        </div>
+      )}
+    </>
   );
 };
 

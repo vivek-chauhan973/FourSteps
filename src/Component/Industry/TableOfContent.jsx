@@ -651,10 +651,7 @@ const TableOfContent = ({ industryName }) => {
             </div>
 
             {/* Success story section */}
-            <div
-              id="agenda"
-              className="flex flex-col justify-between mt-5 mb-3"
-            >
+            <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
                 {/* Heading */}
                 <div className="font-semibold text-primary text-lg md:text-3xl">
@@ -678,7 +675,7 @@ const TableOfContent = ({ industryName }) => {
             {/* Solution we deliver Section */}
             <div
               id="speakerSection"
-              className="flex flex-col justify-between mt-5 mb-3"
+              className="flex flex-col justify-between md:mt-20 mb-3"
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
@@ -753,10 +750,6 @@ const TableOfContent = ({ industryName }) => {
           {/* Table of content */}
           <div className="px-1 order-first md:order-none">
             <div className="sticky top-0 z-10">
-              {/* Side form section */}
-              <div>
-                <IndustrySideForm />
-              </div>
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}
@@ -855,6 +848,10 @@ const TableOfContent = ({ industryName }) => {
                     </p>
                   </ScrollLink>
                 </div>
+              </div>
+              {/* Side form section */}
+              <div className=" mt-2">
+                <IndustrySideForm />
               </div>
             </div>
           </div>

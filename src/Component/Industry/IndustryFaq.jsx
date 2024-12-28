@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-
-const IndustryFaq = ({faqData}) => {
+const IndustryFaq = ({ faqData }) => {
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
 
@@ -49,42 +48,45 @@ const IndustryFaq = ({faqData}) => {
             </button>
           </div>
           <div className="w-full mx-auto md:px-0 px-5">
-            {faqData?.length>0&&faqData?.map((faq, i) => (
-              <div key={i} className="mb-3">
-                <div
-                  onClick={() => handleToggle(i)}
-                  className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
-                >
-                  <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
-                    {faq.title}
-                  </p>
+            {faqData?.length > 0 &&
+              faqData?.map((faq, i) => (
+                <div key={i} className="mb-3">
+                  <div
+                    onClick={() => handleToggle(i)}
+                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                  >
+                    <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                      {faq.title}
+                    </p>
 
-                  <span>
-                    {openIndices.includes(i) ? (
-                      <FontAwesomeIcon icon={faChevronUp} />
-                    ) : (
-                      <FontAwesomeIcon icon={faChevronDown} />
-                    )}
-                  </span>
-                </div>
-                <div
-                  className={`overflow-hidden transition-max-height   duration-700 ease-in-out
+                    <span>
+                      {openIndices.includes(i) ? (
+                        <FontAwesomeIcon icon={faChevronUp} />
+                      ) : (
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      )}
+                    </span>
+                  </div>
+                  <div
+                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
                                 ${
                                   openIndices.includes(i)
                                     ? "max-h-[1000px]"
                                     : "max-h-0"
                                 }`}
-                  style={{
-                    maxHeight: openIndices.includes(i) ? "1000px" : "0px",
-                  }}
-                >
-                  <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
-                    <p dangerouslySetInnerHTML={{__html: faq?.information}}/>
-                    {faq.answer}
+                    style={{
+                      maxHeight: openIndices.includes(i) ? "1000px" : "0px",
+                    }}
+                  >
+                    <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
+                      <p
+                        dangerouslySetInnerHTML={{ __html: faq?.information }}
+                      />
+                      {faq.answer}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
