@@ -85,7 +85,29 @@ const Sidebar = () => {
             // change url according to the bizare expendition
             href: "/admin/Industry/industry-partner",
           },
-        ]},
+        ],
+      },
+      {
+        label: "Services",
+        icon: () => <FontAwesomeIcon icon={faSliders} />,
+        subMenu: [
+          {
+            label: "Create-Services",
+            // change url according to the bizare expendition
+            href: "/admin/Services/service-create",
+          },
+          {
+            label: "Services-list",
+            // change url according to the bizare expendition
+            href: "/admin/Services/service-list",
+          },
+          {
+            label: "Partners",
+            // change url according to the bizare expendition
+            href: "/admin/Industry/industry-partner",
+          },
+        ],
+      },
       {
         label: "Home Page",
         icon: () => <FontAwesomeIcon icon={faHome} />,
@@ -176,10 +198,9 @@ const Sidebar = () => {
         label: "Blog",
         icon: () => <FontAwesomeIcon icon={faBlog} />,
         subMenu: [
-          {label:"Blog Promo",href:"/admin/blog/blogpromo"},
+          { label: "Blog Promo", href: "/admin/blog/blogpromo" },
           { label: "Create", href: "/admin/blog/blog-create" },
           { label: " Blog-lists ", href: "/admin/blog/blog-listing" },
-
         ],
       },
       {
