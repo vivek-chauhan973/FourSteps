@@ -17,7 +17,7 @@ const IndustrySideForm = () => {
         <div className="flex items-center space-x-4 bg-yellow-100 p-4 rounded-md shadow-md group hover:cursor-pointer">
           {/* Calendar Icon */}
           <div className="relative">
-            <div className="flex items-center justify-center w-20 h-16 bg-yellow-300 rounded-md ">
+            <div className="flex items-center justify-center w-20 h-16 bg-yellow-200 rounded-md ">
               <FontAwesomeIcon
                 icon={faCalendarDays}
                 className="text-[40px] group-hover:animate-bounce"
