@@ -3,7 +3,7 @@ import React from "react";
 const Trail = () => {
   return (
     <div>
-      <h3>Code trail</h3>
+      <h3>Code traill</h3>
     </div>
   );
 };
