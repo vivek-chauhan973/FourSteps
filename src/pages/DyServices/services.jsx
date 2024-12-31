@@ -59,7 +59,7 @@ const DyServices = () => {
                 structure. Let me know if you need more adjustments!
               </p>
 
-              <div className=" mt-16">
+              <div className=" md:mt-16 hidden">
                 <button className="border border-orange-500 bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all py-2 px-6 rounded-lg text-sm md:text-base">
                   Explore Now
                 </button>

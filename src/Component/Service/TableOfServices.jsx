@@ -13,7 +13,7 @@ import ApproacheIndustry from "../Industry/ApproacheIndustry";
 const TableOfServices = ({ industryName }) => {
   return (
     <div className="">
-      <div className="bg-[#F1F5F9] py-7">
+      <div className="bg-[#F1F5F9] ">
         <div className="md:px-5 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
@@ -143,7 +143,7 @@ const TableOfServices = ({ industryName }) => {
           </div>
 
           {/* Table of content */}
-          <div className="px-1 order-first md:order-none">
+          <div className="pl-3 md:pl-0 order-first md:order-none">
             <div className="sticky top-0 z-10">
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
