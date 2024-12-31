@@ -372,7 +372,7 @@ const Count = () => {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`w-3 h-3  rounded-full ${
-                  index === activeIndex ? "bg-blue-600" : "bg-gray-400"
+                  index === activeIndex ? "bg-orange-500" : "bg-gray-400"
                 } cursor-pointer`}
               ></div>
             ))}

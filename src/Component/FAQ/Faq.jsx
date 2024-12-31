@@ -160,7 +160,7 @@ const IndustryFaq = () => {
           <h3 className="py-2 md:text-xl text-lg font-bold uppercase">
             general questions
           </h3>
-          <p className="text-[15px] pb-5 leading-6">
+          <p className="md:text-[15px] text-sm pb-3 leading-6">
             At Four Steps Digital Consulting Pvt Ltd, we are dedicated to
             enhancing your business digital capabilities through Zoho and
             HubSpot consulting while driving growth with effective digital
@@ -176,7 +176,7 @@ const IndustryFaq = () => {
               {isAllOpen ? "Hide all" : "Expand all"}
             </button>
           </div>
-          <div className="w-full mx-auto md:px-0 px-5">
+          <div className="w-full mx-auto md:px-0 px-2">
             {faqs.map((faq, i) => (
               <div key={i} className="mb-3">
                 <div

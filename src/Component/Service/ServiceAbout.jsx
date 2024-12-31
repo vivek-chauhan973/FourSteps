@@ -30,7 +30,7 @@ const ServiceAbout = () => {
           Events... Attend upcoming conferences... Network with professionals
         </li>
         <li>
-          News... Stay informed with the latest updates... What's happening in
+          News... Stay informed with the latest updates... Whats happening in
           the company
         </li>
         <li>

@@ -85,7 +85,7 @@ const ContactForm = () => {
             <div className="container mx-auto p-6 bg-gradient-to-b from-blue-50 to-blue-100 rounded-lg">
               <div className="text-center mb-6">
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                  Let's Discuss Your Needs!
+                  Lets Discuss Your Needs!
                 </h2>
                 <p className="text-sm md:text-base text-gray-600 mt-2">
                   Have questions, want to discuss your project, or learn more

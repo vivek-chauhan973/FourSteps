@@ -74,10 +74,10 @@ const Client = () => {
           <p className="text-[12px] text-zinc-500 leading-3 font-bold uppercase">
             Clients
           </p>
-          <h2 className="my-5 text-3xl font-bold capitalize">
+          <h2 className="md:py-4 py-2 text-xl md:text-3xl font-semibold capitalize">
             The confidence of our clients
           </h2>
-          <p className="text-[15px] leading-6">
+          <p className="md:text-[15px] text-sm leading-6">
             Over the course of the past three years, we have had the privilege
             of collaborating with a diverse array of over 75 clients, each
             contributing to our rich tapestry of experience and expertise. Among

@@ -119,11 +119,11 @@ const ServicesScienceSoft = () => {
             ))}
           </div>
           {/* Content Area */}
-          <div className="w-full md:h-[90vh] overflow-hidden md:flex-1 px-3  md:px-16 py-10">
+          <div className="w-full md:h-[90vh] overflow-hidden md:flex-1 px-3  md:px-16 md:py-10 py-8">
             <h2 className="md:text-2xl text-lg font-semibold mb-3 ">
               {activeService.content.heading}
             </h2>
-            <p className="text-gray-700 text-base md:text-lg mb-6">
+            <p className="text-gray-700 text-base md:text-lg mb-5">
               {activeService.content.description}
             </p>
             <div className="grid grid-cols-1 md:px-0 px-3  sm:grid-cols-2 gap-4">

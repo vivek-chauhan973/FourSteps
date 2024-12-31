@@ -29,14 +29,14 @@ const BackToTop = () => {
     <div className="z-[999] relative">
       {isVisible && (
         <button
-        className="backtotopanimate"
+          className="backtotopanimate"
           onClick={scrollToTop}
           style={{
             position: "fixed",
             bottom: "30px",
-            right: "30px",
+            right: "10px",
             padding: "10px 15px",
-            backgroundColor: "#F36B21", 
+            backgroundColor: "#F36B21",
             color: "#ffffff",
             border: "none",
             borderRadius: "100px",
