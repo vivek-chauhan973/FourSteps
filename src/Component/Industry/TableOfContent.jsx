@@ -850,7 +850,7 @@ const TableOfContent = ({ industryName }) => {
                 </div>
               </div>
               {/* Side form section */}
-              <div className=" mt-2">
+              <div className=" mt-2  " >
                 <IndustrySideForm />
               </div>
             </div>

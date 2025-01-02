@@ -53,9 +53,9 @@ const DyServices = () => {
                 {/* {industryName?.description ||
                   "IT Solution for Oil & Gas Companies description....."} */}
                 some description of services ..... Each service e.g.,
-                Underwriting, Billing will display its title, icon, and a
-                list of points associated with it. The component will print out
-                the data properly and show the items in a clean, card-like
+                Underwriting, Billing will display its title, icon, and a list
+                of points associated with it. The component will print out the
+                data properly and show the items in a clean, card-like
                 structure. Let me know if you need more adjustments!
               </p>
 
