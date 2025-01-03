@@ -8,6 +8,8 @@ import Nav from "@/Component/Header/Nav";
 import { useRouter } from "next/router";
 import TableOfServices from "@/Component/Service/TableOfServices";
 import ServiceFaq from "@/Component/Service/ServiceFaq";
+import TableofSolution from "@/Component/Solution/TableofSolution";
+import SolutionFaq from "@/Component/Solution/SolutionFaq";
 // const getIndustry = async (item) => {
 //   return await (
 //     await fetch(
@@ -81,7 +83,8 @@ const SolutionSection = () => {
 
         {/* tabel of content section */}
         <div>
-          <TableOfServices />
+          {/* <TableOfServices /> */}
+          <TableofSolution />
         </div>
 
         {/* Client & Testimonials */}
@@ -95,7 +98,7 @@ const SolutionSection = () => {
 
       {/* this is FQA SECTION  */}
       <div>
-        <ServiceFaq />
+        <SolutionFaq />
       </div>
 
       {/* footer section */}

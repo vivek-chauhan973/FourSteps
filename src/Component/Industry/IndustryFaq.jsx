@@ -68,7 +68,7 @@ const IndustryFaq = ({ faqData }) => {
                     </span>
                   </div>
                   <div
-                    className={`overflow-hidden transition-max-height   duration-700 ease-in-out
+                    className={`overflow-hidden transition-max-height   duration-100 ease-in-out
                                 ${
                                   openIndices.includes(i)
                                     ? "max-h-[1000px]"

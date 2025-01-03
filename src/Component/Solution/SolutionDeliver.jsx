@@ -1,10 +1,8 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Solutionservice = () => {
+const SolutionDeliver = () => {
   const solution = {
     solutionItem: [
       {
@@ -97,4 +95,4 @@ const Solutionservice = () => {
   );
 };
 
-export default Solutionservice;
+export default SolutionDeliver;
