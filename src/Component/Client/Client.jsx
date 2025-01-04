@@ -1,68 +1,69 @@
+import Image from "next/image";
 import React from "react";
 const Client = () => {
   const cards = [
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/con.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/con.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/con.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/con.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/ele.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/con.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/ele.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/con.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAUpFiV_ZDN4Hqqk2LK-sLU0EEOtTcNgjbjo9SwuM6KDPsAHZo",
+      images: "/image/con.jpg",
       alt: "Rescom Solar",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/con.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/con.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/ele.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/ele.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/ele.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/ele.jpg",
       alt: "Electrical Junction",
     },
     {
-      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSgUKXLSw7bzj86MZCPAZroSpbGVhhVF_B1uGwABKoQ6-2HDr2p",
+      images: "/image/con.jpg",
       alt: "Electrical Junction",
     },
   ];
@@ -88,15 +89,17 @@ const Client = () => {
           </p>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-4 gap-5 place-items-center md:w-2/3 w-full animate-slide-in-from-right">
-          {cards.map((card, i) => (
+          {cards?.map((card, i) => (
             <div
               key={i}
               className="w-full bg-white shadow-lg overflow-hidden border rounded-md grid place-items-center p-2"
             >
-              <img
+              <Image
                 className="w-full h-full object-cover"
-                src={card.img}
-                alt={card.alt}
+                src={card?.images}
+                alt={card?.alt}
+                height={100}
+                width={100}
               />
             </div>
           ))}
