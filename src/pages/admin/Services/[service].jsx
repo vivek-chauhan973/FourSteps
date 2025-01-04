@@ -9,12 +9,14 @@ import SerProduct from "@/Component/admin/Services/SerProduct";
 import SerService from "@/Component/admin/Services/SerService";
 import SerBenifits from "@/Component/admin/Services/SerBenifits";
 import SerFaq from "@/Component/admin/Services/SerFaq";
-const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/service/${id}`)).json();
-};
+// const postDataAccordingId = async (id) => {
+//   return await (await fetch(`/api/service/${id}`)).json();
+// };
 export default function CreateWebinar() {
   const router = useRouter();
   const { service } = router?.query;
+
+  
   const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
   useEffect(() => {

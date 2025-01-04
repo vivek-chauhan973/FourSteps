@@ -30,7 +30,7 @@ export default function CreateWebinar() {
         className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
       >
         <SerHeroSection setActiveTab={setActiveTab} blogData={blogData} />
-      </div>
+      </div> 
     </AdminLayout>
   );
 }
