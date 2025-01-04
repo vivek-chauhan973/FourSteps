@@ -58,22 +58,11 @@ const About = () => {
       </div>
       <div className="container">
         {/*  hero section  */}
-        <div className="flex justify-center items-center w-full bg-gray-50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-10 bg-white rounded-lg shadow-lg">
-            {/* Image Section */}
-            <div className="flex justify-center md:justify-end items-center order-1 md:order-2">
-              <Image
-                src="/image/yyy.png"
-                alt="About Us"
-                className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
-                height={500}
-                width={500}
-              />
-            </div>
-
+        <div className="flex justify-center items-center w-full bg-[#F8FAFC]">
+          <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8 p-6 sm:p-10  ">
             {/* Content Section */}
-            <div className="flex flex-col justify-center order-2 md:order-1 text-center md:text-left space-y-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+            <div className="flex flex-col justify-center  text-center md:text-left space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl  font-semibold text-gray-600">
                 About Us
               </h2>
               <p className="text-orange-500 text-sm sm:text-base font-medium">
@@ -88,6 +77,17 @@ const About = () => {
                 challenges into opportunities together.
               </p>
             </div>
+
+            {/* Image Section */}
+            <div className="flex justify-center md:justify-end items-center ">
+              <Image
+                src="/image/yyy.png"
+                alt="About Us"
+                className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
+                height={500}
+                width={500}
+              />
+            </div>
           </div>
         </div>
 
@@ -97,11 +97,11 @@ const About = () => {
             {/* Text Section */}
             <div className="text-center md:text-left">
               {/* Highlighted Tag */}
-              <div className="inline-block bg-red-100 text-red-500 px-3 py-2 rounded-md text-sm mb-4">
+              <div className="inline-block bg-orange-100 text-red-500 px-3 py-2 rounded-md text-xs mb-4">
                 4steps Digital
               </div>
               {/* Main Heading */}
-              <h1 className="text-3xl lg:text-4xl font-bold leading-snug mb-6">
+              <h1 className="text-2xl lg:text-3xl font-semibold leading-snug mb-6">
                 We are born to
                 <br />
                 <span className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 bg-clip-text text-transparent">
@@ -132,8 +132,8 @@ const About = () => {
             <div className="flex justify-center">
               <Image
                 alt="Four Steps Digital"
-                src="/image/ab.webp"
-                className="rounded-lg shadow-lg"
+                src="/image/yyy.png"
+                className=""
                 height={500}
                 width={500}
                 priority
@@ -154,12 +154,12 @@ const About = () => {
           </div>
 
           <div className="flex px-1 justify-around md:max-w-4xl mx-auto border py-3 bg-white rounded-full shadow-xl">
-            {data.map((data, index) => (
+            {data?.map((data, index) => (
               <span
                 key={index}
                 onClick={() => handleSectionClick(data)}
                 className={`cursor-pointer flex items-center ${
-                  currentdata.title === data.title
+                  currentdata.title === data?.title
                     ? "text-red-500"
                     : "text-zinc-800"
                 }`}
