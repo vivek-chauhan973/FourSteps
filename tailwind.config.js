@@ -35,7 +35,8 @@ module.exports = {
         secondary: "#4B4F58",
         heading: "#0d417b", // Heading color
         subheading: "#ea6e2a", // Subheading color
-        background: "#F6F9FC", // Background color
+        background: "#F6F9FC",
+        backgroundpri: "#FEF4EA ", // Background color
       },
     },
   },

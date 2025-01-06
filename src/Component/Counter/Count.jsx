@@ -269,8 +269,8 @@ const Counter = ({ endValue, label, icon, className, isVisible }) => {
 
   return (
     <div className={`flex items-center p-2 w-72 h-28 ${className}`}>
-      <div className="text-6xl bg-orange-50 rounded-full h-20 w-20 flex items-center justify-center mr-4">
-        <FontAwesomeIcon icon={icon} className="text-primary count" />
+      <div className="text-6xl bg-blue-100 rounded-full h-20 w-20 flex items-center justify-center mr-4">
+        <FontAwesomeIcon icon={icon} className="text-blue-800 count" />
       </div>
       <div className="flex flex-col text-center">
         <div className="md:text-3xl text-xl font-semibold">{count}</div>
@@ -328,13 +328,13 @@ const Count = () => {
   }, [isMobile, counters.length]);
 
   return (
-    <div className="md:pt-10 container pt-5" ref={countRef}>
+    <div className="md:pt-10 bg-background container py-10 " ref={countRef}>
       <div className="text-center">
-        <h1 className="md:text-3xl text-lg font-semibold">
+        <h1 className="md:text-3xl text-lg text-heading font-semibold">
           <span>Enhancing Business Experience</span>
           <span className="block">with Technology at Heart</span>
         </h1>
-        <h2 className="mt-4 p-4">
+        <h2 className="py-4 text-sm md:text-lg ">
           At Four Steps Digital, we infuse magic into innovation, crafting
           unique tech solutions that redefine your business identity and enhance
           life.
@@ -342,7 +342,7 @@ const Count = () => {
       </div>
       {isMobile ? (
         // Mobile Slider
-        <div className="relative w-full py-5 overflow-hidden">
+        <div className="relative w-full  pb-8  overflow-hidden">
           <div
             className="flex transition-transform duration-500"
             style={{
@@ -366,13 +366,13 @@ const Count = () => {
             ))}
           </div>
           {/* Indicators */}
-          <div className="absolute bottom-1  left-0 right-0 flex justify-center space-x-2">
+          <div className="absolute bottom-0   left-0 right-0 flex justify-center space-x-2">
             {counters.map((_, index) => (
               <div
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`w-3 h-3  rounded-full ${
-                  index === activeIndex ? "bg-orange-500" : "bg-gray-400"
+                  index === activeIndex ? "bg-blue-500" : "bg-gray-400"
                 } cursor-pointer`}
               ></div>
             ))}

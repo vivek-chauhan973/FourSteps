@@ -13,15 +13,17 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 /* Additional global styles */
-
+/* for the desktopn section */
 :root {
   --font-poppins: "Poppins";
   --font-roboto: "Roboto";
 }
 
 body {
-  font-family: var(--font-roboto); /* Default font for the body */
+  font-family: var(--font-roboto);
+  /* Default font for the body */
 }
+
 /* Headings use Poppins */
 
 h1,
@@ -38,6 +40,29 @@ h6 {
 p {
   font-family: var(--font-roboto);
 }
+
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* Adjust heading size for mobile */
+    font-family: var(--font-poppins);
+    /* Headings still use Poppins */
+  }
+
+  p {
+    font-family: var(--font-roboto);
+    /* Paragraphs still use Roboto */
+  }
+}
+
 
 /*  for carousel over flow  */
 .container {
@@ -188,6 +213,7 @@ p {
 .carousel-container {
   position: relative;
 }
+
 .pagination {
   display: flex;
   gap: 10px;
@@ -201,10 +227,12 @@ p {
   background-color: #fffbf5;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
+
 .pagination-item {
   list-style: none;
   /* Removes bullets/numbers */
 }
+
 .pagination-item:hover {
   background-color: rgb(211, 211, 211);
 }
@@ -561,6 +589,7 @@ a:hover span {
 /* styles/globals.css */
 
 @keyframes continuous {
+
   0%,
   100% {
     transform: scale(1);
@@ -706,7 +735,7 @@ a:hover span {
   }
 
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   100% {
@@ -723,6 +752,7 @@ ol {
   list-style-type: decimal;
   /* Ensures ordered lists show numbers */
 }
+
 .ql-editor ul {
   list-style-type: square;
 }
@@ -748,10 +778,13 @@ ul {
 }
 
 @media (max-width: 768px) {
+
   .rich-text-content ul,
   .rich-text-content ol {
-    padding-left: 15px; /* Reduce padding for smaller screens */
-    margin-top: 3px; /* Adjust spacing above lists */
+    padding-left: 15px;
+    /* Reduce padding for smaller screens */
+    margin-top: 3px;
+    /* Adjust spacing above lists */
   }
 
   .rich-text-content p {
@@ -765,9 +798,11 @@ ul {
     /* Slightly increase spacing for better readability */
   }
 }
+
 .custom-list {
   list-style-type: square;
 }
+
 .custom-list ::marker {
   color: #f36b21;
   /* color: rgb(73, 73, 244); */
@@ -783,11 +818,14 @@ ul {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0.9);
   }
 }
+
 .zoom-out {
   animation: zoomOut 3s ease-in-out forwards;
 }
+
 /* for testimonial image animation end  */

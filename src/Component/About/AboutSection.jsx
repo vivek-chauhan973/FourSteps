@@ -11,10 +11,10 @@ import Link from "next/link";
 
 const AboutSection = () => {
   return (
-    <div className="container p-4  md:p-10">
+    <div className="container bg-backgroundpri p-4  md:p-10">
       <div className=" text-center mx-auto pb-3 ">
         <div className="">
-          <span className="text-[#BC4242] bg-[#FFF4FA] rounded-md px-3 py-1 text-xs">
+          <span className="text-[#BC4242] bg-[#f5decd] rounded-md px-3 py-1 text-xs">
             About us 4steps Digital
           </span>
         </div>

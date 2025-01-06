@@ -190,22 +190,26 @@ const Partners = () => {
   }, []);
 
   return (
-    <div className="container-wrapper  mx-auto md:py-10    pt-10  md:mt-10 px-4">
+    // <div className="[#fff6ed] bg-[#ffeedc]  md:h-[80vh] h-auto  justify-center items-center mx-auto py-10 md:px-24">
+    <div className=" bg-white shadow md:h-[65vh]  h-auto flex flex-col justify-center items-center md:py-10 pt-10 md:pt-0 px-4 md:px-24">
       {/* Title Section */}
       <div className="text-center ">
-        <h2 className="text-base md:text-lg mb-0 md:mb-10 lg:text-xl font-medium text-gray-600  max-w-3xl mx-auto">
+        <h4 className="text-sm mb-0 text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold  drop-shadow-lg  max-w-3xl mx-auto">
+          Our Reliale Partners
+        </h4>
+        <h2 className="text-sm mb-0 text-gray-900 md:mb-10 md:text-lg  font-medium  drop-shadow-lg  max-w-3xl mx-auto">
           Since 1989. For millions of users. We deliver top-quality, secure, and
           adaptable digital solutions for the needs of today and the
-          opportunities of tomorrow.
+          opportunities of tomorrow..
         </h2>
       </div>
 
       {/* Carousel Section */}
-      <div className="relative  flex items-center">
+      <div className="relative w-full  flex items-center">
         {/* Left Arrow */}
         <button
           onClick={scrollPrev}
-          className="absolute hidden  left-0 z-10  md:flex items-center justify-center h-12 w-12 bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-700 shadow-md transition-all"
+          className="absolute hidden  left-0 z-10  md:flex items-center justify-center h-12 w-12 bg-primary  text-white  rounded-full p-2 shadow-md transition-all"
         >
           <FontAwesomeIcon icon={faAngleLeft} className="text-lg" />
         </button>
@@ -213,7 +217,7 @@ const Partners = () => {
         {/* Carousel */}
         <div
           ref={carouselRef}
-          className="flex md:gap-20 gap-5  overflow-hidden  max-w-full lg:max-w-4xl md:max-w-3xl mx-auto justify-center items-center px-4"
+          className="flex md:gap-16 gap-5  overflow-hidden  max-w-full lg:max-w-4xl md:max-w-3xl mx-auto justify-center items-center px-4"
         >
           {data.map((item, index) => (
             <div
@@ -234,7 +238,7 @@ const Partners = () => {
         {/* Right Arrow */}
         <button
           onClick={scrollNext}
-          className="absolute hidden right-0  z-10  md:flex items-center justify-center h-12 w-12 bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-700 shadow-md transition-all"
+          className="absolute hidden right-0  z-10  md:flex items-center justify-center h-12 w-12 bg-primary rounded-full p-2 text-white shadow-md transition-all"
         >
           <FontAwesomeIcon icon={faAngleRight} className="text-lg" />
         </button>
