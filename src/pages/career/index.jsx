@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faXmarkCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Nav from "@/Component/Header/Nav";
 import Calltoaction from "@/Component/Web/Calltoaction";
@@ -231,22 +235,6 @@ const Career = () => {
         </div>
       </div>
 
-      {/* <div className="w-full py-5 grid place-items-center">
-        <div className="grid place-items-center">
-          <p className="mt-4 text-center text-sm md:text-lg lg:text-xl">
-            We are excited to announce new opportunities for growth.
-            <br />
-            <span className="font-medium text-gradient">
-              We're Hiring!
-            </span>{" "}
-            Join our team to make an impact.
-          </p>
-          <button className="mt-5 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
-           Send  Resume
-          </button>
-        </div>
-      </div> */}
-
       <div className="w-full py-5 grid place-items-center">
         <div className="grid place-items-center">
           <p className="mt-4 text-center text-sm md:text-lg lg:text-xl">
@@ -267,7 +255,17 @@ const Career = () => {
 
         {showPopup && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+              {/* Cancel button with icon */}
+              <button
+                type="button"
+                className="absolute top-3 right-3 text-gray-500 text-xl hover:text-gray-700"
+                onClick={() => setShowPopup(false)}
+              >
+                <FontAwesomeIcon icon={faXmarkCircle} />
+              </button>
+
+              {/* Modal Content */}
               <h2 className="text-xl font-semibold mb-4">Submit Your Resume</h2>
               <form onSubmit={handleSubmit} className="grid gap-4">
                 <input
@@ -305,14 +303,7 @@ const Career = () => {
                   className="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   onChange={handleFileChange}
                 />
-                <div className="flex  justify-end gap-4">
-                  <button
-                    type="button"
-                    className="px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400"
-                    onClick={() => setShowPopup(false)}
-                  >
-                    Cancel
-                  </button>
+                <div className="flex justify-end gap-4">
                   <button
                     type="submit"
                     className="px-6 py-2 bg-green-500 text-white rounded-full hover:bg-green-600"

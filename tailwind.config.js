@@ -15,9 +15,6 @@ module.exports = {
       transitionDuration: {
         5000: "5000ms", // Add this custom duration
       },
-      colors: {
-        customColor: "#123456", // Example of adding custom colors
-      },
       spacing: {
         128: "32rem", // Example of extending spacing
       },
@@ -36,6 +33,9 @@ module.exports = {
       colors: {
         primary: "#F36B21",
         secondary: "#4B4F58",
+        heading: "#0d417b", // Heading color
+        subheading: "#ea6e2a", // Subheading color
+        background: "#F6F9FC", // Background color
       },
     },
   },

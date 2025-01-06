@@ -10,9 +10,10 @@ const Index = () => {
           name="description"
           content="Welcome to the home page of my Next.js application."
         />
+        <meta name="viewport" content="width=device-width, initia l-scale=1" />
       </Head>
+
       <Home />
-      {/* <AboutSection /> */}
     </div>
   );
 };
