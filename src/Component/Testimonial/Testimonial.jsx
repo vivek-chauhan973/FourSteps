@@ -180,77 +180,83 @@ const Trail = () => {
   const currentItem = testimonials[currentIndex]; // Get the currently displayed testimonial
 
   return (
-    <div className="container h-full">
-      {/* Banner Section */}
-      <div
-        className="relative bg-cover w-full h-full bg-center text-white flex justify-center items-center"
-        style={{ backgroundImage }} // Set the dynamic background image
-      >
-        {/* Testimonials Section */}
-        <div className="flex flex-col py-5 items-center justify-center  text-white mx-auto">
-          {/* Section Title */}
-          <h2 className="text-xl md:text-4xl font-bold tracking-wide mb-3 text-white">
-            Our Testimonials
-          </h2>
+    <div className=" bg-background">
+      <div className="">
+        {/* Banner Section */}
+        <div
+          className="relative bg-cover w-full h-full bg-center text-white flex justify-center items-center"
+          style={{ backgroundImage }} // Set the dynamic background image
+        >
+          {/* Testimonials Section */}
+          <div className="flex flex-col py-5 items-center justify-center  text-white mx-auto">
+            {/* Section Title */}
+            <h2 className="text-xl text-heading md:text-3xl font-bold tracking-wide mb-3">
+              Our Testimonials
+            </h2>
+            <p class="text-sm md:text-xl md:px-0 px-5 text-gray-900  max-w-5xl">
+              Our clients success is our success. Here is what they have to say
+              about working with us."
+            </p>
 
-          {/* Content Wrapper */}
-          <div className="flex flex-col md:flex-row items-center justify-center w-full p-4 md:p-8">
-            {/* Image Section */}
-            <div
-              className={`md:w-1/2 flex justify-center md:justify-end ${
-                zoomOut ? "zoom-out" : ""
-              }`}
-            >
-              <div className="relative overflow-hidden cursor-pointer hover:rounded w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw]">
-                <Image
-                  src={currentItem?.path}
-                  alt={currentItem?.alt}
-                  className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
-                  height={200}
-                  width={200}
-                />
-              </div>
-            </div>
-
-            {/* Text Content Section */}
-            <div
-              className="w-full md:w-1/2 h-auto sm:h-[60vh] md:h-[70vh] p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left border-white"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              {/* Title */}
-              <h3 className="text-2xl md:text-3xl mb-4">
-                {currentItem?.company}
-              </h3>
-
-              {/* Rating Section */}
-              <div className="flex justify-center md:justify-start mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    className="w-6 h-6 text-yellow-500"
-                  >
-                    <path d="M12 .587l3.668 7.568L24 9.423l-6 5.843L19.335 24 12 20.254 4.665 24 6 15.266 0 9.423l8.332-1.268z" />
-                  </svg>
-                ))}
-              </div>
-
-              {/* Testimonial Content */}
-              <p
-                className="mb-4 text-sm md:text-base font-semibold"
-                data-aos="fade-up"
+            {/* Content Wrapper */}
+            <div className="flex flex-col md:flex-row items-center justify-center w-full p-4 md:p-8">
+              {/* Image Section */}
+              <div
+                className={`md:w-1/2 flex justify-center md:justify-end ${
+                  zoomOut ? "zoom-out" : ""
+                }`}
               >
-                {currentItem?.description}
-              </p>
+                <div className="relative overflow-hidden cursor-pointer hover:rounded w-full h-[50vh] sm:h-[60vh] md:h-[70vh] max-w-full sm:max-w-[70vw] md:max-w-[40vw]">
+                  <Image
+                    src={currentItem?.path}
+                    alt={currentItem?.alt}
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
+                    height={200}
+                    width={200}
+                  />
+                </div>
+              </div>
 
-              {/* Author Details */}
-              <p className="font-semibold">{currentItem?.name}</p>
-              <p className="text-gray-400 italic font-semibold">
-                {currentItem?.designation}
-              </p>
+              {/* Text Content Section */}
+              <div
+                className="w-full md:w-1/2 h-auto sm:h-[60vh] md:h-[70vh] p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left border-white"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                {/* Title */}
+                <h3 className="text-2xl md:text-3xl mb-4">
+                  {currentItem?.company}
+                </h3>
+
+                {/* Rating Section */}
+                <div className="flex justify-center md:justify-start mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6 text-yellow-500"
+                    >
+                      <path d="M12 .587l3.668 7.568L24 9.423l-6 5.843L19.335 24 12 20.254 4.665 24 6 15.266 0 9.423l8.332-1.268z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Testimonial Content */}
+                <p
+                  className="mb-4 text-sm md:text-base font-semibold"
+                  data-aos="fade-up"
+                >
+                  {currentItem?.description}
+                </p>
+
+                {/* Author Details */}
+                <p className="font-semibold">{currentItem?.name}</p>
+                <p className="text-gray-400 italic font-semibold">
+                  {currentItem?.designation}
+                </p>
+              </div>
             </div>
           </div>
         </div>

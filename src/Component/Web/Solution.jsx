@@ -29,14 +29,13 @@ const spineConditions = [
 const App = () => {
   return (
     // [#BFECFF]
-    <div className="min-h-screen bg-blue-50">
+    <div className="h-auto bg-background ">
       <div className="container-wrapper py-10">
         <div>
-          <h2 className="md:text-3xl text-lg text-primary font-semibold pb-5">
-            <span className="bg-orange-200 px-2 py-2">Our </span>
-            Solutions
+          <h2 className="md:text-3xl text-lg text-heading font-semibold pb-2 md:pb-4">
+            Our Solutions
           </h2>
-          <p className="text-sm md:text-lg pb-3">
+          <p className="text-sm md:text-lg md:px-0 px-3 pb-3">
             We have excelled in our experience across a wide range of industries
             to bring valuable insights and provide our clients with truly
             beneficial solutions.
@@ -49,7 +48,7 @@ const App = () => {
                 key={index}
                 className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
               >
-                <span className="text-white bg-blue-500 px-3 py-2 rounded-full">
+                <span className="text-white bg-blue-800 px-3 py-2 rounded-full">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="text-gray-800 font-medium text-center flex-1 ml-2">
@@ -58,7 +57,7 @@ const App = () => {
                 <div className="right-2 bottom-1 absolute transform rotate-[50deg] group-hover:rotate-0 transition-transform duration-300">
                   <FontAwesomeIcon
                     icon={faArrowRight}
-                    className="text-blue-500"
+                    className="text-blue-800"
                   />
                 </div>
               </div>

@@ -41,11 +41,8 @@ p {
   font-family: var(--font-roboto);
 }
 
-
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
-
-
   h1,
   h2,
   h3,
@@ -62,7 +59,6 @@ p {
     /* Paragraphs still use Roboto */
   }
 }
-
 
 /*  for carousel over flow  */
 .container {
@@ -589,7 +585,6 @@ a:hover span {
 /* styles/globals.css */
 
 @keyframes continuous {
-
   0%,
   100% {
     transform: scale(1);
@@ -778,7 +773,6 @@ ul {
 }
 
 @media (max-width: 768px) {
-
   .rich-text-content ul,
   .rich-text-content ol {
     padding-left: 15px;
@@ -808,7 +802,12 @@ ul {
   /* color: rgb(73, 73, 244); */
   font-size: 20px;
 }
+.custom-list-service ::marker {
+  color: #0d417b;
+  /* color: rgb(73, 73, 244); */
 
+  font-size: 20px;
+}
 /* for testimonial image animation start */
 .zoom-out {
   animation: zoomOut 2s ease-in-out forwards;

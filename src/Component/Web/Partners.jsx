@@ -194,11 +194,11 @@ const Partners = () => {
     <div className=" bg-white shadow md:h-[65vh]  h-auto flex flex-col justify-center items-center md:py-10 pt-10 md:pt-0 px-4 md:px-24">
       {/* Title Section */}
       <div className="text-center ">
-        <h4 className="text-sm mb-0 text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold  drop-shadow-lg  max-w-3xl mx-auto">
-          Our Reliale Partners
+        <h4 className="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
+          Our Reliable Partner
         </h4>
-        <h2 className="text-sm mb-0 text-gray-900 md:mb-10 md:text-lg  font-medium  drop-shadow-lg  max-w-3xl mx-auto">
-          Since 1989. For millions of users. We deliver top-quality, secure, and
+        <h2 className="text-xs mb-0 text-gray-900 md:mb-10 md:text-lg  font-medium    max-w-3xl mx-auto">
+          Since 2020. For millions of users. We deliver top-quality, secure, and
           adaptable digital solutions for the needs of today and the
           opportunities of tomorrow..
         </h2>

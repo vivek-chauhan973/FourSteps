@@ -100,12 +100,12 @@ const SideCard = () => {
                     className=" h-full w-full object-cover"
                     width={300}
                     height={100}
-                    src={data?.uploads?.[0] || "/placeholder.jpg"}
+                    src={data?.uploads?.[0] || "/image/m2.avif"}
                     alt={data?.name || "Package image"}
                   />
                 </div>
                 <div className="px-6 py-4">
-                  <h5 className="block text-[18px] font-semibold text-blue-gray-900">
+                  <h5 className="block text-[18px] text-heading font-semibold text-blue-gray-900">
                     {data?.name}
                   </h5>
                   <div className="line-clamp-3">

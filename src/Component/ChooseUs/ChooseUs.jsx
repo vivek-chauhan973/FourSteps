@@ -15,44 +15,48 @@ const ChooseUs = () => {
     "Affordable pricing & maintenance .",
   ];
   return (
-    <div className="container mx-auto py-10 px-5 md:px-10">
-      <div className="text-center mb-8">
-        <h2 className="md:text-3xl  text-xl font-semibold capitalize mb-3">
-          Why choose <span className="text-primary">Four Steps Digital</span>?
-        </h2>
-        <p className="md:text-lg text-sm text-gray-700">
-          Win over your customers with result-driven digital strategies. Choose
-          <span className="text-primary"> Four Steps Digital</span> to elevate
-          your business.
-        </p>
-      </div>
-
-      <div className="md:flex items-center gap-8">
-        <div className="md:w-1/2 rounded-md overflow-hidden">
-          <Image
-            src="/image/yyy.png"
-            alt="Four Steps Digital"
-            className="w-full h-auto object-cover"
-            height={500}
-            width={500}
-          />
+    <div className=" bg-background">
+      <div className="container-wrapper mx-auto py-10  ">
+        <div className="text-center mb-8">
+          <div className="md:text-3xl  md:flex md:flex-row flex flex-col justify-center text-center text-lg font-semibold  capitalize mb-3">
+            <span className=" text-heading"> Why choose </span>
+            <span className="text-primary"> Four Steps Digital ?</span>
+          </div>
+          <p className="md:text-lg text-sm  text-gray-900">
+            Win over your customers with result-driven digital strategies.
+            Choose
+            <span className="text-primary"> Four Steps Digital</span> to elevate
+            your business.
+          </p>
         </div>
 
-        <div className="md:w-1/2  md:mt-0">
-          <ul className="space-y-4">
-            {data.map((item, index) => (
-              <li
-                key={index}
-                className="flex md:text-lg text-sm items-start gap-3"
-              >
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  className="text-primary mt-1"
-                />
-                <span className="text-gray-800">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="md:flex items-center gap-16  ">
+          <div className="md:w-1/2 rounded-md overflow-hidden">
+            <Image
+              src="/image/yyy.png"
+              alt="Four Steps Digital"
+              className="w-full h-auto object-cover"
+              height={500}
+              width={500}
+            />
+          </div>
+
+          <div className="md:w-1/2 md:px-0 px-4  md:mt-0">
+            <ul className="space-y-3">
+              {data.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex md:text-lg text-sm items-start gap-3"
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="text-primary mt-1"
+                  />
+                  <span className="text-gray-800">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

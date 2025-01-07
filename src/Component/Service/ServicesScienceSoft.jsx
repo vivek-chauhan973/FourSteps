@@ -87,63 +87,65 @@ const ServicesScienceSoft = () => {
   const [activeService, setActiveService] = useState(services[0]); // Set default to the first service
 
   return (
-    <div className="container mx-auto px-4 md:pt-10 pt-5 sm:px-6 lg:px-8">
-      <div className=" pb-5">
-        <h2 className="md:text-3xl text-xl   text-primary font-semibold pb-5">
-          <span className="bg-orange-50 px-2 py-2">Our </span>
-          Services
-        </h2>
-        <p className="text-sm md:text-lg pb-3">
-          We have excelled our experience in a wide range of industries to bring
-          valuable insights and provide our clients with truly beneficial
-          solutions.
-        </p>
-      </div>
+    <div className=" w-full bg-white">
+      <div className="container-wrapper md:pt-10 pt-5 ">
+        <div className=" pb-5">
+          <h2 className="md:text-3xl text-xl   text-heading font-semibold pb-5">
+            <span className="bg-blue-100 px-2 py-2">Our</span>
+            Services
+          </h2>
+          <p className="text-sm md:text-lg pb-3">
+            We have excelled our experience in a wide range of industries to
+            bring valuable insights and provide our clients with truly
+            beneficial solutions.
+          </p>
+        </div>
 
-      <div className="w-full bg-white  border rounded-lg shadow-md">
-        <div className="flex flex-col md:flex-row">
-          {/* Sidebar Menu */}
-          <div className="w-full md:w-1/3  bg-blue-50 px-4 py-3">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className={`md:py-3 md:px-4 py-2 px-3 md:text-xl text-lg   font-semibold cursor-pointer hover:text-blue-500 transition ${
-                  activeService.name === service.name
-                    ? "bg-blue-500 text-white hover:text-white"
-                    : "text-[#004985]"
-                }`}
-                onClick={() => setActiveService(service)}
-              >
-                {service.name}
-              </div>
-            ))}
-          </div>
-          {/* Content Area */}
-          <div className="w-full md:h-[90vh] overflow-hidden md:flex-1 px-3  md:px-16 md:py-10 py-8">
-            <h2 className="md:text-2xl text-lg font-semibold mb-3 ">
-              {activeService.content.heading}
-            </h2>
-            <p className="text-gray-700 text-base md:text-lg mb-5">
-              {activeService.content.description}
-            </p>
-            <div className="grid grid-cols-1 md:px-0 px-3  sm:grid-cols-2 gap-4">
-              {activeService.content.links.map((link, index) => (
-                <Link key={index} href={link.link}>
-                  <ul className=" custom-list">
-                    <li className=" md:text-lg text-base   underline decoration-primary cursor-pointer">
-                      {link.name}
-                    </li>
-                  </ul>
-                </Link>
+        <div className="w-full   border rounded-lg shadow-md">
+          <div className="flex flex-col md:flex-row">
+            {/* Sidebar Menu */}
+            <div className="w-full md:w-1/3  bg-blue-50 px-4 py-3">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className={`md:py-3 md:px-4 py-2 px-3 md:text-xl text-lg   font-semibold cursor-pointer hover:text-blue-500 transition ${
+                    activeService.name === service.name
+                      ? "bg-heading text-white hover:text-white"
+                      : "text-[#004985]"
+                  }`}
+                  onClick={() => setActiveService(service)}
+                >
+                  {service.name}
+                </div>
               ))}
             </div>
-            {/* <div className="mt-6 float-right">
+            {/* Content Area */}
+            <div className="w-full md:h-[90vh] overflow-hidden md:flex-1 px-3  md:px-16 md:py-10 py-8">
+              <h2 className="md:text-2xl text-lg text-heading font-semibold mb-3 ">
+                {activeService.content.heading}
+              </h2>
+              <p className="text-gray-700 text-sm md:text-lg mb-5">
+                {activeService.content.description}
+              </p>
+              <div className="grid grid-cols-1 md:px-0 px-3  sm:grid-cols-2 gap-4">
+                {activeService.content.links.map((link, index) => (
+                  <Link key={index} href={link.link}>
+                    <ul className=" custom-list-service ">
+                      <li className=" md:text-lg text-base   underline decoration-heading cursor-pointer">
+                        {link.name}
+                      </li>
+                    </ul>
+                  </Link>
+                ))}
+              </div>
+              {/* <div className="mt-6 float-right">
               <Link href="#">
                 <span className="text-blue-700 font-medium hover:underline cursor-pointer">
                   Check details →
                 </span>
               </Link>
             </div> */}
+            </div>
           </div>
         </div>
       </div>

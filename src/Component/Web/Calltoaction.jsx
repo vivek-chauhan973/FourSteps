@@ -82,9 +82,9 @@ const Calltoaction = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-t from-blue-900  to-transparent">
       <div className="relative container mb-10 px-4 md:px-8" data-aos="fade-up">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#00308F]  to-transparent"></div>
+        <div className="absolute inset-0 "></div>
         <div className="relative  text-black py-6 md:py-10">
           <div className="container mx-auto">
             <div className="flex flex-col gap-10 md:flex-row items-center justify-between bg-gray-50 p-6 md:p-10 z-10 relative rounded-lg shadow-lg">
@@ -101,7 +101,7 @@ const Calltoaction = () => {
 
               {/* Text and CTA Section */}
               <div className="w-full md:w-2/3 text-center md:text-left">
-                <h2 className="text-lg md:text-2xl font-semibold mb-4">
+                <h2 className="text-lg md:text-2xl text-heading font-semibold mb-4">
                   Get expert insights with a free consultation book today!
                 </h2>
 
@@ -121,7 +121,10 @@ const Calltoaction = () => {
 
                   {/* Meeting Link Button */}
                   <div>
-                    <button className="border  border-[#00308F] bg-[#00308F] text-white hover:bg-white hover:text-[#00308F] transition-all py-2 px-6 rounded-full text-sm md:text-base">
+                    {/* <button className="border  border-[#00308F] bg-[#00308F] text-white hover:bg-white hover:text-[#00308F] transition-all py-2 px-6 rounded-full text-sm md:text-base">
+                      Meeting Link
+                    </button> */}
+                    <button className="border  border-primary bg-primary text-white hover:bg-white hover:text-primary transition-all py-2 px-6 rounded-full text-sm md:text-base">
                       Meeting Link
                     </button>
                   </div>

@@ -150,23 +150,25 @@ const IndustryFaq = () => {
   ];
 
   return (
-    <div>
-      <div className="bg-gray-50 md:py-10 py-5 container-wrapper">
+    <div className=" bg-white">
+      <div className=" md:py-10 py-5 container-wrapper">
         {/* section 1 */}
-        <div className="flex-col  text-center md:mt-10 md:pb-2  w-full">
-          <h2 className=" text-xl font-semibold text-primary text-center mb-3">
-            FAQS
+
+        <div className="flex flex-col justify-center items-center text-center mt-5 md:pb-2 ">
+          <h2 className="md:text-3xl text-xl  font-semibold text-heading text-center mb-1">
+            Frequently Asked Questions (FAQ)
           </h2>
-          <h3 className="py-2 md:text-xl text-lg font-bold uppercase">
+          <h3 className="py-2 md:text-xl text-subheading text-base font-bold uppercase">
             general questions
           </h3>
-          <p className="md:text-[15px] text-sm pb-3 leading-6">
+          <p className="text-sm md:text-base text-gray-900  max-w-5xl">
             At Four Steps Digital Consulting Pvt Ltd, we are dedicated to
-            enhancing your business digital capabilities through Zoho and
-            HubSpot consulting while driving growth with effective digital
+            enhancing your business's digital capabilities through Zoho and
+            HubSpot consulting, while driving growth with effective digital
             marketing strategies.
           </p>
         </div>
+
         <div className=" max-w-5xl mx-auto pb-5">
           <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
             <button
@@ -181,9 +183,9 @@ const IndustryFaq = () => {
               <div key={i} className="mb-3">
                 <div
                   onClick={() => handleToggle(i)}
-                  className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                  className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded   cursor-pointer"
                 >
-                  <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
+                  <p className="md:text-[15px] text-[13px] text-gray-900  capitalize md:first-line:font-semibold font-medium mr-1 ">
                     {faq.question}
                   </p>
 

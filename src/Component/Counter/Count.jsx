@@ -328,71 +328,73 @@ const Count = () => {
   }, [isMobile, counters.length]);
 
   return (
-    <div className="md:pt-10 bg-background container py-10 " ref={countRef}>
-      <div className="text-center">
-        <h1 className="md:text-3xl text-lg text-heading font-semibold">
-          <span>Enhancing Business Experience</span>
-          <span className="block">with Technology at Heart</span>
-        </h1>
-        <h2 className="py-4 text-sm md:text-lg ">
-          At Four Steps Digital, we infuse magic into innovation, crafting
-          unique tech solutions that redefine your business identity and enhance
-          life.
-        </h2>
-      </div>
-      {isMobile ? (
-        // Mobile Slider
-        <div className="relative w-full  pb-8  overflow-hidden">
-          <div
-            className="flex transition-transform duration-500"
-            style={{
-              transform: `translateX(-${activeIndex * 100}%)`,
-              width: `${counters.length * 25}%`,
-            }}
-          >
+    <div className=" bg-background">
+      <div className="md:pt-10  container py-10 " ref={countRef}>
+        <div className="text-center">
+          <h1 className="md:text-3xl text-lg text-heading font-semibold">
+            <span>Enhancing Business Experience</span>
+            <span className="block">with Technology at Heart</span>
+          </h1>
+          <h2 className="py-4 text-sm md:text-lg ">
+            At Four Steps Digital, we infuse magic into innovation, crafting
+            unique tech solutions that redefine your business identity and
+            enhance life.
+          </h2>
+        </div>
+        {isMobile ? (
+          // Mobile Slider
+          <div className="relative w-full  pb-8  overflow-hidden">
+            <div
+              className="flex transition-transform duration-500"
+              style={{
+                transform: `translateX(-${activeIndex * 100}%)`,
+                width: `${counters.length * 25}%`,
+              }}
+            >
+              {counters.map((counter, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full flex justify-center"
+                >
+                  <Counter
+                    endValue={counter.endValue}
+                    label={counter.label}
+                    icon={counter.icon}
+                    className="bg-white border-l-2 pl-5 border-gray-200"
+                    isVisible={isVisible}
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Indicators */}
+            <div className="absolute bottom-0   left-0 right-0 flex justify-center space-x-2">
+              {counters.map((_, index) => (
+                <div
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-3 h-3  rounded-full ${
+                    index === activeIndex ? "bg-blue-500" : "bg-gray-400"
+                  } cursor-pointer`}
+                ></div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          // Desktop Layout
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {counters.map((counter, index) => (
-              <div
+              <Counter
                 key={index}
-                className="flex-shrink-0 w-full flex justify-center"
-              >
-                <Counter
-                  endValue={counter.endValue}
-                  label={counter.label}
-                  icon={counter.icon}
-                  className="bg-white border-l-2 pl-5 border-gray-200"
-                  isVisible={isVisible}
-                />
-              </div>
+                endValue={counter.endValue}
+                label={counter.label}
+                icon={counter.icon}
+                className="bg-white border-l-2 pl-5 border-gray-200"
+                isVisible={isVisible}
+              />
             ))}
           </div>
-          {/* Indicators */}
-          <div className="absolute bottom-0   left-0 right-0 flex justify-center space-x-2">
-            {counters.map((_, index) => (
-              <div
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3  rounded-full ${
-                  index === activeIndex ? "bg-blue-500" : "bg-gray-400"
-                } cursor-pointer`}
-              ></div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        // Desktop Layout
-        <div className="flex flex-wrap justify-center gap-4 p-4">
-          {counters.map((counter, index) => (
-            <Counter
-              key={index}
-              endValue={counter.endValue}
-              label={counter.label}
-              icon={counter.icon}
-              className="bg-white border-l-2 pl-5 border-gray-200"
-              isVisible={isVisible}
-            />
-          ))}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
