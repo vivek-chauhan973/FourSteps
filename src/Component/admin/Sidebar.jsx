@@ -109,6 +109,22 @@ const Sidebar = () => {
         ],
       },
       {
+        label: "Solution",
+        icon: () => <FontAwesomeIcon icon={faSliders} />,
+        subMenu: [
+          {
+            label: "Create-Solution",
+            // change url according to the bizare expendition
+            href: "/admin/solution/solution-create",
+          },
+          {
+            label: "Solution-list",
+            // change url according to the bizare expendition
+            href: "/admin/solution/solution-list",
+          },
+        ],
+      },
+      {
         label: "Home Page",
         icon: () => <FontAwesomeIcon icon={faHome} />,
 
