@@ -269,11 +269,11 @@ export const Footer = () => {
           <div className="col-span-2">
             <div className="lg:w-1/2  mb-4 lg:mb-0">
               <Image
-                src="/image/logo.png"
+                src="/image/logo2.png"
                 alt="App Store"
                 height={200}
                 width={200}
-                className="w-20 h-16"
+                className="w-20 h-[68px]"
               />
             </div>
 

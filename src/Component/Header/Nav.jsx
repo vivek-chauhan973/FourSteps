@@ -180,12 +180,12 @@ const Nav = () => {
               <Link href="/">
                 <div className="w-20 h-14 sm:w-20 sm:h-12 lg:w-24 lg:h-20">
                   <Image
-                    src="/image/logo.png"
+                    src="/image/logonnn.png"
                     alt="Brand Logo"
                     className="object-contain"
                     layout="responsive"
-                    width={100}
-                    height={100}
+                    width={500}
+                    height={500}
                   />
                 </div>
               </Link>
