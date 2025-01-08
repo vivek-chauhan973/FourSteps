@@ -31,7 +31,7 @@ module.exports = {
         bounceY: "bounceY 1s infinite", // Add your bounce animation
       },
       colors: {
-        primary: "#F36B21",
+        primary: "#ff630f",
         secondary: "#4B4F58",
         heading: "#0d417b", // Heading color
         subheading: "#ea6e2a", // Subheading color

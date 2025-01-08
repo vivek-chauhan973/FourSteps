@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AboutSection from "@/Component/About/AboutSection";
 import { Footer } from "@/Component/Footer/Footer";
 import Team from "@/Component/Team/Team";
 import Testimonial from "@/Component/Testimonial/Testimonial";
@@ -56,99 +55,106 @@ const About = () => {
       <div className="">
         <Nav />
       </div>
-      <div className="container">
+      <div className="">
         {/*  hero section  */}
-        <div className="flex justify-center items-center w-full bg-[#F8FAFC]">
-          <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8 p-6 sm:p-10  ">
-            {/* Content Section */}
-            <div className="flex flex-col justify-center  text-center md:text-left space-y-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl  font-semibold text-gray-600">
-                About Us
-              </h2>
-              <p className="text-orange-500 text-sm sm:text-base font-medium">
-                Tailored solutions to help your business thrive in the digital
-                era.
-              </p>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Since 2020, we have been delivering cutting-edge digital
-                consulting, website development, and branding strategies. At
-                Four Steps Digital, we are more than consultants—we are your
-                partners in transforming ideas into impactful results. Lets turn
-                challenges into opportunities together.
-              </p>
-            </div>
+        <div className=" bg-background">
+          <div className=" container-wrapper py-10">
+            <div className="flex justify-center  items-center ">
+              <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
+                {/* Content Section */}
+                <div className="flex flex-col justify-center  text-center md:text-left space-y-4">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl  font-semibold text-heading">
+                    About Us
+                  </h2>
+                  <p className="text-primary text-sm md:text-lg font-medium">
+                    Tailored solutions to help your business thrive in the
+                    digital era.
+                  </p>
+                  <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
+                    Since 2020, we have been delivering cutting-edge digital
+                    consulting, website development, and branding strategies. At
+                    Four Steps Digital, we are more than consultants—we are your
+                    partners in transforming ideas into impactful results. Lets
+                    turn challenges into opportunities together.
+                  </p>
+                </div>
 
-            {/* Image Section */}
-            <div className="flex justify-center md:justify-end items-center ">
-              <Image
-                src="/image/yyy.png"
-                alt="About Us"
-                className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
-                height={500}
-                width={500}
-              />
+                {/* Image Section */}
+                <div className="flex justify-center md:justify-end items-center ">
+                  <Image
+                    src="/image/yyy.png"
+                    alt="About Us"
+                    className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
+                    height={500}
+                    width={500}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* after hero section */}
-        <div className="w-full bg-gray-50 py-10 px-4 md:px-10 lg:px-20">
-          <div className="grid md:grid-cols-2 items-center gap-12">
-            {/* Text Section */}
-            <div className="text-center md:text-left">
-              {/* Highlighted Tag */}
-              <div className="inline-block bg-orange-100 text-red-500 px-3 py-2 rounded-md text-xs mb-4">
-                4steps Digital
+        <div className=" bg-white">
+          <div className=" container-wrapper">
+            <div className="w-full  py-10">
+              <div className="grid md:grid-cols-2 items-center gap-12">
+                {/* Image Section */}
+                <div className="flex justify-center order-2 md:order-none">
+                  <Image
+                    alt="Four Steps Digital"
+                    src="/image/yyy.png"
+                    className=""
+                    height={500}
+                    width={500}
+                    priority
+                  />
+                </div>
+
+                {/* Text Section */}
+                <div className="text-center md:text-left order-1 md:order-none">
+                  {/* Highlighted Tag */}
+                  <div className="inline-block bg-orange-100 text-red-500 px-3 py-2 rounded-md text-xs mb-4">
+                    4steps Digital
+                  </div>
+                  {/* Main Heading */}
+                  <h1 className="text-xl lg:text-3xl text-heading font-semibold leading-snug mb-6">
+                    We are born to
+                    <br />
+                    <span className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 bg-clip-text text-transparent">
+                      Develop Experience
+                    </span>
+                  </h1>
+                  {/* Paragraph Content */}
+                  <p className="text-gray-900 text-sm lg:text-base leading-relaxed">
+                    Back in 2020, something exciting took shape in Greater Noida
+                    – an agency led by the enthusiastic Mr. Amarjeet Kumar
+                    Singh. They started off as <b>“4steps Marketing”</b> and
+                    quickly made a name for themselves with their innovative
+                    ideas. But guess what? They have grown even more since then!
+                    They recently revamped their identity and are now known as
+                    <b>“Four Steps Digital Consulting Pvt. Ltd.”</b> This new
+                    name shows they are not just about marketing anymore – they
+                    are all about helping folks navigate the digital world and
+                    offering top-notch advice.
+                    <br />
+                    <span className="text-heading  font-semibold">
+                      Zoho Consulting, HubSpot Consulting, Digital Marketing &
+                      Branding, and Website Designing & Development
+                    </span>
+                  </p>
+                </div>
               </div>
-              {/* Main Heading */}
-              <h1 className="text-2xl lg:text-3xl font-semibold leading-snug mb-6">
-                We are born to
-                <br />
-                <span className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 bg-clip-text text-transparent">
-                  Develop Experience
-                </span>
-              </h1>
-              {/* Paragraph Content */}
-              <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-                Back in 2020, something exciting took shape in Greater Noida –
-                an agency led by the enthusiastic Mr. Amarjeet Kumar Singh. They
-                started off as <b>“4steps Marketing”</b> and quickly made a name
-                for themselves with their innovative ideas. But guess what? They
-                have grown even more since then! They recently revamped their
-                identity and are now known as
-                <b>“Four Steps Digital Consulting Pvt. Ltd.”</b> This new name
-                shows they are not just about marketing anymore – they are all
-                about helping folks navigate the digital world and offering
-                top-notch advice.
-                <br />
-                <br />
-                <span className="text-blue-500 font-semibold">
-                  Zoho Consulting, HubSpot Consulting, Digital Marketing &
-                  Branding, and Website Designing & Development
-                </span>
-              </p>
-            </div>
-            {/* Image Section */}
-            <div className="flex justify-center">
-              <Image
-                alt="Four Steps Digital"
-                src="/image/yyy.png"
-                className=""
-                height={500}
-                width={500}
-                priority
-              />
             </div>
           </div>
         </div>
 
-        <div>
+        <div className=" bg-background   py-10">
           <div className="w-full my-5  grid place-items-center">
             <div className="grid place-items-center">
-              <h1 className="text-center text-md md:text-xl lg:text-3xl tracking-wide font-semibold">
+              <h1 className="text-center text-lg md:text-3xl md:w-full  w-56  text-heading lg:text-3xl tracking-wide font-semibold">
                 Work For Your
-                <br />
-                <span className="text-gradient">Incredible Success</span>
+                <span className="text-gradient"> Incredible Success</span>
               </h1>
             </div>
           </div>
@@ -165,17 +171,19 @@ const About = () => {
                 }`}
               >
                 <span className="text-3xl">•</span>
-                <span className="ml-1 font-medium ">{data.title}</span>
+                <span className="ml-1 md:text-lg text-sm   font-medium ">
+                  {data?.title}
+                </span>
               </span>
             ))}
           </div>
 
           <div
-            className={`w-full md:max-w-4xl my-5 h-auto mx-auto grid place-items-center px-5 text-[13px] md:text-sm ${
+            className={`w-full md:max-w-4xl my-5 h-auto mx-auto grid place-items-center px-5 text-sm md:text-base ${
               fade ? "fade-in" : "fade-out"
             }`}
           >
-            {formatFirstFourWords(currentdata.content)}
+            {formatFirstFourWords(currentdata?.content)}
           </div>
         </div>
         {/* Team Section */}
@@ -194,15 +202,15 @@ const About = () => {
             </h1>
           </div>
         </div>
-        {/* this is testimonial */}
+      </div>
+      {/* this is testimonial */}
 
-        <div>
-          <Testimonial />
-        </div>
-        {/*footer section  */}
-        <div>
-          <Footer />
-        </div>
+      <div>
+        <Testimonial />
+      </div>
+      {/*footer section  */}
+      <div>
+        <Footer />
       </div>
     </>
   );

@@ -256,7 +256,7 @@ const Nav = () => {
                 </li>
               </ul>
 
-              <button className="bg-orange-500   text-[13px] hover:bg-orange-600 text-white font-medium py-2 px-4 rounded inline-flex items-center">
+              <button className="bg-primary   text-[13px]  text-white font-medium py-2 px-4 rounded inline-flex items-center">
                 Talk to Us
               </button>
             </div>

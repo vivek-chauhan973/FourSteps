@@ -121,120 +121,125 @@ const Career = () => {
       <div>
         <Nav />
       </div>
-      <div className=" container-wrapper ">
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6    items-center">
-          <div className=" ">
-            <h2 className="text-xl md:text-2xl text-orange-500 py-2 font-bold">
-              Digital Consulting Agency
-            </h2>
-            <h2 className="text-xl md:text-2xl py-4 font-semibold">
-              Get A Job That Fits Your Life.
-            </h2>
-            <div>
-              <h1 className="md:text-3xl text-2xl py-4">
-                <span className="font-bold"> Are </span> You a
-                <div className="text-gray-800 font-bold">{currentText} |</div>
-              </h1>
-            </div>
+      <div className=" bg-background">
+        <div className=" container-wrapper pt-24 md:pt-0 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6    items-center">
+            <div className=" ">
+              <h2 className="text-xl md:text-3xl text-heading  font-semibold">
+                Digital Consulting Agency
+              </h2>
+              <h2 className="md:text-lg text-sm  pt-2 font-semibold">
+                Get A Job That Fits Your Life.
+              </h2>
+              <div>
+                <h1 className="md:text-3xl text-2xl py-4">
+                  <span className="font-semibold"> Are </span> You a
+                  <div className="text-primary font-semibold">
+                    {currentText} |
+                  </div>
+                </h1>
+              </div>
 
-            <div className="mt-6">
-              <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-3 px-4 md:px-5 rounded-xl bg-primary text-white">
-                Connect Now
-              </button>
-              {/* <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">
+              <div className="mt-6">
+                <button className=" border border-orange-500  hover:text-primary hover:bg-white  py-2 md:py-3 px-4 md:px-5 rounded-xl bg-primary text-white">
+                  Connect Now
+                </button>
+                {/* <button className="ml-4 border border-orange-500  text-primary  py-2 md:py-3 px-4 md:px-5 rounded-xl hover:bg-primary hover:text-white">
                 Connect Now
               </button> */}
+              </div>
             </div>
-          </div>
 
-          {/* Carousel Section */}
-          <div className="pt-6 lg:pt-5">
-            <Carousel
-              showThumbs={false}
-              autoPlay
-              interval={3000}
-              infiniteLoop
-              showStatus={false}
-              showArrows={false}
-              showIndicators={false}
-              dynamicHeight={true}
-              swipeable={true}
-              stopOnHover={true}
-              emulateTouch={true}
-              onChange={(index) => console.log(`Active index: ${index}`)}
-              renderArrowPrev={(onClickHandler, hasPrev) =>
-                hasPrev && (
-                  <button
-                    className="arrow-circle left-arrow"
-                    onClick={onClickHandler}
-                  >
-                    <FontAwesomeIcon icon={faAngleLeft} />
-                  </button>
-                )
-              }
-              renderArrowNext={(onClickHandler, hasNext) =>
-                hasNext && (
-                  <button
-                    className="arrow-circle right-arrow"
-                    onClick={onClickHandler}
-                  >
-                    <FontAwesomeIcon icon={faAngleRight} />
-                  </button>
-                )
-              }
-            >
-              {data.map((item) => (
-                <div key={item.id}>
-                  <Image
-                    src={item.images}
-                    alt={`Image ${item.id}`}
-                    className="w-full h-auto rounded-lg"
-                    height={500}
-                    width={500}
-                  />
-                </div>
-              ))}
-            </Carousel>
+            {/* Carousel Section */}
+            <div className="pt-6 lg:pt-5">
+              <Carousel
+                showThumbs={false}
+                autoPlay
+                interval={3000}
+                infiniteLoop
+                showStatus={false}
+                showArrows={false}
+                showIndicators={false}
+                dynamicHeight={true}
+                swipeable={true}
+                stopOnHover={true}
+                emulateTouch={true}
+                onChange={(index) => console.log(`Active index: ${index}`)}
+                renderArrowPrev={(onClickHandler, hasPrev) =>
+                  hasPrev && (
+                    <button
+                      className="arrow-circle left-arrow"
+                      onClick={onClickHandler}
+                    >
+                      <FontAwesomeIcon icon={faAngleLeft} />
+                    </button>
+                  )
+                }
+                renderArrowNext={(onClickHandler, hasNext) =>
+                  hasNext && (
+                    <button
+                      className="arrow-circle right-arrow"
+                      onClick={onClickHandler}
+                    >
+                      <FontAwesomeIcon icon={faAngleRight} />
+                    </button>
+                  )
+                }
+              >
+                {data.map((item) => (
+                  <div key={item.id}>
+                    <Image
+                      src={item.images}
+                      alt={`Image ${item.id}`}
+                      className="w-full h-auto rounded-lg"
+                      height={500}
+                      width={500}
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
           </div>
         </div>
       </div>
-      <div>
+
+      <div className=" bg-white   py-10">
         <div className="w-full my-5  grid place-items-center">
           <div className="grid place-items-center">
-            <h1 className="text-center text-md md:text-xl lg:text-3xl tracking-wide font-semibold">
+            <h1 className="text-center text-lg md:text-3xl md:w-full  w-56  text-heading lg:text-3xl tracking-wide font-semibold">
               Work For Your
-              <br />
-              <span className="text-gradient">Incredible Success</span>
+              <span className="text-gradient"> Incredible Success</span>
             </h1>
           </div>
         </div>
 
-        <div className="flex px-1 justify-around md:max-w-5xl mx-auto border py-5 bg-white rounded-full shadow-xl">
-          {data1?.map((item, index) => (
+        <div className="flex px-1 justify-around md:max-w-4xl mx-auto border py-3 bg-white rounded-full shadow-xl">
+          {data1?.map((data, index) => (
             <span
               key={index}
-              onClick={() => handleSectionClick(item)}
+              onClick={() => handleSectionClick(data)}
               className={`cursor-pointer flex items-center ${
-                currentdata.title === item?.title
+                currentdata.title === data?.title
                   ? "text-red-500"
                   : "text-zinc-800"
               }`}
             >
               <span className="text-3xl">•</span>
-              <span className="ml-1 font-medium ">{item.title}</span>
+              <span className="ml-1 md:text-lg text-sm   font-medium ">
+                {data?.title}
+              </span>
             </span>
           ))}
         </div>
 
         <div
-          className={`w-full md:max-w-4xl my-5 h-auto mx-auto grid place-items-center px-5 text-[13px] md:text-base ${
+          className={`w-full md:max-w-4xl my-5 h-auto mx-auto grid place-items-center px-5 text-sm md:text-base ${
             fade ? "fade-in" : "fade-out"
           }`}
         >
-          {formatFirstFourWords(currentdata.content)}
+          {formatFirstFourWords(currentdata?.content)}
         </div>
       </div>
-
       <div className="w-full py-5 grid place-items-center">
         <div className="grid place-items-center">
           <p className="mt-4 text-center text-sm md:text-lg lg:text-xl">

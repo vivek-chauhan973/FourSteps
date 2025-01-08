@@ -167,26 +167,19 @@ const HeroSection = () => {
     <div className="relative   w-full md:h-[90vh] h-[90vh] overflow-hidden flex items-center justify-center text-center">
       {/* Background Videos */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            currentVideo === 0 ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <source src={videoSources[0]} type="video/mp4" />
-        </video>
-        <video
-          autoPlay
-          loop
-          muted
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            currentVideo === 1 ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <source src={videoSources[1]} type="video/mp4" />
-        </video>
+        {videoSources.map((source, index) => (
+          <video
+            key={index}
+            autoPlay
+            loop
+            muted
+            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              currentVideo === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src={source} type="video/mp4" />
+          </video>
+        ))}
       </div>
 
       {/* Content Section */}
