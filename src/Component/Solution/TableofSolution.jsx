@@ -147,7 +147,7 @@ const TableofSolution = ({ industryName }) => {
           {/* Table of content */}
           <div className="pl-3 md:pl-0 order-first md:order-none">
             <div className="sticky top-0 z-10">
-              <h2 className="font-bold text-lg mb-4">Table of contents</h2>
+              <h2 className="font-bold text-lg mb-4">Table of contents Solution</h2>
               <div className="relative">
                 {/* Vertical Line */}
                 <span className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></span>

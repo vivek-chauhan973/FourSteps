@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 const fetchWebinarPromo = async () => {
   const res = await fetch(`/api/webinar`);
   return await res?.json();
@@ -61,35 +62,45 @@ const Hero = ({ Heading }) => {
   }, [Heading]);
 
   return (
-    <div className="container mx-auto mt-20 md:mt-0 px-4 sm:px-8 lg:px-16 py-12 sm:py-16 bg-gradient-to-r from-white via-gray-50 to-gray-100 rounded-lg shadow-lg overflow-hidden">
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-16">
-        {/* Text Section */}
-        <div className="text-center lg:text-left lg:max-w-xl space-y-6">
-          <h1 className="text-3xl sm:text-4xl font-bold text-orange-600 capitalize leading-tight hover:underline transition-transform transform hover:scale-105">
-            {promoData?.title || "Heading"}
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-gray-700 font-light tracking-wide leading-relaxed">
-            {promoData?.description ||
-              `I hated every minute of training, but I said, “Don't quit. Suffer now and live the rest of your life as a champion.”`}
-          </p>
-          {/* <button className="mt-6 px-6 py-3 bg-orange-500 text-white font-semibold rounded-md shadow-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 focus:outline-none transition duration-300 ease-in-out transform hover:-translate-y-1">
-            Explore Now
-          </button> */}
-        </div>
+    <div>
+      {/* trail section */}
+      <div className=" bg-blue-50 w-full sm:h-[40vh] h-auto md:mb-0 mb-4 md:h-[65vh] xl:h-[70]">
+        <div className=" container-wrapper">
+          <div className=" ">
+            <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
+              {/* Content Section */}
+              <div className="flex flex-col justify-center  md:text-left space-y-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl  md:text-[40px] text-[26px] font-semibold text-heading">
+                  {promoData?.title || "Heading"}
+                </h2>
 
-        {/* Image Section */}
-        <div className="flex justify-center lg:justify-end">
-          <Image
-            aria-hidden="true"
-            alt="Inspiring web design"
-            src={
-              promoData?.videoPath ||
-              "https://images.unsplash.com/photo-1621763540919-1a0477861102?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViaW5hcnxlbnwwfHwwfHx8MA%3D%3D"
-            }
-            width={400}
-            height={500}
-            className="rounded-lg shadow-lg object-cover transform hover:scale-105 transition-transform duration-300 ease-in-out"
-          />
+                <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
+                  {promoData?.description ||
+                    `I hated every minute of training, but I said, “Don't quit. Suffer now and live the rest of your life as a champion.”`}
+                </p>
+                <Link href="#">
+                  <button className="mt-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold md:py-2.5 py-1.5 md:px-4 px-3 rounded text-sm">
+                    Explore Now
+                  </button>
+                </Link>
+              </div>
+
+              {/* Image Section */}
+              <div className="flex justify-center pt-4 md:justify-end items-center ">
+                <Image
+                  aria-hidden="true"
+                  alt="Inspiring web design"
+                  src={
+                    promoData?.videoPath ||
+                    "https://images.unsplash.com/photo-1621763540919-1a0477861102?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViaW5hcnxlbnwwfHwwfHx8MA%3D%3D"
+                  }
+                  width={400}
+                  height={500}
+                  className="rounded-lg shadow-lg object-cover transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

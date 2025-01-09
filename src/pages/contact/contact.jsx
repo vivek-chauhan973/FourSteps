@@ -35,26 +35,19 @@ const Contact = () => {
         <Nav />
       </div>
 
-      {/* medium devices */}
-      <div className="md:block hidden">
-        <div className="w-full md:h-[400px] xl:h-[500px] flex relative">
-          <div className="w-[30%] h-full bg-black flex items-center justify-end"></div>
-          <div className="relative w-[80%] h-full flex">
-            <img
-              src="/image/fbg.jpg"
-              alt=""
-              className="relative w-full h-full"
-            />
-            <div className="absolute w-full h-full bg-gradient-to-r from-black to-gray"></div>
-          </div>
-          <div className="w-full h-full absolute">
-            <div className="w-[60%] h-full flex items-center justify-end px-16">
-              <div className="w-full flex flex-col justify-center items-center">
-                <h2 className="xl:text-[55px] md:text-[35px] text-[26px] leading-tight uppercase text-lg font-bold text-[#D45426] text-center">
-                  Contact us <br />{" "}
-                  <span className="text-white">We are here to help</span>
+      <div className=" bg-background w-full h-auto md:mb-0 mb-4 md:h-[70vh]">
+        <div className=" container-wrapper">
+          <div className="flex justify-center  items-center ">
+            <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
+              {/* Content Section */}
+              <div className="flex flex-col justify-center  md:text-left space-y-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl  md:text-[40px] text-[26px] font-semibold text-heading">
+                  Contact Page
                 </h2>
-                <p className="my-5 md:text-base text-sm  text-white text-center">
+                <p className="text-primary text-sm md:text-xl font-medium">
+                  We are here to help
+                </p>
+                <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
                   we are here to help! Whether you have a question about your
                   booking, need assistance with your travel plans, or just want
                   to know more about our services, feel free to get in touch
@@ -66,51 +59,32 @@ const Contact = () => {
                   </button>
                 </Link>
               </div>
+
+              {/* Image Section */}
+              <div className="flex justify-center md:justify-end items-center ">
+                <Image
+                  src="/image/yyy.png"
+                  alt="About Us"
+                  className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
+                  height={500}
+                  width={500}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Small devices */}
-      <div className="md:hidden mt-20">
-        <div className="w-full flex flex-col items-center bg-black p-5">
-          <div className="text-center">
-            <h2 className="text-[29px] font-bold uppercase text-[#D45426] leading-tight">
-              Contact Us <br />
-              <span className="text-white">We Are Here to Help</span>
-            </h2>
-            <p className="mt-4 text-sm text-white">
-              We are here to help! Whether you have a question about your
-              booking, need assistance with your travel plans, or just want to
-              know more about our services, feel free to get in touch with us.
-            </p>
-          </div>
-          <Link href="#">
-            <button className="mt-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-2 px-4 rounded-md text-sm transition-transform transform hover:scale-105">
-              Explore Now
-            </button>
-          </Link>
-        </div>
-        {/* <div className="relative w-full h-72">
-          <img
-            src="/image/fbg.jpg"
-            alt="Background"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div> */}
-      </div>
-
-      {/* herosection end */}
-      <div className="container mx-auto p-4 bg-[#d6efff]">
+      <div className="container mx-auto p-4 bg-[#ebf7ff]">
         <div className="grid md:grid-cols-[0.5fr_1fr_0.5fr] sm:grid-cols-[1fr_1fr] gap-4">
-          <div className="space-y-8 md:px-5 pt-10">
+          <div className="md:space-y-8 space-y-4 md:px-5 pt-10">
             {/* Section 1 */}
             <div className="flex items-center  space-x-4">
               <FontAwesomeIcon icon={faEarth} className="text-xl" />
 
               <div>
                 <h3 className="text-[15px] font-semibold">Quick response</h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-xs md:text-sm text-gray-700">
                   We usually reply within 1 hour on business days to sign an NDA
                   and arrange a discussion.
                 </p>
@@ -124,7 +98,7 @@ const Contact = () => {
                 <h3 className="text-[15px] font-semibold">
                   Personalized approach
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-xs md:text-sm text-gray-700">
                   You will engage directly with specialists who are experienced
                   in your domain.
                 </p>
@@ -136,7 +110,7 @@ const Contact = () => {
               <FontAwesomeIcon icon={faLeaf} className="text-xl mr-1 " />
               <div>
                 <h3 className="text-[15px] font-semibold">No pressure</h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-xs md:text-sm text-gray-700">
                   We are here to explore your needs and provide guidance —
                   whenever you are ready to move forward.
                 </p>
@@ -149,13 +123,13 @@ const Contact = () => {
               <h2 className="md:text-2xl text-lg font-semibold mb-4">
                 Lets discuss your needs!
               </h2>
-              <p className="mb-4 md:text-base text-sm">
+              <p className="mb-4 sm:text-base lg:text-base text-xs">
                 Do you have a question for our specialists, want to discuss your
                 project, or learn more about our expertise? Feel free to send
                 your request using the form below!
               </p>
-              <form className="  rounded  pb-8 mb-4">
-                <div className="mb-4">
+              <form className="  rounded  md:px-0 px-2 md:pb-8 mb-4">
+                <div className="mb-2 md:mb-4">
                   <textarea
                     placeholder="Kindly describe your request"
                     id="description"
@@ -165,7 +139,7 @@ const Contact = () => {
                 </div>
 
                 <div className=" grid md:grid-cols-2  grid-cols-1 gap-5">
-                  <div className="mb-4">
+                  <div className=" md:mb-4">
                     <input
                       placeholder="Full Name "
                       type="text"
@@ -173,7 +147,7 @@ const Contact = () => {
                       className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline focus:outline-1 focus:outline-blue-800 focus:shadow"
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className=" md:mb-4">
                     <input
                       type="text"
                       placeholder="Company"
@@ -181,7 +155,7 @@ const Contact = () => {
                       className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline focus:outline-1 focus:outline-blue-800 focus:shadow"
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className=" md:mb-4">
                     <input
                       placeholder=" Work Email"
                       type="email"
@@ -189,7 +163,7 @@ const Contact = () => {
                       className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline focus:outline-1 focus:outline-blue-800 focus:shadow"
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className=" md:mb-4">
                     <div className="flex">
                       <select className=" appearance-none border rounded-l py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         <option>+91</option>
@@ -219,7 +193,7 @@ const Contact = () => {
           </div>
           <div className=" ">
             <div className=" px-5 pb-3 md:pt-10">
-              <h3 className="text-base font-semibold md:mb-4 mb-2">
+              <h3 className="text-base font-semibold md:mb-2 md:mb-4 mb-2">
                 Our contacts
               </h3>
 
@@ -311,13 +285,13 @@ const Contact = () => {
       <div className=" mx-auto p-5 cursor-pointer">
         {/* Contact Information */}
         <div className="md:p-10 py-5">
-          <h3 className="md:text-4xl text-2xl font-semibold text-center md:mb-4">
+          <h3 className="md:text-3xl text-2xl font-semibold text-center md:mb-4">
             Get In
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
               Touch
             </span>
           </h3>
-          <p className="leading-6 md:text-base text-sm text-center mb-10">
+          <p className="leading-6 md:text-lg text-sm text-center mb-10">
             We will contact you again after receiving your request within 24
             hours.
           </p>
@@ -328,7 +302,7 @@ const Contact = () => {
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faHouse}
-                  className="text-2xl text-blue-500 "
+                  className="text-2xl text-blue-800 "
                 />
               </p>
               <span className="md:text-base text-base font-semibold text-gray-700 hover:text-blue-500 transition">
@@ -340,7 +314,7 @@ const Contact = () => {
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faLocationDot}
-                  className="text-2xl text-blue-500"
+                  className="text-2xl text-blue-800"
                 />
               </p>
               <span className="md:text-base text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
@@ -353,7 +327,7 @@ const Contact = () => {
               <p className="text-gray-500 font-medium">
                 <FontAwesomeIcon
                   icon={faPhoneSquare}
-                  className="text-2xl text-blue-500 "
+                  className="text-2xl text-blue-800 "
                 />
               </p>
               <span className="md:text-base  text-sm font-semibold text-gray-700 hover:text-blue-500 transition">
@@ -387,3 +361,70 @@ const Contact = () => {
 };
 
 export default Contact;
+
+// {/* medium devices */}
+// <div className="md:block hidden">
+//   <div className="w-full md:h-[400px] xl:h-[500px] flex relative">
+//     <div className="w-[30%] h-full bg-black flex items-center justify-end"></div>
+//     <div className="relative w-[80%] h-full flex">
+//       <img
+//         src="/image/fbg.jpg"
+//         alt=""
+//         className="relative w-full h-full"
+//       />
+//       <div className="absolute w-full h-full bg-gradient-to-r from-black to-gray"></div>
+//     </div>
+//     <div className="w-full h-full absolute">
+//       <div className="w-[60%] h-full flex items-center justify-end px-16">
+//         <div className="w-full flex flex-col justify-center items-center">
+//           <h2 className="xl:text-[55px] md:text-[35px] text-[26px] leading-tight uppercase text-lg font-bold text-[#D45426] text-center">
+//             Contact us <br />{" "}
+//             <span className="text-white">We are here to help</span>
+//           </h2>
+//           <p className="my-5 md:text-base text-sm  text-white text-center">
+//             we are here to help! Whether you have a question about your
+//             booking, need assistance with your travel plans, or just want
+//             to know more about our services, feel free to get in touch
+//             with us.
+//           </p>
+//           <Link href="#">
+//             <button className="mt-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold md:py-2.5 py-1.5 md:px-4 px-3 rounded text-sm">
+//               Explore Now
+//             </button>
+//           </Link>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+
+// {/* Small devices */}
+// <div className="md:hidden mt-20">
+//   <div className="w-full flex flex-col items-center bg-black p-5">
+//     <div className="text-center">
+//       <h2 className="text-[29px] font-bold uppercase text-[#D45426] leading-tight">
+//         Contact Us <br />
+//         <span className="text-white">We Are Here to Help</span>
+//       </h2>
+//       <p className="mt-4 text-sm text-white">
+//         We are here to help! Whether you have a question about your
+//         booking, need assistance with your travel plans, or just want to
+//         know more about our services, feel free to get in touch with us.
+//       </p>
+//     </div>
+//     <Link href="#">
+//       <button className="mt-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold py-2 px-4 rounded-md text-sm transition-transform transform hover:scale-105">
+//         Explore Now
+//       </button>
+//     </Link>
+//   </div>
+//   {/* <div className="relative w-full h-72">
+//     <img
+//       src="/image/fbg.jpg"
+//       alt="Background"
+//       className="absolute inset-0 w-full h-full object-cover"
+//     />
+//   </div> */}
+// </div>
+
+// {/* herosection end */}

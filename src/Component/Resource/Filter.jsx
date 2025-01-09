@@ -229,7 +229,7 @@ const Filter = ({ filterGlobalData, Heading }) => {
   ]);
 
   const renderFilters = () => (
-    <div className="bg-white rounded-lg overflow-y-auto   shadow-md p-4">
+    <div className="bg-white rounded-lg overflow-y-auto w-full   shadow-md p-4">
       <h2 className="text-sm font-semibold mb-2">FILTER BY:</h2>
       {Heading === "webinar" && (
         <div>

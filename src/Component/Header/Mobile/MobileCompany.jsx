@@ -135,7 +135,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
               onClick={() => handleSectionClick("Client Testimonials")}
             >
               <Link
-                href="/#"
+                href="/client-testimonial"
                 className={`relative inline-block ${
                   activeSection === "Client Testimonials"
                     ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"
@@ -150,7 +150,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
               onClick={() => handleSectionClick("Case Studies")}
             >
               <Link
-                href="/#"
+                href="/resource/case-studies"
                 className={`relative inline-block ${
                   activeSection === "Case Studies"
                     ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"
@@ -165,7 +165,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
               onClick={() => handleSectionClick("Alliance")}
             >
               <Link
-                href="/#"
+                href="/alliance"
                 className={`relative inline-block ${
                   activeSection === "Alliance"
                     ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"
@@ -180,7 +180,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
               onClick={() => handleSectionClick("Referral Partners")}
             >
               <Link
-                href="/#"
+                href="/Referral"
                 className={`relative inline-block ${
                   activeSection === "Referral Partners"
                     ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"
@@ -195,7 +195,7 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
               onClick={() => handleSectionClick("Career")}
             >
               <Link
-                href="/#"
+                href="/career"
                 className={`relative inline-block ${
                   activeSection === "Career"
                     ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"

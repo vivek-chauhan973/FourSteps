@@ -205,7 +205,7 @@ const MainData = ({ Heading }) => {
                         alt="Service"
                         height={500}
                         width={500}
-                        className="rounded object-cover max-w-[240px] max-h-[200px]"
+                        className="rounded object-cover h-full w-full max-w-[240px] max-h-[200px]"
                       />
                     </div>
 
@@ -524,7 +524,6 @@ const MainData = ({ Heading }) => {
           />
         </div>
       </div>
-      
     </>
   );
 };
