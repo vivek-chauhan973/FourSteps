@@ -18,42 +18,49 @@ const getSuggestedBlogPackageData = async (industry, topics) => {
 
 const Bdetail = ({ title }) => {
   const [blogPackageData, setBlogPackageData] = useState(null);
-const [suggestedBlogData,setSuggestedBlogData]=useState([]);
-const [filterSuggestedBlogData,setFilterSuggestedBlogData]=useState([]);
+  const [suggestedBlogData, setSuggestedBlogData] = useState([]);
+  const [filterSuggestedBlogData, setFilterSuggestedBlogData] = useState([]);
   useEffect(() => {
     if (title) {
       getBlogData(title).then((res) => {
-      
         setBlogPackageData(res);
       });
     }
-    
   }, [title]);
 
-  useEffect(()=>{
-    if(blogPackageData){
-      getSuggestedBlogPackageData(blogPackageData?.selectIndustry,blogPackageData?.selectTopic).then(res=>{
-        setSuggestedBlogData(res?.data||[]);
-      })
+  useEffect(() => {
+    if (blogPackageData) {
+      getSuggestedBlogPackageData(
+        blogPackageData?.selectIndustry,
+        blogPackageData?.selectTopic
+      ).then((res) => {
+        setSuggestedBlogData(res?.data || []);
+      });
     }
-  },[blogPackageData])
+  }, [blogPackageData]);
 
-  useEffect(()=>{
-    if(suggestedBlogData?.length>0){
-    const data=suggestedBlogData?.filter(item=>item?._id!==blogPackageData?._id);
-    setFilterSuggestedBlogData(data||[])
+  useEffect(() => {
+    if (suggestedBlogData?.length > 0) {
+      const data = suggestedBlogData?.filter(
+        (item) => item?._id !== blogPackageData?._id
+      );
+      setFilterSuggestedBlogData(data || []);
     }
-  },[suggestedBlogData,blogPackageData])
+  }, [suggestedBlogData, blogPackageData]);
 
   return (
     <>
       <div>
         {/*  for the hero section */}
-        <BlogHero blogPackageData={blogPackageData}/>
+        <BlogHero blogPackageData={blogPackageData} />
+        
       </div>
       {/* for the blog post content or description  */}
       <div>
-        <BlogDescription  blogPackageData={blogPackageData} filterSuggestedBlogData={filterSuggestedBlogData}/>
+        <BlogDescription
+          blogPackageData={blogPackageData}
+          filterSuggestedBlogData={filterSuggestedBlogData}
+        />
       </div>
       {/* for the footer section  */}
       <div>
