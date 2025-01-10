@@ -419,14 +419,14 @@ export const Footer = () => {
           {/* partners2 */}
           <div>
             <div className="">
-              <p className="font-semibold mb-2">Bitrix Partners</p>
-              <div className="flex justify-center mt-">
+              <p className="font-semibold">Bitrix Partners</p>
+              <div className="flex">
                 <Image
-                  src="/image/bitt-remove.png"
+                  src="/image/24.png"
                   alt="Logo"
-                  className=" object-cover md:h-[88px] h-auto w-full"
-                  height={500}
-                  width={500}
+                  className="object-contain rounded-2xl md:h-[88px] h-auto w-full"
+                  height={200}
+                  width={200}
                 />
               </div>
             </div>
