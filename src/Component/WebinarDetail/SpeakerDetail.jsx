@@ -20,7 +20,7 @@ const Implimentation = ({ speakerdata }) => {
           </div>
 
           <div className="flex px-2 flex-col justify-center md:space-y-2">
-            <h2 className="text-lg md:text-xl font-semibold text-gray-800">
+            <h2 className="text-lg md:text-xl font-semibold text-heading">
               {speaker?.name}
             </h2>
             <p className="text-gray-600 py-2 md:py-0">{speaker?.jobProfile}</p>

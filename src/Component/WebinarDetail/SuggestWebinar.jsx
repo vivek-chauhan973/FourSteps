@@ -56,11 +56,15 @@ const SuggestWebinar = ({ filterSuggestedPackage }) => {
   }, []);
 
   return (
-    <div className="md:mt-9 mt-4 bg-slate-100">
-      <div className="container-wrapper py-7">
-        <p className="md:text-[25px] text-center py-3 text-xl font-medium mb-1 capitalize">
+    <div className=" bg-white">
+      <div class="text-center  py-10">
+        <h4 class="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
           Suggested Webinars
-        </p>
+        </h4>
+        <h2 class="text-xs mb-0 text-gray-900  md:text-lg  font-medium    max-w-3xl mx-auto">
+          Don't miss out on the opportunity to expand your skillset with our
+          latest webinars.
+        </h2>
       </div>
 
       <div className="carousel-container relative container-wrapper ">
@@ -91,11 +95,11 @@ const SuggestWebinar = ({ filterSuggestedPackage }) => {
                         {/* <p className="font-semibold md:text-base text-sm text-black w-[80%]">Started From</p> */}
                       </div>
                       <div className="w-full md:h-7 h-8">
-                        <p className="md:text-lg text-base font-semibold">
+                        <p className="md:text-lg text-base text-heading font-semibold">
                           {items?.title}
                         </p>
                       </div>
-                      <p className="text-para line-clamp-3 mb-4">
+                      <p className="text-sm line-clamp-3 mb-4">
                         {items?.description}
                       </p>
                       <div>

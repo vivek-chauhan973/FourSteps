@@ -26,8 +26,9 @@ const getSuggestedVideoPackageData = async (industry, topics) => {
 
 const Vdetail = ({ title }) => {
   const [videoPackageData, setvideoPackageData] = useState(null);
-  const [suggestedVideoPackage,setSuggestedVideoPackage]=useState([]);
-  const [filterSuggestedVideoPackage,setFilterSuggestedVideoPackage]=useState([]);
+  const [suggestedVideoPackage, setSuggestedVideoPackage] = useState([]);
+  const [filterSuggestedVideoPackage, setFilterSuggestedVideoPackage] =
+    useState([]);
 
   useEffect(() => {
     if (title) {
@@ -36,21 +37,24 @@ const Vdetail = ({ title }) => {
       });
     }
   }, [title]);
-  useEffect(()=>{
-    if(videoPackageData){
-      getSuggestedVideoPackageData(videoPackageData?.industry,videoPackageData?.topics).then(res=>{
-        setSuggestedVideoPackage(res?.data||[])
-      })
+  useEffect(() => {
+    if (videoPackageData) {
+      getSuggestedVideoPackageData(
+        videoPackageData?.industry,
+        videoPackageData?.topics
+      ).then((res) => {
+        setSuggestedVideoPackage(res?.data || []);
+      });
     }
-   
-  },[videoPackageData])
-  useEffect(()=>{
-    if(suggestedVideoPackage?.length>0){
-      const data=suggestedVideoPackage?.filter(item=>item?._id!==videoPackageData?._id);
-      setFilterSuggestedVideoPackage(data||[]);
+  }, [videoPackageData]);
+  useEffect(() => {
+    if (suggestedVideoPackage?.length > 0) {
+      const data = suggestedVideoPackage?.filter(
+        (item) => item?._id !== videoPackageData?._id
+      );
+      setFilterSuggestedVideoPackage(data || []);
     }
-
-  },[suggestedVideoPackage,videoPackageData])
+  }, [suggestedVideoPackage, videoPackageData]);
 
   return (
     <>
@@ -73,7 +77,7 @@ const Vdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
                   Overview
                 </p>
               </ScrollLink>
@@ -86,7 +90,7 @@ const Vdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Key & Highlights
                 </p>
               </ScrollLink>
@@ -99,14 +103,15 @@ const Vdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   video presntator
                 </p>
               </ScrollLink>
             </div>
           </div>
         </div>
-        <div className="px-5 grid grid-cols-1 xl:grid-cols-[2fr,1fr]">
+
+        <div className="px-2 md:px-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-[1fr] lg:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr] gap-5">
           <div>
             {/* Overview section */}
             <div
@@ -119,7 +124,7 @@ const Vdetail = ({ title }) => {
                 <DemoOverview videoPackageData={videoPackageData} />
               </div>
             </div>
-            {/* key and highlight section */}
+            {/* Key and Highlight section */}
             <div
               id="productHighlightSection"
               className="flex justify-between mt-5 mb-3"
@@ -132,7 +137,7 @@ const Vdetail = ({ title }) => {
                 <DemoHightlight videoPackageData={videoPackageData} />
               </div>
             </div>
-            {/* technology section */}
+            {/* Technology section */}
             <div
               id="productTechnologySection"
               className="flex justify-between mt-5 mb-3"
@@ -149,7 +154,7 @@ const Vdetail = ({ title }) => {
           <div className="mt-10">
             <div className="sticky top-[50px] z-10">
               <div className="flex gap-1 justify-center items-center"></div>
-              {/* side registration form */}
+              {/* Side registration form */}
               <div className="md:px-5">
                 <DemoSide />
               </div>
@@ -160,7 +165,9 @@ const Vdetail = ({ title }) => {
 
       {/* suggested  */}
       <div>
-        <DemoSuggest filterSuggestedVideoPackage={filterSuggestedVideoPackage} />
+        <DemoSuggest
+          filterSuggestedVideoPackage={filterSuggestedVideoPackage}
+        />
       </div>
       {/* FAQ section here */}
       <div>

@@ -121,10 +121,10 @@ const BlogDescription = ({ blogPackageData, filterSuggestedBlogData }) => {
     <div>
       {/* Blog Description section start */}
       <div className="container-wrapper py-9">
-        <div className="grid grid-cols-1 xl:grid-cols-[2fr,0.8fr]">
+        <div className="grid grid-cols-1 xl:grid-cols-[2fr,0.8fr] md:grid-flow-cols-[2fr,0.5fr]">
           {/* Table of Content for mobile */}
           <div className="block xl:hidden bg-white shadow-md px-4 py-4 mb-6">
-            <p className="text-xl pb-4 font-semibold">Table of Content</p>
+            <p className="text-xl pb-4 font-semibold">Table of Content </p>
             <div className="overflow-y-scroll h-[300px]">
               <table className="min-w-full table-auto border-collapse">
                 <tbody>

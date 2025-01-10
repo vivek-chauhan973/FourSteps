@@ -70,7 +70,7 @@ const Visuals = ({ visualData }) => {
                     alt={item.title || "Screenshot"}
                   />
 
-                  <div className="absolute bottom-0 px-5 py-2 bg-gradient-to-t from-black/100 to-transparent rounded-md">
+                  <div className="absolute bottom-0 px-5 py-2 w-full bg-gradient-to-t from-black/100 to-transparent rounded-md">
                     <p className="text-xl text-white">{item.title}</p>
                     <div className="line-clamp-2 text-para text-white rounded-md">
                       <p>{item.description}</p>

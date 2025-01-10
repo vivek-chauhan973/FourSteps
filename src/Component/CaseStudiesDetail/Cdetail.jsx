@@ -26,8 +26,10 @@ const getSuggestedCaseStudyPackageData = async (industry, service) => {
 };
 const Cdetail = ({ title }) => {
   const [casePackageData, setCasePackageData] = useState({});
-  const [suggestedCasePackage,setSuggestedCasePackage]=useState([]);
-  const [filterSuggestedCasePackage,setFilterSuggestedCasePackage]=useState([]);
+  const [suggestedCasePackage, setSuggestedCasePackage] = useState([]);
+  const [filterSuggestedCasePackage, setFilterSuggestedCasePackage] = useState(
+    []
+  );
   const router = useRouter();
   // Fetch data when 'title' changes
   useEffect(() => {
@@ -43,18 +45,23 @@ const Cdetail = ({ title }) => {
 
   // Log the updated data when it changes
   useEffect(() => {
-    if(casePackageData){
-      getSuggestedCaseStudyPackageData(casePackageData?.service,casePackageData?.industry).then(res=>{
-        setSuggestedCasePackage(res?.data||[])
-      })
+    if (casePackageData) {
+      getSuggestedCaseStudyPackageData(
+        casePackageData?.service,
+        casePackageData?.industry
+      ).then((res) => {
+        setSuggestedCasePackage(res?.data || []);
+      });
     }
   }, [casePackageData]);
   useEffect(() => {
-    if(suggestedCasePackage?.length>0){
-    const data=suggestedCasePackage?.filter(item=>item?._id!==casePackageData?._id)
-    setFilterSuggestedCasePackage(data||[])
+    if (suggestedCasePackage?.length > 0) {
+      const data = suggestedCasePackage?.filter(
+        (item) => item?._id !== casePackageData?._id
+      );
+      setFilterSuggestedCasePackage(data || []);
     }
-  }, [suggestedCasePackage,casePackageData]);
+  }, [suggestedCasePackage, casePackageData]);
 
   return (
     <>
@@ -77,7 +84,7 @@ const Cdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Client Overview
                 </p>
               </ScrollLink>
@@ -90,7 +97,7 @@ const Cdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[150px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[150px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   challenge & Solution
                 </p>
               </ScrollLink>
@@ -103,7 +110,7 @@ const Cdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Rsults & Matrix
                 </p>
               </ScrollLink>
@@ -116,14 +123,14 @@ const Cdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Visuals
                 </p>
               </ScrollLink>
             </div>
           </div>
         </div>
-        <div className="px-5 grid grid-cols-1 xl:grid-cols-[2fr,1fr]">
+        <div className=" md:px-0 px-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-[1fr] lg:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr] gap-5">
           <div>
             {/* Overview section */}
             <div
@@ -132,7 +139,6 @@ const Cdetail = ({ title }) => {
             >
               <div className="md:px-10">
                 <div className="font-semibold py-2 text-xl">
-                  {" "}
                   Client Overview
                 </div>
                 <ClientOverview clientData={casePackageData} />

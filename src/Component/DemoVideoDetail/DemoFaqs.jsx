@@ -4,9 +4,9 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DemoFaqs = ({ videoPackageData }) => {
-  const faq = videoPackageData?.faq;
-  const questions = faq?.questions || [];
-  console.log("))))))))))))))))))ttttt", questions);
+  const faqs = videoPackageData?.faq;
+  const questions = faqs?.questions || [];
+  // console.log("))))))))))))))))))ttttt", questions);
 
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -22,7 +22,7 @@ const DemoFaqs = ({ videoPackageData }) => {
 
   // Expand all sections
   const handleExpandAll = () => {
-    setOpenIndices(faqs.map((_, i) => i));
+    setOpenIndices(questions.map((_, i) => i));
     setIsAllOpen(true);
   };
 
@@ -38,8 +38,8 @@ const DemoFaqs = ({ videoPackageData }) => {
       <div className="bg-white">
         {/* section 1 */}
         <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-          <p className="md:text-2xl  text-lg font-semibold">
-            Frequently Asked Questions (FAQS) for the Videos
+          <p className="md:text-2xl text-heading  text-lg font-semibold">
+            Frequently Asked Questions (FAQS)
           </p>
         </div>
         <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">

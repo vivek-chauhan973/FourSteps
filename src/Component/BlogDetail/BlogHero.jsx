@@ -10,7 +10,7 @@ const BlogHero = ({ blogPackageData }) => {
         <div className="flex flex-col lg:flex-row h-auto items-center  justify-between  rounded-lg overflow-hidden py-8 lg:py-12 gap-8 lg:gap-5">
           {/* Left section - Course Info */}
           <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
-            <h1 className="text-xl sm:text-xl capitalize md:text-xl lg:text-3xl font-semibold md:mb-4 mb-1">
+            <h1 className="text-xl sm:text-xl text-heading capitalize md:text-xl lg:text-3xl font-semibold md:mb-4 mb-1">
               {title}
             </h1>
 

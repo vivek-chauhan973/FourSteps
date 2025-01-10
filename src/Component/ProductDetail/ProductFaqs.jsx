@@ -20,7 +20,7 @@ const ProductFaqs = ({ productfaqData }) => {
 
   // Expand all sections
   const handleExpandAll = () => {
-    setOpenIndices(faqs.map((_, i) => i));
+    setOpenIndices(questions.map((_, i) => i));
     setIsAllOpen(true);
   };
 
@@ -38,8 +38,8 @@ const ProductFaqs = ({ productfaqData }) => {
         <div className="bg-white">
           {/* Section 1 */}
           <div className="flex-col text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-            <p className="md:text-2xl text-lg font-semibold">
-              Frequently Asked Questions (FAQs) for the Product
+            <p className="md:text-2xl text-heading text-lg font-semibold">
+              Frequently Asked Questions 
             </p>
           </div>
           <div className="md:w-3/4 max-w-4xl mx-auto pb-5">

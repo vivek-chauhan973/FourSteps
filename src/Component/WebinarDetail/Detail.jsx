@@ -52,8 +52,6 @@ const Detail = ({ title }) => {
     }
   }, [title]);
 
-
-
   return (
     <>
       {/* hero section */}
@@ -75,7 +73,7 @@ const Detail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className=" text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className=" text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Overview
                 </p>
               </ScrollLink>
@@ -88,7 +86,7 @@ const Detail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
                   Key & Highlights
                 </p>
               </ScrollLink>
@@ -101,14 +99,14 @@ const Detail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
                   Speaker
                 </p>
               </ScrollLink>
             </div>
           </div>
         </div>
-        <div className="px-5  grid grid-cols-1 xl:grid-cols-[2fr,1fr]">
+        <div className="px-2 md:px-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-[1fr] lg:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr] gap-5">
           <div>
             {/* Overview section */}
             <div

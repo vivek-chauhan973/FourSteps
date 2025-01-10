@@ -42,8 +42,8 @@ const WebinarFaqs = ({ faqData }) => {
         <div className="bg-white">
           {/* section 1 */}
           <div className="flex-col text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-            <p className="md:text-2xl text-lg font-semibold">
-              Frequently Asked Questions (FAQS) for the Webinar
+            <p className="md:text-2xl text-lg font-semibold text-heading">
+              Frequently Asked Questions (FAQS)
             </p>
           </div>
           <div className="md:w-3/4 max-w-4xl mx-auto pb-5">

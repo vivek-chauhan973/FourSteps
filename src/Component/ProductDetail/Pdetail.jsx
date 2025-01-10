@@ -24,8 +24,8 @@ const getSuggestedProductPackageData = async (industry, service) => {
 
 const Pdetail = ({ title }) => {
   const [productsPackageData, setProductsPackageData] = useState({});
- const [suggestedPackage,setSuggestedPackage]=useState([]);
- const [filterSuggestedPackage,setFilterSuggestedPackage]=useState([]);
+  const [suggestedPackage, setSuggestedPackage] = useState([]);
+  const [filterSuggestedPackage, setFilterSuggestedPackage] = useState([]);
 
   // Fetch data when 'title' changes
   useEffect(() => {
@@ -37,18 +37,23 @@ const Pdetail = ({ title }) => {
   }, [title]);
   useEffect(() => {
     if (productsPackageData) {
-      getSuggestedProductPackageData(productsPackageData?.industry,productsPackageData?.service).then((res) => {
+      getSuggestedProductPackageData(
+        productsPackageData?.industry,
+        productsPackageData?.service
+      ).then((res) => {
         // console.log("suggested res--> ",res?.data)
-        setSuggestedPackage(res?.data||[])
+        setSuggestedPackage(res?.data || []);
       });
     }
   }, [productsPackageData]);
   useEffect(() => {
-    if (suggestedPackage?.length>0) {
-     const data=suggestedPackage?.filter(item=>item?._id!==productsPackageData?._id);
-     setFilterSuggestedPackage(data||[])
+    if (suggestedPackage?.length > 0) {
+      const data = suggestedPackage?.filter(
+        (item) => item?._id !== productsPackageData?._id
+      );
+      setFilterSuggestedPackage(data || []);
     }
-  }, [suggestedPackage,productsPackageData]);
+  }, [suggestedPackage, productsPackageData]);
 
   return (
     <>
@@ -71,7 +76,7 @@ const Pdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Overview
                 </p>
               </ScrollLink>
@@ -84,7 +89,7 @@ const Pdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Key & Highlights
                 </p>
               </ScrollLink>
@@ -97,7 +102,7 @@ const Pdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Technology
                 </p>
               </ScrollLink>
@@ -110,14 +115,14 @@ const Pdetail = ({ title }) => {
                 offset={-70}
                 duration={500}
               >
-                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-amber-600 py-2 hover:text-orange-800">
+                <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
                   Screenshot
                 </p>
               </ScrollLink>
             </div>
           </div>
         </div>
-        <div className="px-5 grid grid-cols-1 xl:grid-cols-[2fr,1fr]">
+        <div className=" md:px-0 px-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-[1fr] lg:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr] gap-5">
           <div>
             {/* Overview section */}
             <div
@@ -174,7 +179,7 @@ const Pdetail = ({ title }) => {
       </div>
       {/* ProductSuggest  */}
       <div>
-        <ProductSuggest filterSuggestedPackage={filterSuggestedPackage}/>
+        <ProductSuggest filterSuggestedPackage={filterSuggestedPackage} />
       </div>
       {/* faqs and suggestetd */}
       <div>

@@ -3,8 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const ProductSuggest = ({filterSuggestedPackage}) => {
-
+const ProductSuggest = ({ filterSuggestedPackage }) => {
   const carouselRef = useRef(null);
 
   const scrollNext = () => {
@@ -43,12 +42,16 @@ const ProductSuggest = ({filterSuggestedPackage}) => {
   }, []);
 
   return (
-    <div className="md:mt-9 mt-4 bg-slate-100">
+    <div className="mt-4 bg-white">
       {filterSuggestedPackage?.length > 0 && (
-        <div className="container-wrapper py-7">
-          <p className="md:text-[25px] text-xl font-medium mb-1 capitalize">
+        <div class="text-center  py-10">
+          <h4 class="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
             Suggested Product
-          </p>
+          </h4>
+          <h2 class="text-xs mb-0 text-gray-900  md:text-lg  font-medium    max-w-3xl mx-auto">
+            Don't miss out on the opportunity to expand your skillset with our
+            latest product.
+          </h2>
         </div>
       )}
       <div className="carousel-container relative container-wrapper ">
@@ -84,7 +87,7 @@ const ProductSuggest = ({filterSuggestedPackage}) => {
                         </p>
                       </div>
                       <p className="text-para line-clamp-3 mb-4">
-                        {items?.description }
+                        {items?.description}
                       </p>
                       <div>
                         <div className="flex gap-5 items-center justify-between pr-4 pt-1">
