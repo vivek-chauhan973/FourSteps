@@ -14,17 +14,17 @@ const IndustrySideForm = () => {
         onClick={HandleClick}
         className="w-full justify-center  hidden md:block h-auto bg-yellow-50"
       >
-        <div className="flex items-center space-x-4 bg-yellow-100 p-4 rounded-md shadow-md group hover:cursor-pointer">
+        <div className="flex items-center space-x-4 bg-blue-200 p-4 rounded-md shadow-md group hover:cursor-pointer">
           {/* Calendar Icon */}
           <div className="relative">
-            <div className="flex items-center justify-center w-20 h-16 bg-yellow-200 rounded-md ">
+            <div className="flex items-center justify-center w-20 h-16 bg-blue-100 rounded-md ">
               <FontAwesomeIcon
                 icon={faCalendarDays}
-                className="text-[40px] group-hover:animate-bounce"
+                className="text-[40px] group-hover:animate-bounce text-blue-700"
               />
             </div>
             {/* Inner Icon */}
-            <div className="absolute top-2 right-2 w-4 h-4 bg-yellow-600 rounded-full">
+            <div className="absolute top-2 right-2 w-4 h-4 bg-blue-600 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-4 h-4 text-white"
@@ -42,7 +42,7 @@ const IndustrySideForm = () => {
             </div>
           </div>
           {/* Text */}
-          <div className="text-yellow-900 font-bold">Schedule a call</div>
+          <div className="text-blue-900 font-bold">Schedule a call</div>
         </div>
       </div>
 
