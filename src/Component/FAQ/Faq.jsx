@@ -163,7 +163,7 @@ const IndustryFaq = () => {
           </h3>
           <p className="text-sm md:text-base text-gray-900  max-w-5xl">
             At Four Steps Digital Consulting Pvt Ltd, we are dedicated to
-            enhancing your business's digital capabilities through Zoho and
+            enhancing your businesss digital capabilities through Zoho and
             HubSpot consulting, while driving growth with effective digital
             marketing strategies.
           </p>

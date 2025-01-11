@@ -62,7 +62,7 @@ const SuggestWebinar = ({ filterSuggestedPackage }) => {
           Suggested Webinars
         </h4>
         <h2 class="text-xs mb-0 text-gray-900  md:text-lg  font-medium    max-w-3xl mx-auto">
-          Don't miss out on the opportunity to expand your skillset with our
+          Dont miss out on the opportunity to expand your skillset with our
           latest webinars.
         </h2>
       </div>

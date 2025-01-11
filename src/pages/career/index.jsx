@@ -246,7 +246,7 @@ const Career = () => {
             We are excited to announce new opportunities for growth.
             <br />
             <span className="font-medium text-gradient">
-              We're Hiring!
+              We are Hiring!
             </span>{" "}
             Join our team to make an impact.
           </p>

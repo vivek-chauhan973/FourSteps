@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Image from "next/image";
 import { Footer } from "@/Component/Footer/Footer";

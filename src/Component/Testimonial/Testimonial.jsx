@@ -195,7 +195,7 @@ const Trail = () => {
             </h2>
             <p class="text-sm md:text-xl md:px-0 px-5 text-gray-900  max-w-5xl">
               Our clients success is our success. Here is what they have to say
-              about working with us."
+              about working with us.
             </p>
 
             {/* Content Wrapper */}
