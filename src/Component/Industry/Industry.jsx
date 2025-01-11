@@ -1,9 +1,28 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
 const Industry = () => {
+  const [data, setData] = useState([]);
+  console.log("--------------", data);
+  const getIndustry = async () => {
+    const response = await fetch("api/industry/industry-hero");
+    const result = await response.json();
+    setData(result);
+    console.log("reeeeeeeeeeee", result);
+    if (result.data && Array.isArray(result.data)) {
+      setData(result.data); // Use result.data to set the state
+    } else {
+      console.error("Expected an array of data, but got:", error);
+    }
+  };
+
+  useEffect(() => {
+    getIndustry();
+  }, []);
+
   const cardData = [
     { imgSrc: "/image/8.png", title: "Consulting Meeting" },
     { imgSrc: "/image/8.png", title: "Gap Analysis" },
@@ -12,7 +31,6 @@ const Industry = () => {
     { imgSrc: "/image/8.png", title: "Launch Website" },
     { imgSrc: "/image/8.png", title: "Training & Support" },
   ];
-
   // Array of background colors
   const bgColors = [
     "bg-blue-100",
@@ -41,23 +59,23 @@ const Industry = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {cardData.map((card, index) => (
+          {data?.map((item, index) => (
             <div
               key={index}
               className="flex flex-col items-center cursor-pointer bg-white border border-gray-300 p-4 shadow group transition-transform hover:scale-105 hover:shadow-md relative"
             >
               {/* Icon Background with dynamic color */}
               <div
-                className={`rounded p-3 mb-4 flex items-center justify-center ${
+                className={`rounded p-3 mb-1 flex items-center justify-center ${
                   bgColors[index % bgColors.length]
                 }`}
               >
                 <Image
-                  src={card.imgSrc}
-                  alt={`${card.title} Icon`}
-                  className="w-12 h-12 md:w-16 md:h-16 max-w-full"
-                  height={100}
-                  width={100}
+                  src={item?.path || "/image/1.png"}
+                  alt="qljkh"
+                  className="w-20 h-20 md:w-28 md:h-28  object-cover max-w-full"
+                  height={200}
+                  width={200}
                 />
               </div>
               {/* Rotating Arrow */}
@@ -69,7 +87,7 @@ const Industry = () => {
               </span>
               {/* Card Title */}
               <h3 className="text-lg font-medium text-center text-gray-700 group-hover:text-primary">
-                {card.title}
+                {item?.industryName}
               </h3>
 
               {/* Hover Bottom Bar */}

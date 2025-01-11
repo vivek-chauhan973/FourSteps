@@ -41,11 +41,11 @@ const Travel = () => {
       <div className="font-sans">
         {/* hero section */}
 
-        <div className="bg-gradient-to-r md:mt-0 mt-10 from-blue-50 to-purple-50 shadow-lg py-16 px-6 md:px-12">
+        <div className=" bg-background md:mt-0 mt-10 shadow-lg py-16 px-6 md:px-12">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
             {/* Left Content */}
             <div className=" md:w-1/2">
-              <h1 className="text-2xl md:text-[36px] font-semibold leading-tight mb-5">
+              <h1 className="text-2xl md:text-[30px] font-semibold text-heading leading-tight mb-4">
                 {industryName?.title || "IT Solution for Oil & Gas Companies"}
               </h1>
               <p className="text-sm md:text-lg ">
@@ -72,6 +72,10 @@ const Travel = () => {
           <TableOfContent industryName={industryName} />
         </div>
 
+        {/* this is FQA SECTION  */}
+        <div>
+          <IndustryFaq faqData={industryName?.faq?.faq} />
+        </div>
         {/* Client & Testimonials */}
 
         <div>
@@ -79,11 +83,6 @@ const Travel = () => {
         </div>
 
         {/* Resource Section */}
-      </div>
-
-      {/* this is FQA SECTION  */}
-      <div>
-        <IndustryFaq faqData={industryName?.faq?.faq} />
       </div>
 
       {/* footer section */}
@@ -95,4 +94,3 @@ const Travel = () => {
 };
 
 export default Travel;
-

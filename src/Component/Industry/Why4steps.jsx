@@ -115,7 +115,7 @@ const Carousel = ({ why4step }) => {
           {/* left  button */}
           <button
             onClick={scrollPrev}
-            className="hidden md:flex rounded-full h-10 w-12 bg-black/50 text-white items-center justify-center hover:bg-black/70 transition duration-300"
+            className="hidden md:flex rounded-full h-10 w-12  text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -135,7 +135,7 @@ const Carousel = ({ why4step }) => {
                     width={200}
                     src={item}
                     alt={item?.alt || "alt section"}
-                    className="w-full h-32 rounded object-cover"
+                    className="w-full h-32 rounded object-contain"
                   />
                 </div>
               ))}
@@ -143,7 +143,7 @@ const Carousel = ({ why4step }) => {
           {/* right button */}
           <button
             onClick={scrollNext}
-            className="hidden md:flex rounded-full h-10 w-12 bg-black/50 text-white items-center justify-center hover:bg-black/70 transition duration-300"
+            className="hidden md:flex rounded-full h-10 w-12  text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>

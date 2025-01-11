@@ -621,10 +621,10 @@ import IndustryAbout from "./IndustryAbout";
 const TableOfContent = ({ industryName }) => {
   return (
     <div className="">
-      <div className="bg-[#F1F5F9] py-7">
+      <div className="bg-white py-7">
         <div className="md:px-5 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
-          <div className="px-5 grid grid-cols-1 bg-white">
+          <div className="px-5 grid grid-cols-1">
             {/* Industry About section */}
             <div>
               {industryName?.contentsummary && (
@@ -639,7 +639,7 @@ const TableOfContent = ({ industryName }) => {
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-primary text-lg md:text-3xl py-7 md:py-10"
+                  className="font-semibold text-heading text-xl md:text-3xl py-7"
                   dangerouslySetInnerHTML={{
                     __html: industryName?.why4step?.heading || "Why 4Step",
                   }}
@@ -654,7 +654,7 @@ const TableOfContent = ({ industryName }) => {
             <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
                 {/* Heading */}
-                <div className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-lg md:text-3xl">
                   {industryName?.success?.heading || "Success Story"}
                 </div>
                 <div>
@@ -679,7 +679,7 @@ const TableOfContent = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
-                  <h3 className="font-semibold text-primary text-lg md:text-3xl">
+                  <h3 className="font-semibold text-heading text-xl md:text-3xl">
                     {industryName?.solution?.heading || " Solution We Deliver"}
                   </h3>
                 </div>
@@ -695,7 +695,7 @@ const TableOfContent = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-xl md:text-3xl">
                   {industryName?.service?.heading || "Our Services"}
                 </div>
                 {industryName?.service && (
@@ -710,7 +710,7 @@ const TableOfContent = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               {/* heading section  */}
-              <h3 className="font-semibold text-primary text-lg md:text-3xl">
+              <h3 className="font-semibold text-heading text-xl md:text-3xl">
                 {industryName?.product?.heading || "Our Products"}
               </h3>
               {industryName?.product && (
@@ -736,7 +736,7 @@ const TableOfContent = ({ industryName }) => {
             >
               <div className="md:px-2">
                 <div>
-                  <h2 className="font-semibold text-primary text-lg md:text-3xl">
+                  <h2 className="font-semibold text-heading text-xl md:text-3xl">
                     {industryName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>
@@ -850,7 +850,7 @@ const TableOfContent = ({ industryName }) => {
                 </div>
               </div>
               {/* Side form section */}
-              <div className=" mt-2  " >
+              <div className=" mt-2  ">
                 <IndustrySideForm />
               </div>
             </div>

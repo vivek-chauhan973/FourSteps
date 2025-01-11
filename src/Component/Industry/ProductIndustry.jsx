@@ -3,89 +3,18 @@ import Link from "next/link";
 import React from "react";
 
 const ProductIndustry = ({ products }) => {
-  const services = [
-    {
-      title: "Underwriting ",
-      icon: "/image/1.png",
-      listItems: [
-        "Insurance application processing.",
-        "Risk assessment.",
-        "Actuarial and pricing.",
-        "Compliance management.",
-      ],
-    },
-    {
-      title: "Billing",
-      icon: "/image/1.png",
-      listItems: [
-        "Personalized premium calculation.",
-        "Automated invoicing.",
-        "E-signature workflow.",
-        "Payment processing.",
-      ],
-    },
-    {
-      title: "Hubspot",
-      icon: "/image/1.png",
-      listItems: [
-        "Personalized premium calculation.",
-        "Automated invoicing.",
-        "E-signature workflow.",
-        "Payment processing.",
-      ],
-    },
-    {
-      title: "Zoho",
-      icon: "/image/1.png",
-      listItems: [
-        "Personalized premium calculation.",
-        "Automated invoicing.",
-        "E-signature workflow.",
-        "Payment processing.",
-      ],
-    },
-    {
-      title: "Content management system",
-      icon: "/image/1.png",
-      listItems: [
-        "Personalized premium calculation.",
-        "Automated invoicing.",
-        "E-signature workflow.",
-        "Payment processing.",
-      ],
-    },
-    {
-      title: "CRM",
-      icon: "/image/1.png",
-      listItems: [
-        "Personalized premium calculation.",
-        "Automated invoicing.",
-        "E-signature workflow.",
-        "Payment processing.",
-      ],
-    },
-  ];
   console.log("here is all the products data ", products);
 
   return (
     <>
       <div>
         <div>
-          {/* <h3 className="font-semibold text-primary text-lg md:text-3xl pb-5">
-            Here is Render Our Product with link and to navigation
-          </h3> */}
           <p
             className="md:text-base py-2 text-sm"
             dangerouslySetInnerHTML={{
               __html: products?.mainEditorHtmlDescription,
             }}
-          >
-            {/* IT solutions ScienceSoft creates help insurance companies improve
-            overall business efficiency and introduce excellent customer
-            experience. We can engineer one or several of these targeted
-            insurance solutions, as well as build a full-featured insurance
-            business automation system: */}
-          </p>
+          ></p>
         </div>
         {/* card section  */}
 
@@ -101,7 +30,7 @@ const ProductIndustry = ({ products }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
                       alt="welcome"
-                      className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32  md:h-36  object-cover md:w-full rounded"
                       height={500}
                       width={500}
                     />
@@ -109,16 +38,16 @@ const ProductIndustry = ({ products }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[22px]  py-2 hover:text-primary decoration-primary underline font-semibold text-center"
+                    className="text-[22px]  py-2 hover:text-heading decoration-heading underline font-semibold text-center"
                   >
                     {item?.title}
                   </Link>
                 </div>
 
-                <ul className="custom-list pl-5 ">
+                <ul className="custom-list px-3 ">
                   {item?.editorHtmlDescription?.map((item, itemIndex) => (
                     <li
-                      className=" py-[1px] md:text-base text-sm hover:text-primary"
+                      className=" py-[1px] md:text-base text-sm "
                       key={itemIndex}
                       dangerouslySetInnerHTML={{ __html: item?.content }}
                     ></li>

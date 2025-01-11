@@ -34,10 +34,10 @@ const ApproacheIndustry = () => {
       <div>
         <div className="flex ">
           <div>
-            <h2 className="md:text-3xl  text-lg text-primary font-semibold pb-3">
+            <h2 className="md:text-3xl  text-xl text-heading font-semibold pb-3">
               Every successful strategy starts with an insightful conversation
             </h2>
-            <p className=" pb-3 md:text-base   text-sm">
+            <p className=" pb-3 md:text-lg   text-sm">
               Click on the cards below to explore the perks of our mature
               approach to service delivery and understand the benefits of
               trusting your insurance IT initiative to us

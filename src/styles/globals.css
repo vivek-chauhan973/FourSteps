@@ -881,11 +881,11 @@ ul {
 }
 
 .custom-list {
-  list-style-type: square;
+  list-style-type: disc;
 }
 
 .custom-list ::marker {
-  color: #f36b21;
+  color: #0d417b;
   /* color: rgb(73, 73, 244); */
   font-size: 20px;
 }

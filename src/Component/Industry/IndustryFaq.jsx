@@ -17,7 +17,7 @@ const IndustryFaq = ({ faqData }) => {
 
   // Expand all sections
   const handleExpandAll = () => {
-    setOpenIndices(faqs.map((_, i) => i));
+    setOpenIndices(faqData.map((_, i) => i));
     setIsAllOpen(true);
   };
 
@@ -28,20 +28,28 @@ const IndustryFaq = ({ faqData }) => {
   };
   return (
     <div>
-      <div className="bg-white">
+      <div className="bg-background py-10">
         {/* section 1 */}
-        <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
+        {/* <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
           <h2 className=" text-xl font-semibold text-primary text-center mb-3">
             FAQS
           </h2>
           <p className="text-xl  font-bold">
             Frequently Asked Questions for the Industry
           </p>
+        </div> */}
+        <div class="flex flex-col justify-center items-center text-center mt-5 md:pb-2 ">
+          <h2 class="md:text-3xl text-xl  font-semibold text-heading text-center mb-1">
+            Frequently Asked Questions (FAQ)
+          </h2>
+          <h3 class="py-2 md:text-xl text-subheading text-base font-bold uppercase">
+            general questions
+          </h3>
         </div>
         <div className=" md:w-3/4 max-w-4xl mx-auto pb-5">
           <div className="flex justify-end items-center pb-5 md:pr-0 pr-5">
             <button
-              className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-slate-100 "
+              className="underline underline-offset-[6px] text-sm px-2 py-1.5  hover:bg-blue-100 "
               onClick={isAllOpen ? handleHideAll : handleExpandAll}
             >
               {isAllOpen ? "Hide all" : "Expand all"}
@@ -53,7 +61,7 @@ const IndustryFaq = ({ faqData }) => {
                 <div key={i} className="mb-3">
                   <div
                     onClick={() => handleToggle(i)}
-                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-gray-100 rounded  hover:bg-gray-200 cursor-pointer"
+                    className="w-full md:h-14 h-16 flex justify-between items-center   px-5 py-2 bg-white shadow-md  rounded  hover:bg-gray-200 cursor-pointer"
                   >
                     <p className="md:text-[15px] text-[13px] capitalize md:first-line:font-semibold font-medium mr-1 ">
                       {faq.title}

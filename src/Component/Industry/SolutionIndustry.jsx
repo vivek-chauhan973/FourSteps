@@ -156,7 +156,7 @@ const SolutionIndustry = ({ solution }) => {
             {solution?.solutionItem.map((item, index) => (
               <div
                 key={index}
-                className="bg-white border p-6 rounded-lg  transform transition-transform duration-300 hover:scale-105  hover:shadow"
+                className="bg-white border p-6 rounded-lg  transform transition-transform duration-300   hover:shadow"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
@@ -171,19 +171,19 @@ const SolutionIndustry = ({ solution }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl"
+                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center text-lg sm:text-xl"
                   >
                     {item?.title}
                   </Link>
                 </div>
                 {/* listing ul li  */}
-                <ul className="custom-list  pl-5">
+                <ul className="custom-list md:px-3 px-1 cursor-pointer ">
                   {item?.editorHtmlDescription?.map((descItem, itemIndex) => (
                     <li
                       key={itemIndex}
-                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                      className="text-sm sm:text-base  text-gray-700 transition-colors duration-200 hover:text-heading"
                       dangerouslySetInnerHTML={{
-                        __html: descItem?.content, // Render HTML content inside list item
+                        __html: descItem?.content, //  Render HTML content inside list item
                       }}
                     />
                   ))}
