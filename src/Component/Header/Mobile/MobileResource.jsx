@@ -65,11 +65,11 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const resources = [
-    { title: "Blog", path: "/resource/blog" },
-    { title: "Video & Demo", path: "/resource/demo-videos" },
     { title: "Webinar", path: "/resource/webinar" },
     { title: "Product", path: "/resource/product" },
+    { title: "Video & Demo", path: "/resource/demo-videos" },
     { title: "Case-studies", path: "/resource/case-studies" },
+    { title: "Blog", path: "/resource/blog" },
   ];
 
   const toggleResources = () => {

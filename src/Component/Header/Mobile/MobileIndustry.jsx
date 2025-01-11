@@ -43,14 +43,20 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
                     }`}
                   >
                     <p
-                      className={`text-sm text-gray-700 flex justify-between  hover:text-black cursor-pointer ${
-                        activeSection === item?.industryName
-                          ? "border-b-2  border-blue-500"
-                          : ""
-                      }`}
+                      className={`text-sm text-gray-700  flex  justify-between  hover:text-black cursor-pointer
+                      
+                    `}
                       onClick={() => handleSectionClick(item?.industryName)} // Handle click
                     >
-                      <span>{item?.industryName || "Unnamed Industry"}</span>
+                      <span
+                        className={` ${
+                          activeSection === item?.industryName
+                            ? "border-b-2 border-heading"
+                            : ""
+                        }`}
+                      >
+                        {item?.industryName || "Unnamed Industry"}
+                      </span>
                       <span>
                         <FontAwesomeIcon icon={faChevronRight} />
                       </span>
