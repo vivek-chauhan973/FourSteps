@@ -42,6 +42,12 @@ const ServiceAbout = () => {
           security
         </li>
       </ul>
+
+      {/* <div className=" bg-white ">
+        <div className="  md:px-4 md:text-base lg:text-base  text-sm pt-5">
+          <p dangerouslySetInnerHTML={{ __html: about }} />
+        </div>
+      </div> */}
     </div>
   );
 };

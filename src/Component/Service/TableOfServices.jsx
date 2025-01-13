@@ -13,7 +13,7 @@ import ApproacheIndustry from "../Industry/ApproacheIndustry";
 const TableOfServices = ({ industryName }) => {
   return (
     <div className="">
-      <div className="bg-[#F1F5F9] ">
+      <div className="bg-[#F1F5F9]">
         <div className="md:px-5 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">

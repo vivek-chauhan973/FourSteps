@@ -45,7 +45,7 @@ const DyServices = () => {
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
             {/* Left Content */}
             <div className=" md:w-1/2">
-              <h1 className="text-2xl md:text-[36px] font-semibold leading-tight mb-5">
+              <h1 className="text-2xl md:text-[30px] text-heading font-semibold leading-tight mb-5">
                 {/* {industryName?.title || "IT Solution for Oil & Gas Companies"} */}
                 Heading of services
               </h1>
@@ -59,11 +59,11 @@ const DyServices = () => {
                 structure. Let me know if you need more adjustments!
               </p>
 
-              <div className=" md:mt-16 hidden">
-                <button className="border border-orange-500 bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all py-2 px-6 rounded-lg text-sm md:text-base">
+              {/* <div className=" md:mt-16 ">
+                <button className="border border-primary bg-primary text-white hover:bg-white hover:text-primary transition-all py-2 px-6 rounded-lg text-sm md:text-base">
                   Explore Now
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Image */}

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import SolutionHeroSection from "@/Component/admin/Solution/SolutionHeroSection";
 
 export default function CreateWebinar() {
+  // Fetch solutions on component mount
+
   const [blogData, setBlogData] = useState(null);
-  const [activeTab, setActiveTab] = useState("Tab1")
+  const [activeTab, setActiveTab] = useState("Tab1");
+
   return (
-    
-        <AdminLayout>
+    <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
         <p className="md:text-[28px] text-2xl text-black">Create Solution</p>
       </div>
@@ -27,12 +29,11 @@ export default function CreateWebinar() {
       </div>
 
       {/* Render each tab's content conditionally */}
-      <div className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}>
+      <div
+        className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
+      >
         <SolutionHeroSection setActiveTab={setActiveTab} blogData={blogData} />
       </div>
-      </AdminLayout>
-     
-    
+    </AdminLayout>
   );
 }
-

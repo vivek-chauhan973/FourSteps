@@ -11,6 +11,19 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 
 const SolutionHeroSection = ({ setActiveTab, blogData }) => {
+  const [listSolution, setListSolution] = useState([]);
+  // fetching the solution section here
+  console.log("lisuyuuuy----", listSolution);
+  const GetSolution = async () => {
+    const response = await fetch("/api/solution/masterS");
+    const data = await response.json();
+    setListSolution(data.data);
+  };
+
+  useEffect(() => {
+    GetSolution();
+  }, []);
+
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState("");
@@ -125,15 +138,20 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
               </div>
             </div>
             <div className="flex-1 my-5">
-            <div>
+              <div>
                 <label htmlFor="title" className=" font-semibold">
-                  Solution Type 
+                  Solution Type
                 </label>
-               <select name="" id="" className="py-0.5 mb-2 w-full  border rounded h-8 px-2 focus:border-primary outline-none">
-                <option value="">select solution type</option>
-                <option value="zoho-based">Zoho Based Solution</option>
-                <option value="custom-based">Custom Based Solution</option>
-               </select>
+                <select
+                  name="solutionType"
+                  id="solutionType"
+                  className="py-0.5 mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
+                >
+                  <option value="">Select Solution Type</option>
+                  {listSolution.map((item, index) => (
+                    <option key={index}>{item.name}</option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label htmlFor="title" className=" font-semibold">

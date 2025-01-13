@@ -113,6 +113,11 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [
           {
+            label: "Master-Solution",
+            // change url according to the bizare expendition
+            href: "/admin/solution/master-solution",
+          },
+          {
             label: "Create-Solution",
             // change url according to the bizare expendition
             href: "/admin/solution/solution-create",

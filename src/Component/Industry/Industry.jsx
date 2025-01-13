@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const Industry = () => {
   const [data, setData] = useState([]);
-  console.log("--------------", data);
+  // console.log("--------------", data);
   const getIndustry = async () => {
     const response = await fetch("api/industry/industry-hero");
     const result = await response.json();
