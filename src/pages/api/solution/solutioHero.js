@@ -1,88 +1,3 @@
-// import dbConnect from "@/utils/db";
-// import multer from "multer";
-// import path from "path";
-// import fs from "fs";
-// import solutionHero from "@/models/admin/solution/solutionHero";
-
-// // Set up storage configuration for multer
-// const uploadDirectory = "./public/uploads/solutionHero";
-// if (!fs.existsSync(uploadDirectory)) {
-//   fs.mkdirSync(uploadDirectory, { recursive: true });
-// }
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, uploadDirectory);
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname); // Save the original file name
-//   },
-// });
-
-// const upload = multer({ storage });
-
-// export const config = {
-//   api: {
-//     bodyParser: false, // Disable default body parsing
-//   },
-// };
-
-// export default async function CreateSolution(req, res) {
-//   await dbConnect();
-
-//   const { method } = req;
-//   if (method === "POST") {
-//     upload.single("image")(req, res, async (err) => {
-//       if (err) {
-//         console.error("Multer Error:", err);
-//         return res
-//           .status(500)
-//           .json({ error: "Error uploading image", details: err.message });
-//       }
-
-//       try {
-//         // Destructure the fields from req.body
-
-//         const {
-//           title,
-//           solutionName,
-//           description,
-
-//           solutionType,
-//           contentsummary,
-//         } = req.body;
-
-//         // Check if req.file exists
-//         if (!req.file) {
-//           return res.status(400).json({ error: "No file uploaded" });
-//         }
-
-//         const filename = req.file.filename; // Use the original filename
-
-//         // Create a new testimonial entry
-//         const newSolutionHero = new solutionHero({
-//           title,
-//           solutionName,
-//           description,
-
-//           solutionType,
-//           contentsummary,
-//           path: `/uploads/solutionHero/${filename}`, // Save the image filename
-//         });
-
-//         // Save the testimonial to the database
-//         const savedSolutionHero = await newSolutionHero.save();
-
-//         res.status(201).json(savedSolutionHero); // Return the saved testimonial
-//       } catch (error) {
-//         console.error("Error saving SolutionHero:", error);
-//         res
-//           .status(500)
-//           .json({ error: "Error saving SolutionHero", details: error.message });
-//       }
-//     });
-//   }
-// }
 import dbConnect from "@/utils/db";
 import multer from "multer";
 import path from "path";
@@ -99,6 +14,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
 export default async function handler(req, res) {
   await dbConnect();
 
@@ -110,7 +26,7 @@ export default async function handler(req, res) {
       const { title, solutionName, description, contentsummary, solutionType } =
         req.body;
       const filePath = `/uploads/solutionHero/${req.file.filename}`;
-  console.log("req body data is here --> ",req.body)
+      console.log("req body data is here --> ", req.body);
       try {
         const solution = await SolutionHero.create({
           title,
@@ -128,8 +44,27 @@ export default async function handler(req, res) {
           .json({ error: "Database error", details: error.message });
       }
     });
+    // not workig the GET METhOD HERE
+  } else if (req.method === "GET") {
+    // Handle the GET request to retrieve a solution by ID
+    const { id } = req.query; // Assuming ID is passed as a query parameter
+
+    if (!id) {
+      return res.status(400).json({ error: "ID is required" });
+    }
+
+    try {
+      const solution = await SolutionHero.findById(id);
+      if (!solution) {
+        return res.status(404).json({ error: "Solution not found" });
+      }
+      res.status(200).json(solution);
+    } catch (error) {
+      res.status(500).json({ error: "Database error", details: error.message });
+    }
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
 }
+
 export const config = { api: { bodyParser: false } };
