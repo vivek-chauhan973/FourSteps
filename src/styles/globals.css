@@ -43,6 +43,7 @@ p {
 
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
+
   h1,
   h2,
   h3,
@@ -585,6 +586,7 @@ a:hover span {
 /* styles/globals.css */
 
 @keyframes continuous {
+
   0%,
   100% {
     transform: scale(1);
@@ -793,6 +795,7 @@ a:hover span {
   color: #fff;
   background-color: var(--color);
 }
+
 .btn_filter {
   --color: #0d417b;
   font-family: inherit;
@@ -816,16 +819,21 @@ a:hover span {
 /* Add responsiveness for mobile devices */
 @media (max-width: 768px) {
   .btn_filter {
-    width: 60%; /* Make the button full-width */
-    height: 3em; /* Increase height for better touch usability */
-    font-size: 15px; /* Adjust font size for smaller screens */
+    width: 60%;
+    /* Make the button full-width */
+    height: 3em;
+    /* Increase height for better touch usability */
+    font-size: 15px;
+    /* Adjust font size for smaller screens */
   }
 }
 
 @media (max-width: 480px) {
   .btn_filter {
-    width: 40%; /* Ensure it fits smaller screens */
-    font-size: 14px; /* Further adjust font size */
+    width: 40%;
+    /* Ensure it fits smaller screens */
+    font-size: 14px;
+    /* Further adjust font size */
   }
 }
 
@@ -860,6 +868,7 @@ ul {
 }
 
 @media (max-width: 768px) {
+
   .rich-text-content ul,
   .rich-text-content ol {
     padding-left: 15px;
@@ -889,12 +898,14 @@ ul {
   /* color: rgb(73, 73, 244); */
   font-size: 20px;
 }
+
 .custom-list-service ::marker {
   color: #0d417b;
   /* color: rgb(73, 73, 244); */
 
   font-size: 20px;
 }
+
 /* for testimonial image animation start */
 .zoom-out {
   animation: zoomOut 2s ease-in-out forwards;
@@ -915,3 +926,9 @@ ul {
 }
 
 /* for testimonial image animation end  */
+
+@media (min-width: 600px) and (max-width: 1000px) {
+  .hide-between-700-1100 {
+    display: none;
+  }
+}

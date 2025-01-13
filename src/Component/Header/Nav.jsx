@@ -192,7 +192,7 @@ const Nav = () => {
             </div>
 
             {/* Tablet and Desktop Menu */}
-            <div className="hidden md:flex md:space-x-6 lg:space-x-8 items-center">
+            <div className="hidden    md:flex md:space-x-6 lg:space-x-8 items-center">
               <ul className="flex space-x-4 list-none cursor-pointer">
                 <DesktopCompany
                   activeLink={activeLink}
@@ -256,13 +256,13 @@ const Nav = () => {
                 </li>
               </ul>
 
-              <button className="bg-primary   text-[13px]  text-white font-medium py-2 px-4 rounded inline-flex items-center">
+              <button className="bg-primary hide-between-700-1100     text-[13px]  text-white font-medium py-2 px-4 rounded inline-flex items-center">
                 Talk to Us
               </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="flex md:hidden">
+            <div className="flex  md:hidden">
               <button
                 type="button"
                 className="w-full text-left text-gray-700 hover:text-black px-1 md:px-0 py-2 text-sm font-medium flex items-center justify-between"
