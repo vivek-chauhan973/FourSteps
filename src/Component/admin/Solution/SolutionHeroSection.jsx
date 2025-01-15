@@ -98,7 +98,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
 
       if (res.ok) {
         alert(`File ${blogData ? "updated" : "uploaded"} successfully`);
-        // router.push(`/admin/Solution/solution/${data?.data?._id}`);
+        router.push(`/admin/solution/solution/${data?._id}`);
         setActiveTab("Tab2");
       } else {
         alert(`File ${blogData ? "update" : "upload"} failed`);

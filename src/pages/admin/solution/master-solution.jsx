@@ -139,7 +139,7 @@ function MasterSolution() {
                         onChange={(e) => setEditSolutionValue(e.target.value)}
                       />
                     ) : (
-                      <span>
+                      <span className=" capitalize">
                         {index + 1}. {item.name}
                       </span>
                     )}
