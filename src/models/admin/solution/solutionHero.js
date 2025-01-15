@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import "./Why4StepS";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -27,7 +27,14 @@ const SolutionHeroSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Why4StepS: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Why4StepSolution",
+  },
 });
 
-export default mongoose.models.SolutionHero ||
+const SolutionHero =
+  mongoose.models.SolutionHero ||
   mongoose.model("SolutionHero", SolutionHeroSchema);
+
+export default SolutionHero;

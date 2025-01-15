@@ -15,10 +15,10 @@ const why4stepApi = async (req, res) => {
       return res.status(400).json({ message: "Industry ID is required!" });
     }
 
-    const existingData = await Why4StepSolution.findOne({ solution });
+    const data = await Why4StepSolution.findOne({ solution });
     let updatedData;
 
-    if (!existingData) {
+    if (!data) {
       updatedData = await Why4StepSolution.create(saveData);
       if (!updatedData) {
         return res.status(500).json({ message: "Something went wrong!" });

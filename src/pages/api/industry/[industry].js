@@ -38,12 +38,7 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: "File upload failed" });
       }
 
-      const {
-        title,
-        description,
-        industryName,
-        contentsummary,
-      } = req.body;
+      const { title, description, industryName, contentsummary } = req.body;
       const fileData = req.file && {
         title,
         contentsummary,
@@ -88,26 +83,31 @@ const apiRoute = async (req, res) => {
   } else if (req.method === "GET") {
     // Handle GET request
     try {
-      const files = await Industry.findOne({ _id: industry }).populate('why4step benefit faq').populate({
-        path: 'solution', 
-        populate: {
-          path: 'solutionItem', 
-        },
-      }).populate({ path: "success", populate: { path: "successItem" } }).populate({
-        path: 'product', 
-        populate: {
-          path: 'productItem', 
-        },
-      }).populate({
-        path: 'service', 
-        populate: {
-          path: 'serviceItem', 
-        },
-      })
+      const files = await Industry.findOne({ _id: industry })
+        .populate("why4step benefit faq")
+        .populate({
+          path: "solution",
+          populate: {
+            path: "solutionItem",
+          },
+        })
+        .populate({ path: "success", populate: { path: "successItem" } })
+        .populate({
+          path: "product",
+          populate: {
+            path: "productItem",
+          },
+        })
+        .populate({
+          path: "service",
+          populate: {
+            path: "serviceItem",
+          },
+        });
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);
-      return res.status(500).json({ message: "Internal Server Error",error });
+      return res.status(500).json({ message: "Internal Server Error", error });
     }
   } else {
     // Handle other methods (e.g., POST, DELETE)

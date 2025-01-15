@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     }
 
     try {
-      const solution = await SolutionHero.findById(id);
+      const solution = await SolutionHero.findById(id).populate("Why4StepS");
       if (!solution) {
         return res.status(404).json({ error: "Solution not found" });
       }
