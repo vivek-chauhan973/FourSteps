@@ -134,7 +134,7 @@ const ContactUs = () => {
     <div className=" bg-white">
       <div className=" container-wrapper">
         <div className=" mx-auto  py-10">
-          <h4 className="text-[22px] md:text-3xl font-semibold text-blue-800 mb-6 text-center">
+          <h4 className="text-[22px] md:text-3xl font-semibold text-heading mb-6 text-center">
             Get in Touch (Contact Us)
           </h4>
           <div className="overflow-hidden">

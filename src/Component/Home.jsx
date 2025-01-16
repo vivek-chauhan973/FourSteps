@@ -22,6 +22,7 @@ import Partners from "./Web/Partners";
 // import Trail from "./Trail";
 import Solution from "./Web/Solution";
 import ServicesScienceSoft from "./Service/ServicesScienceSoft";
+import TechUse from "./Web/TechUse";
 
 const Home = () => {
   useEffect(() => {
@@ -44,7 +45,7 @@ const Home = () => {
       <AboutSection />
       <ServicesScienceSoft />
       {/* <Service /> */}
-    
+
       <ChooseUs />
       <Industry />
       <Solution />
@@ -52,6 +53,7 @@ const Home = () => {
         <Team />
       </div>
       <Client />
+      <TechUse />
       <Faq />
       <Case />
       <ContactUs />
