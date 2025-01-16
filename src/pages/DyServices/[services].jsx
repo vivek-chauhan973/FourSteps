@@ -87,6 +87,10 @@ const DyServices = () => {
 
         {/* Client & Testimonials */}
 
+      {/* this is FQA SECTION  */}
+      <div>
+        <ServiceFaq />
+      </div>
         <div>
           <Testimonial />
         </div>
@@ -94,10 +98,6 @@ const DyServices = () => {
         {/* Resource Section */}
       </div>
 
-      {/* this is FQA SECTION  */}
-      <div>
-        <ServiceFaq />
-      </div>
 
       {/* footer section */}
       <div>

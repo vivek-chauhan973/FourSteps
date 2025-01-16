@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const ServiceFaq = () => {
+const TechFaqs = () => {
   // Static FAQ data
   const faqData = [
     {
@@ -123,4 +123,4 @@ const ServiceFaq = () => {
   );
 };
 
-export default ServiceFaq;
+export default TechFaqs;

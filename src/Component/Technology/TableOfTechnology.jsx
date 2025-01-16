@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import IndustrySideForm from "../Industry/IndustrySideForm";
-
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
-import SolutionAbout from "./SolutionAbout";
-import SuccessStorySolution from "./SuccessStorySolution";
-import ServiceSolution from "./ServiceSolution";
-import ProductSolution from "./ProductSolution";
-import BenifitSolution from "./BenifitSolution";
-import Why4stepSolution from "./Why4stepSolution";
-import OurServiceSolution from "./OurServiceSolution";
-import SolutionDeliver from "./SolutionDeliver";
-const TableofSolution = ({ industryName }) => {
+import TechAbout from "./TechAbout";
+import TechSolutionDeliver from "./TechSolutionDeliver";
+import TechSuccessStory from "./TechSuccessStory";
+import TechService from "./TechService";
+import TechProducts from "./TechProducts";
+import TechBenifits from "./TechBenifits";
+import TechWhy4step from "./TechWhy4step";
+const TableOfTechnology = ({ industryName }) => {
   return (
     <div className="">
       <div className="bg-[#F1F5F9] ">
@@ -24,7 +22,8 @@ const TableofSolution = ({ industryName }) => {
                 <IndustryAbout about={industryName?.contentsummary} />
               )} */}
 
-              <SolutionAbout />
+              {/* <SolutionAbout /> */}
+              <TechAbout />
             </div>
 
             {/* Reliable partners  */}
@@ -34,14 +33,16 @@ const TableofSolution = ({ industryName }) => {
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-primary text-lg md:text-3xl py-7 md:py-10"
+                  className="font-semibold text-heading text-lg md:text-3xl py-7 md:py-10"
                   dangerouslySetInnerHTML={{
                     __html:
                       industryName?.why4step?.heading || "Why 4Step Solution ",
                   }}
                 />
 
-                <Why4stepSolution />
+                {/* <Why4stepSolution /> */}
+
+                <TechWhy4step />
               </div>
             </div>
 
@@ -49,9 +50,9 @@ const TableofSolution = ({ industryName }) => {
             <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
                 {/* Heading */}
-                <div className="font-semibold text-primary text-lg md:text-3xl">
-                  {industryName?.success?.heading || "Success Story"} main
-                  heading Success Story Solution
+                <div className="font-semibold text-heading text-lg md:text-3xl">
+                  {industryName?.success?.heading || "Success Technology"} main
+                  Technology story
                 </div>
                 <div>
                   {/* Description */}
@@ -65,7 +66,8 @@ const TableofSolution = ({ industryName }) => {
                   title, description, and link.
                 </div>
 
-                <SuccessStorySolution />
+                {/* <SuccessStorySolution /> */}
+                <TechSuccessStory />
               </div>
             </div>
 
@@ -76,13 +78,14 @@ const TableofSolution = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
-                  <h3 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.solution?.heading || " Solution We Deliver"}
-                    main heading Deliver
-                  </h3>
+                  <div className="font-semibold text-heading text-lg md:text-3xl">
+                    {industryName?.solution?.heading || " What Technlogy use "}
+                    whaat tech use
+                  </div>
                 </div>
 
-                <SolutionDeliver />
+                {/* <SolutionDeliver /> */}
+                <TechSolutionDeliver />
               </div>
             </div>
 
@@ -92,12 +95,13 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-lg md:text-3xl">
                   {industryName?.service?.heading || "Our Services"} main
                   heading Services
                 </div>
 
-                <OurServiceSolution />
+                {/* <OurServiceSolution /> */}
+                <TechService />
               </div>
             </div>
 
@@ -107,12 +111,13 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               {/* heading section  */}
-              <h3 className="font-semibold text-primary text-lg md:text-3xl">
+              <div className="font-semibold text-heading text-lg md:text-3xl">
                 {industryName?.product?.heading || "Our Products"} main heading
                 Products
-              </h3>
+              </div>
 
-              <ProductSolution />
+              {/* <ProductSolution /> */}
+              <TechProducts />
             </div>
 
             {/* Approaches Section */}
@@ -122,6 +127,7 @@ const TableofSolution = ({ industryName }) => {
             >
               <div>
                 {/* <div className="font-semibold py-2 text-xl">Approaches</div> */}
+                {/* <ApproacheIndustry /> */}
                 <ApproacheIndustry />
               </div>
             </div>
@@ -132,14 +138,15 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div className="md:px-2">
-                <div>
-                  <h2 className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-lg md:text-3xl">
+                  <h2 className="">
                     {industryName?.benefit?.heading || "Our Benifits"} main
-                    heading Benifits
+                    heading Benifitsw
                   </h2>
                 </div>
 
-                <BenifitSolution />
+                {/* <BenifitSolution /> */}
+                <TechBenifits />
               </div>
             </div>
           </div>
@@ -260,4 +267,4 @@ const TableofSolution = ({ industryName }) => {
   );
 };
 
-export default TableofSolution;
+export default TableOfTechnology;

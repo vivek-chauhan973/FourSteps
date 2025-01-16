@@ -39,8 +39,8 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
       <div
         onClick={() => handleLinkClick("/industry")}
         className={`relative inline-flex items-center text-base font-medium px-3 py-2 ${
-          activeLink === "/industry" ? "text-orange-500" : "text-gray-800"
-        } hover:text-orange-500 transition-colors duration-300`}
+          activeLink === "/industry" ? "text-primary" : "text-gray-800"
+        } hover:text-primary transition-colors duration-300`}
       >
         Industry
         {dropDown ? (
@@ -74,14 +74,14 @@ const DesktopIndustry = ({ activeLink, handleLinkClick }) => {
                     href={`/industry/${item?.industryName
                       ?.split(" ")
                       ?.join("-")}`}
-                    className="flex items-center justify-between px-4 py-1 text-gray-800 capitalize hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+                    className="flex items-center justify-between px-4 py-1 text-gray-800 capitalize hover:bg-blue-50 hover:text-primary rounded-lg transition-colors duration-300"
                   >
                     <span>{item?.industryName}</span>
                     <FontAwesomeIcon
                       icon={faArrowRight}
-                      className="text-gray-800 group-hover:text-orange-500 transition-colors duration-300"
+                      className="text-gray-800 group-hover:text-primary transition-colors duration-300"
                     />
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </li>
               ))}
@@ -103,12 +103,12 @@ export default DesktopIndustry;
 //           href={`/industry/${item?.industryName
 //             ?.split(" ")
 //             ?.join("-")}`}
-//           className="block px-4 py-1 text-gray-800 capitalize hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//           className="block px-4 py-1 text-gray-800 capitalize hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //         >
 //           {item?.industryName}
 
 //           <FontAwesomeIcon icon={faArrowRight} />
-//           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+//           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
 //         </Link>
 //       </li>
 
@@ -116,7 +116,7 @@ export default DesktopIndustry;
 //   {/* <li>
 //     <Link
 //       href="/industry/construction-realestate"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Construction & Real Estate
 //     </Link>
@@ -124,7 +124,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="/industry/financial-management"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Financial Management
 //     </Link>
@@ -132,7 +132,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="#"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Education & eLearning
 //     </Link>
@@ -140,7 +140,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="/#"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Retail & Ecommerce
 //     </Link>
@@ -148,7 +148,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="/#"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Healthcare & Pharmaceuticals
 //     </Link>
@@ -156,7 +156,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="#"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Software & Tech
 //     </Link>
@@ -164,7 +164,7 @@ export default DesktopIndustry;
 //   <li>
 //     <Link
 //       href="/industry/manufacturing-engineering"
-//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-orange-500 rounded-lg transition-colors duration-300"
+//       className="block px-4 py-1 text-gray-800 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors duration-300"
 //     >
 //       Manufacturing & Engineering
 //     </Link>
