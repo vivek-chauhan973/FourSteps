@@ -252,7 +252,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -261,6 +261,29 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 export const Footer = () => {
+  const [industryNames, setIndustryNames] = useState([]);
+
+  const fetchIndustries = async () => {
+    try {
+      const response = await fetch("api/industry/industry-hero");
+      const result = await response.json();
+
+      if (result.data && Array.isArray(result.data)) {
+        const names = result.data.map((item) => item.industryName);
+        setIndustryNames(names);
+        setIndustryNames(names.slice(0, 7));
+      } else {
+        console.error("Invalid response format:", result);
+      }
+    } catch (error) {
+      console.error("Error fetching industries:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchIndustries();
+  }, []);
+
   return (
     <div>
       <footer className="bg-gray-800 text-white py-10">
@@ -291,7 +314,7 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Useful Links</h3>
             <ul className="space-y-1 list-none text-sm">
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/about" className="hover:text-gray-300">
                   About
                 </Link>
               </li>
@@ -316,7 +339,7 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/career" className="hover:text-gray-300">
                   Career
                 </Link>
               </li>
@@ -328,72 +351,83 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Resources</h3>
             <ul className="space-y-1 list-none text-sm">
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/resource/product" className="hover:text-gray-300">
                   Product
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/resource/webinar" className="hover:text-gray-300">
                   Webinar
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link
+                  href="/resource/demo-videos"
+                  className="hover:text-gray-300"
+                >
                   Demos & Video
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/resource/blog" className="hover:text-gray-300">
                   Blog
                 </Link>
               </li>
 
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link
+                  href="/resource/case-studies"
+                  className="hover:text-gray-300"
+                >
                   Case Study
                 </Link>
               </li>
             </ul>
           </div>
+          {/* Industry */}
 
-          {/* Social Media */}
-          <div className="col-span-1">
-            <div>
-              <h3 className="text-base  font-semibold mb-2">General Queries</h3>
-              <div className=" text-sm">
-                <p>Email: info@4stepsdigital.com</p>
-                <p>Phone: +91-9065879989</p>
-              </div>
-              <h3 className="text-base  font-semibold mt-4 mb-2">
-                Social Media Links
-              </h3>
+          <div>
+            <div className="col-span-1">
+              <h3 className="text-lg font-semibold mb-2">Industries</h3>
+              {/* <ul className="space-y-1 list-none text-sm">
+                <li>
+                  <Link href="#" className="hover:text-gray-300">
+                    Tour & Travel
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-gray-300">
+                    Banking
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-gray-300">
+                    System Design
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-gray-300">
+                    Marketing & Sales
+                  </Link>
+                </li>
+              </ul> */}
 
-              <div className="flex space-x-1">
-                <Link
-                  href="#"
-                  className="flex items-center justify-center w-8 h-8 rounded-full    transition duration-200   bg-blue-500 text-white"
-                >
-                  <FontAwesomeIcon icon={faFacebookF} className="text-lg" />
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200  bg-red-500 text-white"
-                >
-                  <FontAwesomeIcon icon={faYoutube} className="text-lg" />
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200 bg-blue-500 text-white"
-                >
-                  <FontAwesomeIcon icon={faLinkedinIn} className="text-lg" />
-                </Link>
-                <Link
-                  href="#"
-                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200 bg-pink-500 text-white"
-                >
-                  <FontAwesomeIcon icon={faInstagram} className="text-lg" />
-                </Link>
-              </div>
+              <ul className="space-y-1 list-none text-sm">
+                {industryNames.length > 0 ? (
+                  industryNames.map((name, index) => (
+                    <li key={index}>
+                      <Link
+                        href={`/industry/${name.split(" ").join("-")}`}
+                        className="hover:text-gray-300"
+                      >
+                        {name}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>Loading industries...</li>
+                )}
+              </ul>
             </div>
           </div>
         </div>
@@ -499,38 +533,51 @@ export const Footer = () => {
               </ul>
             </div>
           </div>
-          {/* Industry */}
-          <div>
-            <div className="col-span-1">
-              <h3 className="text-lg font-semibold mb-2">Industries</h3>
-              <ul className="space-y-1 list-none text-sm">
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Tour & Travel
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Banking
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    System Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Marketing & Sales
-                  </Link>
-                </li>
-              </ul>
+
+          {/* Social Media */}
+          <div className="col-span-1">
+            <div>
+              <h3 className="text-base  font-semibold mb-2">General Queries</h3>
+              <div className=" text-sm">
+                <p>Email: info@4stepsdigital.com</p>
+                <p>Phone: +91-9065879989</p>
+              </div>
+              <h3 className="text-base  font-semibold mt-4 mb-2">
+                Social Media Links
+              </h3>
+
+              <div className="flex space-x-1">
+                <Link
+                  href="#"
+                  className="flex items-center justify-center w-8 h-8 rounded-full    transition duration-200   bg-blue-500 text-white"
+                >
+                  <FontAwesomeIcon icon={faFacebookF} className="text-lg" />
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200  bg-red-500 text-white"
+                >
+                  <FontAwesomeIcon icon={faYoutube} className="text-lg" />
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200 bg-blue-500 text-white"
+                >
+                  <FontAwesomeIcon icon={faLinkedinIn} className="text-lg" />
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center justify-center w-8 h-8 rounded-full  transition duration-200 bg-pink-500 text-white"
+                >
+                  <FontAwesomeIcon icon={faInstagram} className="text-lg" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="mt-7 border-t  md:text-center md:text-sm text-xs justify-center border-gray-700 pt-6 ">
-          <p>
+          <p className=" md:pl-0 pl-2">
             © {new Date().getFullYear()}
             Consulting(OPC) Pvt Ltd. All Rights Reserved.
           </p>

@@ -1,9 +1,17 @@
 import Image from "next/image";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const TechUse = () => {
   const [expand, SetExpand] = useState(false);
-
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      disable: "phone",
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
   const members = [
     {
       img: "/image/ab.webp",
@@ -22,12 +30,12 @@ const TechUse = () => {
       description: " padding to give the section breathing room.",
     },
     {
-      img: "/image/ab.webp",
+      img: "/image/bit.jpg",
       title: "Php",
       description: " padding to give the section breathing room.",
     },
     {
-      img: "/image/ab.webp",
+      img: "/image/bg.jpg",
       title: "Html ",
       description: " padding to give the section breathing room.",
     },
@@ -49,10 +57,10 @@ const TechUse = () => {
   ];
 
   return (
-    <div className="container ">
-      <div class="text-center pt-10  ">
+    <div className="container  ">
+      <div data-aos="fade-up" class="text-center pt-10  ">
         <h4 class="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
-          Technologies We Use For Web Development
+          Technologies Behind Our Web Development Excellence
         </h4>
         <h2 class="text-xs mb-0 text-gray-900 md:mb-5 md:text-lg  font-medium    max-w-3xl mx-auto">
           From robust backend systems to dynamic front-end experiences, our
@@ -61,7 +69,10 @@ const TechUse = () => {
       </div>
 
       <div className=" py-10">
-        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 cursor-pointer md:px-16">
+        <div
+          data-aos="fade-up"
+          className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 cursor-pointer md:px-16"
+        >
           {members.map((member, i) => (
             <div
               key={i}
