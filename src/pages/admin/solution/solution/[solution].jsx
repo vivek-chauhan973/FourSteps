@@ -2,19 +2,21 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import SolutionHeroSection from "@/Component/admin/Solution/SolutionHeroSection";
-import SolutionWhy4steps from "@/Component/admin/Solution/SolutionWhy4steps";
+
 import SolutionSuccessStories from "@/Component/admin/Solution/SolutionSuccessStories";
 import SolutionSolutions from "@/Component/admin/Solution/SolutionSolutions";
 import SolutionProducts from "@/Component/admin/Solution/SolutionProducts";
 import SolutionServices from "@/Component/admin/Solution/SolutionServices";
 import SolutionBenefits from "@/Component/admin/Solution/SolutionBenefits";
 import SolutionFaq from "@/Component/admin/Solution/SolutionFaq";
+import SolutionWhy4steps from "@/Component/admin/Solution/SolutionWhy4steps";
 const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/industry/${id}`)).json();
+  return await (await fetch(`/api/solution/${id}`,{method:"GET"})).json();
 };
 export default function CreateWebinar() {
   const router = useRouter();
   const { solution } = router?.query;
+  // console.log("solution -------- ",solution)
   const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
   useEffect(() => {
@@ -143,6 +145,7 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
           <SolutionWhy4steps blogData={blogData} setActiveTab={setActiveTab} />
+          
         </div>
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}

@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs";
 import SolutionHero from "@/models/admin/solution/solutionHero";
 
-const uploadDirectory = "./public/uploads/solutionHero";
+const uploadDirectory = "./public/uploads/solution/solutionHero";
 if (!fs.existsSync(uploadDirectory))
   fs.mkdirSync(uploadDirectory, { recursive: true });
 
@@ -25,19 +25,19 @@ export default async function handler(req, res) {
 
       const { title, solutionName, description, contentsummary, solutionType } =
         req.body;
-      const filePath = `/uploads/solutionHero/${req.file.filename}`;
-      console.log("req body data is here --> ", req.body);
+      const filePath = `/uploads/solution/solutionHero/${req.file.filename}`;
+      // console.log("req body data is here --> ", req.body);
       try {
         const solution = await SolutionHero.create({
           title,
           solutionName,
           solutionType,
           description,
-          file: req.file.filename,
+          filename: req.file.filename,
           path: filePath,
           contentsummary,
         });
-        res.status(201).json(solution);
+        res.status(201).json({data:solution});
       } catch (error) {
         res
           .status(500)
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     }
 
     try {
-      const solution = await SolutionHero.findById(id).populate("Why4StepS");
+      const solution = await SolutionHero.findById(id).populate("Why4StepS").populate({ path: "success", populate: { path: "successItem" } });
       if (!solution) {
         return res.status(404).json({ error: "Solution not found" });
       }

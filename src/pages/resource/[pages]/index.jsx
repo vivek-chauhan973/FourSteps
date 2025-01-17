@@ -105,7 +105,7 @@ const Routes = () => {
 
         {/* Footer section here  */}
         <div className=" mt-10">
-          <Footer />
+         <Footer/>
         </div>
       </div>
     </div>

@@ -40,10 +40,11 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
 
   useEffect(() => {
     setTitle(blogData?.title || "");
-    setSolutionName(blogData?.solution || "");
+    setSolutionName(blogData?.solutionName || "");
     setDescription(blogData?.description || "");
     setPreview(blogData?.path || "");
     setEditorHtmlDescription(blogData?.contentsummary || "");
+    setSolutionType(blogData?.solutionType || "");
   }, [blogData]);
 
   // Handle file input change
@@ -88,8 +89,8 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("solutionType", solutionType);
 
     try {
-      const res = await fetch("/api/solution/solutioHero", {
-        method: "POST",
+      const res = await fetch(`/api/solution/${blogData?blogData?._id:"solution"}`, {
+        method: blogData?"PUT":"POST",
         body: formData,
       });
 
@@ -98,7 +99,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
 
       if (res.ok) {
         alert(`File ${blogData ? "updated" : "uploaded"} successfully`);
-        router.push(`/admin/solution/solution/${data?._id}`);
+        router.push(`/admin/solution/solution/${data?.data?._id}`);
         setActiveTab("Tab2");
       } else {
         alert(`File ${blogData ? "update" : "upload"} failed`);

@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/industry/success1?id=${id}`, { method: "GET" });
+  const res = await fetch(`/api/solution/success1?id=${id}`, { method: "GET" });
   return await res.json();
 };
 
@@ -104,14 +104,14 @@ const SolutionSuccessStories = ({ setActiveTab, blogData }) => {
     formData.append("link", link);
     formData.append("backgroundColor", backgroundColor);
     formData.append("keyword", keyword);
-    formData.append("industry", blogData?._id);
+    formData.append("solution", blogData?._id);
 
     if (file) formData.append("file", file);
 
     try {
       const url = isUpdating
-        ? `/api/industry/success1/${editItemId}`
-        : `/api/industry/success1`;
+        ? `/api/solution/success1/${editItemId}`
+        : `/api/solution/success1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       const data1 = await res.json();
@@ -138,7 +138,7 @@ const SolutionSuccessStories = ({ setActiveTab, blogData }) => {
   console.log("blog data is here -----> ", blogData);
 
   const deleteItem = async (id) => {
-    const data = await fetch(`/api/industry/success1?id=${id}`, {
+    const data = await fetch(`/api/solution/success1?id=${id}`, {
       method: "DELETE",
     });
     if (data?.ok) {
@@ -180,7 +180,7 @@ const SolutionSuccessStories = ({ setActiveTab, blogData }) => {
   const handleSaveAllData = async () => {
     const data = { heading, mainEditorHtmlDescription, successItem };
     const res = await fetch(
-      `/api/industry/success1/success?industry=${blogData?._id}`,
+      `/api/solution/success1/success?solution=${blogData?._id}`,
       {
         method: "POST",
         headers: {
@@ -204,7 +204,7 @@ const SolutionSuccessStories = ({ setActiveTab, blogData }) => {
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
-        <p className="text-base font-semibold mb-2">Industry Success stories</p>
+        <p className="text-base font-semibold mb-2">solution Success stories</p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
             <div>

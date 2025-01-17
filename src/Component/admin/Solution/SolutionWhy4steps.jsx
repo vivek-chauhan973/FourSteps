@@ -19,9 +19,9 @@ const SolutionWhy4steps = ({ blogData, setActiveTab }) => {
 
   useEffect(() => {
     if (blogData) {
-      setHeading(blogData?.why4step?.heading || "");
-      setOverviewData(blogData?.why4step?.overviewData || []);
-      setSelectedPartnersData(blogData?.why4step?.partnersData || []);
+      setHeading(blogData?.Why4StepS?.heading || "");
+      setOverviewData(blogData?.Why4StepS?.overviewData || []);
+      setSelectedPartnersData(blogData?.Why4StepS?.partnersData || []);
     }
   }, [blogData]);
 
@@ -93,7 +93,7 @@ const SolutionWhy4steps = ({ blogData, setActiveTab }) => {
 
   const handleSaveData = async () => {
     const data = {
-      industry: blogData?._id,
+      solution: blogData?._id,
       heading,
       SelectedPartnersData,
       overviewData,
@@ -107,7 +107,7 @@ const SolutionWhy4steps = ({ blogData, setActiveTab }) => {
     });
     if (res?.ok) {
       alert(
-        blogData?.why4step
+        blogData?.Why4StepS
           ? "Data updated successfully"
           : "Data added successfully"
       );

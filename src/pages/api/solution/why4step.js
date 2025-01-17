@@ -3,16 +3,16 @@ import SolutionHero from "@/models/admin/solution/solutionHero";
 
 const why4stepApi = async (req, res) => {
   try {
-    const { heading, SelectedPartnersData, industry, overviewData } = req.body;
+    const { heading, SelectedPartnersData, solution, overviewData } = req.body;
     const saveData = {
       heading,
       overviewData,
-      industry,
+      solution,
       partnersData: SelectedPartnersData,
     };
 
     if (!solution) {
-      return res.status(400).json({ message: "Industry ID is required!" });
+      return res.status(400).json({ message: "solution ID is required!" });
     }
 
     const data = await Why4StepSolution.findOne({ solution });
@@ -25,7 +25,7 @@ const why4stepApi = async (req, res) => {
       }
       await SolutionHero.findOneAndUpdate(
         { _id: solution },
-        { $set: { why4step: updatedData._id } }
+        { $set: { Why4StepS: updatedData._id } }
       );
       return res.status(201).json({
         message: "Successfully created data",
@@ -43,7 +43,7 @@ const why4stepApi = async (req, res) => {
     }
     await SolutionHero.findOneAndUpdate(
       { _id: solution },
-      { $set: { why4step: updatedData._id } }
+      { $set: { Why4StepS: updatedData._id } }
     );
     return res.status(200).json({
       message: "Successfully updated data",

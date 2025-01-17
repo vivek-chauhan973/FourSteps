@@ -29,6 +29,7 @@ const fetchAllCaseStudies = async () => {
   try {
     const response = await fetch("/api/casestudy/casestudy", { method: "GET" });
     const data = await response.json();
+    // console.log("caseeeeeeeeeeeeeeeeeeeeeeeee------>",data)
     return data;
   } catch (error) {
     console.error("error fetching the case study data", error);

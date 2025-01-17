@@ -17,7 +17,7 @@ const Why4StepsSolutionSchema = new mongoose.Schema(
     },
     partnersData: [String],
     overviewData: [miniSchema],
-    industry: {
+    solution: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "SolutionHero",
       required: true,

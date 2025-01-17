@@ -36,7 +36,7 @@ const Cdetail = ({ title }) => {
     if (router?.query?.detail) {
       getCaseStudyData(router?.query?.detail?.split("-")?.join(" ")).then(
         (res) => {
-          // console.log("CaseStudy  data fetched --->", res);
+          // console.log("CaseStudy  data fetche--->", res);
           setCasePackageData(res);
         }
       );

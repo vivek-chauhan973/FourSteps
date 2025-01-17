@@ -18,8 +18,6 @@ const Switch = () => {
         <div className="flex flex-wrap  gap-4 justify-center">
           {resources.map((resource, index) => (
             <Link key={index} href={resource.href}
-            
-            
             className={`btn_filter ${active === index ? 'active' : ''}`}
             onClick={() => setActive(index)}
             >

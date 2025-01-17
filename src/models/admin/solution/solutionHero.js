@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./success/success";
 import "./Why4StepS";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
@@ -14,7 +15,11 @@ const SolutionHeroSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  file: {
+  filename: {
+    type: String,
+    required: true,
+  },
+  path: {
     type: String,
     required: true,
   },
@@ -30,6 +35,10 @@ const SolutionHeroSchema = new mongoose.Schema({
   Why4StepS: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Why4StepSolution",
+  },
+  success: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SolutionSuccess",
   },
 });
 

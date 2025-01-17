@@ -265,9 +265,9 @@ export const Footer = () => {
 
   const fetchIndustries = async () => {
     try {
-      const response = await fetch("api/industry/industry-hero");
+      const response = await fetch("/api/industry/industry-hero");
       const result = await response.json();
-
+      console.log("---------------------footer--->", result);
       if (result.data && Array.isArray(result.data)) {
         const names = result.data.map((item) => item.industryName);
         setIndustryNames(names);
@@ -417,7 +417,7 @@ export const Footer = () => {
                   industryNames.map((name, index) => (
                     <li key={index}>
                       <Link
-                        href={`/industry/${name.split(" ").join("-")}`}
+                        href={`/industry/${name?.split(" ").join("-")}`}
                         className="hover:text-gray-300"
                       >
                         {name}
