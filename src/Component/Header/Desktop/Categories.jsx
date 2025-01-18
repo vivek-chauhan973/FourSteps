@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+import {
+  faChevronDown,
+  faChevronUp,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 
 import Link from "next/link";
 
@@ -190,11 +194,11 @@ const Categories = () => {
 
   return (
     <div
-      className="inline-block text-base font-medium px-3 py-2 text-gray-800"
+      className="inline-block text-base font-medium px-3 py-2   text-gray-800"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="cursor-pointer hover:text-orange-500 flex items-center relative group">
+      <div className="cursor-pointer  hover:text-orange-500 flex items-center relative group">
         Our Services
         {isServiceMenuOpen ? (
           <FontAwesomeIcon
@@ -213,10 +217,11 @@ const Categories = () => {
       </div>
 
       {isServiceMenuOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-white px-4 py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
-          <div className="mx-auto p-4">
+        <div className="absolute left-0 right-0 mt-2 bg-background  py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
+          <div className="mx-auto">
             <div className="flex flex-col md:flex-row">
               {/* Sidebar Menu */}
+
               <div className="md:w-1/3 md:border-r pr-4">
                 <h2 className="text-lg px-2 border-b font-semibold">
                   Main Services
@@ -224,11 +229,15 @@ const Categories = () => {
                 {categoryData.map((category) => (
                   <div
                     key={category.title}
-                    className="py-1  px-2  cursor-pointer font-normal hover:bg-gray-200 rounded transition-colors duration-200"
+                    className="py-3  px-5 cursor-pointer font-normal hover:bg-background bg-white rounded transition-colors duration-200  flex justify-between items-center"
                     onMouseEnter={() => setActiveCategory(category)}
                     onClick={() => setActiveCategory(category)}
                   >
-                    {category.title}
+                    <span>{category.title}</span>
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      className=" text-sm"
+                    />
                   </div>
                 ))}
               </div>

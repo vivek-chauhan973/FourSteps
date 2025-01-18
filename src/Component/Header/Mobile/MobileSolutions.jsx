@@ -74,13 +74,13 @@ const MobileSolutions = ({ activeSection, handleSectionClick }) => {
             <li
               key={subcategory.name}
               onClick={() => handleSectionClick(subcategory.name)}
-              className="cursor-pointer py-1"
+              className="cursor-pointer py-[2px]"
             >
               <Link href={subcategory.path}>
                 <p
                   className={`text-sm text-gray-600 inline-block hover:text-gray-800 transition ${
                     activeSection === subcategory.name
-                      ? "border-b-2 border-blue-500"
+                      ? "border-b-2 border-heading"
                       : ""
                   }`}
                 >

@@ -60,14 +60,14 @@ const Industry = () => {
               >
                 {/* Icon Background with dynamic color */}
                 <div
-                  className={`rounded p-3 mb-1 flex items-center justify-center ${
+                  className={`rounded p-3 mb- flex items-center justify-center ${
                     bgColors[index % bgColors.length]
                   }`}
                 >
                   <Image
                     src={item?.path || "/image/1.png"}
                     alt="qljkh"
-                    className="w-20 h-20 md:w-28 md:h-28  object-cover max-w-full"
+                    className="w-20 h-20 md:w-24 md:h-24  object-cover max-w-full"
                     height={200}
                     width={200}
                   />

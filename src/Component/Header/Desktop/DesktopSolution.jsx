@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faChevronUp,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 
 // The services data remains the same
 const services = [
@@ -21,6 +27,32 @@ const services = [
         },
         { name: "Zoho Finance Agency CRM", link: "/zoho-finance-agency-crm" },
         { name: "Zoho Healthcare CRM", link: "/zoho-healthcare-crm" },
+      ],
+    },
+  },
+  {
+    name: "Our Hubspot  Products",
+    content: {
+      heading: "Our Custom Products",
+      description:
+        "Discover our range of custom products designed to meet your needs.",
+      links: [
+        {
+          name: "Tour & Package Management System",
+          link: "/tour-package-management-system",
+        },
+        {
+          name: "Car Rental Booking System",
+          link: "/car-rental-booking-system",
+        },
+        {
+          name: "Hotel Booking Management System",
+          link: "/hotel-booking-management-system",
+        },
+        {
+          name: "Hospital/Clinics Management System",
+          link: "/hospital-clinics-management-system",
+        },
       ],
     },
   },
@@ -87,36 +119,39 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
       {/* Dropdown Menu */}
       {isDropdownOpen && (
-        <div className="absolute left-[-10vw]  w-[65vw] rounded-md bg-white  border p-4 ">
+        <div className="absolute left-[-10vw]  w-[65vw]  bg-background  border  ">
           <div className="flex max-w-7xl mx-auto">
             {/* Sidebar Menu */}
-            <div className="w-1/4  border-r  pr-4">
-              <h2 className="text-lg  border-b  font-semibold">Services</h2>
+            <div className="w-1/4  border-r py-2 ">
+              <h2 className="text-lg  border-b  py-2 pl-2 font-semibold">
+                Services
+              </h2>
 
               {services.map((service) => (
                 <div
                   key={service.name}
-                  className="py-2 px-2 text-md rounded font-normal cursor-pointer hover:bg-gray-200 transition-colors"
+                  className="  py-3 text-md rounded font-normal  px-4 cursor-pointer bg-white hover:bg-background  flex justify-between transition-colors"
                   onMouseEnter={() => setActiveService(service)}
                   onClick={() => setActiveService(service)}
                 >
-                  {service.name}
+                  <span>{service.name}</span>
+                  <FontAwesomeIcon icon={faChevronRight} className=" text-sm" />
                 </div>
               ))}
             </div>
             {/* Content Area */}
 
-            <div className="flex-1  bg-white pl-10  ">
+            <div className="flex-1 pl-10 py-2">
               <h2 className="text-xl font-semibold    transition duration-200">
                 {activeService.content.heading}
               </h2>
               <p className=" mb-4 text-sm  border-b text-gray-600">
                 {activeService.content.description}
               </p>
-              <div className="space-y-2  ">
+              <div className=" space-y-2">
                 {activeService.content.links.map((link) => (
                   <Link key={link.name} href={link.link}>
-                    <p className=" text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
+                    <p className=" text-gray-800 text-sm py-1  hover:text-orange-500 transition duration-200">
                       {link.name}
                     </p>
                   </Link>

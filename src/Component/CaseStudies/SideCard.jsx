@@ -105,7 +105,7 @@ const SideCard = ({ statePackage }) => {
                   />
                 </div>
                 <div className="px-6 py-4">
-                  <h5 className="block text-[18px] text-heading font-semibold text-blue-gray-900">
+                  <h5 className="block text-[17px] text-heading font-semibold text-blue-gray-900">
                     {data?.title}
                   </h5>
                   <div className="line-clamp-3">
@@ -138,16 +138,16 @@ const SideCard = ({ statePackage }) => {
             <p className="text-center">No packages available.</p>
           )}
         </div>
-        <div className="hidden cursor-pointer md:flex absolute right-5 gap-2 top-[-10px]">
+        <div className="hidden text-sm cursor-pointer md:flex absolute right-5 gap-2 top-[-10px]">
           <FontAwesomeIcon
             icon={faChevronRight}
             onClick={scrollPrev}
-            className="h-5 w-5 p-2 rounded-full bg-black/50 hover:bg-black text-white rotate-180"
+            className="h-5 w-5 p-2   rounded-full bg-heading text-white rotate-180"
           />
           <FontAwesomeIcon
             icon={faChevronRight}
             onClick={scrollNext}
-            className="h-5 w-5 p-2 rounded-full bg-black/50 hover:bg-black text-white"
+            className="h-5 w-5 p-2  rounded-full bg-heading text-white"
           />
         </div>
       </div>
