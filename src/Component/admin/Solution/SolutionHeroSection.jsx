@@ -89,7 +89,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("solutionType", solutionType);
 
     try {
-      const res = await fetch(`/api/solution/${blogData?blogData?._id:"solution"}`, {
+      const res = await fetch(`/api/solution/${blogData?blogData?._id:"solutionHero"}`, {
         method: blogData?"PUT":"POST",
         body: formData,
       });
