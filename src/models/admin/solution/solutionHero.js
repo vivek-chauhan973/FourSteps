@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import "./success/success";
 import "./Why4StepS";
+import "./solution/solution";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -39,6 +40,10 @@ const SolutionHeroSchema = new mongoose.Schema({
   success: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "SolutionSuccess",
+  },
+  solution: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SolutionSolution",
   },
 });
 

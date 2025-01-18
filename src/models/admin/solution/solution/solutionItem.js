@@ -38,8 +38,8 @@ const IndustrySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const SolutionSuccessItem =
-  mongoose.models.SolutionSuccessItem ||
-  mongoose.model("SolutionSuccessItem", IndustrySchema);
+const SolutionSolutionItem =
+  mongoose.models.SolutionSolutionItem ||
+  mongoose.model("SolutionSolutionItem", IndustrySchema);
 
-export default SolutionSuccessItem;
+export default SolutionSolutionItem;

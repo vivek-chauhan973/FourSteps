@@ -1,15 +1,14 @@
+import SolutionSolution from "@/models/admin/solution/solution/solution";
 import SolutionHero from "@/models/admin/solution/solutionHero";
-import SolutionSuccess from "@/models/admin/solution/success/success";
-
 const successApi = async (req, res) => {
   const { solution } = req.query;
   try {
     const { heading,mainEditorHtmlDescription,successItem } = req.body;
 // console.log("req------------------body------> ",req.body)
-    const data = await SolutionSuccess.findOne({ solution });
+    const data = await SolutionSolution.findOne({ solution });
     let resData;
     if (!data) {
-      resData = await SolutionSuccess.create({
+      resData = await SolutionSolution.create({
         heading:heading,
         mainEditorHtmlDescription:mainEditorHtmlDescription,
         successItem:successItem,
@@ -23,7 +22,7 @@ const successApi = async (req, res) => {
         .status(201)
         .json({ message: "solution data saved successfully ", resData });
     }
-    resData = await SolutionSuccess.findOneAndReplace(
+    resData = await SolutionSolution.findOneAndReplace(
       { solution },
       { heading, mainEditorHtmlDescription, successItem, solution }
     );

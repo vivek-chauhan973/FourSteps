@@ -2,8 +2,8 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SolutionSuccessItem from "@/models/admin/solution/success/solutionsuccess";
-const uploadDirectory = "./public/uploads/solution/industrysuccess";
+import SolutionSolutionItem from "@/models/admin/solution/solution/solutionItem";
+const uploadDirectory = "./public/uploads/solution/SolutionSolution";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -48,7 +48,7 @@ const apiRoute = async (req, res) => {
         backgroundColor,
         keyword,
         solution,
-        path: `/uploads/solution/industrysuccess/${req.file.filename}`,
+        path: `/uploads/solution/SolutionSolution/${req.file.filename}`,
       };
 
       try {
@@ -68,7 +68,7 @@ const apiRoute = async (req, res) => {
   
     try {
       // Fetch the file document from the database
-      const file = await SolutionSuccessItem.findById(id);
+      const file = await SolutionSolutionItem.findById(id);
       if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
@@ -81,7 +81,7 @@ const apiRoute = async (req, res) => {
         console.warn(`File not found on the server: ${filePath}`);
       }
       // Delete the file document from the database
-      await SolutionSuccessItem.findByIdAndDelete(id);
+      await SolutionSolutionItem.findByIdAndDelete(id);
   
       return res.status(200).json({ message: "File and associated references deleted successfully" });
     } catch (error) {
@@ -91,7 +91,7 @@ const apiRoute = async (req, res) => {
   } else if (req.method === "GET") {
     const { id } = req.query;
     try {
-      const files = await SolutionSuccessItem.find({solution:id});
+      const files = await SolutionSolutionItem.find({solution:id});
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);

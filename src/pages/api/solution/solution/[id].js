@@ -2,9 +2,9 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SolutionSuccessItem from "@/models/admin/solution/success/solutionsuccess";
+import SolutionSolutionItem from "@/models/admin/solution/solution/solutionItem";
 
-const uploadDirectory = "./public/uploads/solution/industrysuccess";
+const uploadDirectory = "./public/uploads/solution/SolutionSolution";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
@@ -44,7 +44,7 @@ const apiRoute = async (req, res) => {
       } = req.body;
 
       try {
-        const existingData = await SolutionSuccessItem.findById(id);
+        const existingData = await SolutionSolutionItem.findById(id);
         if (!existingData) {
           return res.status(404).json({ message: "Data not found for the given id" });
         }
@@ -61,7 +61,7 @@ const apiRoute = async (req, res) => {
 
           fileData = {
             filename: req.file.filename,
-            path: `/uploads/solution/industrysuccess/${req.file.filename}`,
+            path: `/uploads/solution/SolutionSolution/${req.file.filename}`,
           };
         }
 
@@ -75,7 +75,7 @@ const apiRoute = async (req, res) => {
           ...fileData,
         };
 
-        const updatedFile = await SolutionSuccessItem.findByIdAndUpdate(id, updatedData, { new: true });
+        const updatedFile = await SolutionSolutionItem.findByIdAndUpdate(id, updatedData, { new: true });
 
         return res.status(200).json({ message: "Data updated successfully", data: updatedFile });
       } catch (error) {
