@@ -39,7 +39,7 @@ const AllPosts = () => {
       if (res?.ok) {
         alert("Item successfully deleted");
         getAllPost().then((res) => {
-          setItineraries(res?.data || []);
+          setItineraries(res|| []);
         });
       }
     } catch (error) {
