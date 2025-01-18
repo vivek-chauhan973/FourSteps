@@ -1,90 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import Slider from "react-slick";
-
-// const Testimonial = () => {
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 1000,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     autoplay: true,
-//     arrows: false,
-//     autoplaySpeed: 5000,
-//     cssEase: "linear",
-//   };
-
-// // State for testimonials and loading status
-// const [testimonial, setTestimonials] = useState([]);
-// const [loading, setLoading] = useState(true);
-
-// // Fetch testimonials on mount
-// useEffect(() => {
-//   const fetchTestimonials = async () => {
-//     const response = await fetch("/api/testimonial/testimonial");
-//     const data = await response.json();
-//     setTestimonials(data);
-//     setLoading(false);
-//   };
-
-//   fetchTestimonials();
-// }, []);
-
-// // State for banner images
-// const [banner, setBanner] = useState([]);
-
-// // Fetch banner images on mount
-// useEffect(() => {
-//   const handleBanner = async () => {
-//     const response = await fetch("/api/testimonial/banner-testimonial");
-//     const result = await response.json();
-//     setBanner(result);
-//   };
-
-//   handleBanner();
-// }, []);
-// const backgroundImage =
-//   banner.length > 0 ? `url('${banner[0].path}')` : "url('/image/bg.jpg')"; // Fallback image
-
-// // Render loading state
-// if (loading) return <p>Loading testimonials...</p>;
-
-//   return (
-//     <div className="container">
-// <div
-//   className="relative bg-cover w-full h-full bg-center text-white justify-center items-center"
-//   style={{ backgroundImage }} // Set the dynamic background image
-// >
-//         <div className="container py-12">
-//           <Slider {...settings}>
-//             {testimonial.map((item) => (
-//               <div key={item._id}>
-//                 <div className="flex flex-col items-center justify-center py-2   max-w-md mx-auto">
-//                   <h2 className="md:text-4xl text-lg text-white font-bold tracking-wide mb-3">
-//                     Testimonial Vivek
-//                   </h2>
-//                   <img
-//                     src={item?.path}
-//                     alt={item?.name}
-//                     className="rounded-full mt-3 object-cover mb-2 h-36 w-36 border-4 border-gray-400"
-//                   />
-//                   <div className="flex gap-2">
-//                     <h3 className="text-xl font-semibold">{item.name}</h3>
-//                   </div>
-//                   <p className="italic">{item.designation}</p>
-//                   <p className="text-center text-xs mt-2">{item.description}</p>
-//                 </div>
-//               </div>
-//             ))}
-//           </Slider>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Testimonial;
-
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
@@ -118,8 +31,8 @@ const Trail = () => {
   // Initialize AOS for animations
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true, // Animation occurs only once
+      duration: 1000, 
+      once: true, 
     });
   }, []);
 
@@ -177,7 +90,7 @@ const Trail = () => {
     );
   }
 
-  const currentItem = testimonials[currentIndex]; // Get the currently displayed testimonial
+  const currentItem = testimonials[currentIndex];
 
   return (
     <div className=" bg-background">
@@ -185,7 +98,7 @@ const Trail = () => {
         {/* Banner Section */}
         <div
           className="relative bg-cover w-full h-full bg-center text-white flex justify-center items-center"
-          style={{ backgroundImage }} // Set the dynamic background image
+          style={{ backgroundImage }}
         >
           {/* Testimonials Section */}
           <div className="flex flex-col py-5 items-center justify-center  text-white mx-auto">
@@ -245,15 +158,15 @@ const Trail = () => {
 
                 {/* Testimonial Content */}
                 <p
-                  className="mb-4 text-sm md:text-base font-semibold"
+                  className="mb-4 text-sm md:text-base  line-clamp-6 font-semibold"
                   data-aos="fade-up"
                 >
                   {currentItem?.description}
                 </p>
 
                 {/* Author Details */}
-                <p className="font-semibold">{currentItem?.name}</p>
-                <p className="text-gray-400 italic font-semibold">
+                <p className="font-semibold italic ">{currentItem?.name}</p>
+                <p className="text-gray-400 italic  font-semibold">
                   {currentItem?.designation}
                 </p>
               </div>

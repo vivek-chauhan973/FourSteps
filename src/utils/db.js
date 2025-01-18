@@ -7,7 +7,7 @@ let isConnected = false; // Track the connection status
 
 const dbConnect = async () => {
   if (isConnected) {
-    console.log("Already connected to MongoDB");
+    // console.log("Already connected to MongoDB");
     return;
   }
   try {
@@ -17,7 +17,7 @@ const dbConnect = async () => {
     });
 
     isConnected = db.connections[0].readyState === 1;
-    console.log("Connected to MongoDB");
+    // console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }

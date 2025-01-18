@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-  faChevronUp,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 
 // The services data remains the same
 const services = [

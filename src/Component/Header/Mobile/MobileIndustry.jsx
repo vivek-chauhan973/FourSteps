@@ -73,25 +73,3 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
 
 export default MobileIndustry;
 
-//  <ul className="space-y-4">
-// {industry?.map((item, i) => (
-//   <li key={i}>
-//     <Link
-//       href={`/industry/${
-//         item?.industryName?.split(" ").join("-") || "default-slug"
-//       }`}
-//     >
-//       <p
-//         className={`text-sm text-gray-700 hover:text-black cursor-pointer ${
-//           activeSection === item?.industryName
-//             ? "border-b-2 border-blue-500"
-//             : ""
-//         }`}
-//         onClick={() => handleSectionClick(item?.industryName)} // Handle click
-//       >
-//         {item?.industryName || "Unnamed Industry"}
-//       </p>
-//     </Link>
-//   </li>
-// ))}
-// </ul>
