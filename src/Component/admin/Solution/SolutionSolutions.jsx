@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/industry/solution1?id=${id}`, {
+  const res = await fetch(`/api/solution/solution1?id=${id}`, {
     method: "GET",
   });
   return await res.json();
@@ -34,15 +34,15 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
   const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
     useState("");
-  const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
+  const [editorData, setEditorData] = useState([]); 
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
   const [solutionItem, setSolutionItem] = useState([]);
   const [itineraryDayWise, setItineraryDayWise] = useState({
     content: "",
-  }); // To track the item being edited
-  const [currentPage, setCurrentPage] = useState(1); // Pagination state
-  const itemsPerPage = 2; // Number of items per page
+  });
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 2; 
 
   const router = useRouter();
 
@@ -50,7 +50,6 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
       const data = res?.data?.map((item) => item?._id);
-      // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
     if (blogData) {
@@ -231,7 +230,7 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const handleSave = async () => {
     const data = { heading, mainEditorHtmlDescription, solutionItem };
     const res = await fetch(
-      `/api/solution/solution1/solution?industry=${blogData?._id}`,
+      `/api/solution/solution1/solution?solution=${blogData?._id}`,
       {
         method: "POST",
         headers: {
