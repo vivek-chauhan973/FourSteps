@@ -56,7 +56,7 @@ const Case = () => {
                         className="cursor-pointer capitalize shadow-md bg-gradient-to-r from-orange-500 to-red-500 xl:w-52 w-40 text-white md:text-[16px] text-para md:py-2.5 py-1.5 px-4 rounded-md"
                         // onClick={() => handleStatePackages(title._id)}
                       >
-                        {title.name}welcome biduu
+                        {title.name}
                       </button>
                     </div>
                   </div>

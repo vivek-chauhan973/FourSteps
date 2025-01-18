@@ -109,7 +109,7 @@ const SideCard = ({ statePackage }) => {
                     {data?.title}
                   </h5>
                   <div className="line-clamp-3">
-                    <p>{data?.description}</p>
+                    <p className=" md:text-sm text-xs ">{data?.description}</p>
                   </div>
                   <div className="items-center mt-2 text-right">
                     <p className="text-base text-green-700 font-semibold">

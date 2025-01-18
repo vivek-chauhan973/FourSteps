@@ -33,26 +33,22 @@ const apiRoute = async (req, res) => {
       }
       const {
         title,
-        description,
         link,
-        backgroundColor,
-        keyword,
+        editorHtmlDescription,
         solution,
       } = req.body;
-
-      const fileData = req.file && {
+     
+      const fileData = {
         title,
-        filename: req.file.filename,
-        description,
         link,
-        backgroundColor,
-        keyword,
+        editorHtmlDescription,
         solution,
-        path: `/uploads/solution/SolutionSolution/${req.file.filename}`,
+        filename: req.file?.filename || null,
+        path: req.file ? `/uploads/industry/industrysolution/${req.file.filename}` : null,
       };
 
       try {
-        const updatedFile = await SolutionSuccessItem.create(fileData);
+        const updatedFile = await SolutionSolutionItem.create(fileData);
 
         if (!updatedFile) {
           return res.status(400).json({ message: "Something went wrong" });
