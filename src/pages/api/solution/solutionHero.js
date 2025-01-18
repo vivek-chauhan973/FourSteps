@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     }
 
     try {
-      const solution = await SolutionHero.findById(id).populate("Why4StepS").populate({ path: "success", populate: { path: "successItem" } });
+      const solution = await SolutionHero.findById(id).populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate("Why4StepS").populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } });
       if (!solution) {
         return res.status(404).json({ error: "Solution not found" });
       }

@@ -86,7 +86,7 @@ const apiRoute = async (req, res) => {
     // Handle GET request
     try {
       const files = await SolutionHero.findOne({ _id: solution })
-        .populate("Why4StepS").populate({ path: "success", populate: { path: "successItem" } })
+        .populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } })
         // .populate({
         //   path: "solution",
         //   populate: {

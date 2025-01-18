@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/industry/services?id=${id}`, {
+  const res = await fetch(`/api/solution/services?id=${id}`, {
     method: "GET",
   });
   return await res.json();
@@ -43,19 +43,16 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
   }); // To track the item being edited
   const [currentPage, setCurrentPage] = useState(1); // Pagination state
   const itemsPerPage = 2; // Number of items per page
-
   const router = useRouter();
-
   useEffect(() => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
       const data = res?.data?.map((item) => item?._id);
-      // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
     if(blogData){
-      setHeading(blogData?.product?.heading||"");
-      setMainEditorHtmlDescription(blogData?.product?.mainEditorHtmlDescription||"")
+      setHeading(blogData?.service?.heading||"");
+      setMainEditorHtmlDescription(blogData?.service?.mainEditorHtmlDescription||"")
     }
   }, [blogData]);
 
@@ -101,7 +98,6 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
   const handleEditorChange1 = (html) => {
     setMainEditorHtmlDescription(html);
   };
-
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -109,7 +105,6 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
       ["link"],
     ],
   };
-
   // Handle image upload or update
   async function handleUpload() {
     if (!file && !isUpdating) {
@@ -122,20 +117,18 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
       alert("Please upload file and write title");
       return;
     }
-
     if (file && title) {
       formData.append("file", file);
       formData.append("title", title);
       formData.append("link", link);
       formData.append("subTitle", subTitle);
-
       formData.append("editorHtmlDescription", JSON.stringify(editorData));
-      formData.append("industry", blogData?._id);
+      formData.append("solution", blogData?._id);
     }
     try {
       const url = isUpdating
-        ? `/api/industry/services/${editItemId}`
-        : `/api/industry/services`;
+        ? `/api/solution/services/${editItemId}`
+        : `/api/solution/services`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -175,21 +168,17 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
     indexOfFirstItem,
     indexOfLastItem
   );
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const nextPage = () => {
     if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
-
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
-
   const cancelEdit = () => {
     setEditItemId(null);
     setEditorData([]);
@@ -199,7 +188,6 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
     setPreview(null);
     setIsUpdating(false);
   };
-
   const edit1Item = (item) => {
     // console.log("item of list item is here ---->  ", item);
     setEditItemId(item?._id);
@@ -211,12 +199,11 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
   };
 
   const deleteItem=async (id)=>{
-    const res=await fetch(`/api/industry/services?id=${id}`,{method:"DELETE"});
+    const res=await fetch(`/api/solution/services?id=${id}`,{method:"DELETE"});
     if(res?.ok){
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
         const data = res?.data?.map((item) => item?._id);
-        // console.log("res---- item-----> ", data);
         setSolutionItem(data || []);
       });
       alert("item is successfully deleted");
@@ -226,12 +213,9 @@ const SolutionServices = ({ setActiveTab, blogData }) => {
       alert("item is something went wrong");
     }
   }
-
-  // console.log("blog data is here ----> ",blogData)
-
   const handleSave=async ()=>{
-    const data={heading,mainEditorHtmlDescription,solutionItem};
-   const res=await fetch(`/api/industry/services/service?industry=${blogData?._id}`,{
+    const data={heading,mainEditorHtmlDescription,serviceItem:solutionItem};
+   const res=await fetch(`/api/solution/services/service?solution=${blogData?._id}`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"

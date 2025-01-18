@@ -32,17 +32,16 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const [heading, setHeading] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
-  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
-    useState("");
-  const [editorData, setEditorData] = useState([]); 
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
   const [solutionItem, setSolutionItem] = useState([]);
   const [itineraryDayWise, setItineraryDayWise] = useState({
     content: "",
-  });
-  const [currentPage, setCurrentPage] = useState(1); 
-  const itemsPerPage = 2; 
+  }); // To track the item being edited
+  const [currentPage, setCurrentPage] = useState(1); // Pagination state
+  const itemsPerPage = 2; // Number of items per page
 
   const router = useRouter();
 
@@ -50,13 +49,12 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
       const data = res?.data?.map((item) => item?._id);
+      // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
-    if (blogData) {
-      setHeading(blogData?.solution?.heading || "");
-      setMainEditorHtmlDescription(
-        blogData?.solution?.mainEditorHtmlDescription || ""
-      );
+    if(blogData){
+      setHeading(blogData?.solution?.heading||"");
+      setMainEditorHtmlDescription(blogData?.solution?.mainEditorHtmlDescription||"")
     }
   }, [blogData]);
 
@@ -151,12 +149,12 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
         setPreview(null);
         alert(
           `File ${
-            blogData?.solution?.length > 0 ? "updated" : "uploaded"
+            blogData?.success?.length > 0 ? "updated" : "uploaded"
           } successfully`
         );
       } else {
         alert(
-          `File ${blogData?.solution?.length > 0 ? "update" : "upload"} failed`
+          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
         );
       }
     } catch (error) {
@@ -208,11 +206,9 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     setIsUpdating(true);
   };
 
-  const deleteItem = async (id) => {
-    const res = await fetch(`/api/solution/solution1?id=${id}`, {
-      method: "DELETE",
-    });
-    if (res?.ok) {
+  const deleteItem=async (id)=>{
+    const res=await fetch(`/api/solution/solution1?id=${id}`,{method:"DELETE"});
+    if(res?.ok){
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
         const data = res?.data?.map((item) => item?._id);
@@ -220,37 +216,34 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
         setSolutionItem(data || []);
       });
       alert("item is successfully deleted");
-    } else {
+
+    }
+    else{
       alert("item is something went wrong");
     }
-  };
+  }
 
   // console.log("blog data is here ----> ",blogData)
 
-  const handleSave = async () => {
-    const data = { heading, mainEditorHtmlDescription, solutionItem };
-    const res = await fetch(
-      `/api/solution/solution1/solution?solution=${blogData?._id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+  const handleSave=async ()=>{
+    const data={heading,mainEditorHtmlDescription,solutionItem};
+   const res=await fetch(`/api/solution/solution1/solution?solution=${blogData?._id}`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+   })
 
-    if (res?.ok) {
-      setActiveTab("Tab5");
-      alert(
-        blogData?._id
-          ? "solution Data updated successfully"
-          : "solution Data saved successfully"
-      );
-    } else {
-      alert("something went wrong on frontend side");
-    }
-  };
+   if(res?.ok){
+    setActiveTab("Tab5")
+    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
+   }
+   else{
+    alert("something went wrong on frontend side");
+   }
+  }
+
 
   return (
     <>
@@ -488,10 +481,7 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
                 </button>
               </div>
             </div>
-            <button
-              onClick={handleSave}
-              className="bg-black text-white px-3 py-2 w-full rounded"
-            >
+            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
               Save
             </button>
           </div>

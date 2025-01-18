@@ -16,6 +16,10 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    subTitle: {
+      type: String,
+      required: true,
+    },
     editorHtmlDescription:[miniSchema],
 
     link: {
@@ -32,8 +36,7 @@ const IndustrySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const SolutionSolutionItem =
-  mongoose.models.SolutionSolutionItem ||
-  mongoose.model("SolutionSolutionItem", IndustrySchema);
 
-export default SolutionSolutionItem;
+const SubSolutionServices =
+  mongoose.models.SubSolutionServices || mongoose.model("SubSolutionServices", IndustrySchema);
+export default SubSolutionServices;

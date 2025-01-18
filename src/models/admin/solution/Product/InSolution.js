@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import "../solutionHero";
-import  "./solutionItem";
+import "./IndustrySolution";
+import  "../solutionHero";
 const IndustrySchema = new mongoose.Schema(
   {
     heading: {
@@ -13,19 +13,19 @@ const IndustrySchema = new mongoose.Schema(
         type:String,
         required:true
     },
-    industry: {
+    solution: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "SolutionHero",
     },
-    solutionItem:[{
+    productItem:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "SolutionSolutionItem",
+        ref: "SubSolutionProduct",
       }]
   },
   { timestamps: true }
 );
 
-const SolutionSolution =
-  mongoose.models.SolutionSolution || mongoose.model("SolutionSolution", IndustrySchema);
+const SolutionProduct =
+  mongoose.models.SolutionProduct || mongoose.model("SolutionProduct", IndustrySchema);
 
-export default SolutionSolution;
+export default SolutionProduct;

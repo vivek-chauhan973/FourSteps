@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/industry/products?id=${id}`, {
+  const res = await fetch(`/api/solution/products?id=${id}`, {
     method: "GET",
   });
   return await res.json();
@@ -127,12 +127,12 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
       formData.append("title", title);
       formData.append("link", link);
       formData.append("editorHtmlDescription", JSON.stringify(editorData));
-      formData.append("industry", blogData?._id);
+      formData.append("solution", blogData?._id);
     }
     try {
       const url = isUpdating
-        ? `/api/industry/products/${editItemId}`
-        : `/api/industry/products`;
+        ? `/api/solution/products/${editItemId}`
+        : `/api/solution/products`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -207,7 +207,7 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
   };
 
   const deleteItem=async (id)=>{
-    const res=await fetch(`/api/industry/products?id=${id}`,{method:"DELETE"});
+    const res=await fetch(`/api/solution/products?id=${id}`,{method:"DELETE"});
     if(res?.ok){
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
@@ -226,8 +226,8 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
   // console.log("blog data is here ----> ",blogData)
 
   const handleSave=async ()=>{
-    const data={heading,mainEditorHtmlDescription,solutionItem};
-   const res=await fetch(`/api/industry/products/product?industry=${blogData?._id}`,{
+    const data={heading,mainEditorHtmlDescription,productItem:solutionItem};
+   const res=await fetch(`/api/solution/products/product?solution=${blogData?._id}`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"

@@ -93,9 +93,9 @@ const SolutionFaq=({blogData,setActiveTab})=> {
     try {
  const data={ 
   faq:itineraryDayWiseDataArray,
-  industry:blogData?._id
+  solution:blogData?._id
  }
-      const res=await fetch(`/api/industry/faqs`,{
+      const res=await fetch(`/api/solution/faqs`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
