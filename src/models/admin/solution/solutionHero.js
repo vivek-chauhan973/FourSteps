@@ -5,6 +5,7 @@ import "./solution/solution";
 import "./Services/InSolution";
 import "./Product/InSolution";
 import "./Benefits/Benefits";
+import "./Faq/IndustryFaq";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -65,7 +66,6 @@ const SolutionHeroSchema = new mongoose.Schema({
     ref: "SolutionFaq",
   },
 });
-
 const SolutionHero =
   mongoose.models.SolutionHero ||
   mongoose.model("SolutionHero", SolutionHeroSchema);

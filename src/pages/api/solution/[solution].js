@@ -87,25 +87,6 @@ const apiRoute = async (req, res) => {
     try {
       const files = await SolutionHero.findOne({ _id: solution })
         .populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } })
-        // .populate({
-        //   path: "solution",
-        //   populate: {
-        //     path: "solutionItem",
-        //   },
-        // })
-       
-        // .populate({
-        //   path: "product",
-        //   populate: {
-        //     path: "productItem",
-        //   },
-        // })
-        // .populate({
-        //   path: "service",
-        //   populate: {
-        //     path: "serviceItem",
-        //   },
-        // });
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);
@@ -113,7 +94,7 @@ const apiRoute = async (req, res) => {
     }
   } else {
     // Handle other methods (e.g., POST, DELETE)
-    res.setHeader("Allow", ["POST", "GET", "DELETE"]);
+    res.setHeader("Allow", ["PUT", "GET"]);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 };

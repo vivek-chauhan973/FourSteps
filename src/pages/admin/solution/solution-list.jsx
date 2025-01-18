@@ -14,7 +14,7 @@ import AdminLayout from "@/Component/admin/AdminLayout";
 
 const getAllPost = async () => {
   return await (
-    await fetch("/api/industry/industry-hero", { method: "GET" })
+    await fetch("/api/solution/solutionHero", { method: "GET" })
   ).json();
 };
 
@@ -26,13 +26,14 @@ const AllPosts = () => {
 
   useEffect(() => {
     getAllPost().then((res) => {
-      setItineraries(res?.data || []);
+      setItineraries(res|| []);
     });
   }, []);
 
   const deleteItem = async (id) => {
+    // alert("button clicked")
     try {
-      const res = await fetch(`/api/industry/industry-hero?id=${id}`, {
+      const res = await fetch(`/api/solution/solutionHero?id=${id}`, {
         method: "DELETE",
       });
       if (res?.ok) {
