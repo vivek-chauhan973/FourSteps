@@ -89,7 +89,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("serviceType", serviceType);
 
     try {
-      const res = await fetch(`/api/solution/${blogData?blogData?._id:"solutionHero"}`, {
+      const res = await fetch(`/api/service/${blogData?blogData?._id:"serviceHero"}`, {
         method: blogData?"PUT":"POST",
         body: formData,
       });
@@ -146,7 +146,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
               >
                 <option value="">Select Service Type</option>
                 {listServices?.map((item, index) => (
-                  <option key={index} value={item?.name}>
+                  <option key={index} value={item?._id}>
                     {item?.name}
                   </option>
                 ))}

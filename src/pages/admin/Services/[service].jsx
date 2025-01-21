@@ -11,7 +11,7 @@ import SerBenifits from "@/Component/admin/Services/SerBenifits";
 import SerFaq from "@/Component/admin/Services/SerFaq";
 
 const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/solution/${id}`,{method:"GET"})).json();
+  return await (await fetch(`/api/service/${id}`,{method:"GET"})).json();
 };
 export default function CreateWebinar() {
   const router = useRouter();

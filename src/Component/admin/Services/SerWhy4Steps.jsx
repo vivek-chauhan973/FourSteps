@@ -98,7 +98,7 @@ const SerWhy4Steps = ({ blogData, setActiveTab }) => {
       SelectedPartnersData,
       overviewData,
     };
-    const res = await fetch(`/api/solution/why4step`, {
+    const res = await fetch(`/api/service/why4step`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

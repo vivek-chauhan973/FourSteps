@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/solution/success1?id=${id}`, { method: "GET" });
+  const res = await fetch(`/api/service/success1?id=${id}`, { method: "GET" });
   return await res.json();
 };
 
@@ -110,8 +110,8 @@ const SerSuccessStories = ({ setActiveTab, blogData }) => {
 
     try {
       const url = isUpdating
-        ? `/api/solution/success1/${editItemId}`
-        : `/api/solution/success1`;
+        ? `/api/service/success1/${editItemId}`
+        : `/api/service/success1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       const data1 = await res.json();
@@ -138,7 +138,7 @@ const SerSuccessStories = ({ setActiveTab, blogData }) => {
   console.log("blog data is here -----> ", blogData);
 
   const deleteItem = async (id) => {
-    const data = await fetch(`/api/solution/success1?id=${id}`, {
+    const data = await fetch(`/api/service/success1?id=${id}`, {
       method: "DELETE",
     });
     if (data?.ok) {
@@ -171,16 +171,11 @@ const SerSuccessStories = ({ setActiveTab, blogData }) => {
     setIsUpdating(false);
     setEditItemId(null);
   };
-
   const totalPages = Math.ceil(allItems.length / itemsPerPage);
-  // const handleSaveAllData = async () => {
-  //   setActiveTab("Tab4");
-  // };
-
   const handleSaveAllData = async () => {
     const data = { heading, mainEditorHtmlDescription, successItem };
     const res = await fetch(
-      `/api/solution/success1/success?solution=${blogData?._id}`,
+      `/api/service/success1/success?service=${blogData?._id}`,
       {
         method: "POST",
         headers: {

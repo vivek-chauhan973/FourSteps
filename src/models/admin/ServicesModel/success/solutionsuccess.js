@@ -30,7 +30,7 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    solution: {
+    service: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "ServiceHero",
     },

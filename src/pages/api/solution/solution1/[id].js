@@ -3,13 +3,10 @@ import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
 import SolutionSolutionItem from "@/models/admin/solution/solution/solutionItem";
-
 const uploadDirectory = "./public/uploads/solution/SolutionSolution";
 if (!fs.existsSync(uploadDirectory)) {
   fs.mkdirSync(uploadDirectory, { recursive: true });
 }
-
-// Multer storage configuration
 const storage = multer.diskStorage({
   destination: uploadDirectory,
   filename: (req, file, cb) => {
@@ -22,70 +19,58 @@ const upload = multer({ storage });
 
 const apiRoute = async (req, res) => {
   await dbConnect();
-  const { id } = req.query;
-
-  if (!id) {
-    return res.status(400).json({ message: "id is required !!!" });
-  }
 
   if (req.method === "PUT") {
+    const {id}=req.query;
+    if(!id){
+        return res.status(301).json({message:"something went wrong"});
+    }    
     upload.single("file")(req, res, async (err) => {
-      if (err instanceof multer.MulterError || err) {
-        return res.status(500).json({ error: "File upload failed", details: err });
+      if (err instanceof multer.MulterError) {
+        return res.status(500).json({ error: "File upload failed due to Multer error" });
+      } else if (err) {
+        return res.status(500).json({ error: "Unknown error during file upload" });
       }
 
-      const {
-        title,
-        description,
-        link,
-        backgroundColor,
-        keyword,
-        solution,
-      } = req.body;
+      const { title, link, editorHtmlDescription: editorHtmlDescriptionRaw, solution } = req.body;
 
+      let editorHtmlDescription;
       try {
-        const existingData = await SolutionSolutionItem.findById(id);
-        if (!existingData) {
-          return res.status(404).json({ message: "Data not found for the given id" });
-        }
-
-        let fileData = {};
-        if (req.file) {
-          // Remove the old file if a new one is uploaded
-          if (existingData.filename) {
-            const oldFilePath = path.join(uploadDirectory, existingData.filename);
-            if (fs.existsSync(oldFilePath)) {
-              fs.unlinkSync(oldFilePath);
-            }
-          }
-
-          fileData = {
-            filename: req.file.filename,
-            path: `/uploads/solution/SolutionSolution/${req.file.filename}`,
-          };
-        }
-
-        const updatedData = {
-          title,
-          description,
-          link,
-          backgroundColor,
-          keyword,
-          solution,
-          ...fileData,
-        };
-
-        const updatedFile = await SolutionSolutionItem.findByIdAndUpdate(id, updatedData, { new: true });
-
-        return res.status(200).json({ message: "Data updated successfully", data: updatedFile });
+        editorHtmlDescription = JSON.parse(editorHtmlDescriptionRaw);
       } catch (error) {
-        console.error("Error updating file:", error);
+        return res.status(400).json({ error: "Invalid JSON format for editorHtmlDescription" });
+      }
+
+      // Prepare file data for saving
+      try{
+      const file = await SolutionSolutionItem.findById(id);
+      if (!file) {
+        return res.status(404).json({ error: "File not found" });
+      }
+      const fileData = {
+        title,
+        link,
+        editorHtmlDescription,
+        solution,
+        filename: req.file?.filename || null,
+        path: req.file ? `/uploads/solution/SolutionSolution/${req.file.filename}` : file?.path,
+      };
+        if(req.file){
+            const filePath = path.join(uploadDirectory, file.filename);
+            if (fs.existsSync(filePath)) {
+              fs.unlinkSync(filePath);
+            }
+        }
+        const newFile = await SolutionSolutionItem.findOneAndUpdate({_id:id},{$set:fileData});
+        return res.status(200).json({ message: "File uploaded successfully", data: newFile });
+      } catch (error) {
+        console.error("Error creating file:", error);
         return res.status(500).json({ message: "Internal Server Error", error });
       }
     });
   } else {
     res.setHeader("Allow", ["PUT"]);
-    return res.status(405).json({ message: `Method ${req.method} Not Allowed` });
+    return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 };
 
@@ -93,6 +78,6 @@ export default apiRoute;
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // Disable default body parsing for Multer
   },
 };
