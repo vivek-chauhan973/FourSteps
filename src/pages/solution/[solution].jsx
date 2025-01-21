@@ -6,28 +6,24 @@ import Nav from "@/Component/Header/Nav";
 import { useRouter } from "next/router";
 import TableofSolution from "@/Component/Solution/TableofSolution";
 import SolutionFaq from "@/Component/Solution/SolutionFaq";
-// const getSolution = async (item) => {
-//   return await (
-//     await fetch(
-//       `/api/solution/get-solution?solutionName=${item?.split("-")?.join(" ")}`,
-//     )
-//   ).json();
-// };
+
+const getSolution = async (title) => {
+  const res = await fetch(`/api/solution/get-solution-by-title?title=${title}`);
+  const data = await res.json();
+  return data;
+};
+
 const SolutionSection = () => {
   const router = useRouter();
-
   const { solution } = router?.query;
-  const [solutionName, setsolutionName] = useState({});
-
-  // useEffect(() => {
-  //   if (solution) {
-  //     getSolution(solution).then((res) => {
-  //       setsolutionName(res?.data || {});
-  //     });
-  //   }
-  // }, [solution]);
-
-  console.log("itineary all data one by one solution ---==> ", solutionName);
+  // const [solutionName, setsolutionName] = useState({});
+  useEffect(() => {
+    if (solution) {
+      getSolution(solution?.split("-")?.join(" ")).then((data) => {
+        console.log("response is here 123---> ", data);
+      });
+    }
+  }, [solution]);
   return (
     <div>
       {/* headres */}

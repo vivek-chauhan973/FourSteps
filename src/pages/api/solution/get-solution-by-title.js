@@ -2,14 +2,13 @@ import SolutionHero from "@/models/admin/solution/solutionHero";
 import dbConnect from "@/utils/db";
 const apiRoute = async (req, res) => {
   await dbConnect();
-  const { solutionType } = req.query;
-  console.log("solution type is here -----> ",solutionType)
-  if (!solutionType) {
-    return res.status(300).json({ message: "Industry Name is required !!!" });
+  const { title } = req.query;
+  if (!title) {
+    return res.status(300).json({ message: "Title is required !!!" });
   }
 
   try {
-    const files = await SolutionHero.find({ solutionType })
+    const files = await SolutionHero.findOne({ title })
       .populate("Why4StepS benefit faq")
       .populate({
         path: "solution",
@@ -31,7 +30,7 @@ const apiRoute = async (req, res) => {
         },
       });
     if (!files) {
-      return res.status(400).json({ message: "Industry is not found" });
+      return res.status(400).json({ message: "Solution is not found" });
     }
     return res.status(200).json({ data: files });
   } catch (error) {

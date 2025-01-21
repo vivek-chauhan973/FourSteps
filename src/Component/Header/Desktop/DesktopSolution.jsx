@@ -7,19 +7,24 @@ const fetchAllSoutionType = async () => {
   const res = await fetch("/api/solution/masterS", { method: "GET" });
   return await res.json();
 };
-
+const fetchSolutionAccordingType = async (id) => {
+  const res = await fetch(`/api/solution/get-solution?solutionType=${id}`);
+  return await res.json();
+};
 const DesktopSolution = ({ activeLink, handleLinkClick }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeService, setActiveService] = useState(null);
   const [solutionType, setSolutionType] = useState([]);
-  const [solutionId,setSolutionId]=useState(null);
-
-const memoizedCallback = useCallback(
-  () => {
-    console.log("solution id is here is as------> ",solutionId)
-  },
-  [solutionId], 
-);
+  const [solutionList, setSolutionList] = useState([]);
+  const [solutionId, setSolutionId] = useState(null);
+  useEffect(() => {
+    if (solutionId) {
+      fetchSolutionAccordingType(solutionId).then((data) => {
+        console.log("data--->", data);
+        setSolutionList(data?.data);
+      });
+    }
+  }, [solutionId]);
 
   useEffect(() => {
     fetchAllSoutionType()
@@ -41,12 +46,8 @@ const memoizedCallback = useCallback(
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
     >
-      <Link
-        href="#"
-        onClick={() => handleLinkClick("/#")}
-        className={`relative inline-block text-base font-medium px-3 py-2 ${
-          activeLink === "/#" ? "text-orange-500" : "text-gray-800"
-        } hover:text-orange-500`}
+      <div
+        className={`relative inline-block text-base font-medium px-3 py-2 hover:text-orange-500`}
       >
         Solution
         <span
@@ -54,7 +55,7 @@ const memoizedCallback = useCallback(
             activeLink === "/#" ? "scale-x-100" : "scale-x-0"
           }`}
         ></span>
-      </Link>
+      </div>
 
       {/* Dropdown Menu */}
       {isDropdownOpen && (
@@ -70,8 +71,14 @@ const memoizedCallback = useCallback(
                 <div
                   key={solution?._id}
                   className="py-3 text-md rounded font-normal px-4 cursor-pointer bg-white hover:bg-background flex justify-between transition-colors"
-                  onMouseEnter={() => {setActiveService(solution);setSolutionId(solution?._id)}}
-                  onClick={() => setActiveService(solution)}
+                  onMouseEnter={() => {
+                    setActiveService(solution);
+                    setSolutionId(solution?._id);
+                  }}
+                  onClick={() => {
+                    setActiveService(solution);
+                    setSolutionId(solution?._id);
+                  }}
                 >
                   <span>{solution?.name}</span>
                   <FontAwesomeIcon icon={faChevronRight} className="text-sm" />
@@ -88,13 +95,15 @@ const memoizedCallback = useCallback(
 
               {/* Show the links when a solution is selected */}
               <div className="space-y-2">
-                {activeService?.content?.links?.map((link) => (
-                  <Link key={link.name} href={link.link}>
-                    <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
-                      {link.name}
-                    </p>
-                  </Link>
-                ))}
+                {solutionList?.map((link) => {
+                  return (
+                    <Link key={link?._id} href={`/solution/${(link?.title)?.split(" ")?.join("-")}`}>
+                      <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
+                        {link.title}
+                      </p>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
