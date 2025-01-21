@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/solution/solution1?id=${id}`, {
+  const res = await fetch(`/api/service/solution1?id=${id}`, {
     method: "GET",
   });
   return await res.json();
@@ -131,8 +131,8 @@ const SerSolution = ({ setActiveTab, blogData }) => {
     }
     try {
       const url = isUpdating
-        ? `/api/solution/solution1/${editItemId}`
-        : `/api/solution/solution1`;
+        ? `/api/service/solution1/${editItemId}`
+        : `/api/service/solution1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -207,7 +207,7 @@ const SerSolution = ({ setActiveTab, blogData }) => {
   };
 
   const deleteItem=async (id)=>{
-    const res=await fetch(`/api/solution/solution1?id=${id}`,{method:"DELETE"});
+    const res=await fetch(`/api/service/solution1?id=${id}`,{method:"DELETE"});
     if(res?.ok){
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
@@ -227,7 +227,7 @@ const SerSolution = ({ setActiveTab, blogData }) => {
 
   const handleSave=async ()=>{
     const data={heading,mainEditorHtmlDescription,solutionItem};
-   const res=await fetch(`/api/solution/solution1/solution?solution=${blogData?._id}`,{
+   const res=await fetch(`/api/service/solution1/solution?service=${blogData?._id}`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -237,7 +237,7 @@ const SerSolution = ({ setActiveTab, blogData }) => {
 
    if(res?.ok){
     setActiveTab("Tab5")
-    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
+    alert(blogData?._id?"service Data updated successfully":"service Data saved successfully");
    }
    else{
     alert("something went wrong on frontend side");

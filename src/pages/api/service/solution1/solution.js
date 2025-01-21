@@ -1,15 +1,14 @@
 import ServiceHero from "@/models/admin/ServicesModel/ServiceHero";
-import SubServiceSolution from "@/models/admin/ServicesModel/solution/solutionItem";
-
+import ServiceSolution from "@/models/admin/ServicesModel/solution/solution";
 const successApi = async (req, res) => {
   const { service } = req.query;
   try {
     const { heading,mainEditorHtmlDescription,solutionItem } = req.body;
 // console.log("req------------------body------> ",req.body)
-    const data = await SubServiceSolution.findOne({ service });
+    const data = await ServiceSolution.findOne({ service });
     let resData;
     if (!data) {
-      resData = await SubServiceSolution.create({
+      resData = await ServiceSolution.create({
         heading:heading,
         mainEditorHtmlDescription:mainEditorHtmlDescription,
         solutionItem,
@@ -23,7 +22,7 @@ const successApi = async (req, res) => {
         .status(201)
         .json({ message: "solution data saved successfully ", resData });
     }
-    resData = await SubServiceSolution.findOneAndReplace(
+    resData = await ServiceSolution.findOneAndReplace(
       { service },
       { heading, mainEditorHtmlDescription, solutionItem, service }
     );

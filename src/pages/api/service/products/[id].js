@@ -2,7 +2,6 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SubSolutionProduct from "@/models/admin/solution/Product/IndustrySolution";
 // Define upload directory
 const uploadDirectory = "./public/uploads/service/serviceProducts";
 if (!fs.existsSync(uploadDirectory)) {
@@ -35,7 +34,7 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: "Unknown error during file upload" });
       }
 
-      const { title, link,subTitle, editorHtmlDescription: editorHtmlDescriptionRaw, solution } = req.body;
+      const { title, link,subTitle, editorHtmlDescription: editorHtmlDescriptionRaw, service } = req.body;
 
       let editorHtmlDescription;
       try {
@@ -55,7 +54,7 @@ const apiRoute = async (req, res) => {
         link,
         subTitle,
         editorHtmlDescription,
-        solution,
+        service,
         filename: req.file?.filename || null,
         path: req.file ? `/uploads/service/serviceProducts/${req.file.filename}` : file?.path,
       };
