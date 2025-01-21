@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import "../solutionHero";
-import  "./solutionItem";
+import  "./IndustrySolution";
+import "../ServiceHero";
 const IndustrySchema = new mongoose.Schema(
   {
     heading: {
@@ -13,19 +13,19 @@ const IndustrySchema = new mongoose.Schema(
         type:String,
         required:true
     },
-    solution: {
+    service: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "SolutionHero",
+      ref: "ServiceHero",
     },
-    solutionItem:[{
+    serviceItem:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "SolutionSolutionItem",
+        ref: "SubServiceServices",
       }]
   },
   { timestamps: true }
 );
 
-const SolutionSolution =
-  mongoose.models.SolutionSolution || mongoose.model("SolutionSolution", IndustrySchema);
+const ServiceService =
+  mongoose.models.ServiceService || mongoose.model("ServiceService", IndustrySchema);
 
-export default SolutionSolution;
+export default ServiceService;

@@ -14,7 +14,7 @@ const IndustrySchema = new mongoose.Schema(
         type:String,
         required:true
     },
-    industry: {
+    solution: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "SolutionHero",
     },

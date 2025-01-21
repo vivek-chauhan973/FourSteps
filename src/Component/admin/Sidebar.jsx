@@ -92,6 +92,11 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [
           {
+            label: "Master Service",
+            // change url according to the bizare expendition
+            href: "/admin/Services/master-service",
+          },
+          {
             label: "Create-Services",
             // change url according to the bizare expendition
             href: "/admin/Services/service-create",
@@ -101,11 +106,7 @@ const Sidebar = () => {
             // change url according to the bizare expendition
             href: "/admin/Services/service-list",
           },
-          {
-            label: "Partners",
-            // change url according to the bizare expendition
-            href: "/admin/Industry/industry-partner",
-          },
+         
         ],
       },
       {

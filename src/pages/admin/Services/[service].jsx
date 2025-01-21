@@ -9,14 +9,14 @@ import SerProduct from "@/Component/admin/Services/SerProduct";
 import SerService from "@/Component/admin/Services/SerService";
 import SerBenifits from "@/Component/admin/Services/SerBenifits";
 import SerFaq from "@/Component/admin/Services/SerFaq";
-// const postDataAccordingId = async (id) => {
-//   return await (await fetch(`/api/service/${id}`)).json();
-// };
+
+const postDataAccordingId = async (id) => {
+  return await (await fetch(`/api/solution/${id}`,{method:"GET"})).json();
+};
 export default function CreateWebinar() {
   const router = useRouter();
   const { service } = router?.query;
-
-  
+  // console.log("solution -------- ",solution)
   const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function CreateWebinar() {
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
-        <p className="md:text-[28px] text-2xl text-black">Create service</p>
+        <p className="md:text-[28px] text-2xl text-black">Create Service</p>
       </div>
       <div className="border-b border-slate-300 mb-5">
         <div className="flex gap-2 text-[14px] pt-3 pb-2 flex-wrap">
@@ -145,11 +145,15 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
           <SerWhy4Steps blogData={blogData} setActiveTab={setActiveTab} />
+          
         </div>
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
         >
-          <SerSuccessStories blogData={blogData} setActiveTab={setActiveTab} />
+          <SerSuccessStories
+            blogData={blogData}
+            setActiveTab={setActiveTab}
+          />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}

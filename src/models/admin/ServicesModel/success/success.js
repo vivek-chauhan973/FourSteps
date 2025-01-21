@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import "../solutionHero";
-import  "./solutionItem";
+import "./solutionsuccess";
+import "../ServiceHero";
+
 const IndustrySchema = new mongoose.Schema(
   {
     heading: {
@@ -13,19 +14,19 @@ const IndustrySchema = new mongoose.Schema(
         type:String,
         required:true
     },
-    solution: {
+    service: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "SolutionHero",
+      ref: "ServiceHero",
     },
-    solutionItem:[{
+    successItem:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "SolutionSolutionItem",
+        ref: "SubServiceSuccess",
       }]
   },
   { timestamps: true }
 );
 
-const SolutionSolution =
-  mongoose.models.SolutionSolution || mongoose.model("SolutionSolution", IndustrySchema);
+const ServiceSuccess =
+  mongoose.models.ServiceSuccess || mongoose.model("ServiceSuccess", IndustrySchema);
 
-export default SolutionSolution;
+export default ServiceSuccess;
