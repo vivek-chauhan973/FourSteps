@@ -89,10 +89,13 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("solutionType", solutionType);
 
     try {
-      const res = await fetch(`/api/solution/${blogData?blogData?._id:"solutionHero"}`, {
-        method: blogData?"PUT":"POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `/api/solution/${blogData ? blogData?._id : "solutionHero"}`,
+        {
+          method: blogData ? "PUT" : "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       console.log("Upload Response:", data);
@@ -146,7 +149,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
               >
                 <option value="">Select Solution Type</option>
                 {listSolution?.map((item, index) => (
-                  <option key={index} value={item?.name}>
+                  <option key={index} value={item?._id}>
                     {item?.name}
                   </option>
                 ))}

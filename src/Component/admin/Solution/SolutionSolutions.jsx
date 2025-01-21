@@ -42,9 +42,9 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   }); // To track the item being edited
   const [currentPage, setCurrentPage] = useState(1); // Pagination state
   const itemsPerPage = 2; // Number of items per page
-
+  
   const router = useRouter();
-
+  
   useEffect(() => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
@@ -57,7 +57,7 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
       setMainEditorHtmlDescription(blogData?.solution?.mainEditorHtmlDescription||"")
     }
   }, [blogData]);
-
+  
   // Handle file input change
   function handleChange(e) {
     const selectedFile = e.target.files[0];
@@ -84,12 +84,12 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     setItineraryDayWise(editorData[index]);
     setEditorHtmlDescription(editorData[index]?.content);
   };
-
+  
   const removeItem = (index) => {
     const updatedArray = editorData?.filter((_, i) => i !== index);
     setEditorData(updatedArray);
   };
-
+  
   const handleEditorChange = (html) => {
     setEditorHtmlDescription(html);
     setItineraryDayWise((prevState) => ({
@@ -100,7 +100,7 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const handleEditorChange1 = (html) => {
     setMainEditorHtmlDescription(html);
   };
-
+  
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -108,20 +108,20 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
       ["link"],
     ],
   };
-
+  
   // Handle image upload or update
   async function handleUpload() {
     if (!file && !isUpdating) {
       alert("Please select a file to upload.");
       return;
     }
-
+    
     const formData = new FormData();
     if (!file && !title && !editorHtmlDescription && !link) {
       alert("Please upload file and write title");
       return;
     }
-
+    
     if (file && title) {
       formData.append("file", file);
       formData.append("title", title);
@@ -131,8 +131,8 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     }
     try {
       const url = isUpdating
-        ? `/api/solution/solution1/${editItemId}`
-        : `/api/solution/solution1`;
+      ? `/api/solution/solution1/${editItemId}`
+      : `/api/solution/solution1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -150,79 +150,79 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
         alert(
           `File ${
             blogData?.success?.length > 0 ? "updated" : "uploaded"
-          } successfully`
-        );
-      } else {
-        alert(
-          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
-        );
+            } successfully`
+          );
+        } else {
+          alert(
+            `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
+          );
+        }
+      } catch (error) {
+        console.error(
+          `Error ${
+            blogData?.success?.length > 0 ? "updating" : "uploading"
+            } file:`,
+            error
+          );
+        }
       }
-    } catch (error) {
-      console.error(
-        `Error ${
-          blogData?.success?.length > 0 ? "updating" : "uploading"
-        } file:`,
-        error
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItemsToShow = currentItems.slice(
+        indexOfFirstItem,
+        indexOfLastItem
       );
-    }
-  }
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItemsToShow = currentItems.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const nextPage = () => {
-    if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const cancelEdit = () => {
-    setEditItemId(null);
-    setEditorData([]);
-    setTitle("");
-    setLink("");
-    setPreview(null);
-    setIsUpdating(false);
-  };
-
-  const edit1Item = (item) => {
-    // console.log("item of list item is here ---->  ", item);
-    setEditItemId(item?._id);
-    setEditorData(item?.editorHtmlDescription);
-    setTitle(item?.title);
-    setLink(item?.link);
-    setPreview(item?.path);
-    setIsUpdating(true);
-  };
-
-  const deleteItem=async (id)=>{
-    const res=await fetch(`/api/solution/solution1?id=${id}`,{method:"DELETE"});
-    if(res?.ok){
-      fetchAllSuccessStories(blogData?._id).then((res) => {
-        setCurrentItems(res?.data || []);
-        const data = res?.data?.map((item) => item?._id);
-        // console.log("res---- item-----> ", data);
-        setSolutionItem(data || []);
-      });
-      alert("item is successfully deleted");
-
-    }
-    else{
-      alert("item is something went wrong");
-    }
-  }
-
+      
+      const paginate = (pageNumber) => setCurrentPage(pageNumber);
+      
+      const nextPage = () => {
+        if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
+          setCurrentPage(currentPage + 1);
+        }
+      };
+      
+      const prevPage = () => {
+        if (currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
+      };
+      
+      const cancelEdit = () => {
+        setEditItemId(null);
+        setEditorData([]);
+        setTitle("");
+        setLink("");
+        setPreview(null);
+        setIsUpdating(false);
+      };
+      
+      const edit1Item = (item) => {
+        // console.log("item of list item is here ---->  ", item);
+        setEditItemId(item?._id);
+        setEditorData(item?.editorHtmlDescription);
+        setTitle(item?.title);
+        setLink(item?.link);
+        setPreview(item?.path);
+        setIsUpdating(true);
+      };
+      
+      const deleteItem=async (id)=>{
+        const res=await fetch(`/api/solution/solution1?id=${id}`,{method:"DELETE"});
+        if(res?.ok){
+          fetchAllSuccessStories(blogData?._id).then((res) => {
+            setCurrentItems(res?.data || []);
+            const data = res?.data?.map((item) => item?._id);
+            // console.log("res---- item-----> ", data);
+            setSolutionItem(data || []);
+          });
+          alert("item is successfully deleted");
+          
+        }
+        else{
+          alert("item is something went wrong");
+        }
+      }
+      
   // console.log("blog data is here ----> ",blogData)
 
   const handleSave=async ()=>{

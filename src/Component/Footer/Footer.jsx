@@ -267,7 +267,6 @@ export const Footer = () => {
     try {
       const response = await fetch("/api/industry/industry-hero");
       const result = await response.json();
-      console.log("---------------------footer--->", result);
       if (result.data && Array.isArray(result.data)) {
         const names = result.data.map((item) => item.industryName);
         setIndustryNames(names);

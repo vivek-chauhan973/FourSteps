@@ -1,38 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Image from "next/image";
 import { Footer } from "@/Component/Footer/Footer";
 import Nav from "@/Component/Header/Nav";
 import { useRouter } from "next/router";
-import TableOfServices from "@/Component/Service/TableOfServices";
-import ServiceFaq from "@/Component/Service/ServiceFaq";
 import TableofSolution from "@/Component/Solution/TableofSolution";
 import SolutionFaq from "@/Component/Solution/SolutionFaq";
-// const getIndustry = async (item) => {
+// const getSolution = async (item) => {
 //   return await (
 //     await fetch(
-//       `/api/industry/get-industry?industryName=${item?.split("-")?.join(" ")}`,
-//       { method: "GET" }
+//       `/api/solution/get-solution?solutionName=${item?.split("-")?.join(" ")}`,
 //     )
 //   ).json();
 // };
 const SolutionSection = () => {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const { industry } = router?.query;
-  // const [industryName, setIndustryName] = useState({});
+  const { solution } = router?.query;
+  const [solutionName, setsolutionName] = useState({});
 
   // useEffect(() => {
-  //   if (industry) {
-  //     getIndustry(industry).then((res) => {
-  //       setIndustryName(res?.data || {});
+  //   if (solution) {
+  //     getSolution(solution).then((res) => {
+  //       setsolutionName(res?.data || {});
   //     });
   //   }
-  // }, [industry]);
+  // }, [solution]);
 
-  // console.log("itineary all data one by one industry ---==> ", industryName);
+  console.log("itineary all data one by one solution ---==> ", solutionName);
   return (
     <div>
       {/* headres */}

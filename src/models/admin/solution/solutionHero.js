@@ -6,6 +6,7 @@ import "./Services/InSolution";
 import "./Product/InSolution";
 import "./Benefits/Benefits";
 import "./Faq/IndustryFaq";
+import "./solutionMaster";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -34,8 +35,8 @@ const SolutionHeroSchema = new mongoose.Schema({
     required: true,
   },
   solutionType: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Solution",
   },
   Why4StepS: {
     type: mongoose.Schema.Types.ObjectId,
@@ -61,7 +62,7 @@ const SolutionHeroSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "SolutionBenefits",
   },
-  faq:{
+  faq: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "SolutionFaq",
   },

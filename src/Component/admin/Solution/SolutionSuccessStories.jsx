@@ -135,7 +135,7 @@ const SolutionSuccessStories = ({ setActiveTab, blogData }) => {
     }
   }
 
-  console.log("blog data is here -----> ", blogData);
+  console.log("blog data is here -----solution> ", blogData);
 
   const deleteItem = async (id) => {
     const data = await fetch(`/api/solution/success1?id=${id}`, {
