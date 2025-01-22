@@ -94,12 +94,20 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
               </h2>
 
               {/* Show the links when a solution is selected */}
-              <div className="space-y-2">
+              <div className="space-y-">
                 {solutionList?.map((link) => {
                   return (
-                    <Link key={link?._id} href={`/solution/${(link?.title)?.split(" ")?.join("-")}`}>
-                      <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
-                        {link.title}
+                    <Link
+                      key={link?._id}
+                      href={`/solution/${link?.title?.split(" ")?.join("-")}`}
+                    >
+                      <p className="text-gray-800 text-[15px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          className="text-[10px]"
+                          size={10}
+                        />
+                        {link?.title}
                       </p>
                     </Link>
                   );

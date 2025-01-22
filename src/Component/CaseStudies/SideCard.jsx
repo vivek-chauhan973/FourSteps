@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const SideCard = ({ statePackage }) => {
   const carouselRef = useRef(null);
-  console.log("------------------------------>nice", statePackage);
+  // console.log("------------------------------>nice", statePackage);
   const scrollNext = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
@@ -113,9 +113,9 @@ const SideCard = ({ statePackage }) => {
                   </div>
                   <div className="items-center mt-2 text-right">
                     <p className="text-base text-green-700 font-semibold">
-                      {data.service}
+                      {data?.service}
                     </p>
-                    <p className="text-base font-medium">{data.industry}</p>
+                    <p className="text-base font-medium">{data?.industry}</p>
                   </div>
                 </div>
                 <div className="p-4 pt-0">

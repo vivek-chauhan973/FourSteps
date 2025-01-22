@@ -1,14 +1,4 @@
-// import React from "react";
 
-// const BlogDetailing = () => {
-//   return (
-//     <div>
-//       <h6>BlogDetailing sectin </h6>
-//     </div>
-//   );
-// };
-
-// export default BlogDetailing;
 
 
 import React, { useState } from "react";

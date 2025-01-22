@@ -5,11 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SuccessStorySolution = ({ successStory }) => {
-
-  // console.log(
-  //   " here all the success story data----------> ",
-  //   successStory.successItem
-  // );
+  console.log(
+    " here all the success story data----------> ",
+    successStory.successItem
+  );
 
   return (
     <>
@@ -21,7 +20,7 @@ const SuccessStorySolution = ({ successStory }) => {
               {/* Background Image */}
               <div className="relative w-full md:absolute md:inset-0 md:w-[75%] h-[250px] md:h-[400px]">
                 <Image
-                  src={item?.path} 
+                  src={item?.path}
                   alt="Background"
                   className="w-full md:w-[100%] h-[250px] md:h-[400px] object-cover"
                   height={500}
@@ -80,7 +79,7 @@ const SuccessStorySolution = ({ successStory }) => {
               {/* Background Image */}
               <div className="relative w-full md:absolute md:inset-y-0 md:right-0 md:w-[75%] h-[250px] md:h-[450px]">
                 <Image
-                  src={item?.path} 
+                  src={item?.path}
                   alt="Background"
                   className="w-full md:w-[100%] h-[250px] md:h-[400px] object-cover"
                   height={500}
