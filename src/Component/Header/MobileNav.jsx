@@ -441,7 +441,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
         className="w-full text-left  text-gray-700 hover:text-black px-5 mt-5 text-md font-semibold flex items-center justify-between"
         onClick={toggleCategories}
       >
-        Our Services
+        Services
         {isCategoriesVisible ? (
           <FontAwesomeIcon icon={faChevronUp} />
         ) : (

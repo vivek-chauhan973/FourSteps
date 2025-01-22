@@ -94,7 +94,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
               </h2>
 
               {/* Show the links when a solution is selected */}
-              <div className="space-y-">
+              <div className="">
                 {solutionList?.map((link) => {
                   return (
                     <Link
