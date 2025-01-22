@@ -5,16 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SuccessStorySolution = ({ successStory }) => {
-  console.log(
-    " here all the success story data----------> ",
-    successStory.successItem
-  );
+  // console.log(
+  //   " here all the success story data----------> ",
+  //   successStory.successItem
+  // );
 
   return (
     <>
       {/* section 1 */}
       {successStory?.successItem?.map((item, i) => (
-        <div key={i}>
+        <div key={i} className=" md:pb-5 sm:pb-0">
           {i % 2 === 0 ? (
             <div className="relative w-full  mt-5 ">
               {/* Background Image */}
@@ -39,7 +39,7 @@ const SuccessStorySolution = ({ successStory }) => {
                     backgroundColor: item?.backgroundColor || "#FFF0F5",
                   }}
                 >
-                  <div className="flex flex-wrap items-center space-x-2 mb-4">
+                  <div className="flex flex-wrap sm:gap-2 items-center space-x-2 mb-4">
                     {item?.keyword?.split(",")?.map((keyword, i) => (
                       <span
                         key={i}
@@ -99,7 +99,7 @@ const SuccessStorySolution = ({ successStory }) => {
                     backgroundColor: item?.backgroundColor || "#FFF0F5",
                   }}
                 >
-                  <div className="flex flex-wrap items-center space-x-2 mb-4">
+                  <div className="flex flex-wrap sm:gap-2 items-center space-x-2 mb-4">
                     {item?.keyword?.split(",")?.map((keyword, i) => (
                       <span
                         key={i}

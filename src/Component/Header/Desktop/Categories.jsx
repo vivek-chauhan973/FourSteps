@@ -199,7 +199,7 @@ const Categories = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="cursor-pointer  hover:text-orange-500 flex items-center relative group">
-        Our Services
+        Services
         {isServiceMenuOpen ? (
           <FontAwesomeIcon
             icon={faChevronUp}

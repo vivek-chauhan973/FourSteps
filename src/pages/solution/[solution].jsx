@@ -49,12 +49,6 @@ const SolutionSection = () => {
                 {solutionName?.description ||
                   "IT Solution for Oil & Gas Companies description....."}
               </p>
-
-              <div className=" md:mt-16 ">
-                <button className="border border-primary bg-primary text-white hover:bg-transparent  hover:text-primary transition-all py-2 px-6 rounded-lg text-sm md:text-base">
-                  Explore Now
-                </button>
-              </div>
             </div>
 
             {/* Right Image */}
