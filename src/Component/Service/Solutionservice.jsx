@@ -37,7 +37,7 @@ const Solutionservice = () => {
     ],
   };
 
-  console.log("Static Solution Data:", solution); // Print static data
+  // console.log("Static Solution Data:", solution); // Print static data
 
   return (
     <>

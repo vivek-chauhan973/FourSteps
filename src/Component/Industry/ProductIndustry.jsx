@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const ProductIndustry = ({ products }) => {
-  console.log("here is all the products data ", products);
+  // console.log("here is all the products data ", products);
 
   return (
     <>
@@ -64,12 +64,4 @@ const ProductIndustry = ({ products }) => {
 
 export default ProductIndustry;
 
-// <div className="mb-4">
-//             <Image
-//               src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
-//               alt="welcome"
-//               className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
-//               height={500}
-//               width={500}
-//             />
-//           </div>
+

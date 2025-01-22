@@ -5,13 +5,12 @@ import IndustrySideForm from "../Industry/IndustrySideForm";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
 import SolutionAbout from "./SolutionAbout";
 import SuccessStorySolution from "./SuccessStorySolution";
-import ServiceSolution from "./ServiceSolution";
 import ProductSolution from "./ProductSolution";
 import BenifitSolution from "./BenifitSolution";
 import Why4stepSolution from "./Why4stepSolution";
 import OurServiceSolution from "./OurServiceSolution";
 import SolutionDeliver from "./SolutionDeliver";
-const TableofSolution = ({ industryName }) => {
+const TableofSolution = ({ solutionName }) => {
   return (
     <div className="">
       <div className="bg-[#F1F5F9] ">
@@ -20,11 +19,9 @@ const TableofSolution = ({ industryName }) => {
           <div className="px-5 grid grid-cols-1 bg-white">
             {/* Solution About section */}
             <div>
-              {/* {industryName?.contentsummary && (
-                <IndustryAbout about={industryName?.contentsummary} />
-              )} */}
-
-              <SolutionAbout />
+              {solutionName?.contentsummary && (
+                <SolutionAbout about={solutionName?.contentsummary} />
+              )}
             </div>
 
             {/* Reliable partners  */}
@@ -34,14 +31,16 @@ const TableofSolution = ({ industryName }) => {
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-primary text-lg md:text-3xl py-7 md:py-10"
+                  className="font-semibold text-heading text-xl md:text-3xl py-7"
                   dangerouslySetInnerHTML={{
                     __html:
-                      industryName?.why4step?.heading || "Why 4Step Solution ",
+                      solutionName?.Why4StepS?.heading || "Why 4Step Solution",
                   }}
-                />
+                ></h2>
 
-                <Why4stepSolution />
+                {solutionName?.Why4StepS && (
+                  <Why4stepSolution Why4StepS={solutionName?.Why4StepS} />
+                )}
               </div>
             </div>
 
@@ -49,23 +48,22 @@ const TableofSolution = ({ industryName }) => {
             <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
                 {/* Heading */}
-                <div className="font-semibold text-primary text-lg md:text-3xl">
-                  {industryName?.success?.heading || "Success Story"} main
-                  heading Success Story Solution
+                <div className="font-semibold text-heading text-lg md:text-3xl">
+                  {solutionName?.success?.heading || "Success Story"} main
                 </div>
                 <div>
                   {/* Description */}
                   <p
                     className="md:text-base py-2 text-sm"
                     dangerouslySetInnerHTML={{
-                      __html: industryName?.success?.mainEditorHtmlDescription,
+                      __html: solutionName?.success?.mainEditorHtmlDescription,
                     }}
                   />
-                  Each item has fields like path, backgroundColor, keyword,
-                  title, description, and link.
                 </div>
 
-                <SuccessStorySolution />
+                {solutionName?.success && (
+                  <SuccessStorySolution successStory={solutionName?.success} />
+                )}
               </div>
             </div>
 
@@ -76,13 +74,13 @@ const TableofSolution = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
-                  <h3 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.solution?.heading || " Solution We Deliver"}
-                    main heading Deliver
+                  <h3 className="font-semibold text-heading text-xl md:text-3xl">
+                    {solutionName?.solution?.heading || " Solution We Deliver"}
                   </h3>
                 </div>
-
-                <SolutionDeliver />
+                {solutionName?.solution && (
+                  <SolutionDeliver solutionDeliver={solutionName.solution} />
+                )}
               </div>
             </div>
 
@@ -92,12 +90,13 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-primary text-lg md:text-3xl">
-                  {industryName?.service?.heading || "Our Services"} main
-                  heading Services
+                <div className="font-semibold text-heading text-xl md:text-3xl">
+                  {solutionName?.service?.heading || "Our Services"}
                 </div>
 
-                <OurServiceSolution />
+                {solutionName?.service && (
+                  <OurServiceSolution SolutionService={solutionName?.service} />
+                )}
               </div>
             </div>
 
@@ -107,12 +106,14 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               {/* heading section  */}
-              <h3 className="font-semibold text-primary text-lg md:text-3xl">
-                {industryName?.product?.heading || "Our Products"} main heading
-                Products
-              </h3>
 
-              <ProductSolution />
+              <div className="font-semibold text-heading text-xl md:text-3xl">
+                {solutionName?.product?.heading || "Our Services"}
+              </div>
+
+              {solutionName?.product && (
+                <ProductSolution productsolution={solutionName?.product} />
+              )}
             </div>
 
             {/* Approaches Section */}
@@ -132,14 +133,12 @@ const TableofSolution = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div className="md:px-2">
-                <div>
-                  <h2 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.benefit?.heading || "Our Benifits"} main
-                    heading Benifits
-                  </h2>
+                <div className="font-semibold text-heading text-xl md:text-3xl">
+                  {solutionName?.benefit?.heading || "Our Benifits"}
                 </div>
-
-                <BenifitSolution />
+                {solutionName?.benefit && (
+                  <BenifitSolution solutionBenifits={solutionName?.benefit} />
+                )}
               </div>
             </div>
           </div>

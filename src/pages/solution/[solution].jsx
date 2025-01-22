@@ -16,14 +16,17 @@ const getSolution = async (title) => {
 const SolutionSection = () => {
   const router = useRouter();
   const { solution } = router?.query;
-  // const [solutionName, setsolutionName] = useState({});
+  const [solutionName, setsolutionName] = useState({});
   useEffect(() => {
     if (solution) {
       getSolution(solution?.split("-")?.join(" ")).then((data) => {
+        setsolutionName(data?.data);
         console.log("response is here 123---> ", data);
       });
     }
   }, [solution]);
+  // console.log("here is all the data o solution section---->", solutionName);
+
   return (
     <div>
       {/* headres */}
@@ -34,37 +37,33 @@ const SolutionSection = () => {
       <div className="font-sans">
         {/* hero section */}
 
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 shadow-xl py-16 px-6 md:px-16 lg:px-20">
-          <div className="w-full mx-auto flex flex-col lg:flex-row items-center">
+        <div className="bg-gradient-to-r md:mt-0 mt-10 from-blue-50 to-purple-50 shadow-lg py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
             {/* Left Content */}
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <h1 className="text-2xl md:text-[36px] font-semibold leading-tight mb-5">
-                Heading of a Solution
-                {/* {industryName?.title || "IT Solution for Oil & Gas Companies"} */}
+            <div className=" md:w-1/2">
+              <h1 className="text-2xl md:text-[30px] text-heading font-semibold leading-tight mb-5">
+                {solutionName?.title ||
+                  " This is basically solution hero title "}
               </h1>
               <p className="text-sm md:text-lg ">
-                {/* {industryName?.description ||
-                  "IT Solution for Oil & Gas Companies description....."} */}
-                Some description of services ..... Each service e.g.,
-                Underwriting, Billing will display its title, icon, and a list
-                of points associated with it. The component will print out the
-                data properly and show the items in a clean, card-like
-                structure. Let me know if you need more adjustments!
+                {solutionName?.description ||
+                  "IT Solution for Oil & Gas Companies description....."}
               </p>
-              <div className="hidden md:block mt-8">
-                <button className="bg-orange-500 text-white hover:bg-orange-600 transition-colors py-3 px-8 rounded-lg shadow-md text-sm md:text-base">
+
+              <div className=" md:mt-16 ">
+                <button className="border border-primary bg-primary text-white hover:bg-transparent  hover:text-primary transition-all py-2 px-6 rounded-lg text-sm md:text-base">
                   Explore Now
                 </button>
               </div>
             </div>
 
             {/* Right Image */}
-            <div className="lg:w-1/2 flex justify-center mt-10 lg:mt-0">
+            <div className="md:w-1/2 flex justify-center mt-6 md:mt-0">
               <Image
                 // src={industryName?.path || "/image/yyy.png"}
-                src="/image/aboutt.avif"
+                src={solutionName?.path}
                 alt="Hero Section"
-                className="w-full max-w-md md:max-w-lg rounded-lg shadow"
+                className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
                 height={500}
                 width={500}
               />
@@ -75,7 +74,7 @@ const SolutionSection = () => {
         {/* tabel of content section */}
         <div>
           {/* <TableOfServices /> */}
-          <TableofSolution />
+          <TableofSolution solutionName={solutionName} />
         </div>
 
         {/* Client & Testimonials */}
@@ -89,7 +88,7 @@ const SolutionSection = () => {
 
       {/* this is FQA SECTION  */}
       <div>
-        <SolutionFaq />
+        <SolutionFaq SolutionFaq={solutionName?.faq} />
       </div>
 
       {/* footer section */}

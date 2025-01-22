@@ -30,14 +30,6 @@ const IndustryFaq = ({ faqData }) => {
     <div>
       <div className="bg-background py-10">
         {/* section 1 */}
-        {/* <div className="flex-col  text-center md:pt-10 pb-2 md:pl-10 px-5 w-full">
-          <h2 className=" text-xl font-semibold text-primary text-center mb-3">
-            FAQS
-          </h2>
-          <p className="text-xl  font-bold">
-            Frequently Asked Questions for the Industry
-          </p>
-        </div> */}
         <div class="flex flex-col justify-center items-center text-center mt-5 md:pb-2 ">
           <h2 class="md:text-3xl text-xl  font-semibold text-heading text-center mb-1">
             Frequently Asked Questions (FAQ)

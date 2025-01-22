@@ -6,55 +6,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const OurServicesIndustry = ({ services }) => {
-  // const data = [
-  //   {
-  //     imageSrc: "/image/1.png",
-  //     imageAlt: "Consulting Image 1",
-  //     title: "Advanced technology consulting",
-  //     description: "ScienceSoft's consultants advise on the use of",
-  //     points: [
-  //       "Insurance data aggregation and processing.",
-  //       "Claim-related decision-making.",
-  //       "Insurance fraud detection.",
-  //       "Risk management.",
-  //       "Advanced operational analytics.",
-  //       "Demand forecasting and spend planning.",
-  //       "End-to-end traceability of reimbursement transactions, and more.",
-  //     ],
-  //   },
-  //   // Add more data objects as needed
-  //   {
-  //     imageSrc: "/image/2.png",
-  //     imageAlt: "Consulting Image 2",
-  //     title: "Innovative solutions advisory",
-  //     description: "Expert advice on implementing",
-  //     points: [
-  //       "Blockchain integration.",
-  //       "AI-driven analytics.",
-  //       "Cybersecurity enhancements.",
-  //       "IoT connectivity.",
-  //       "Cloud infrastructure optimization.",
-  //       "Machine learning models.",
-  //       "Data-driven decision-making.",
-  //     ],
-  //   },
-  //   {
-  //     imageSrc: "/image/2.png",
-  //     imageAlt: "Consulting Image 2",
-  //     title: "Innovative solutions advisory",
-  //     description: "Expert advice on implementing",
-  //     points: [
-  //       "Blockchain.",
-  //       "AI-driven analytics.",
-  //       "Cybeity enhancements.",
-  //       "IoT connectivity.",
-  //       "Cloud infrastructure optimon.",
-  //       "Machine learning ",
-  //       "Data-driven decision-making.",
-  //     ],
-  //   },
-  //   // You can add more objects here
-  // ];
   // console.log("all service present here ", services);
   return (
     <>
@@ -78,7 +29,7 @@ const OurServicesIndustry = ({ services }) => {
                 <div className="flex justify-center items-center">
                   <div className="mb-4">
                     <Image
-                      src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
+                      src={item?.path || "/image/bg.jpg"} 
                       alt="welcome"
                       className="w-full h-32  md:h-36 md:w-36 object-contain rounded"
                       height={500}
@@ -102,21 +53,13 @@ const OurServicesIndustry = ({ services }) => {
                       key={idx}
                       className="mb-[2px] text-sm md:text-base"
                       dangerouslySetInnerHTML={{
-                        __html: point.content, // Render HTML content inside list item
+                        __html: point.content, 
                       }}
                     ></li>
                   ))}
                 </ul>
 
-                {/* <div className="mt-6 flex justify-center">
-                  <button className=" bg-transparent border border-primary text-primary hover:bg-primary hover:text-white font-semibold text-sm md:text-base lg:text-lg py-2 px-6  inline-flex items-center transition-transform duration-300">
-                    Request details
-                    <FontAwesomeIcon
-                      icon={faArrowRight}
-                      className="ml-2 transform hover:translate-x-1"
-                    />
-                  </button>
-                </div> */}
+             
 
                 <div className="mt-6 md:mb-6  flex justify-center">
                   <Link
