@@ -67,7 +67,24 @@ p {
 }
 
 
+/* Global styling for FontAwesome icons */
+svg {
+  font-size: 20px;
+  /* Default icon size */
+  display: inline-block;
+  /* Prevent size inconsistencies */
+  vertical-align: middle;
+  /* Aligns icons with text */
+}
 
+/* If you want to target only FontAwesome icons */
+.fas,
+.far,
+.fal,
+.fad,
+.fab {
+  font-size: 20px;
+}
 
 /*  for testimonial slider start */
 .slick-dots li button:before {
