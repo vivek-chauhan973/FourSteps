@@ -204,13 +204,14 @@ const Categories = () => {
           <FontAwesomeIcon
             icon={faChevronUp}
             className="ml-1  mt-[2px] inline-block transition-transform duration-300"
-            size="sm"
+            
+            size={24}
           />
         ) : (
           <FontAwesomeIcon
             icon={faChevronDown}
             className="ml-1 mt-[2px] inline-block transition-transform duration-300"
-            size="sm"
+            size={24}
           />
         )}
         <span className="absolute left-0 bottom-[-6px] h-0.5 w-full bg-orange-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100" />
@@ -237,6 +238,7 @@ const Categories = () => {
                     <FontAwesomeIcon
                       icon={faChevronRight}
                       className=" text-sm"
+                      size={24}
                     />
                   </div>
                 ))}
