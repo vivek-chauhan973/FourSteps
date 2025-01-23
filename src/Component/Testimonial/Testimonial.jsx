@@ -31,8 +31,8 @@ const Trail = () => {
   // Initialize AOS for animations
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
-      once: true, 
+      duration: 1000,
+      once: true,
     });
   }, []);
 
@@ -112,7 +112,7 @@ const Trail = () => {
             </p>
 
             {/* Content Wrapper */}
-            <div className="flex flex-col md:flex-row items-center justify-center w-full p-4 md:p-8">
+            <div className="flex flex-col lg:flex-row items-center justify-center w-full p-4 lg:p-8">
               {/* Image Section */}
               <div
                 className={`md:w-1/2 flex justify-center md:justify-end ${
@@ -132,7 +132,7 @@ const Trail = () => {
 
               {/* Text Content Section */}
               <div
-                className="w-full md:w-1/2 h-auto sm:h-[60vh] md:h-[70vh] p-4 md:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left border-white"
+                className="w-full md:w-1/2  h-auto sm:h-[60vh] md:h-[70vh] p-4 lg:p-6 border-t border-r border-b-2 bg-gray-800 rounded-lg shadow-lg text-center md:text-left border-white"
                 data-aos="fade-up"
                 data-aos-delay="500"
               >

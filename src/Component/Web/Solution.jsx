@@ -1,32 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-const spineConditions = [
-  "Prolaped Intervertebal disc",
-  "Slip disc & Sciatica",
-  "Degenerative Spine Conditions",
-  "Spinal Canal Stenosis Decompression",
-  "Spondylolisthesis",
-  "Adult Degenerative Deformities",
-  "Spinal Fusion Surgery",
-  "Craniovertebral Junction Instability",
-  "Pediatric Congenital Spine Deformities",
-  "Osteoporosis",
-  "Spinal Deformities",
-  "Kyphoscoliosis",
-  "Tuberculosis of Spine",
-  "Post Infectious Spine Deformities",
-  "Correction",
-  "Spinal Infections",
-  "Spine Tumors",
-  "Spine Trauma",
-  "Facet arthritis",
-  "Geriatric Spine Disorders",
-];
-
 const App = () => {
+  const [solutiondata, setSolutionData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  // console.log(" all title data is here --->", solutiondata);
+  const handleDataFetch = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`/api/solution/get-title`);
+      const result = await response.json();
+      setSolutionData(result);
+      // console.log("------title here", result);
+    } catch (err) {
+      setError(err.message); // Set error message if fetch fails
+      console.error("Error fetching data:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    handleDataFetch();
+  }, []);
+  if (loading) return <p>Loading...</p>; // Show loading state
+  if (error) return <p>Error: {error}</p>;
   return (
     // [#BFECFF]
     <div className="h-auto bg-background ">
@@ -42,8 +43,11 @@ const App = () => {
           </p>
         </div>
         <div className="grid pl-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  mx-auto">
-          {spineConditions.map((condition, index) => (
-            <Link href="#" key={index}>
+          {solutiondata?.map((item, index) => (
+            <Link
+              key={index}
+              href={`/solution/${item?.title?.split(" ")?.join("-")}`}
+            >
               <div
                 key={index}
                 className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
@@ -52,7 +56,7 @@ const App = () => {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="text-gray-800 font-medium text-center flex-1 ml-2">
-                  {condition}
+                  {item?.title}
                 </span>
                 <div className="right-2 bottom-1 absolute transform rotate-[50deg] group-hover:rotate-0 transition-transform duration-300">
                   <FontAwesomeIcon

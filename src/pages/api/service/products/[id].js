@@ -23,53 +23,74 @@ const apiRoute = async (req, res) => {
   await dbConnect();
 
   if (req.method === "PUT") {
-    const {id}=req.query;
-    if(!id){
-        return res.status(301).json({message:"something went wrong"});
-    }    
+    const { id } = req.query;
+    if (!id) {
+      return res.status(301).json({ message: "something went wrong" });
+    }
     upload.single("file")(req, res, async (err) => {
       if (err instanceof multer.MulterError) {
-        return res.status(500).json({ error: "File upload failed due to Multer error" });
+        return res
+          .status(500)
+          .json({ error: "File upload failed due to Multer error" });
       } else if (err) {
-        return res.status(500).json({ error: "Unknown error during file upload" });
+        return res
+          .status(500)
+          .json({ error: "Unknown error during file upload" });
       }
 
-      const { title, link,subTitle, editorHtmlDescription: editorHtmlDescriptionRaw, service } = req.body;
+      const {
+        title,
+        link,
+        subTitle,
+        editorHtmlDescription: editorHtmlDescriptionRaw,
+        service,
+      } = req.body;
 
       let editorHtmlDescription;
       try {
         editorHtmlDescription = JSON.parse(editorHtmlDescriptionRaw);
       } catch (error) {
-        return res.status(400).json({ error: "Invalid JSON format for editorHtmlDescription" });
+        return res
+          .status(400)
+          .json({ error: "Invalid JSON format for editorHtmlDescription" });
       }
 
       // Prepare file data for saving
-      try{
-      const file = await SubSolutionProduct.findById(id);
-      if (!file) {
-        return res.status(404).json({ error: "File not found" });
-      }
-      const fileData = {
-        title,
-        link,
-        subTitle,
-        editorHtmlDescription,
-        service,
-        filename: req.file?.filename || null,
-        path: req.file ? `/uploads/service/serviceProducts/${req.file.filename}` : file?.path,
-      };
-
-        if(req.file){
-            const filePath = path.join(uploadDirectory, file.filename);
-            if (fs.existsSync(filePath)) {
-              fs.unlinkSync(filePath);
-            }
+      try {
+        const file = await SubServiceProduct.findById(id);
+        if (!file) {
+          return res.status(404).json({ error: "File not found" });
         }
-        const newFile = await SubSolutionProduct.findOneAndUpdate({_id:id},{$set:fileData});
-        return res.status(200).json({ message: "File uploaded successfully", data: newFile });
+        const fileData = {
+          title,
+          link,
+          subTitle,
+          editorHtmlDescription,
+          service,
+          filename: req.file?.filename || null,
+          path: req.file
+            ? `/uploads/service/serviceProducts/${req.file.filename}`
+            : file?.path,
+        };
+
+        if (req.file) {
+          const filePath = path.join(uploadDirectory, file.filename);
+          if (fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath);
+          }
+        }
+        const newFile = await SubServiceProduct.findOneAndUpdate(
+          { _id: id },
+          { $set: fileData }
+        );
+        return res
+          .status(200)
+          .json({ message: "File uploaded successfully", data: newFile });
       } catch (error) {
         console.error("Error creating file:", error);
-        return res.status(500).json({ message: "Internal Server Error", error });
+        return res
+          .status(500)
+          .json({ message: "Internal Server Error", error });
       }
     });
   } else {

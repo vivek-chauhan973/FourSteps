@@ -41,7 +41,7 @@ function MasterSolution() {
       const newSolution = await response.json();
       setSolutionsList([...solutionsList, newSolution.data]); // Add new solution to list
       setSolution(""); // Clear input field
-      alert("Solution added successfully!");
+      alert("Service  added successfully!");
     }
   };
 

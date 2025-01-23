@@ -20,7 +20,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
   useEffect(() => {
     if (solutionId) {
       fetchSolutionAccordingType(solutionId).then((data) => {
-        console.log("data--->", data);
+        // console.log("data--->", data);
         setSolutionList(data?.data);
       });
     }
