@@ -2,6 +2,7 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
+import SubServiceProduct from "@/models/admin/ServicesModel/Product/IndustrySolution";
 // Define upload directory
 const uploadDirectory = "./public/uploads/service/serviceProducts";
 if (!fs.existsSync(uploadDirectory)) {

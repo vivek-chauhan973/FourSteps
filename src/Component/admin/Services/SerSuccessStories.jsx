@@ -135,7 +135,7 @@ const SerSuccessStories = ({ setActiveTab, blogData }) => {
     }
   }
 
-  console.log("blog data is here -----> ", blogData);
+  // console.log("blog data is here -----> ", blogData);
 
   const deleteItem = async (id) => {
     const data = await fetch(`/api/service/success1?id=${id}`, {
