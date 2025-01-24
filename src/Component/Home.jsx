@@ -15,15 +15,13 @@ import Case from "./CaseStudies/Case";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Nav from "./Header/Nav";
-// import Additional from "./Web/Additional";
 import Calltoaction from "./Web/Calltoaction";
 import BackToTop from "./Web/BackToTop";
 import Partners from "./Web/Partners";
-import Trail from "./Trail";
+// import Trail from "./Trail";
 import Solution from "./Web/Solution";
 import ServicesScienceSoft from "./Service/ServicesScienceSoft";
 import TechUse from "./Web/TechUse";
-
 
 const Home = () => {
   useEffect(() => {
@@ -36,9 +34,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {/* <Trail/> */}
-     
-      {/* <CaseStudied/> */}
+      {/* <Trail /> */}
       <Nav />
       <BackToTop />
       <HeroSection />
@@ -47,7 +43,6 @@ const Home = () => {
       <AboutSection />
       <ServicesScienceSoft />
       {/* <Service /> */}
-
       <ChooseUs />
       <Industry />
       <Solution />

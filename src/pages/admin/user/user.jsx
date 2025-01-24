@@ -2,7 +2,7 @@ import AdminLayout from "@/Component/admin/AdminLayout";
 import { useAppContext } from "@/Component/Context/context";
 import Image from "next/image";
 import React, { useState } from "react";
-
+import { useRouter } from "next/router";
 const User = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -45,6 +45,9 @@ const User = () => {
 
       const result = await response.json();
       alert(result.message || result.error);
+      if (result.success) {
+        router.push(`/admin/user/list-user`);
+      }
     } catch (error) {
       console.error("Error during submission:", error);
       alert("Submission failed. Check the console for more information.");

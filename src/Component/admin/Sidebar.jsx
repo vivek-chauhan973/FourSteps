@@ -43,6 +43,18 @@ const Sidebar = () => {
         ],
       },
       {
+        label: "Parters",
+        icon: () => <FontAwesomeIcon icon={faUser} />,
+        subMenu: [
+          {
+            label: "Partners",
+            // change url according to the bizare expendition
+            href: "/admin/partner/partner",
+          },
+        ],
+      },
+
+      {
         label: "Webinar ",
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [
@@ -80,11 +92,6 @@ const Sidebar = () => {
             // change url according to the bizare expendition
             href: "/admin/Industry/industry-list",
           },
-          {
-            label: "Partners",
-            // change url according to the bizare expendition
-            href: "/admin/Industry/industry-partner",
-          },
         ],
       },
       {
@@ -106,7 +113,6 @@ const Sidebar = () => {
             // change url according to the bizare expendition
             href: "/admin/Services/service-list",
           },
-         
         ],
       },
       {
