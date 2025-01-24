@@ -203,14 +203,13 @@ const Categories = () => {
         {isServiceMenuOpen ? (
           <FontAwesomeIcon
             icon={faChevronUp}
-            className="ml-1  mt-[2px] inline-block transition-transform duration-300"
-            
+            className="ml-1  mt-[2px] text-sm  inline-block transition-transform duration-300"
             size={24}
           />
         ) : (
           <FontAwesomeIcon
             icon={faChevronDown}
-            className="ml-1 mt-[2px] inline-block transition-transform duration-300"
+            className="ml-1 text-sm mt-[2px] inline-block transition-transform duration-300"
             size={24}
           />
         )}

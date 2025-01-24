@@ -191,7 +191,7 @@ const Partners = () => {
 
   return (
     // <div className="[#fff6ed] bg-[#ffeedc]  md:h-[80vh] h-auto  justify-center items-center mx-auto py-10 md:px-24">
-    <div className=" bg-white shadow md:h-[65vh]  h-auto flex flex-col justify-center items-center md:py-10 pt-10 md:pt-0 px-4 md:px-24">
+    <div className=" bg-white shadow lg:h-[65vh]  md:h-[40vh] h-auto flex flex-col justify-center items-center md:py-10 pt-10 md:pt-0 px-4 md:px-24">
       {/* Title Section */}
       <div className="text-center ">
         <h4 className="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">

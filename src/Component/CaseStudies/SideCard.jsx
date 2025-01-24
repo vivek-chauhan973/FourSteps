@@ -137,6 +137,8 @@ const SideCard = ({ statePackage }) => {
           ) : (
             <p className="text-center">No packages available.</p>
           )}
+
+          
         </div>
         <div className="hidden text-sm cursor-pointer md:flex absolute right-5 gap-2 top-[-10px]">
           <FontAwesomeIcon

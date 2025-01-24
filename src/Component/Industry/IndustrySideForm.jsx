@@ -12,7 +12,7 @@ const IndustrySideForm = () => {
     <>
       <div
         onClick={HandleClick}
-        className="w-full justify-center  hidden md:block h-auto bg-yellow-50"
+        className="w-72 justify-center  hidden md:block h-auto bg-yellow-50"
       >
         <div className="flex items-center space-x-4 bg-blue-200 p-4 rounded-md shadow-md group hover:cursor-pointer">
           {/* Calendar Icon */}

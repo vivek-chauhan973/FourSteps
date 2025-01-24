@@ -34,51 +34,46 @@ const SolutionSection = () => {
         <Nav />
       </div>
 
-      <div className="font-sans">
-        {/* hero section */}
+      {/* hero section */}
+      <div className=" bg-background md:mt-0 mt-10 shadow-lg py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-col md:items-cente lg:flex-row ">
+          {/* Left Content */}
+          <div className=" lg:w-1/2 w-full lg:px-5 md:pb-5">
+            <h1 className="text-2xl md:text-[30px] font-semibold text-heading leading-tight mb-4">
+              {solutionName?.title || "IT Solution for Oil & Gas Companies"}
+            </h1>
+            <p className="text-sm md:text-base">
+              {solutionName?.description ||
+                "IT Solution for Oil & Gas Companies description....."}
+            </p>
+          </div>
 
-        <div className="bg-gradient-to-r md:mt-0 mt-10 from-blue-50 to-purple-50 shadow-lg py-16 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
-            {/* Left Content */}
-            <div className=" md:w-1/2">
-              <h1 className="text-2xl md:text-[30px] text-heading font-semibold leading-tight mb-5">
-                {solutionName?.title ||
-                  " This is basically solution hero title "}
-              </h1>
-              <p className="text-sm md:text-lg ">
-                {solutionName?.description ||
-                  "IT Solution for Oil & Gas Companies description....."}
-              </p>
-            </div>
-
-            {/* Right Image */}
-            <div className="md:w-1/2 flex justify-center mt-6 md:mt-0">
-              <Image
-                // src={industryName?.path || "/image/yyy.png"}
-                src={solutionName?.path}
-                alt="Hero Section"
-                className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
-                height={500}
-                width={500}
-              />
-            </div>
+          {/* Right Image */}
+          <div className="lg:w-1/2 flex  justify-center mt-6 md:mt-0">
+            <Image
+              src={solutionName?.path || "/image/yyy.png"}
+              alt="Hero Section"
+              className="w-full max-w-md md:max-w-lg rounded"
+              height={500}
+              width={500}
+            />
           </div>
         </div>
-
-        {/* tabel of content section */}
-        <div>
-          {/* <TableOfServices /> */}
-          <TableofSolution solutionName={solutionName} />
-        </div>
-
-        {/* Client & Testimonials */}
-
-        <div>
-          <Testimonial />
-        </div>
-
-        {/* Resource Section */}
       </div>
+
+      {/* tabel of content section */}
+      <div>
+        {/* <TableOfServices /> */}
+        <TableofSolution solutionName={solutionName} />
+      </div>
+
+      {/* Client & Testimonials */}
+
+      <div>
+        <Testimonial />
+      </div>
+
+      {/* Resource Section */}
 
       {/* this is FQA SECTION  */}
       <div>

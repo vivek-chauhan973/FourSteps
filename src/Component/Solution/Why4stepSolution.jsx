@@ -74,7 +74,7 @@ const Why4stepSolution = ({ Why4StepS }) => {
           {/* left  button */}
           <button
             onClick={scrollPrev}
-            className="hidden md:flex rounded-full h-10 w-12  text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex rounded-full md:h-8 md:w-11 lg:h-10 lg:w-12 text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -102,7 +102,7 @@ const Why4stepSolution = ({ Why4StepS }) => {
           {/* right button */}
           <button
             onClick={scrollNext}
-            className="hidden md:flex rounded-full  md:h-10 md:w-12  lg-w-40 text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex rounded-full  md:h-8 md:w-11 lg:h-10 lg:w-12  lg-w-40 text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>

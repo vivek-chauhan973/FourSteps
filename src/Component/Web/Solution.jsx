@@ -43,30 +43,31 @@ const App = () => {
           </p>
         </div>
         <div className="grid pl-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  mx-auto">
-          {solutiondata?.map((item, index) => (
-            <Link
-              key={index}
-              href={`/solution/${item?.title?.split(" ")?.join("-")}`}
-            >
-              <div
+          {solutiondata.length > 0 &&
+            solutiondata.map((item, index) => (
+              <Link
                 key={index}
-                className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
+                href={`/solution/${item?.title?.split(" ")?.join("-")}`}
               >
-                <span className="text-white bg-blue-800 px-3 py-2 rounded-full">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-gray-800 font-medium text-center flex-1 ml-2">
-                  {item?.title}
-                </span>
-                <div className="right-2 bottom-1 absolute transform rotate-[50deg] group-hover:rotate-0 transition-transform duration-300">
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className="text-blue-800"
-                  />
+                <div
+                  key={index}
+                  className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
+                >
+                  <span className="text-white bg-blue-800 px-3 py-2 rounded-full">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-gray-800 font-medium text-center flex-1 ml-2">
+                    {item?.title}
+                  </span>
+                  <div className="right-2 bottom-1 absolute transform rotate-[50deg] group-hover:rotate-0 transition-transform duration-300">
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="text-blue-800"
+                    />
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
     </div>

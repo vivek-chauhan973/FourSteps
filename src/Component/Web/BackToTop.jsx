@@ -44,7 +44,7 @@ const BackToTop = () => {
             boxShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
           }}
         >
-          <FontAwesomeIcon icon={faAngleUp} />
+          <FontAwesomeIcon icon={faAngleUp} className=" text-base" />
         </button>
       )}
     </div>
