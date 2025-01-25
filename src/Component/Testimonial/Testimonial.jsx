@@ -4,14 +4,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Trail = () => {
-  const [zoomOut, setZoomOut] = useState(false); // Track the zoom-out state
-  const [testimonials, setTestimonials] = useState([]); // Store fetched testimonials
-  const [loading, setLoading] = useState(true); // Loading state
-  const [currentIndex, setCurrentIndex] = useState(0); // Track which testimonial is displayed
-  const [banner, setBanner] = useState([]); // Store fetched banner images
-  const fallbackBanner = "/image/bg.jpg"; // Fallback banner image
+  const [zoomOut, setZoomOut] = useState(false);
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [banner, setBanner] = useState([]);
+  const fallbackBanner = "/image/bg.jpg";
 
-  // Fetch testimonials from API
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -28,7 +27,6 @@ const Trail = () => {
     fetchTestimonials();
   }, []);
 
-  // Initialize AOS for animations
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -40,23 +38,21 @@ const Trail = () => {
   useEffect(() => {
     if (testimonials.length > 0) {
       const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length); // Cycle through testimonials
-        setZoomOut(false); // Reset zoom-out effect
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        setZoomOut(false);
         setTimeout(() => {
-          setZoomOut(true); // Trigger zoom-out effect
+          setZoomOut(true);
         }, 2000);
-      }, 3000); // Change every 3 seconds
+      }, 3000);
 
-      return () => clearInterval(interval); // Cleanup interval on unmount
+      return () => clearInterval(interval);
     }
   }, [testimonials]);
 
-  // Refresh AOS when content changes
   useEffect(() => {
     AOS.refresh();
   }, [currentIndex]);
 
-  // Fetch banner images
   useEffect(() => {
     const handleBanner = async () => {
       try {
@@ -95,7 +91,6 @@ const Trail = () => {
   return (
     <div className="bg-background">
       <div>
-        {/* Banner Section */}
         <div
           className="relative bg-cover w-full h-full bg-center text-white flex justify-center items-center"
           style={{ backgroundImage }}
