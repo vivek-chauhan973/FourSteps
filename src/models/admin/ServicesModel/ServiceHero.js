@@ -5,7 +5,7 @@ import "./Faq/IndustryFaq";
 import "./Product/InSolution";
 import "./MasterService";
 import "./Services/InSolution";
-import"./solution/solution";
+import "./solution/solution";
 import "./success/success";
 const ServiceHeroSchema = new mongoose.Schema({
   title: {

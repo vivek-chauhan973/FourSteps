@@ -38,7 +38,6 @@ const apiRoute = async (req, res) => {
           .status(500)
           .json({ error: "Unknown error during file upload" });
       }
-
       const {
         title,
         link,

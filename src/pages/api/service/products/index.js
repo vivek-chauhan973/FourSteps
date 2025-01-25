@@ -36,11 +36,11 @@ const apiRoute = async (req, res) => {
         title,
         link,
         editorHtmlDescription: editorHtmlDescriptionRaw,
-        solution,
+        service,
       } = req.body;
       // console.log("req------body----------------> ",req.body)
       // Validate required fields
-      if (!title || !solution) {
+      if (!title || !service) {
         return res.status(400).json({ error: "Missing required fields" });
       }
 
@@ -103,7 +103,7 @@ const apiRoute = async (req, res) => {
       return res.status(200).json({ message: "File deleted successfully" });
     } catch (error) {
       console.error("Error deleting file:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ message: "Internal Server Error", error });
     }
   } else if (req.method === "GET") {
     const { id } = req.query;
@@ -113,7 +113,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const files = await SubServiceProduct.find({ solution: id });
+      const files = await SubServiceProduct.find({ service: id });
       return res.status(200).json({ data: files });
     } catch (error) {
       console.error("Error fetching files:", error);

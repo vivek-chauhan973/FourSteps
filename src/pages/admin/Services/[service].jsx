@@ -11,7 +11,7 @@ import SerBenifits from "@/Component/admin/Services/SerBenifits";
 import SerFaq from "@/Component/admin/Services/SerFaq";
 
 const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/service/${id}`,{method:"GET"})).json();
+  return await (await fetch(`/api/service/${id}`, { method: "GET" })).json();
 };
 export default function CreateWebinar() {
   const router = useRouter();
@@ -43,6 +43,7 @@ export default function CreateWebinar() {
       });
     }
   }, [service]);
+  console.log("justTrail", blogData);
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
@@ -145,15 +146,11 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
           <SerWhy4Steps blogData={blogData} setActiveTab={setActiveTab} />
-          
         </div>
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
         >
-          <SerSuccessStories
-            blogData={blogData}
-            setActiveTab={setActiveTab}
-          />
+          <SerSuccessStories blogData={blogData} setActiveTab={setActiveTab} />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}

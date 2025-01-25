@@ -134,8 +134,8 @@ const SerProduct = ({ setActiveTab, blogData }) => {
     }
     try {
       const url = isUpdating
-        ? `/api/solution/products/${editItemId}`
-        : `/api/solution/products`;
+        ? `/api/service/products/${editItemId}`
+        : `/api/service/products`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -210,7 +210,7 @@ const SerProduct = ({ setActiveTab, blogData }) => {
   };
 
   const deleteItem = async (id) => {
-    const res = await fetch(`/api/solution/products?id=${id}`, {
+    const res = await fetch(`/api/service/products?id=${id}`, {
       method: "DELETE",
     });
     if (res?.ok) {
@@ -235,7 +235,7 @@ const SerProduct = ({ setActiveTab, blogData }) => {
       productItem: solutionItem,
     };
     const res = await fetch(
-      `/api/service/products/product?solution=${blogData?._id}`,
+      `/api/service/products/product?service=${blogData?._id}`,
       {
         method: "POST",
         headers: {
@@ -249,8 +249,8 @@ const SerProduct = ({ setActiveTab, blogData }) => {
       setActiveTab("Tab6");
       alert(
         blogData?._id
-          ? "solution Data updated successfully"
-          : "solution Data saved successfully"
+          ? "service Data updated successfully"
+          : "service Data saved successfully"
       );
     } else {
       alert("something went wrong on frontend side");
