@@ -128,13 +128,13 @@ const About = () => {
                   {/* Paragraph Content */}
                   <p className="text-gray-900 text-sm lg:text-base leading-relaxed">
                     Back in 2020, something exciting took shape in Greater Noida
-                    – an agency led by the enthusiastic Mr. Amarjeet Kumar
+                    - an agency led by the enthusiastic Mr. Amarjeet Kumar
                     Singh. They started off as <b>“4steps Marketing”</b> and
                     quickly made a name for themselves with their innovative
                     ideas. But guess what? They have grown even more since then!
                     They recently revamped their identity and are now known as
                     <b>“Four Steps Digital Consulting Pvt. Ltd.”</b> This new
-                    name shows they are not just about marketing anymore – they
+                    name shows they are not just about marketing anymore - they
                     are all about helping folks navigate the digital world and
                     offering top-notch advice.
                     <br />

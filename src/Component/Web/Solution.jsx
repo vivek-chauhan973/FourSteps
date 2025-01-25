@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     handleDataFetch();
   }, []);
-  if (loading) return <p>Loading...</p>; // Show loading state
+  if (loading) return <p className=" text-center">Loading...</p>; 
   if (error) return <p>Error: {error}</p>;
   return (
     // [#BFECFF]

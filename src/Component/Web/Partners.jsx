@@ -134,7 +134,6 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 const Partners = () => {
   const [partner, setPartner] = useState(null);
   const [loading, SetLoading] = useState(false);
-  console.log("-==========all partners ", partner);
   useEffect(() => {
     const handleData = async () => {
       try {

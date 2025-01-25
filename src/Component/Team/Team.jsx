@@ -86,13 +86,13 @@ const Team = () => {
             positive and welcoming atmosphere.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2 md:px-0">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2 md:px-0">
             {allTeamMember?.data?.map((member) => (
               <div
                 key={member?._id}
                 className="w-full max-w-xs h-auto border rounded-lg shadow-md overflow-hidden bg-white"
               >
-                {/* Image Section */}
+            
                 <div className="w-full h-56 p-2 ">
                   <Image
                     className="w-full h-full rounded object-cover"
@@ -103,7 +103,7 @@ const Team = () => {
                   />
                 </div>
 
-                {/* Info Section */}
+            
                 <div className="px-2 pb-2">
                   <h3 className="font-semibold text-heading text-center text-lg">
                     {member?.name}
@@ -114,7 +114,7 @@ const Team = () => {
                   <p className="text-gray-600 text-center text-sm line-clamp-2">
                     {member?.description}
                   </p>
-                  {/* Social Links */}
+                
                   <div className="flex justify-center items-center space-x-3 mt-4">
                     {member?.link1 && (
                       <a
@@ -140,13 +140,13 @@ const Team = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-0">
             {allTeamMember?.data?.map((member) => (
               <div
                 key={member?._id}
-                className="w-full max-w-xs h-auto border rounded-xl shadow-lg overflow-hidden bg-gradient-to-b from-white to-gray-50"
+                className="w-full max-w-xs h-auto  cursor-pointer border rounded-xl shadow-lg overflow-hidden bg-gradient-to-b from-white to-gray-50"
               >
                 {/* Image Section */}
                 <div className="relative w-full h-56 overflow-hidden group">

@@ -58,11 +58,11 @@ const TechUse = () => {
 
   return (
     <div className="container  ">
-      <div data-aos="fade-up" class="text-center pt-10  ">
-        <h4 class="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
+      <div data-aos="fade-up" className="text-center pt-10  ">
+        <h4 className="text-lg mb-0  text-heading md:mb-5 md:text-xl lg:text-[30px] font-semibold    max-w-3xl mx-auto">
           Technologies Behind Our Web Development Excellence
         </h4>
-        <h2 class="text-xs mb-0 text-gray-900 md:mb-5 md:text-lg  font-medium    max-w-3xl mx-auto">
+        <h2 className="text-xs mb-0 text-gray-900 md:mb-5 md:text-lg  font-medium    max-w-3xl mx-auto">
           From robust backend systems to dynamic front-end experiences, our
           stack ensures performance, scalability, and unmatched user engagement.
         </h2>

@@ -197,3 +197,14 @@
 //         </AdminLayout>
 //   );
 // }
+import React from "react";
+
+const IndustryPartners = () => {
+  return (
+    <div>
+      <h5>welcome to industry Partners..........</h5>
+    </div>
+  );
+};
+
+export default IndustryPartners;

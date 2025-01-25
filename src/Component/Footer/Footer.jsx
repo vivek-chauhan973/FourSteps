@@ -260,8 +260,29 @@ import {
   faLinkedinIn,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+
+const fetchAllSolutionType = async () => {
+  const res = await fetch("/api/solution/masterS", { method: "GET" });
+  return await res.json();
+};
+
 export const Footer = () => {
   const [industryNames, setIndustryNames] = useState([]);
+  const [solutionType, setSolutionType] = useState([]);
+  const [error, SetError] = useState(null);
+  console.log("solutionType--------------> ", solutionType);
+  useEffect(() => {
+    const FetchData = async () => {
+      try {
+        const data = await fetchAllSolutionType();
+        setSolutionType(data);
+        console.log("set alll the solution data", data);
+      } catch (error) {
+        SetError("Faild to fetch the data");
+      }
+    };
+    FetchData();
+  }, []);
 
   const fetchIndustries = async () => {
     try {
@@ -508,28 +529,22 @@ export const Footer = () => {
           <div>
             <div className="col-span-1">
               <h3 className="text-lg font-semibold mb-2">Solution</h3>
-              <ul className="space-y-1 list-none text-sm">
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Zoho Bassed Solution
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Our Custom Products
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Hubspot Bassed solution
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-300">
-                    Bitrix Bassed solution
-                  </Link>
-                </li>
-              </ul>
+              {error ? (
+                <p className="text-red-500">{error}</p>
+              ) : (
+                <ul className=" cursor-pointer space-y-1 list-none text-sm">
+                  {Array.isArray(solutionType?.data) &&
+                  solutionType?.data?.length > 0 ? (
+                    solutionType?.data?.map((solution, index) => (
+                      <li key={solution?._id} className="hover:text-gray-300">
+                        {solution?.name || `Solution ${index + 1}`}
+                      </li>
+                    ))
+                  ) : (
+                    <li>No solutions available</li>
+                  )}
+                </ul>
+              )}
             </div>
           </div>
 

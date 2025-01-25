@@ -41,7 +41,7 @@ const Case = () => {
               Our Success Stories
             </h2>
 
-            <p class="text-sm md:text-lg text-gray-900  max-w-5xl">
+            <p className="text-sm md:text-lg text-gray-900  max-w-5xl">
               Success is not accidental it is the result of bold ideas and
               relentless execution. Here is how we made it happen...
             </p>
