@@ -17,7 +17,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 const fetchAllSuccessStories = async (id) => {
-  const res = await fetch(`/api/solution/services?id=${id}`, {
+  const res = await fetch(`/api/service/services1?id=${id}`, {
     method: "GET",
   });
   return await res.json();
@@ -33,7 +33,8 @@ const SerService = ({ setActiveTab, blogData }) => {
   const [heading, setHeading] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
-  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
+    useState("");
   const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -50,9 +51,11 @@ const SerService = ({ setActiveTab, blogData }) => {
       const data = res?.data?.map((item) => item?._id);
       setSolutionItem(data || []);
     });
-    if(blogData){
-      setHeading(blogData?.service?.heading||"");
-      setMainEditorHtmlDescription(blogData?.service?.mainEditorHtmlDescription||"")
+    if (blogData) {
+      setHeading(blogData?.service?.heading || "");
+      setMainEditorHtmlDescription(
+        blogData?.service?.mainEditorHtmlDescription || ""
+      );
     }
   }, [blogData]);
 
@@ -127,8 +130,8 @@ const SerService = ({ setActiveTab, blogData }) => {
     }
     try {
       const url = isUpdating
-        ? `/api/solution/services/${editItemId}`
-        : `/api/solution/services`;
+        ? `/api/service/services1/${editItemId}`
+        : `/api/service/services1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -183,7 +186,7 @@ const SerService = ({ setActiveTab, blogData }) => {
     setEditItemId(null);
     setEditorData([]);
     setTitle("");
-    setSubTitle("")
+    setSubTitle("");
     setLink("");
     setPreview(null);
     setIsUpdating(false);
@@ -198,46 +201,55 @@ const SerService = ({ setActiveTab, blogData }) => {
     setIsUpdating(true);
   };
 
-  const deleteItem=async (id)=>{
-    const res=await fetch(`/api/solution/services?id=${id}`,{method:"DELETE"});
-    if(res?.ok){
+  const deleteItem = async (id) => {
+    const res = await fetch(`/api/service/services1?id=${id}`, {
+      method: "DELETE",
+    });
+    if (res?.ok) {
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
         const data = res?.data?.map((item) => item?._id);
         setSolutionItem(data || []);
       });
       alert("item is successfully deleted");
-
-    }
-    else{
+    } else {
       alert("item is something went wrong");
     }
-  }
-  const handleSave=async ()=>{
-    const data={heading,mainEditorHtmlDescription,serviceItem:solutionItem};
-   const res=await fetch(`/api/solution/services/service?solution=${blogData?._id}`,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-   })
+  };
+  const handleSave = async () => {
+    const data = {
+      heading,
+      mainEditorHtmlDescription,
+      serviceItem: solutionItem,
+    };
+    const res = await fetch(
+      `/api/service/services1/service?solution=${blogData?._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-   if(res?.ok){
-    setActiveTab("Tab7")
-    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
-   }
-   else{
-    alert("something went wrong on frontend side");
-   }
-  }
-
+    if (res?.ok) {
+      setActiveTab("Tab7");
+      alert(
+        blogData?._id
+          ? "service Data updated successfully"
+          : "service Data saved successfully"
+      );
+    } else {
+      alert("something went wrong on frontend side");
+    }
+  };
 
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
         <p className="text-base font-semibold mb-2">
-        Service Services Section
+          Service page Services Section
         </p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
@@ -482,7 +494,10 @@ const SerService = ({ setActiveTab, blogData }) => {
                 </button>
               </div>
             </div>
-            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
+            <button
+              onClick={handleSave}
+              className="bg-black text-white px-3 py-2 w-full rounded"
+            >
               Save
             </button>
           </div>

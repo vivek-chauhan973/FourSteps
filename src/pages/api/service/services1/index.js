@@ -2,7 +2,7 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SubSolutionServices from "@/models/admin/solution/Services/IndustrySolution";
+import SubServiceServices from "@/models/admin/ServicesModel/Services/IndustrySolution";
 // Define upload directory
 const uploadDirectory = "./public/uploads/service/serviceServices";
 if (!fs.existsSync(uploadDirectory)) {
@@ -26,15 +26,25 @@ const apiRoute = async (req, res) => {
   if (req.method === "POST") {
     upload.single("file")(req, res, async (err) => {
       if (err instanceof multer.MulterError) {
-        return res.status(500).json({ error: "File upload failed due to Multer error" });
+        return res
+          .status(500)
+          .json({ error: "File upload failed due to Multer error" });
       } else if (err) {
-        return res.status(500).json({ error: "Unknown error during file upload" });
+        return res
+          .status(500)
+          .json({ error: "Unknown error during file upload" });
       }
 
-      const { title, link,subTitle, editorHtmlDescription: editorHtmlDescriptionRaw, solution } = req.body;
+      const {
+        title,
+        link,
+        subTitle,
+        editorHtmlDescription: editorHtmlDescriptionRaw,
+        service,
+      } = req.body;
       // console.log("req------body----------------> ",req.body)
       // Validate required fields
-      if (!title || !solution) {
+      if (!title || !service) {
         return res.status(400).json({ error: "Missing required fields" });
       }
 
@@ -43,7 +53,9 @@ const apiRoute = async (req, res) => {
       try {
         editorHtmlDescription = JSON.parse(editorHtmlDescriptionRaw);
       } catch (error) {
-        return res.status(400).json({ error: "Invalid JSON format for editorHtmlDescription" });
+        return res
+          .status(400)
+          .json({ error: "Invalid JSON format for editorHtmlDescription" });
       }
 
       // Prepare file data for saving
@@ -52,19 +64,24 @@ const apiRoute = async (req, res) => {
         link,
         subTitle,
         editorHtmlDescription,
-        solution,
+        service,
         filename: req.file?.filename || null,
-        path: req.file ? `/uploads/service/serviceServices/${req.file.filename}` : null,
+        path: req.file
+          ? `/uploads/service/serviceServices/${req.file.filename}`
+          : null,
       };
-      
 
       try {
         // Save data to the database
-        const newFile = await SubSolutionServices.create(fileData);
-        return res.status(200).json({ message: "File uploaded successfully", data: newFile });
+        const newFile = await SubServiceServices.create(fileData);
+        return res
+          .status(200)
+          .json({ message: "File uploaded successfully", data: newFile });
       } catch (error) {
         console.error("Error creating file:", error);
-        return res.status(500).json({ message: "Internal Server Error", error });
+        return res
+          .status(500)
+          .json({ message: "Internal Server Error", error });
       }
     });
   } else if (req.method === "DELETE") {
@@ -75,7 +92,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const file = await SubSolutionServices.findById(id);
+      const file = await SubServiceServices.findById(id);
       if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
@@ -87,7 +104,7 @@ const apiRoute = async (req, res) => {
       }
 
       // Delete document from the database
-      await SubSolutionServices.findByIdAndDelete(id);
+      await SubServiceServices.findByIdAndDelete(id);
       return res.status(200).json({ message: "File deleted successfully" });
     } catch (error) {
       console.error("Error deleting file:", error);
@@ -101,7 +118,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const files = await SubSolutionServices.find({ solution: id });
+      const files = await SubServiceServices.find({ service: id });
       return res.status(200).json({ data: files });
     } catch (error) {
       console.error("Error fetching files:", error);

@@ -2,7 +2,7 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SubSolutionServices from "@/models/admin/solution/Services/IndustrySolution";
+import SubServiceServices from "@/models/admin/ServicesModel/Services/IndustrySolution";
 // Define upload directory
 const uploadDirectory = "./public/uploads/service/serviceServices";
 if (!fs.existsSync(uploadDirectory)) {
@@ -44,7 +44,7 @@ const apiRoute = async (req, res) => {
         link,
         subTitle,
         editorHtmlDescription: editorHtmlDescriptionRaw,
-        solution,
+        service,
       } = req.body;
 
       let editorHtmlDescription;
@@ -58,16 +58,16 @@ const apiRoute = async (req, res) => {
 
       // Prepare file data for saving
       try {
-        const file = await SubSolutionServices.findById(id);
+        const file = await SubServiceServices.findById(id);
         if (!file) {
-          return res.status(404).json({ error: "File not found" });
+          return res.status(404).json({ error: "File not found ok" });
         }
         const fileData = {
           title,
           link,
           editorHtmlDescription,
           subTitle,
-          solution,
+          service,
           filename: req.file?.filename || null,
           path: req.file
             ? `/uploads/service/serviceServices/${req.file.filename}`
@@ -79,7 +79,7 @@ const apiRoute = async (req, res) => {
             fs.unlinkSync(filePath);
           }
         }
-        const newFile = await SubSolutionServices.findOneAndUpdate(
+        const newFile = await SubServiceServices.findOneAndUpdate(
           { _id: id },
           { $set: fileData }
         );

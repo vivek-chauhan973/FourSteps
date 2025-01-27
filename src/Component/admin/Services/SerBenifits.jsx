@@ -6,7 +6,7 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 // Dynamically import QuillNoSSRWrapper (to avoid SSR issues in Next.js)
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), { ssr: false });
 
-const SerBenifits = ({blogData,setActiveTab}) => {
+const SerBenifits = ({ blogData, setActiveTab }) => {
   const [heading, setHeading] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -14,14 +14,13 @@ const SerBenifits = ({blogData,setActiveTab}) => {
   const [items, setItems] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
-  useEffect(()=>{
-    if(blogData){
-
-      setHeading(blogData?.benefit?.heading||"");
-      setEditorHtmlDescription(blogData?.benefit?.description||"");
-      setItems(blogData?.benefit?.items||[]);
+  useEffect(() => {
+    if (blogData) {
+      setHeading(blogData?.benefit?.heading || "");
+      setEditorHtmlDescription(blogData?.benefit?.description || "");
+      setItems(blogData?.benefit?.items || []);
     }
-  },[blogData])
+  }, [blogData]);
 
   // Quill modules
   const modules = {
@@ -72,7 +71,7 @@ const SerBenifits = ({blogData,setActiveTab}) => {
   };
 
   // Save all data
-  const handleSave =async () => {
+  const handleSave = async () => {
     if (!heading || !editorHtmlDescription) {
       alert("Please provide both heading and rich description");
       return;
@@ -86,26 +85,29 @@ const SerBenifits = ({blogData,setActiveTab}) => {
         title: item.title,
         description: item.description,
       })),
-      service:blogData?._id
+      service: blogData?._id,
     };
 
-    const res=await fetch(`/api/solution/benefits`,{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
+    const res = await fetch(`/api/service/benefits`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(data)
-    })
-    if(res?.ok){
-      alert(blogData?.benefit?"Data updated successfully!":"Data saved successfully!");
+      body: JSON.stringify(data),
+    });
+    if (res?.ok) {
+      alert(
+        blogData?.benefit
+          ? "Data updated successfully!"
+          : "Data saved successfully!"
+      );
       setHeading("");
       setEditorHtmlDescription(""); // Reset Quill content
       setItems([]);
-      setActiveTab("Tab8")
+      setActiveTab("Tab8");
+    } else {
+      alert("something went wrong");
     }
-    else{
-      alert("something went wrong")
-    }   
   };
 
   return (

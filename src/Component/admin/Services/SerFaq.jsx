@@ -9,10 +9,10 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading...</p>,
 });
 
-const SerFaq=({blogData,setActiveTab})=> {
+const SerFaq = ({ blogData, setActiveTab }) => {
   // Initialize with an empty array
   const [itineraryDayWiseDataArray, setItineraryDayWiseDataArray] = useState(
-    []  
+    []
   );
   const [editorHtml, setEditorHtml] = useState("");
   const [itineraryDayWise, setItineraryDayWise] = useState({
@@ -30,11 +30,11 @@ const SerFaq=({blogData,setActiveTab})=> {
     }));
   };
 
-  useEffect(()=>{
-    if(blogData){
-      setItineraryDayWiseDataArray(blogData?.faq?.faq||[]);
+  useEffect(() => {
+    if (blogData) {
+      setItineraryDayWiseDataArray(blogData?.faq?.faq || []);
     }
-  },[blogData])
+  }, [blogData]);
 
   const modules = {
     toolbar: [
@@ -91,26 +91,28 @@ const SerFaq=({blogData,setActiveTab})=> {
 
   const handleSave = async () => {
     try {
- const data={ 
-  faq:itineraryDayWiseDataArray,
-  service:blogData?._id
- }
-      const res=await fetch(`/api/solution/faqs`,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
+      const data = {
+        faq: itineraryDayWiseDataArray,
+        service: blogData?._id,
+      };
+      const res = await fetch(`/api/service/faqs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify(data)
-      })
-      if(res?.ok){
-        setActiveTab("Tab1")
-        alert(blogData?.faq?"FAQs updated successfully!":"FAQs saved successfully!");
+        body: JSON.stringify(data),
+      });
+      if (res?.ok) {
+        setActiveTab("Tab1");
+        alert(
+          blogData?.faq
+            ? "FAQs updated successfully!"
+            : "FAQs saved successfully!"
+        );
       }
-      
     } catch (error) {
-      console.log("something went wrong")
+      console.log("something went wrong");
     }
-    
   };
 
   return (
@@ -206,6 +208,6 @@ const SerFaq=({blogData,setActiveTab})=> {
       </div>
     </>
   );
-}
+};
 
 export default SerFaq;
