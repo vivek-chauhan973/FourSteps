@@ -16,7 +16,6 @@ const postDataAccordingId = async (id) => {
 export default function CreateWebinar() {
   const router = useRouter();
   const { service } = router?.query;
-  // console.log("solution -------- ",solution)
   const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function CreateWebinar() {
       });
     }
   }, [service]);
-  console.log("justTrail", blogData);
+
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">

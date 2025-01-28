@@ -4,7 +4,6 @@ import React from "react";
 
 const ProductSolution = ({ productsolution }) => {
   // console.log("here is all data productsolution---->", productsolution);
-
   return (
     <>
       <div>
