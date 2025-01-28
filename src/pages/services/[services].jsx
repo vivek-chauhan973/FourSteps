@@ -35,71 +35,6 @@ const DyServices = () => {
   );
 
   return (
-    // <div>
-    //   {/* headres */}
-    //   <div className=" z-10">
-    //     <Nav />
-    //   </div>
-
-    //   <div className="font-sans">
-    //     {/* hero section */}
-
-    //     <div className="bg-gradient-to-r md:mt-0 mt-10 from-blue-50 to-purple-50 shadow-lg py-16 px-6 md:px-12">
-    //       <div className="max-w-7xl mx-auto flex flex-col md:flex-row ">
-    //         {/* Left Content */}
-    //         <div className=" md:w-1/2">
-    //           <h1 className="text-2xl md:text-[30px] text-heading font-semibold leading-tight mb-5">
-    //             {serviceName?.title || "IT Solution for Oil & Gas Companies"}
-    //           </h1>
-    //           <p className="text-sm md:text-lg ">
-    //             {serviceName?.description ||
-    //               "IT Solution for Oil & Gas Companies description....."}
-    //           </p>
-
-    //           {/* <div className=" md:mt-16 ">
-    //             <button className="border border-primary bg-primary text-white hover:bg-white hover:text-primary transition-all py-2 px-6 rounded-lg text-sm md:text-base">
-    //               Explore Now
-    //             </button>
-    //           </div> */}
-    //         </div>
-
-    //         {/* Right Image */}
-    //         <div className="md:w-1/2 flex justify-center mt-6 md:mt-0">
-    //           <Image
-    //             // src={industryName?.path || "/image/yyy.png"}
-    //             src="/image/ab.webp"
-    //             alt="Hero Section"
-    //             className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
-    //             height={500}
-    //             width={500}
-    //           />
-    //         </div>
-    //       </div>
-    //     </div>
-
-    //     {/* tabel of content section */}
-    //     <div>
-    //       <TableOfServices />
-    //     </div>
-
-    //     {/* Client & Testimonials */}
-
-    //     {/* this is FQA SECTION  */}
-    //     <div>
-    //       <ServiceFaq />
-    //     </div>
-    //     <div>
-    //       <Testimonial />
-    //     </div>
-
-    //     {/* Resource Section */}
-    //   </div>
-
-    //   {/* footer section */}
-    //   <div>
-    //     <Footer />
-    //   </div>
-    // </div>
     <div>
       {/* headres */}
       <div className=" z-10">
@@ -135,7 +70,6 @@ const DyServices = () => {
 
       {/* tabel of content section */}
       <div>
-        {/* <TableOfServices /> */}
         <TableOfServices serviceName={serviceName} />
       </div>
 
@@ -147,7 +81,6 @@ const DyServices = () => {
 
       {/* this is FQA SECTION  */}
       <div>
-        {/* <SolutionFaq SolutionFaq={solutionName?.faq} /> */}
         <ServiceFaq faq={serviceName?.faq?.faq} />
       </div>
 

@@ -37,7 +37,7 @@ const SolutionDeliver = ({ solutionDeliver }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl"
+                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center text-lg sm:text-xl"
                   >
                     {item?.title}
                   </Link>
@@ -46,7 +46,7 @@ const SolutionDeliver = ({ solutionDeliver }) => {
                   {item?.editorHtmlDescription?.map((descItem, itemIndex) => (
                     <li
                       key={itemIndex}
-                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-heading"
                       dangerouslySetInnerHTML={{
                         __html: descItem?.content,
                       }}

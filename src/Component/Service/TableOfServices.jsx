@@ -31,7 +31,7 @@ const TableOfServices = ({ serviceName }) => {
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-primary text-lg md:text-3xl py-7 md:py-10"
+                  className="font-semibold text-heading text-xl md:text-3xl py-7"
                   dangerouslySetInnerHTML={{
                     __html: serviceName?.why4step?.heading || "Why 4Step",
                   }}
@@ -46,7 +46,7 @@ const TableOfServices = ({ serviceName }) => {
             <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
                 {/* Heading */}
-                <div className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-lg md:text-3xl">
                   {serviceName?.success?.heading || "Success Story"}
                 </div>
                 <div>
@@ -71,7 +71,7 @@ const TableOfServices = ({ serviceName }) => {
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
-                  <h3 className="font-semibold text-primary text-lg md:text-3xl">
+                  <h3 className="font-semibold text-heading text-xl md:text-3xl">
                     {serviceName?.solution?.heading || " Solution We Deliver"}
                   </h3>
                 </div>
@@ -87,7 +87,7 @@ const TableOfServices = ({ serviceName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-primary text-lg md:text-3xl">
+                <div className="font-semibold text-heading text-xl md:text-3xl">
                   {serviceName?.service?.heading || "Our Services"} main heading
                   Services pendig this section here present time
                 </div>
@@ -102,7 +102,7 @@ const TableOfServices = ({ serviceName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               {/* heading section  */}
-              <h3 className="font-semibold text-primary text-lg md:text-3xl">
+              <h3 className="font-semibold text-heading text-xl md:text-3xl">
                 {serviceName?.product?.heading || "Our Products"}
               </h3>
 
@@ -129,7 +129,7 @@ const TableOfServices = ({ serviceName }) => {
             >
               <div className="md:px-2">
                 <div>
-                  <h2 className="font-semibold text-primary text-lg md:text-3xl">
+                  <h2 className="font-semibold text-heading text-xl md:text-3xl">
                     {serviceName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>

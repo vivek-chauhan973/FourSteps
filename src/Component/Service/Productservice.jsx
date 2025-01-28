@@ -36,7 +36,7 @@ const Productservice = ({ product }) => {
                   </div>
 
                   <Link
-                    href="#"
+                    href={item?.link}
                     className="text-[22px] py-2 hover:text-primary decoration-primary underline font-semibold text-center"
                   >
                     {item?.title}

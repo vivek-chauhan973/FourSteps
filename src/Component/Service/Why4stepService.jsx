@@ -68,7 +68,7 @@ const Why4stepService = ({ Why4StepS }) => {
           {/* left button */}
           <button
             onClick={scrollPrev}
-            className="hidden md:flex rounded-full h-8 w-16 bg-black/50 text-white items-center justify-center hover:bg-black/70 transition duration-300"
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -98,8 +98,8 @@ const Why4stepService = ({ Why4StepS }) => {
           {/* right button */}
           <button
             onClick={scrollNext}
-            className="hidden md:flex rounded-full h-8 w-16 bg-black/50 text-white items-center justify-center hover:bg-black/70 transition duration-300"
-          >
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
+            >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>

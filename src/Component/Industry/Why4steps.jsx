@@ -73,7 +73,7 @@ const Carousel = ({ why4step }) => {
           {/* left  button */}
           <button
             onClick={scrollPrev}
-            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-11 lg:h-10 lg:w-12 text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -101,7 +101,7 @@ const Carousel = ({ why4step }) => {
           {/* right button */}
           <button
             onClick={scrollNext}
-            className="hidden md:flex px-[15px]  rounded-full md:h-8 md:w-11 lg:h-10 lg:w-12 text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
