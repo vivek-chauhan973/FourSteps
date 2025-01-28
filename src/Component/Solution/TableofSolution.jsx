@@ -11,13 +11,14 @@ import Why4stepSolution from "./Why4stepSolution";
 import OurServiceSolution from "./OurServiceSolution";
 import SolutionDeliver from "./SolutionDeliver";
 const TableofSolution = ({ solutionName }) => {
-
+const [highlightedText,setHighlightedText]=useState("");
   function highlightSection(highlightId,hightValue) {
     // Reset all highlights
     const highlights = document.querySelectorAll('[id^="highlight"]');
   highlights.forEach((highlight) => {
     highlight.style.height = "0px"
   });
+  setHighlightedText(highlightId);
     // Apply highlight to the selected section
     const activeHighlight = document.getElementById(highlightId);
     if (activeHighlight) {
@@ -169,7 +170,7 @@ const TableofSolution = ({ solutionName }) => {
                   {/* Highlight sections */}
                   <div
                     id="highlight1"
-                    className="bg-red-500 transition-all duration-300 h-[20px]"
+                    className="bg-red-500 transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight2"
@@ -208,7 +209,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight1","20px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight1"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Why 4Steps
                     </p>
                   </ScrollLink>
@@ -222,7 +223,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight2","55px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight2"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Success stories
                     </p>
                   </ScrollLink>
@@ -236,7 +237,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight3","95px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight3"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Solutions we deliver
                     </p>
                   </ScrollLink>
@@ -250,7 +251,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight4","135px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight4"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Our Services
                     </p>
                   </ScrollLink>
@@ -264,7 +265,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight5","175px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight5"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Product
                     </p>
                   </ScrollLink>
@@ -278,7 +279,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight6","215px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight6"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Approaches
                     </p>
                   </ScrollLink>
@@ -292,7 +293,7 @@ const TableofSolution = ({ solutionName }) => {
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight7","270px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p className={`text-gray-700 ${highlightedText==="highlight7"?"text-red-500":""}  hover:text-black cursor-pointer`}>
                       Benefits
                     </p>
                   </ScrollLink>

@@ -48,6 +48,10 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);
         }
+        fetchSolutionAccordingType(res.data[0]?._id)
+        .then((data) => {
+          setSolutionList(data?.data);
+        })
       })
       .catch((error) => {
         console.error("Error fetching solution types:", error);

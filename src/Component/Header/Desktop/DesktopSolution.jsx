@@ -47,6 +47,10 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         setSolutionType(res.data);
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);
+          fetchSolutionAccordingType(res.data[0]?._id)
+        .then((data) => {
+          setSolutionList(data?.data);
+        })
         }
       })
       .catch((error) => {
