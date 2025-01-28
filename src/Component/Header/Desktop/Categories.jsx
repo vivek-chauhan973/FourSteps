@@ -60,7 +60,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
   return (
     <>
       <div>
-        <li
+        <div
           className="inline-block text-base font-medium px-3 py-2   text-gray-800"
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
@@ -148,7 +148,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
               </div>
             </div>
           )}
-        </li>
+        </div>
       </div>
     </>
   );
