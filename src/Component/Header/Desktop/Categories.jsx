@@ -209,12 +209,12 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
   return (
     <li
-      className="relative inline-block"
+      className="inline-block text-base font-medium px-3 py-2   text-gray-800"
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
     >
       <div
-        className={`relative inline-block text-base font-medium px-3 py-2 hover:text-orange-500`}
+        className={`cursor-pointer  hover:text-orange-500 flex items-center relative group`}
       >
         Services
         <span
@@ -226,7 +226,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
       {/* Dropdown Menu */}
       {isDropdownOpen && (
-        <div className="absolute left-[-10vw] w-[65vw] bg-background border">
+        <div className="absolute left-0 right-0 mt-2 bg-background  py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
           <div className="flex max-w-7xl mx-auto">
             {/* Sidebar Menu */}
             <div className="w-1/4 border-r py-2">
