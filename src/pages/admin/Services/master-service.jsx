@@ -5,6 +5,8 @@ import {
   faCirclePlus,
   faTrash,
   faSave,
+  faPlus,
+  faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
 
@@ -12,7 +14,9 @@ function MasterSolution() {
   const [solution, setSolution] = useState(""); // Solution name state
   const [solutionsList, setSolutionsList] = useState([]); // List of solutions
   const [editSolutionId, setEditSolutionId] = useState(null); // Edit solution id
-  const [editSolutionValue, setEditSolutionValue] = useState(""); // Edit solution value
+  const [editSolutionValue, setEditSolutionValue] = useState("");// Edit solution value
+  const [serviceId,setServiceId]=useState(null);
+  const [description,setDescription]=useState("");
 
   // Fetch solutions on component mount
   useEffect(() => {
@@ -101,6 +105,43 @@ function MasterSolution() {
     }
   };
 
+  // console.log("handle Submit data is here ----> ",description);
+
+  useEffect(()=>{
+    // console.log("service id is as -----> ",serviceId)
+    if(serviceId){
+    const data=solutionsList?.filter(res=>res?._id===serviceId);
+    if(data?.length>0){
+      setDescription(data?.[0]?.description||"")
+    }
+    }
+  },[serviceId])
+
+  const handleSubmitDescription=async (e)=>{
+    e.preventDefault();
+    if(!serviceId){
+      return alert("serviceId not accessed")
+    }
+    try {
+
+      const res=await fetch(`/api/service/add-description-to-master`,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({description,serviceId})
+      })
+
+      if(res?.ok){
+        alert("description data saved in the service")
+        setServiceId(null);
+      }
+      
+    } catch (error) {
+      alert(`something went wrong ${error}`)
+    }
+  }
+
   return (
     <AdminLayout>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 rounded">
@@ -146,6 +187,19 @@ function MasterSolution() {
                   </p>
 
                   <div className="flex gap-2">
+                  {
+                    (serviceId=== item._id)?<button onClick={() => {setServiceId(null)}}>
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      className="hover:text-primary"
+                    />
+                  </button>:<button onClick={() => {setServiceId(item._id)}}>
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        className="hover:text-primary"
+                      />
+                    </button>
+                  }
                     {editSolutionId === item._id ? (
                       <button onClick={() => saveEditSolution(item._id)}>
                         <FontAwesomeIcon
@@ -172,7 +226,25 @@ function MasterSolution() {
               ))}
             </div>
           </div>
+         
         </div>
+        {serviceId&& <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
+          <div>
+            <form
+              onSubmit={handleSubmitDescription}
+              className="flex flex-col gap-3"
+            >
+              <div className="grow flex flex-col">
+                <label htmlFor="solution" className="mb-2 pl-2 font-semibold">
+                  Services Description
+                </label>
+                <textarea value={description} onChange={(e)=>setDescription(e.target.value)}  className="border rounded-md px-2 h-40 outline-none focus:border-orange-400"></textarea>
+              </div>
+              <button type="submit" className="w-full px-2 py-1 bg-black text-white">Save</button>
+            </form>
+          </div>
+         
+        </div>}
       </div>
     </AdminLayout>
   );

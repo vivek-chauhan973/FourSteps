@@ -47,6 +47,7 @@ const Home = () => {
       <Industry />
       <Solution />
       <div data-aos="fade-up">
+
         <Team />
       </div>
       <Client />

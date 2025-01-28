@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const SolutionSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  description: { type: String,trim:true},
 });
 
 const MasterService= mongoose.models.MasterService ||
