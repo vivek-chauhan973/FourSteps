@@ -270,13 +270,13 @@ export const Footer = () => {
   const [industryNames, setIndustryNames] = useState([]);
   const [solutionType, setSolutionType] = useState([]);
   const [error, SetError] = useState(null);
-  console.log("solutionType--------------> ", solutionType);
+  // console.log("solutionType--------------> ", solutionType);
   useEffect(() => {
     const FetchData = async () => {
       try {
         const data = await fetchAllSolutionType();
         setSolutionType(data);
-        console.log("set alll the solution data", data);
+        // console.log("set alll the solution data", data);
       } catch (error) {
         SetError("Faild to fetch the data");
       }

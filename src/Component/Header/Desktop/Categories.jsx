@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -185,9 +185,65 @@ const categoryData = [
   },
 ];
 
+const fetchServiceTypes = async () => {
+  const res = await fetch("/api/service/master-service", { method: "GET" });
+  return await res.json();
+};
+
+// Fetch Services by Type
+const fetchServicesByType = async (id) => {
+  const res = await fetch(`/api/service/get-service?serviceType=${id}`);
+  return await res.json();
+};
+
 const Categories = () => {
+  const [serviceTypes, setServiceTypes] = useState([]);
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(categoryData[0]);
+  const [activeCategory, setActiveCategory] = useState();
+
+ // To store the list of service types
+  const [serviceList, setServiceList] = useState([]); // To store the services based on selected type
+  const [activeServiceType, setActiveServiceType] = useState(null); // To track the active service type
+  const [loading, setLoading] = useState(false); // To track the loading state
+  const [serviceTypeId, setServiceTypeId] = useState(null);
+
+  // Effect to fetch services based on active service typeco
+  useEffect(() => {
+    if (serviceTypeId) {
+      setLoading(true); 
+      fetchServicesByType(serviceTypeId)
+        .then((data) => {
+
+          setServiceList(data?.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching services:", error);
+        })
+        .finally(() => {
+          setLoading(false); // Stop loading
+        });
+    }
+  }, [serviceTypeId]);
+
+  // Effect to fetch all service types on initial load
+  useEffect(() => {
+    setLoading(true); // Start loading
+    fetchServiceTypes()
+      .then((res) => {
+        console.log("service type--------->", res.data);
+        setServiceTypes(res.data);
+        if (res.data && res.data.length > 0) {
+          setActiveServiceType(res.data[0]);
+          setServiceTypeId(res.data[0]?.id); // Set the first service type as the active type
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching service types:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Stop loading
+      });
+  }, []);
 
   const handleMouseEnter = () => setIsServiceMenuOpen(true);
   const handleMouseLeave = () => setIsServiceMenuOpen(false);
@@ -224,14 +280,14 @@ const Categories = () => {
                 <h2 className="text-lg px-2 border-b font-semibold">
                   Main Services
                 </h2>
-                {categoryData.map((category) => (
+                {serviceTypes?.length>0&&serviceTypes?.map((category) => (
                   <div
-                    key={category.title}
+                    key={category._id}
                     className="py-3  px-5 cursor-pointer font-normal hover:bg-background bg-white rounded transition-colors duration-200  flex justify-between items-center"
                     onMouseEnter={() => setActiveCategory(category)}
                     onClick={() => setActiveCategory(category)}
                   >
-                    <span>{category.title}</span>
+                    <span>{category.name}</span>
                     <FontAwesomeIcon
                       icon={faChevronRight}
                       className=" text-sm"
@@ -244,19 +300,19 @@ const Categories = () => {
               {/* Content Area */}
               <div className="flex-1 mt-4 md:mt-0 md:pl-10">
                 <h2 className="text-xl md:text-xl font-semibold transition duration-200">
-                  {activeCategory.content.heading}
+                  {activeCategory?.name}
                 </h2>
-                <p className="mb-3 text-sm border-b text-gray-600">
+                {/* <p className="mb-3 text-sm border-b text-gray-600">
                   {activeCategory.content.description}
-                </p>
+                </p> */}
                 <div className="space-y-2">
-                  {activeCategory.content.subcategories.map((subcategory) => (
+                  {/* {activeCategory.content.subcategories.map((subcategory) => (
                     <Link key={subcategory.name} href={subcategory.path}>
                       <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
                         {subcategory.name}
                       </p>
                     </Link>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>

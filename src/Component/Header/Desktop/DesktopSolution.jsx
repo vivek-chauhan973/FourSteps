@@ -176,6 +176,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
     setLoading(true); // Start loading
     fetchAllSolutionType()
       .then((res) => {
+        // console.log("Fetched solution types-------->:", res.data);
         setSolutionType(res.data);
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Why4stepService = () => {
+const Why4stepService = ({ hello }) => {
   const carouselRef = useRef(null);
 
   // Static data (replace this with your actual static data structure)
@@ -91,6 +91,7 @@ const Why4stepService = () => {
   return (
     <>
       <div className="my-container mx-auto">
+        {hello}
         <div className="relative    flex items-center gap-5">
           {/* left button */}
           <button
