@@ -4,53 +4,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 
-const SuccessStoryService = () => {
+const SuccessStoryService = ({ success }) => {
   // Static data (replace with your actual static data structure)
-  const stories = {
-    successItem: [
-      {
-        path: "/image/ab.webp",
-        backgroundColor: "#FFF0F5",
-        keyword: "Innovation, Growth, Strategy",
-        title: "Innovative Strategy for Growth",
-        description:
-          "We vwhe wuef wefw iwuhefk woiwf iowef whfw w8e wuwe9 wwu wewue helped a startup implement cutting-edge strategies to scale their business exponentially, with a strong focus on technology and market adaptation.",
-        link: "#",
-      },
-      {
-        path: "/image/about.jpg",
-        backgroundColor: "#FAF0E6",
-        keyword: "Efficiency, Technology, Success",
-        title: "Tech-Driven Efficiency",
-        description:
-          "A multinational corporation streamlined their operations using advanced technologies, driving both productivity and profitability.",
-        link: "#",
-      },
-      {
-        path: "/image/bg.jpg",
-        backgroundColor: "#E6F0F8",
-        keyword: "Digital, Transformation, Impact",
-        title: "Digital Transformation Journey",
-        description:
-          "Our team assisted a traditional business in its digital transformation journey, reshaping their customer experience and expanding market reach.",
-        link: "#",
-      },
-      {
-        path: "/image/3.png",
-        backgroundColor: "#F0FFF0",
-        keyword: "Leadership, Vision, Excellence",
-        title: "Leadership in Action",
-        description:
-          "Through visionary leadership, we guided a company to new heights, positioning them as an industry leader and expanding their market share.",
-        link: "#",
-      },
-    ],
-  };
+  // console.log("___---------here ai all succestory data", success);
 
   return (
     <>
       {/* section 1 */}
-      {stories?.successItem?.map((item, i) => (
+      {success?.successItem?.map((item, i) => (
         <div key={i}>
           {i % 2 === 0 ? (
             <div className="relative w-full  mt-5 ">

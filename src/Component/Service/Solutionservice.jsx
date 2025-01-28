@@ -1,57 +1,19 @@
-
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Solutionservice = () => {
-  const solution = {
-    solutionItem: [
-      {
-        path: "/image/about.jpg",
-        link: "#",
-        title: "Insurance Automation",
-        editorHtmlDescription: [
-          {
-            content:
-              "<strong>Automate</strong> insurance processes to enhance operational efficiency.",
-          },
-          { content: "Reduce human error and improve customer satisfaction." },
-        ],
-      },
-      {
-        path: "/image/about.jpg",
-        link: "#",
-        title: "Customer Experience Improvement",
-        editorHtmlDescription: [
-          {
-            content:
-              "Deliver an exceptional customer service experience through personalized engagement.",
-          },
-          {
-            content:
-              "Increase customer retention rates with targeted solutions.",
-          },
-        ],
-      },
-    ],
-  };
-
-  // console.log("Static Solution Data:", solution); // Print static data
-
+const Solutionservice = ({ solution }) => {
   return (
     <>
       <div>
         <div>
-          <p className="md:text-base py-2 text-sm">
-            IT solutions ScienceSoft creates help insurance companies improve
-            overall business efficiency and introduce excellent customer
-            experience. We can engineer one or several of these targeted
-            insurance solutions, as well as build a full-featured insurance
-            business automation system:
-          </p>
+          <p
+            className="md:text-base py-2 text-sm"
+            dangerouslySetInnerHTML={{
+              __html: solution?.mainEditorHtmlDescription,
+            }}
+          />
         </div>
-
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 md:gap-7 gap-3 pt-5">
             {solution?.solutionItem.map((item, index) => (

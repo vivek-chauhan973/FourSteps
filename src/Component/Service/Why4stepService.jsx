@@ -3,36 +3,9 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Why4stepService = ({ hello }) => {
+const Why4stepService = ({ Why4StepS }) => {
   const carouselRef = useRef(null);
-
-  // Static data (replace this with your actual static data structure)
-  const partnersData = [
-    "/image/1.png",
-    "/image/2.png",
-    "/image/3.png",
-    "/image/4.png",
-    "/image/1.png",
-    "/image/ab.webp",
-    "/image/about.jpg",
-    "/image/123.png",
-    "/image/bg.jpg",
-    "/images/partner2.png",
-    "/image/3.png",
-  ];
-
-  const overviewData = [
-    { content: "<strong>Step 1:</strong> Analyze the market" },
-    { content: "<strong>Step 2:</strong> Develop a strategy" },
-    { content: "<strong>Step 3:</strong> Implement the solution" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-    { content: "<strong>Step 4:</strong> Review the results" },
-  ];
+  // console.log("======>why foursteps data", Why4StepS);
 
   const scrollNext = () => {
     if (carouselRef.current) {
@@ -91,7 +64,6 @@ const Why4stepService = ({ hello }) => {
   return (
     <>
       <div className="my-container mx-auto">
-        {hello}
         <div className="relative    flex items-center gap-5">
           {/* left button */}
           <button
@@ -106,8 +78,8 @@ const Why4stepService = ({ hello }) => {
             ref={carouselRef}
             className="flex gap-6 overflow-hidden scroll-smooth w-full md:w-auto"
           >
-            {partnersData?.length > 0 &&
-              partnersData?.map((item, index) => (
+            {Why4StepS?.partnersData?.length > 0 &&
+              Why4StepS?.partnersData?.map((item, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 w-full  sm:w-24 sm:h-20 md:w-28 md:h-28 flex justify-center items-center"
@@ -135,8 +107,8 @@ const Why4stepService = ({ hello }) => {
 
       <div className="pl-2 py-5">
         <ul className="custom-list">
-          {overviewData?.length > 0 &&
-            overviewData?.map((item, i) => (
+          {Why4StepS?.overviewData?.length > 0 &&
+            Why4StepS?.overviewData?.map((item, i) => (
               <li key={i} className="md:text-base text-sm">
                 <p dangerouslySetInnerHTML={{ __html: item?.content }} />
               </li>

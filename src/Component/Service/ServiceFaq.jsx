@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const ServiceFaq = () => {
+const ServiceFaq = ({faq}) => {
   // Static FAQ data
   const faqData = [
     {
@@ -84,7 +84,7 @@ const ServiceFaq = () => {
 
           {/* FAQ Items */}
           <div className="w-full mx-auto md:px-0 px-5">
-            {faqData.map((faq, i) => (
+            {faq?.map((faq, i) => (
               <div key={i} className="mb-3">
                 <div
                   onClick={() => handleToggle(i)}

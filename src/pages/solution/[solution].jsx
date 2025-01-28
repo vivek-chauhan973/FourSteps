@@ -25,7 +25,7 @@ const SolutionSection = () => {
       });
     }
   }, [solution]);
-  // console.log("here is all the data o solution section---->", solutionName);
+  console.log("here is all the data o solution section---->", solutionName);
 
   return (
     <div>

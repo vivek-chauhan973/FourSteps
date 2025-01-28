@@ -102,7 +102,7 @@ const Trail = () => {
               Our Testimonials
             </h2>
             <p className="text-sm md:text-xl md:px-0 px-5 text-gray-900 max-w-5xl">
-              Our clients' success is our success. Here is what they have to say
+              Our clients success is our success. Here is what they have to say
               about working with us.
             </p>
 

@@ -10,7 +10,7 @@ import Productservice from "./Productservice";
 import BenifitService from "./BenifitService";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
 
-const TableOfServices = ({ industryName }) => {
+const TableOfServices = ({ serviceName }) => {
   return (
     <div className="">
       <div className="bg-[#F1F5F9]">
@@ -19,11 +19,9 @@ const TableOfServices = ({ industryName }) => {
           <div className="px-5 grid grid-cols-1 bg-white">
             {/* Industry About section */}
             <div>
-              {/* {industryName?.contentsummary && (
-                <IndustryAbout about={industryName?.contentsummary} />
-              )} */}
-
-              <ServiceAbout />
+              {serviceName?.contentsummary && (
+                <ServiceAbout about={serviceName?.contentsummary} />
+              )}
             </div>
 
             {/* Reliable partners  */}
@@ -35,11 +33,12 @@ const TableOfServices = ({ industryName }) => {
                 <h2
                   className="font-semibold text-primary text-lg md:text-3xl py-7 md:py-10"
                   dangerouslySetInnerHTML={{
-                    __html: industryName?.why4step?.heading || "Why 4Step",
+                    __html: serviceName?.why4step?.heading || "Why 4Step",
                   }}
                 />
-
-                <Why4stepService />
+                {serviceName?.Why4StepS && (
+                  <Why4stepService Why4StepS={serviceName?.Why4StepS} />
+                )}
               </div>
             </div>
 
@@ -48,22 +47,20 @@ const TableOfServices = ({ industryName }) => {
               <div>
                 {/* Heading */}
                 <div className="font-semibold text-primary text-lg md:text-3xl">
-                  {industryName?.success?.heading || "Success Story"} main
-                  heading Success Story
+                  {serviceName?.success?.heading || "Success Story"}
                 </div>
                 <div>
                   {/* Description */}
                   <p
                     className="md:text-base py-2 text-sm"
                     dangerouslySetInnerHTML={{
-                      __html: industryName?.success?.mainEditorHtmlDescription,
+                      __html: serviceName?.success?.mainEditorHtmlDescription,
                     }}
                   />
-                  Each item has fields like path, backgroundColor, keyword,
-                  title, description, and link.
+                  {serviceName?.success && (
+                    <SuccessStoryService success={serviceName?.success} />
+                  )}
                 </div>
-
-                <SuccessStoryService />
               </div>
             </div>
 
@@ -75,12 +72,12 @@ const TableOfServices = ({ industryName }) => {
               <div>
                 <div className="font-semibold py-2 text-xl">
                   <h3 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.solution?.heading || " Solution We Deliver"}
-                    main heading Deliver
+                    {serviceName?.solution?.heading || " Solution We Deliver"}
                   </h3>
                 </div>
-
-                <Solutionservice />
+                {serviceName?.solution && (
+                  <Solutionservice solution={serviceName?.solution} />
+                )}
               </div>
             </div>
 
@@ -91,8 +88,8 @@ const TableOfServices = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold text-primary text-lg md:text-3xl">
-                  {industryName?.service?.heading || "Our Services"} main
-                  heading Services
+                  {serviceName?.service?.heading || "Our Services"} main heading
+                  Services pendig this section here present time
                 </div>
 
                 <OurServices />
@@ -106,11 +103,12 @@ const TableOfServices = ({ industryName }) => {
             >
               {/* heading section  */}
               <h3 className="font-semibold text-primary text-lg md:text-3xl">
-                {industryName?.product?.heading || "Our Products"} main heading
-                Products
+                {serviceName?.product?.heading || "Our Products"}
               </h3>
 
-              <Productservice />
+              {serviceName?.product && (
+                <Productservice product={serviceName?.product} />
+              )}
             </div>
 
             {/* Approaches Section */}
@@ -132,12 +130,13 @@ const TableOfServices = ({ industryName }) => {
               <div className="md:px-2">
                 <div>
                   <h2 className="font-semibold text-primary text-lg md:text-3xl">
-                    {industryName?.benefit?.heading || "Our Benifits"} main
-                    heading Benifits
+                    {serviceName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>
 
-                <BenifitService />
+                {serviceName?.benefit && (
+                  <BenifitService benefit={serviceName?.benefit} />
+                )}
               </div>
             </div>
           </div>
