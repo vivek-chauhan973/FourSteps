@@ -1,326 +1,297 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-  faChevronUp,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faChevronDown,
+//   faChevronUp,
+//   faChevronRight,
+// } from "@fortawesome/free-solid-svg-icons";
+// import Link from "next/link";
+// const fetchServiceTypes = async () => {
+//   const res = await fetch("/api/service/master-service", { method: "GET" });
+//   return await res.json();
+// };
 
+// // Fetch Services by Type
+// const fetchServicesByType = async (id) => {
+//   const res = await fetch(`/api/service/get-service?serviceType=${id}`);
+//   return await res.json();
+// };
+
+// const Categories = () => {
+//   const [serviceTypes, setServiceTypes] = useState([]);
+//   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
+//   const [activeCategory, setActiveCategory] = useState();
+
+//  // To store the list of service types
+//   const [serviceList, setServiceList] = useState([]); // To store the services based on selected type
+//   const [activeServiceType, setActiveServiceType] = useState(null); // To track the active service type
+//   const [loading, setLoading] = useState(false); // To track the loading state
+//   const [serviceTypeId, setServiceTypeId] = useState(null);
+
+//   // Effect to fetch services based on active service typeco
+//   useEffect(() => {
+//     if (serviceTypeId) {
+//       setLoading(true); 
+//       fetchServicesByType(serviceTypeId)
+//         .then((data) => {
+
+//           setServiceList(data?.data);
+//         })
+//         .catch((error) => {
+//           console.error("Error fetching services:", error);
+//         })
+//         .finally(() => {
+//           setLoading(false); // Stop loading
+//         });
+//     }
+//   }, [serviceTypeId]);
+
+//   // Effect to fetch all service types on initial load
+//   useEffect(() => {
+//     setLoading(true); // Start loading
+//     fetchServiceTypes()
+//       .then((res) => {
+//         console.log("service type--------->", res.data);
+//         setServiceTypes(res.data);
+//         if (res.data && res.data.length > 0) {
+//           setActiveServiceType(res.data[0]);
+//           setServiceTypeId(res.data[0]?.id); // Set the first service type as the active type
+//         }
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching service types:", error);
+//       })
+//       .finally(() => {
+//         setLoading(false); // Stop loading
+//       });
+//   }, []);
+
+//   const handleMouseEnter = () => setIsServiceMenuOpen(true);
+//   const handleMouseLeave = () => setIsServiceMenuOpen(false);
+
+//   return (
+//     <div
+//       className="inline-block text-base font-medium px-3 py-2   text-gray-800"
+//       onMouseEnter={handleMouseEnter}
+//       onMouseLeave={handleMouseLeave}
+//     >
+//       <div className="cursor-pointer  hover:text-orange-500 flex items-center relative group">
+//         Services
+//         {isServiceMenuOpen ? (
+//           <FontAwesomeIcon
+//             icon={faChevronUp}
+//             className="ml-1  mt-[2px] text-sm  inline-block transition-transform duration-300"
+//           />
+//         ) : (
+//           <FontAwesomeIcon
+//             icon={faChevronDown}
+//             className="ml-1 text-sm mt-[2px] inline-block transition-transform duration-300"
+//           />
+//         )}
+//         <span className="absolute left-0 bottom-[-6px] h-0.5 w-full bg-orange-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100" />
+//       </div>
+
+//       {isServiceMenuOpen && (
+//         <div className="absolute left-0 right-0 mt-2 bg-background  py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
+//           <div className="mx-auto">
+//             <div className="flex flex-col md:flex-row">
+//               {/* Sidebar Menu */}
+
+//               <div className="md:w-1/3 md:border-r pr-4">
+//                 <h2 className="text-lg px-2 border-b font-semibold">
+//                   Main Services
+//                 </h2>
+//                 {serviceTypes?.length>0&&serviceTypes?.map((category) => (
+//                   <div
+//                     key={category._id}
+//                     className="py-3  px-5 cursor-pointer font-normal hover:bg-background bg-white rounded transition-colors duration-200  flex justify-between items-center"
+//                     onMouseEnter={() => setActiveCategory(category)}
+//                     onClick={() => setActiveCategory(category)}
+//                   >
+//                     <span>{category.name}</span>
+//                     <FontAwesomeIcon
+//                       icon={faChevronRight}
+//                       className=" text-sm"
+//                       size="sm"
+//                     />
+//                   </div>
+//                 ))}
+//               </div>
+
+//               {/* Content Area */}
+//               <div className="flex-1 mt-4 md:mt-0 md:pl-10">
+//                 <h2 className="text-xl md:text-xl font-semibold transition duration-200">
+//                   {activeCategory?.name}
+//                 </h2>
+//                 {/* <p className="mb-3 text-sm border-b text-gray-600">
+//                   {activeCategory.content.description}
+//                 </p> */}
+//                 <div className="space-y-2">
+//                   {/* {activeCategory.content.subcategories.map((subcategory) => (
+//                     <Link key={subcategory.name} href={subcategory.path}>
+//                       <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
+//                         {subcategory.name}
+//                       </p>
+//                     </Link>
+//                   ))} */}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Categories;
+
+
+import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
+import Skeleton, { AnotherComponent } from "@/Component/Web/Skeleton";
+import Loading from "@/Component/Web/Loading";
 
-const categoryData = [
-  {
-    title: "Zoho Services",
-    content: {
-      heading: "Zoho Services",
-      description:
-        "Explore our Zoho-based services tailored for various industries.",
-      subcategories: [
-        {
-          name: "Zoho Setup and Implementation",
-          path: "/servicesDetail/zoho/zoho-setup",
-        },
-        {
-          name: "Zoho Managed Services",
-          path: "/servicesDetail/zoho/zoho-manage",
-        },
-        {
-          name: "Zoho Custom Development",
-          path: "/servicesDetail/zoho/zoho-custom",
-        },
-        {
-          name: "Zoho Training & Consulting",
-          path: "/servicesDetail/zoho/zoho-training",
-        },
-        { name: "Zoho Travel Agency CRM", path: "/zoho-travel-agency-crm" },
-        {
-          name: "Zoho RealEstate Agency CRM",
-          path: "/zoho-realestate-agency-crm",
-        },
-        {
-          name: "Zoho RealEstate Developer CRM",
-          path: "/zoho-realestate-developer-crm",
-        },
-        { name: "Zoho Finance Agency CRM", path: "/zoho-finance-agency-crm" },
-        { name: "Zoho Healthcare CRM", path: "/zoho-healthcare-crm" },
-      ],
-    },
-  },
-  {
-    title: "Custom Products",
-    content: {
-      heading: "Custom Products",
-      description:
-        "Discover our range of custom products designed to meet your needs.",
-      subcategories: [
-        {
-          name: "Tour & Package Management System",
-          path: "/tour-package-management-system",
-        },
-        {
-          name: "Car Rental Booking System",
-          path: "/car-rental-booking-system",
-        },
-        {
-          name: "Hotel Booking Management System",
-          path: "/hotel-booking-management-system",
-        },
-        {
-          name: "Hospital/Clinics Management System",
-          path: "/hospital-clinics-management-system",
-        },
-        {
-          name: "Learning Management System",
-          path: "/learning-management-system",
-        },
-        {
-          name: "Finance Agency Management System (Upcoming)",
-          path: "/finance-agency-management-system-upcoming",
-        },
-      ],
-    },
-  },
-  {
-    title: "HubSpot Services",
-    content: {
-      heading: "HubSpot Services",
-      description: "Find the perfect HubSpot solution for your needs.",
-      subcategories: [
-        {
-          name: "Hubspot Setup and Implementation",
-          path: "/servicesDetail/hubspot/setup",
-        },
-        {
-          name: "Hubspot Development",
-          path: "/servicesDetail/hubspot/development",
-        },
-        {
-          name: "Hubspot Training & Consulting",
-          path: "/servicesDetail/hubspot/training",
-        },
-        {
-          name: "Hubspot Managed Services",
-          path: "/servicesDetail/hubspot/managed",
-        },
-      ],
-    },
-  },
-  {
-    title: "Website Development",
-    content: {
-      heading: "Website Development",
-      description:
-        "We offer top-notch website development services tailored to your needs.",
-      subcategories: [
-        { name: "CMS Development", path: "/servicesDetail/website/cmsdetail" },
-        {
-          name: "Custom Web Development",
-          path: "/servicesDetail/website/customeweb",
-        },
-        {
-          name: "E-commerce Store",
-          path: "/servicesDetail/website/e-commerce",
-        },
-      ],
-    },
-  },
-  {
-    title: "Zoho Industry Solution",
-    content: {
-      heading: "Zoho Industry Solutions",
-      description: "Customized CRM solutions for different industries.",
-      subcategories: [
-        {
-          name: "Zoho CRM For Real Estate",
-          path: "/servicesDetail/zohoindustry/zoho-real-estate",
-        },
-        {
-          name: "Zoho CRM For Travel Agency",
-          path: "/servicesDetail/zohoindustry/zoho-travel-agency",
-        },
-      ],
-    },
-  },
-  {
-    title: "Other CRM Services",
-    content: {
-      heading: "Other CRM Services",
-      description:
-        "We offer a wide range of CRM services including Bitrix24 and Salesforce.",
-      subcategories: [
-        {
-          name: "Bitrix24 Services",
-          path: "/servicesDetail/zohoindustry/bitrix24",
-        },
-        {
-          name: "Salesforce Service",
-          path: "/servicesDetail/zohoindustry/salseforce",
-        },
-      ],
-    },
-  },
-  {
-    title: "Digital Marketing",
-    content: {
-      heading: "Digital Marketing",
-      description:
-        "Our expert marketing team helps you grow your online presence.",
-      subcategories: [
-        { name: "SEO Services", path: "/servicesDetail/digitalmarketing/seo" },
-        {
-          name: "Social Media Marketing",
-          path: "/servicesDetail/digitalmarketing/socialmedia-management",
-        },
-        {
-          name: "Content Marketing",
-          path: "/servicesDetail/digitalmarketing/content-marketing",
-        },
-        {
-          name: "PPC Management",
-          path: "/servicesDetail/digitalmarketing/ppc-management",
-        },
-      ],
-    },
-  },
-];
-
-const fetchServiceTypes = async () => {
+const fetchAllSolutionType = async () => {
   const res = await fetch("/api/service/master-service", { method: "GET" });
   return await res.json();
 };
 
-// Fetch Services by Type
-const fetchServicesByType = async (id) => {
+const fetchSolutionAccordingType = async (id) => {
   const res = await fetch(`/api/service/get-service?serviceType=${id}`);
   return await res.json();
 };
 
-const Categories = () => {
-  const [serviceTypes, setServiceTypes] = useState([]);
-  const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState();
+const DesktopSolution = ({ activeLink, handleLinkClick }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeService, setActiveService] = useState(null);
+  const [solutionType, setSolutionType] = useState([]);
+  const [solutionList, setSolutionList] = useState([]);
+  const [solutionId, setSolutionId] = useState(null);
+  const [loading, setLoading] = useState(false); // New state for loading
 
- // To store the list of service types
-  const [serviceList, setServiceList] = useState([]); // To store the services based on selected type
-  const [activeServiceType, setActiveServiceType] = useState(null); // To track the active service type
-  const [loading, setLoading] = useState(false); // To track the loading state
-  const [serviceTypeId, setServiceTypeId] = useState(null);
-
-  // Effect to fetch services based on active service typeco
   useEffect(() => {
-    if (serviceTypeId) {
-      setLoading(true); 
-      fetchServicesByType(serviceTypeId)
+    if (solutionId) {
+      setLoading(true); // Start loading
+      fetchSolutionAccordingType(solutionId)
         .then((data) => {
-
-          setServiceList(data?.data);
+          setSolutionList(data?.data);
         })
         .catch((error) => {
-          console.error("Error fetching services:", error);
+          console.error("Error fetching solutions:", error);
         })
         .finally(() => {
           setLoading(false); // Stop loading
         });
     }
-  }, [serviceTypeId]);
+  }, [solutionId]);
 
-  // Effect to fetch all service types on initial load
   useEffect(() => {
     setLoading(true); // Start loading
-    fetchServiceTypes()
+    fetchAllSolutionType()
       .then((res) => {
-        console.log("service type--------->", res.data);
-        setServiceTypes(res.data);
+        // console.log("Fetched solution types-------->:", res.data);
+        setSolutionType(res.data);
         if (res.data && res.data.length > 0) {
-          setActiveServiceType(res.data[0]);
-          setServiceTypeId(res.data[0]?.id); // Set the first service type as the active type
+          setActiveService(res.data[0]);
         }
       })
       .catch((error) => {
-        console.error("Error fetching service types:", error);
+        console.error("Error fetching solution types:", error);
       })
       .finally(() => {
         setLoading(false); // Stop loading
       });
   }, []);
 
-  const handleMouseEnter = () => setIsServiceMenuOpen(true);
-  const handleMouseLeave = () => setIsServiceMenuOpen(false);
-
   return (
-    <div
-      className="inline-block text-base font-medium px-3 py-2   text-gray-800"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <li
+      className="relative inline-block"
+      onMouseEnter={() => setIsDropdownOpen(true)}
+      onMouseLeave={() => setIsDropdownOpen(false)}
     >
-      <div className="cursor-pointer  hover:text-orange-500 flex items-center relative group">
+      <div
+        className={`relative inline-block text-base font-medium px-3 py-2 hover:text-orange-500`}
+      >
         Services
-        {isServiceMenuOpen ? (
-          <FontAwesomeIcon
-            icon={faChevronUp}
-            className="ml-1  mt-[2px] text-sm  inline-block transition-transform duration-300"
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className="ml-1 text-sm mt-[2px] inline-block transition-transform duration-300"
-          />
-        )}
-        <span className="absolute left-0 bottom-[-6px] h-0.5 w-full bg-orange-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100" />
+        <span
+          className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
+            activeLink === "/#" ? "scale-x-100" : "scale-x-0"
+          }`}
+        ></span>
       </div>
 
-      {isServiceMenuOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-background  py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
-          <div className="mx-auto">
-            <div className="flex flex-col md:flex-row">
-              {/* Sidebar Menu */}
+      {/* Dropdown Menu */}
+      {isDropdownOpen && (
+        <div className="absolute left-[-10vw] w-[65vw] bg-background border">
+          <div className="flex max-w-7xl mx-auto">
+            {/* Sidebar Menu */}
+            <div className="w-1/4 border-r py-2">
+              <h2 className="text-lg border-b py-2 pl-2 font-semibold">
+                Services
+              </h2>
 
-              <div className="md:w-1/3 md:border-r pr-4">
-                <h2 className="text-lg px-2 border-b font-semibold">
-                  Main Services
-                </h2>
-                {serviceTypes?.length>0&&serviceTypes?.map((category) => (
-                  <div
-                    key={category._id}
-                    className="py-3  px-5 cursor-pointer font-normal hover:bg-background bg-white rounded transition-colors duration-200  flex justify-between items-center"
-                    onMouseEnter={() => setActiveCategory(category)}
-                    onClick={() => setActiveCategory(category)}
-                  >
-                    <span>{category.name}</span>
-                    <FontAwesomeIcon
-                      icon={faChevronRight}
-                      className=" text-sm"
-                      size="sm"
-                    />
-                  </div>
-                ))}
-              </div>
+              {solutionType?.map((solution) => (
+                <div
+                  key={solution?._id}
+                  className="py-3 text-md rounded font-normal px-4 cursor-pointer bg-white hover:bg-background flex justify-between transition-colors"
+                  onMouseEnter={() => {
+                    setActiveService(solution);
+                    setSolutionId(solution?._id);
+                  }}
+                  onClick={() => {
+                    setActiveService(solution);
+                    setSolutionId(solution?._id);
+                  }}
+                >
+                  <span>{solution?.name}</span>
 
-              {/* Content Area */}
-              <div className="flex-1 mt-4 md:mt-0 md:pl-10">
-                <h2 className="text-xl md:text-xl font-semibold transition duration-200">
-                  {activeCategory?.name}
-                </h2>
-                {/* <p className="mb-3 text-sm border-b text-gray-600">
-                  {activeCategory.content.description}
-                </p> */}
-                <div className="space-y-2">
-                  {/* {activeCategory.content.subcategories.map((subcategory) => (
-                    <Link key={subcategory.name} href={subcategory.path}>
-                      <p className="text-gray-800 text-sm py-1 hover:text-orange-500 transition duration-200">
-                        {subcategory.name}
-                      </p>
-                    </Link>
-                  ))} */}
+                  <FontAwesomeIcon icon={faChevronRight} className="text-sm" />
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Content Area */}
+            <div className="flex-1 pl-10 py-4">
+              <h2 className="text-xl font-semibold border-b transition duration-200">
+                {activeService ? activeService.name : "Select a solution type"}
+              </h2>
+
+              {/* Loading State */}
+              {loading ? (
+                <Skeleton />
+              ) : (
+                // Show loading message or spinner
+                <div className="">
+                  {solutionList?.map((link) => {
+                    return (
+                      <Link
+                        key={link?._id}
+                        href={`/services/${link?.title?.split(" ")?.join("-")}`}
+                      >
+                        <p className="text-gray-800 text-[15px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
+                          <FontAwesomeIcon
+                            icon={faChevronRight}
+                            className="text-[10px]"
+                            size={10}
+                          />
+                          {link?.title}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
-    </div>
+    </li>
   );
 };
 
-export default Categories;
+export default DesktopSolution;
+
