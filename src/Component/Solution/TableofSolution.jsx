@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import IndustrySideForm from "../Industry/IndustrySideForm";
 
@@ -11,6 +11,20 @@ import Why4stepSolution from "./Why4stepSolution";
 import OurServiceSolution from "./OurServiceSolution";
 import SolutionDeliver from "./SolutionDeliver";
 const TableofSolution = ({ solutionName }) => {
+
+  function highlightSection(highlightId,hightValue) {
+    // Reset all highlights
+    const highlights = document.querySelectorAll('[id^="highlight"]');
+  highlights.forEach((highlight) => {
+    highlight.style.height = "0px"
+  });
+    // Apply highlight to the selected section
+    const activeHighlight = document.getElementById(highlightId);
+    if (activeHighlight) {
+      activeHighlight.style.height = hightValue; // Adjust height dynamically based on the heading position
+    }
+  }
+
   return (
     <div className="">
       <div className="bg-[#F1F5F9] ">
@@ -151,7 +165,37 @@ const TableofSolution = ({ solutionName }) => {
               </h2>
               <div className="relative">
                 {/* Vertical Line */}
-                <span className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></span>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300">
+                  {/* Highlight sections */}
+                  <div
+                    id="highlight1"
+                    className="bg-red-500 transition-all duration-300 h-[20px]"
+                  ></div>
+                  <div
+                    id="highlight2"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight3"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight4"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight5"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight6"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight7"
+                    className="bg-red-500 transition-all duration-300 h-0"
+                  ></div>
+                </div>
 
                 {/* Table of Content Items */}
                 <div className="flex flex-col gap-4 pl-4">
@@ -162,6 +206,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight1","20px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Why 4Steps
@@ -175,6 +220,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight2","55px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Success stories
@@ -188,6 +234,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight3","95px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Solutions we deliver
@@ -201,6 +248,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight4","135px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Our Services
@@ -214,6 +262,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight5","175px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Product
@@ -227,6 +276,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight6","215px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Approaches
@@ -240,6 +290,7 @@ const TableofSolution = ({ solutionName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight7","270px")}
                   >
                     <p className="text-gray-700 hover:text-black cursor-pointer">
                       Benefits
@@ -247,6 +298,7 @@ const TableofSolution = ({ solutionName }) => {
                   </ScrollLink>
                 </div>
               </div>
+
               {/* Side form section */}
               <div className=" mt-2">
                 <IndustrySideForm />
