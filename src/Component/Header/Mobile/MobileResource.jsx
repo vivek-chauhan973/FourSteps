@@ -85,7 +85,7 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
         <p>Resources</p>
         <span>
           {isOpen ? (
-            <FaChevronUp className="text-emerald-800" />
+            <FaChevronUp className="text-gray-800" />
           ) : (
             <FaChevronDown />
           )}
@@ -99,7 +99,7 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
                 <span
                   className={`relative inline-block text-sm text-gray-700 hover:text-black cursor-pointer ${
                     activeSection === resource.title
-                      ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-primary after:w-full"
+                      ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-heading after:w-full"
                       : ""
                   }`}
                   onClick={() => handleSectionClick(resource.title)}

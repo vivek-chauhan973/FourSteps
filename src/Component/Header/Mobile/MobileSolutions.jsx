@@ -170,7 +170,7 @@ const MobileSolutions = ({ activeSection, handleSectionClick }) => {
     return solutionTypes.map((type) => (
       <div key={type?._id} className=" pl-2">
         <h3
-          className="font-semibold text-gray-900 text-base cursor-pointer"
+          className="  font-semibold text-gray-600 text-base  cursor-pointer"
           onClick={() => fetchAndSetSolutions(type._id)}
         >
           {type?.name}
