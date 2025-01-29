@@ -223,7 +223,7 @@ const SerService = ({ setActiveTab, blogData }) => {
       serviceItem: solutionItem,
     };
     const res = await fetch(
-      `/api/service/services1/service?solution=${blogData?._id}`,
+      `/api/service/services1/service?service=${blogData?._id}`,
       {
         method: "POST",
         headers: {
