@@ -47,10 +47,9 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         setSolutionType(res.data);
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);
-          fetchSolutionAccordingType(res.data[0]?._id)
-        .then((data) => {
-          setSolutionList(data?.data);
-        })
+          fetchSolutionAccordingType(res.data[0]?._id).then((data) => {
+            setSolutionList(data?.data);
+          });
         }
       })
       .catch((error) => {
@@ -83,7 +82,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         <div className="absolute left-[-10vw] w-[65vw] bg-background border">
           <div className="flex max-w-7xl mx-auto">
             {/* Sidebar Menu */}
-            <div className="w-1/4 border-r py-2">
+            <div className="w-1/4 border-r pt-2">
               <h2 className="text-lg border-b py-2 pl-2 font-semibold">
                 Solutions
               </h2>

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 import Skeleton, { AnotherComponent } from "@/Component/Web/Skeleton";
-import Loading from "@/Component/Web/Loading";
 
 const fetchAllSolutionType = async () => {
   const res = await fetch("/api/service/master-service", { method: "GET" });
@@ -48,10 +47,9 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);
         }
-        fetchSolutionAccordingType(res.data[0]?._id)
-        .then((data) => {
+        fetchSolutionAccordingType(res.data[0]?._id).then((data) => {
           setSolutionList(data?.data);
-        })
+        });
       })
       .catch((error) => {
         console.error("Error fetching solution types:", error);
@@ -82,10 +80,10 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute left-0 right-0 mt-2 bg-background  py-5 shadow-lg border rounded-[17px] border-gray-100 z-50 md:mx-20 lg:mx-40">
+            <div className="absolute left-0 right-0 mt-2 bg-background   shadow-lg border  border-gray-100 z-50 md:mx-20 lg:mx-40">
               <div className="flex max-w-7xl mx-auto">
                 {/* Sidebar Menu */}
-                <div className="w-1/4 border-r py-2">
+                <div className="w-1/4 border-r pt-2">
                   <h2 className="text-lg border-b py-2 pl-2 font-semibold">
                     Services
                   </h2>
