@@ -11,14 +11,14 @@ import Why4stepSolution from "./Why4stepSolution";
 import OurServiceSolution from "./OurServiceSolution";
 import SolutionDeliver from "./SolutionDeliver";
 const TableofSolution = ({ solutionName }) => {
-const [highlightedText,setHighlightedText]=useState("");
-  function highlightSection(highlightId,hightValue) {
+  const [highlightedText, setHighlightedText] = useState("");
+  function highlightSection(highlightId, hightValue) {
     // Reset all highlights
     const highlights = document.querySelectorAll('[id^="highlight"]');
-  highlights.forEach((highlight) => {
-    highlight.style.height = "0px"
-  });
-  setHighlightedText(highlightId);
+    highlights.forEach((highlight) => {
+      highlight.style.height = "0px";
+    });
+    setHighlightedText(highlightId);
     // Apply highlight to the selected section
     const activeHighlight = document.getElementById(highlightId);
     if (activeHighlight) {
@@ -46,7 +46,7 @@ const [highlightedText,setHighlightedText]=useState("");
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-heading text-xl md:text-3xl py-7"
+                  className="font-semibold text-heading text-xl md:text-3xl py-5"
                   dangerouslySetInnerHTML={{
                     __html:
                       solutionName?.Why4StepS?.heading || "Why 4Step Solution",
@@ -166,35 +166,35 @@ const [highlightedText,setHighlightedText]=useState("");
               </h2>
               <div className="relative">
                 {/* Vertical Line */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300">
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gray-300">
                   {/* Highlight sections */}
                   <div
                     id="highlight1"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight2"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight3"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight4"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight5"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight6"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                   <div
                     id="highlight7"
-                    className="bg-red-500 transition-all duration-300 h-0"
+                    className=" bg-heading transition-all duration-300 h-0"
                   ></div>
                 </div>
 
@@ -207,9 +207,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight1","20px")}
+                    onSetActive={() => highlightSection("highlight1", "20px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight1"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight1" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Why 4Steps
                     </p>
                   </ScrollLink>
@@ -221,9 +225,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight2","55px")}
+                    onSetActive={() => highlightSection("highlight2", "55px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight2"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight2" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Success stories
                     </p>
                   </ScrollLink>
@@ -235,9 +243,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight3","95px")}
+                    onSetActive={() => highlightSection("highlight3", "95px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight3"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight3" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Solutions we deliver
                     </p>
                   </ScrollLink>
@@ -249,9 +261,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight4","135px")}
+                    onSetActive={() => highlightSection("highlight4", "135px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight4"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight4" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Our Services
                     </p>
                   </ScrollLink>
@@ -263,9 +279,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight5","175px")}
+                    onSetActive={() => highlightSection("highlight5", "175px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight5"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight5" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Product
                     </p>
                   </ScrollLink>
@@ -277,9 +297,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight6","215px")}
+                    onSetActive={() => highlightSection("highlight6", "215px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight6"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight6" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Approaches
                     </p>
                   </ScrollLink>
@@ -291,9 +315,13 @@ const [highlightedText,setHighlightedText]=useState("");
                     offset={-70}
                     duration={500}
                     activeClass="active"
-                    onSetActive={() => highlightSection("highlight7","270px")}
+                    onSetActive={() => highlightSection("highlight7", "270px")}
                   >
-                    <p className={`text-gray-700 ${highlightedText==="highlight7"?"text-red-500":""}  hover:text-black cursor-pointer`}>
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight7" ? "text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Benefits
                     </p>
                   </ScrollLink>

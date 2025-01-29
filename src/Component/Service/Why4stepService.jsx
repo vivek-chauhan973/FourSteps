@@ -99,7 +99,7 @@ const Why4stepService = ({ Why4StepS }) => {
           <button
             onClick={scrollNext}
             className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
-            >
+          >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>

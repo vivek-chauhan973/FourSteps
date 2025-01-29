@@ -9,105 +9,27 @@ const fetchSolutionAccordingType = async (id) => {
   const res = await fetch(`/api/service/get-service?serviceType=${id}`);
   return await res.json();
 };
-// The services data remains the same
-const services = [
-  {
-    name: "Software Development",
-    content: {
-      heading: "Software Development",
-      description:
-        "A software development company with 35 years of business excellence, we can engineer reliable, scalable, and secure software solutions for any OS, browser, and device. We bring together deep industry expertise and the latest IT advancements to deliver custom solutions and products that perfectly fit the needs and behavior of their users.",
-      links: [
-        { name: "Software consulting", link: "abc" },
-        { name: "Custom software development", link: "#" },
-        { name: "Software development outsourcing", link: "#" },
-        { name: "Software product development", link: "#" },
-        { name: "Team augmentation", link: "#" },
-        { name: "Cloud application development", link: "#" },
-        { name: "Legacy software modernization", link: "#" },
-        { name: "Post-launch support", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "Website Development",
-    content: {
-      heading: "Website Development",
-      description:
-        "We provide IT consulting services to help businesses transform their operations through strategic technology solutions.",
-      links: [
-        { name: "Digital Transformation Consulting", link: "#" },
-        { name: "Business Process Optimization", link: "#" },
-        { name: "IT Strategy Development", link: "#" },
-        { name: "Risk Management", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "IT Consulting",
-    content: {
-      heading: "IT Consulting",
-      description:
-        "We provide IT consulting services to help businesses transform their operations through strategic technology solutions.",
-      links: [
-        { name: "Digital Transformation Consulting", link: "#" },
-        { name: "Business Process Optimization", link: "#" },
-        { name: "IT Strategy Development", link: "#" },
-        { name: "Risk Management", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "Zoho Services",
-    content: {
-      heading: "Zoho Services",
-      description:
-        "We provide IT consulting services to help businesses transform their operations through strategic technology solutions.",
-      links: [
-        { name: "Digital Transformation Consulting", link: "#" },
-        { name: "Business Process Optimization", link: "#" },
-        { name: "IT Strategy Development", link: "#" },
-        { name: "Risk Management", link: "#" },
-        { name: "Risk Management system", link: "#" },
-      ],
-    },
-  },
-  {
-    name: "Hubspot Services",
-    content: {
-      heading: "Hubspot Services",
-      description:
-        "We provide IT consulting services to help businesses transform their operations through strategic technology solutions.",
-      links: [
-        { name: "Digital Transformation Consulting", link: "#" },
-        { name: "Business Process Optimization", link: "#" },
-        { name: "IT Strategy Development", link: "#" },
-        { name: "Risk Management", link: "#" },
-        { name: "Risk Management system", link: "#" },
-        { name: "Risk Management  and optimization ", link: "#" },
-      ],
-    },
-  },
-  // Add more services here...
-];
 
 const ServicesScienceSoft = () => {
-  const [services,setServices]=useState([]);
+  const [services, setServices] = useState([]);
   const [activeService, setActiveService] = useState([]); // Set default to the first service
-  const [serviceTypeList,setServieTypeList]=useState([]);
-  
+  const [serviceTypeList, setServieTypeList] = useState([]);
 
-  useEffect(()=>{
-    fetchAllSolutionType().then(res=>{setServices(res?.data||[]);
+  useEffect(() => {
+    fetchAllSolutionType().then((res) => {
+      setServices(res?.data || []);
       setActiveService(res?.data?.[0]);
-    })
-  },[])
+    });
+  }, []);
 
-  useEffect(()=>{
-    if(activeService){
-      fetchSolutionAccordingType(activeService?._id).then(res=>{console.log("res 123456789-------> is here ---> ",res);setServieTypeList(res?.data||[])})
+  useEffect(() => {
+    if (activeService) {
+      fetchSolutionAccordingType(activeService?._id).then((res) => {
+        console.log("res 123456789-------> is here ---> ", res);
+        setServieTypeList(res?.data || []);
+      });
     }
-  },[activeService])
+  }, [activeService]);
 
   return (
     <div className=" w-full bg-white">
@@ -128,38 +50,43 @@ const ServicesScienceSoft = () => {
           <div className="flex flex-col md:flex-row">
             {/* Sidebar Menu */}
             <div className="w-full md:w-1/3  bg-blue-50 px-4 py-3">
-              {services?.length>0&&services?.map((service, index) => (
-                <div
-                  key={index}
-                  className={`md:py-3 md:px-4 py-2 px-3 md:text-xl text-lg   font-semibold cursor-pointer hover:text-blue-500 transition ${
-                    activeService?.name === service.name
-                      ? "bg-heading text-white hover:text-white"
-                      : "text-[#004985]"
-                  }`}
-                  onClick={() => setActiveService(service)}
-                >
-                  {service.name}
-                </div>
-              ))}
+              {services?.length > 0 &&
+                services?.map((service, index) => (
+                  <div
+                    key={index}
+                    className={`md:py-3 md:px-4 py-2 px-3 md:text-xl text-lg   font-semibold cursor-pointer hover:text-blue-500 transition ${
+                      activeService?.name === service.name
+                        ? "bg-heading text-white hover:text-white"
+                        : "text-[#004985]"
+                    }`}
+                    onClick={() => setActiveService(service)}
+                  >
+                    {service.name}
+                  </div>
+                ))}
             </div>
             {/* Content Area */}
             <div className="w-full lg:h-[90vh] md:h-[65vh] overflow-hidden md:flex-1 px-3  md:px-16 md:py-10 py-8">
               <h2 className="md:text-2xl text-lg text-heading font-semibold mb-3 ">
                 {activeService?.name}
               </h2>
-              <p className="text-gray-700 text-sm md:text-lg mb-5">
+              <p className="text-gray-700 text-sm line-clamp-3 md:text-lg mb-5">
                 {activeService?.description}
               </p>
               <div className="grid grid-cols-1 md:px-0 px-3  sm:grid-cols-2 gap-4">
-                {serviceTypeList?.length>0&&serviceTypeList?.map((link, index) => (
-                  <Link key={link?._id} href={`/services/${link?.title?.split(" ")?.join("-")}`}>
-                    <ul className=" custom-list-service ">
-                      <li className=" md:text-lg text-base   underline decoration-heading cursor-pointer">
-                        {link.title}
-                      </li>
-                    </ul>
-                  </Link>
-                ))}
+                {serviceTypeList?.length > 0 &&
+                  serviceTypeList?.map((link, index) => (
+                    <Link
+                      key={link?._id}
+                      href={`/services/${link?.title?.split(" ")?.join("-")}`}
+                    >
+                      <ul className=" custom-list-service ">
+                        <li className=" md:text-lg text-base   underline decoration-heading cursor-pointer">
+                          {link.title}
+                        </li>
+                      </ul>
+                    </Link>
+                  ))}
               </div>
               {/* <div className="mt-6 float-right">
               <Link href="#">

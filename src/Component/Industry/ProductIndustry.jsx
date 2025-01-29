@@ -38,13 +38,13 @@ const ProductIndustry = ({ products }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[22px]  py-2 hover:text-heading decoration-heading underline font-semibold text-center"
+                    className="text-[21 px]  py-2 hover:text-heading decoration-heading underline font-semibold text-center"
                   >
                     {item?.title}
                   </Link>
                 </div>
 
-                <ul className="custom-list px-3 ">
+                <ul className="custom-list  px-3 ">
                   {item?.editorHtmlDescription?.map((item, itemIndex) => (
                     <li
                       className=" py-[1px] md:text-base text-sm "
@@ -63,5 +63,3 @@ const ProductIndustry = ({ products }) => {
 };
 
 export default ProductIndustry;
-
-

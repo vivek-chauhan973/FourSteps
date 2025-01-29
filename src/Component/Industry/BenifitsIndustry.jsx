@@ -19,10 +19,10 @@ const BenifitsIndustry = ({ benefits }) => {
         {/* Mobile view with slider */}
         <div className="block md:hidden text-center">
           <div className="border-l-[3px] py-4 px-2 inline-block">
-            <div className="text-heading text-4xl font-semibold">
+            <div className="text-heading text-3xl font-semibold">
               {benefits?.items[currentIndex]?.title}
             </div>
-            <div className="text-gray-700 mt-2">
+            <div className="text-gray-700 text-sm mt-2">
               {benefits?.items[currentIndex]?.description}
             </div>
           </div>
@@ -43,7 +43,7 @@ const BenifitsIndustry = ({ benefits }) => {
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
           {benefits?.items?.map((stat, index) => (
             <div key={index} className="border-l-[3px] p-6">
-              <div className="text-heading text-4xl font-semibold">
+              <div className="text-heading text-4xl   font-semibold">
                 {stat?.title}
               </div>
               <div className="text-gray-700 mt-2">{stat?.description}</div>
