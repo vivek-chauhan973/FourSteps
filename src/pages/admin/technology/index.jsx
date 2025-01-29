@@ -1,15 +1,15 @@
-
 import { useState } from "react";
-import BasicInfo from "@/Component/admin/ProductCreate/BasicInfoPro";
 import AdminLayout from "@/Component/admin/AdminLayout";
+import TechnologyHeroSection from "@/Component/admin/Technology/TechnologyHeroSection";
 
 export default function CreateWebinar() {
-  const [productData, setProductData] = useState(null);
-  const [activeTab, setActiveTab] = useState("Tab1");
+  const [blogData, setBlogData] = useState(null);
+  const [activeTab, setActiveTab] = useState("Tab1")
   return (
-    <AdminLayout>
+    
+        <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">
-        <p className="md:text-[28px] text-2xl text-black">Create Product</p>
+        <p className="md:text-[28px] text-2xl text-black">Create Technology</p>
       </div>
       <div className="border-b border-slate-300 mb-5">
         <div className="flex gap-2 text-[14px] pt-3 pb-2 flex-wrap">
@@ -27,11 +27,12 @@ export default function CreateWebinar() {
       </div>
 
       {/* Render each tab's content conditionally */}
-      <div
-        className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
-      >
-        <BasicInfo setActiveTab={setActiveTab} productData={productData} />
+      <div className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}>
+        <TechnologyHeroSection setActiveTab={setActiveTab} blogData={blogData} />
       </div>
-    </AdminLayout>
+      </AdminLayout>
+     
+    
   );
 }
+

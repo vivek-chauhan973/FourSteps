@@ -95,6 +95,22 @@ const Sidebar = () => {
         ],
       },
       {
+        label: "Technology ",
+        icon: () => <FontAwesomeIcon icon={faSliders} />,
+        subMenu: [
+          {
+            label: "Create-technology",
+            // change url according to the bizare expendition
+            href: "/admin/technology",
+          },
+          {
+            label: "Technology-list",
+            // change url according to the bizare expendition
+            href: "/admin/technology/technology-list",
+          },
+        ],
+      },
+      {
         label: "Services",
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [

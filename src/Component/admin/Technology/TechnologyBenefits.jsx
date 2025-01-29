@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
-
 // Dynamically import QuillNoSSRWrapper (to avoid SSR issues in Next.js)
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), { ssr: false });
-
 const TechnologyBenefits = ({blogData,setActiveTab}) => {
   const [heading, setHeading] = useState("");
   const [title, setTitle] = useState("");
@@ -86,10 +84,10 @@ const TechnologyBenefits = ({blogData,setActiveTab}) => {
         title: item.title,
         description: item.description,
       })),
-      industry:blogData?._id
+      technology:blogData?._id
     };
 
-    const res=await fetch(`/api/industry/benefits`,{
+    const res=await fetch(`/api/technology/benefits`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
