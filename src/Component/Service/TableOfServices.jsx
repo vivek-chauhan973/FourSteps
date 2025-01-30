@@ -158,7 +158,7 @@ const TableOfServices = ({ serviceName }) => {
 
           {/* Table of content */}
           <div className="pl-3 md:pl-0 order-first md:order-first lg:order-none">
-            <div className="sticky top-0 z-10">
+            <div className="sticky top-32 z-3">
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}

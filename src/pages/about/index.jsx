@@ -51,12 +51,12 @@ const About = () => {
 
   return (
     <>
-      <div className=" fixed w-full z-[19] top-0">
+      <div className=" sticky w-full z-[19] top-0">
         <Nav />
       </div>
       <div className="">
         {/*  hero section  */}
-        <div className=" md:mt-20 bg-background  ">
+        <div className=" bg-background  ">
           <div className=" container-wrapper py-10">
             <div className="flex justify-center  items-center ">
               <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
