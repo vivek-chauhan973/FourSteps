@@ -68,7 +68,7 @@ const Why4stepService = ({ Why4StepS }) => {
           {/* left button */}
           <button
             onClick={scrollPrev}
-            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-heading transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
@@ -76,7 +76,7 @@ const Why4stepService = ({ Why4StepS }) => {
           {/* image section */}
           <div
             ref={carouselRef}
-            className="flex gap-6 overflow-hidden scroll-smooth w-full md:w-auto"
+            className="flex gap-14 overflow-hidden scroll-smooth w-full md:w-auto"
           >
             {Why4StepS?.partnersData?.length > 0 &&
               Why4StepS?.partnersData?.map((item, index) => (
@@ -98,18 +98,18 @@ const Why4stepService = ({ Why4StepS }) => {
           {/* right button */}
           <button
             onClick={scrollNext}
-            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-black/70 transition duration-300"
+            className="hidden md:flex px-[15px] rounded-full md:h-8 md:w-8 lg:h-9 lg:w-9 text-white items-center justify-center bg-heading transition duration-300"
           >
             <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>
       </div>
 
-      <div className="pl-2 py-5">
+      <div className="pl-8 py-5">
         <ul className="custom-list">
           {Why4StepS?.overviewData?.length > 0 &&
             Why4StepS?.overviewData?.map((item, i) => (
-              <li key={i} className="md:text-base text-sm">
+              <li key={i} className="md:text-base text-sm py-1">
                 <p dangerouslySetInnerHTML={{ __html: item?.content }} />
               </li>
             ))}

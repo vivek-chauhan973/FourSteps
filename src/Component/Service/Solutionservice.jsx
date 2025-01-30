@@ -19,7 +19,7 @@ const Solutionservice = ({ solution }) => {
             {solution?.solutionItem.map((item, index) => (
               <div
                 key={index}
-                className="bg-white border p-6 rounded-lg  transform transition-transform duration-300 hover:scale-105  hover:shadow"
+                className="bg-white border p-6 rounded-lg    hover:shadow"
               >
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
@@ -34,7 +34,7 @@ const Solutionservice = ({ solution }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-blue-800 hover:text-blue-600 underline font-semibold text-center text-lg sm:text-xl"
+                    className="text-[2px] sm:text-[21px]  text-gray-700 cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center "
                   >
                     {item?.title}
                   </Link>
@@ -43,7 +43,7 @@ const Solutionservice = ({ solution }) => {
                   {item?.editorHtmlDescription?.map((descItem, itemIndex) => (
                     <li
                       key={itemIndex}
-                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                      className="text-sm sm:text-base py-[] text-gray-700 transition-colors duration-200 hover:text-heading"
                       dangerouslySetInnerHTML={{
                         __html: descItem?.content,
                       }}

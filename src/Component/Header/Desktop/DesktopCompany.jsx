@@ -50,16 +50,6 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
             <ul className="list-none">
               <li>
                 <Link
-                  href="/about"
-                  className="px-5 py-2 text-gray-800 hover:bg-white hover:text-heading rounded-lg transition-colors duration-300 flex justify-between items-center relative group"
-                >
-                  About
-                  <FontAwesomeIcon icon={faArrowRight} className=" text-sm " />
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-heading transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/client-testimonial"
                   className="px-5 py-2 text-gray-800 hover:bg-white hover:text-heading rounded-lg transition-colors duration-300 flex justify-between items-center relative group"
                 >
@@ -104,6 +94,16 @@ const DesktopCompany = ({ activeLink, handleLinkClick }) => {
                   className="px-5 py-2 text-gray-800 hover:bg-white hover:text-heading rounded-lg transition-colors duration-300 flex justify-between items-center relative group"
                 >
                   Career
+                  <FontAwesomeIcon icon={faArrowRight} className=" text-sm " />
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-heading transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="px-5 py-2 text-gray-800 hover:bg-white hover:text-heading rounded-lg transition-colors duration-300 flex justify-between items-center relative group"
+                >
+                  About
                   <FontAwesomeIcon icon={faArrowRight} className=" text-sm " />
                   <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-heading transition-all duration-300 group-hover:w-full"></span>
                 </Link>

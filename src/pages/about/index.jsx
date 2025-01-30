@@ -4,7 +4,6 @@ import Team from "@/Component/Team/Team";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Image from "next/image";
 import Nav from "@/Component/Header/Nav";
-// import Breadcrumbs from "@/Component/About/Breadcrumbs";
 
 const About = () => {
   const data = [
@@ -52,12 +51,12 @@ const About = () => {
 
   return (
     <>
-      <div className="">
+      <div className=" fixed w-full z-[19] top-0">
         <Nav />
       </div>
       <div className="">
         {/*  hero section  */}
-        <div className=" bg-background">
+        <div className=" md:mt-20 bg-background  ">
           <div className=" container-wrapper py-10">
             <div className="flex justify-center  items-center ">
               <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
@@ -197,7 +196,6 @@ const About = () => {
             <h1 className="text-center text-md md:text-xl lg:text-2xl tracking-wide font-semibold">
               Access your business potentials
               <br /> today & find opportunity for
-              <br />
               <span className="text-gradient">bigger success</span>
             </h1>
           </div>

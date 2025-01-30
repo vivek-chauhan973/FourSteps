@@ -37,7 +37,7 @@ const SolutionIndustry = ({ solution }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[20px] sm:text-[22px] cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center text-lg sm:text-xl"
+                    className="text-[20px] text-gray-700 sm:text-[21px] cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center text-lg"
                   >
                     {item?.title}
                   </Link>

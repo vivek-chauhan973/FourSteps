@@ -179,7 +179,7 @@ const IndustryWhy4steps = ({ blogData, setActiveTab }) => {
                   className="flex justify-between items-start p-4 bg-gray-50 border border-gray-300 rounded-md shadow-sm"
                 >
                   <div className="flex items-center space-x-2">
-                    <p className="text-gray-600 font-medium">{index + 1}</p>
+                    {/* <p className="text-gray-600 font-medium">{index + 1}</p> */}
                     <div
                       className="flex-grow text-sm text-gray-700"
                       dangerouslySetInnerHTML={{ __html: item.content }}

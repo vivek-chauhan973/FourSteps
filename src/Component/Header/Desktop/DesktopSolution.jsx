@@ -3,8 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 import Skeleton, { AnotherComponent } from "@/Component/Web/Skeleton";
-import Loading from "@/Component/Web/Loading";
-
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const fetchAllSolutionType = async () => {
   const res = await fetch("/api/solution/masterS", { method: "GET" });
   return await res.json();
@@ -61,7 +60,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
   }, []);
 
   return (
-    <li
+    <div
       className="relative inline-block"
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
@@ -70,11 +69,10 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         className={`relative inline-block text-base font-medium px-3 py-2 hover:text-orange-500`}
       >
         Solution
-        <span
-          className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
-            activeLink === "/#" ? "scale-x-100" : "scale-x-0"
-          }`}
-        ></span>
+        <FontAwesomeIcon
+          icon={isDropdownOpen ? faChevronUp : faChevronDown}
+          className="ml-2 text-sm transition-transform duration-300"
+        />
       </div>
 
       {/* Dropdown Menu */}
@@ -142,7 +140,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
           </div>
         </div>
       )}
-    </li>
+    </div>
   );
 };
 

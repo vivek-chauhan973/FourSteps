@@ -9,21 +9,37 @@ import TechService from "./TechService";
 import TechProducts from "./TechProducts";
 import TechBenifits from "./TechBenifits";
 import TechWhy4step from "./TechWhy4step";
+
 const TableOfTechnology = ({ industryName }) => {
+  const [highlightedText, setHighlightedText] = useState("");
+  function highlightSection(highlightId, hightValue) {
+    // Reset all highlights
+    const highlights = document.querySelectorAll('[id^="highlight"]');
+    highlights.forEach((highlight) => {
+      highlight.style.height = "0px";
+    });
+    setHighlightedText(highlightId);
+    // Apply highlight to the selected section
+    const activeHighlight = document.getElementById(highlightId);
+    if (activeHighlight) {
+      activeHighlight.style.height = hightValue; // Adjust height dynamically based on the heading position
+    }
+  }
+
   return (
     <div className="">
-      <div className="bg-[#F1F5F9] ">
-        <div className="md:px-5 gap-4 grid grid-cols-1 md:grid-cols-[2fr,0.6fr]">
+      <div className="bg-white py-7">
+        <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
-          <div className="px-5 grid grid-cols-1 bg-white">
-            {/* Solution About section */}
+          <div className="px-5 grid grid-cols-1">
+            {/* Industry About section */}
             <div>
-              {/* {industryName?.contentsummary && (
-                <IndustryAbout about={industryName?.contentsummary} />
-              )} */}
-
-              {/* <SolutionAbout /> */}
-              <TechAbout />
+              {industryName?.contentsummary && (
+                <TechAbout about={industryName?.contentsummary} />
+              )}
+              <div>
+                <TechAbout />
+              </div>
             </div>
 
             {/* Reliable partners  */}
@@ -33,15 +49,14 @@ const TableOfTechnology = ({ industryName }) => {
             >
               <div className="md:px-2">
                 <h2
-                  className="font-semibold text-heading text-lg md:text-3xl py-7 md:py-10"
+                  className="font-semibold text-heading text-xl md:text-3xl py-5"
                   dangerouslySetInnerHTML={{
-                    __html:
-                      industryName?.why4step?.heading || "Why 4Step Solution ",
+                    __html: industryName?.why4step?.heading || "Why 4Step",
                   }}
                 />
-
-                {/* <Why4stepSolution /> */}
-
+                {industryName?.why4step && (
+                  <TechWhy4step why4step={industryName?.why4step} />
+                )}
                 <TechWhy4step />
               </div>
             </div>
@@ -51,8 +66,7 @@ const TableOfTechnology = ({ industryName }) => {
               <div>
                 {/* Heading */}
                 <div className="font-semibold text-heading text-lg md:text-3xl">
-                  {industryName?.success?.heading || "Success Technology"} main
-                  Technology story
+                  {industryName?.success?.heading || "Success Story"}
                 </div>
                 <div>
                   {/* Description */}
@@ -62,11 +76,10 @@ const TableOfTechnology = ({ industryName }) => {
                       __html: industryName?.success?.mainEditorHtmlDescription,
                     }}
                   />
-                  Each item has fields like path, backgroundColor, keyword,
-                  title, description, and link.
                 </div>
-
-                {/* <SuccessStorySolution /> */}
+                {industryName?.success && (
+                  <TechSuccessStory stories={industryName?.success} />
+                )}
                 <TechSuccessStory />
               </div>
             </div>
@@ -78,13 +91,13 @@ const TableOfTechnology = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
-                  <div className="font-semibold text-heading text-lg md:text-3xl">
-                    {industryName?.solution?.heading || " What Technlogy use "}
-                    whaat tech use
-                  </div>
+                  <h3 className="font-semibold text-heading text-xl md:text-3xl">
+                    {industryName?.solution?.heading || " Solution We Deliver"}
+                  </h3>
                 </div>
-
-                {/* <SolutionDeliver /> */}
+                {industryName?.solution && (
+                  <TechSolutionDeliver solution={industryName?.solution} />
+                )}
                 <TechSolutionDeliver />
               </div>
             </div>
@@ -95,12 +108,12 @@ const TableOfTechnology = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div>
-                <div className="font-semibold text-heading text-lg md:text-3xl">
-                  {industryName?.service?.heading || "Our Services"} main
-                  heading Services
+                <div className="font-semibold text-heading text-xl md:text-3xl">
+                  {industryName?.service?.heading || "Our Services"}
                 </div>
-
-                {/* <OurServiceSolution /> */}
+                {industryName?.service && (
+                  <TechService services={industryName?.service} />
+                )}
                 <TechService />
               </div>
             </div>
@@ -111,12 +124,12 @@ const TableOfTechnology = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               {/* heading section  */}
-              <div className="font-semibold text-heading text-lg md:text-3xl">
-                {industryName?.product?.heading || "Our Products"} main heading
-                Products
-              </div>
-
-              {/* <ProductSolution /> */}
+              <h3 className="font-semibold text-heading text-xl md:text-3xl">
+                {industryName?.product?.heading || "Our Products"}
+              </h3>
+              {industryName?.product && (
+                <TechProducts products={industryName?.product} />
+              )}
               <TechProducts />
             </div>
 
@@ -127,7 +140,6 @@ const TableOfTechnology = ({ industryName }) => {
             >
               <div>
                 {/* <div className="font-semibold py-2 text-xl">Approaches</div> */}
-                {/* <ApproacheIndustry /> */}
                 <ApproacheIndustry />
               </div>
             </div>
@@ -138,28 +150,56 @@ const TableOfTechnology = ({ industryName }) => {
               className="flex flex-col justify-between mt-5 mb-3"
             >
               <div className="md:px-2">
-                <div className="font-semibold text-heading text-lg md:text-3xl">
-                  <h2 className="">
-                    {industryName?.benefit?.heading || "Our Benifits"} main
-                    heading Benifitsw
+                <div>
+                  <h2 className="font-semibold text-heading text-xl md:text-3xl">
+                    {industryName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>
-
-                {/* <BenifitSolution /> */}
+                {industryName?.benefit && (
+                  <TechBenifits benefits={industryName?.benefit} />
+                )}
                 <TechBenifits />
               </div>
             </div>
           </div>
 
           {/* Table of content */}
-          <div className="pl-3 md:pl-0 order-first md:order-none">
+          <div className="px-1 order-first md:order-second  lg:order-none">
             <div className="sticky top-0 z-10">
-              <h2 className="font-bold text-lg mb-4">
-                Table of contents Solution
-              </h2>
+              <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}
-                <span className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></span>
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gray-300">
+                  {/* Highlight sections */}
+                  <div
+                    id="highlight1"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight2"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight3"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight4"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight5"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight6"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                  <div
+                    id="highlight7"
+                    className="bg-heading transition-all duration-300 h-0"
+                  ></div>
+                </div>
 
                 {/* Table of Content Items */}
                 <div className="flex flex-col gap-4 pl-4">
@@ -170,8 +210,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight1", "20px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight1" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Why 4Steps
                     </p>
                   </ScrollLink>
@@ -183,8 +228,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight2", "55px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight2" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Success stories
                     </p>
                   </ScrollLink>
@@ -196,8 +246,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight3", "95px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight3" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Solutions we deliver
                     </p>
                   </ScrollLink>
@@ -209,8 +264,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight4", "135px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight4" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Our Services
                     </p>
                   </ScrollLink>
@@ -222,8 +282,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight5", "175px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight5" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Product
                     </p>
                   </ScrollLink>
@@ -235,8 +300,13 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight6", "215px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight6" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Approaches
                     </p>
                   </ScrollLink>
@@ -248,15 +318,20 @@ const TableOfTechnology = ({ industryName }) => {
                     offset={-70}
                     duration={500}
                     activeClass="active"
+                    onSetActive={() => highlightSection("highlight7", "270px")}
                   >
-                    <p className="text-gray-700 hover:text-black cursor-pointer">
+                    <p
+                      className={`text-gray-700 ${
+                        highlightedText === "highlight7" ? " text-heading" : ""
+                      }  hover:text-black cursor-pointer`}
+                    >
                       Benefits
                     </p>
                   </ScrollLink>
                 </div>
               </div>
               {/* Side form section */}
-              <div className=" mt-2">
+              <div className=" mt-2  ">
                 <IndustrySideForm />
               </div>
             </div>

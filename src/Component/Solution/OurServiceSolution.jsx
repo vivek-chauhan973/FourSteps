@@ -41,7 +41,7 @@ const OurServiceSolution = ({ SolutionService }) => {
                 </div>
 
                 <div className="text-center">
-                  <h2 className="md:text-xl text-base  font-semibold mb-2">
+                  <h2 className="md:text-xl text-gray-800 text-base  font-semibold mb-2">
                     {item?.title}
                   </h2>
                   <p className="text-gray-600 text-sm md:text-base font-medium">

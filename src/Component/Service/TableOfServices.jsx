@@ -47,7 +47,7 @@ const TableOfServices = ({ serviceName }) => {
                 <h2
                   className="font-semibold text-heading text-xl md:text-3xl py-5"
                   dangerouslySetInnerHTML={{
-                    __html: serviceName?.why4step?.heading || "Why 4Step",
+                    __html: serviceName?.Why4StepS?.heading || "Why 4Step",
                   }}
                 />
                 {serviceName?.Why4StepS && (

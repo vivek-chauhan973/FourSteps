@@ -3,7 +3,9 @@ import React from "react";
 const TechAbout = () => {
   return (
     <div>
-      <div className=" text-xl pt-5 pb-3 font-semibold ">Solution About</div>
+      <div className=" text-xl pt-5 pb-3 font-semibold ">
+        Technology about About
+      </div>
       <ul className=" pl-5">
         <li>
           Company History... Discover our journey... From startup to industry

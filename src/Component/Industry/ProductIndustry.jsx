@@ -38,7 +38,7 @@ const ProductIndustry = ({ products }) => {
 
                   <Link
                     href={item?.link || "#"}
-                    className="text-[21 px]  py-2 hover:text-heading decoration-heading underline font-semibold text-center"
+                    className="text-[21px] text-gray-700  py-2 hover:text-heading decoration-heading underline font-semibold text-center"
                   >
                     {item?.title}
                   </Link>

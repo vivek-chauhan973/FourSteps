@@ -27,8 +27,8 @@ const Productservice = ({ product }) => {
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
                     <Image
-                      src={item.icon || "/image/bg.jpg"} // Corrected to `item.icon`
-                      alt={item.title} // Use the service title for accessibility
+                      src={item?.icon || "/image/bg.jpg"}
+                      alt={item?.title}
                       className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
                       height={500}
                       width={500}
@@ -37,7 +37,7 @@ const Productservice = ({ product }) => {
 
                   <Link
                     href={item?.link}
-                    className="text-[22px] py-2 hover:text-primary decoration-primary underline font-semibold text-center"
+                    className="text-[22px] py-2 hover:text-heading text-gray-700 decoration-heading underline font-semibold text-center"
                   >
                     {item?.title}
                   </Link>
@@ -48,7 +48,7 @@ const Productservice = ({ product }) => {
                   {item?.editorHtmlDescription.map((listItem, itemIndex) => (
                     <li
                       key={itemIndex}
-                      className="py-[1px] md:text-base text-sm hover:text-primary"
+                      className="py-[1px] md:text-base text-sm hover:text-heading"
                       dangerouslySetInnerHTML={{ __html: listItem.content }}
                     ></li>
                   ))}

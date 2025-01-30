@@ -69,7 +69,7 @@ const OurServices = ({ service }) => {
           {service?.serviceItem?.map((item, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-lg border-t-[8px] border-primary hover:shadow-lg transition-all duration-300 mx-auto w-full max-w-md h-auto border-b-[1px] border-l-[1px] border-r-[1px] border-b-gray-300 border-l-gray-300 border-r-gray-300"
+              className="bg-white shadow-md rounded-lg border-t-[8px] border-heading hover:shadow-lg transition-all duration-300 mx-auto w-full max-w-md h-auto border-b-[1px] border-l-[1px] border-r-[1px] border-b-gray-300 border-l-gray-300 border-r-gray-300"
             >
               <div className="md:px-6 px-3 py-6">
                 <div className="flex justify-center items-center mb-6">
@@ -85,7 +85,7 @@ const OurServices = ({ service }) => {
                 </div>
 
                 <div className="text-center">
-                  <h2 className="md:text-2xl text-lg font-semibold mb-2">
+                  <h2 className="md:text-2xl text-lg text-gray-800 font-semibold mb-2">
                     {item?.title}
                   </h2>
                   <p className="text-gray-600 text-sm md:text-base font-medium">

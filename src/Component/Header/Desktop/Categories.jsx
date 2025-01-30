@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"; // Importing FontAwesome icons
 import Skeleton, { AnotherComponent } from "@/Component/Web/Skeleton";
-
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const fetchAllSolutionType = async () => {
   const res = await fetch("/api/service/master-service", { method: "GET" });
   return await res.json();
@@ -71,11 +71,10 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
             className={`cursor-pointer  hover:text-orange-500 flex items-center relative group`}
           >
             Services
-            <span
-              className={`absolute left-0 bottom-0 h-0.5 w-full bg-orange-500 transition-all duration-300 transform ${
-                activeLink === "/#" ? "scale-x-100" : "scale-x-0"
-              }`}
-            ></span>
+            <FontAwesomeIcon
+              icon={isDropdownOpen ? faChevronUp : faChevronDown}
+              className="ml-2 text-sm transition-transform duration-300"
+            />
           </div>
 
           {/* Dropdown Menu */}
