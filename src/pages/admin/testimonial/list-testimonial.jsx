@@ -78,6 +78,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const TestimonialList = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -129,17 +130,19 @@ const TestimonialList = () => {
               {testimonials.map((testimonial) => (
                 <tr key={testimonial._id} className="border border-black">
                   <td className="px-6 py-3 text-center border border-black">
-                    <img
+                    <Image
+                    height={300}
+                    width={300}
                       src={testimonial.path}
                       alt={testimonial.alt}
                       className="h-16 w-16 object-cover rounded"
                     />
                   </td>
                   <td className="px-6 py-3 text-center border border-black">
-                    {testimonial.name}
+                    {testimonial?.name}
                   </td>
                   <td className="px-6 py-3 text-center border border-black">
-                    {testimonial.designation}
+                    {testimonial?.designation}
                   </td>
                   <td className="px-6 py-3 text-center border border-black">
                     <div className="flex justify-center items-center space-x-2">

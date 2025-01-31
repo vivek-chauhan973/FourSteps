@@ -118,10 +118,10 @@ const Career = () => {
 
   return (
     <>
-      <div>
+      <div className="  sticky w-full z-[19] top-0 ">
         <Nav />
       </div>
-      <div className=" bg-background">
+      <div className=" bg-background md:py-6">
         <div className=" container-wrapper pt-24 md:pt-0 ">
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6    items-center">
             <div className=" ">

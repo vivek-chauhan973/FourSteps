@@ -165,7 +165,7 @@ const TableOfTechnology = ({ industryName }) => {
 
           {/* Table of content */}
           <div className="px-1 order-first md:order-second  lg:order-none">
-            <div className="sticky top-0 z-10">
+            <div className="sticky top-32 z-3">
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}

@@ -3,33 +3,34 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const fetchAllProducts=async ()=>{
-  return await((await fetch('/api/casestudy/casestudy',{method:"GET"})).json());
-}
+import Image from "next/image";
+const fetchAllProducts = async () => {
+  return await (
+    await fetch("/api/casestudy/casestudy", { method: "GET" })
+  ).json();
+};
 
 const ListingProduct = () => {
-
-  const [products,setProducts]=useState([]);
-useEffect(()=>{
-  fetchAllProducts().then(res=>{
-    setProducts(res?.data||[])
-  });
-},[])
-const handleDelete=async (id)=>{
-  const data=await fetch(`/api/casestudy/${id}`,{
-    method:"DELETE"
-  })
-  // console.log("handle deleted ----> ",id);
-  if(data?.ok){
-    alert("data deleted successfully")
-    fetchAllProducts().then(res=>{
-      setProducts(res?.data||[])
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchAllProducts().then((res) => {
+      setProducts(res?.data || []);
     });
-  }else{
-    alert("something went wrong")
-  }
-}
-
+  }, []);
+  const handleDelete = async (id) => {
+    const data = await fetch(`/api/casestudy/${id}`, {
+      method: "DELETE",
+    });
+    // console.log("handle deleted ----> ",id);
+    if (data?.ok) {
+      alert("data deleted successfully");
+      fetchAllProducts().then((res) => {
+        setProducts(res?.data || []);
+      });
+    } else {
+      alert("something went wrong");
+    }
+  };
 
   return (
     <AdminLayout>
@@ -55,7 +56,9 @@ const handleDelete=async (id)=>{
             {products.map((webinar) => (
               <tr key={webinar.id} className="border border-black">
                 <td className="px-6 py-3 text-center border border-black">
-                  <img
+                  <Image
+                    height={200}
+                    width={200}
                     src={webinar?.path}
                     alt={webinar?.title}
                     className="h-16 w-16 object-cover rounded"
@@ -70,9 +73,7 @@ const handleDelete=async (id)=>{
                 <td className="px-6 py-3 text-center border border-black">
                   <div className="flex justify-center items-center space-x-2">
                     <Link href={`/admin/casestudy/${webinar?._id}`}>
-                      <button
-                        className="text-blue-500 hover:text-blue-700 transition-colors"
-                      >
+                      <button className="text-blue-500 hover:text-blue-700 transition-colors">
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
                     </Link>

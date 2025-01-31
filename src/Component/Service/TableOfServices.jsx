@@ -27,7 +27,7 @@ const TableOfServices = ({ serviceName }) => {
   }
   return (
     <div className="">
-      <div className="bg-[#F1F5F9]">
+      <div className="bg-white">
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
@@ -37,7 +37,6 @@ const TableOfServices = ({ serviceName }) => {
                 <ServiceAbout about={serviceName?.contentsummary} />
               )}
             </div>
-
             {/* Reliable partners  */}
             <div
               id="OverviewContent"
@@ -158,7 +157,7 @@ const TableOfServices = ({ serviceName }) => {
 
           {/* Table of content */}
           <div className="pl-3 md:pl-0 order-first md:order-first lg:order-none">
-            <div className="sticky top-0 z-10">
+            <div className="sticky top-32 z-3">
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}

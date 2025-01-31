@@ -1,6 +1,5 @@
-
+import Image from "next/image";
 import React, { useState } from "react";
-
 const Choose = () => {
   const cardData = [
     {
@@ -61,10 +60,12 @@ const Choose = () => {
             const isExpanded = expandedIndex === index;
             return (
               <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-md">
-                <img
+                <Image
                   aria-hidden="true"
                   alt={card.alt}
                   src={card.src}
+                  height={300}
+                  width={300}
                   className="mx-auto h-16 w-16 sm:h-20 sm:w-20 md:h-20 md:w-20 lg:h-20 lg:w-20 mb-2 object-contain"
                 />
                 <h3 className="text-md font-semibold text-center">
@@ -75,7 +76,7 @@ const Choose = () => {
                     ? card.description
                     : `${card.description.substring(0, 100)}...`}
                 </p>
-                <div className="text-right text-sm" >
+                <div className="text-right text-sm">
                   <button
                     className="text-gray-500 "
                     onClick={() => toggleDescription(index)}

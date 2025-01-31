@@ -14,7 +14,7 @@ const Routes = () => {
   const { filterGlobalData } = useAppContext();
   return (
     <div>
-      <div>
+      <div className=" top-0 sticky z-10">
         <Nav />
       </div>
       <div className=" bg-background">
@@ -105,7 +105,7 @@ const Routes = () => {
 
         {/* Footer section here  */}
         <div className=" mt-10">
-         <Footer/>
+          <Footer />
         </div>
       </div>
     </div>

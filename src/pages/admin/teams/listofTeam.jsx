@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Image from "next/image";
 const initialWebinars = [];
 const fetchAllTeamMember = async () => {
   const response = await fetch("/api/team");
@@ -69,7 +70,9 @@ const ListofTeam = () => {
             {allTeamMember?.data?.map((webinar) => (
               <tr key={webinar._id} className="border border-black">
                 <td className="px-6 py-3 text-center border border-black">
-                  <img
+                  <Image
+                  height={300}
+                  width={300}
                     src={webinar?.path}
                     alt={webinar?.altText}
                     className="h-16 w-16 object-cover rounded"

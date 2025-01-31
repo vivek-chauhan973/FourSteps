@@ -10,6 +10,7 @@ import DesktopCompany from "./Desktop/DesktopCompany";
 import DesktopIndustry from "./Desktop/DesktopIndustry";
 import DesktopSolution from "./Desktop/DesktopSolution";
 import DesktopTechnology from "./Desktop/DesktopTechnology";
+import SubNav from "./SubNav";
 
 const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,8 +24,9 @@ const Nav = () => {
 
   return (
     <>
-      <nav className=" bg-white md:sticky fixed top-0 w-full   py-3 z-50 shadow ">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className=" bg-white md:sticky fixed top-0 w-full   pb-3 z-50 shadow ">
+        <SubNav />
+        <div className=" mx-auto px-4 sm:px-6 pt-2 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}
             <div className="flex items-center">

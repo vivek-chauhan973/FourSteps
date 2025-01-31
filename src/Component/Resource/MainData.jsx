@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../Context/context";
 import Pagination from "react-js-pagination";
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
 //  for the webinar section api calling
 const fetchAllWebinar = async () => {
   return await (await fetch("/api/webinar/webinar", { method: "GET" })).json();
@@ -510,7 +510,7 @@ const MainData = ({ Heading }) => {
           </div>
         )}
         <div className="flex justify-end my-5 list-none">
-          <Pagination
+          {/* <Pagination
             activePage={currentPage}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={paginationPackages?.length}
@@ -522,6 +522,21 @@ const MainData = ({ Heading }) => {
             firstPageText="1"
             lastPageText={`...${totalPages}`}
             innerClass="pagination"
+          /> */}
+
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={totalItems}
+            onChange={handlePageChange}
+            prevPageText="Prev.."
+            nextPageText="Next"
+            firstPageText="1"
+            lastPageText={`...${totalPages}`}
+            innerClass="flex gap-2 list-none"
+            itemClass=""
+            linkClass="px-3 py-2 border rounded-lg text-gray-700 hover:bg-gray-200 transition-all"
+            activeLinkClass=" bg-heading text-white"
           />
         </div>
       </div>

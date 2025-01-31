@@ -30,7 +30,7 @@ const SolutionSection = () => {
   return (
     <div>
       {/* headres */}
-      <div className=" z-10">
+      <div className=" top-0 sticky z-10">
         <Nav />
       </div>
 
