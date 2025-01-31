@@ -125,10 +125,14 @@
 
 // export default HeroSection;
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 const HeroSection = () => {
-  const texts = ["accelerate", "streamline", "ensure", "deliver", "optimize"];
+  // const texts = ["accelerate", "streamline", "ensure", "deliver", "optimize"];
+  const texts = useMemo(
+    () => ["accelerate", "streamline", "ensure", "deliver", "optimize"],
+    []
+  );
   const [currentText, setCurrentText] = useState("");
   const [index, setIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
@@ -161,7 +165,7 @@ const HeroSection = () => {
     }, 4000); // Switch videos every 4 seconds
 
     return () => clearInterval(videoTimeout);
-  }, []);
+  }, [videoSources.length]);
 
   return (
     <div className="relative   w-full lg:h-[90vh] md:[70vh] h-[90vh] overflow-hidden flex items-center justify-center text-center">

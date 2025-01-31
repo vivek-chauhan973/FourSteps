@@ -3,7 +3,7 @@ import React from 'react'
 const Trail = () => {
   return (
     <div>
-            <div className='flex flex-col gap-0 sticky top-0 z-40'>
+      <div className='flex flex-col gap-0 sticky top-0 z-40'>
         <div className="bg-primary pt-[0.5px] md:h-[23px] h-5">
           <div className="flex items-center container-wrapper justify-center gap-5">
             <p className=" capitalize md:pt[0] pt-[2px] text-white md:text-xs text-xxs">call us for free now</p>

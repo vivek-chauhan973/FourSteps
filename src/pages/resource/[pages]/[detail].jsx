@@ -9,7 +9,7 @@ import Bdetail from "@/Component/BlogDetail/Bdetail";
 const DynamicDetail = () => {
   const router = useRouter();
   const { detail, pages } = router.query;
-  
+
   return (
     <div>
       {/*  navbar section */}

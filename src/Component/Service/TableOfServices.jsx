@@ -27,7 +27,7 @@ const TableOfServices = ({ serviceName }) => {
   }
   return (
     <div className="">
-      <div className="bg-[#F1F5F9]">
+      <div className="bg-white">
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
@@ -37,7 +37,6 @@ const TableOfServices = ({ serviceName }) => {
                 <ServiceAbout about={serviceName?.contentsummary} />
               )}
             </div>
-
             {/* Reliable partners  */}
             <div
               id="OverviewContent"
