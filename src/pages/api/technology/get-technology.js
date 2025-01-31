@@ -1,16 +1,18 @@
-import SolutionHero from "@/models/admin/solution/solutionHero";
+import TechnologyHero from "@/models/admin/Tecnology/TechnologyHero";
 import dbConnect from "@/utils/db";
 const apiRoute = async (req, res) => {
   await dbConnect();
-  const { solutionType } = req.query;
-  console.log("solution type is here -----> ", solutionType);
-  if (!solutionType) {
+  const { technologyType } = req.query;
+  console.log("solution type is here -----> ", technologyType);
+  if (!technologyType) {
     return res.status(300).json({ message: "Industry Name is required !!!" });
   }
 
   try {
-    const files = await SolutionHero.find({ solutionType })
-      .populate("Why4StepS benefit faq")
+    const files = await TechnologyHero.find({
+      technologyType,
+    })
+      .populate("why4step benefit faq")
       .populate({
         path: "solution",
         populate: {

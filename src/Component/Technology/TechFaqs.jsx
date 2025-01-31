@@ -2,37 +2,9 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-const TechFaqs = () => {
-  // Static FAQ data
-  const faqData = [
-    {
-      title: "What is the purpose of this service?",
-      information:
-        "This service aims to provide solutions for industry-specific challenges.",
-      answer:
-        "Our services are tailored to help businesses improve efficiency and productivity.",
-    },
-    {
-      title: "How do I get started?",
-      information:
-        "Getting started is easy with our step-by-step onboarding process.",
-      answer:
-        "Contact us, and we’ll guide you through the setup process tailored to your needs.",
-    },
-    {
-      title: "What industries do you cater to?",
-      information:
-        "We cater to a wide range of industries including healthcare, retail, and manufacturing.",
-      answer:
-        "Our solutions are flexible and designed to meet the needs of diverse industries.",
-    },
-    {
-      title: "Is there a support team available?",
-      information: "Yes, we offer 24/7 support for our clients.",
-      answer:
-        "Our dedicated support team ensures quick resolution of any issues you face.",
-    },
-  ];
+const TechFaqs = ({ faqDataTech }) => {
+  const faqData = faqDataTech?.faq || [];
+  // console.log("trail here ", faqData);
 
   const [openIndices, setOpenIndices] = useState([]);
   const [isAllOpen, setIsAllOpen] = useState(false);
@@ -81,17 +53,16 @@ const TechFaqs = () => {
               {isAllOpen ? "Hide all" : "Expand all"}
             </button>
           </div>
-
           {/* FAQ Items */}
           <div className="w-full mx-auto md:px-0 px-5">
-            {faqData.map((faq, i) => (
+            {faqData?.map((item, i) => (
               <div key={i} className="mb-3">
                 <div
                   onClick={() => handleToggle(i)}
                   className="w-full md:h-14 h-16 flex justify-between items-center px-5 py-2 bg-white shadow-md rounded hover:bg-gray-200 cursor-pointer"
                 >
                   <p className="md:text-[15px] text-[13px] capitalize md:font-semibold font-medium mr-1">
-                    {faq.title}
+                    {item?.title}
                   </p>
                   <span>
                     {openIndices.includes(i) ? (
@@ -110,8 +81,9 @@ const TechFaqs = () => {
                   }}
                 >
                   <div className="py-4 xl:px-10 px-7 text-xs md:text-sm">
-                    <p dangerouslySetInnerHTML={{ __html: faq.information }} />
-                    {faq.answer}
+                    <p
+                      dangerouslySetInnerHTML={{ __html: item?.information }}
+                    />
                   </div>
                 </div>
               </div>

@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
 
-function MasterSolution() {
+function MasterTechnology() {
   const [solution, setSolution] = useState(""); // Solution name state
   const [solutionsList, setSolutionsList] = useState([]); // List of solutions
   const [editSolutionId, setEditSolutionId] = useState(null); // Edit solution id
@@ -112,7 +112,7 @@ function MasterSolution() {
             >
               <div className="grow flex flex-col">
                 <label htmlFor="solution" className="mb-2 pl-2 font-semibold">
-                  Solutions
+                  Add Technology-Name 
                 </label>
                 <input
                   id="solution"
@@ -178,4 +178,4 @@ function MasterSolution() {
   );
 }
 
-export default MasterSolution;
+export default MasterTechnology;

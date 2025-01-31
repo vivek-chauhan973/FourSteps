@@ -25,7 +25,7 @@ const ServicesScienceSoft = () => {
   useEffect(() => {
     if (activeService) {
       fetchSolutionAccordingType(activeService?._id).then((res) => {
-        console.log("res 123456789-------> is here ---> ", res);
+        // console.log("res 123456789-------> is here ---> ", res);
         setServieTypeList(res?.data || []);
       });
     }

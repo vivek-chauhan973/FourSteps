@@ -5,12 +5,14 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons"; // Importing
 import Skeleton, { AnotherComponent } from "@/Component/Web/Skeleton";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const fetchAllSolutionType = async () => {
-  const res = await fetch("/api/solution/masterS", { method: "GET" });
+  const res = await fetch("/api/technology/masterT", { method: "GET" });
   return await res.json();
 };
 
 const fetchSolutionAccordingType = async (id) => {
-  const res = await fetch(`/api/solution/get-solution?solutionType=${id}`);
+  const res = await fetch(
+    `/api/technology/get-technology?technologyType=${id}`
+  );
   return await res.json();
 };
 
@@ -42,7 +44,7 @@ const DesktopTechnology = ({ activeLink, handleLinkClick }) => {
     setLoading(true); // Start loading
     fetchAllSolutionType()
       .then((res) => {
-        // console.log("Fetched solution types-------->:", res.data);
+        // console.log("Fetched Technology types-------->:", res.data);
         setSolutionType(res.data);
         if (res.data && res.data.length > 0) {
           setActiveService(res.data[0]);
@@ -127,7 +129,7 @@ const DesktopTechnology = ({ activeLink, handleLinkClick }) => {
                       return (
                         <Link
                           key={link?._id}
-                          href={`/solution/${link?.title
+                          href={`/technology/${link?.title
                             ?.split(" ")
                             ?.join("-")}`}
                         >

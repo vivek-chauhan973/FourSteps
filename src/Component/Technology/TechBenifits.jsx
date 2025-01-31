@@ -1,34 +1,12 @@
 import React, { useState } from "react";
 import Calltoaction from "../Web/Calltoaction";
 
-const TechBenifits = () => {
+const TechBenifits = ({ benefitTech }) => {
+  // console.log("here is all my benifits data here-------->>>", benefitTech);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentIndex(index);
-  };
-
-  const benefits = {
-    description:
-      "Here are the benefits of our service. Learn how we can help you improve productivity and efficiency.",
-    items: [
-      {
-        title: "30-50%",
-        description: "This is the first benefit description.",
-      },
-      {
-        title: "30-50%",
-        description: "This is the second benefit description.",
-      },
-      {
-        title: "30-50%",
-        description: "This is the third benefit description.",
-      },
-      {
-        title: "30-50%",
-        description: "This is the fourth benefit description.",
-      },
-    ],
   };
 
   return (
@@ -36,21 +14,21 @@ const TechBenifits = () => {
       <div className="">
         <h2
           className="md:text-base py-2 text-sm"
-          dangerouslySetInnerHTML={{ __html: benefits?.description }}
+          dangerouslySetInnerHTML={{ __html: benefitTech?.description }}
         ></h2>
 
         {/* Mobile view with slider */}
         <div className="block md:hidden text-center">
-          <div className="border-l-[3px] py-4 px-2 inline-block">
+          <div className="border-l-[3px]   py-4 px-2 inline-block">
             <div className="text-heading text-4xl font-semibold">
-              {benefits?.items[currentIndex]?.title}
+              {benefitTech?.items[currentIndex]?.title}
             </div>
             <div className="text-gray-700 mt-2">
-              {benefits?.items[currentIndex]?.description}
+              {benefitTech?.items[currentIndex]?.description}
             </div>
           </div>
           <div className="flex justify-center mt-4 space-x-2">
-            {benefits?.items?.map((_, index) => (
+            {benefitTech?.items?.map((_, index) => (
               <button
                 key={index}
                 className={`h-1 w-8 ${
@@ -64,7 +42,7 @@ const TechBenifits = () => {
 
         {/* Desktop view with grid */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
-          {benefits?.items?.map((stat, index) => (
+          {benefitTech?.items?.map((stat, index) => (
             <div key={index} className="border-l-[3px] p-6">
               <div className="text-heading text-4xl font-semibold">
                 {stat?.title}

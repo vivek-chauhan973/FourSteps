@@ -10,7 +10,7 @@ import TechProducts from "./TechProducts";
 import TechBenifits from "./TechBenifits";
 import TechWhy4step from "./TechWhy4step";
 
-const TableOfTechnology = ({ industryName }) => {
+const TableOfTechnology = ({ technologyName }) => {
   const [highlightedText, setHighlightedText] = useState("");
   function highlightSection(highlightId, hightValue) {
     // Reset all highlights
@@ -34,12 +34,9 @@ const TableOfTechnology = ({ industryName }) => {
           <div className="px-5 grid grid-cols-1">
             {/* Industry About section */}
             <div>
-              {industryName?.contentsummary && (
-                <TechAbout about={industryName?.contentsummary} />
+              {technologyName?.contentsummary && (
+                <TechAbout about={technologyName?.contentsummary} />
               )}
-              <div>
-                <TechAbout />
-              </div>
             </div>
 
             {/* Reliable partners  */}
@@ -51,13 +48,12 @@ const TableOfTechnology = ({ industryName }) => {
                 <h2
                   className="font-semibold text-heading text-xl md:text-3xl py-5"
                   dangerouslySetInnerHTML={{
-                    __html: industryName?.why4step?.heading || "Why 4Step",
+                    __html: technologyName?.why4step?.heading || "Why 4Step",
                   }}
                 />
-                {industryName?.why4step && (
-                  <TechWhy4step why4step={industryName?.why4step} />
+                {technologyName?.why4step && (
+                  <TechWhy4step why4step={technologyName?.why4step} />
                 )}
-                <TechWhy4step />
               </div>
             </div>
 
@@ -66,21 +62,21 @@ const TableOfTechnology = ({ industryName }) => {
               <div>
                 {/* Heading */}
                 <div className="font-semibold text-heading text-lg md:text-3xl">
-                  {industryName?.success?.heading || "Success Story"}
+                  {technologyName?.success?.heading || "Success Story"}
                 </div>
                 <div>
                   {/* Description */}
                   <p
                     className="md:text-base py-2 text-sm"
                     dangerouslySetInnerHTML={{
-                      __html: industryName?.success?.mainEditorHtmlDescription,
+                      __html:
+                        technologyName?.success?.mainEditorHtmlDescription,
                     }}
                   />
                 </div>
-                {industryName?.success && (
-                  <TechSuccessStory stories={industryName?.success} />
+                {technologyName?.success && (
+                  <TechSuccessStory storiesTech={technologyName?.success} />
                 )}
-                <TechSuccessStory />
               </div>
             </div>
 
@@ -92,13 +88,15 @@ const TableOfTechnology = ({ industryName }) => {
               <div>
                 <div className="font-semibold py-2 text-xl">
                   <h3 className="font-semibold text-heading text-xl md:text-3xl">
-                    {industryName?.solution?.heading || " Solution We Deliver"}
+                    {technologyName?.solution?.heading ||
+                      " Solution We Deliver"}
                   </h3>
                 </div>
-                {industryName?.solution && (
-                  <TechSolutionDeliver solution={industryName?.solution} />
+                {technologyName?.solution && (
+                  <TechSolutionDeliver
+                    solutionTech={technologyName?.solution}
+                  />
                 )}
-                <TechSolutionDeliver />
               </div>
             </div>
 
@@ -109,12 +107,11 @@ const TableOfTechnology = ({ industryName }) => {
             >
               <div>
                 <div className="font-semibold text-heading text-xl md:text-3xl">
-                  {industryName?.service?.heading || "Our Services"}
+                  {technologyName?.service?.heading || "Our Services"}
                 </div>
-                {industryName?.service && (
-                  <TechService services={industryName?.service} />
+                {technologyName?.service && (
+                  <TechService servicesTech={technologyName?.service} />
                 )}
-                <TechService />
               </div>
             </div>
 
@@ -125,12 +122,11 @@ const TableOfTechnology = ({ industryName }) => {
             >
               {/* heading section  */}
               <h3 className="font-semibold text-heading text-xl md:text-3xl">
-                {industryName?.product?.heading || "Our Products"}
+                {technologyName?.product?.heading || "Our Products"}
               </h3>
-              {industryName?.product && (
-                <TechProducts products={industryName?.product} />
+              {technologyName?.product && (
+                <TechProducts productTech={technologyName?.product} />
               )}
-              <TechProducts />
             </div>
 
             {/* Approaches Section */}
@@ -152,13 +148,12 @@ const TableOfTechnology = ({ industryName }) => {
               <div className="md:px-2">
                 <div>
                   <h2 className="font-semibold text-heading text-xl md:text-3xl">
-                    {industryName?.benefit?.heading || "Our Benifits"}
+                    {technologyName?.benefit?.heading || "Our Benifits"}
                   </h2>
                 </div>
-                {industryName?.benefit && (
-                  <TechBenifits benefits={industryName?.benefit} />
+                {technologyName?.benefit && (
+                  <TechBenifits benefitTech={technologyName?.benefit} />
                 )}
-                <TechBenifits />
               </div>
             </div>
           </div>
