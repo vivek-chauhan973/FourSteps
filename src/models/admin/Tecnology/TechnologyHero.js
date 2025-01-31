@@ -6,6 +6,7 @@ import "./Product/InSolution";
 import  "./Services/InSolution";
 import "./Benefits/Benefits";
 import "./Faq/IndustryFaq";
+import "./TechnologyMaster";
 const IndustrySchema = new mongoose.Schema(
   {
     technologyName: {
@@ -39,7 +40,10 @@ const IndustrySchema = new mongoose.Schema(
     why4step:{
       type:mongoose.Schema.Types.ObjectId,
       ref:"Why4StepsTech"
-    
+    },
+    technologyType:{
+       type:mongoose.Schema.Types.ObjectId,
+      ref:"TechnologyMaster"
     }
     ,
     success:{

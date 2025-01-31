@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 const fetchAllProducts=async ()=>{
-  return await((await fetch('/api/product/product',{method:"GET"})).json());
+  return await((await fetch('/api/technology/technology-hero',{method:"GET"})).json());
 }
 
 const ListingProduct = () => {
@@ -16,7 +16,7 @@ useEffect(()=>{
   });
 },[])
 const handleDelete=async (id)=>{
-  const data=await fetch(`/api/product/${id}`,{
+  const data=await fetch(`/api/technology/technology-hero?id=${id}`,{
     method:"DELETE"
   })
   console.log("handle deleted ----> ",id);
@@ -69,7 +69,7 @@ const handleDelete=async (id)=>{
                 </td>
                 <td className="px-6 py-3 text-center border border-black">
                   <div className="flex justify-center items-center space-x-2">
-                    <Link href={`/admin/product/${webinar?._id}`}>
+                    <Link href={`/admin/technology/${webinar?._id}`}>
                       <button
                         className="text-blue-500 hover:text-blue-700 transition-colors"
                       >

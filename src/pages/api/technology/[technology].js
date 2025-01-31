@@ -38,12 +38,13 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: "File upload failed" });
       }
 
-      const { title, description, technologyName, contentsummary } = req.body;
+      const { title, description, technologyName,technologyType, contentsummary } = req.body;
       const fileData = req.file && {
         title,
         contentsummary,
         technologyName,
         description,
+        technologyType,
         filename: req.file.filename,
         path: `/uploads/technology/herosection/${req.file.filename}`,
       };
@@ -84,7 +85,7 @@ const apiRoute = async (req, res) => {
     // Handle GET request
     try {
       const files = await TechnologyHero.findOne({ _id: technology })
-        .populate("why4step benefit faq")
+        .populate("why4step benefit faq technologyType")
         .populate({
           path: "solution",
           populate: {
@@ -111,7 +112,7 @@ const apiRoute = async (req, res) => {
     }
   } else {
     // Handle other methods (e.g., POST, DELETE)
-    res.setHeader("Allow", ["POST", "GET", "DELETE"]);
+    res.setHeader("Allow", ["POST", "GET","PUT"]);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 };

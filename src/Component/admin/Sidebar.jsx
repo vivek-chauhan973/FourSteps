@@ -99,9 +99,14 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faSliders} />,
         subMenu: [
           {
-            label: "Create-technology",
+            label: "Technology-master",
             // change url according to the bizare expendition
             href: "/admin/technology",
+          },
+          {
+            label: "Create-technology",
+            // change url according to the bizare expendition
+            href: "/admin/technology/technology-create",
           },
           {
             label: "Technology-list",

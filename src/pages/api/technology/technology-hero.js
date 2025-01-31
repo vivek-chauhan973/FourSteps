@@ -2,18 +2,18 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import Success from "@/models/admin/Industry/Success";
-import SubIndustryProduct from "@/models/admin/Industry/Product/IndustrySolution";
-import InProduct from "@/models/admin/Industry/Product/InSolution";
-import SubIndustryServices from "@/models/admin/Industry/Services/IndustrySolution";
-import InService from "@/models/admin/Industry/Services/InSolution";
-import SubIndustrySolution from "@/models/admin/Industry/IndustrySolution";
-import InSolution from "@/models/admin/Industry/InSolution";
-import IndustryFaq from "@/models/admin/Industry/Faq/IndustryFaq";
-import Benefits from "@/models/admin/Industry/Benefits/Benefits";
-import InSuccess from "@/models/admin/Industry/InSuccess";
 import TechnologyHero from "@/models/admin/Tecnology/TechnologyHero";
 import Why4StepsTech from "@/models/admin/Tecnology/Why4StepsTech";
+import SuccessSubItem from "@/models/admin/Tecnology/Success1/Success";
+import TechSuccess from "@/models/admin/Tecnology/Success1/InSuccess";
+import SubTechnologyProduct from "@/models/admin/Tecnology/Product/IndustrySolution";
+import TechProduct from "@/models/admin/Tecnology/Product/InSolution";
+import SubTechnologyServices from "@/models/admin/Tecnology/Services/IndustrySolution";
+import TechService from "@/models/admin/Tecnology/Services/InSolution";
+import SubTechnologySolution from "@/models/admin/Tecnology/solution1/IndustrySolution";
+import TechSolution from "@/models/admin/Tecnology/solution1/InSolution";
+import TechFaq from "@/models/admin/Tecnology/Faq/IndustryFaq";
+import TechBenefits from "@/models/admin/Tecnology/Benefits/Benefits";
 
 // Define upload directories
 const uploadDirectories = {
@@ -53,13 +53,14 @@ const apiRoute = async (req, res) => {
         return res.status(500).json({ error: "File upload failed" });
       }
 
-      const { title,technologyName, description, contentsummary } = req.body;
+      const { title,technologyName, description,technologyType, contentsummary } = req.body;
 
       const fileData = req.file && {
         title,
         filename: req.file.filename,
         description,
         technologyName,
+        technologyType,
         contentsummary,
         path: `/uploads/technology/herosection/${req.file.filename}`,
       };
@@ -81,7 +82,7 @@ const apiRoute = async (req, res) => {
 
     try {
       const data = await TechnologyHero.findById(id)
-        .populate("why4step benefit faq")
+        .populate("why4step benefit faq technologyType")
         .populate({ path: "solution", populate: { path: "solutionItem" } })
         .populate({ path: "success", populate: { path: "successItem" } })
         .populate({ path: "product", populate: { path: "productItem" } })
@@ -97,54 +98,45 @@ const apiRoute = async (req, res) => {
           fs.unlinkSync(filePath);
         }
       };
-
-      // Delete associated documents and files
       if (data?.why4step) await Why4StepsTech.findByIdAndDelete(data.why4step._id);
-
-      // if (data?.success) {
-      //   for (const item of data?.success) {
-      //     deleteFile(path.join(uploadDirectories.success, item.filename));
-      //     await Success.findByIdAndDelete(item._id);
-      //   }
-      // }
       if (data?.success) {
         for (const item of data.success?.successItem || []) {
           deleteFile(path.join(uploadDirectories.success, item.filename));
-          await Success.findByIdAndDelete(item._id);
+          await SuccessSubItem.findByIdAndDelete(item._id);
         }
-        await InSuccess.findByIdAndDelete(data.success._id);
+        await TechSuccess.findByIdAndDelete(data.success._id);
       }
 
       if (data?.product) {
         for (const item of data.product?.productItem || []) {
           deleteFile(path.join(uploadDirectories.product, item.filename));
-          await SubIndustryProduct.findByIdAndDelete(item._id);
+          await SubTechnologyProduct.findByIdAndDelete(item._id);
         }
-        await InProduct.findByIdAndDelete(data.product._id);
+        await TechProduct.findByIdAndDelete(data.product._id);
       }
 
       if (data?.service) {
         for (const item of data.service?.serviceItem || []) {
           deleteFile(path.join(uploadDirectories.service, item.filename));
-          await SubIndustryServices.findByIdAndDelete(item._id);
+          await SubTechnologyServices.findByIdAndDelete(item._id);
         }
-        await InService.findByIdAndDelete(data.service._id);
+        await TechService.findByIdAndDelete(data.service._id);
       }
 
       if (data?.solution) {
         for (const item of data.solution?.solutionItem || []) {
           deleteFile(path.join(uploadDirectories.solution, item.filename));
-          await SubIndustrySolution.findByIdAndDelete(item._id);
+          await SubTechnologySolution.findByIdAndDelete(item._id);
         }
-        await InSolution.findByIdAndDelete(data.solution._id);
+        await TechSolution.findByIdAndDelete(data.solution._id);
       }
 
-      if (data?.faq) await IndustryFaq.findByIdAndDelete(data.faq._id);
-      if (data?.benefit) await Benefits.findByIdAndDelete(data.benefit._id);
+      if (data?.faq) await TechFaq.findByIdAndDelete(data.faq._id);
+      if (data?.benefit) await TechBenefits.findByIdAndDelete(data.benefit._id);
 
       // Delete main file and document
       deleteFile(path.join(uploadDirectories.heroSection, data.filename));
-      await Industry.findByIdAndDelete(id);
+      await TechnologyHero.findByIdAndDelete(id);
 
       return res.status(200).json({ message: "Industry deleted successfully" });
     } catch (error) {
@@ -153,7 +145,7 @@ const apiRoute = async (req, res) => {
     }
   } else if (req.method === "GET") {
     try {
-      const files = await Industry.find({});
+      const files = await TechnologyHero.find({});
       return res.status(200).json({ data: files });
     } catch (error) {
       console.error("Error fetching data:", error);
