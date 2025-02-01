@@ -49,13 +49,15 @@ const Home = () => {
       <div data-aos="fade-up">
         <Team />
       </div>
-      <Client />
+      {/* <Client /> */}
       <TechUse />
-      <Faq />
+      
       <Case />
-      <ContactUs />
+     
       <Calltoaction />
       <Testimonial />
+      <Faq />
+      <ContactUs />
       <Footer />
     </div>
   );

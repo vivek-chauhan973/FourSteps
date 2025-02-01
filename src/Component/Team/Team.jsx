@@ -200,7 +200,7 @@ const Team = () => {
         </div>
 
         {/* Team Skills  start*/}
-        <div className="  py-5">
+        {/* <div className="  py-5">
           <div className="md:flex block justify-center items-start">
             <div className="flex-col sm:px-4 md:px-0 px-2 md:py-10 py-6">
               <p className="text-xs sm:text-sm md:text-[12px] text-zinc-600 leading-3 font-bold uppercase">
@@ -222,7 +222,7 @@ const Team = () => {
               </button>
             </div>
 
-            {/* Circular Progress Bar Section */}
+           
             <div className="  grid grid-cols-2 md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 md:gap-10 gap-3 md:p-5">
               {progressData.map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
@@ -237,7 +237,7 @@ const Team = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
         {/* Team Skills End */}
       </div>
     </div>
