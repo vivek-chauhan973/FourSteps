@@ -611,7 +611,7 @@ a:hover span {
 /*  for scroll bar */
 /* Custom scrollbar styles */
 .scrollbar-thick::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
   /* Width of the scrollbar */
 }
 
@@ -623,7 +623,7 @@ a:hover span {
 .scrollbar-thick::-webkit-scrollbar-thumb {
   background-color: #888;
   /* Color of the scrollbar thumb */
-  border-radius: 10px;
+  border-radius: 1px;
   /* Rounded corners */
 }
 

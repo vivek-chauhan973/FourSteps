@@ -21,7 +21,7 @@ const Nav = () => {
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
-
+   
   return (
     <>
       <nav className=" bg-white md:sticky fixed top-0 w-full   pb-3 z-50 shadow ">

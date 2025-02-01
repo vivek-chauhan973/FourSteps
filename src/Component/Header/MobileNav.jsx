@@ -234,6 +234,7 @@ import MobileResource from "./Mobile/MobileResource";
 import MobileCompany from "./Mobile/MobileCompany";
 import MobileSolutions from "./Mobile/MobileSolutions";
 import MobileIndustry from "./Mobile/MobileIndustry";
+import MobileTechnology from "./Mobile/MobileTechnology";
 
 const fetchAllSolutionType = async () => {
   const res = await fetch("/api/service/master-service", { method: "GET" });
@@ -275,7 +276,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
 
   return (
     <div
-      className={`fixed md:hidden top-20 left-0 h-screen w-full bg-background shadow-lg ${
+      className={`fixed md:hidden top-24 left-0 h-screen   overflow-y-auto  w-full bg-white shadow-lg ${
         isMobileMenuOpen ? "menu-open" : "menu-close"
       }`}
     >
@@ -289,25 +290,25 @@ const MobileNav = ({ isMobileMenuOpen }) => {
       />
 
       <button
-        className="w-full text-left text-gray-700 hover:text-black px-5 mt-5 text-md font-semibold flex items-center justify-between"
+        className="w-full text-left text-gray-700 hover:text-primary px-5 mt-5 text-md font-semibold flex items-center justify-between"
         onClick={toggleCategories}
       >
         Services
         {isCategoriesVisible ? (
-          <FontAwesomeIcon icon={faChevronUp} />
+          <FontAwesomeIcon icon={faChevronUp} className=" text-primary" />
         ) : (
-          <FontAwesomeIcon icon={faChevronDown} />
+          <FontAwesomeIcon icon={faChevronDown} className=" text-primary" />
         )}
       </button>
 
       {isCategoriesVisible && (
-        <div className="mt-2 space-y-2 px-4 max-h-56 overflow-y-auto scrollbar-thick">
+        <div className="mt-2 space-y-2 px-4 pl-6 max-h-56 overflow-y-auto scrollbar-thick">
           {loading ? (
             <p>Loading...</p>
           ) : (
             solutionType?.map((category) => (
               <div key={category?._id}>
-                <h3 className="text-sm pl-2 font-semibold text-gray-900">
+                <h3 className="text-sm pl-2 font-semibold text-heading">
                   {category?.name}
                 </h3>
                 <ul className="list-none">
@@ -355,6 +356,13 @@ const MobileNav = ({ isMobileMenuOpen }) => {
           Training
         </p>
       </Link>
+
+      <div>
+        <MobileTechnology
+          activeSection={activeSection}
+          handleSectionClick={setActiveSection}
+        />
+      </div>
 
       <Link href="/contact">
         <p

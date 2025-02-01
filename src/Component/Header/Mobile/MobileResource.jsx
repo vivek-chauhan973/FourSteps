@@ -83,12 +83,8 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
         className="text-gray-700 hover:text-black text-md font-semibold cursor-pointer flex items-center justify-between w-full"
       >
         <p>Resources</p>
-        <span>
-          {isOpen ? (
-            <FaChevronUp className="text-gray-800" />
-          ) : (
-            <FaChevronDown />
-          )}
+        <span className=" text-primary">
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
         </span>
       </button>
       {isOpen && (

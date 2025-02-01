@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const getAllPost = async () => {
   return await (
     await fetch("/api/industry/industry-hero", { method: "GET" })
@@ -29,11 +27,13 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
         className="text-gray-700 hover:text-black text-md font-semibold cursor-pointer flex items-center justify-between w-full"
       >
         Industries
-        <span>{isOpen ? <FaChevronUp /> : <FaChevronDown />}</span>
+        <span className=" text-primary">
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        </span>
       </button>
       {isOpen && (
         <div className="mt-4 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-          <ul className="space-y-4 px-3 list-none">
+          <ul className="space-y-4  list-none">
             {industry?.length > 0 &&
               industry?.map((item, i) => (
                 <li key={i}>
@@ -57,9 +57,6 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
                       >
                         {item?.industryName || "Unnamed Industry"}
                       </span>
-                      <span>
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      </span>
                     </p>
                   </Link>
                 </li>
@@ -72,4 +69,3 @@ const MobileIndustry = ({ activeSection, handleSectionClick }) => {
 };
 
 export default MobileIndustry;
-

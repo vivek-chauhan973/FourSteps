@@ -19,9 +19,9 @@ const MobileCompany = ({ activeSection, handleSectionClick }) => {
       >
         Company
         {isCompanyDropdownVisible ? (
-          <FontAwesomeIcon icon={faChevronUp} />
+          <FontAwesomeIcon icon={faChevronUp} className=" text-primary" />
         ) : (
-          <FontAwesomeIcon icon={faChevronDown} />
+          <FontAwesomeIcon icon={faChevronDown} className=" text-primary" />
         )}
       </button>
 
