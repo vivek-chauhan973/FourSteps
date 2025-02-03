@@ -19,7 +19,7 @@ const  TechnologyHeroSection=({ setActiveTab, blogData })=> {
   const [description, setDescription] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
-  const [technologyType, setTechnologyType] = useState(null);
+  // const [technologyType, setTechnologyType] = useState(null);
 
  
   const router = useRouter();
@@ -42,7 +42,7 @@ const  TechnologyHeroSection=({ setActiveTab, blogData })=> {
     setDescription(blogData?.description || "");
     setPreview(blogData?.path || "");
     setEditorHtmlDescription(blogData?.contentsummary || "");
-    setTechnologyType(blogData?.technologyType?._id||null);
+    // setTechnologyType(blogData?.technologyType?._id||null);
   }, [blogData]);
   // Function to handle file input change
   function handleChange(e) {
@@ -82,7 +82,7 @@ const  TechnologyHeroSection=({ setActiveTab, blogData })=> {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("contentsummary", editorHtmlDescription);
-      formData.append("technologyType", technologyType);
+      // formData.append("technologyType", technologyType);
     }
     try {
       const res = await fetch(
@@ -133,15 +133,15 @@ const  TechnologyHeroSection=({ setActiveTab, blogData })=> {
               </div>
             </div>
             <div className="flex-1 my-5">
-            <div>
+            {/* <div>
               <label htmlFor="solutionType" className="font-semibold">
                 Solution Type
               </label>
               <select
                 id="solutionType"
                 className="py-0.5 capitalize mb-2 w-full border rounded h-8 px-2 focus:border-primary outline-none"
-                value={technologyType} // Bind the state variable to the select element
-                onChange={(e) => setTechnologyType(e.target.value)} // Update state when value changes
+                value={technologyType} 
+                onChange={(e) => setTechnologyType(e.target.value)} 
               >
                 <option value="">{blogData?.technologyType?blogData?.technologyType?.name:"Select Technology Type"}</option>
                 {listTechnology?.map((item, index) => (
@@ -150,7 +150,7 @@ const  TechnologyHeroSection=({ setActiveTab, blogData })=> {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             <div>
                 <label htmlFor="title" className=" font-semibold">
                   Technology Name

@@ -107,103 +107,187 @@
 
 // export default MobileTechnology;
 
+// import React, { useState, useEffect } from "react";
+// import Link from "next/link";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
+// const fetchAllSolutionTypes = async () => {
+//   const res = await fetch("/api/technology/masterT", { method: "GET" });
+//   return await res.json();
+// };
+
+// const fetchSolutionsByType = async (id) => {
+//   const res = await fetch(
+//     `/api/technology/get-technology?technologyType=${id}`
+//   );
+//   return await res.json();
+// };
+
+// const MobileTechnology = ({ activeSection, handleSectionClick }) => {
+//   const [isSolutionsVisible, setIsSolutionsVisible] = useState(false);
+//   const [solutionTypes, setSolutionTypes] = useState([]);
+//   const [solutionsByType, setSolutionsByType] = useState({});
+
+//   useEffect(() => {
+//     fetchAllSolutionTypes()
+//       .then((res) => {
+//         setSolutionTypes(res.data || []);
+//       })
+//       .catch((err) => console.error("Error fetching solution types:", err));
+//   }, []);
+
+//   useEffect(() => {
+//     if (isSolutionsVisible) {
+//       solutionTypes.forEach((type) => {
+//         if (!solutionsByType[type._id]) {
+//           fetchSolutionsByType(type._id)
+//             .then((res) => {
+//               setSolutionsByType((prev) => ({
+//                 ...prev,
+//                 [type._id]: res.data || [],
+//               }));
+//             })
+//             .catch((err) =>
+//               console.error("Error fetching solutions for type:", type._id, err)
+//             );
+//         }
+//       });
+//     }
+//   }, [isSolutionsVisible, solutionTypes]);
+
+//   const toggleSolutions = () => {
+//     setIsSolutionsVisible(!isSolutionsVisible);
+//   };
+
+//   return (
+//     <div className="">
+//       <button
+//         className="w-full text-gray-700 px-5 mt-5 text-md font-semibold flex items-center justify-between"
+//         onClick={toggleSolutions}
+//       >
+//         Technology
+//         {isSolutionsVisible ? (
+//           <FontAwesomeIcon icon={faChevronUp} className="text-primary" />
+//         ) : (
+//           <FontAwesomeIcon icon={faChevronDown} className="text-primary" />
+//         )}
+//       </button>
+
+//       {isSolutionsVisible && (
+//         <div className="mt-2 space-y-2 px-4 pl-6 max-h-72 overflow-y-auto scrollbar-thick">
+//           {solutionTypes.map((type) => (
+//             <div key={type._id} className="pl-2">
+//               <h3 className="font-semibold text-heading text-base">
+//                 {type.name}
+//               </h3>
+//               <ul className="list-none">
+//                 {(solutionsByType[type._id] || []).map((solution) => (
+//                   <li key={solution._id} className="cursor-pointer">
+//                     <Link
+//                       href={`/technology/${solution.title
+//                         .split(" ")
+//                         .join("-")}`}
+//                     >
+//                       <p
+//                         className={`text-sm text-gray-600 inline-block hover:text-gray-800 transition ${
+//                           activeSection === solution.title
+//                             ? "border-b-2 border-heading"
+//                             : ""
+//                         }`}
+//                       >
+//                         {solution.title}
+//                       </p>
+//                     </Link>
+//                   </li>
+//                 ))}
+//               </ul>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default MobileTechnology;
+
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-const fetchAllSolutionTypes = async () => {
-  const res = await fetch("/api/technology/masterT", { method: "GET" });
-  return await res.json();
-};
-
-const fetchSolutionsByType = async (id) => {
-  const res = await fetch(
-    `/api/technology/get-technology?technologyType=${id}`
-  );
-  return await res.json();
+const getTechnologyData = async () => {
+  return await (
+    await fetch("api/technology/technology-hero", { method: "GET" })
+  ).json();
 };
 
 const MobileTechnology = ({ activeSection, handleSectionClick }) => {
-  const [isSolutionsVisible, setIsSolutionsVisible] = useState(false);
-  const [solutionTypes, setSolutionTypes] = useState([]);
-  const [solutionsByType, setSolutionsByType] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [solutionList, setSolutionList] = useState([]);
 
+  const toggleIndustries = () => {
+    setIsOpen(!isOpen);
+  };
   useEffect(() => {
-    fetchAllSolutionTypes()
-      .then((res) => {
-        setSolutionTypes(res.data || []);
-      })
-      .catch((err) => console.error("Error fetching solution types:", err));
+    const fetchData = async () => {
+      const res = await getTechnologyData();
+      console.log("Fetched Technology Data:", res);
+
+      if (res && res.data) {
+        console.log("Solutions Data:", res.data);
+        setSolutionList(res.data);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
-    if (isSolutionsVisible) {
-      solutionTypes.forEach((type) => {
-        if (!solutionsByType[type._id]) {
-          fetchSolutionsByType(type._id)
-            .then((res) => {
-              setSolutionsByType((prev) => ({
-                ...prev,
-                [type._id]: res.data || [],
-              }));
-            })
-            .catch((err) =>
-              console.error("Error fetching solutions for type:", type._id, err)
-            );
-        }
-      });
-    }
-  }, [isSolutionsVisible, solutionTypes]);
-
-  const toggleSolutions = () => {
-    setIsSolutionsVisible(!isSolutionsVisible);
-  };
+    // console.log("Updated Solution List:", solutionList);
+  }, [solutionList]);
 
   return (
-    <div className="">
+    <div className="container mx-auto px-5 mt-5 ">
       <button
-        className="w-full text-gray-700 px-5 mt-5 text-md font-semibold flex items-center justify-between"
-        onClick={toggleSolutions}
+        onClick={toggleIndustries}
+        className="text-gray-700 hover:text-black text-md font-semibold cursor-pointer flex items-center justify-between w-full"
       >
         Technology
-        {isSolutionsVisible ? (
-          <FontAwesomeIcon icon={faChevronUp} className="text-primary" />
-        ) : (
-          <FontAwesomeIcon icon={faChevronDown} className="text-primary" />
-        )}
+        <span className=" text-primary">
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        </span>
       </button>
-
-      {isSolutionsVisible && (
-        <div className="mt-2 space-y-2 px-4 pl-6 max-h-72 overflow-y-auto scrollbar-thick">
-          {solutionTypes.map((type) => (
-            <div key={type._id} className="pl-2">
-              <h3 className="font-semibold text-heading text-base">
-                {type.name}
-              </h3>
-              <ul className="list-none">
-                {(solutionsByType[type._id] || []).map((solution) => (
-                  <li key={solution._id} className="cursor-pointer">
-                    <Link
-                      href={`/technology/${solution.title
-                        .split(" ")
-                        .join("-")}`}
+      {isOpen && (
+        <div className="mt-4 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+          <ul className="space-y-4  list-none">
+            {solutionList?.length > 0 &&
+              solutionList?.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    href={`/technology/${item?.title?.split(" ")?.join("-")}`}
+                    className="flex items-center justify-between px-4 py-1 text-gray-800 capitalize hover:bg-white hover:text-heading  transition-colors duration-300"
+                  >
+                    <p
+                      className={`text-sm text-gray-700  flex  justify-between  hover:text-black cursor-pointer
+                      
+                    `}
+                      onClick={() => handleSectionClick(item?.title)} // Handle click
                     >
-                      <p
-                        className={`text-sm text-gray-600 inline-block hover:text-gray-800 transition ${
-                          activeSection === solution.title
+                      <span
+                        className={` ${
+                          activeSection === item?.title
                             ? "border-b-2 border-heading"
                             : ""
                         }`}
                       >
-                        {solution.title}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                        {item?.title || "Unnamed Industry"}
+                      </span>
+                    </p>
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </div>
       )}
     </div>

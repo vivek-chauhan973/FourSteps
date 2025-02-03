@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import "./Why4StepsTech";
 import "./Success1/InSuccess";
-import  "./solution1/InSolution";
+import "./solution1/InSolution";
 import "./Product/InSolution";
-import  "./Services/InSolution";
+import "./Services/InSolution";
 import "./Benefits/Benefits";
 import "./Faq/IndustryFaq";
 import "./TechnologyMaster";
@@ -12,14 +12,14 @@ const IndustrySchema = new mongoose.Schema(
     technologyName: {
       type: String,
       required: true,
-      trim:true,
-      unique:true
+      trim: true,
+      unique: true,
     },
     title: {
       type: String,
       required: true,
-      trim:true,
-      unique:true
+      trim: true,
+      unique: true,
     },
     filename: {
       type: String,
@@ -29,7 +29,7 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-   
+
     contentsummary: {
       type: String,
     },
@@ -37,44 +37,45 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    why4step:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"Why4StepsTech"
+    why4step: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Why4StepsTech",
     },
-    technologyType:{
-       type:mongoose.Schema.Types.ObjectId,
-      ref:"TechnologyMaster"
-    }
-    ,
-    success:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechSuccess"
+    // technologyType:{
+    //    type:mongoose.Schema.Types.ObjectId,
+    //   ref:"TechnologyMaster"
+    // }
+    // ,
+    success: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechSuccess",
     },
-    solution:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechSolution"
+    solution: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechSolution",
     },
-    product:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechProduct"
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechProduct",
     },
-    service:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechService"
+    service: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechService",
     },
-    benefit:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechBenefits"
+    benefit: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechBenefits",
     },
-    faq:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"TechFaq"
-    }
-
+    faq: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechFaq",
+    },
   },
   { timestamps: true }
 );
 
-const TechnologyHero = mongoose.models.TechnologyHero || mongoose.model("TechnologyHero", IndustrySchema);
+const TechnologyHero =
+  mongoose.models.TechnologyHero ||
+  mongoose.model("TechnologyHero", IndustrySchema);
 
 export default TechnologyHero;

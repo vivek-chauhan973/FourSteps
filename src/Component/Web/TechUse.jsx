@@ -2,7 +2,20 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 const TechUse = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    const getAllTech = async () => {
+      const response = await fetch("api/technology/get-titleHome");
+      const result = await response.json();
+      setData(result);
+      // console.log("reeeeeeeeeeeenice", data);
+    };
+
+    getAllTech();
+  }, []);
+
   const [expand, SetExpand] = useState(false);
   useEffect(() => {
     AOS.init({
@@ -12,49 +25,6 @@ const TechUse = () => {
       easing: "ease-out-cubic",
     });
   }, []);
-  const members = [
-    {
-      img: "/image/ab.webp",
-      title: "React.js",
-      description: " padding to give the section breathing room.",
-    },
-
-    {
-      img: "/image/mysql.png",
-      title: "MySql",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/wordpress.png",
-      title: "wordpress",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/bit.jpg",
-      title: "Php",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/bg.jpg",
-      title: "Html ",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/css.jpg",
-      title: "Css",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/javascript.jpg ",
-      title: "Javascript",
-      description: " padding to give the section breathing room.",
-    },
-    {
-      img: "/image/jquery.jpg",
-      title: "Jquery",
-      description: " padding to give the section breathing room.",
-    },
-  ];
 
   return (
     <div className="container  ">
@@ -73,30 +43,35 @@ const TechUse = () => {
           data-aos="fade-up"
           className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 cursor-pointer md:px-16"
         >
-          {members.map((member, i) => (
-            <div
-              key={i}
-              className="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-95 transition-transform duration-200"
-            >
-              <div className="w-full h-44 p-5  relative">
-                <Image
-                  className="w-full h-full  rounded-md object-cover"
-                  src={member.img}
-                  alt={member.title || "Member Image"}
-                  height={300}
-                  width={300}
-                />
+          {data?.length > 0 &&
+            data?.map((item, i) => (
+              <div
+                key={i}
+                className="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-95 transition-transform duration-200"
+              >
+                <Link
+                  href={`/technology/${item?.title?.split(" ")?.join("-")}`}
+                >
+                  <div className="w-full h-44 p-5  relative">
+                    <Image
+                      className="w-full h-full  rounded-md object-cover"
+                      src={item?.path}
+                      alt={item?.title || "item Image"}
+                      height={300}
+                      width={300}
+                    />
+                  </div>
+                  <div className="px-4 pb-4">
+                    <h3 className="text-lg font-semibold text-gray-800 truncate">
+                      {item?.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-1 line-clamp-1">
+                      {item?.description || "Description unavailable"}
+                    </p>
+                  </div>
+                </Link>
               </div>
-              <div className="px-4 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800 truncate">
-                  {member.title}
-                </h3>
-                <p className="text-sm text-gray-600 mt-1 line-clamp-1">
-                  {member.description || "Description unavailable"}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
