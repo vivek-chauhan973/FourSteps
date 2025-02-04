@@ -308,7 +308,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
           ) : (
             solutionType?.map((category) => (
               <div key={category?._id}>
-                <h3 className="text-sm pl-2 font-semibold text-heading">
+                <h3 className="text-sm pl-1 capitalize font-semibold text-heading">
                   {category?.name}
                 </h3>
                 <ul className="list-none">

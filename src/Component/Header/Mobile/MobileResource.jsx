@@ -91,16 +91,16 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
         <ul className="space-y-4 mt-4 list-none">
           {resources.map((resource) => (
             <li key={resource.title}>
-              <Link href={resource.path}>
+              <Link href={resource?.path}>
                 <span
-                  className={`relative inline-block text-sm text-gray-700 hover:text-black cursor-pointer ${
-                    activeSection === resource.title
+                  className={`relative capitalize inline-block text-sm text-gray-700 hover:text-black cursor-pointer ${
+                    activeSection === resource?.title
                       ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-heading after:w-full"
                       : ""
                   }`}
                   onClick={() => handleSectionClick(resource.title)}
                 >
-                  {resource.title}
+                  {resource?.title}
                 </span>
               </Link>
             </li>

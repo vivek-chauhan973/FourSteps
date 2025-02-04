@@ -199,7 +199,7 @@ const DesktopTechnology = ({ activeLink, handleLinkClick }) => {
 
       if (res && res.data) {
         // Accessing res.data, as it's the correct property
-        console.log("Solutions Data:", res.data); // Log the solutions data before setting it
+        // console.log("Solutions Data:", res.data); // Log the solutions data before setting it
         setSolutionList(res.data); // Set the solutions data into state
       }
     };

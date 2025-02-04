@@ -173,8 +173,8 @@ const MobileSolutions = ({ activeSection, handleSectionClick }) => {
       {isSolutionsVisible && (
         <div className="mt-2 space-y-2 px-4  pl-6 max-h-72 overflow-y-auto scrollbar-thick">
           {solutionTypes.map((type) => (
-            <div key={type._id} className="pl-2">
-              <h3 className="font-semibold text-heading text-base">
+            <div key={type._id} className="pl-1">
+              <h3 className="font-semibold capitalize text-heading text-base">
                 {type.name}
               </h3>
               <ul className="list-none">
@@ -184,7 +184,7 @@ const MobileSolutions = ({ activeSection, handleSectionClick }) => {
                       href={`/solution/${solution.title.split(" ").join("-")}`}
                     >
                       <p
-                        className={`text-sm text-gray-600 inline-block hover:text-gray-800 transition ${
+                        className={`text-sm  capitalize  text-gray-600 inline-block hover:text-gray-800 transition ${
                           activeSection === solution.title
                             ? "border-b-2 border-heading"
                             : ""

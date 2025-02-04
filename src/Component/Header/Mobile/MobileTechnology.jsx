@@ -218,7 +218,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const getTechnologyData = async () => {
   return await (
-    await fetch("api/technology/technology-hero", { method: "GET" })
+    await fetch("/api/technology/technology-hero", { method: "GET" })
   ).json();
 };
 
@@ -230,22 +230,23 @@ const MobileTechnology = ({ activeSection, handleSectionClick }) => {
     setIsOpen(!isOpen);
   };
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getTechnologyData();
-      console.log("Fetched Technology Data:", res);
+    // const fetchData = async () => {
+    //   const res = await getTechnologyData();
+    //   console.log("Fetched Technology Data:", res);
 
-      if (res && res.data) {
-        console.log("Solutions Data:", res.data);
-        setSolutionList(res.data);
-      }
-    };
+    //   if (res && res.data) {
+    //     console.log("Solutions Data:", res.data);
+    //     setSolutionList(res.data);
+    //   }
+    // };
 
-    fetchData();
+    // fetchData();
+
+    getTechnologyData().then((res) => {
+      console.log("Fetched solution Data:", res?.data);
+      setSolutionList(res.data);
+    });
   }, []);
-
-  useEffect(() => {
-    // console.log("Updated Solution List:", solutionList);
-  }, [solutionList]);
 
   return (
     <div className="container mx-auto px-5 mt-5 ">
@@ -259,14 +260,14 @@ const MobileTechnology = ({ activeSection, handleSectionClick }) => {
         </span>
       </button>
       {isOpen && (
-        <div className="mt-4 max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
-          <ul className="space-y-4  list-none">
+        <div className="mt- max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+          <ul className="space-y-1  list-none">
             {solutionList?.length > 0 &&
               solutionList?.map((item, i) => (
                 <li key={i}>
                   <Link
                     href={`/technology/${item?.title?.split(" ")?.join("-")}`}
-                    className="flex items-center justify-between px-4 py-1 text-gray-800 capitalize hover:bg-white hover:text-heading  transition-colors duration-300"
+                    className="flex items-center justify-between px- py-1 text-gray-800 capitalize hover:bg-white hover:text-heading  transition-colors duration-300"
                   >
                     <p
                       className={`text-sm text-gray-700  flex  justify-between  hover:text-black cursor-pointer
