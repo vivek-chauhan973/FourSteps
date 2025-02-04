@@ -24,8 +24,8 @@ const Nav = () => {
 
   return (
     <>
-      <nav className=" bg-white md:sticky fixed top-0 w-full   pb-3 z-50 shadow ">
-        <SubNav />
+      <nav className=" bg-white md:sticky fixed top-0 w-full  pb-4 md:pb-3 z-50 shadow ">
+        {/* <SubNav /> */}
         <div className=" mx-auto px-4 sm:px-6 pt-2 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}
