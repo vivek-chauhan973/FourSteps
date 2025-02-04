@@ -10,7 +10,7 @@ import {
 
 const AboutSection = () => {
   return (
-    <div className=" bg-backgroundpri">
+    <div className=" bg-background">
       <div className="container-wrapper py-10">
         <div className=" text-center mx-auto pb-3 ">
           <div className="">
@@ -18,8 +18,8 @@ const AboutSection = () => {
               About us 4steps Digital
             </span>
           </div>
-          <h2 className="text-xl md:text-3xl font-semibold mb-3">
-            About <span className="text-gradient">4Steps Digital</span>
+          <h2 className="text-xl md:text-3xl text-heading font-semibold mb-3">
+            About 4Steps Digital
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -65,13 +65,13 @@ const AboutSection = () => {
             <div className="space-y-4 mb-8">
               <div className="flex items-center mb-2 space-x-2">
                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-                  <FontAwesomeIcon icon={faPen} className="font" />
+                  <FontAwesomeIcon icon={faPen} className="text-heading font" />
                 </div>
                 <p className="text-xs text-gray-700">Digital Consulting</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-                  <FontAwesomeIcon icon={faComputer} className="font" />
+                  <FontAwesomeIcon icon={faComputer} className=" text-heading  font" />
                 </div>
                 <p className="text-xs text-gray-700">
                   Expertise across the Spectrum
@@ -79,7 +79,7 @@ const AboutSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-                  <FontAwesomeIcon icon={faHandshake} className="font" />
+                  <FontAwesomeIcon icon={faHandshake} className=" text-heading  font" />
                 </div>
                 <p className="text-xs text-gray-700">
                   Proven Results and Partnership
