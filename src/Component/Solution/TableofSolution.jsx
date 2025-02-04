@@ -10,6 +10,7 @@ import BenifitSolution from "./BenifitSolution";
 import Why4stepSolution from "./Why4stepSolution";
 import OurServiceSolution from "./OurServiceSolution";
 import SolutionDeliver from "./SolutionDeliver";
+import OverViewSolution from "./OverViewSolution";
 const TableofSolution = ({ solutionName }) => {
   const [highlightedText, setHighlightedText] = useState("");
   function highlightSection(highlightId, hightValue) {
@@ -32,13 +33,16 @@ const TableofSolution = ({ solutionName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
+            <div>
+              <h4>welome buddy </h4>
+              <OverViewSolution />
+            </div>
             {/* Solution About section */}
             <div>
               {solutionName?.contentsummary && (
                 <SolutionAbout about={solutionName?.contentsummary} />
               )}
             </div>
-
             {/* Reliable partners  */}
             <div
               id="OverviewContent"

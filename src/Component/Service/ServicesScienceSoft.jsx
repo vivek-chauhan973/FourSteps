@@ -61,7 +61,7 @@ const ServicesScienceSoft = () => {
                     }`}
                     onClick={() => setActiveService(service)}
                   >
-                    {service.name}
+                    {service?.name}
                   </div>
                 ))}
             </div>
@@ -88,13 +88,6 @@ const ServicesScienceSoft = () => {
                     </Link>
                   ))}
               </div>
-              {/* <div className="mt-6 float-right">
-              <Link href="#">
-                <span className="text-blue-700 font-medium hover:underline cursor-pointer">
-                  Check details →
-                </span>
-              </Link>
-            </div> */}
             </div>
           </div>
         </div>

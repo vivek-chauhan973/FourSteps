@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/Component/admin/AdminLayout";
 import SolutionHeroSection from "@/Component/admin/Solution/SolutionHeroSection";
-
 import SolutionSuccessStories from "@/Component/admin/Solution/SolutionSuccessStories";
 import SolutionSolutions from "@/Component/admin/Solution/SolutionSolutions";
 import SolutionProducts from "@/Component/admin/Solution/SolutionProducts";
@@ -10,8 +9,9 @@ import SolutionServices from "@/Component/admin/Solution/SolutionServices";
 import SolutionBenefits from "@/Component/admin/Solution/SolutionBenefits";
 import SolutionFaq from "@/Component/admin/Solution/SolutionFaq";
 import SolutionWhy4steps from "@/Component/admin/Solution/SolutionWhy4steps";
+import SolutionOverview from "@/Component/admin/Solution/SolutionOverview";
 const postDataAccordingId = async (id) => {
-  return await (await fetch(`/api/solution/${id}`,{method:"GET"})).json();
+  return await (await fetch(`/api/solution/${id}`, { method: "GET" })).json();
 };
 export default function CreateWebinar() {
   const router = useRouter();
@@ -34,6 +34,8 @@ export default function CreateWebinar() {
       setActiveTab("Tab7");
     } else if (activeTab === "Tab7") {
       setActiveTab("Tab8");
+    } else if (activeTab === "Tab8") {
+      setActiveTab("Tab9");
     }
   }, []);
   useEffect(() => {
@@ -131,6 +133,16 @@ export default function CreateWebinar() {
             >
               Faq Section
             </button>
+            <button
+              onClick={() => setActiveTab("Tab9")}
+              className={`${
+                activeTab === "Tab9"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              OverView Section
+            </button>
           </>
         </div>
       </div>
@@ -145,7 +157,6 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
           <SolutionWhy4steps blogData={blogData} setActiveTab={setActiveTab} />
-          
         </div>
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
@@ -179,6 +190,11 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
         >
           <SolutionFaq blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab9" ? "block" : "hidden"}`}
+        >
+          <SolutionOverview blogData={blogData} setActiveTab={setActiveTab} />
         </div>
       </>
     </AdminLayout>
