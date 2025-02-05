@@ -14,7 +14,7 @@ const modules = {
   ],
 };
 
-const SolutionOverview = () => {
+const ServiceOverView = () => {
   const [heading, setHeading] = useState("");
   const [items, setItems] = useState([]);
   const [currentTitle, setCurrentTitle] = useState("");
@@ -221,4 +221,4 @@ const SolutionOverview = () => {
   );
 };
 
-export default SolutionOverview;
+export default ServiceOverView;
