@@ -32,7 +32,8 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const [heading, setHeading] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
-  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
+    useState("");
   const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -42,9 +43,9 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   }); // To track the item being edited
   const [currentPage, setCurrentPage] = useState(1); // Pagination state
   const itemsPerPage = 2; // Number of items per page
-  
+
   const router = useRouter();
-  
+
   useEffect(() => {
     fetchAllSuccessStories(blogData?._id).then((res) => {
       setCurrentItems(res?.data || []);
@@ -52,12 +53,14 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
       // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
-    if(blogData){
-      setHeading(blogData?.solution?.heading||"");
-      setMainEditorHtmlDescription(blogData?.solution?.mainEditorHtmlDescription||"")
+    if (blogData) {
+      setHeading(blogData?.solution?.heading || "");
+      setMainEditorHtmlDescription(
+        blogData?.solution?.mainEditorHtmlDescription || ""
+      );
     }
   }, [blogData]);
-  
+
   // Handle file input change
   function handleChange(e) {
     const selectedFile = e.target.files[0];
@@ -84,12 +87,12 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     setItineraryDayWise(editorData[index]);
     setEditorHtmlDescription(editorData[index]?.content);
   };
-  
+
   const removeItem = (index) => {
     const updatedArray = editorData?.filter((_, i) => i !== index);
     setEditorData(updatedArray);
   };
-  
+
   const handleEditorChange = (html) => {
     setEditorHtmlDescription(html);
     setItineraryDayWise((prevState) => ({
@@ -100,7 +103,7 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
   const handleEditorChange1 = (html) => {
     setMainEditorHtmlDescription(html);
   };
-  
+
   const modules = {
     toolbar: [
       [{ header: "1" }, { header: "2" }],
@@ -108,20 +111,20 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
       ["link"],
     ],
   };
-  
+
   // Handle image upload or update
   async function handleUpload() {
     if (!file && !isUpdating) {
       alert("Please select a file to upload.");
       return;
     }
-    
+
     const formData = new FormData();
     if (!file && !title && !editorHtmlDescription && !link) {
       alert("Please upload file and write title");
       return;
     }
-    
+
     if (file && title) {
       formData.append("file", file);
       formData.append("title", title);
@@ -131,8 +134,8 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
     }
     try {
       const url = isUpdating
-      ? `/api/solution/solution1/${editItemId}`
-      : `/api/solution/solution1`;
+        ? `/api/solution/solution1/${editItemId}`
+        : `/api/solution/solution1`;
       const method = isUpdating ? "PUT" : "POST";
       const res = await fetch(url, { method, body: formData });
       if (res?.ok) {
@@ -150,107 +153,110 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
         alert(
           `File ${
             blogData?.success?.length > 0 ? "updated" : "uploaded"
-            } successfully`
-          );
-        } else {
-          alert(
-            `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
-          );
-        }
-      } catch (error) {
-        console.error(
-          `Error ${
-            blogData?.success?.length > 0 ? "updating" : "uploading"
-            } file:`,
-            error
-          );
-        }
+          } successfully`
+        );
+      } else {
+        alert(
+          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
+        );
       }
-      const indexOfLastItem = currentPage * itemsPerPage;
-      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentItemsToShow = currentItems.slice(
-        indexOfFirstItem,
-        indexOfLastItem
+    } catch (error) {
+      console.error(
+        `Error ${
+          blogData?.success?.length > 0 ? "updating" : "uploading"
+        } file:`,
+        error
       );
-      
-      const paginate = (pageNumber) => setCurrentPage(pageNumber);
-      
-      const nextPage = () => {
-        if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
-          setCurrentPage(currentPage + 1);
-        }
-      };
-      
-      const prevPage = () => {
-        if (currentPage > 1) {
-          setCurrentPage(currentPage - 1);
-        }
-      };
-      
-      const cancelEdit = () => {
-        setEditItemId(null);
-        setEditorData([]);
-        setTitle("");
-        setLink("");
-        setPreview(null);
-        setIsUpdating(false);
-      };
-      
-      const edit1Item = (item) => {
-        // console.log("item of list item is here ---->  ", item);
-        setEditItemId(item?._id);
-        setEditorData(item?.editorHtmlDescription);
-        setTitle(item?.title);
-        setLink(item?.link);
-        setPreview(item?.path);
-        setIsUpdating(true);
-      };
-      
-      const deleteItem=async (id)=>{
-        const res=await fetch(`/api/solution/solution1?id=${id}`,{method:"DELETE"});
-        if(res?.ok){
-          fetchAllSuccessStories(blogData?._id).then((res) => {
-            setCurrentItems(res?.data || []);
-            const data = res?.data?.map((item) => item?._id);
-            // console.log("res---- item-----> ", data);
-            setSolutionItem(data || []);
-          });
-          alert("item is successfully deleted");
-          
-        }
-        else{
-          alert("item is something went wrong");
-        }
-      }
-      
+    }
+  }
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItemsToShow = currentItems.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(currentItems.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const cancelEdit = () => {
+    setEditItemId(null);
+    setEditorData([]);
+    setTitle("");
+    setLink("");
+    setPreview(null);
+    setIsUpdating(false);
+  };
+
+  const edit1Item = (item) => {
+    // console.log("item of list item is here ---->  ", item);
+    setEditItemId(item?._id);
+    setEditorData(item?.editorHtmlDescription);
+    setTitle(item?.title);
+    setLink(item?.link);
+    setPreview(item?.path);
+    setIsUpdating(true);
+  };
+
+  const deleteItem = async (id) => {
+    const res = await fetch(`/api/solution/solution1?id=${id}`, {
+      method: "DELETE",
+    });
+    if (res?.ok) {
+      fetchAllSuccessStories(blogData?._id).then((res) => {
+        setCurrentItems(res?.data || []);
+        const data = res?.data?.map((item) => item?._id);
+        // console.log("res---- item-----> ", data);
+        setSolutionItem(data || []);
+      });
+      alert("item is successfully deleted");
+    } else {
+      alert("item is something went wrong");
+    }
+  };
+
   // console.log("blog data is here ----> ",blogData)
 
-  const handleSave=async ()=>{
-    const data={heading,mainEditorHtmlDescription,solutionItem};
-   const res=await fetch(`/api/solution/solution1/solution?solution=${blogData?._id}`,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-   })
+  const handleSave = async () => {
+    const data = { heading, mainEditorHtmlDescription, solutionItem };
+    const res = await fetch(
+      `/api/solution/solution1/solution?solution=${blogData?._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-   if(res?.ok){
-    setActiveTab("Tab5")
-    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
-   }
-   else{
-    alert("something went wrong on frontend side");
-   }
-  }
-
+    if (res?.ok) {
+      setActiveTab("Tab5");
+      alert(
+        blogData?._id
+          ? "solution Data updated successfully"
+          : "solution Data saved successfully"
+      );
+    } else {
+      alert("something went wrong on frontend side");
+    }
+  };
 
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
-        <p className="text-base font-semibold mb-2">
-          Industry Solutions we deliver
-        </p>
+        <p className="text-base font-semibold mb-2">Related Industries</p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
             <div>
@@ -281,7 +287,9 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
             </div>
 
             <div className="border py-3 px-4">
-              <h1 className=" text-xl font-semibold">create solution Item</h1>
+              <h1 className=" text-xl font-semibold">
+                Create Industry related Item
+              </h1>
               <div className="flex flex-col md:flex-row  my-7">
                 <input
                   type="file"
@@ -481,7 +489,10 @@ const SolutionSolutions = ({ setActiveTab, blogData }) => {
                 </button>
               </div>
             </div>
-            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
+            <button
+              onClick={handleSave}
+              className="bg-black text-white px-3 py-2 w-full rounded"
+            >
               Save
             </button>
           </div>

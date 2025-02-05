@@ -9,6 +9,7 @@ import TechService from "./TechService";
 import TechProducts from "./TechProducts";
 import TechBenifits from "./TechBenifits";
 import TechWhy4step from "./TechWhy4step";
+import OverViewTechnology from "./OverViewTechnology";
 
 const TableOfTechnology = ({ technologyName }) => {
   const [highlightedText, setHighlightedText] = useState("");
@@ -32,6 +33,9 @@ const TableOfTechnology = ({ technologyName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1">
+            <div>
+              <OverViewTechnology />
+            </div>
             {/* Industry About section */}
             <div>
               {technologyName?.contentsummary && (
@@ -212,7 +216,7 @@ const TableOfTechnology = ({ technologyName }) => {
                         highlightedText === "highlight1" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Why 4Steps
+                      Why 4steps Digital
                     </p>
                   </ScrollLink>
 
@@ -248,7 +252,7 @@ const TableOfTechnology = ({ technologyName }) => {
                         highlightedText === "highlight3" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Solutions we deliver
+                      Related Solutions
                     </p>
                   </ScrollLink>
 
@@ -266,7 +270,7 @@ const TableOfTechnology = ({ technologyName }) => {
                         highlightedText === "highlight4" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Our Services
+                      Related Services
                     </p>
                   </ScrollLink>
 
@@ -284,7 +288,7 @@ const TableOfTechnology = ({ technologyName }) => {
                         highlightedText === "highlight5" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Product
+                      Industry We serve
                     </p>
                   </ScrollLink>
 

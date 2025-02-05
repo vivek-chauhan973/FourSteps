@@ -253,7 +253,7 @@ const TableofSolution = ({ solutionName }) => {
                         highlightedText === "highlight3" ? "text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Solutions we deliver
+                      Related Industries
                     </p>
                   </ScrollLink>
 

@@ -236,7 +236,7 @@ const OverViewSolution = () => {
       <div className="container md:pt-10 pt-5">
         <div className="pb-5">
           <h2 className="md:text-3xl text-xl text-heading font-semibold pb-3">
-            Overview Section
+            Overview of Solution
           </h2>
         </div>
 

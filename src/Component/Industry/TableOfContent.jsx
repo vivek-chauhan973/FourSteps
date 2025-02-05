@@ -9,6 +9,7 @@ import ProductIndustry from "./ProductIndustry";
 import OurServicesIndustry from "./OurServicesIndustry";
 import IndustrySideForm from "./IndustrySideForm";
 import IndustryAbout from "./IndustryAbout";
+import OverviewIndusrty from "./OverviewIndusrty";
 
 const TableOfContent = ({ industryName }) => {
   const [highlightedText, setHighlightedText] = useState("");
@@ -32,6 +33,10 @@ const TableOfContent = ({ industryName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1">
+            <div>
+              <OverviewIndusrty />
+            </div>
+
             {/* Industry About section */}
             <div>
               {industryName?.contentsummary && (
@@ -208,7 +213,7 @@ const TableOfContent = ({ industryName }) => {
                         highlightedText === "highlight1" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Why 4Steps
+                      Why 4steps Digital
                     </p>
                   </ScrollLink>
 
@@ -244,7 +249,7 @@ const TableOfContent = ({ industryName }) => {
                         highlightedText === "highlight3" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Solutions we deliver
+                      Related Solutions
                     </p>
                   </ScrollLink>
 
@@ -262,7 +267,7 @@ const TableOfContent = ({ industryName }) => {
                         highlightedText === "highlight4" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Our Services
+                      Related Services
                     </p>
                   </ScrollLink>
 
@@ -280,7 +285,7 @@ const TableOfContent = ({ industryName }) => {
                         highlightedText === "highlight5" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Product
+                      Technology We Use
                     </p>
                   </ScrollLink>
 
@@ -298,7 +303,7 @@ const TableOfContent = ({ industryName }) => {
                         highlightedText === "highlight6" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Approaches
+                      Our Approach
                     </p>
                   </ScrollLink>
 

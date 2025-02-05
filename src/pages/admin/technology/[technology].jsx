@@ -18,7 +18,7 @@ export default function CreateWebinar() {
   const [blogData, setBlogData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 
-  console.log("blog data is here ----> ",blogData)
+  console.log("blog data is here ----> ", blogData);
   useEffect(() => {
     if (activeTab === "Tab1") {
       setActiveTab("Tab2");
@@ -69,7 +69,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Why 4steps
+              Why 4steps Digital
             </button>
             <button
               onClick={() => setActiveTab("Tab3")}
@@ -89,7 +89,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Solutions we deliver
+              Related Solutions
             </button>
             <button
               onClick={() => setActiveTab("Tab5")}
@@ -99,7 +99,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              our products
+              Industry We serve
             </button>
             <button
               onClick={() => setActiveTab("Tab6")}
@@ -109,7 +109,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Our services
+              Related services
             </button>
             <button
               onClick={() => setActiveTab("Tab7")}
@@ -137,14 +137,20 @@ export default function CreateWebinar() {
       <div
         className={`tab-content ${activeTab === "Tab1" ? "block" : "hidden"}`}
       >
-        <TechnologyHeroSection setActiveTab={setActiveTab} blogData={blogData} />
+        <TechnologyHeroSection
+          setActiveTab={setActiveTab}
+          blogData={blogData}
+        />
       </div>
 
       <>
         <div
           className={`tab-content ${activeTab === "Tab2" ? "block" : "hidden"}`}
         >
-          <TechnologyWhy4steps blogData={blogData} setActiveTab={setActiveTab} />
+          <TechnologyWhy4steps
+            blogData={blogData}
+            setActiveTab={setActiveTab}
+          />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab3" ? "block" : "hidden"}`}
@@ -157,7 +163,10 @@ export default function CreateWebinar() {
         <div
           className={`tab-content ${activeTab === "Tab4" ? "block" : "hidden"}`}
         >
-          <TechnologySolutions blogData={blogData} setActiveTab={setActiveTab} />
+          <TechnologySolutions
+            blogData={blogData}
+            setActiveTab={setActiveTab}
+          />
         </div>
         <div
           className={`tab-content ${activeTab === "Tab5" ? "block" : "hidden"}`}

@@ -249,7 +249,7 @@ const SerService = ({ setActiveTab, blogData }) => {
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
         <p className="text-base font-semibold mb-2">
-          Service page Services Section
+          Make a indusrty section inside the Service
         </p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
@@ -281,7 +281,7 @@ const SerService = ({ setActiveTab, blogData }) => {
             </div>
 
             <div className="border py-3 px-4">
-              <h1 className=" text-xl font-semibold">create Service Item</h1>
+              <h1 className=" text-xl font-semibold">create industry Item</h1>
               <div className="flex flex-col md:flex-row  my-7">
                 <input
                   type="file"

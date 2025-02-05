@@ -9,6 +9,7 @@ import OurServices from "./OurServices";
 import Productservice from "./Productservice";
 import BenifitService from "./BenifitService";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
+import OverViewService from "./OverViewService";
 
 const TableOfServices = ({ serviceName }) => {
   const [highlightedText, setHighlightedText] = useState("");
@@ -31,6 +32,8 @@ const TableOfServices = ({ serviceName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
+            <OverViewService />
+
             {/* Industry About section */}
             <div>
               {serviceName?.contentsummary && (
@@ -209,7 +212,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight1" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Why4 steps
+                      Why 4tseps Digital
                     </p>
                   </ScrollLink>
 
@@ -227,7 +230,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight2" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Success stories
+                      Success Stories
                     </p>
                   </ScrollLink>
 
@@ -245,7 +248,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight3" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Solutions we deliver
+                      Related Solution
                     </p>
                   </ScrollLink>
 
@@ -263,7 +266,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight4" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Our Services
+                      Industry We Serve
                     </p>
                   </ScrollLink>
 
@@ -281,7 +284,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight5" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Product
+                      Technology We use
                     </p>
                   </ScrollLink>
 
@@ -299,7 +302,7 @@ const TableOfServices = ({ serviceName }) => {
                         highlightedText === "highlight6" ? " text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Approaches
+                      Our Approach
                     </p>
                   </ScrollLink>
 

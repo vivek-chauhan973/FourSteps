@@ -260,7 +260,7 @@ const SerProduct = ({ setActiveTab, blogData }) => {
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
-        <p className="text-base font-semibold mb-2">Service Product Section</p>
+        <p className="text-base font-semibold mb-2">Service Technology Section</p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
             <div>
@@ -291,7 +291,7 @@ const SerProduct = ({ setActiveTab, blogData }) => {
             </div>
 
             <div className="border py-3 px-4">
-              <h1 className=" text-xl font-semibold">create Service Item</h1>
+              <h1 className=" text-xl font-semibold">create Technology Item</h1>
               <div className="flex flex-col md:flex-row  my-7">
                 <input
                   type="file"

@@ -89,7 +89,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Solutions we deliver
+              Related Solution
             </button>
             <button
               onClick={() => setActiveTab("Tab5")}
@@ -99,7 +99,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              our products
+              Technology We use
             </button>
             <button
               onClick={() => setActiveTab("Tab6")}
@@ -109,7 +109,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Our services
+              Industry We Serve
             </button>
             <button
               onClick={() => setActiveTab("Tab7")}
