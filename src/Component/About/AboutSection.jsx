@@ -71,7 +71,10 @@ const AboutSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-                  <FontAwesomeIcon icon={faComputer} className=" text-heading  font" />
+                  <FontAwesomeIcon
+                    icon={faComputer}
+                    className=" text-heading  font"
+                  />
                 </div>
                 <p className="text-xs text-gray-700">
                   Expertise across the Spectrum
@@ -79,7 +82,10 @@ const AboutSection = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-7 h-7 flex items-center justify-center bg-gray-200 rounded-full">
-                  <FontAwesomeIcon icon={faHandshake} className=" text-heading  font" />
+                  <FontAwesomeIcon
+                    icon={faHandshake}
+                    className=" text-heading  font"
+                  />
                 </div>
                 <p className="text-xs text-gray-700">
                   Proven Results and Partnership
