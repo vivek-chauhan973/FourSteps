@@ -34,7 +34,6 @@ const TableofSolution = ({ solutionName }) => {
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
             <div>
-              <h4>welome buddy </h4>
               <OverViewSolution />
             </div>
             {/* Solution About section */}
@@ -218,7 +217,7 @@ const TableofSolution = ({ solutionName }) => {
                         highlightedText === "highlight1" ? "text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Why 4Steps
+                      Why 4steps Digital
                     </p>
                   </ScrollLink>
 
@@ -272,7 +271,7 @@ const TableofSolution = ({ solutionName }) => {
                         highlightedText === "highlight4" ? "text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Our Services
+                      Related Services
                     </p>
                   </ScrollLink>
 
@@ -290,7 +289,7 @@ const TableofSolution = ({ solutionName }) => {
                         highlightedText === "highlight5" ? "text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Product
+                      Technology We Use
                     </p>
                   </ScrollLink>
 
@@ -308,7 +307,7 @@ const TableofSolution = ({ solutionName }) => {
                         highlightedText === "highlight6" ? "text-heading" : ""
                       }  hover:text-black cursor-pointer`}
                     >
-                      Approaches
+                      Our Approach
                     </p>
                   </ScrollLink>
 

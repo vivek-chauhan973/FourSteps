@@ -32,7 +32,8 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
   const [heading, setHeading] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editorHtmlDescription, setEditorHtmlDescription] = useState("");
-  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] = useState("");
+  const [mainEditorHtmlDescription, setMainEditorHtmlDescription] =
+    useState("");
   const [editorData, setEditorData] = useState([]); // Store editor data as an array of objects
   const [isUpdating, setIsUpdating] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
@@ -52,9 +53,11 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
       // console.log("res---- item-----> ", data);
       setSolutionItem(data || []);
     });
-    if(blogData){
-      setHeading(blogData?.product?.heading||"");
-      setMainEditorHtmlDescription(blogData?.product?.mainEditorHtmlDescription||"")
+    if (blogData) {
+      setHeading(blogData?.product?.heading || "");
+      setMainEditorHtmlDescription(
+        blogData?.product?.mainEditorHtmlDescription || ""
+      );
     }
   }, [blogData]);
 
@@ -206,9 +209,11 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
     setIsUpdating(true);
   };
 
-  const deleteItem=async (id)=>{
-    const res=await fetch(`/api/solution/products?id=${id}`,{method:"DELETE"});
-    if(res?.ok){
+  const deleteItem = async (id) => {
+    const res = await fetch(`/api/solution/products?id=${id}`, {
+      method: "DELETE",
+    });
+    if (res?.ok) {
       fetchAllSuccessStories(blogData?._id).then((res) => {
         setCurrentItems(res?.data || []);
         const data = res?.data?.map((item) => item?._id);
@@ -216,41 +221,46 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
         setSolutionItem(data || []);
       });
       alert("item is successfully deleted");
-
-    }
-    else{
+    } else {
       alert("item is something went wrong");
     }
-  }
+  };
 
   // console.log("blog data is here ----> ",blogData)
 
-  const handleSave=async ()=>{
-    const data={heading,mainEditorHtmlDescription,productItem:solutionItem};
-   const res=await fetch(`/api/solution/products/product?solution=${blogData?._id}`,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-   })
+  const handleSave = async () => {
+    const data = {
+      heading,
+      mainEditorHtmlDescription,
+      productItem: solutionItem,
+    };
+    const res = await fetch(
+      `/api/solution/products/product?solution=${blogData?._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
-   if(res?.ok){
-    setActiveTab("Tab6")
-    alert(blogData?._id?"solution Data updated successfully":"solution Data saved successfully");
-   }
-   else{
-    alert("something went wrong on frontend side");
-   }
-  }
-
+    if (res?.ok) {
+      setActiveTab("Tab6");
+      alert(
+        blogData?._id
+          ? "solution Data updated successfully"
+          : "solution Data saved successfully"
+      );
+    } else {
+      alert("something went wrong on frontend side");
+    }
+  };
 
   return (
     <>
       <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
-        <p className="text-base font-semibold mb-2">
-          Industry Product Section
-        </p>
+        <p className="text-base font-semibold mb-2">Techology We use Section</p>
         <div className="p-4">
           <div className="flex flex-col md:gap-10 gap-5 xl:pl-5">
             <div>
@@ -328,7 +338,7 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
                   />
                 </div>
                 <div className="w-full">
-                  <h3 className="font-semibold mb-2">Industry Summary</h3>
+                  <h3 className="font-semibold mb-2">Technology Summary</h3>
                   <QuillNoSSRWrapper
                     className="rounded h-48 mb-16"
                     theme="snow"
@@ -481,7 +491,10 @@ const SolutionProducts = ({ setActiveTab, blogData }) => {
                 </button>
               </div>
             </div>
-            <button onClick={handleSave} className="bg-black text-white px-3 py-2 w-full rounded">
+            <button
+              onClick={handleSave}
+              className="bg-black text-white px-3 py-2 w-full rounded"
+            >
               Save
             </button>
           </div>
