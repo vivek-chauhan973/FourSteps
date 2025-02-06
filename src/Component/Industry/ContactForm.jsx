@@ -70,7 +70,7 @@ const ContactForm = () => {
   return (
     <>
       {isModalOpen && (
-        <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 mt-10 z-[9999] bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white max-w-3xl w-full rounded-lg p-6 shadow-lg relative animate-fade-in">
             {/* Close Button */}
             <button
@@ -235,13 +235,12 @@ const ContactForm = () => {
                     />
                   </div>
                   {errors.phone && (
-                    <p className="text-red-500 text-sm">{errors.phone}</p>
+                    <p className="text-red-500 text-sm">{errors?.phone}</p>
                   )}
                 </div>
-
                 <div className="text-center">
                   <button
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                    className="bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 "
                     type="submit"
                   >
                     Send

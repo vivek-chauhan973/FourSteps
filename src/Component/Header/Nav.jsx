@@ -97,7 +97,7 @@ const Nav = () => {
                 </li> */}
                 <li className="relative  inline-block">
                   <Link
-                    href="/contact/contact"
+                    href="/contact"
                     onClick={() => handleLinkClick("/contact")}
                     className={`relative inline-block text-base md:hidden lg:block  font-medium px-3 py-2 ${
                       activeLink === "/contact"

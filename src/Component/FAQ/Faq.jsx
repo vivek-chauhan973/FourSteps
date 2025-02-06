@@ -150,7 +150,7 @@ const IndustryFaq = () => {
   ];
 
   return (
-    <div className=" bg-white">
+    <div className=" bg-background">
       <div className=" md:py-10 py-5 container-wrapper">
         {/* section 1 */}
 

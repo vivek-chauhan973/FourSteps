@@ -75,7 +75,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="container mx-auto p-4 bg-[#ebf7ff]">
+      <div className=" p-4 bg-[#ebf7ff]">
         <div className="grid md:grid-cols-[0.5fr_1fr_0.5fr] sm:grid-cols-[1fr_1fr] gap-4">
           <div className="md:space-y-8 space-y-4 md:px-5 pt-10">
             {/* Section 1 */}
@@ -182,7 +182,7 @@ const Contact = () => {
 
                 <div className="flex items-center  pt-5 justify-center">
                   <button
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2"
+                    className="bg-primary   text-white font-bold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 "
                     type="button"
                   >
                     Send
@@ -193,7 +193,7 @@ const Contact = () => {
           </div>
           <div className=" ">
             <div className=" px-5 pb-3 md:pt-10">
-              <h3 className="text-base font-semibold md:mb-2 md:mb-4 mb-2">
+              <h3 className="text-base font-semibold md:mb-2  mb-2">
                 Our contacts
               </h3>
 

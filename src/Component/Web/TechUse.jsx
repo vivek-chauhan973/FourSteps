@@ -41,7 +41,7 @@ const TechUse = () => {
       <div className=" py-10">
         <div
           data-aos="fade-up"
-          className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 cursor-pointer md:px-16"
+          className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  cursor-pointer"
         >
           {data?.length > 0 &&
             data?.map((item, i) => (
