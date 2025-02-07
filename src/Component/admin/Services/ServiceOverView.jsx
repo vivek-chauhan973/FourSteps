@@ -53,9 +53,9 @@ const ServiceOverView = ({ setActiveTab, blogData }) => {
       setSolutionItem(data || []);
     });
     if (blogData) {
-      setHeading(blogData?.solution?.heading || "");
+      setHeading(blogData?.overview?.heading || "");
       setMainEditorHtmlDescription(
-        blogData?.solution?.mainEditorHtmlDescription || ""
+        blogData?.overview?.mainEditorHtmlDescription || ""
       );
     }
   }, [blogData]);

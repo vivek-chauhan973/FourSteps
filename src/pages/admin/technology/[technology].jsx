@@ -202,7 +202,7 @@ export default function CreateWebinar() {
           <TechnologyFaq blogData={blogData} setActiveTab={setActiveTab} />
         </div>
         <div
-          className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
+          className={`tab-content ${activeTab === "Tab9" ? "block" : "hidden"}`}
         >
           <TechnologyOverview blogData={blogData} setActiveTab={setActiveTab} />
         </div>
