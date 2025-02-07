@@ -7,6 +7,7 @@ import "./MasterService";
 import "./Services/InSolution";
 import "./solution/solution";
 import "./success/success";
+import "./SolutionOverview/ServiceOverview";
 const ServiceHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -65,6 +66,10 @@ const ServiceHeroSchema = new mongoose.Schema({
   faq:{
     type: mongoose.Schema.Types.ObjectId,
     ref: "ServiceFaq",
+  },
+  overview:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ServiceOverview",
   },
 });
 const ServiceHero =

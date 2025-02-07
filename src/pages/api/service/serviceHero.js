@@ -14,12 +14,15 @@ import SubServiceSolution from "@/models/admin/ServicesModel/solution/solutionIt
 import ServiceSolution from "@/models/admin/ServicesModel/solution/solution";
 import ServiceFaq from "@/models/admin/ServicesModel/Faq/IndustryFaq";
 import ServiceBenefits from "@/models/admin/ServicesModel/Benefits/Benefits";
+import ServiceOverviewItem from "@/models/admin/ServicesModel/SolutionOverview/ServiceOverviewItem";
+import ServiceOverview from "@/models/admin/ServicesModel/SolutionOverview/ServiceOverview";
 const uploadDirectories = {
   heroSection: "./public/uploads/service/serviceHero",
   success: "./public/uploads/service/servicesuccess",
   product: "./public/uploads/service/serviceProducts",
   service: "./public/uploads/service/serviceServices",
   solution: "./public/uploads/service/serviceSolution",
+  overview:"./public/uploads/service/serviceOvervies"
 };
 const uploadDirectory = "./public/uploads/service/serviceHero";
 if (!fs.existsSync(uploadDirectory))
@@ -87,8 +90,13 @@ export default async function handler(req, res) {
         .populate({ path: "solution", populate: { path: "solutionItem" } })
         .populate({ path: "success", populate: { path: "successItem" } })
         .populate({ path: "product", populate: { path: "productItem" } })
-        .populate({ path: "service", populate: { path: "serviceItem" } });
-
+        .populate({ path: "service", populate: { path: "serviceItem" } })
+        .populate({
+          path: "overview",
+          populate: {
+            path: "overviewItem",
+          },
+        })
       if (!data) {
         return res.status(404).json({ message: "Item not found!" });
       }
@@ -116,6 +124,13 @@ export default async function handler(req, res) {
           await SubServiceProduct.findByIdAndDelete(item._id);
         }
         await ServiceProduct.findByIdAndDelete(data.product._id);
+      }
+      if (data?.overview) {
+        for (const item of data.overview?.overviewItem || []) {
+          deleteFile(path.join(uploadDirectories.overview, item.filename));
+          await ServiceOverviewItem.findByIdAndDelete(item._id);
+        }
+        await ServiceOverview.findByIdAndDelete(data.overview._id);
       }
 
       if (data?.service) {
