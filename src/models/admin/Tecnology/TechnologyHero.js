@@ -7,6 +7,7 @@ import "./Services/InSolution";
 import "./Benefits/Benefits";
 import "./Faq/IndustryFaq";
 import "./TechnologyMaster";
+import "./TechnologyOverview/TechnologyOverview";
 const IndustrySchema = new mongoose.Schema(
   {
     technologyName: {
@@ -41,11 +42,6 @@ const IndustrySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Why4StepsTech",
     },
-    // technologyType:{
-    //    type:mongoose.Schema.Types.ObjectId,
-    //   ref:"TechnologyMaster"
-    // }
-    // ,
     success: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TechSuccess",
@@ -69,6 +65,10 @@ const IndustrySchema = new mongoose.Schema(
     faq: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TechFaq",
+    },
+    overview: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TechnologyOverview",
     },
   },
   { timestamps: true }

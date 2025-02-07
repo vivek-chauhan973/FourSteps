@@ -14,6 +14,8 @@ import SubTechnologySolution from "@/models/admin/Tecnology/solution1/IndustrySo
 import TechSolution from "@/models/admin/Tecnology/solution1/InSolution";
 import TechFaq from "@/models/admin/Tecnology/Faq/IndustryFaq";
 import TechBenefits from "@/models/admin/Tecnology/Benefits/Benefits";
+import TechnologyOverviewItem from "@/models/admin/Tecnology/TechnologyOverview/TechnologyOverviewItem";
+import TechnologyOverview from "@/models/admin/Tecnology/TechnologyOverview/TechnologyOverview";
 
 // Define upload directories
 const uploadDirectories = {
@@ -22,6 +24,7 @@ const uploadDirectories = {
   product: "./public/uploads/technology/technologyProducts",
   service: "./public/uploads/technology/technologyServices",
   solution: "./public/uploads/technology/technologysolution",
+  overview: "./public/uploads/technology/technologysolution",
 };
 
 // Ensure upload directories exist
@@ -86,7 +89,13 @@ const apiRoute = async (req, res) => {
         .populate({ path: "solution", populate: { path: "solutionItem" } })
         .populate({ path: "success", populate: { path: "successItem" } })
         .populate({ path: "product", populate: { path: "productItem" } })
-        .populate({ path: "service", populate: { path: "serviceItem" } });
+        .populate({ path: "service", populate: { path: "serviceItem" } })
+        .populate({
+          path: "overview",
+          populate: {
+            path: "overviewItem",
+          },
+        });
 
       if (!data) {
         return res.status(404).json({ message: "Item not found!" });
@@ -113,6 +122,13 @@ const apiRoute = async (req, res) => {
           await SubTechnologyProduct.findByIdAndDelete(item._id);
         }
         await TechProduct.findByIdAndDelete(data.product._id);
+      }
+      if (data?.overview) {
+        for (const item of data.overview?.overviewItem || []) {
+          deleteFile(path.join(uploadDirectories.overview, item.filename));
+          await TechnologyOverviewItem.findByIdAndDelete(item._id);
+        }
+        await TechnologyOverview.findByIdAndDelete(data.overview._id);
       }
 
       if (data?.service) {

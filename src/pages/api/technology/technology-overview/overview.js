@@ -1,36 +1,36 @@
+import TechnologyHero from "@/models/admin/Tecnology/TechnologyHero";
+import TechnologyOverview from "@/models/admin/Tecnology/TechnologyOverview/TechnologyOverview";
 
-import SolutionHero from "@/models/admin/solution/solutionHero";
-import SolutionOverview from "@/models/admin/solution/SolutionOverview/SolutionOverview";
 const successApi = async (req, res) => {
-  const { solution } = req.query;
+  const { technology } = req.query;
   try {
     const { heading,mainEditorHtmlDescription,overviewItem } = req.body;
 // console.log("req------------------body------> ",req.body)
-    const data = await SolutionOverview.findOne({ solution });
+    const data = await TechnologyOverview.findOne({ technology });
     let resData;
     if (!data) {
-      resData = await SolutionOverview.create({
+      resData = await TechnologyOverview.create({
         heading:heading,
         mainEditorHtmlDescription:mainEditorHtmlDescription,
         overviewItem,
-        solution,
+        technology,
       });
       if (!resData) {
         return res.status(300).json({ message: "something went wrong" });
       }
-      await SolutionHero.findOneAndUpdate({_id:solution},{$set:{overview:resData?._id}})
+      await TechnologyHero.findOneAndUpdate({_id:technology},{$set:{overview:resData?._id}})
       return res
         .status(201)
         .json({ message: "solution data saved successfully ", resData });
     }
-    resData = await SolutionOverview.findOneAndReplace(
-      { solution },
-      { heading, mainEditorHtmlDescription, overviewItem, solution }
+    resData = await TechnologyOverview.findOneAndReplace(
+      { technology },
+      { heading, mainEditorHtmlDescription, overviewItem, technology }
     );
     if (!resData) {
       return res.status(300).json({ message: "something went wrong" });
     }
-    await SolutionHero.findOneAndUpdate({_id:solution},{$set:{overview:resData?._id}})
+    await TechnologyHero.findOneAndUpdate({_id:technology},{$set:{overview:resData?._id}})
     return res
       .status(201)
       .json({ message: "solution data updated successfully ", resData });

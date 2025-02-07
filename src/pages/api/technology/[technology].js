@@ -104,6 +104,12 @@ const apiRoute = async (req, res) => {
           populate: {
             path: "serviceItem",
           },
+        }).
+        populate({
+          path: "overview",
+          populate: {
+            path: "overviewItem",
+          },
         });
       return res.status(200).json({ data: files });
     } catch (error) {

@@ -34,6 +34,12 @@ const apiRoute = async (req, res) => {
         populate: {
           path: "serviceItem",
         },
+      })
+      .populate({
+        path: "overview",
+        populate: {
+          path: "overviewItem",
+        },
       });
 
     if (!file) {

@@ -123,6 +123,10 @@ const TechnologyOverview = ({ setActiveTab, blogData }) => {
       alert("Please upload file and write title");
       return;
     }
+    if(blogData?._id){
+      alert("id is required");
+      return;
+    }
 
     if (file && title) {
       formData.append("file", file);
@@ -149,18 +153,18 @@ const TechnologyOverview = ({ setActiveTab, blogData }) => {
         setPreview(null);
         alert(
           `File ${
-            blogData?.success?.length > 0 ? "updated" : "uploaded"
+            blogData?.overview?.length > 0 ? "updated" : "uploaded"
           } successfully`
         );
       } else {
         alert(
-          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
+          `File ${blogData?.overview?.length > 0 ? "update" : "upload"} failed`
         );
       }
     } catch (error) {
       console.error(
         `Error ${
-          blogData?.success?.length > 0 ? "updating" : "uploading"
+          blogData?.overview?.length > 0 ? "updating" : "uploading"
         } file:`,
         error
       );

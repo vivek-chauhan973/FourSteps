@@ -2,8 +2,8 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 import dbConnect from "@/utils/db";
-import SolutionOverviewItem from "@/models/admin/solution/SolutionOverview/SolutionOverviewItem";
 import mongoose from "mongoose";
+import TechnologyOverviewItem from "@/models/admin/Tecnology/TechnologyOverview/TechnologyOverviewItem";
 
 const uploadDirectory = "./public/uploads/technology/TechnologyOverview";
 
@@ -55,7 +55,7 @@ const apiRoute = async (req, res) => {
     }
 
     try {
-      const file = await SolutionOverviewItem.findById(id);
+      const file = await TechnologyOverviewItem.findById(id);
       if (!file) {
         return res.status(404).json({ error: "File not found" });
       }
@@ -72,7 +72,7 @@ const apiRoute = async (req, res) => {
       }
 
       // Update document in the database
-      const updatedFile = await SolutionOverviewItem.findOneAndUpdate(
+      const updatedFile = await TechnologyOverviewItem.findOneAndUpdate(
         { _id: id },
         {
           $set: {

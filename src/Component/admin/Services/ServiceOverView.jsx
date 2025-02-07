@@ -149,18 +149,18 @@ const ServiceOverView = ({ setActiveTab, blogData }) => {
         setPreview(null);
         alert(
           `File ${
-            blogData?.success?.length > 0 ? "updated" : "uploaded"
+            blogData?.overview?.length > 0 ? "updated" : "uploaded"
           } successfully`
         );
       } else {
         alert(
-          `File ${blogData?.success?.length > 0 ? "update" : "upload"} failed`
+          `File ${blogData?.overview?.length > 0 ? "update" : "upload"} failed`
         );
       }
     } catch (error) {
       console.error(
         `Error ${
-          blogData?.success?.length > 0 ? "updating" : "uploading"
+          blogData?.overview?.length > 0 ? "updating" : "uploading"
         } file:`,
         error
       );
