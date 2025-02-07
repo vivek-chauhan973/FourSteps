@@ -9,6 +9,7 @@ import TechnologyProducts from "@/Component/admin/Technology/TechnologyProducts"
 import TechnologyServices from "@/Component/admin/Technology/TechnologyServices";
 import TechnologyBenefits from "@/Component/admin/Technology/TechnologyBenefits";
 import TechnologyFaq from "@/Component/admin/Technology/TechnologyFaq";
+import TechnologyOverview from "@/Component/admin/Technology/TechnologyOverview";
 const postDataAccordingId = async (id) => {
   return await (await fetch(`/api/technology/${id}`)).json();
 };
@@ -34,6 +35,8 @@ export default function CreateWebinar() {
       setActiveTab("Tab7");
     } else if (activeTab === "Tab7") {
       setActiveTab("Tab8");
+    } else if (activeTab === "Tab8") {
+      setActiveTab("Tab9");
     }
   }, []);
   useEffect(() => {
@@ -131,6 +134,16 @@ export default function CreateWebinar() {
             >
               Faq Section
             </button>
+            <button
+              onClick={() => setActiveTab("Tab9")}
+              className={`${
+                activeTab === "Tab9"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              TechnologyOverview
+            </button>
           </>
         </div>
       </div>
@@ -187,6 +200,11 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
         >
           <TechnologyFaq blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
+        >
+          <TechnologyOverview blogData={blogData} setActiveTab={setActiveTab} />
         </div>
       </>
     </AdminLayout>

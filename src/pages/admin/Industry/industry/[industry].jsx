@@ -9,6 +9,7 @@ import IndustryProducts from "@/Component/admin/Industry/IndustryProducts";
 import IndusServices from "@/Component/admin/Industry/IndusServices";
 import IndusBenefits from "@/Component/admin/Industry/IndusBenefits";
 import IndusFaq from "@/Component/admin/Industry/IndusFaq";
+import IndustryOverview from "@/Component/admin/Industry/IndustryOverview";
 const postDataAccordingId = async (id) => {
   return await (await fetch(`/api/industry/${id}`)).json();
 };
@@ -32,6 +33,8 @@ export default function CreateWebinar() {
       setActiveTab("Tab7");
     } else if (activeTab === "Tab7") {
       setActiveTab("Tab8");
+    } else if (activeTab === "Tab8") {
+      setActiveTab("Tab9");
     }
   }, []);
   useEffect(() => {
@@ -129,6 +132,16 @@ export default function CreateWebinar() {
             >
               Faq Section
             </button>
+            <button
+              onClick={() => setActiveTab("Tab9")}
+              className={`${
+                activeTab === "Tab9"
+                  ? "border-b-2 scale-105 border-black text-black"
+                  : "border-black text-slate-500"
+              } px-3 py-1`}
+            >
+              IndustryOverview
+            </button>
           </>
         </div>
       </div>
@@ -176,6 +189,11 @@ export default function CreateWebinar() {
           className={`tab-content ${activeTab === "Tab8" ? "block" : "hidden"}`}
         >
           <IndusFaq blogData={blogData} setActiveTab={setActiveTab} />
+        </div>
+        <div
+          className={`tab-content ${activeTab === "Tab9" ? "block" : "hidden"}`}
+        >
+          <IndustryOverview blogData={blogData} setActiveTab={setActiveTab} />
         </div>
       </>
     </AdminLayout>
