@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   faWhatsapp,
   faFacebook,
@@ -24,12 +25,46 @@ import { Footer } from "@/Component/Footer/Footer";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Nav from "@/Component/Header/Nav";
 import Image from "next/image";
+import Head from "next/head";
 
 const Contact = () => {
   const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.910862140821!2d77.51411137505966!3d28.48223097574713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb07a0270cf1%3A0xef3dde7c7ebbe43e!2sFour%20Steps%20Digital%20Consulting%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1723887840924!5m2!1sen!2sin`;
 
   return (
     <>
+      <Head>
+        {/* Basic Meta Tags */}
+        <title>Contact Us | Four Steps Digital Consulting Pvt Ltd</title>
+        <meta
+          name="description"
+          content="Are you looking for a digital consulting agency in Delhi NCR? Four Steps Digital offers affordable digital marketing and Business Automation consulting."
+        />
+        <meta
+          name="keywords"
+          content="Contact, Support, Next.js App, Get in Touch"
+        />
+        <meta name="author" content="My Awesome Next.js App Team" />
+        <meta
+          property="og:title"
+          content="Contact Us | Four Steps Digital Consulting Pvt Ltd"
+        />
+        <meta
+          property="og:description"
+          content="We'd love to hear from you. Reach out for support or collaboration!"
+        />
+        <meta
+          property="og:description"
+          content="Are you looking for a digital consulting agency in Delhi NCR? Four Steps Digital offers affordable digital marketing and Business Automation consulting."
+        />
+        <meta
+          property="og:url"
+          content="https://4stepsdigital.com/contact-us/"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Open Graph Meta Tags */}
+      </Head>
+
       {/* navbar */}
       <div>
         <Nav />

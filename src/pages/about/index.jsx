@@ -4,7 +4,7 @@ import Team from "@/Component/Team/Team";
 import Testimonial from "@/Component/Testimonial/Testimonial";
 import Image from "next/image";
 import Nav from "@/Component/Header/Nav";
-
+import Head from "next/head";
 const About = () => {
   const data = [
     {
@@ -51,6 +51,30 @@ const About = () => {
 
   return (
     <>
+      <Head>
+        {/* Basic Meta Tags */}
+        <title>About Us |4stepsdigital</title>
+        <meta
+          name="description"
+          content="Transform Your Business Into A Digitally-Driven Organization .We are one of the best digital consulting agency in India."
+        ></meta>
+
+        <meta
+          name="keywords"
+          content="About Us, Digital consulting, Company Info, Team"
+        />
+        <meta name="author" content="4steps digital team" />
+
+        {/* Open Graph Meta Tags */}
+
+        <meta
+          property="og:description"
+          content="Discover who we are and what drives us to create amazing experiences."
+        />
+        <meta property="og:url" content="https://4stepsdigital.com/about" />
+        <meta property="og:type" content="website" />
+      </Head>
+
       <div className=" sticky w-full z-[19] top-0">
         <Nav />
       </div>
