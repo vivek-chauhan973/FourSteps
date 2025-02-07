@@ -87,6 +87,7 @@ const apiRoute = async (req, res) => {
     try {
       const files = await SolutionHero.findOne({ _id: solution })
         .populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } })
+        .populate({ path: "overview", populate: { path: "overviewItem" } })
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);

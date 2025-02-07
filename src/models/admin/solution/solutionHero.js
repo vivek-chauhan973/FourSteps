@@ -7,6 +7,7 @@ import "./Product/InSolution";
 import "./Benefits/Benefits";
 import "./Faq/IndustryFaq";
 import "./solutionMaster";
+import "./SolutionOverview/SolutionOverview";
 const SolutionHeroSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -66,6 +67,10 @@ const SolutionHeroSchema = new mongoose.Schema({
   faq: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "SolutionFaq",
+  },
+  overview: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "SolutionOverview",
   },
 });
 const SolutionHero =

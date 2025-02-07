@@ -14,12 +14,15 @@ import SolutionSolutionItem from "@/models/admin/solution/solution/solutionItem"
 import SolutionSolution from "@/models/admin/solution/solution/solution";
 import SolutionBenefits from "@/models/admin/solution/Benefits/Benefits";
 import SolutionFaq from "@/models/admin/solution/Faq/IndustryFaq";
+import SolutionOverviewItem from "@/models/admin/solution/SolutionOverview/SolutionOverviewItem";
+import SolutionOverview from "@/models/admin/solution/SolutionOverview/SolutionOverview";
 const uploadDirectories = {
   heroSection: "./public/uploads/solution/solutionHero",
   success: "./public/uploads/solution/industrysuccess",
   product: "./public/uploads/solution/SolutionProducts",
   service: "./public/uploads/solution/SolutionServices",
   solution: "./public/uploads/solution/SolutionSolution",
+  overview:"./public/uploads/solution/SolutionOverview"
 };
 
 const uploadDirectory = "./public/uploads/solution/solutionHero";
@@ -88,8 +91,8 @@ export default async function handler(req, res) {
         .populate({ path: "solution", populate: { path: "solutionItem" } })
         .populate({ path: "success", populate: { path: "successItem" } })
         .populate({ path: "product", populate: { path: "productItem" } })
-        .populate({ path: "service", populate: { path: "serviceItem" } });
-
+        .populate({ path: "service", populate: { path: "serviceItem" } })
+        .populate({ path: "overview", populate: { path: "overviewItem" } });
       if (!data) {
         return res.status(404).json({ message: "Item not found!" });
       }
@@ -116,6 +119,13 @@ export default async function handler(req, res) {
           await SolutionSuccessItem.findByIdAndDelete(item._id);
         }
         await SolutionSuccess.findByIdAndDelete(data.success._id);
+      }
+      if (data?.overview) {
+        for (const item of data.overview?.overviewItem || []) {
+          deleteFile(path.join(uploadDirectories.overview, item.filename));
+          await SolutionOverviewItem.findByIdAndDelete(item._id);
+        }
+        await SolutionOverview.findByIdAndDelete(data.overview._id);
       }
 
       if (data?.product) {

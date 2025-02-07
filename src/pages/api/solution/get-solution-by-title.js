@@ -28,7 +28,7 @@ const apiRoute = async (req, res) => {
         populate: {
           path: "serviceItem",
         },
-      });
+      }).populate({ path: "overview", populate: { path: "overviewItem" } });
     if (!files) {
       return res.status(400).json({ message: "Solution is not found" });
     }
