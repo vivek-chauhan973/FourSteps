@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-const miniSchema=new mongoose.Schema({
-  content:{
-    type:String
-  }
-})
+const miniSchema = new mongoose.Schema({
+  content: {
+    type: String,
+  },
+});
 const IndustrySchema = new mongoose.Schema(
   {
     title: {
@@ -16,7 +16,7 @@ const IndustrySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    editorHtmlDescription:[miniSchema],
+    editorHtmlDescription: [miniSchema],
     path: {
       type: String,
       required: true,

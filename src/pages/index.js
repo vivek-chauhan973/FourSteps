@@ -5,15 +5,24 @@ const Index = () => {
   return (
     <div>
       <Head>
-        <title>4steps digital consulting</title>
+        <title>
+          Digital Consulting Agency in India | Four Steps Digital Consulting
+        </title>
+
         <meta
           name="description"
-          content="Welcome to the home page of my Next.js application."
+          content="Transform Your Business Into A Digitally-Driven Organization .We are one of the best digital consulting agency in India."
+        />
+        <meta property="og:url" content="https://4stepsdigital.com/" />
+        <meta
+          property="og:title"
+          content="Digital Consulting Agency in India | Four Steps Digital Consulting"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
-      <Home />
+      <div>
+        <Home />
+      </div>
     </div>
   );
 };
