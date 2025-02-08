@@ -32,13 +32,18 @@ const TableOfServices = ({ serviceName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
-            <OverViewService />
+            {/* OverView section here */}
+            <div>
+              {serviceName?.overview && (
+                <OverViewService overview={serviceName?.overview} />
+              )}
+            </div>
 
             {/* Industry About section */}
             <div>
-              {serviceName?.contentsummary && (
+              {/* {serviceName?.contentsummary && (
                 <ServiceAbout about={serviceName?.contentsummary} />
-              )}
+              )} */}
             </div>
             {/* Reliable partners  */}
             <div
