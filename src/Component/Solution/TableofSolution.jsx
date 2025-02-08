@@ -33,9 +33,13 @@ const TableofSolution = ({ solutionName }) => {
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1 bg-white">
+            {/* overview item here to present ---- */}
             <div>
-              <OverViewSolution />
+              {solutionName?.overview && (
+                <OverViewSolution overview={solutionName?.overview} />
+              )}
             </div>
+
             {/* Solution About section */}
             <div>
               {solutionName?.contentsummary && (
@@ -61,7 +65,6 @@ const TableofSolution = ({ solutionName }) => {
                 )}
               </div>
             </div>
-
             {/* Success story section */}
             <div id="agenda" className="flex flex-col justify-between  mb-3">
               <div>
@@ -84,7 +87,6 @@ const TableofSolution = ({ solutionName }) => {
                 )}
               </div>
             </div>
-
             {/* Solution we deliver Section */}
             <div
               id="speakerSection"
@@ -101,7 +103,6 @@ const TableofSolution = ({ solutionName }) => {
                 )}
               </div>
             </div>
-
             {/* Our Services Section */}
             <div
               id="ourServices"
@@ -117,7 +118,6 @@ const TableofSolution = ({ solutionName }) => {
                 )}
               </div>
             </div>
-
             {/* Product Section */}
             <div
               id="product"
@@ -133,7 +133,6 @@ const TableofSolution = ({ solutionName }) => {
                 <ProductSolution productsolution={solutionName?.product} />
               )}
             </div>
-
             {/* Approaches Section */}
             <div
               id="approaches"
@@ -144,7 +143,6 @@ const TableofSolution = ({ solutionName }) => {
                 <ApproacheIndustry />
               </div>
             </div>
-
             {/* Benefits Section */}
             <div
               id="benefits"

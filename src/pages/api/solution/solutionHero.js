@@ -22,7 +22,7 @@ const uploadDirectories = {
   product: "./public/uploads/solution/SolutionProducts",
   service: "./public/uploads/solution/SolutionServices",
   solution: "./public/uploads/solution/SolutionSolution",
-  overview:"./public/uploads/solution/SolutionOverview"
+  overview: "./public/uploads/solution/SolutionOverview",
 };
 
 const uploadDirectory = "./public/uploads/solution/solutionHero";
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
           path: filePath,
           contentsummary,
         });
-        res.status(201).json({data:solution});
+        res.status(201).json({ data: solution });
       } catch (error) {
         res
           .status(500)
@@ -67,9 +67,14 @@ export default async function handler(req, res) {
     });
     // not workig the GET METhOD HERE
   } else if (req.method === "GET") {
-
     try {
-      const solution = await SolutionHero.find({}).populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate("Why4StepS").populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } });
+      const solution = await SolutionHero.find({})
+        .populate("Why4StepS benefit faq")
+        .populate({ path: "success", populate: { path: "successItem" } })
+        .populate("Why4StepS")
+        .populate({ path: "solution", populate: { path: "solutionItem" } })
+        .populate({ path: "product", populate: { path: "productItem" } })
+        .populate({ path: "service", populate: { path: "serviceItem" } });
       if (!solution) {
         return res.status(404).json({ error: "Solution not found" });
       }
@@ -77,8 +82,7 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(500).json({ error: "Database error", details: error.message });
     }
-  }
-  else if (req.method === "DELETE") {
+  } else if (req.method === "DELETE") {
     const { id } = req.query;
 
     if (!id) {
@@ -105,7 +109,8 @@ export default async function handler(req, res) {
       };
 
       // Delete associated documents and files
-      if (data?.Why4StepS) await Why4StepSolution.findByIdAndDelete(data.Why4StepS._id);
+      if (data?.Why4StepS)
+        await Why4StepSolution.findByIdAndDelete(data.Why4StepS._id);
 
       // if (data?.success) {
       //   for (const item of data?.success) {
@@ -153,7 +158,8 @@ export default async function handler(req, res) {
       }
 
       if (data?.faq) await SolutionFaq.findByIdAndDelete(data.faq._id);
-      if (data?.benefit) await SolutionBenefits.findByIdAndDelete(data.benefit._id);
+      if (data?.benefit)
+        await SolutionBenefits.findByIdAndDelete(data.benefit._id);
 
       // Delete main file and document
       deleteFile(path.join(uploadDirectories.heroSection, data.filename));
@@ -165,7 +171,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ message: "Internal Server Error", error });
     }
   } else {
-    res.setHeader("Allow", ["POST", "DELETE","GET"]);
+    res.setHeader("Allow", ["POST", "DELETE", "GET"]);
     res.status(405).json({ error: "Method not allowed" });
   }
 }

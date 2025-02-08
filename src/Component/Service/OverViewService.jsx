@@ -155,7 +155,7 @@ const OverViewService = ({ overview }) => {
           <div className="flex flex-col md:flex-row">
             {/* Sidebar Menu */}
             <div className="w-full md:w-1/3 bg-blue-50 px-4 py-3">
-              {overview.overviewItem?.map((service) => (
+              {overview?.overviewItem?.map((service) => (
                 <div
                   key={service?._id}
                   className={`md:py-3 md:px-4 py-2 px-3 md:text-xl text-lg font-semibold cursor-pointer hover:text-blue-500 transition ${
@@ -177,10 +177,18 @@ const OverViewService = ({ overview }) => {
               </h2>
 
               <div className="flex w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl">
+                {/* <Image
+                  src={activeService?.path}
+                  alt="overviewItemImage"
+                  className="w-full h-auto max-h-64 sm:max-h-72 md:max-h-80 lg:max-h-[250px] object-cover mb-5 rounded-lg shadow-md"
+                  height={500}
+                  width={500}
+                /> */}
                 <Image
                   src={activeService?.path}
                   alt="overviewItemImage"
-                  className="w-full h-auto max-h-64 sm:max-h-80 md:max-h-96 lg:max-h-[300px] object-cover mb-5 rounded-lg shadow-md"
+                  className="w-full object-cover mb-5 rounded-lg shadow-md 
+                             h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80"
                   height={500}
                   width={500}
                 />

@@ -26,7 +26,7 @@ const SolutionSection = () => {
     }
   }, [solution]);
   console.log(
-    "here is all the data o solution section----solution>",
+    "here is all the data o solution section---->",
     solutionName
   );
 
