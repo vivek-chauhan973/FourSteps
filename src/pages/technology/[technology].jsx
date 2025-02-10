@@ -27,7 +27,7 @@ const Technology = () => {
       });
     }
   }, [technology]);
-  // console.log("here is all the data final technology ---->", technologyName);
+  console.log("here is all the data final technology ---->", technologyName);
   return (
     <>
       <div>

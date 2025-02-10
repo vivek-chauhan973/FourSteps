@@ -85,7 +85,7 @@ const apiRoute = async (req, res) => {
     // Handle GET request
     try {
       const files = await TechnologyHero.findOne({ _id: technology })
-        .populate("why4step benefit faq technologyType")
+        .populate("why4step benefit faq")
         .populate({
           path: "solution",
           populate: {

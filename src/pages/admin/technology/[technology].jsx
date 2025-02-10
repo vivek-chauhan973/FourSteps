@@ -43,9 +43,11 @@ export default function CreateWebinar() {
     if (technology) {
       postDataAccordingId(technology).then((res) => {
         setBlogData(res?.data || null);
+
       });
     }
   }, [technology]);
+  console.log("blog data is as ",blogData)
   return (
     <AdminLayout>
       <div className="flex items-center gap-5 text-primary pb-3">

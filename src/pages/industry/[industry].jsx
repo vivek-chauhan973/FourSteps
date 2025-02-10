@@ -29,7 +29,7 @@ const Travel = () => {
     }
   }, [industry]);
 
-  // console.log("itineary all data one by one industry ---==> ", industryName);
+  console.log("itineary all data one by one industry ---==> ", industryName);
   return (
     <div>
       {/* headres */}
