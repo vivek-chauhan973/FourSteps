@@ -38,7 +38,7 @@ const TechUse = () => {
         </h2>
       </div>
 
-      <div className=" py-10">
+      <div className="  md:px-8 py-5  lg:px-10 px-7">
         <div
           data-aos="fade-up"
           className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8  cursor-pointer"
@@ -62,7 +62,7 @@ const TechUse = () => {
                     />
                   </div>
                   <div className="px-4 pb-4">
-                    <h3 className="text-lg font-semibold text-gray-800 truncate">
+                    <h3 className=" md:text-lg text-base  font-semibold text-gray-800 truncate">
                       {item?.title}
                     </h3>
                     <p className="text-sm text-gray-600 mt-1 line-clamp-1">

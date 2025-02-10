@@ -932,3 +932,25 @@ ul {
     display: none;
   }
 }
+
+
+
+
+/* Custom scrollbar styles which is used in the  all tabale of content Overview section */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  /* Adjust the width to make it thin */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0D417B;
+  /* background-color: rgba(100, 100, 100, 0.5); */
+  /* Customize the color */
+  border-radius: 10px;
+  /* Round the edges */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  /* Make the track transparent */
+}

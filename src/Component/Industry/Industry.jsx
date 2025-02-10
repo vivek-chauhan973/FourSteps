@@ -76,15 +76,14 @@ const Industry = () => {
                 <span className="absolute right-3 top-2 transform rotate-[-50deg] group-hover:rotate-0 transition-transform duration-300">
                   <FontAwesomeIcon
                     icon={faArrowRight}
-                    className="text-heading text-lg"
+                    className="text-heading  text-lg"
                   />
                 </span>
                 {/* Card Title */}
-                <h3 className="text-lg font-medium text-center text-gray-700 group-hover:text-heading">
+                <h3 className=" md:text-lg text-sm py-1 font-medium text-center text-gray-700 group-hover:text-heading">
                   {item?.industryName}
                 </h3>
               </Link>
-
               {/* Hover Bottom Bar */}
               <div className="absolute bottom-0 left-0 w-0 h-[4px] bg-heading group-hover:w-full transition-all duration-500"></div>
             </div>

@@ -147,7 +147,8 @@ const OverViewSolution = ({ overview }) => {
             </div>
 
             {/* Content Area */}
-            <div className="w-full lg:h-[95vh]  md:h-[60vh] overflow-hidden md:flex-1 px-3 md:px-16 md:py-10 py-8">
+            <div className="w-full lg:h-[95vh] md:h-[60vh] overflow-y-scroll md:flex-1 px-3 md:px-16 md:py-10 py-8 custom-scrollbar">
+              {/* <div className="w-full lg:h-[95vh]  md:h-[60vh] overflow-hidden md:flex-1 px-3 md:px-16 md:py-10 py-8"> */}
               <h2 className="md:text-2xl text-lg text-heading font-semibold mb-3">
                 {activeService?.title}
               </h2>

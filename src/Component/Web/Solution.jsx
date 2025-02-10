@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     handleDataFetch();
   }, []);
-  if (loading) return <p className=" text-center">Loading...</p>; 
+  if (loading) return <p className=" text-center">Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
     // [#BFECFF]
@@ -53,7 +53,7 @@ const App = () => {
                   key={index}
                   className="group flex items-center justify-between bg-white rounded-lg shadow p-4 cursor-pointer transition-transform transform hover:scale-105"
                 >
-                  <span className="text-white bg-blue-800 px-3 py-2 rounded-full">
+                  <span className="text-white bg-blue-900 px-3 py-2 rounded-full">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="text-gray-800 font-medium text-center flex-1 ml-2">

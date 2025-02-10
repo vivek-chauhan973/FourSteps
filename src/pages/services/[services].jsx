@@ -42,7 +42,7 @@ const DyServices = () => {
       </div>
 
       {/* hero section */}
-      <div className=" bg-background md:mt-0 mt-10 shadow-lg py-16 px-6 md:px-12">
+      <div className=" bg-background md:mt-0 mt-10 shadow-lg py-16 px-4 ">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-col md:items-cente lg:flex-row ">
           {/* Left Content */}
           <div className=" lg:w-1/2 w-full lg:px-5 md:pb-5">
