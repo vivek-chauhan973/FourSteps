@@ -224,7 +224,11 @@ const ServiceOverView = ({ setActiveTab, blogData }) => {
   // console.log("blog data is here ----> ",blogData)
 
   const handleSave = async () => {
-    const data = { heading, mainEditorHtmlDescription, overviewItem:solutionItem };
+    const data = {
+      heading,
+      mainEditorHtmlDescription,
+      overviewItem: solutionItem,
+    };
     const res = await fetch(
       `/api/service/service-overview/overview?service=${blogData?._id}`,
       {
@@ -237,7 +241,7 @@ const ServiceOverView = ({ setActiveTab, blogData }) => {
     );
 
     if (res?.ok) {
-      setActiveTab("Tab5");
+      setActiveTab("Tab1");
       alert(
         blogData?._id
           ? "overview Data updated successfully"

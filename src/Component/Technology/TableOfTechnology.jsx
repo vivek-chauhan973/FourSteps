@@ -34,14 +34,17 @@ const TableOfTechnology = ({ technologyName }) => {
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1">
             <div>
-              <OverViewTechnology />
+              {technologyName?.overview && (
+                <OverViewTechnology overview={technologyName?.overview} />
+              )}
             </div>
+
             {/* Industry About section */}
-            <div>
+            {/* <div>
               {technologyName?.contentsummary && (
                 <TechAbout about={technologyName?.contentsummary} />
               )}
-            </div>
+            </div> */}
 
             {/* Reliable partners  */}
             <div

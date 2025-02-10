@@ -18,7 +18,6 @@ const getTechonology = async (title) => {
 const Technology = () => {
   const router = useRouter();
   const { technology } = router?.query;
-
   const [technologyName, setTechnologyName] = useState({});
   useEffect(() => {
     if (technology) {

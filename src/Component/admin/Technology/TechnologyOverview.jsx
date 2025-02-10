@@ -24,7 +24,7 @@ const fetchAllSuccessStories = async (id) => {
 };
 
 const TechnologyOverview = ({ setActiveTab, blogData }) => {
-  console.log("blog data of technology overview ------> ",blogData)
+  console.log("blog data of technology overview ------> ", blogData);
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState("");
@@ -124,7 +124,7 @@ const TechnologyOverview = ({ setActiveTab, blogData }) => {
       alert("Please upload file and write title");
       return;
     }
-    if(!blogData?._id){
+    if (!blogData?._id) {
       alert("id is required");
       return;
     }
@@ -229,7 +229,11 @@ const TechnologyOverview = ({ setActiveTab, blogData }) => {
   // console.log("blog data is here ----> ",blogData)
 
   const handleSave = async () => {
-    const data = { heading, mainEditorHtmlDescription, overviewItem:solutionItem };
+    const data = {
+      heading,
+      mainEditorHtmlDescription,
+      overviewItem: solutionItem,
+    };
     const res = await fetch(
       `/api/technology/technology-overview/overview?technology=${blogData?._id}`,
       {
@@ -242,7 +246,7 @@ const TechnologyOverview = ({ setActiveTab, blogData }) => {
     );
 
     if (res?.ok) {
-      setActiveTab("Tab5");
+      setActiveTab("Tab1");
       alert(
         blogData?._id
           ? "overview Data updated successfully"

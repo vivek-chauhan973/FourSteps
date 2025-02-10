@@ -241,7 +241,7 @@ const IndustryOverview = ({ setActiveTab, blogData }) => {
     );
 
     if (res?.ok) {
-      setActiveTab("Tab5");
+      setActiveTab("Tab1");
       alert(
         blogData?._id
           ? "overview Data updated successfully"

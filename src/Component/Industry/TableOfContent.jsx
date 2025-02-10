@@ -34,15 +34,17 @@ const TableOfContent = ({ industryName }) => {
           {/* Main Content */}
           <div className="px-5 grid grid-cols-1">
             <div>
-              <OverviewIndusrty />
+              {industryName?.overview && (
+                <OverviewIndusrty overview={industryName?.overview} />
+              )}
             </div>
 
             {/* Industry About section */}
-            <div>
+            {/* <div>
               {industryName?.contentsummary && (
                 <IndustryAbout about={industryName?.contentsummary} />
               )}
-            </div>
+            </div> */}
 
             {/* Reliable partners  */}
             <div
