@@ -14,6 +14,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login Data:", formData);
+    console.log("form data is ",formData)
   };
 
   return (
