@@ -79,11 +79,11 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute left-0 right-0 mt-2 bg-background   shadow-lg border  border-gray-100 z-50 md:mx-20 lg:mx-40">
-              <div className="flex max-w-7xl mx-auto">
+            <div className="absolute  left-28 right-0 mt-2 bg-background   shadow-lg border  border-gray-100 z-50 md:mx-20 lg:mx-40">
+              <div className="flex  max-w-7xl  mx-auto">
                 {/* Sidebar Menu */}
-                <div className="w-1/4 border-r pt-2">
-                  <h2 className="text-lg border-b py-2 pl-2 font-semibold">
+                <div className="w-1/4 border-r ">
+                  <h2 className="text-lg border-b bg-white hover:bg-background py-2 pl-2 font-semibold">
                     Services
                   </h2>
 

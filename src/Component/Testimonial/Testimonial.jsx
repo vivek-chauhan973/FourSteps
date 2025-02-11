@@ -96,7 +96,7 @@ const Trail = () => {
           style={{ backgroundImage }}
         >
           {/* Testimonials Section */}
-          <div className="flex flex-col py-5 items-center justify-center text-white mx-auto">
+          <div className="flex flex-col container py-5 items-center justify-center text-white mx-auto">
             {/* Section Title */}
             <h2 className="text-xl text-heading md:text-3xl font-bold tracking-wide mb-3">
               Our Testimonials

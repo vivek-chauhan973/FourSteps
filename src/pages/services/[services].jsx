@@ -42,12 +42,13 @@ const DyServices = () => {
       </div>
 
       {/* hero section */}
-      <div className=" bg-background md:mt-0 mt-10 shadow-lg py-16 px-4 ">
+      <div className=" bg-background   md:mt-0 mt-10 shadow-lg py-16 px-4 lg:px-0">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-col md:items-cente lg:flex-row ">
           {/* Left Content */}
           <div className=" lg:w-1/2 w-full lg:px-5 md:pb-5">
             <h1 className="text-2xl md:text-[30px] font-semibold text-heading leading-tight mb-4">
-              {serviceName?.title || "IT Solution for Oil & Gas Companies"}
+              {serviceName?.title ||
+                "This is Our Service Hero page title  Seciton "}
             </h1>
             <p className="text-sm md:text-base">
               {serviceName?.description ||

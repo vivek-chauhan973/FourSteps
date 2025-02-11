@@ -80,8 +80,8 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
         <div className="absolute left-[-10vw] w-[65vw] bg-background border">
           <div className="flex max-w-7xl mx-auto">
             {/* Sidebar Menu */}
-            <div className="w-1/4 border-r pt-2">
-              <h2 className="text-lg border-b py-2 pl-2 font-semibold">
+            <div className="w-1/4 border-r ">
+              <h2 className="text-lg border-b py-2 bg-white hover:bg-background pl-2 font-semibold">
                 Solutions
               </h2>
 

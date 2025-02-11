@@ -5,7 +5,6 @@ import Client from "./Client/Client";
 import Faq from "./FAQ/Faq";
 import Team from "./Team/Team";
 import ContactUs from "./Contact/ContactUs";
-// import Service from "./Service/Service";
 import { Footer } from "./Footer/Footer";
 import Industry from "./Industry/Industry";
 import AboutSection from "./About/AboutSection";
@@ -42,7 +41,6 @@ const Home = () => {
       <Partners />
       <AboutSection />
       <ServicesScienceSoft />
-      {/* <Service /> */}
       <ChooseUs />
       <Industry />
       <Solution />
