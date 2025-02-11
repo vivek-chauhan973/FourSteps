@@ -30,6 +30,18 @@ const Sidebar = () => {
   const sidebarTabs = useMemo(
     () => [
       {
+        label: "Home Page",
+        icon: () => <FontAwesomeIcon icon={faHome} />,
+
+        subMenu: [
+          { label: "Banner", href: "#" },
+          { label: "Other Management", href: "/admin/home/manage" },
+          { label: "Home Faq", href: "/admin/home/homefaq" },
+        ],
+      },
+
+      ,
+      {
         label: "Global",
         icon: () => <FontAwesomeIcon icon={faChartSimple} />,
         href: "/admin",
@@ -157,15 +169,7 @@ const Sidebar = () => {
           },
         ],
       },
-      {
-        label: "Home Page",
-        icon: () => <FontAwesomeIcon icon={faHome} />,
 
-        subMenu: [
-          { label: "Banner", href: "#" },
-          { label: "Other Management", href: "/admin/home/manage" },
-        ],
-      },
       {
         label: "Our Teams",
         icon: () => <FontAwesomeIcon icon={faUsers} />,
