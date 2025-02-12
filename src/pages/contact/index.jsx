@@ -61,6 +61,18 @@ const Contact = () => {
           content="https://4stepsdigital.com/contact-us/"
         />
         <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://4stepsdigital.com/contact-us/"
+        />
+        <meta
+          property="article:publisher"
+          content="https://www.facebook.com/4stepsmarketing"
+        />
+        <meta
+          property="og:image"
+          content="https://img.freepik.com/free-vector/contact-us-concept-illustration_114360-2299.jpg"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Open Graph Meta Tags */}
       </Head>
