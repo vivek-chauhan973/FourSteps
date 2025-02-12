@@ -32,7 +32,7 @@ const TableofSolution = ({ solutionName }) => {
       <div className="bg-white ">
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
-          <div className="px-5 grid grid-cols-1 bg-white">
+          <div className="px-5 container grid grid-cols-1 bg-white">
             {/* overview item here to present ---- */}
             <div>
               {solutionName?.overview && (
@@ -161,7 +161,7 @@ const TableofSolution = ({ solutionName }) => {
 
           {/* Table of content */}
           <div className="pl-3 md:pl-0 order-first md:order-first lg:order-none">
-            <div className="sticky top-32 z-3">
+            <div className="sticky top-24 z-3 ">
               <h2 className="font-bold text-lg mb-4">
                 Table of contents Solution
               </h2>

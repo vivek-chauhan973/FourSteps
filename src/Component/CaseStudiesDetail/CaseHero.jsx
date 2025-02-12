@@ -15,7 +15,7 @@ const CaseHero = ({ caseHero }) => {
                 {title}
               </h1>
 
-              <p className="text-sm sm:text-base lg:text-lg md:mb-6 mb-3 capitalize leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-md md:mb-6 mb-3 capitalize leading-relaxed">
                 {description}
               </p>
               <div class="flex  gap-3 justify-center md:justify-start">

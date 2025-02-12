@@ -32,7 +32,7 @@ const TableOfContent = ({ industryName }) => {
       <div className="bg-white py-7">
         <div className="md:px-5 gap-4 grid grid-cols-1 lg:grid-cols-[2fr,0.6fr]">
           {/* Main Content */}
-          <div className="px-5 grid grid-cols-1">
+          <div className="px-5 container grid grid-cols-1">
             <div>
               {industryName?.overview && (
                 <OverviewIndusrty overview={industryName?.overview} />
@@ -163,7 +163,7 @@ const TableOfContent = ({ industryName }) => {
 
           {/* Table of content */}
           <div className="px-1 order-first md:order-second  lg:order-none">
-            <div className="sticky top-32 z-3">
+            <div className="sticky top-24 z-3">
               <h2 className="font-bold text-lg mb-4">Table of contents</h2>
               <div className="relative">
                 {/* Vertical Line */}
