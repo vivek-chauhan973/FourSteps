@@ -43,7 +43,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
     setServiceName(blogData?.serviceName || "");
     setDescription(blogData?.description || "");
     setPreview(blogData?.path || "");
-    setEditorHtmlDescription(blogData?.contentsummary || "");
+    // setEditorHtmlDescription(blogData?.contentsummary || "");
     setServiceType(blogData?.serviceType || "");
   }, [blogData]);
 
@@ -54,19 +54,19 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
     setPreview(URL.createObjectURL(selectedFile));
   };
 
-  const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link"],
-    ],
-  };
+  // const modules = {
+  //   toolbar: [
+  //     [{ header: "1" }, { header: "2" }],
+  //     ["bold", "italic", "underline", "strike", "blockquote"],
+  //     [
+  //       { list: "ordered" },
+  //       { list: "bullet" },
+  //       { indent: "-1" },
+  //       { indent: "+1" },
+  //     ],
+  //     ["link"],
+  //   ],
+  // };
 
   // Handle upload or update
   const handleUpload = async () => {
@@ -85,14 +85,17 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("serviceName", serviceName);
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("contentsummary", editorHtmlDescription);
+    // formData.append("contentsummary", editorHtmlDescription);
     formData.append("serviceType", serviceType);
 
     try {
-      const res = await fetch(`/api/service/${blogData?blogData?._id:"serviceHero"}`, {
-        method: blogData?"PUT":"POST",
-        body: formData,
-      });
+      const res = await fetch(
+        `/api/service/${blogData ? blogData?._id : "serviceHero"}`,
+        {
+          method: blogData ? "PUT" : "POST",
+          body: formData,
+        }
+      );
 
       const data = await res.json();
       console.log("Upload Response:", data);
@@ -115,7 +118,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
   return (
     <div className="p-4 mb-5 rounded-md bg-white shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] border-l-2 border-teal-600">
       <p className="text-base font-semibold mb-2">
-      Service Hero Section Detail
+        Service Hero Section Detail
       </p>
       <div className="p-4">
         <div className="flex xl:flex-row flex-col md:gap-10 gap-5 items-center xl:pl-5">
@@ -136,7 +139,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
           <div className="flex-1 my-5">
             <div>
               <label htmlFor="solutionType" className="font-semibold">
-              Service Type
+                Service Type
               </label>
               <select
                 id="solutionType"
@@ -154,7 +157,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
             </div>
             <div>
               <label htmlFor="solutionName" className="font-semibold">
-              Service Name
+                Service Name
               </label>
               <input
                 id="solutionName"
@@ -192,7 +195,7 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        {/* <div className="w-full">
           <h3 className="font-semibold mb-2">Service Summary</h3>
           <QuillNoSSRWrapper
             className="rounded h-48 mb-16"
@@ -202,10 +205,10 @@ const SerHeroSection = ({ setActiveTab, blogData }) => {
             placeholder="Enter Your Answer"
             modules={modules}
           />
-        </div>
+        </div> */}
         <div className="flex md:flex-row flex-col md:gap-5 gap-3">
           <button
-            className="bg-black text-white px-3 py-2 w-full md:w-auto rounded"
+            className="bg-black text-white px-3 py-2 w-full  rounded"
             onClick={handleUpload}
           >
             {blogData ? "Update" : "Upload"}

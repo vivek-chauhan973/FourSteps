@@ -32,10 +32,10 @@ const SolutionHeroSchema = new mongoose.Schema({
     required: true,
   },
 
-  contentsummary: {
-    type: String,
-    required: true,
-  },
+  // contentsummary: {
+  //   type: String,
+  //   required: true,
+  // },
   solutionType: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Solution",

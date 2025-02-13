@@ -188,8 +188,8 @@ const OverViewService = ({ overview }) => {
                 <Image
                   src={activeService?.path}
                   alt="overviewItemImage"
-                  className="w-full object-cover mb-5 rounded-lg shadow-md 
-                   h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80"
+                  className="w-full object-contain  mb-5 rounded-lg shadow-md 
+                   h-48 sm:h-56 md:h-64 lg:h-72 xl:h-72"
                   height={500}
                   width={500}
                 />

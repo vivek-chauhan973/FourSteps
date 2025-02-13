@@ -70,8 +70,8 @@ const ContactForm = () => {
   return (
     <>
       {isModalOpen && (
-        <div className="fixed inset-0 mt-10 z-[9999] bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white max-w-3xl w-full rounded-lg p-6 shadow-lg relative animate-fade-in">
+        <div className="fixed  inset-0  bg-black   mt-20 z-[20]   bg-opacity-50 flex justify-center items-center">
+          <div className=" bg-white  max-w-3xl w-full rounded-lg p-6 shadow-lg relative animate-fade-in">
             {/* Close Button */}
             <button
               className="absolute top-3 right-3 text-gray-500 hover:text-black transition-colors"
@@ -80,9 +80,8 @@ const ContactForm = () => {
             >
               <FontAwesomeIcon icon={faXmarkCircle} className="text-3xl" />
             </button>
-
             {/* Modal Content */}
-            <div className="container mx-auto p-6 bg-gradient-to-b from-blue-50 to-blue-100 rounded-lg">
+            <div className="container mx-auto   bg-gradient-to-b from-blue-50 to-blue-100 rounded-lg">
               <div className="text-center mb-6">
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
                   Lets Discuss Your Needs!
@@ -93,79 +92,20 @@ const ContactForm = () => {
                 </p>
               </div>
 
-              {/* Form */}
-              {/* <form className="space-y-6">
+              <form className="space-y-6 p-3" onSubmit={handleSubmit}>
                 <div>
                   <textarea
                     placeholder="Kindly describe your request"
                     id="description"
                     rows="4"
-                    className="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  ></textarea>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      id="name"
-                      className="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Company"
-                      id="company"
-                      className="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Work Email"
-                      id="email"
-                      className="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div className="flex">
-                    <select className="border border-gray-300 rounded-l-lg py-3 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      <option>+91</option>
-                      <option>+92</option>
-                     
-                    </select>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="border border-gray-300 rounded-r-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="00000 00000"
-                    />
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <button
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                    type="button"
-                  >
-                    Send
-                  </button>
-                </div>
-              </form> */}
-
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div>
-                  <textarea
-                    placeholder="Kindly describe your request"
-                    id="description"
-                    rows="4"
-                    value={formData.description}
+                    value={formData?.description}
                     onChange={handleChange}
                     className="border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   ></textarea>
                   {errors.description && (
-                    <p className="text-red-500 text-sm">{errors.description}</p>
+                    <p className="text-red-500 text-sm">
+                      {errors?.description}
+                    </p>
                   )}
                 </div>
 

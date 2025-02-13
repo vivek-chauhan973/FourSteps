@@ -31,10 +31,10 @@ const ServiceHeroSchema = new mongoose.Schema({
     required: true,
   },
 
-  contentsummary: {
-    type: String,
-    required: true,
-  },
+  // contentsummary: {
+  //   type: String,
+  //   required: true,
+  // },
   serviceType: {
     type: mongoose.Schema.Types.ObjectId,
     ref:"MasterService",

@@ -113,7 +113,7 @@ export default function IconManagement() {
       </div>
       <div className="md:my-10 my-7 bg-white px-5 py-4 rounded-md">
         <p className="md:text-[20px] text-base font-semibold">
-          4Steps Main Website
+          4Steps Main Website (Listed All the Partner here)
         </p>
 
         <div className="p-6 bg-white shadow-md rounded-lg">

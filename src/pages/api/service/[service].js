@@ -30,10 +30,10 @@ const apiRoute = async (req, res) => {
         console.error("Unknown error during file upload:", err);
         return res.status(500).json({ error: "File upload failed" });
       }
-      const { title, description, serviceName, contentsummary,serviceType } = req.body;
+      const { title, description, serviceName, serviceType } = req.body;
       const fileData = req.file && {
         title,
-        contentsummary,
+
         serviceName,
         description,
         filename: req.file.filename,
@@ -76,12 +76,17 @@ const apiRoute = async (req, res) => {
     // Handle GET request
     try {
       const files = await ServiceHero.findOne({ _id: service })
-        .populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } }) .populate({
+        .populate("Why4StepS benefit faq")
+        .populate({ path: "success", populate: { path: "successItem" } })
+        .populate({ path: "solution", populate: { path: "solutionItem" } })
+        .populate({ path: "product", populate: { path: "productItem" } })
+        .populate({ path: "service", populate: { path: "serviceItem" } })
+        .populate({
           path: "overview",
           populate: {
             path: "overviewItem",
           },
-        })
+        });
       return res.status(200).json({ data: files });
     } catch (error) {
       // console.error("Error fetching files:", error);

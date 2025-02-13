@@ -43,7 +43,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     setSolutionName(blogData?.solutionName || "");
     setDescription(blogData?.description || "");
     setPreview(blogData?.path || "");
-    setEditorHtmlDescription(blogData?.contentsummary || "");
+    // setEditorHtmlDescription(blogData?.contentsummary || "");
     setSolutionType(blogData?.solutionType || "");
   }, [blogData]);
 
@@ -54,19 +54,19 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     setPreview(URL.createObjectURL(selectedFile));
   };
 
-  const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link"],
-    ],
-  };
+  // const modules = {
+  //   toolbar: [
+  //     [{ header: "1" }, { header: "2" }],
+  //     ["bold", "italic", "underline", "strike", "blockquote"],
+  //     [
+  //       { list: "ordered" },
+  //       { list: "bullet" },
+  //       { indent: "-1" },
+  //       { indent: "+1" },
+  //     ],
+  //     ["link"],
+  //   ],
+  // };
 
   // Handle upload or update
   const handleUpload = async () => {
@@ -85,7 +85,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
     formData.append("solutionName", solutionName);
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("contentsummary", editorHtmlDescription);
+    // formData.append("contentsummary", editorHtmlDescription);
     formData.append("solutionType", solutionType);
 
     try {
@@ -195,7 +195,7 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        {/* <div className="w-full">
           <h3 className="font-semibold mb-2">Solution Summary</h3>
           <QuillNoSSRWrapper
             className="rounded h-48 mb-16"
@@ -205,10 +205,10 @@ const SolutionHeroSection = ({ setActiveTab, blogData }) => {
             placeholder="Enter Your Answer"
             modules={modules}
           />
-        </div>
+        </div> */}
         <div className="flex md:flex-row flex-col md:gap-5 gap-3">
           <button
-            className="bg-black text-white px-3 py-2 w-full md:w-auto rounded"
+            className="bg-black text-white px-3 py-2 w-full md:w-full rounded"
             onClick={handleUpload}
           >
             {blogData ? "Update" : "Upload"}

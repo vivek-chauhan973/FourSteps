@@ -22,7 +22,7 @@ const uploadDirectories = {
   product: "./public/uploads/service/serviceProducts",
   service: "./public/uploads/service/serviceServices",
   solution: "./public/uploads/service/serviceSolution",
-  overview:"./public/uploads/service/serviceOvervies"
+  overview: "./public/uploads/service/serviceOvervies",
 };
 const uploadDirectory = "./public/uploads/service/serviceHero";
 if (!fs.existsSync(uploadDirectory))
@@ -43,8 +43,7 @@ export default async function handler(req, res) {
       if (err)
         return res.status(500).json({ error: "Upload failed", details: err });
 
-      const { title, serviceName, description, contentsummary, serviceType } =
-        req.body;
+      const { title, serviceName, description, serviceType } = req.body;
       const filePath = `/uploads/service/serviceHero/${req.file.filename}`;
       // console.log("req body data is here --> ", req.body);
       try {
@@ -55,9 +54,8 @@ export default async function handler(req, res) {
           description,
           filename: req.file.filename,
           path: filePath,
-          contentsummary,
         });
-        res.status(201).json({data:service});
+        res.status(201).json({ data: service });
       } catch (error) {
         res
           .status(500)
@@ -66,9 +64,14 @@ export default async function handler(req, res) {
     });
     // not workig the GET METhOD HERE
   } else if (req.method === "GET") {
-
     try {
-      const solution = await ServiceHero.find({}).populate("Why4StepS benefit faq").populate({ path: "success", populate: { path: "successItem" } }).populate("Why4StepS").populate({ path: "solution", populate: { path: "solutionItem" } }).populate({ path: "product", populate: { path: "productItem" } }).populate({ path: "service", populate: { path: "serviceItem" } });
+      const solution = await ServiceHero.find({})
+        .populate("Why4StepS benefit faq")
+        .populate({ path: "success", populate: { path: "successItem" } })
+        .populate("Why4StepS")
+        .populate({ path: "solution", populate: { path: "solutionItem" } })
+        .populate({ path: "product", populate: { path: "productItem" } })
+        .populate({ path: "service", populate: { path: "serviceItem" } });
       if (!solution) {
         return res.status(404).json({ error: "Solution not found" });
       }
@@ -76,8 +79,7 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(500).json({ error: "Database error", details: error.message });
     }
-  }
-  else if (req.method === "DELETE") {
+  } else if (req.method === "DELETE") {
     const { id } = req.query;
 
     if (!id) {
@@ -96,7 +98,7 @@ export default async function handler(req, res) {
           populate: {
             path: "overviewItem",
           },
-        })
+        });
       if (!data) {
         return res.status(404).json({ message: "Item not found!" });
       }
@@ -109,7 +111,8 @@ export default async function handler(req, res) {
       };
 
       // Delete associated documents and files
-      if (data?.Why4StepS) await Why4StepService.findByIdAndDelete(data.Why4StepS._id);
+      if (data?.Why4StepS)
+        await Why4StepService.findByIdAndDelete(data.Why4StepS._id);
       if (data?.success) {
         for (const item of data.success?.successItem || []) {
           deleteFile(path.join(uploadDirectories.success, item.filename));
@@ -150,7 +153,8 @@ export default async function handler(req, res) {
       }
 
       if (data?.faq) await ServiceFaq.findByIdAndDelete(data.faq._id);
-      if (data?.benefit) await ServiceBenefits.findByIdAndDelete(data.benefit._id);
+      if (data?.benefit)
+        await ServiceBenefits.findByIdAndDelete(data.benefit._id);
 
       // Delete main file and document
       deleteFile(path.join(uploadDirectories.heroSection, data.filename));
@@ -162,7 +166,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ message: "Internal Server Error", error });
     }
   } else {
-    res.setHeader("Allow", ["POST", "DELETE","GET"]);
+    res.setHeader("Allow", ["POST", "DELETE", "GET"]);
     res.status(405).json({ error: "Method not allowed" });
   }
 }

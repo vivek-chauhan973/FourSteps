@@ -44,8 +44,7 @@ export default async function handler(req, res) {
       if (err)
         return res.status(500).json({ error: "Upload failed", details: err });
 
-      const { title, solutionName, description, contentsummary, solutionType } =
-        req.body;
+      const { title, solutionName, description, solutionType } = req.body;
       const filePath = `/uploads/solution/solutionHero/${req.file.filename}`;
       // console.log("req body data is here --> ", req.body);
       try {
@@ -56,7 +55,6 @@ export default async function handler(req, res) {
           description,
           filename: req.file.filename,
           path: filePath,
-          contentsummary,
         });
         res.status(201).json({ data: solution });
       } catch (error) {

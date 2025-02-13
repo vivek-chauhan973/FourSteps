@@ -142,7 +142,7 @@ export default function CreateWebinar() {
                   : "border-black text-slate-500"
               } px-3 py-1`}
             >
-              Overview of Service 
+              Overview of Service
             </button>
           </>
         </div>

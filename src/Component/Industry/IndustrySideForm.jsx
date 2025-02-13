@@ -20,11 +20,11 @@ const IndustrySideForm = () => {
             <div className="flex items-center justify-center w-20 h-16 bg-blue-100 rounded-md ">
               <FontAwesomeIcon
                 icon={faCalendarDays}
-                className="text-[40px] group-hover:animate-bounce text-heading"
+                className="text-[40px] group-hover:animate-bounce text-gray-700 "
               />
             </div>
             {/* Inner Icon */}
-            <div className="absolute top-2 right-2 w-4 h-4 bg-heading rounded-full">
+            <div className="absolute top-2 right-2 w-4 h-4 bg-gray-700 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-4 h-4 text-white"
@@ -42,7 +42,7 @@ const IndustrySideForm = () => {
             </div>
           </div>
           {/* Text */}
-          <div className="text-gray-800 font-bold">Schedule a call</div>
+          <div className="text-gray-600 font-bold">Schedule a call</div>
         </div>
       </div>
 
