@@ -276,7 +276,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
 
   return (
     <div
-      className={`fixed md:hidden top-20 left-0 h-screen   overflow-y-auto  w-full bg-white shadow-lg ${
+      className={`fixed block md:block top-20 left-0 h-screen   overflow-y-auto  w-full bg-white shadow-lg ${
         isMobileMenuOpen ? "menu-open" : "menu-close"
       }`}
     >

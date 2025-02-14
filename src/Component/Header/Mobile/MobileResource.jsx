@@ -77,7 +77,7 @@ const MobileResource = ({ activeSection, handleSectionClick }) => {
   };
 
   return (
-    <div className="container mx-auto px-5 mt-5">
+    <div className="container mx-auto px-5 md:px-[2px] mt-5">
       <button
         onClick={toggleResources}
         className="text-gray-700 hover:text-black text-md font-semibold cursor-pointer flex items-center justify-between w-full"
