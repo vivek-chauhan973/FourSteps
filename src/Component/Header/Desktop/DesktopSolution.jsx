@@ -98,9 +98,14 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
                     setSolutionId(solution?._id);
                   }}
                 >
-                  <span>{solution?.name}</span>
+                  <div className="flex items-center text-sm justify-between  w-full">
+                    <span>{solution?.name}</span>
 
-                  <FontAwesomeIcon icon={faChevronRight} className="text-sm" />
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      className="text-sm"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -123,7 +128,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
                         key={link?._id}
                         href={`/solution/${link?.title?.split(" ")?.join("-")}`}
                       >
-                        <p className="text-gray-800 text-[15px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
+                        <p className="text-gray-800 text-[14px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
                           <FontAwesomeIcon
                             icon={faChevronRight}
                             className="text-[10px]"

@@ -290,7 +290,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
       />
 
       <button
-        className="w-full text-left text-gray-700 hover:text-primary px-5 mt-5 text-md font-semibold flex items-center justify-between"
+        className="w-full text-left text-gray-700 hover:text-black px-5 mt-5 text-md font-semibold flex items-center justify-between"
         onClick={toggleCategories}
       >
         Services
@@ -308,7 +308,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
           ) : (
             solutionType?.map((category) => (
               <div key={category?._id}>
-                <h3 className="text-sm pl-1 capitalize font-semibold text-heading">
+                <h3 className="text-sm pl-[2px] capitalize font-semibold text-heading">
                   {category?.name}
                 </h3>
                 <ul className="list-none">
@@ -319,7 +319,7 @@ const MobileNav = ({ isMobileMenuOpen }) => {
                           .split(" ")
                           .join("-")}`}
                       >
-                        <p className="text-sm pl-2 text-gray-600 inline-block hover:text-gray-800 transition">
+                        <p className="text-sm pl-[2px] text-gray-600 inline-block hover:text-gray-800 transition">
                           {subcategory?.title}
                         </p>
                       </Link>

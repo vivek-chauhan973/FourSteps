@@ -79,7 +79,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute  left-24 right-0 mt-2 bg-background   shadow-lg border  border-gray-100 z-50 md:mx-20 lg:mx-40">
+            <div className="absolute  left-10 right-0 mt-2 bg-background   shadow-lg border  border-gray-100 z-50 md:mx-20 lg:mx-40">
               <div className="flex  max-w-7xl  mx-auto">
                 {/* Sidebar Menu */}
                 <div className="w-1/4 border-r ">
@@ -100,12 +100,13 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
                         setSolutionId(solution?._id);
                       }}
                     >
-                      <span>{solution?.name}</span>
-
-                      <FontAwesomeIcon
-                        icon={faChevronRight}
-                        className="text-sm"
-                      />
+                      <div className="flex items-center text-sm justify-between  w-full">
+                        <span>{solution?.name}</span>
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          className="text-xs"
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -132,7 +133,7 @@ const DesktopSolution = ({ activeLink, handleLinkClick }) => {
                               ?.split(" ")
                               ?.join("-")}`}
                           >
-                            <p className="text-gray-800 text-[15px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
+                            <p className="text-gray-800 text-[14px] py-1 flex gap-1 items-center hover:text-orange-500 transition duration-200">
                               <FontAwesomeIcon
                                 icon={faChevronRight}
                                 className="text-[10px]"
