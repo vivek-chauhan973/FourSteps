@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { login } from "@/utils/authService";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -11,10 +12,12 @@ const LoginForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login Data:", formData);
-    console.log("form data is ",formData)
+    const token=await login(formData.username,formData.password);
+    if(token){
+      alert("successfully login");
+    }
   };
 
   return (

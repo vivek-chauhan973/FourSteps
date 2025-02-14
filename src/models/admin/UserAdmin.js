@@ -8,4 +8,4 @@ const userSchema = new mongoose.Schema({
   refreshTokenExpiry: { type: Date },
 }, { timestamps: true });
 const UserAdmin = mongoose.models.UserAdmin||mongoose.model("UserAdmin", userSchema);
-module.exports = UserAdmin;
+ export default UserAdmin;
