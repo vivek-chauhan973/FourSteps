@@ -45,7 +45,7 @@ const Visuals = ({ visualData }) => {
   return (
     <div className="container">
       <div className="max-w-xl">
-        <h3 className="font-semibold py-3">Some Visualss here</h3>
+        {/* <h3 className="font-semibold py-3">Some Visualss here</h3> */}
       </div>
       <div className="md:grid md:grid-cols-[730px,auto]">
         <div className="carousel-container relative">

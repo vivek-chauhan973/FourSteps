@@ -5,10 +5,10 @@ import DemoHero from "./DemoHero";
 import DemoOverview from "./DemoOverview";
 import DemoHightlight from "./DemoHightlight";
 import DemoPrentater from "./DemoPrentater";
-import DemoSide from "./DemoSide";
 import Link from "next/link";
 import DemoFaqs from "./DemoFaqs";
 import DemoSuggest from "./DemoSuggest";
+import SideForm from "../WebinarDetail/SideForm";
 
 const videoData = async (title) => {
   const response = await fetch(
@@ -66,7 +66,7 @@ const Vdetail = ({ title }) => {
       <div className="bg-[#F1F5F9]">
         <div
           id="OverviewSection"
-          className="shadow-lg py-1 bg-white sticky top-0 z-30 hidden md:block"
+          className="shadow-lg py-1 bg-white sticky top-20 z-30 hidden md:block"
         >
           <div className="container-wrapper gap-3 md:gap-10 xs:pb-5 md:pb-0 hide-scrollbar flex justify-start overflow-x-auto">
             <div>
@@ -74,7 +74,7 @@ const Vdetail = ({ title }) => {
                 to="productOverviewSection" // Updated to match unique ID
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className="text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
@@ -87,7 +87,7 @@ const Vdetail = ({ title }) => {
                 to="productHighlightSection"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
@@ -100,7 +100,7 @@ const Vdetail = ({ title }) => {
                 to="productTechnologySection"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
@@ -152,11 +152,11 @@ const Vdetail = ({ title }) => {
             </div>
           </div>
           <div className="mt-10">
-            <div className="sticky top-[50px] z-10">
+            <div className="sticky top-[130px] z-10">
               <div className="flex gap-1 justify-center items-center"></div>
               {/* Side registration form */}
               <div className="md:px-5">
-                <DemoSide />
+                <SideForm />
               </div>
             </div>
           </div>

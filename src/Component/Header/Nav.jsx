@@ -153,11 +153,6 @@
 
 // export default Nav;
 
-
-
-
-
-
 import React, { useState } from "react";
 import MobileNav from "./MobileNav";
 import Categories from "./Desktop/Categories";
@@ -183,7 +178,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-white fixed top-0 w-full pb-4 md:pb-3 z-50 shadow">
+      <nav className="bg-white fixed top-0  w-full pb-4 md:pb-3 z-50 shadow">
         <div className="mx-auto px-4 sm:px-6 pt-2 lg:px-8">
           <div className="flex justify-between md:h-16 h-14">
             {/* Logo */}

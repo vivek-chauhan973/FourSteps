@@ -29,7 +29,7 @@ const SideForm = () => {
   };
 
   return (
-    <div className="container pb-10">
+    <div className="container hidden lg:block pb-10">
       <div className="max-w-xs  mx-auto top-10 sticky bg-white p-4 rounded-lg border-solid border-2 border-[#163383]">
         <div>
           <h2 className="text-lg  py-3 font-semibold">Enquiry Now</h2>

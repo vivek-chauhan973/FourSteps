@@ -3,9 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const CaseSuggest = ({filterSuggestedCasePackage}) => {
-  
-
+const CaseSuggest = ({ filterSuggestedCasePackage }) => {
   const carouselRef = useRef(null);
 
   const scrollNext = () => {

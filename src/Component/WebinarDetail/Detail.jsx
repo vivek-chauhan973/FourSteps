@@ -62,7 +62,7 @@ const Detail = ({ title }) => {
       <div className=" bg-[#F1F5F9] ">
         <div
           id="OverviewSection"
-          className=" shadow-lg py-1 bg-white sticky top-0 z-30 hidden md:block "
+          className="shadow-lg py-1 bg-white sticky top-20 z-30 hidden md:block"
         >
           <div className="container-wrapper gap-3 md:gap-10 xs:pb-5 md:pb-0 hide-scrollbar flex justify-start overflow-x-auto ">
             <div>
@@ -70,7 +70,7 @@ const Detail = ({ title }) => {
                 to="OverviewContent" // Updated to point to the correct id
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className=" text-para cursor-pointer hover:border-b-2 border-heading py-2 hover:text-heading">
@@ -83,7 +83,7 @@ const Detail = ({ title }) => {
                 to="agenda"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
@@ -96,7 +96,7 @@ const Detail = ({ title }) => {
                 to="speakerSection"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}
               >
                 <p className="text-center w-[120px] text-para cursor-pointer hover:border-b-2  border-heading py-2 hover:text-heading">
@@ -139,7 +139,7 @@ const Detail = ({ title }) => {
             </div>
           </div>
           <div className=" mt-10">
-            <div className="sticky top-[50px] z-10">
+            <div className="sticky top-[130px] z-10">
               <div className="flex gap-1 justify-center items-center"></div>
               {/* side registration form */}
               <div className=" md:px-5">

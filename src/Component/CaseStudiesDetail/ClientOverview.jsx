@@ -4,10 +4,10 @@ const ClientOverview = ({ clientData }) => {
   const overview = clientData?.overview || {};
 
   return (
-    <div className=" conatiner">
+    <div className=" conatiner  w-full md:w-[735px] ">
       <div className="   md:border xl:flex flex-col w-full gap-4  p-3 relative bg-white shadow h-auto ">
         <div className=" px-2  ">
-          <h2 className=" text-lg py-3 font-bold">client overview</h2>
+          {/* <h2 className=" text-lg py-3 font-bold">client overview</h2> */}
           <div className="rich-text-content">
             <p
               className=""
