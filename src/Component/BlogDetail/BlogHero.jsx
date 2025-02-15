@@ -2,34 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 const BlogHero = ({ blogPackageData }) => {
-  const { title, altText, description, videoPath } = blogPackageData || {};
+  const { description, videoPath, altText, title } = blogPackageData || {};
 
   return (
-    <div className=" bg-background ">
-      <div className="container md:px-5 px-2 md:pt-0  pt-20">
-        <div className="flex flex-col lg:flex-row h-auto items-center  justify-between  rounded-lg overflow-hidden py-8 lg:py-12 gap-8 lg:gap-5">
-          {/* Left section - Course Info */}
-          <div className="w-full lg:w-3/5 px-4 md:text-center lg:text-left">
-            <h1 className="text-xl sm:text-xl text-heading capitalize md:text-xl lg:text-3xl font-semibold md:mb-4 mb-1">
-              {title}
-            </h1>
-
-            <p className="text-sm sm:text-base lg:text-md md:mb-6 mb-3 capitalize leading-relaxed">
-              {description}
-            </p>
-            <div class="flex  gap-3 justify-center md:justify-start">
-              <Link href="#">
-                <button class=" border text-sm md:text-base border-primary  hover:text-primary hover:bg-transparent  py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
-                  Pdf Download
-                </button>
-              </Link>
-            </div>
-          </div>
-
-          {/* 
-        {/* Right section - Video */}
-          <div className="w-full lg:w-2/5 flex justify-center overflow-hidden items-center">
-            <div className="w-full px-2 h-48 sm:h-64 md:h-80 lg:h-64 xl:h-80 2xl:h-96 rounded-lg md:overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+    <>
+      <div className="bg-blue-50 md:mt-20 mt-20 w-full min-h-[50vh] md:min-h-[60vh] xl:min-h-[70vh] flex items-center py-10">
+        <div className="container-wrapper px-4 md:px-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Image Section (Moves up on small screens) */}
+            <div className="flex justify-center lg:justify-end w-full order-1 lg:order-2">
               <Image
                 src={videoPath}
                 width={500}
@@ -37,10 +18,30 @@ const BlogHero = ({ blogPackageData }) => {
                 alt={altText || "image text"}
               />
             </div>
+
+            {/* Content Section */}
+            <div className="flex flex-col justify-center space-y-4 text-center lg:text-left order-2 lg:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl capitalize font-semibold text-heading">
+                {title || "Heading"}
+              </h2>
+              <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
+                {description ||
+                  "I hated every minute of training, but I said, “Don't quit. Suffer now and live the rest of your life as a champion.”"}
+              </p>
+
+              {/* Button Section (Moves after image in small screens) */}
+              <div className="flex gap-3 justify-center lg:justify-start order-last lg:order-none">
+                <Link href="#">
+                  <button className="border text-sm md:text-base border-primary hover:text-primary hover:bg-transparent py-2 md:py-2 px-4 md:px-5 rounded-full bg-primary text-white">
+                    Pdf Download
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

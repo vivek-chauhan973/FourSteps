@@ -111,7 +111,6 @@
 
 import React from "react";
 
-import Image from "next/image";
 import SuggestedBlog from "./SuggestedBlog";
 import { Link as ScrollLink } from "react-scroll";
 import BlogSideForm from "./BlogSideForm";
@@ -207,7 +206,7 @@ const BlogDescription = ({ blogPackageData, filterSuggestedBlogData }) => {
 
           {/* Sidebar Table of Content for desktop */}
           <div className="hidden xl:block px-6 text-base">
-            <div className="sticky top-0 z-10">
+            <div className="sticky top-24 z-10">
               <BlogSideForm />
               <p className="text-xl pb-6 font-semibold">Table of Content</p>
               <div className="overflow-y-scroll h-[450px]">
