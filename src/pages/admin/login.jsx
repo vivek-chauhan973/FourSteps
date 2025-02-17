@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { login } from "@/utils/authService";
+
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -14,10 +14,10 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token=await login(formData.username,formData.password);
-    if(token){
+    
+ 
       alert("successfully login");
-    }
+    
   };
 
   return (

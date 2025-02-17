@@ -4,8 +4,6 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   accessToken: { type: String },
   accessTokenExpiry: { type: Date }, 
-  refreshToken: { type: String }, 
-  refreshTokenExpiry: { type: Date },
 }, { timestamps: true });
 const UserAdmin = mongoose.models.UserAdmin||mongoose.model("UserAdmin", userSchema);
  export default UserAdmin;

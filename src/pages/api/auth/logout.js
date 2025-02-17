@@ -1,41 +1,21 @@
-;
 import UserAdmin from "@/models/admin/UserAdmin";
 import dbConnect from "@/utils/db";
-import cookie from "cookie";
+
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
 
   await dbConnect();
 
-  const cookies = cookie.parse(req.headers.cookie || "");
-  const refreshToken = cookies.refreshToken;
-
-  if (!refreshToken) {
-    return res.status(401).json({ message: "No refresh token found" });
-  }
+  const { refreshToken } = req.body;
+  if (!refreshToken) return res.status(400).json({ error: 'Refresh token is required' });
 
   const user = await UserAdmin.findOne({ refreshToken });
-  if (!user) {
-    return res.status(403).json({ message: "Invalid refresh token" });
-  }
+  if (!user) return res.status(404).json({ error: 'User not found' });
 
-  user.accessToken = null;
+  // Remove refresh token from the database
   user.refreshToken = null;
   await user.save();
 
-  res.setHeader(
-    "Set-Cookie",
-    cookie.serialize("refreshToken", "", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      path: "/",
-      maxAge: 0,
-    })
-  );
-
-  res.json({ message: "Logged out" });
+  res.json({ message: 'Logged out successfully' });
 }

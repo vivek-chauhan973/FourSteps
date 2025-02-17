@@ -1,37 +1,24 @@
-import dbConnect from "@/utils/db";
-import cookie from "cookie";
-import UserAdmin from "@/models/admin/UserAdmin";
-import { generateTokens, verifyRefreshToken } from "@/utils/auth";
+import jwt from 'jsonwebtoken';
+import User from '../../../models/User';
+import { connectDB } from '../../../utils/db';
+import { generateAccessToken } from '../../../utils/generateTokens';
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
+
+  await connectDB();
+
+  const { refreshToken } = req.body;
+  if (!refreshToken) return res.status(401).json({ error: 'Unauthorized' });
+
+  const user = await User.findOne({ refreshToken });
+  if (!user) return res.status(403).json({ error: 'Invalid refresh token' });
+
+  try {
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const accessToken = generateAccessToken(user);
+    res.json({ accessToken });
+  } catch (error) {
+    res.status(403).json({ error: 'Invalid refresh token' });
   }
-
-  await dbConnect();
-
-  const cookies = cookie.parse(req.headers.cookie || "");
-  const refreshToken = cookies.refreshToken;
-
-  if (!refreshToken) {
-    return res.status(401).json({ message: "No refresh token found" });
-  }
-
-  const decoded = verifyRefreshToken(refreshToken);
-  if (!decoded) {
-    return res.status(403).json({ message: "Invalid refresh token" });
-  }
-
-  const user = await UserAdmin.findById(decoded.userId);
-  if (!user || user.refreshToken !== refreshToken) {
-    return res.status(403).json({ message: "Invalid refresh token" });
-  }
-
-  const { accessToken } = generateTokens(user._id);
-  user.accessToken = accessToken;
-  user.accessTokenExpiry = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
-
-  await user.save();
-
-  res.json({ accessToken });
 }
