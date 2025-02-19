@@ -3,14 +3,11 @@ import User from "@/models/admin/user";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-
-// Create the uploads directory if it doesn't exist
+import { parse } from 'cookie';
 const uploadsDir = "./public/uploads/UserImages";
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
-
-// Configure multer for image uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadsDir);
@@ -32,7 +29,9 @@ const handler = upload.single("image"); // Expecting a single image field named 
 
 const userHandler = async (req, res) => {
   await dbConnect();
+  const cookies = parse(req.headers.cookie || '');
 
+  // console.log("cookies  ----> users ",cookies)
   if (req.method === "POST") {
     handler(req, res, async (err) => {
       if (err) {
@@ -66,15 +65,6 @@ const userHandler = async (req, res) => {
     });
   }
 
-  // else if (req.method === "GET") {
-  //   // Handle GET request for fetching user data
-  //   try {
-  //     const users = await User.find({}); // Fetch all users
-  //     return res.status(200).json(users); // Respond with the list of users
-  //   } catch (error) {
-  //     return res.status(500).json({ error: "Failed to fetch users." });
-  //   }
-  // }
   else if (req.method === "GET") {
     // Handle GET request for fetching user data
     const { userId } = req.query; // Get userId from the query parameters

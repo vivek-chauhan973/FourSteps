@@ -2,22 +2,36 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-
+import { useRouter } from "next/router";
 const LoginForm = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-
+const router=useRouter()
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
- 
-      alert("successfully login");
-    
+    try {
+      const res = await fetch(`/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res?.json();
+      if (res?.ok) {
+        router.push('/admin')
+        alert("Login Successfully");
+      }
+      else{
+        alert("username or password are invalids");
+      }
+    } catch (error) {
+      alert("login failed ");
+    }
   };
 
   return (

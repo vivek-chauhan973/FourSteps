@@ -14,7 +14,7 @@ const Industry = () => {
     if (result.data && Array.isArray(result.data)) {
       setData(result.data); // Use result.data to set the state
     } else {
-      console.error("Expected an array of data, but got:", error);
+      console.error("Expected an array of data, but got:");
     }
   };
 
@@ -50,7 +50,7 @@ const Industry = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {data?.map((item, index) => (
+          {data?.length>0&&data?.map((item, index) => (
             <div
               key={index}
               className="flex flex-col items-center cursor-pointer bg-white border border-gray-300 p-4 shadow group transition-transform hover:scale-105 hover:shadow-md relative"

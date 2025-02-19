@@ -1,21 +1,50 @@
-import UserAdmin from "@/models/admin/UserAdmin";
+import * as jose from 'jose';
+import { parse } from "cookie";
 import dbConnect from "@/utils/db";
-
+import UserAdmin from '@/models/admin/UserAdmin';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
-
   await dbConnect();
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
-  const { refreshToken } = req.body;
-  if (!refreshToken) return res.status(400).json({ error: 'Refresh token is required' });
+  try {
+    // Parse cookies
+    const cookieHeader = req.headers.cookie || "";
+    const cookies = parse(cookieHeader);
+    const refreshToken = cookies.refreshToken;
 
-  const user = await UserAdmin.findOne({ refreshToken });
-  if (!user) return res.status(404).json({ error: 'User not found' });
+    if (!refreshToken) {
+      return res.status(401).json({ error: "Refresh token missing" });
+    }
 
-  // Remove refresh token from the database
-  user.refreshToken = null;
-  await user.save();
+    // Verify refresh token
+    const secret = new TextEncoder().encode(process.env.REFRESH_TOKEN_SECRET);
+    const { payload } = await jose.jwtVerify(refreshToken, secret);
 
-  res.json({ message: 'Logged out successfully' });
+    // Find user in database
+    const user = await UserAdmin.findOne({ _id: payload?.id });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    // Remove refresh token from database
+    user.refreshToken = undefined;
+    user.refreshTokenExpiry = undefined;
+    await user.save(); // Await to ensure database update is completed
+
+    console.log("User Logged Out successfully:", payload);
+
+    // Clear both refreshToken and accessToken from browser
+    res.setHeader("Set-Cookie", [
+      "refreshToken=; HttpOnly; Secure; Path=/; Max-Age=0;",
+      "accessToken=; HttpOnly; Secure; Path=/; Max-Age=0;"
+    ]);
+
+    return res.json({ message: 'Logged out successfully' });
+  } catch (error) {
+    console.error("Logout error:", error);
+    return res.status(401).json({ error: "Invalid or expired refresh token" });
+  }
 }

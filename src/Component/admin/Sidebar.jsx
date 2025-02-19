@@ -276,6 +276,11 @@ const Sidebar = () => {
         icon: () => <FontAwesomeIcon icon={faTag} />,
         href: "#",
       },
+      {
+        label: "Change Password",
+        icon: () => <FontAwesomeIcon icon={faTag} />,
+        href: "/admin/change-password",
+      },
     ],
     []
   );
@@ -330,6 +335,17 @@ const Sidebar = () => {
       </div>
     );
   };
+
+  const handleLogout=async ()=>{
+    const res=await fetch(`/api/auth/logout`,{
+      method:"POST"
+    });
+
+    if(res?.ok){
+      alert("Logged Out successfully ")
+      router.push('/admin/login');
+    }
+  }
 
   return (
     <div className="text-[14px] text-[#f5f7fb] font-sans p-4 md:w-full">
@@ -400,11 +416,11 @@ const Sidebar = () => {
           className={`flex items-center gap-2 ${
             activeTab === "Logout" ? "text-green-500 font-semibold" : ""
           } hover:text-orange-500`}
-          // onClick={handleLogout}
+          onClick={handleLogout}
         >
           <FontAwesomeIcon icon={faRightFromBracket} size={20} />{" "}
           {/* Use the icon component correctly */}
-          <p className="cursor-pointer">Logout</p>
+          <p className="cursor-pointer">Logout </p>
         </div>
       </div>
     </div>
