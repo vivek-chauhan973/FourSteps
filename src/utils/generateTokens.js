@@ -1,14 +1,4 @@
 import * as jose from 'jose'
-
-function isTokenExpired(tokenPayload) {
-  if (!tokenPayload || !tokenPayload.exp) {
-    return true; // Treat as expired if payload or exp is missing
-  }
-  
-  const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
-  console.log("check seven days validity of refresh token ----> ",tokenPayload.exp < currentTime)
-  return tokenPayload.exp < currentTime;
-}
 export const generateAccessToken = async (user) => {
   const secret = new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET)
   
