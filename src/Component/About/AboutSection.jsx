@@ -106,5 +106,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
-// trial both code

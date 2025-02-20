@@ -122,7 +122,7 @@ const Career = () => {
         <Nav />
       </div>
       <div className=" bg-background md:py-6">
-        <div className=" container-wrapper pt-24 md:pt-0 ">
+        <div className=" container-wrapper md:pt-24 pt-24  ">
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6    items-center">
             <div className=" ">
               <h2 className="text-xl md:text-3xl text-heading  font-semibold">

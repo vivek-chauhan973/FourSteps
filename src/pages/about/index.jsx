@@ -83,7 +83,7 @@ const About = () => {
         <div className=" bg-background  ">
           <div className=" container-wrapper py-10">
             <div className="flex justify-center  items-center ">
-              <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
+              <div className="grid grid-cols-1 mt-20 md:pt-0 md:grid-cols-2 gap-8  ">
                 {/* Content Section */}
                 <div className="flex flex-col justify-center  text-center md:text-left space-y-4">
                   <h2 className="text-xl sm:text-2xl md:text-3xl  font-semibold text-heading">
