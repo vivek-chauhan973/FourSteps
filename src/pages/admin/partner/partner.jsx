@@ -7,6 +7,7 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function IconManagement() {
   const [file, setFile] = useState(null);
@@ -43,7 +44,9 @@ export default function IconManagement() {
   // Function to handle image upload or update
   async function handleUpload() {
     if (!file && !isUpdating) {
-      alert("Please select a file to upload.");
+      // alert("Please select a file to upload.");
+      toast.warning("Please select a file to upload.");
+
       return;
     }
 
@@ -73,6 +76,7 @@ export default function IconManagement() {
         fetchImage();
       } else {
         alert(`File upload failed`);
+        
       }
     } catch (error) {
       console.error(`Error uploading file:`, error);
@@ -238,6 +242,18 @@ export default function IconManagement() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </AdminLayout>
   );
 }

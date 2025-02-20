@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import AdminLayout from "@/Component/admin/AdminLayout";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ChangePassword() {
   const [formData, setFormData] = useState({
@@ -26,21 +27,20 @@ export default function ChangePassword() {
   };
 
   // Handle form submission
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res=await fetch(`/api/auth/change-password`,{
-method:"POST",
-headers:{
-  "Content-Type":"application/json"
-},
-body:JSON.stringify(formData)
-    })
+    const res = await fetch(`/api/auth/change-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    if(res?.ok){
-      alert("password changed Successfully")
-    }
-    else{
-      alert("something went wrong")
+    if (res?.ok) {
+      toast.success("Password Changed Successfully");
+    } else {
+      toast.error("Failed to change password");
     }
   };
 
@@ -55,7 +55,9 @@ body:JSON.stringify(formData)
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Username Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-600">Username</label>
+              <label className="block text-sm font-medium text-gray-600">
+                Username
+              </label>
               <input
                 type="text"
                 name="username"
@@ -68,7 +70,9 @@ body:JSON.stringify(formData)
 
             {/* Current Password Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-600">Current Password</label>
+              <label className="block text-sm font-medium text-gray-600">
+                Current Password
+              </label>
               <div className="relative">
                 <input
                   type={showPassword.current ? "text" : "password"}
@@ -88,7 +92,9 @@ body:JSON.stringify(formData)
 
             {/* New Password Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-600">New Password</label>
+              <label className="block text-sm font-medium text-gray-600">
+                New Password
+              </label>
               <div className="relative">
                 <input
                   type={showPassword.new ? "text" : "password"}
@@ -116,6 +122,18 @@ body:JSON.stringify(formData)
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </AdminLayout>
   );
 }

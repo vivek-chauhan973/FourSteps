@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import { ToastContainer, toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartSimple,
@@ -328,7 +328,7 @@ const Sidebar = () => {
                 selectedSubMenu === item.label ? "text-green-500 " : ""
               }`}
             >
-              {item.label}
+              {item?.label}
             </p>
           </a>
         ))}
@@ -336,16 +336,16 @@ const Sidebar = () => {
     );
   };
 
-  const handleLogout=async ()=>{
-    const res=await fetch(`/api/auth/logout`,{
-      method:"POST"
+  const handleLogout = async () => {
+    const res = await fetch(`/api/auth/logout`, {
+      method: "POST",
     });
 
-    if(res?.ok){
-      alert("Logged Out successfully ")
-      router.push('/admin/login');
+    if (res?.ok) {
+      toast.success(" Log Out Successfully");
+      router.push("/admin/login");
     }
-  }
+  };
 
   return (
     <div className="text-[14px] text-[#f5f7fb] font-sans p-4 md:w-full">
@@ -423,6 +423,18 @@ const Sidebar = () => {
           <p className="cursor-pointer">Logout </p>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        // hideProgressBar={false}
+        // newestOnTop={false}
+        // closeOnClick={false}
+        // rtl={false}
+        // pauseOnFocusLoss
+        // draggable
+        // pauseOnHover
+        // theme="light"
+      />
     </div>
   );
 };

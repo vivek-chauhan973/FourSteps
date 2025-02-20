@@ -27,7 +27,7 @@ const EditUser = () => {
         const response = await fetch(`/api/user/user?id=${id}`);
         if (response.ok) {
           const userData = await response.json();
-          console.log("userData---------->",userData);
+          // console.log("userData---------->",userData);
           setFormData({
             name: userData?.[0].name,
             email: userData?.[0].email,
