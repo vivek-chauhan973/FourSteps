@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import IndustrySideForm from "../Industry/IndustrySideForm";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
-import TechAbout from "./TechAbout";
+// import TechAbout from "./TechAbout";
 import TechSolutionDeliver from "./TechSolutionDeliver";
 import TechSuccessStory from "./TechSuccessStory";
 import TechService from "./TechService";
@@ -209,7 +209,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="OverviewContent"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight1", "20px")}
@@ -227,7 +227,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="agenda"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight2", "55px")}
@@ -245,7 +245,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="speakerSection"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight3", "95px")}
@@ -263,7 +263,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="ourServices"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight4", "135px")}
@@ -281,7 +281,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="product"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight5", "175px")}
@@ -299,7 +299,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="approaches"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight6", "215px")}
@@ -317,7 +317,7 @@ const TableOfTechnology = ({ technologyName }) => {
                     to="benefits"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight7", "270px")}

@@ -28,7 +28,8 @@ const TechSolutionDeliver = ({ solutionTech }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"}
                       alt="welcome"
-                      className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      // className="w-full h-32  md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32  md:h-full  md:w-40 object-cover  rounded"
                       height={500}
                       width={500}
                     />

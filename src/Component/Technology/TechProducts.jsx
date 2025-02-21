@@ -28,12 +28,12 @@ const TechProducts = ({ productTech }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"}
                       alt={item.title}
-                      className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
+                      // className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32 md:h-full md:w-52 object-cover rounded"
                       height={500}
                       width={500}
                     />
                   </div>
-
                   <Link
                     href={item?.link}
                     className="text-[22px] py-2 hover:text-heading decoration-heading underline font-semibold text-center"

@@ -81,20 +81,20 @@ const TechWhy4step = ({ why4step }) => {
           {/* iamge section */}
           <div
             ref={carouselRef}
-            className="flex gap-14 overflow-hidden scroll-smooth w-full md:w-auto"
+            className="flex gap-8 overflow-hidden scroll-smooth w-full md:w-auto"
           >
             {why4step?.partnersData?.length > 0 &&
               why4step?.partnersData?.map((item, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full sm:w-24 sm:h-20 md:w-28 md:h-28 flex justify-center items-center"
+                  className="flex-shrink-0 w-full sm:w-24 sm:h-20 md:w-40 md:h-40 flex justify-center items-center"
                 >
                   <Image
                     height={200}
                     width={200}
                     src={item}
                     alt={item?.alt || "alt section"}
-                    className="w-full h-32 rounded object-contain"
+                    className="w-full h-36 rounded object-contain"
                   />
                 </div>
               ))}
