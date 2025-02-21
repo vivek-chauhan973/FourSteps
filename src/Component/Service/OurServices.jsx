@@ -4,54 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-const OurServices = ({ service }) => {
-  const data = [
-    {
-      imageSrc: "/image/1.png",
-      imageAlt: "Consulting Image 1",
-      title: "Advanced technology consulting",
-      description: "ScienceSoft's consultants advise on the use of",
-      points: [
-        "Insurance data aggregation and processing.",
-        "Claim-related decision-making.",
-        "Insurance fraud detection.",
-        "Risk management.",
-        "Advanced operational analytics.",
-        "Demand forecasting and spend planning.",
-        "End-to-end traceability of reimbursement transactions, and more.",
-      ],
-    },
-    {
-      imageSrc: "/image/2.png",
-      imageAlt: "Consulting Image 2",
-      title: "Innovative solutions advisory",
-      description: "Expert advice on implementing",
-      points: [
-        "Blockchain integration.",
-        "AI-driven analytics.",
-        "Cybersecurity enhancements.",
-        "IoT connectivity.",
-        "Cloud infrastructure optimization.",
-        "Machine learning models.",
-        "Data-driven decision-making.",
-      ],
-    },
-    {
-      imageSrc: "/image/3.png",
-      imageAlt: "Consulting Image 3",
-      title: "Innovative solutions advisory",
-      description: "Expert advice on implementing",
-      points: [
-        "Blockchain.",
-        "AI-driven analytics.",
-        "Cybersecurity enhancements.",
-        "IoT connectivity.",
-        "Cloud infrastructure optimization.",
-        "Machine learning.",
-        "Data-driven decision-making.",
-      ],
-    },
-  ];
+const IndustryWeServe = ({ service }) => {
+
 
   return (
     <>
@@ -128,4 +82,4 @@ const OurServices = ({ service }) => {
   );
 };
 
-export default OurServices;
+export default IndustryWeServe;

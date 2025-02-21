@@ -30,7 +30,7 @@ const DyServices = () => {
     }
   }, [services]);
   console.log(
-    "here is all the data o service section section--ss-->",
+    "here is all the data o service section section--s----------s-->",
     serviceName
   );
 

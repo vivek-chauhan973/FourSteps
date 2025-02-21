@@ -10,6 +10,7 @@ import Productservice from "./Productservice";
 import BenifitService from "./BenifitService";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";
 import OverViewService from "./OverViewService";
+import IndustryWeServe from "./OurServices";
 
 const TableOfServices = ({ serviceName }) => {
   const [highlightedText, setHighlightedText] = useState("");
@@ -113,7 +114,7 @@ const TableOfServices = ({ serviceName }) => {
                 </div>
 
                 {serviceName?.solution && (
-                  <OurServices service={serviceName?.service} />
+                  <IndustryWeServe service={serviceName?.service} />
                 )}
               </div>
             </div>

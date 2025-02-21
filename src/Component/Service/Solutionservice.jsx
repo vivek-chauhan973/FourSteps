@@ -31,7 +31,7 @@ const Solutionservice = ({ solution }) => {
                       width={500}
                     />
                   </div>
-
+                  
                   <Link
                     href={item?.link || "#"}
                     className="text-[2px] sm:text-[21px]  text-gray-700 cursor-pointer py-2 decoration-heading hover:text-heading underline font-semibold text-center "

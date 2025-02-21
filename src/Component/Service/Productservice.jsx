@@ -27,7 +27,7 @@ const Productservice = ({ product }) => {
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-4">
                     <Image
-                      src={item?.icon || "/image/bg.jpg"}
+                      src={item?.path || "/image/bg.jpg"}
                       alt={item?.title}
                       className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
                       height={500}
