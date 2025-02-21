@@ -257,26 +257,6 @@ const Sidebar = () => {
         ],
       },
       {
-        label: "ABC......",
-        icon: () => <FontAwesomeIcon icon={faFile} />,
-        href: "/admin/page-create",
-      },
-      {
-        label: "Setting",
-        icon: () => <FontAwesomeIcon icon={faGear} />,
-        href: "/admin/setting-site",
-      },
-      {
-        label: "Travel Guide",
-        icon: () => <FontAwesomeIcon icon={faBook} />,
-        href: "#",
-      },
-      {
-        label: "Deals Page",
-        icon: () => <FontAwesomeIcon icon={faTag} />,
-        href: "#",
-      },
-      {
         label: "Change Password",
         icon: () => <FontAwesomeIcon icon={faTag} />,
         href: "/admin/change-password",
