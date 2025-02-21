@@ -5,7 +5,6 @@ import ServiceAbout from "./ServiceAbout";
 import Why4stepService from "./Why4stepService";
 import SuccessStoryService from "./SuccessStoryService";
 import Solutionservice from "./Solutionservice";
-import OurServices from "./OurServices";
 import Productservice from "./Productservice";
 import BenifitService from "./BenifitService";
 import ApproacheIndustry from "../Industry/ApproacheIndustry";

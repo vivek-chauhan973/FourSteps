@@ -205,7 +205,7 @@ const TableOfContent = ({ industryName }) => {
                     to="OverviewContent"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight1", "20px")}
@@ -223,7 +223,7 @@ const TableOfContent = ({ industryName }) => {
                     to="agenda"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight2", "55px")}
@@ -241,7 +241,7 @@ const TableOfContent = ({ industryName }) => {
                     to="speakerSection"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight3", "95px")}
@@ -259,7 +259,7 @@ const TableOfContent = ({ industryName }) => {
                     to="ourServices"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight4", "135px")}
@@ -277,7 +277,7 @@ const TableOfContent = ({ industryName }) => {
                     to="product"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight5", "175px")}
@@ -295,7 +295,7 @@ const TableOfContent = ({ industryName }) => {
                     to="approaches"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight6", "215px")}
@@ -313,7 +313,7 @@ const TableOfContent = ({ industryName }) => {
                     to="benefits"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight7", "270px")}

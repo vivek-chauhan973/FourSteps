@@ -33,13 +33,12 @@ const OurServiceSolution = ({ SolutionService }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"}
                       alt={item?.imageAlt || "Service Image"}
-                      className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32 md:h-full md:w-52 object-cover rounded"
                       height={500}
                       width={500}
                     />
                   </div>
                 </div>
-
                 <div className="text-center">
                   <h2 className="md:text-xl text-gray-800 text-base  font-semibold mb-2">
                     {item?.title}
@@ -48,7 +47,6 @@ const OurServiceSolution = ({ SolutionService }) => {
                     {item?.subTitle}
                   </p>
                 </div>
-
                 <ul className="mt-4 text-gray-600 custom-list px-4">
                   {item?.editorHtmlDescription?.map((list, idx) => (
                     <li
@@ -60,7 +58,6 @@ const OurServiceSolution = ({ SolutionService }) => {
                     ></li>
                   ))}
                 </ul>
-
                 <div className="mt-6 flex justify-center">
                   <Link
                     href={item?.link}

@@ -29,9 +29,10 @@ const OurServicesIndustry = ({ services }) => {
                 <div className="flex justify-center items-center">
                   <div className="mb-4">
                     <Image
-                      src={item?.path || "/image/bg.jpg"} 
+                      src={item?.path || "/image/bg.jpg"}
                       alt="welcome"
-                      className="w-full h-32  md:h-36 md:w-36 object-contain rounded"
+                      // className="w-full h-32  md:h-36 md:w-36 object-contain rounded"
+                      className="w-full h-32 md:h-full pt-5 md:w-48 object-cover rounded"
                       height={500}
                       width={500}
                     />
@@ -53,13 +54,11 @@ const OurServicesIndustry = ({ services }) => {
                       key={idx}
                       className="mb-[2px] text-sm md:text-base"
                       dangerouslySetInnerHTML={{
-                        __html: point.content, 
+                        __html: point.content,
                       }}
                     ></li>
                   ))}
                 </ul>
-
-             
 
                 <div className="mt-6 md:mb-6  flex justify-center">
                   <Link

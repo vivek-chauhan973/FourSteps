@@ -11,3 +11,4 @@ const SolutionAbout = ({ about }) => {
 };
 
 export default SolutionAbout;
+          

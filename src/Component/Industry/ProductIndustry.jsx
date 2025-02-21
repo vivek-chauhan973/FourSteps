@@ -30,7 +30,7 @@ const ProductIndustry = ({ products }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
                       alt="welcome"
-                      className="w-full h-32  md:h-36  object-cover md:w-full rounded"
+                      className="w-full h-32  md:h-full  object-cover md:w-48 rounded"
                       height={500}
                       width={500}
                     />
