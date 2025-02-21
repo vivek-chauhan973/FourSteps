@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const [topics,setTopics]=useState("");
-  const [tools,setTools]=useState("");
+  const [topics, setTopics] = useState("");
+  const [tools, setTools] = useState("");
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
     altText: "",
   });
   useEffect(() => {
-    console.log("product response is here --> ", casestudyData);
+    // console.log("product response is here --> ", casestudyData);
     if (casestudyData) {
       setFormData({
         title: casestudyData?.[0]?.title || "",
@@ -55,9 +55,11 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/global/service");
+        const response = await fetch("/api/service/serviceHero", {
+          method: "GET",
+        });
         const data = await response.json();
-        if (data.success) setServiceList(data.data);
+        setServiceList(data || []);
       } catch (error) {
         console.error("Failed to fetch services:", error);
       }
@@ -65,9 +67,11 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
 
     const fetchIndustries = async () => {
       try {
-        const response = await fetch("/api/global/industries/getIndustries");
+        const response = await fetch("/api/industry/industry-hero", {
+          method: "GET",
+        });
         const data = await response.json();
-        if (data.success) setIndustryList(data.data);
+        setIndustryList(data.data || []);
       } catch (error) {
         console.error("Failed to fetch industries:", error);
       }
@@ -89,11 +93,10 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
     if (image) {
       formDataToSend.append("image", image);
     }
-    if(topics && tools){
+    if (topics && tools) {
       formDataToSend.append("topics", topics);
       formDataToSend.append("tools", tools);
-    }
-    else{
+    } else {
       alert("topics and tools is required");
       return;
     }
@@ -246,9 +249,9 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
               required
             >
               <option value="">Select a service</option>
-              {serviceList.map((service) => (
-                <option key={service._id} value={service.name}>
-                  {service.name}
+              {serviceList?.length>0 && serviceList?.map((service) => (
+                <option key={service._id} value={service.title}>
+                  {service.title}
                 </option>
               ))}
             </select>
@@ -266,9 +269,9 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
               required
             >
               <option value="">Select an industry</option>
-              {industryList.map((ind) => (
-                <option key={ind._id} value={ind.name}>
-                  {ind.name}
+              {industryList?.length>0 && industryList?.map((ind) => (
+                <option key={ind._id} value={ind.title}>
+                  {ind.title}
                 </option>
               ))}
             </select>
@@ -286,12 +289,12 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
             <select
               name="topic"
               value={topics}
-              onChange={(e)=>setTopics(e.target.value)}
+              onChange={(e) => setTopics(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >
               <option value="">Select an option</option>
-              {topicsList.map((topic) => (
+              {topicsList?.length>0 && topicsList?.map((topic) => (
                 <option key={topic._id} value={topic.name}>
                   {topic.name}
                 </option>
@@ -307,12 +310,12 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
             <select
               name="toolsAndSoftware"
               value={tools}
-              onChange={(e)=>setTools(e.target.value)}
+              onChange={(e) => setTools(e.target.value)}
               className="mt-2 block w-full bg-white text-gray-800 border border-gray-300 rounded-lg shadow-sm p-3 focus:outline-none focus:ring focus:ring-blue-500"
               required
             >
               <option value="">Select an option</option>
-              {toolsList.length > 0 ? (
+              {toolsList?.length > 0 ? (
                 toolsList.map((tool) => (
                   <option key={tool._id} value={tool.name}>
                     {tool.name}

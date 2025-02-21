@@ -11,102 +11,102 @@ import {
 
 const AdminDashboard = () => {
   // States for Industries
-  const [industry, setIndustry] = useState("");
-  const [industriesList, setIndustriesList] = useState([]);
-  const [editIndustryId, setEditIndustryId] = useState(null);
-  const [editIndustryValue, setEditIndustryValue] = useState("");
+  // const [industry, setIndustry] = useState("");
+  // const [industriesList, setIndustriesList] = useState([]);
+  // const [editIndustryId, setEditIndustryId] = useState(null);
+  // const [editIndustryValue, setEditIndustryValue] = useState("");
 
   // Fetch industries on component mount
-  useEffect(() => {
-    const fetchIndustries = async () => {
-      const response = await fetch("/api/global/industries/getIndustries");
-      const data = await response.json();
-      setIndustriesList(data.data);
-    };
+  // useEffect(() => {
+  //   const fetchIndustries = async () => {
+  //     const response = await fetch("/api/global/industries/getIndustries");
+  //     const data = await response.json();
+  //     setIndustriesList(data.data);
+  //   };
 
-    fetchIndustries();
-  }, []);
+  //   fetchIndustries();
+  // }, []);
 
   // Handle input change
-  const handleIndustryChange = (e) => setIndustry(e.target.value);
+  // const handleIndustryChange = (e) => setIndustry(e.target.value);
 
   // Handle form submission to add new industry
-  const handleSubmitIndustry = async (e) => {
-    e.preventDefault();
-    const response = await fetch("/api/global/industries/addIndustry", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: industry }),
-    });
+  // const handleSubmitIndustry = async (e) => {
+  //   e.preventDefault();
+  //   const response = await fetch("/api/global/industries/addIndustry", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ name: industry }),
+  //   });
 
-    if (response.ok) {
-      const newIndustry = await response.json();
-      setIndustriesList([...industriesList, newIndustry.data]);
-      setIndustry("");
-      alert("Industry added successfully!");
-    }
-  };
+  //   if (response.ok) {
+  //     const newIndustry = await response.json();
+  //     setIndustriesList([...industriesList, newIndustry.data]);
+  //     setIndustry("");
+  //     alert("Industry added successfully!");
+  //   }
+  // };
 
   // Toggle edit mode for an industry
-  const toggleEditIndustry = (id) => {
-    if (editIndustryId === id) {
-      setEditIndustryId(null);
-      setEditIndustryValue("");
-    } else {
-      setEditIndustryId(id);
-      const industryToEdit = industriesList.find((item) => item._id === id);
-      setEditIndustryValue(industryToEdit.name);
-    }
-  };
+  // const toggleEditIndustry = (id) => {
+  //   if (editIndustryId === id) {
+  //     setEditIndustryId(null);
+  //     setEditIndustryValue("");
+  //   } else {
+  //     setEditIndustryId(id);
+  //     const industryToEdit = industriesList.find((item) => item._id === id);
+  //     setEditIndustryValue(industryToEdit.name);
+  //   }
+  // };
 
   // Save edited industry
-  const saveEditIndustry = async (id) => {
-    try {
-      const response = await fetch(
-        `/api/global/industries/editIndustry?id=${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: editIndustryValue }),
-        }
-      );
+  // const saveEditIndustry = async (id) => {
+  //   try {
+  //     const response = await fetch(
+  //       `/api/global/industries/editIndustry?id=${id}`,
+  //       {
+  //         method: "PUT",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({ name: editIndustryValue }),
+  //       }
+  //     );
 
-      if (response.ok) {
-        const updatedIndustry = await response.json();
-        const updatedIndustries = industriesList.map(
-          (item) => (item._id === id ? updatedIndustry.data : item) // Update the specific industry
-        );
-        setIndustriesList(updatedIndustries); // Set the updated list
-        setEditIndustryId(null); // Clear edit state
-        setEditIndustryValue(""); // Clear input
-        alert("Industry updated successfully!");
-      } else {
-        const errorResponse = await response.json();
-        alert(`Error updating industry: ${errorResponse.message}`);
-      }
-    } catch (error) {
-      console.error("Error updating industry:", error);
-      alert("An unexpected error occurred. Please try again.");
-    }
-  };
+  //     if (response.ok) {
+  //       const updatedIndustry = await response.json();
+  //       const updatedIndustries = industriesList.map(
+  //         (item) => (item._id === id ? updatedIndustry.data : item) // Update the specific industry
+  //       );
+  //       setIndustriesList(updatedIndustries); // Set the updated list
+  //       setEditIndustryId(null); // Clear edit state
+  //       setEditIndustryValue(""); // Clear input
+  //       alert("Industry updated successfully!");
+  //     } else {
+  //       const errorResponse = await response.json();
+  //       alert(`Error updating industry: ${errorResponse.message}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating industry:", error);
+  //     alert("An unexpected error occurred. Please try again.");
+  //   }
+  // };
 
   // Handle industry deletion
-  const handleDeleteIndustry = async (id) => {
-    const response = await fetch(
-      `/api/global/industries/deleteIndustry?id=${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+  // const handleDeleteIndustry = async (id) => {
+  //   const response = await fetch(
+  //     `/api/global/industries/deleteIndustry?id=${id}`,
+  //     {
+  //       method: "DELETE",
+  //     }
+  //   );
 
-    if (response.ok) {
-      const filteredIndustries = industriesList.filter(
-        (item) => item._id !== id
-      );
-      setIndustriesList(filteredIndustries);
-      alert("Industry deleted successfully!");
-    }
-  };
+  //   if (response.ok) {
+  //     const filteredIndustries = industriesList.filter(
+  //       (item) => item._id !== id
+  //     );
+  //     setIndustriesList(filteredIndustries);
+  //     alert("Industry deleted successfully!");
+  //   }
+  // };
 
   // STATES FOR TOOLS
   const [tool, setTool] = useState("");
@@ -448,100 +448,100 @@ const AdminDashboard = () => {
   };
 // services is here--->
 
-const [service, setService] = useState("");
-const [servicesList, setServicesList] = useState([]);
-const [editServiceId, setEditServiceId] = useState(null);
-const [editServiceValue, setEditServiceValue] = useState("");
+// const [service, setService] = useState("");
+// const [servicesList, setServicesList] = useState([]);
+// const [editServiceId, setEditServiceId] = useState(null);
+// const [editServiceValue, setEditServiceValue] = useState("");
 
 // Fetch services on mount
-useEffect(() => {
-  const loadServices = async () => {
-    const response = await fetch("/api/global/service");
-    const data = await response.json();
-    if (data.success) {
-      setServicesList(data.data);
-    }
-  };
-  loadServices();
-}, []);
+// useEffect(() => {
+//   const loadServices = async () => {
+//     const response = await fetch("/api/global/service");
+//     const data = await response.json();
+//     if (data.success) {
+//       setServicesList(data.data);
+//     }
+//   };
+//   loadServices();
+// }, []);
 
 // Add Service
-const handleSubmitService = async (e) => {
-  e.preventDefault();
-  if (!service.trim()) return;
+// const handleSubmitService = async (e) => {
+//   e.preventDefault();
+//   if (!service.trim()) return;
 
-  const response = await fetch("/api/global/service", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name: service.trim() }),
-  });
+//   const response = await fetch("/api/global/service", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name: service.trim() }),
+//   });
 
-  const data = await response.json();
-  if (data.success) {
-    setServicesList([...servicesList, data.data]);
-    setService("");
-    alert("services added ");
-  }
-};
+//   const data = await response.json();
+//   if (data.success) {
+//     setServicesList([...servicesList, data.data]);
+//     setService("");
+//     alert("services added ");
+//   }
+// };
 
 // Toggle Edit Mode
-const toggleEditService = (id) => {
-  if (editServiceId === id) {
-    setEditServiceId(null);
-    setEditServiceValue("");
-  } else {
-    setEditServiceId(id);
-    const serviceItem = servicesList.find((item) => item._id === id);
-    setEditServiceValue(serviceItem.name);
-  }
-};
+// const toggleEditService = (id) => {
+//   if (editServiceId === id) {
+//     setEditServiceId(null);
+//     setEditServiceValue("");
+//   } else {
+//     setEditServiceId(id);
+//     const serviceItem = servicesList.find((item) => item._id === id);
+//     setEditServiceValue(serviceItem.name);
+//   }
+// };
 
 // Save Edited Service
-const saveEditService = async (id) => {
-  const response = await fetch("/api/global/service", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id, name: editServiceValue }),
-  });
+// const saveEditService = async (id) => {
+//   const response = await fetch("/api/global/service", {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ id, name: editServiceValue }),
+//   });
 
-  const data = await response.json();
-  if (data.success) {
-    setServicesList(
-      servicesList.map((item) =>
-        item._id === id ? { ...item, name: editServiceValue } : item
-      )
-    );
-    setEditServiceId(null);
-    setEditServiceValue("");
-  }
-};
+//   const data = await response.json();
+//   if (data.success) {
+//     setServicesList(
+//       servicesList.map((item) =>
+//         item._id === id ? { ...item, name: editServiceValue } : item
+//       )
+//     );
+//     setEditServiceId(null);
+//     setEditServiceValue("");
+//   }
+// };
 
 // Delete Service
-const handleDeleteService = async (id) => {
-  const response = await fetch("/api/global/service", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id }),
-  });
+// const handleDeleteService = async (id) => {
+//   const response = await fetch("/api/global/service", {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ id }),
+//   });
 
-  const data = await response.json();
-  if (data.success) {
-    setServicesList(servicesList.filter((item) => item._id !== id));
-  }
-};
+//   const data = await response.json();
+//   if (data.success) {
+//     setServicesList(servicesList.filter((item) => item._id !== id));
+//   }
+// };
 
   return (
     <AdminLayout>
       <h1 className="text-2xl font-bold">Admin Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 rounded">
         {/* This is a industry section */}
-        <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md   bg-white border-l-2 border-teal-600">
+        {/* <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md   bg-white border-l-2 border-teal-600">
           <div>
             <form
               onSubmit={handleSubmitIndustry}
@@ -564,7 +564,7 @@ const handleDeleteService = async (id) => {
               </button>
             </form>
 
-            {/* Display Industries */}
+          
             <div className="mt-3  max-h-[300px] overflow-y-auto p-3">
               {industriesList.map((item, index) => (
                 <div key={item._id} className="flex justify-between  mt-2">
@@ -609,7 +609,7 @@ const handleDeleteService = async (id) => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
         {/* tools and software section */}
         <div className="shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
           <form onSubmit={handleSubmitTool} className="flex items-end gap-2">
@@ -928,7 +928,7 @@ const handleDeleteService = async (id) => {
             </div>
           </div>
           {/*services is here */}
-          <div className=" shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
+          {/* <div className=" shadow-[0_0px_10px_-3px_rgba(0,0,0,0.3)] p-4 rounded-md bg-white border-l-2 border-teal-600">
             <form
               onSubmit={handleSubmitService}
               className="flex items-end gap-3 mb-4"
@@ -1002,7 +1002,7 @@ const handleDeleteService = async (id) => {
                 <p>No services added yet.</p>
               )}
             </div>
-          </div>
+          </div> */}
 
       </div>
     </AdminLayout>

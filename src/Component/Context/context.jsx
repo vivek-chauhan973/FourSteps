@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 const Context = createContext(null);
 const fetchIndustries = async () => {
-  const response = await fetch("/api/global/industries/getIndustries");
+  const response = await fetch("/api/industry/industry-hero", { method: "GET" })
   const data = await response.json();
 return data;
 };
@@ -33,7 +33,7 @@ const fetchLanguage= async () => {
   return data;
 };
 const fetchService= async () => {
-  const res = await fetch("/api/global/service");
+  const res = await fetch("/api/service/serviceHero", { method: "GET" })
   const data = await res.json();
   return data;
 };
@@ -66,7 +66,7 @@ const AppProvider = ({ children }) => {
     fetchIndustries().then(res=>{setIndustries(res?.data||[])});
     fetchWebinarTypes().then(res=>{setWebinarType(res||[])});
     fetchDepartments().then(res=>{setDepartment(res||[])});
-    fetchService().then(res=>{setService(res?.data||[])});
+    fetchService().then(res=>{setService(res||[])});
     fetchLanguage().then(res=>{setLanguage(res?.data||[])});
 
   }, []);

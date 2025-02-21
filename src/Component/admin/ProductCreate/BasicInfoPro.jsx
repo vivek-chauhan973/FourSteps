@@ -18,7 +18,7 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
     altText: "",
   });
   useEffect(() => {
-    console.log("product response is here --> ", productData);
+    // console.log("product response is here --> ", productData);
     if (productData) {
       setFormData({
         title: productData?.[0]?.title || "",
@@ -55,9 +55,10 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/global/service");
+        const response = await fetch("/api/service/serviceHero", { method: "GET" })
         const data = await response.json();
-        if (data.success) setServiceList(data.data);
+        // console.log("data--/-> ",data)
+         setServiceList(data||[]);
       } catch (error) {
         console.error("Failed to fetch services:", error);
       }
@@ -65,9 +66,9 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
 
     const fetchIndustries = async () => {
       try {
-        const response = await fetch("/api/global/industries/getIndustries");
+        const response = await fetch("/api/industry/industry-hero", { method: "GET" })
         const data = await response.json();
-        if (data.success) setIndustryList(data.data);
+       setIndustryList(data.data);
       } catch (error) {
         console.error("Failed to fetch industries:", error);
       }
@@ -161,7 +162,7 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
   useEffect(() => {
     fetchTools(); // Fetch tools data when component mounts
   }, []);
-
+// console.log("service list----> ",serviceList)
   return (
     <div className="container mx-auto p-8 bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg">
       <form onSubmit={handleSubmit} className="space-y-8">
@@ -247,8 +248,8 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
             >
               <option value="">Select a service</option>
               {serviceList.map((service) => (
-                <option key={service._id} value={service.name}>
-                  {service.name}
+                <option key={service._id} value={service.title}>
+                  {service.title}
                 </option>
               ))}
             </select>
@@ -267,8 +268,8 @@ const BasicInfoPro = ({ setActiveTab, productData }) => {
             >
               <option value="">Select an industry</option>
               {industryList.map((ind) => (
-                <option key={ind._id} value={ind.name}>
-                  {ind.name}
+                <option key={ind._id} value={ind.title}>
+                  {ind.title}
                 </option>
               ))}
             </select>

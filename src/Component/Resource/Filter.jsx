@@ -245,14 +245,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedIndustries.includes(industry?.name)}
+                    checked={selectedIndustries.includes(industry?.title)}
                     onChange={(e) =>
-                      handleIndustryChange(industry?.name, e.target.checked)
+                      handleIndustryChange(industry?.title, e.target.checked)
                     }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                    {industry?.name}
+                    {industry?.title}
                   </span>
                 </label>
               ))}
@@ -424,14 +424,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedIndustries.includes(industry?.name)}
+                    checked={selectedIndustries.includes(industry?.title)}
                     onChange={(e) =>
-                      handleIndustryChange(industry?.name, e.target.checked)
+                      handleIndustryChange(industry?.title, e.target.checked)
                     }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                    {industry?.name}
+                    {industry?.title}
                   </span>
                 </label>
               ))}
@@ -505,13 +505,13 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedService?.includes(webinarType?.name)}
+                    checked={selectedService?.includes(webinarType?.title)}
                     onChange={(e) =>
-                      handleServiceChange(webinarType?.name, e.target.checked)
+                      handleServiceChange(webinarType?.title, e.target.checked)
                     }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
-                    {webinarType?.name}
+                    {webinarType?.title}
                   </span>
                 </label>
               ))}
@@ -538,14 +538,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedIndustries.includes(industry?.name)}
+                    checked={selectedIndustries.includes(industry?.title)}
                     onChange={(e) =>
-                      handleIndustryChange(industry?.name, e.target.checked)
+                      handleIndustryChange(industry?.title, e.target.checked)
                     }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                    {industry?.name}
+                    {industry?.title}
                   </span>
                 </label>
               ))}
@@ -619,13 +619,13 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedService?.includes(webinarType?.name)}
+                    checked={selectedService?.includes(webinarType?.title)}
                     onChange={(e) =>
-                      handleServiceChange(webinarType?.name, e.target.checked)
+                      handleServiceChange(webinarType?.title, e.target.checked)
                     }
                   />
                   <span className="ml-2 capitalize cursor-pointer text-sm">
-                    {webinarType?.name}
+                    {webinarType?.title}
                   </span>
                 </label>
               ))}
@@ -652,14 +652,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedIndustries.includes(industry?.name)}
+                    checked={selectedIndustries.includes(industry?.title)}
                     onChange={(e) =>
-                      handleIndustryChange(industry?.name, e.target.checked)
+                      handleIndustryChange(industry?.title, e.target.checked)
                     }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                    {industry?.name}
+                    {industry?.title}
                   </span>
                 </label>
               ))}
@@ -766,14 +766,14 @@ const Filter = ({ filterGlobalData, Heading }) => {
                   <input
                     type="checkbox"
                     className="form-checkbox h-3 w-3 text-blue-600"
-                    checked={selectedIndustries.includes(industry?.name)}
+                    checked={selectedIndustries.includes(industry?.title)}
                     onChange={(e) =>
-                      handleIndustryChange(industry?.name, e.target.checked)
+                      handleIndustryChange(industry?.title, e.target.checked)
                     }
                   />
                   {/* <span className="ml-2 capitalize cursor-pointer text-sm"> */}
                   <span className="ml-2  capitalize cursor-pointer label-text md:text-[14px] text-[12px]">
-                    {industry?.name}
+                    {industry?.title}
                   </span>
                 </label>
               ))}

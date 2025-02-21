@@ -97,7 +97,8 @@ export default function BlogDetailBanner({ setActiveTab, blogData }) {
   const [industry, setIndustry] = useState([]);
 
   const fetchIndustry = async () => {
-    const response = await fetch("/api/global/industries/getIndustries");
+    const response = await fetch("/api/industry/industry-hero", { method: "GET" })
+
     if (response.ok) {
       const result = await response.json();
       setIndustry(result.data); // Assuming result.data is an array of industries
@@ -305,7 +306,7 @@ export default function BlogDetailBanner({ setActiveTab, blogData }) {
                     required
                   >
                     <option value="" disabled>{blogData?blogData?.selectTopic:"Select an option"}</option>
-                    {topicsList?.map((topic) => (
+                    {topicsList?.length>0 && topicsList?.map((topic) => (
                       <option key={topic._id} value={topic.name}>
                         {topic.name}
                       </option>
@@ -327,7 +328,7 @@ export default function BlogDetailBanner({ setActiveTab, blogData }) {
                   >
                     <option value="" disabled>{blogData?blogData?.selectDepartment:"Select an option"}</option>
 
-                    {departmetaData?.map((department) => (
+                    {departmetaData?.length>0 && departmetaData?.map((department) => (
                       <option key={department._id} value={department.name}>
                         {department.name}
                       </option>
@@ -348,9 +349,9 @@ export default function BlogDetailBanner({ setActiveTab, blogData }) {
                     required
                   >
                     <option value="" disabled>{blogData?blogData?.selectIndustry:"Select an industry"}</option>
-                    {industry?.map((item) => (
-                      <option key={item._id} value={item.name}>
-                        {item.name}
+                    {industry?.length>0 && industry?.map((item) => (
+                      <option key={item._id} value={item.title}>
+                        {item.title}
                       </option>
                     ))}
                   </select>

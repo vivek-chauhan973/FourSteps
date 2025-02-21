@@ -68,9 +68,9 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
 
     const fetchIndustries = async () => {
       try {
-        const response = await fetch("/api/global/industries/getIndustries");
+        const response = await fetch("/api/industry/industry-hero", { method: "GET" })
         const data = await response.json();
-        if (data.success) setIndustryList(data.data);
+       setIndustryList(data.data);
       } catch (error) {
         console.error("Failed to fetch industries:", error);
       }
@@ -288,7 +288,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
             >
               <option value="">Select a user</option>
 
-              {userList.map((item) => (
+              {userList?.length>0 && userList?.map((item) => (
                 <option key={item._id} value={item._id}>
                   {item.name}
                 </option>
@@ -308,9 +308,9 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               required
             >
               <option value="">Select an industry</option>
-              {industryList.map((ind) => (
-                <option key={ind._id} value={ind.name}>
-                  {ind.name}
+              {industryList?.length>0 && industryList?.map((ind) => (
+                <option key={ind._id} value={ind.title}>
+                  {ind.title}
                 </option>
               ))}
             </select>
@@ -332,7 +332,7 @@ const BasicInfoVideo = ({ setActiveTab, videoData }) => {
               required
             >
               <option value="">Select an option</option>
-              {topicsList.map((topic) => (
+              {topicsList?.length>0 && topicsList?.map((topic) => (
                 <option key={topic._id} value={topic.name}>
                   {topic.name}
                 </option>

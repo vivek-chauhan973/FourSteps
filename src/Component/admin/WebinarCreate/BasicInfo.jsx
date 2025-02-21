@@ -210,11 +210,11 @@ const BasicInfo = ({ setActiveTab, webinarData }) => {
   const [industry, setIndustry] = useState([]);
 
   const fetchIndustry = async () => {
-    const response = await fetch("/api/global/industries/getIndustries");
+    const response = await fetch("/api/industry/industry-hero", { method: "GET" })
     if (response.ok) {
       const result = await response.json();
       setIndustry(result.data); // Assuming result.data is an array of industries
-      // console.log(".....>>>>>industry", result.data);
+      console.log(".....>>>>>industry", result.data);
     } else {
       console.error("Failed to fetch industry:", response.status);
     }
@@ -469,8 +469,8 @@ const BasicInfo = ({ setActiveTab, webinarData }) => {
               >
                 <option value="">Select an industry</option>
                 {industry.map((item) => (
-                  <option key={item._id} value={item.name}>
-                    {item.name}
+                  <option key={item._id} value={item.title}>
+                    {item.title}
                   </option>
                 ))}
               </select>
