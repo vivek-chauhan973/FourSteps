@@ -89,7 +89,7 @@ const TableOfServices = ({ serviceName }) => {
             {/* Solution we deliver Section */}
             <div
               id="speakerSection"
-              className="flex flex-col justify-between md:mt-20 mb-3"
+              className="flex flex-col justify-between md:mt-24 mb-3"
             >
               <div>
                 <div className="font-semibold py-2 text-xl">
@@ -208,7 +208,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="OverviewContent"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight1", "20px")}
@@ -226,7 +226,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="agenda"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight2", "55px")}
@@ -244,7 +244,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="speakerSection"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight3", "95px")}
@@ -262,7 +262,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="ourServices"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight4", "135px")}
@@ -280,7 +280,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="product"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight5", "175px")}
@@ -298,7 +298,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="approaches"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight6", "215px")}
@@ -316,7 +316,7 @@ const TableOfServices = ({ serviceName }) => {
                     to="benefits"
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={-100}
                     duration={500}
                     activeClass="active"
                     onSetActive={() => highlightSection("highlight7", "270px")}

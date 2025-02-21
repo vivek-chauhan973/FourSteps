@@ -5,8 +5,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const IndustryWeServe = ({ service }) => {
-
-
   return (
     <>
       <div>
@@ -31,7 +29,7 @@ const IndustryWeServe = ({ service }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"} // Assuming the filename is a path to an image
                       alt={item?.imageAlt || "Service Image"}
-                      className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32 md:h-full md:w-48 object-cover rounded"
                       height={500}
                       width={500}
                     />

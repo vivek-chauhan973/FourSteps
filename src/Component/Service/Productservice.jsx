@@ -29,7 +29,7 @@ const Productservice = ({ product }) => {
                     <Image
                       src={item?.path || "/image/bg.jpg"}
                       alt={item?.title}
-                      className="w-full h-32 md:h-36 md:w-36 object-cover rounded"
+                      className="w-full h-32 md:h-full md:w-48 object-cover rounded"
                       height={500}
                       width={500}
                     />
