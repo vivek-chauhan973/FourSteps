@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   faWhatsapp,
   faFacebook,
@@ -82,10 +81,10 @@ const Contact = () => {
         <Nav />
       </div>
 
-      <div className=" bg-background w-full h-auto md:mb-0 mb-4 md:h-[70vh]">
+      <div className=" bg-background w-full h-auto md:mb-0 mb-4 md:h-[80vh]">
         <div className=" container-wrapper">
           <div className="flex justify-center  items-center ">
-            <div className="grid grid-cols-1 pt-24 md:pt-0 md:grid-cols-2 gap-8  ">
+            <div className="grid grid-cols-1  pt-24 md:pt- md:grid-cols-2 gap-8  ">
               {/* Content Section */}
               <div className="flex flex-col justify-center  md:text-left space-y-4">
                 <h2 className="text-xl sm:text-2xl md:text-3xl  md:text-[40px] text-[26px] font-semibold text-heading">
@@ -110,7 +109,7 @@ const Contact = () => {
               {/* Image Section */}
               <div className="flex justify-center md:justify-end items-center ">
                 <Image
-                  src="/image/yyy.png"
+                  src="/assets/cms.jpg"
                   alt="About Us"
                   className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
                   height={500}

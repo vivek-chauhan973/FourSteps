@@ -229,7 +229,7 @@ const Partners = () => {
         {/* Carousel */}
         <div
           ref={carouselRef}
-          className="flex md:gap-16 gap-5  overflow-hidden  max-w-full lg:max-w-4xl md:max-w-3xl mx-auto justify-center items-center px-4"
+          className="flex md:gap-12 gap-5  overflow-hidden  max-w-full lg:max-w-4xl md:max-w-3xl mx-auto justify-center items-center px-4"
         >
           {partner &&
             partner.length > 0 &&
@@ -241,9 +241,9 @@ const Partners = () => {
                 <Image
                   height={200}
                   width={200}
-                  src={item.path}
-                  alt={item.alt}
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  src={item?.path}
+                  alt={item?.alt}
+                  className="w-full object-conatin  rounded-lg shadow-md"
                 />
               </div>
             ))}

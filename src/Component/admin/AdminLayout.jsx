@@ -61,7 +61,7 @@ const AdminLayout = ({ children }) => {
     <div className="h-screen w-full flex overflow-hidden transition-all duration-300 ease-in-out">
       <div
         ref={sidebarRef}
-        className={`bg-[#222E3C] fixed top-0 left-0 h-full overflow-y-auto transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`bg-gray-800 fixed top-0 left-0 h-full overflow-y-auto transform transition-transform duration-300 ease-in-out z-40 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } ${
           isMediumDevice && "md:w-[210px] w-[40vw]"
@@ -86,7 +86,7 @@ const AdminLayout = ({ children }) => {
           <div className="flex justify-between w-full">
             <Image
               className="w-[80px]"
-              src="/image/logo.png"
+              src="/image/logon.png"
               alt="Logo"
               width={100}
               height={100}
@@ -106,7 +106,7 @@ const AdminLayout = ({ children }) => {
               <div className="flex items-center gap-3">
                 <Image
                   className="hidden sm:block w-10 h-10 rounded-full"
-                  src="/image/logo.png"
+                  src="/image/logon.png"
                   alt="User"
                   width={320}
                   height={400}
