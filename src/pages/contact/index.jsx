@@ -109,7 +109,7 @@ const Contact = () => {
               {/* Image Section */}
               <div className="flex justify-center md:justify-end items-center ">
                 <Image
-                  src="/assets/cms.jpg"
+                  src="/assets/web.png"
                   alt="About Us"
                   className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
                   height={500}
