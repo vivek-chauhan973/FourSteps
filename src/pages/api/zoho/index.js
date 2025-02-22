@@ -17,7 +17,7 @@ if(req.method!=="POST"){
 
     if (response.status === 401) {
       console.log("Token Expired! Refreshing...");
-      await refreshAccessToken(); // Get new token
+      ZOHO_ACCESS_TOKEN= await refreshAccessToken(); // Get new token
       response = await fetch(url, {
         method: "POST",
         headers: {

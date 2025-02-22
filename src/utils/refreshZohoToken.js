@@ -19,7 +19,7 @@ export const refreshAccessToken = async () => {
   
       const data = await response.json();
       if (data?.access_token) {
-        ZOHO_ACCESS_TOKEN = data?.access_token;
+         const ZOHO_ACCESS_TOKEN = data?.access_token;
         return ZOHO_ACCESS_TOKEN
       } else {
        return null
