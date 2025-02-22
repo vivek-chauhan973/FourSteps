@@ -72,7 +72,7 @@ async function handler(req, res) {
         }
 
         // Remove old file if it exists
-        if (data.filename) {
+        if (data?.filename) {
           fs.unlinkSync(path.join(uploadDirectory, data.filename));
         }
 

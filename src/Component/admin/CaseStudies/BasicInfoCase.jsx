@@ -55,11 +55,9 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/service/serviceHero", {
-          method: "GET",
-        });
+        const response = await fetch("/api/service/master-service");
         const data = await response.json();
-        setServiceList(data || []);
+        setServiceList(data?.data || []);
       } catch (error) {
         console.error("Failed to fetch services:", error);
       }
@@ -250,8 +248,8 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
             >
               <option value="">Select a service</option>
               {serviceList?.length>0 && serviceList?.map((service) => (
-                <option key={service._id} value={service.title}>
-                  {service.title}
+                <option key={service._id} value={service.name}>
+                  {service.name}
                 </option>
               ))}
             </select>

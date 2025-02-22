@@ -89,8 +89,8 @@ const SideCard = ({ statePackage }) => {
     <>
       <div className="carousel-container w-full xl:mt-10 md:mt-12 mt-0 relative md:py-8">
         <div className="carousel gap-5" ref={carouselRef}>
-          {statePackage.data?.length > 0 ? (
-            statePackage.data?.slice(0, 6)?.map((data, i) => (
+          {statePackage?.length > 0 ? (
+            statePackage?.slice(0, 6)?.map((data, i) => (
               <div
                 key={i}
                 className="border relative flex-shrink-0 max-w-[20rem] flex-col rounded-xl bg-white shadow-lg my-2"
