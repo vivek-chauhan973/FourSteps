@@ -1,13 +1,13 @@
 // src/pages/api/admin/webinar/departments/editdepartment.js
 import dbConnect from "@/utils/db";
-import webinardepartment from "@/models/admin/webinar/Departments";
+import Depatment from "@/models/admin/global/department";
 export default async function handler(req, res) {
   await dbConnect();
 
   if (req.method === "PUT") {
     try {
       const { id, name } = req.body;
-      const updatedDepartment = await webinardepartment.findByIdAndUpdate(
+      const updatedDepartment = await Depatment.findByIdAndUpdate(
         id,
         { name },
         { new: true } // Return the updated document

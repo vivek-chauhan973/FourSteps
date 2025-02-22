@@ -65,6 +65,9 @@ export async function middleware(req) {
   if (method === "GET"&&pathname.startsWith('/api')) {
     return NextResponse.next();
   }
+  if (method === "POST"&&pathname.startsWith('/api/zoho')) {
+    return NextResponse.next();
+  }
   //handle routes that start with /admin route
 
  // If trying to access /admin
