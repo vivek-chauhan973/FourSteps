@@ -44,7 +44,7 @@ useEffect(()=>{
   if(selectedData&&statePackage?.length>0){
  const data=statePackage.filter(item=>item?.service===selectedData);
  setSuccessFilteredData(data||[])
- console.log("filtered Data-----> ",statePackage)
+//  console.log("filtered Data-----> ",statePackage)
   }
 },[selectedData,statePackage])
 
