@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideCard from "./SideCard";
 const getAllPost = async () => {
-  return await (
-    await fetch("/api/service/master-service")
-  ).json();
+  return await (await fetch("/api/service/master-service")).json();
 };
 const fetchAllCaseStudies = async () => {
   try {
@@ -11,7 +9,7 @@ const fetchAllCaseStudies = async () => {
       method: "GET",
     });
     const data = await response.json();
-    return data
+    return data;
   } catch (error) {
     console.error("error fetching the case study data", error);
     return [];
@@ -20,33 +18,37 @@ const fetchAllCaseStudies = async () => {
 
 const Case = () => {
   const [statePackage, setStatePackage] = useState([]);
-  const [services,setServices]=useState([])
-  const [selectedData,setSelectedData]=useState("");
-  const [successFilteredData,setSuccessFilteredData]=useState([]);
-  const data = {
-    states: [
-      { _id: "1", name: "Tour & Travels " },
-      { _id: "2", name: "Hubspot" },
-      { _id: "3", name: "Markrting" },
-      { _id: "4", name: "Zoho" },
-      { _id: "5", name: "Bitrix24" },
-    ],
-  };
-
+  const [services, setServices] = useState([]);
+  const [selectedData, setSelectedData] = useState("");
+  const [successFilteredData, setSuccessFilteredData] = useState([]);
+  // const data = {
+  //   states: [
+  //     { _id: "1", name: "Tour & Travels"},
+  //     { _id: "2", name: "Hubspot"},
+  //     { _id: "3", name: "Markrting" },
+  //     { _id: "4", name: "Zoho" },
+  //     { _id: "5", name: "Bitrix24" },
+  //   ],
+  // };
 
   useEffect(() => {
-    fetchAllCaseStudies().then(res=>{setStatePackage(res?.data||[])});
-    getAllPost().then(res=>{setServices(res?.data||[]);
-      setSelectedData(res?.data?.[0]?.name||"")
-    })
+    fetchAllCaseStudies().then((res) => {
+      setStatePackage(res?.data || []);
+    });
+    getAllPost().then((res) => {
+      setServices(res?.data || []);
+      setSelectedData(res?.data?.[0]?.name || "");
+    });
   }, []);
-useEffect(()=>{
-  if(selectedData&&statePackage?.length>0){
- const data=statePackage.filter(item=>item?.service===selectedData);
- setSuccessFilteredData(data||[])
-//  console.log("filtered Data-----> ",statePackage)
-  }
-},[selectedData,statePackage])
+  useEffect(() => {
+    if (selectedData && statePackage?.length > 0) {
+      const data = statePackage.filter(
+        (item) => item?.service === selectedData
+      );
+      setSuccessFilteredData(data || []);
+      //  console.log("filtered Data-----> ",statePackage)
+    }
+  }, [selectedData, statePackage]);
 
   return (
     <div className=" bg-background">
@@ -56,7 +58,6 @@ useEffect(()=>{
             <h2 className="md:text-3xl text-xl text-heading font-semibold pb-3">
               Our Success Stories
             </h2>
-
             <p className="text-sm md:text-lg text-gray-900  max-w-5xl">
               Success is not accidental it is the result of bold ideas and
               relentless execution. Here is how we made it happen...
@@ -69,10 +70,12 @@ useEffect(()=>{
                   <div key={title._id}>
                     <div className="">
                       <button
-                        className="cursor-pointer capitalize shadow-md bg-gradient-to-r from-orange-500 to-red-500 xl:w-52 w-40 text-white md:text-[16px] text-para md:py-2.5 py-1.5 px-4 rounded-md"
-                        onClick={() => setSelectedData(title.name)}
+                        className="cursor-pointer capitalize shadow-md bg-gradient-to-r from-orange-500 to-red-500   xl:w-52 w-40 text-white  md:py-2.5 py-1.5 px-4 rounded-md"
+                        onClick={() => setSelectedData(title?.name)}
                       >
-                        {title.name}
+                        <span className="md:text-[15px] text-[13px]">
+                          {title?.name}
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -82,7 +85,6 @@ useEffect(()=>{
               <div className="flex gap-4">
                 {/* for sharing the data */}
                 <SideCard statePackage={successFilteredData} />
-                {/* <SideCard /> */}
               </div>
               <div className="bg-gradient-to-l from-white opacity-100 w-8 h-full right-0 absolute z-30 top-0"></div>
             </div>
