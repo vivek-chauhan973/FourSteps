@@ -29,9 +29,8 @@ export default function FaqCase({ casestudyData, setActiveTab }) {
     }));
   };
   useEffect(() => {
-    if (casestudyData?.length>0) {
+    if (casestudyData?.length > 0) {
       setItineraryDayWiseDataArray(casestudyData?.[0]?.faq?.questions || []);
-     
     }
   }, [casestudyData]);
 
@@ -94,14 +93,20 @@ export default function FaqCase({ casestudyData, setActiveTab }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ questions: itineraryDayWiseDataArray ,casestudy:casestudyData?.[0]?._id}),
+        body: JSON.stringify({
+          questions: itineraryDayWiseDataArray,
+          casestudy: casestudyData?.[0]?._id,
+        }),
       });
       if (response?.ok) {
-        alert(casestudyData?" faq data is updated successfully":" faq data is saved is successfully")
+        alert(
+          casestudyData
+            ? " faq data is updated successfully"
+            : " faq data is saved is successfully"
+        );
         setActiveTab("Tab7");
-      }
-      else{
-        alert("something went wrong")
+      } else {
+        alert("something went wrong");
       }
     } catch (error) {
       console.error("Error saving data:", error);
@@ -148,7 +153,7 @@ export default function FaqCase({ casestudyData, setActiveTab }) {
                 <div className="pt-12">
                   <button
                     onClick={addItem}
-                    className={` bg-red-700 text-white md:w-auto w-full rounded px-10 py-1 cursor-pointer`}
+                    className={` bg-gray-800 text-white md:w-auto w-full rounded px-10 py-1 cursor-pointer`}
                   >
                     {editingIndex !== null ? "Update" : "Add"}
                   </button>

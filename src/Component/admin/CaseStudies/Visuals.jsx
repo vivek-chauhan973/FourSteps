@@ -1,25 +1,21 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const fetchallScreenshotData = async (id) => {
   const data = await fetch(`/api/casestudy/visuals?id=${id}`, {
     method: "GET",
   });
   return await data.json();
 };
-// const fetchScreenShotById = async (id) => {
-//   const data = await fetch(`/api/product/screenshot1/${id}`);
-//   return await data.json();
-// };
+
 function Visuals({ setActiveTab, casestudyData }) {
   const [entries, setEntries] = useState([]);
   const [image, setImage] = useState(null);
   const [fileData, setFileData] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [editingIndex, setEditingIndex] = useState(null);
-  // const [screenId,setScreenId]=useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -34,16 +30,21 @@ function Visuals({ setActiveTab, casestudyData }) {
   useEffect(() => {
     if (casestudyData?.length > 0) {
       fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
-        // console.log("res of images====> ",res)
         setEntries(res?.data);
       });
     }
   }, [casestudyData]);
 
+  const resetFormFields = () => {
+    setTitle("");
+    setDescription("");
+    setImage(null);
+    setFileData(null);
+  };
+
   const handleAddEntry = async () => {
     try {
       if (fileData && title && description) {
-        const newEntry = { image, title, description };
         const formData = new FormData();
         formData.append("file", fileData);
         formData.append("title", title);
@@ -56,18 +57,15 @@ function Visuals({ setActiveTab, casestudyData }) {
           body: formData,
         });
         if (data?.ok) {
-          alert(
-            editingIndex !== null
-              ? "data updated successfully"
-              : "data saved successfully"
-          );
+          alert("Data saved successfully");
+          resetFormFields(); 
           if (casestudyData?.length > 0) {
             fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
               setEntries(res?.data);
             });
           }
         } else {
-          alert("data has not saved");
+          alert("Data has not saved");
         }
       } else {
         alert("Please fill all fields before adding.");
@@ -77,38 +75,25 @@ function Visuals({ setActiveTab, casestudyData }) {
     }
   };
 
-  // const handleEditEntry = (id) => {
-
-  //   fetchScreenShotById(id).then(res=>{
-  //     setImage(res?.data?.path);
-  //   setTitle(res?.data?.title);
-  //   setDescription(res?.data?.description);
-  //   setScreenId(res?.data?._id||null)
-  //   setEditingIndex(res?.data)
-  //   })
-
-  // };
   const handleDeleteEntry = async (id) => {
     const data = await fetch(`/api/casestudy/visuals?id=${id}`, {
       method: "DELETE",
     });
     if (data?.ok) {
-      alert("item is successfully deleted");
+      alert("Item successfully deleted");
       if (casestudyData?.length > 0) {
         fetchallScreenshotData(casestudyData?.[0]?._id).then((res) => {
           setEntries(res?.data);
         });
       }
     } else {
-      alert("something went wrong to delete the item");
+      alert("Something went wrong while deleting the item");
     }
   };
 
   const handleSubmitAll = () => {
     setActiveTab("Tab6");
   };
-
-  // console.log("editing index  ,..........",editingIndex)
 
   return (
     <>
@@ -172,13 +157,13 @@ function Visuals({ setActiveTab, casestudyData }) {
 
           <button
             onClick={handleAddEntry}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+            className="bg-primary text-white px-4 py-2 rounded-md hover:bg-indigo-700"
           >
-            {editingIndex !== null ? "Update Entry" : "Add Entry"}
+            Add Entry
           </button>
         </div>
 
-        {/* Listing Entries */}
+        {/* Listing Entries - Removed Description Column */}
         <div>
           <h3 className="text-lg font-bold mb-4">Entries</h3>
           {entries?.length === 0 ? (
@@ -189,7 +174,6 @@ function Visuals({ setActiveTab, casestudyData }) {
                 <tr className="bg-gray-100">
                   <th className="p-2 border">Image</th>
                   <th className="p-2 border">Title</th>
-                  <th className="p-2 border">Description</th>
                   <th className="p-2 border">Actions</th>
                 </tr>
               </thead>
@@ -206,14 +190,7 @@ function Visuals({ setActiveTab, casestudyData }) {
                       />
                     </td>
                     <td className="p-2 border">{entry.title}</td>
-                    <td className="p-2 border">{entry.description}</td>
                     <td className="p-2 border">
-                      {/* <button
-                        onClick={() => handleEditEntry(entry?._id)}
-                        className="text-blue-500 hover:underline mr-2"
-                      >
-                        <FontAwesomeIcon icon={faEdit} />
-                      </button> */}
                       <button
                         onClick={() => handleDeleteEntry(entry?._id)}
                         className="text-red-500 hover:underline"
@@ -232,7 +209,7 @@ function Visuals({ setActiveTab, casestudyData }) {
         <div className="mt-6 max-2xl">
           <button
             onClick={handleSubmitAll}
-            className="bg-green-600 w-full text-white px-4 py-2 rounded-md hover:bg-green-700"
+            className="bg-gray-900 w-full text-white px-4 py-2 rounded-md hover:bg-green-700"
           >
             Submit
           </button>

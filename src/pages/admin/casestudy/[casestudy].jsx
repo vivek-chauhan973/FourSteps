@@ -15,7 +15,7 @@ const fetchIDProduct = async (product) => {
 };
 export default function CreateProduct() {
   const router = useRouter();
-  const { casestudy} = router?.query;
+  const { casestudy } = router?.query;
   const [casestudyData, setCasestudyData] = useState(null);
   const [activeTab, setActiveTab] = useState("Tab1");
 
@@ -40,8 +40,7 @@ export default function CreateProduct() {
       setActiveTab("Tab5");
     } else if (activeTab === "Tab5") {
       setActiveTab("Tab6");
-    }
-    else if (activeTab === "Tab6") {
+    } else if (activeTab === "Tab6") {
       setActiveTab("Tab7");
     }
   }, []);

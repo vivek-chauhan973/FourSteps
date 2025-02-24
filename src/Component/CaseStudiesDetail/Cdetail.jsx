@@ -21,7 +21,10 @@ const getSuggestedCaseStudyPackageData = async (industry, service) => {
   const res = await fetch(
     `/api/casestudy/suggested?industry=${industry}&service=${service}`
   );
-  return await res.json();
+  // return await res.json();
+  const data = await res.json();
+  console.log("API Response Data-->>:", data); // ✅ Check the API response in the console
+  return data;
 };
 const Cdetail = ({ title }) => {
   const [casePackageData, setCasePackageData] = useState({});
@@ -35,7 +38,7 @@ const Cdetail = ({ title }) => {
     if (router?.query?.detail) {
       getCaseStudyData(router?.query?.detail?.split("-")?.join(" ")).then(
         (res) => {
-          // console.log("CaseStudy  data fetche--->", res);
+          console.log("CaseStudy  data fetche-->", res);
           setCasePackageData(res);
         }
       );

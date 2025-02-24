@@ -247,11 +247,12 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
               required
             >
               <option value="">Select a service</option>
-              {serviceList?.length>0 && serviceList?.map((service) => (
-                <option key={service._id} value={service.name}>
-                  {service.name}
-                </option>
-              ))}
+              {serviceList?.length > 0 &&
+                serviceList?.map((service) => (
+                  <option key={service._id} value={service.name}>
+                    {service.name}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -267,11 +268,12 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
               required
             >
               <option value="">Select an industry</option>
-              {industryList?.length>0 && industryList?.map((ind) => (
-                <option key={ind._id} value={ind.title}>
-                  {ind.title}
-                </option>
-              ))}
+              {industryList?.length > 0 &&
+                industryList?.map((ind) => (
+                  <option key={ind._id} value={ind.title}>
+                    {ind.title}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
@@ -292,11 +294,12 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
               required
             >
               <option value="">Select an option</option>
-              {topicsList?.length>0 && topicsList?.map((topic) => (
-                <option key={topic._id} value={topic.name}>
-                  {topic.name}
-                </option>
-              ))}
+              {topicsList?.length > 0 &&
+                topicsList?.map((topic) => (
+                  <option key={topic._id} value={topic.name}>
+                    {topic.name}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -342,7 +345,7 @@ const BasicInfoCase = ({ setActiveTab, casestudyData }) => {
         <div>
           <button
             type="submit"
-            className="w-full bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 shadow-lg"
+            className="w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-900 focus:ring-4 focus:ring-purple-300 shadow-lg"
           >
             Submit
           </button>
