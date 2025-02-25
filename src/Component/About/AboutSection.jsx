@@ -26,7 +26,8 @@ const AboutSection = () => {
           {/* Image for larger screens */}
           <div className="hidden md:flex justify-center">
             <Image
-              src="/image/yyy.png"
+              // src="/image/about9.png"
+              src="/image/abouttt.png"
               alt="Tablet Mockup"
               width={500}
               height={500}
@@ -53,7 +54,7 @@ const AboutSection = () => {
             {/* Image for mobile screens */}
             <div className="md:hidden flex justify-center mb-4">
               <Image
-                src="/image/yyy.png"
+                  src="/image/abouttt.png"
                 alt="Tablet Mockup"
                 width={500}
                 height={500}

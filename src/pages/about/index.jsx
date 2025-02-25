@@ -29,11 +29,11 @@ const About = () => {
 
   const handleSectionClick = (newData) => {
     if (newData.title !== currentdata.title) {
-      setFade(false); // Start fade-out effect
+      setFade(false);
       setTimeout(() => {
         setCurrentData(newData);
-        setFade(true); // Start fade-in effect
-      }, 300); // Wait for fade-out to complete
+        setFade(true);
+      }, 300);
     }
   };
 
@@ -105,7 +105,7 @@ const About = () => {
                 {/* Image Section */}
                 <div className="flex justify-center md:justify-end items-center ">
                   <Image
-                    src="/image/yyy.png"
+                    src="/image/abouttt.png"
                     alt="About Us"
                     className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded  object-cover"
                     height={500}

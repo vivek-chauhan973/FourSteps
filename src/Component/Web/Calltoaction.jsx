@@ -87,18 +87,17 @@ const Calltoaction = () => {
         <div className="absolute inset-0 "></div>
         <div className="relative  text-black py-6 md:py-10">
           <div className="container mx-auto">
-            <div className="flex flex-col gap-10 md:flex-row items-center justify-between bg-gray-50 p-6 md:p-10 z-10 relative rounded-lg shadow-lg">
+            <div className="flex flex-col gap-10 md:flex-row items-center justify-between bg-white p-6 md:p-10 z-10 relative rounded-lg shadow-lg">
               {/* Image Section */}
               <div className="w-full md:w-1/3 flex-shrink-0">
                 <Image
-                  src="/image/aboutt.avif"
+                  src="/image/contactt.png"
                   alt="Consultant"
                   className="w-full h-auto object-cover rounded-md"
                   height={200}
                   width={200}
                 />
               </div>
-
               {/* Text and CTA Section */}
               <div className="w-full md:w-2/3 text-center md:text-left">
                 <h2 className="text-lg md:text-2xl text-heading font-semibold mb-4">

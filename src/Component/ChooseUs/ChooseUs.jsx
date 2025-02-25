@@ -33,7 +33,7 @@ const ChooseUs = () => {
         <div className="md:flex items-center gap-16  ">
           <div className="md:w-1/2 rounded-md overflow-hidden">
             <Image
-              src="/image/yyy.png"
+              src="/image/why.png"
               alt="Four Steps Digital"
               className="w-full h-auto object-cover"
               height={500}
